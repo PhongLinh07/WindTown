@@ -1,0 +1,198 @@
+// Database thiết kế thuần dữ liệu
+// để backend ràng buộc 
+
+// 1. Module Tổ Chức (Origanization)
+TABLE department {
+    id int [pk, increment]
+//  datas nvarchar(max)
+    code nvarchar(255) [unique]
+    name nvarchar(255)
+    note nvarchar(255)
+    status int // -1:DELETED, 0:INACTIVE, 1:ACTIVE
+}
+
+TABLE job {
+    id int [pk, increment]
+    department_id int [ref: > department.id]
+//  datas nvarchar(max)
+    code nvarchar(255) [unique]
+    name nvarchar(255)
+    note nvarchar(255)
+    status int [default: 0] // -1:DELETED, 0:INACTIVE, 1:ACTIVE
+}
+TABLE level {
+    id int [pk, increment]
+//  datas nvarchar(max)
+    code nvarchar(255) [unique]
+    name nvarchar(255)
+    rank int [default: 0]
+    note nvarchar(255)
+    status int [default: 0] // -1:DELETED, 0:INACTIVE, 1:ACTIVE
+}
+//------------------------------------------------------------------------
+
+// 2. Module Nhân sự (Human Resource)
+Table employee {
+  id int [pk, increment]
+//datas nvarchar(max)
+  code nvarchar(255) [unique] 
+  name nvarchar(255)
+  gender int // 0:girl, 1:boy, 2:know
+  cccd nvarchar(255)
+  birth_date date
+  address nvarchar(255)
+  email nvarchar(255)
+  phone nvarchar(255)
+  bank nvarchar(255)
+  note nvarchar(255)
+  status int [default: 0] // -1:DELETED, 0:INACTIVE, 1:ACTIVE
+}
+
+Table contract {
+  id int [pk, increment]
+  employee_id int [ref: > employee.id]
+//datas nvarchar(max)
+  code nvarchar(255) [unique] 
+  start_date date
+  end_date date
+  base_salary decimal(18,0)
+  note nvarchar
+  status int [default: 0] // -1:DELETED, 0:INACTIVE, 1:ACTIVE
+}
+
+Table position {
+  id int [pk, increment]
+  contract_id int [ref: > contract.id]
+  job_id int [ref: > job.id]
+  level_id int [ref: > level.id] 
+//datas nvarchar(max)
+  code nvarchar(255) [unique] 
+  start_date date
+  end_date date
+  note nvarchar(255)
+  status int [default: 0] // -1:DELETED, 0:INACTIVE, 1:ACTIVE
+}
+
+// 3. Module Vận hành (Operational)
+Table project {
+  id int [pk, increment]
+//datas nvarchar(max)
+  code nvarchar(255) [unique] 
+  name nvarchar(255)
+  start_date date
+  end_date date
+  note nvarchar(255)
+  status int [default: 0] // -1:DELETED, 0:REJECTED, 1:PLANING, 2:DOING, 3:COMPLETED
+}
+
+Table assignment {
+  id int [pk, increment]
+  position_id int [ref: > position.id]
+  project_id int [ref: > project.id] 
+//datas nvarchar(max)
+  code nvarchar(255) [unique] 
+  role nvarchar(255)
+  start_date date
+  end_date date
+  note nvarchar(255)
+  status int [default: 0] // -1:DELETED, 0:INACTIVE, 1:ACTIVE
+}
+
+Table attendance {
+  id int [pk, increment]
+  employee_id int [ref: > employee.id]
+//datas nvarchar(max)
+  code nvarchar(255) [unique] 
+  date date
+  office_hours decimal(5,2) [default: 0]
+  overtime_hours decimal(5,2) [default: 0]
+  late_hours decimal(5,2) [default: 0]
+  early_hours decimal(5,2) [default: 0]
+  is_night int [default: 0]
+  note nvarchar
+  status int [default: 0] // -1:DELETED, 0:INACTIVE, 1:ACTIVE
+}
+
+Table holiday {
+  id int [pk, increment]
+//datas nvarchar(max)
+  code nvarchar(255) [unique] 
+  date date
+  name nvarchar(255)
+  day_mult decimal(5,2) [default: 1]
+  night_mult decimal(5,2) [default: 1]
+  ot_mult decimal(5,2) [default: 1]
+  note nvarchar(255)
+  status int [default: 0] // -1:DELETED, 0:INACTIVE, 1:ACTIVE
+}
+
+
+Table leave {
+  id int [pk, increment]
+  employee_id int [ref: > employee.id]
+//datas nvarchar(max)
+  code nvarchar(255) [unique]
+  start_date date
+  total_days decimal(5,2) // Vd: Nghỉ nửa buổi là 0.5
+  is_paid int [default: 0]
+  type nvarchar(255) //enum('ANNUAL', 'SICK', 'UNPAID', 'MATERNITY') // Quan trọng để lọc công thức
+  note nvarchar(255)
+  status int [default: 0] // -1:DELETED, 0:INACTIVE, 1:ACTIVE
+}
+
+
+// 4. Module Quy tắc & Chính sách (Rule Engine)
+TABLE policy {
+  id int [pk, increment]
+//datas nvarchar(max)
+  code nvarchar(255) [unique]
+  name nvarchar(255)  
+  category nvarchar(255) //('EARNING', 'DEDUCTION', 'TAX', 'INSURANCE')
+  formula nvarchar // Vd: "500000" hoặc "base_salary * 0.1"
+  priority int // Thứ tự tính (Vd: Tính phụ cấp trước, tính Thuế sau cùng)
+  start_date date
+  end_date date // Cho phép chính sách hết hạn (Vd: Thưởng nóng tháng 12)
+  note nvarchar(255)
+  status int [default: 0] // -1:DELETED, 0:INACTIVE, 1:ACTIVE
+}
+
+// 5. Module Tài chính (Finance)
+Table pay_period {
+  id int [pk, increment]
+//datas nvarchar(max)
+  code nvarchar(255) [unique]
+  name nvarchar(255)  
+  start_date date
+  end_date date
+  std_hours decimal(18,2)
+  note nvarchar(255)
+  status int [default: 0] // -1:DELETED, 0:INACTIVE, 1:ACTIVE
+}
+
+Table payroll {
+  id int [pk, increment]
+  period_id int [ref: > pay_period.id]
+  position_id int [ref: > position.id]
+  datas nvarchar(max)
+  status int [default: 0] // -1:DELETED, 0:INACTIVE, 1:ACTIVE
+  
+}
+
+
+// 6. Module hệ thống (System)
+Table account {
+  employee_id int [pk, ref: > employee.id]
+//datas nvarchar(max)
+  uer nvarchar(255)  
+  password nvarchar(255)  
+  role nvarchar(255) [default: 'ADMIN']
+  last_login datetime2
+  last_logout datetime2
+  note nvarchar(255)
+  status int [default: 0] // -1:DELETED, 0:INACTIVE, 1:ACTIVE
+}
+
+
+
+
+
