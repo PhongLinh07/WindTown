@@ -289,7 +289,9 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="1_Documents\db_detail_org.md" />
+    <None Include="1_Documents\23CĐTT02_WindTown.docx" />
+    <None Include="1_Documents\db_datas_test.xlsx" />
+    <None Include="1_Documents\db_detail_org.dbml" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
@@ -351,6 +353,10 @@
     <None Include="2_Core\Assets\sign-out-alt.png" />
     <None Include="2_Core\Assets\sync.png" />
     <None Include="2_Core\Assets\user.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="1_Documents\db_json.sql" />
+    <Content Include="1_Documents\db_study.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <Import Project="..\packages\Microsoft.Data.SqlClient.SNI.6.0.2\build\net462\Microsoft.Data.SqlClient.SNI.targets" Condition="Exists('..\packages\Microsoft.Data.SqlClient.SNI.6.0.2\build\net462\Microsoft.Data.SqlClient.SNI.targets')" />
