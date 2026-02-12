@@ -236,53 +236,25 @@
     <Compile Include="2_Core\4_Database\ServiceResponse.vb" />
     <Compile Include="2_Core\5_Base\BaseEntity.vb" />
     <Compile Include="3_Modules\1_Organization\1_Models\Department.vb" />
-    <Compile Include="3_Modules\BaseForm\ACRUDForm.Designer.vb">
+    <Compile Include="2_Core\6_Forms\1_FormBase\ACRUDForm.Designer.vb">
       <DependentUpon>ACRUDForm.vb</DependentUpon>
     </Compile>
-    <Compile Include="3_Modules\BaseForm\ACRUDForm.vb">
+    <Compile Include="2_Core\6_Forms\1_FormBase\ACRUDForm.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="3_Modules\BaseForm\AForm.Designer.vb">
+    <Compile Include="2_Core\6_Forms\1_FormBase\AForm.Designer.vb">
       <DependentUpon>AForm.vb</DependentUpon>
     </Compile>
-    <Compile Include="3_Modules\BaseForm\AForm.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="3_Modules\Client\ClientRepository.vb" />
-    <Compile Include="3_Modules\Client\ClientService.vb" />
-    <Compile Include="3_Modules\Client\ClientsForm.Designer.vb">
-      <DependentUpon>ClientsForm.vb</DependentUpon>
-    </Compile>
-    <Compile Include="3_Modules\Client\ClientsForm.vb">
+    <Compile Include="2_Core\6_Forms\1_FormBase\AForm.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="2_Core\4_Database\DatabaseConfig.vb" />
-    <Compile Include="3_Modules\Database\Models\AModel.vb" />
-    <Compile Include="3_Modules\Database\Models\ClientModel.vb" />
-    <Compile Include="3_Modules\Database\Models\ProductModel.vb" />
-    <Compile Include="3_Modules\Interfaces\AModelRepository.vb" />
-    <Compile Include="3_Modules\Interfaces\AModelService.vb" />
     <Compile Include="2_Core\6_Forms\FormMain.Designer.vb">
       <DependentUpon>FormMain.vb</DependentUpon>
     </Compile>
     <Compile Include="2_Core\6_Forms\FormMain.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="3_Modules\Product\ProductCRUD.Designer.vb">
-      <DependentUpon>ProductCRUD.vb</DependentUpon>
-    </Compile>
-    <Compile Include="3_Modules\Product\ProductCRUD.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="3_Modules\Product\ProductRepository.vb" />
-    <Compile Include="3_Modules\Product\ProductService.vb" />
-    <Compile Include="3_Modules\Product\ProductsForm.Designer.vb">
-      <DependentUpon>ProductsForm.vb</DependentUpon>
-    </Compile>
-    <Compile Include="3_Modules\Product\ProductsForm.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="3_Modules\Utils\Tool.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -300,23 +272,20 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="3_Modules\BaseForm\ACRUDForm.resx">
+    <EmbeddedResource Include="2_Core\6_Forms\1_FormBase\ACRUDForm.resx">
       <DependentUpon>ACRUDForm.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="3_Modules\BaseForm\AForm.resx">
+    <EmbeddedResource Include="2_Core\6_Forms\1_FormBase\AForm.resx">
       <DependentUpon>AForm.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="2_Core\6_Forms\FormMain.resx">
       <DependentUpon>FormMain.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="3_Modules\Product\ProductCRUD.resx">
-      <DependentUpon>ProductCRUD.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -335,7 +304,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="2_Core\3_Utils\1_SalaryEngine\" />
-    <Folder Include="2_Core\6_Forms\1_FormBase\" />
     <Folder Include="2_Core\6_Forms\2_SharedControls\" />
     <Folder Include="3_Modules\1_Organization\2_Repositories\" />
     <Folder Include="3_Modules\1_Organization\3_Services\" />
@@ -353,17 +321,36 @@
     <Folder Include="3_Modules\5_System\3_Services\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="2_Core\1_Assets\c959aa2c-d8e5-4cc8-bf55-4d8278dbe91f.png" />
+    <None Include="2_Core\Assets\c959aa2c-d8e5-4cc8-bf55-4d8278dbe91f.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="2_Core\1_Assets\Background_2.jpg" />
-    <None Include="2_Core\1_Assets\new-data.png" />
-    <None Include="2_Core\1_Assets\cloud-sync.png" />
-    <None Include="2_Core\1_Assets\delete.png" />
-    <None Include="2_Core\1_Assets\save.png" />
-    <None Include="2_Core\1_Assets\home.png" />
-    <Content Include="3_Modules\Documents\db_study.sql" />
-    <Content Include="3_Modules\Documents\db_test.sql" />
+    <None Include="2_Core\Assets\Background_2.jpg" />
+    <None Include="2_Core\Assets\new-data.png" />
+    <None Include="2_Core\Assets\cloud-sync.png" />
+    <None Include="2_Core\Assets\delete.png" />
+    <None Include="2_Core\Assets\save.png" />
+    <None Include="2_Core\Assets\home.png" />
+    <None Include="2_Core\Assets\Avatar.jpg" />
+    <None Include="2_Core\Assets\Background.jpg" />
+    <None Include="2_Core\Assets\Background_1.png" />
+    <None Include="2_Core\Assets\book-user.png" />
+    <None Include="2_Core\Assets\budget.png" />
+    <None Include="2_Core\Assets\calculator.png" />
+    <None Include="2_Core\Assets\calendar-clock.png" />
+    <None Include="2_Core\Assets\circle-small.png" />
+    <None Include="2_Core\Assets\diploma.png" />
+    <None Include="2_Core\Assets\ffc7f2dc-3179-4108-86fb-19ef31407e4e.png" />
+    <None Include="2_Core\Assets\filter.png" />
+    <None Include="2_Core\Assets\log.png" />
+    <None Include="2_Core\Assets\menu-burger.png" />
+    <None Include="2_Core\Assets\money.png" />
+    <None Include="2_Core\Assets\payroll-check.png" />
+    <None Include="2_Core\Assets\profile.png" />
+    <None Include="2_Core\Assets\replace.png" />
+    <None Include="2_Core\Assets\rules-alt.png" />
+    <None Include="2_Core\Assets\sign-out-alt.png" />
+    <None Include="2_Core\Assets\sync.png" />
+    <None Include="2_Core\Assets\user.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <Import Project="..\packages\Microsoft.Data.SqlClient.SNI.6.0.2\build\net462\Microsoft.Data.SqlClient.SNI.targets" Condition="Exists('..\packages\Microsoft.Data.SqlClient.SNI.6.0.2\build\net462\Microsoft.Data.SqlClient.SNI.targets')" />

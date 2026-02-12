@@ -25,14 +25,9 @@ Partial Public Class FormMain
     End Sub
 
 
-    Private Sub menuItem_Product_Click(sender As Object, e As EventArgs) Handles menuItem_Product.Click
+    Private Sub menuItem_Product_Click(sender As Object, e As EventArgs)
         If currentForm IsNot Nothing AndAlso currentForm.Name = "ProductsForm" Then Return
-        OpenChildForm(New ProductsForm())
-    End Sub
-
-    Private Sub menuItem_Client_Click(sender As Object, e As EventArgs) Handles menuItem_Client.Click
-        If currentForm IsNot Nothing AndAlso currentForm.Name = "ClientsForm" Then Return
-        OpenChildForm(New ClientsForm())
+        ' //' OpenChildForm(New ProductsForm())
     End Sub
 
 
