@@ -166,7 +166,7 @@ Partial Class AForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackgroundImage = Global.WindTown_VB.My.Resources.Resources.Background_2
+        Me.BackColor = System.Drawing.SystemColors.InactiveCaption
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(1232, 701)
         Me.Controls.Add(Me.TableLayoutPanel1)

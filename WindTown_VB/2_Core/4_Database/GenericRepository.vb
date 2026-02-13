@@ -10,7 +10,11 @@ Public Class GenericRepository(Of T As {BaseEntity, New})
         Using db As IDbConnection = Database.GetConnection()
             ' Tự động lấy tên bảng từ Attribute <Table>
             Dim tableName As String = GetType(T).Name.ToLower()
-            Return db.Query(Of T)($"SELECT * FROM [{tableName}] WHERE status <> -1")
+            Return db.Query(Of T)(
+            $"SELECT * FROM [{tableName}] 
+              WHERE CAST(JSON_VALUE(datas, '$.status') AS INT) <> @Status",
+            New With {.Status = -1}
+        )
         End Using
     End Function
 
@@ -29,11 +33,11 @@ Public Class GenericRepository(Of T As {BaseEntity, New})
     'End Function
 
     '' Cập nhật (Dùng Dapper.Contrib)
-    'Public Overridable Function Update(entity As T) As Boolean
-    '    Using db As IDbConnection = Database.GetConnection()
-    '        Return db.Update(entity)
-    '    End Using
-    'End Function
+    Public Overridable Function Update(entity As T) As Boolean
+        Using db As IDbConnection = Database.GetConnection()
+            Return db.Update(entity)
+        End Using
+    End Function
 
     '' Xóa mềm
     'Public Overridable Function SoftDelete(id As Integer) As Boolean

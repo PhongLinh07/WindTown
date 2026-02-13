@@ -1,3 +1,5 @@
+Imports Microsoft.Data.Common
+
 Partial Public Class FormMain
     Inherits Form
 
@@ -30,5 +32,10 @@ Partial Public Class FormMain
         ' //' OpenChildForm(New ProductsForm())
     End Sub
 
+    Private Sub menuItem_Department_Click(sender As Object, e As EventArgs) Handles menuItem_Department.Click
+        ' If currentForm IsNot Nothing AndAlso currentForm.Name = "" Then Return
 
+        Dim frm As New Department_List()
+        OpenChildForm(frm)
+    End Sub
 End Class

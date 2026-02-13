@@ -1,5 +1,5 @@
 <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class ACRUDForm
+Partial Class BaseACRUDForm
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -29,7 +29,7 @@ Partial Class ACRUDForm
         '
         'toolStrip
         '
-        Me.toolStrip.BackColor = System.Drawing.Color.PaleTurquoise
+        Me.toolStrip.BackColor = System.Drawing.Color.MediumTurquoise
         Me.toolStrip.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden
         Me.toolStrip.ImageScalingSize = New System.Drawing.Size(24, 24)
         Me.toolStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tool_save})
@@ -51,15 +51,15 @@ Partial Class ACRUDForm
         Me.tool_save.Size = New System.Drawing.Size(28, 28)
         Me.tool_save.Text = "Ssve"
         '
-        'ACRUDForm
+        'BaseACRUDForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackgroundImage = Global.WindTown_VB.My.Resources.Resources.Background_2
+        Me.BackColor = System.Drawing.SystemColors.GradientActiveCaption
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.ClientSize = New System.Drawing.Size(800, 505)
         Me.Controls.Add(Me.toolStrip)
-        Me.Name = "ACRUDForm"
+        Me.Name = "BaseACRUDForm"
         Me.Text = "ACRUDForm"
         Me.toolStrip.ResumeLayout(False)
         Me.toolStrip.PerformLayout()

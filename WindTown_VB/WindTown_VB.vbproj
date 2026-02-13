@@ -235,11 +235,18 @@
     <Compile Include="2_Core\4_Database\GenericRepository.vb" />
     <Compile Include="2_Core\4_Database\ServiceResponse.vb" />
     <Compile Include="2_Core\5_Base\BaseEntity.vb" />
-    <Compile Include="3_Modules\1_Organization\1_Models\Department.vb" />
-    <Compile Include="2_Core\6_Forms\1_FormBase\ACRUDForm.Designer.vb">
-      <DependentUpon>ACRUDForm.vb</DependentUpon>
+    <Compile Include="2_Core\5_Base\BaseService.vb" />
+    <Compile Include="2_Core\6_Forms\1_FormBase\BaseListForm.Designer.vb">
+      <DependentUpon>BaseListForm.vb</DependentUpon>
     </Compile>
-    <Compile Include="2_Core\6_Forms\1_FormBase\ACRUDForm.vb">
+    <Compile Include="2_Core\6_Forms\1_FormBase\BaseListForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="3_Modules\1_Organization\1_Models\Department.vb" />
+    <Compile Include="2_Core\6_Forms\1_FormBase\BaseACRUDForm.Designer.vb">
+      <DependentUpon>BaseACRUDForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="2_Core\6_Forms\1_FormBase\BaseACRUDForm.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="2_Core\6_Forms\1_FormBase\AForm.Designer.vb">
@@ -253,6 +260,18 @@
       <DependentUpon>FormMain.vb</DependentUpon>
     </Compile>
     <Compile Include="2_Core\6_Forms\FormMain.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="3_Modules\1_Organization\4_Forms\Department_CRUD.Designer.vb">
+      <DependentUpon>Department_CRUD.vb</DependentUpon>
+    </Compile>
+    <Compile Include="3_Modules\1_Organization\4_Forms\Department_CRUD.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="3_Modules\1_Organization\4_Forms\Department_List.Designer.vb">
+      <DependentUpon>Department_List.vb</DependentUpon>
+    </Compile>
+    <Compile Include="3_Modules\1_Organization\4_Forms\Department_List.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
@@ -272,14 +291,20 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="2_Core\6_Forms\1_FormBase\ACRUDForm.resx">
-      <DependentUpon>ACRUDForm.vb</DependentUpon>
+    <EmbeddedResource Include="2_Core\6_Forms\1_FormBase\BaseACRUDForm.resx">
+      <DependentUpon>BaseACRUDForm.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="2_Core\6_Forms\1_FormBase\AForm.resx">
       <DependentUpon>AForm.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="2_Core\6_Forms\1_FormBase\BaseListForm.resx">
+      <DependentUpon>BaseListForm.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="2_Core\6_Forms\FormMain.resx">
       <DependentUpon>FormMain.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="3_Modules\1_Organization\4_Forms\Department_CRUD.resx">
+      <DependentUpon>Department_CRUD.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
@@ -292,10 +317,12 @@
     <None Include="1_Documents\23CĐTT02_WindTown.docx" />
     <None Include="1_Documents\db_datas_test.xlsx" />
     <None Include="1_Documents\db_detail_org.dbml" />
+    <None Include="1_Documents\wind-town.pdf" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
     </None>
+    <None Include="My Project\DataSources\Department.datasource" />
     <None Include="My Project\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <CustomToolNamespace>My</CustomToolNamespace>
