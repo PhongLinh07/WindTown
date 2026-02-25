@@ -1,5 +1,5 @@
 <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-Partial Class Department_CRUD
+Partial Class Department_CRUD_Frm
     Inherits BaseACRUDForm
 
     'Form overrides dispose to clean up the component list.

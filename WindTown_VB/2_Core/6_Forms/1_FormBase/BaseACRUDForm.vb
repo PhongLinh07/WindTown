@@ -1,10 +1,8 @@
 Partial Public Class BaseACRUDForm
     Inherits Form
 
-    Protected isChanged As Boolean = False
     Protected isCreate As Boolean = False
     Protected isConfirm As Boolean = False
-    Protected isInited As Boolean = False
 
     Public Sub New()
         InitializeComponent()

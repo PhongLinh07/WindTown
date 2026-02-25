@@ -3,7 +3,7 @@ Imports Microsoft.Data.Common
 Partial Public Class FormMain
     Inherits Form
 
-    Private currentForm As Form = Nothing
+    Private currentForm As UserControl = Nothing
 
     Public Sub New()
         InitializeComponent()
@@ -11,14 +11,12 @@ Partial Public Class FormMain
 
     '-----------------------------------------
     ' Mở Child Form
-    Private Sub OpenChildForm(childForm As Form)
+    Private Sub OpenChildForm(childForm As UserControl)
         If currentForm IsNot Nothing Then
-            currentForm.Close()
+            pnl_main.Controls.Remove(currentForm)
         End If
 
         currentForm = childForm
-        childForm.TopLevel = False
-        childForm.FormBorderStyle = FormBorderStyle.None
         childForm.Dock = DockStyle.Fill
         pnl_main.Controls.Add(childForm)
         pnl_main.Tag = childForm
@@ -33,9 +31,8 @@ Partial Public Class FormMain
     End Sub
 
     Private Sub menuItem_Department_Click(sender As Object, e As EventArgs) Handles menuItem_Department.Click
-        ' If currentForm IsNot Nothing AndAlso currentForm.Name = "" Then Return
 
-        Dim frm As New Department_List()
+        Dim frm As New Department_List_UC()
         OpenChildForm(frm)
     End Sub
 End Class

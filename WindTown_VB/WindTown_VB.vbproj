@@ -232,15 +232,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="2_Core\2_Common\Consts.vb" />
+    <Compile Include="2_Core\3_Utils\2_JsonHelper\CloneHelper.vb" />
     <Compile Include="2_Core\4_Database\GenericRepository.vb" />
     <Compile Include="2_Core\4_Database\ServiceResponse.vb" />
     <Compile Include="2_Core\5_Base\BaseEntity.vb" />
     <Compile Include="2_Core\5_Base\BaseService.vb" />
-    <Compile Include="2_Core\6_Forms\1_FormBase\BaseListForm.Designer.vb">
-      <DependentUpon>BaseListForm.vb</DependentUpon>
+    <Compile Include="2_Core\6_Forms\1_FormBase\BaseList_UC.Designer.vb">
+      <DependentUpon>BaseList_UC.vb</DependentUpon>
     </Compile>
-    <Compile Include="2_Core\6_Forms\1_FormBase\BaseListForm.vb">
-      <SubType>Form</SubType>
+    <Compile Include="2_Core\6_Forms\1_FormBase\BaseList_UC.vb">
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="3_Modules\1_Organization\1_Models\Department.vb" />
     <Compile Include="2_Core\6_Forms\1_FormBase\BaseACRUDForm.Designer.vb">
@@ -262,17 +263,17 @@
     <Compile Include="2_Core\6_Forms\FormMain.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="3_Modules\1_Organization\4_Forms\Department_CRUD.Designer.vb">
-      <DependentUpon>Department_CRUD.vb</DependentUpon>
+    <Compile Include="3_Modules\1_Organization\4_Forms\Department_CRUD_Frm.Designer.vb">
+      <DependentUpon>Department_CRUD_Frm.vb</DependentUpon>
     </Compile>
-    <Compile Include="3_Modules\1_Organization\4_Forms\Department_CRUD.vb">
+    <Compile Include="3_Modules\1_Organization\4_Forms\Department_CRUD_Frm.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="3_Modules\1_Organization\4_Forms\Department_List.Designer.vb">
-      <DependentUpon>Department_List.vb</DependentUpon>
+    <Compile Include="3_Modules\1_Organization\4_Forms\Department_List_UC.Designer.vb">
+      <DependentUpon>Department_List_UC.vb</DependentUpon>
     </Compile>
-    <Compile Include="3_Modules\1_Organization\4_Forms\Department_List.vb">
-      <SubType>Form</SubType>
+    <Compile Include="3_Modules\1_Organization\4_Forms\Department_List_UC.vb">
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
@@ -297,14 +298,14 @@
     <EmbeddedResource Include="2_Core\6_Forms\1_FormBase\AForm.resx">
       <DependentUpon>AForm.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="2_Core\6_Forms\1_FormBase\BaseListForm.resx">
-      <DependentUpon>BaseListForm.vb</DependentUpon>
+    <EmbeddedResource Include="2_Core\6_Forms\1_FormBase\BaseList_UC.resx">
+      <DependentUpon>BaseList_UC.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="2_Core\6_Forms\FormMain.resx">
       <DependentUpon>FormMain.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="3_Modules\1_Organization\4_Forms\Department_CRUD.resx">
-      <DependentUpon>Department_CRUD.vb</DependentUpon>
+    <EmbeddedResource Include="3_Modules\1_Organization\4_Forms\Department_CRUD_Frm.resx">
+      <DependentUpon>Department_CRUD_Frm.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>

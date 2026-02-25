@@ -6,7 +6,6 @@ Imports Dapper.Contrib.Extensions
 Public Class Department
     Inherits BaseEntity
 
-
     <Write(False)> <DisplayName("Code")>
     Public Property code As String
         Get
