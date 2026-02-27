@@ -161,7 +161,6 @@ Partial Class BaseList_UC
         DataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black
         Me._dgv.RowsDefaultCellStyle = DataGridViewCellStyle4
         Me._dgv.RowTemplate.DefaultCellStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me._dgv.RowTemplate.DefaultCellStyle.Format = "N0"
         Me._dgv.RowTemplate.DefaultCellStyle.NullValue = Nothing
         Me._dgv.RowTemplate.Height = 40
         Me._dgv.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
