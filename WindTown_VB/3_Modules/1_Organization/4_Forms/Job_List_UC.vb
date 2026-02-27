@@ -1,27 +1,24 @@
-Imports System.ComponentModel
-
-
-Public Class Department_List_UC
+Public Class Job_List_UC
     Inherits BaseList_UC
 
     Public Sub New()
-        MyBase.New(New BaseService(Of Department), "Department")
+        MyBase.New(New JobService(), "Job")
         InitializeComponent()
-        Init(GetType(Department))
+        Init(GetType(Job))
     End Sub
 
 
 
     Protected Overrides Sub Dgv_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs)
-        ' Bỏ click header
+
         If e.RowIndex < 0 OrElse e.ColumnIndex < 0 Then Return
 
         Dim row As DataGridViewRow = _dgv.Rows(e.RowIndex)
 
         ' Tạo bản sao của đối tượng để tránh sửa trực tiếp trên DataGridView
-        Dim data = Utils.DeepClone(CType(row.DataBoundItem, Department))
+        Dim data = Utils.DeepClone(CType(row.DataBoundItem, Job))
 
-        Dim crud As New Department_CRUD_Frm(data)
+        Dim crud As New Job_CRUD_Frm(data)
         If crud.ShowDialog() = DialogResult.OK Then
 
             Dim result = _service.Execute(DataIntent.Update, data)
@@ -37,9 +34,9 @@ Public Class Department_List_UC
 
     Protected Overrides Sub tool_new_Click(sender As Object, e As EventArgs)
         ' Tạo bản sao của đối tượng để tránh sửa trực tiếp trên DataGridView
-        Dim data = New Department() ' tạo mới đối tượng với giá trị mặc định
+        Dim data = New Job() ' tạo mới đối tượng với giá trị mặc định
 
-        Dim crud As New Department_CRUD_Frm(data, True)
+        Dim crud As New Job_CRUD_Frm(data, True)
         If crud.ShowDialog() = DialogResult.OK Then
 
             Dim result = _service.Execute(DataIntent.Insert, data)
@@ -63,9 +60,9 @@ Public Class Department_List_UC
         If MessageBox.Show($"Delete {_dgv.SelectedRows.Count} record?", "Confirm", MessageBoxButtons.YesNo) = DialogResult.No Then Return
 
 
-        Dim items As List(Of Department) = _dgv.SelectedRows.
+        Dim items As List(Of Job) = _dgv.SelectedRows.
                                                 Cast(Of DataGridViewRow)().
-                                                Select(Function(r) TryCast(r.DataBoundItem, Department)).
+                                                Select(Function(r) TryCast(r.DataBoundItem, Job)).
                                                 Where(Function(x) x IsNot Nothing).
                                                 ToList()
 

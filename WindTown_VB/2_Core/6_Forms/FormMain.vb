@@ -30,9 +30,13 @@ Partial Public Class FormMain
         ' //' OpenChildForm(New ProductsForm())
     End Sub
 
-    Private Sub menuItem_Department_Click(sender As Object, e As EventArgs) Handles menuItem_Department.Click
-
+    Private Sub DepartmentToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DepartmentToolStripMenuItem.Click
         Dim frm As New Department_List_UC()
+        OpenChildForm(frm)
+    End Sub
+
+    Private Sub JobToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles JobToolStripMenuItem.Click
+        Dim frm As New Job_List_UC()
         OpenChildForm(frm)
     End Sub
 End Class

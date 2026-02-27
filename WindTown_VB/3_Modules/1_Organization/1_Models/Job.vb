@@ -2,12 +2,26 @@ Imports System.ComponentModel
 Imports System.ComponentModel.DataAnnotations
 Imports Dapper.Contrib.Extensions
 
-<Table("department")>
-Public Class Department
+<Table("job")>
+Public Class Job
     Inherits BaseEntity
 
-#Region "Field json"
-    <Write(False)> <DisplayName("Code")> <Display(Order:=0)>
+#Region "Join"
+    <Write(False)> <Browsable(False)>
+    Public Property Department = New Department()
+#End Region
+
+#Region "Field"
+    <Browsable(False)>
+    Public ReadOnly Property department_id As Integer
+        Get
+            Return Department?.id
+        End Get
+    End Property
+#End Region
+
+#Region "Field Json"
+    <Write(False)> <DisplayName("Code")> <Display(Order:=1)>
     Public Property code As String
         Get
             Return GetV("code")
@@ -16,7 +30,8 @@ Public Class Department
             SetV("code", value)
         End Set
     End Property
-    <Write(False)> <DisplayName("Name")> <Display(Order:=1)>
+
+    <Write(False)> <DisplayName("Name")> <Display(Order:=2)>
     Public Property name As String
         Get
             Return GetV("name")
@@ -25,7 +40,8 @@ Public Class Department
             SetV("name", value)
         End Set
     End Property
-    <Write(False)> <DisplayName("Note")> <Display(Order:=2)>
+
+    <Write(False)> <DisplayName("Note")> <Display(Order:=7)>
     Public Property note As String
         Get
             Return GetV("note")
@@ -44,23 +60,23 @@ Public Class Department
             SetV("status", value)
         End Set
     End Property
+
 #End Region
 
 #Region "Field Display"
-    <Write(False)> <DisplayName("Status")> <Display(Order:=3)>
+
+    <Write(False)> <DisplayName("Status")> <Display(Order:=8)>
     Public ReadOnly Property status_UI As String
         Get
             Return If(status = 1, "Active", "Inactive")
         End Get
     End Property
+
+    <Write(False)> <DisplayName("Department")> <Display(Order:=3)>
+    Public ReadOnly Property Department_UI As String
+        Get
+            Return If(Department?.name, "---")
+        End Get
+    End Property
 #End Region
 End Class
-
-
-
-
-
-
-
-
-

@@ -6,13 +6,14 @@ End Interface
 Public Class BaseService(Of T As {BaseEntity, New})
     Implements IBaseService
 
-    Protected ReadOnly _repo As GenericRepository(Of T)
+    Protected _repo As GenericRepository(Of T)
+
     Public Sub New()
         _repo = New GenericRepository(Of T)
     End Sub
 
     ' HÀM DUY NHẤT MÀ FORM GỌI
-    Public Function Execute(intent As DataIntent, Optional data As Object = Nothing) As ServiceResponse(Of Object) Implements IBaseService.Execute
+    Public Overridable Function Execute(intent As DataIntent, Optional data As Object = Nothing) As ServiceResponse(Of Object) Implements IBaseService.Execute
         Try
             Select Case intent
                 Case DataIntent.GetList
