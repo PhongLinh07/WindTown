@@ -211,18 +211,18 @@ INSERT INTO department (datas) VALUES
 (N'{"code": "DEPT_ADM", "name": "Administrative & Support", "note": "Phòng hành chính", "status": 1}');
 
 
-INSERT INTO job (datas) VALUES 
-(N'{"department_id": JOB_CEO, "code": "1", "name": "Chief Executive Officer", "note": "Tổng Giám đốc", "status": 1}'),
-(N'{"department_id": JOB_CTO, "code": "1", "name": "Chief Technology Officer", "note": "Giám đốc Kỹ thuật", "status": 1}'),
-(N'{"department_id": JOB_CD, "code": "1", "name": "Creative Director", "note": "Giám đốc sáng tạo", "status": 1}'),
-(N'{"department_id": JOB_GD, "code": "2", "name": "Game Designer", "note": "Lên ý tưởng thiết kế game", "status": 1}'),
-(N'{"department_id": JOB_ART, "code": "2", "name": "Artist", "note": "Thiết kế giao diện đồ họa", "status": 1}'),
-(N'{"department_id": JOB_PRG, "code": "2", "name": "Programmer", "note": "Lập trình, coding", "status": 1}'),
-(N'{"department_id": JOB_TEST, "code": "2", "name": "Tester", "note": "Trải nghiệm và kiểm tra", "status": 1}'),
-(N'{"department_id": JOB_MKT, "code": "3", "name": "Marketing", "note": "Quảng bá game", "status": 1}'),
-(N'{"department_id": JOB_COMM, "code": "3", "name": "Community", "note": "Chăm sóc khách hàng", "status": 1}'),
-(N'{"department_id": JOB_HR, "code": "4", "name": "Human Resources", "note": "Nhân sự", "status": 1}'),
-(N'{"department_id": JOB_FA, "code": "4", "name": "Finance & Accounting", "note": "Tài chính & Kế toán", "status": 1}');
+INSERT INTO job (department_id, datas) VALUES 
+(1, N'{"code": "JOB_CEO", "name": "Chief Executive Officer", "note": "Tổng Giám đốc", "status": 1}'),
+(1, N'{"code": "JOB_CTO", "name": "Chief Technology Officer", "note": "Giám đốc Kỹ thuật", "status": 1}'),
+(1, N'{"code": "JOB_CD", "name": "Creative Director", "note": "Giám đốc sáng tạo", "status": 1}'),
+(2, N'{"code": "JOB_GD", "name": "Game Designer", "note": "Lên ý tưởng thiết kế game", "status": 1}'),
+(2, N'{"code": "JOB_ART", "name": "Artist", "note": "Thiết kế giao diện đồ họa", "status": 1}'),
+(2, N'{"code": "JOB_PRG", "name": "Programmer", "note": "Lập trình, coding", "status": 1}'),
+(2, N'{"code": "JOB_TEST", "name": "Tester", "note": "Trải nghiệm và kiểm tra", "status": 1}'),
+(3, N'{"code": "JOB_MKT", "name": "Marketing", "note": "Quảng bá game", "status": 1}'),
+(3, N'{"code": "JOB_COMM", "name": "Community", "note": "Chăm sóc khách hàng", "status": 1}'),
+(4, N'{"code": "JOB_HR", "name": "Human Resources", "note": "Nhân sự", "status": 1}'),
+(4, N'{"code": "JOB_FA", "name": "Finance & Accounting", "note": "Tài chính & Kế toán", "status": 1}');
 
 INSERT INTO level (datas) VALUES
 (N'{"code": "LVL_1", "name": "Intern", "rank": 1, "note": "Học việc, hỗ trợ task đơn giản (Thử việc 1-3 tháng).", "status": 1}'),

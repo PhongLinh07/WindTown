@@ -26,13 +26,15 @@ Partial Class FormMain
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Panel2 = New System.Windows.Forms.Panel()
-        Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
-        Me.menuItem_Department = New System.Windows.Forms.ToolStripMenuItem()
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.pnl_main = New System.Windows.Forms.Panel()
+        Me.MenuStrip2 = New System.Windows.Forms.MenuStrip()
+        Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.DepartmentToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.JobToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TableLayoutPanel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
-        Me.MenuStrip1.SuspendLayout()
+        Me.MenuStrip2.SuspendLayout()
         Me.SuspendLayout()
         '
         'TableLayoutPanel1
@@ -41,7 +43,7 @@ Partial Class FormMain
         Me.TableLayoutPanel1.ColumnCount = 3
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 13.47113!))
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 86.52887!))
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 15.0!))
+        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 16.0!))
         Me.TableLayoutPanel1.Controls.Add(Me.Label1, 0, 0)
         Me.TableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top
         Me.TableLayoutPanel1.Location = New System.Drawing.Point(0, 0)
@@ -78,32 +80,13 @@ Partial Class FormMain
         '
         Me.Panel2.AutoScroll = True
         Me.Panel2.BackColor = System.Drawing.Color.DeepSkyBlue
-        Me.Panel2.Controls.Add(Me.MenuStrip1)
+        Me.Panel2.Controls.Add(Me.MenuStrip2)
         Me.Panel2.Controls.Add(Me.Panel3)
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Left
         Me.Panel2.Location = New System.Drawing.Point(0, 41)
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(268, 732)
         Me.Panel2.TabIndex = 2
-        '
-        'MenuStrip1
-        '
-        Me.MenuStrip1.GripMargin = New System.Windows.Forms.Padding(0, 0, 0, 2)
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.menuItem_Department})
-        Me.MenuStrip1.Location = New System.Drawing.Point(0, 227)
-        Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System
-        Me.MenuStrip1.Size = New System.Drawing.Size(268, 33)
-        Me.MenuStrip1.TabIndex = 2
-        Me.MenuStrip1.Text = "MenuStrip1"
-        '
-        'menuItem_Department
-        '
-        Me.menuItem_Department.Font = New System.Drawing.Font("Segoe UI", 14.0!, System.Drawing.FontStyle.Bold)
-        Me.menuItem_Department.Name = "menuItem_Department"
-        Me.menuItem_Department.Size = New System.Drawing.Size(132, 29)
-        Me.menuItem_Department.Text = "Department"
-        Me.menuItem_Department.TextDirection = System.Windows.Forms.ToolStripTextDirection.Horizontal
         '
         'Panel3
         '
@@ -125,6 +108,38 @@ Partial Class FormMain
         Me.pnl_main.Size = New System.Drawing.Size(1156, 732)
         Me.pnl_main.TabIndex = 3
         '
+        'MenuStrip2
+        '
+        Me.MenuStrip2.GripMargin = New System.Windows.Forms.Padding(0, 0, 0, 2)
+        Me.MenuStrip2.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem1})
+        Me.MenuStrip2.Location = New System.Drawing.Point(0, 227)
+        Me.MenuStrip2.Name = "MenuStrip2"
+        Me.MenuStrip2.RenderMode = System.Windows.Forms.ToolStripRenderMode.System
+        Me.MenuStrip2.Size = New System.Drawing.Size(268, 33)
+        Me.MenuStrip2.TabIndex = 3
+        Me.MenuStrip2.Text = "MenuStrip2"
+        '
+        'ToolStripMenuItem1
+        '
+        Me.ToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DepartmentToolStripMenuItem, Me.JobToolStripMenuItem})
+        Me.ToolStripMenuItem1.Font = New System.Drawing.Font("Segoe UI", 14.0!, System.Drawing.FontStyle.Bold)
+        Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
+        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(140, 29)
+        Me.ToolStripMenuItem1.Text = "Organization"
+        Me.ToolStripMenuItem1.TextDirection = System.Windows.Forms.ToolStripTextDirection.Horizontal
+        '
+        'DepartmentToolStripMenuItem
+        '
+        Me.DepartmentToolStripMenuItem.Name = "DepartmentToolStripMenuItem"
+        Me.DepartmentToolStripMenuItem.Size = New System.Drawing.Size(192, 30)
+        Me.DepartmentToolStripMenuItem.Text = "Department"
+        '
+        'JobToolStripMenuItem
+        '
+        Me.JobToolStripMenuItem.Name = "JobToolStripMenuItem"
+        Me.JobToolStripMenuItem.Size = New System.Drawing.Size(192, 30)
+        Me.JobToolStripMenuItem.Text = "Job"
+        '
         'FormMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -144,8 +159,8 @@ Partial Class FormMain
         Me.TableLayoutPanel1.PerformLayout()
         Me.Panel2.ResumeLayout(False)
         Me.Panel2.PerformLayout()
-        Me.MenuStrip1.ResumeLayout(False)
-        Me.MenuStrip1.PerformLayout()
+        Me.MenuStrip2.ResumeLayout(False)
+        Me.MenuStrip2.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -156,6 +171,8 @@ Partial Class FormMain
     Friend WithEvents Panel2 As Panel
     Friend WithEvents Panel3 As Panel
     Friend WithEvents pnl_main As Panel
-    Friend WithEvents MenuStrip1 As MenuStrip
-    Friend WithEvents menuItem_Department As ToolStripMenuItem
+    Friend WithEvents MenuStrip2 As MenuStrip
+    Friend WithEvents ToolStripMenuItem1 As ToolStripMenuItem
+    Friend WithEvents DepartmentToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents JobToolStripMenuItem As ToolStripMenuItem
 End Class

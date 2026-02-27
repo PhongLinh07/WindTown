@@ -3,6 +3,10 @@ Imports Dapper
 Imports Dapper.Contrib.Extensions
 Imports WindTown_VB.DatabaseConfig
 
+Public Interface IRepository
+    Function Execute(intent As DataIntent, Optional data As Object = Nothing) As ServiceResponse(Of Object)
+End Interface
+
 Public Class GenericRepository(Of T As {BaseEntity, New})
 
     ' Lấy tất cả (Active)
@@ -18,8 +22,6 @@ Public Class GenericRepository(Of T As {BaseEntity, New})
         )
         End Using
     End Function
-
-
 
     'Insert (Dùng Dapper.Contrib)
     Public Overridable Function Insert(entity As T) As Long

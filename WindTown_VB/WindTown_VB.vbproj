@@ -233,6 +233,8 @@
   <ItemGroup>
     <Compile Include="2_Core\2_Common\Consts.vb" />
     <Compile Include="2_Core\3_Utils\2_JsonHelper\CloneHelper.vb" />
+    <Compile Include="2_Core\3_Utils\AutoCrudHelper.vb" />
+    <Compile Include="2_Core\3_Utils\GridHelper.vb" />
     <Compile Include="2_Core\4_Database\GenericRepository.vb" />
     <Compile Include="2_Core\4_Database\ServiceResponse.vb" />
     <Compile Include="2_Core\5_Base\BaseEntity.vb" />
@@ -263,6 +265,9 @@
     <Compile Include="2_Core\6_Forms\FormMain.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="3_Modules\1_Organization\1_Models\Job.vb" />
+    <Compile Include="3_Modules\1_Organization\2_Repositories\JobRepository.vb" />
+    <Compile Include="3_Modules\1_Organization\3_Service\JobService.vb" />
     <Compile Include="3_Modules\1_Organization\4_Forms\Department_CRUD_Frm.Designer.vb">
       <DependentUpon>Department_CRUD_Frm.vb</DependentUpon>
     </Compile>
@@ -273,6 +278,18 @@
       <DependentUpon>Department_List_UC.vb</DependentUpon>
     </Compile>
     <Compile Include="3_Modules\1_Organization\4_Forms\Department_List_UC.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="3_Modules\1_Organization\4_Forms\Job_CRUD_Frm.Designer.vb">
+      <DependentUpon>Job_CRUD_Frm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="3_Modules\1_Organization\4_Forms\Job_CRUD_Frm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="3_Modules\1_Organization\4_Forms\Job_List_UC.Designer.vb">
+      <DependentUpon>Job_List_UC.vb</DependentUpon>
+    </Compile>
+    <Compile Include="3_Modules\1_Organization\4_Forms\Job_List_UC.vb">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
@@ -289,6 +306,36 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="UIUX\control\SidebarMenu.Designer.vb">
+      <DependentUpon>SidebarMenu.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UIUX\control\SidebarMenu.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UIUX\frmDashboard.Designer.vb">
+      <DependentUpon>frmDashboard.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UIUX\frmDashboard.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UIUX\frmLogin.Designer.vb">
+      <DependentUpon>frmLogin.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UIUX\frmLogin.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UIUX\frmRegister.Designer.vb">
+      <DependentUpon>frmRegister.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UIUX\frmRegister.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UIUX\frmSystem.Designer.vb">
+      <DependentUpon>frmSystem.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UIUX\frmSystem.vb">
+      <SubType>Form</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -307,11 +354,32 @@
     <EmbeddedResource Include="3_Modules\1_Organization\4_Forms\Department_CRUD_Frm.resx">
       <DependentUpon>Department_CRUD_Frm.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="3_Modules\1_Organization\4_Forms\Department_List_UC.resx">
+      <DependentUpon>Department_List_UC.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="3_Modules\1_Organization\4_Forms\Job_CRUD_Frm.resx">
+      <DependentUpon>Job_CRUD_Frm.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UIUX\control\SidebarMenu.resx">
+      <DependentUpon>SidebarMenu.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UIUX\frmDashboard.resx">
+      <DependentUpon>frmDashboard.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UIUX\frmLogin.resx">
+      <DependentUpon>frmLogin.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UIUX\frmRegister.resx">
+      <DependentUpon>frmRegister.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UIUX\frmSystem.resx">
+      <DependentUpon>frmSystem.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -334,9 +402,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="2_Core\3_Utils\1_SalaryEngine\" />
-    <Folder Include="2_Core\6_Forms\2_SharedControls\" />
-    <Folder Include="3_Modules\1_Organization\2_Repositories\" />
-    <Folder Include="3_Modules\1_Organization\3_Services\" />
     <Folder Include="3_Modules\2_HR\1_Models\" />
     <Folder Include="3_Modules\2_HR\2_Repositories\" />
     <Folder Include="3_Modules\2_HR\3_Services\" />

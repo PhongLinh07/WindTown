@@ -11,16 +11,19 @@ Public Class BaseList_UC
         InitializeComponent()
     End Sub
 
-
     Public Sub New(service As IBaseService, title As String)
         InitializeComponent()
         ' Thiết lập cơ bản cho Form
         Me.Text = "Quản lý " & title
         _service = service
-        LoadData()
-        ConfigDGV()
+
+
     End Sub
 
+    Protected Sub Init(modelType As Type)
+        GridHelper.SetupGrid(_dgv, modelType)
+        LoadData()
+    End Sub
     ' Cấu hình DataGridView (ẩn cột id, tự động điều chỉnh kích thước cột...)
     Private Sub ConfigDGV()
 

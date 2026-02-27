@@ -1,3 +1,6 @@
+Imports System.Net.NetworkInformation
+Imports System.Text
+
 Partial Public Class BaseACRUDForm
     Inherits Form
 
@@ -30,7 +33,23 @@ Partial Public Class BaseACRUDForm
     End Sub
 
     ' ===== tool_save Click =====
-    Protected Overridable Sub tool_save_Click(sender As Object, e As EventArgs) Handles tool_save.Click
+    Protected Overridable Sub BindDataToUI()
+
+    End Sub
+    Protected Overridable Function SyncUIToData() As Boolean
+        Return True
+    End Function
+    Protected Overridable Sub DataChanged()
+
+    End Sub
+
+
+    Private Sub tool_save_Click(sender As Object, e As EventArgs) Handles tool_save.Click
+        If Not SyncUIToData() Then
+            tool_save.Enabled = False
+            Return
+        End If
+
         Me.DialogResult = DialogResult.OK
         isConfirm = True
         Me.Close()
