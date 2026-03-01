@@ -21,7 +21,8 @@ Public Class BaseList_UC
     End Sub
 
     Protected Sub Init(modelType As Type)
-        GridHelper.SetupGrid(_dgv, modelType)
+       GridHelper.SetupGrid(_dgv, modelType)
+
         LoadData()
     End Sub
     ' Cấu hình DataGridView (ẩn cột id, tự động điều chỉnh kích thước cột...)

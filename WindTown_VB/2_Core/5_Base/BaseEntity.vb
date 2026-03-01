@@ -11,18 +11,23 @@ Public MustInherit Class BaseEntity
 
 
     ' Hàm đọc giá trị từ chuỗi JSON datas
-    Protected Function GetV(key As String) As String
-        If String.IsNullOrEmpty(Me.datas) Then Return ""
+    ' Hàm đọc giá trị với kiểu dữ liệu động
+    Protected Function GetV(Of T)(key As String) As T
+        If String.IsNullOrEmpty(Me.datas) Then Return Nothing
         Try
             Dim obj = JObject.Parse(Me.datas)
-            Return If(obj(key)?.ToString(), "")
+            Dim token = obj(key)
+            If token Is Nothing Then Return Nothing
+
+            ' Tự động chuyển đổi từ JSON sang kiểu T (Date, Int, Decimal...)
+            Return token.ToObject(Of T)()
         Catch
-            Return ""
+            Return Nothing
         End Try
     End Function
 
-    ' Hàm ghi giá trị vào chuỗi JSON datas
-    Protected Sub SetV(key As String, value As String)
+    ' Hàm ghi giá trị với kiểu dữ liệu động
+    Protected Sub SetV(Of T)(key As String, value As T)
         Dim obj As JObject
         Try
             obj = If(String.IsNullOrEmpty(Me.datas), New JObject(), JObject.Parse(Me.datas))
@@ -30,9 +35,12 @@ Public MustInherit Class BaseEntity
             obj = New JObject()
         End Try
 
-        obj(key) = value
-        ' Tự động nạp ngược lại vào chuỗi datas để Dapper lưu
+        ' Chuyển đối tượng value sang JToken để lưu vào JSON
+        obj(key) = If(value Is Nothing, JValue.CreateNull(), JToken.FromObject(value))
+
         Me.datas = obj.ToString(Formatting.None)
+
+
     End Sub
 
 End Class

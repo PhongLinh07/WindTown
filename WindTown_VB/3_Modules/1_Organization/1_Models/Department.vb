@@ -10,7 +10,7 @@ Public Class Department
     <Write(False)> <DisplayName("Code")> <Display(Order:=0)>
     Public Property code As String
         Get
-            Return GetV("code")
+            Return GetV(Of String)("code")
         End Get
         Set(value As String)
             SetV("code", value)
@@ -19,7 +19,7 @@ Public Class Department
     <Write(False)> <DisplayName("Name")> <Display(Order:=1)>
     Public Property name As String
         Get
-            Return GetV("name")
+            Return GetV(Of String)("name")
         End Get
         Set(value As String)
             SetV("name", value)
@@ -28,7 +28,7 @@ Public Class Department
     <Write(False)> <DisplayName("Note")> <Display(Order:=2)>
     Public Property note As String
         Get
-            Return GetV("note")
+            Return GetV(Of String)("note")
         End Get
         Set(value As String)
             SetV("note", value)
@@ -38,7 +38,7 @@ Public Class Department
     <Write(False)> <Browsable(False)>
     Public Property status As Integer
         Get
-            Return GetV("status")
+            Return GetV(Of Integer)("status")
         End Get
         Set(value As Integer)
             SetV("status", value)
