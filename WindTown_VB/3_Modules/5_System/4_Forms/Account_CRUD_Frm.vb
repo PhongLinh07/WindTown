@@ -14,25 +14,22 @@ Public Class Account_CRUD_Frm
         {2, "STAFF"}
     }
 
+    Private _employeesWithoutAccount As List(Of Employee)
+
     Public Sub New(data As Account, Optional isCreate As Boolean = False)
 
         InitializeComponent()
 
         Me._data = data
         Me.isCreate = isCreate
-
-        ui_status.DataSource = New BindingSource(_displayStatus, Nothing)
-        ui_status.DisplayMember = "Value"
-        ui_status.ValueMember = "Key"
-
-        ui_role.DataSource = New BindingSource(_displayStatus, Nothing)
-        ui_role.DisplayMember = "Value"
-        ui_role.ValueMember = "Key"
+        InitComboBox()
 
         Me.Text = If(isCreate, "New", "Detail")
 
+
         If isCreate Then
 
+            _data.user = ""
             _data.password = ""
             _data.role = 1
             _data.last_login = DateTime.Now
@@ -45,50 +42,106 @@ Public Class Account_CRUD_Frm
 
         tool_save.Enabled = False
     End Sub
+    Private Sub InitComboBox()
+
+        ui_status.DataSource = New BindingSource(_displayStatus, Nothing)
+        ui_status.DisplayMember = "Value"
+        ui_status.ValueMember = "Key"
+
+        ui_role.DataSource = New BindingSource(_displayRole, Nothing)
+        ui_role.DisplayMember = "Value"
+        ui_role.ValueMember = "Key"
+
+        If isCreate = False Then
+            Return
+        End If
+
+        Dim employeetService As New EmployeeService()
+        Dim response = employeetService.Execute(DataIntent.GetEmployeesWithoutAccount)
+        _employeesWithoutAccount = If(response.IsSuccess, response.Data, New List(Of Employee))
+
+        ui_employee.DataSource =
+            _employeesWithoutAccount.
+            Select(Function(x) New With {.Display = $"{x.code} - {x.name}", .Value = x.id}).ToList()
+
+        ui_employee.DisplayMember = "Display"
+        ui_employee.ValueMember = "Value"
+    End Sub
+
     Protected Overrides Sub BindDataToUI()
-        ui_employee.Text = _data.Employee_UI
+
+        If isCreate Then
+            ui_employee.SelectedIndex = -1
+        Else
+            ui_employee.Text = _data.Employee_UI
+            ui_employee.Enabled = False
+        End If
+
+        ui_user.Text = _data.user
         ui_password.Text = _data.password
         ui_role.SelectedValue = _data.role
+
+
         ui_last_login.Value = If(_data.last_login, DateTime.Now)
         ui_last_logout.Value = If(_data.last_logout, DateTime.Now)
+
         ui_note.Text = _data.note
         ui_status.SelectedValue = _data.status
+
     End Sub
 
     Protected Overrides Function SyncUIToData() As Boolean
 
-        'If String.IsNullOrWhiteSpace(ui_code.Text) Then
-        '    MessageBox.Show("Code cannot be empty")
-        '    ui_code.Focus()
-        '    Return False
-        'End If
-
-        'If String.IsNullOrWhiteSpace(ui_password.Text) Then
-        '    MessageBox.Show("Name cannot be empty")
-        '    ui_password.Focus()
-        '    Return False
-        'End If
-
-        '_data.code = ui_code.Text.Trim()
-        '_data.name = ui_password.Text.Trim()
-
-        _data.last_login = ui_last_login.Value
-        _data.last_logout = ui_last_logout.Value
-        _data.note = ui_note.Text
-
-        If ui_status.SelectedValue IsNot Nothing Then
-            _data.status = ui_status.SelectedValue.ToString()
+        If isCreate AndAlso ui_employee.SelectedValue Is Nothing Then
+            MessageBox.Show("Please select employee")
+            Return False
         End If
 
+        If String.IsNullOrWhiteSpace(ui_user.Text) Then
+            MessageBox.Show("User cannot be empty")
+            ui_user.Focus()
+            Return False
+        End If
+
+        If String.IsNullOrWhiteSpace(ui_password.Text) Then
+            MessageBox.Show("Password cannot be empty")
+            ui_password.Focus()
+            Return False
+        End If
+
+        If isCreate Then
+            Dim selectedId = If(ui_employee.SelectedValue, 0)
+            Dim employee = _employeesWithoutAccount.FirstOrDefault(Function(x) x.id = Convert.ToInt32(selectedId))
+            If employee Is Nothing Then
+                MessageBox.Show("Invalid employee selected")
+                ui_employee.Focus()
+                Return False
+            End If
+            _data.Employee = employee
+        End If
+
+
+        _data.user = ui_user.Text.Trim()
+        _data.password = ui_password.Text.Trim()
+        _data.role = CInt(ui_role.SelectedValue)
+        _data.note = ui_note.Text
+
+        _data.status = CInt(ui_status.SelectedValue)
+
         Return True
+
     End Function
 
     Protected Overrides Sub DataChanged() Handles ui_employee.SelectedIndexChanged,
-                                 ui_password.TextChanged,
-                                 ui_note.TextChanged,
-                                 ui_status.SelectedIndexChanged
+                                        ui_user.TextChanged,
+                                        ui_password.TextChanged,
+                                        ui_role.SelectedIndexChanged,
+                                        ui_note.TextChanged,
+                                        ui_status.SelectedIndexChanged
 
         tool_save.Enabled = True
+
     End Sub
+
 
 End Class

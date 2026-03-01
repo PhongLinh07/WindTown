@@ -161,7 +161,8 @@ CREATE TABLE payroll (
 -- =============================================
 
 CREATE TABLE account (
-    id INT PRIMARY KEY,
+    id INT IDENTITY(1,1) PRIMARY KEY,
+    employee_id INT,
     datas NVARCHAR(max)
 );
 GO
@@ -196,7 +197,7 @@ ALTER TABLE payroll ADD CONSTRAINT FK_payroll_period FOREIGN KEY (period_id) REF
 ALTER TABLE payroll ADD CONSTRAINT FK_payroll_position FOREIGN KEY (position_id) REFERENCES position(id);
 
 -- Module: Hệ thống
-ALTER TABLE account ADD CONSTRAINT FK_account_employee FOREIGN KEY (id) REFERENCES employee(id);
+ALTER TABLE account ADD CONSTRAINT FK_account_employee FOREIGN KEY (employee_id) REFERENCES employee(id);
 GO
 
 
@@ -2217,45 +2218,45 @@ GO
 -- INSERT DATA FOR ACCOUNT (Relational IDs + JSON Datas)
 -- =========================================================
 
-INSERT INTO account (id, datas) VALUES 
-(1,  N'{"password": "PW_EMP001", "role": 1, "status": 0}'),
-(2,  N'{"password": "PW_EMP002", "role": 1, "status": 0}'),
-(3,  N'{"password": "PW_EMP003", "role": 1, "status": 0}'),
-(4,  N'{"password": "PW_EMP004", "role": 2, "status": 0}'),
-(5,  N'{"password": "PW_EMP005", "role": 2, "status": 0}'),
-(6,  N'{"password": "PW_EMP006", "role": 2, "status": 0}'),
-(7,  N'{"password": "PW_EMP007", "role": 2, "status": 0}'),
-(8,  N'{"password": "PW_EMP008", "role": 2, "status": 0}'),
-(9,  N'{"password": "PW_EMP009", "role": 2, "status": 0}'),
-(10, N'{"password": "PW_EMP010", "role": 2, "status": 0}'),
-(11, N'{"password": "PW_EMP011", "role": 2, "status": 0}'),
-(12, N'{"password": "PW_EMP012", "role": 2, "status": 0}'),
-(13, N'{"password": "PW_EMP013", "role": 2, "status": 0}'),
-(14, N'{"password": "PW_EMP014", "role": 2, "status": 0}'),
-(15, N'{"password": "PW_EMP015", "role": 2, "status": 0}'),
-(16, N'{"password": "PW_EMP016", "role": 2, "status": 0}'),
-(17, N'{"password": "PW_EMP017", "role": 2, "status": 0}'),
-(18, N'{"password": "PW_EMP018", "role": 2, "status": 0}'),
-(19, N'{"password": "PW_EMP019", "role": 2, "status": 0}'),
-(20, N'{"password": "PW_EMP020", "role": 2, "status": 0}'),
-(21, N'{"password": "PW_EMP021", "role": 2, "status": 0}'),
-(22, N'{"password": "PW_EMP022", "role": 2, "status": 0}'),
-(23, N'{"password": "PW_EMP023", "role": 2, "status": 0}'),
-(24, N'{"password": "PW_EMP024", "role": 2, "status": 0}'),
-(25, N'{"password": "PW_EMP025", "role": 2, "status": 0}'),
-(26, N'{"password": "PW_EMP026", "role": 2, "status": 0}'),
-(27, N'{"password": "PW_EMP027", "role": 2, "status": 0}'),
-(28, N'{"password": "PW_EMP028", "role": 2, "status": 0}'),
-(29, N'{"password": "PW_EMP029", "role": 2, "status": 0}'),
-(30, N'{"password": "PW_EMP030", "role": 2, "status": 0}'),
-(31, N'{"password": "PW_EMP031", "role": 2, "status": 0}'),
-(32, N'{"password": "PW_EMP032", "role": 2, "status": 0}'),
-(33, N'{"password": "PW_EMP033", "role": 2, "status": 0}'),
-(34, N'{"password": "PW_EMP034", "role": 2, "status": 0}'),
-(35, N'{"password": "PW_EMP035", "role": 2, "status": 0}'),
-(36, N'{"password": "PW_EMP036", "role": 2, "status": 0}'),
-(37, N'{"password": "PW_EMP037", "role": 2, "status": 0}'),
-(38, N'{"password": "PW_EMP038", "role": 2, "status": 0}'),
-(39, N'{"password": "PW_EMP039", "role": 2, "status": 0}'),
-(40, N'{"password": "PW_EMP040", "role": 2, "status": 0}');
+INSERT INTO account (employee_id, datas) VALUES 
+(1,  N'{"user": "EMP001", "password": "PW_EMP001", "role": 1, "status": 0}'),
+(2,  N'{"user": "EMP002", "password": "PW_EMP002", "role": 1, "status": 0}'),
+(3,  N'{"user": "EMP003", "password": "PW_EMP003", "role": 1, "status": 0}'),
+(4,  N'{"user": "EMP004", "password": "PW_EMP004", "role": 2, "status": 0}'),
+(5,  N'{"user": "EMP005", "password": "PW_EMP005", "role": 2, "status": 0}'),
+(6,  N'{"user": "EMP006", "password": "PW_EMP006", "role": 2, "status": 0}'),
+(7,  N'{"user": "EMP007", "password": "PW_EMP007", "role": 2, "status": 0}'),
+(8,  N'{"user": "EMP008", "password": "PW_EMP008", "role": 2, "status": 0}'),
+(9,  N'{"user": "EMP009", "password": "PW_EMP009", "role": 2, "status": 0}'),
+(10, N'{"user": "EMP010", "password": "PW_EMP010", "role": 2, "status": 0}'),
+(11, N'{"user": "EMP011", "password": "PW_EMP011", "role": 2, "status": 0}'),
+(12, N'{"user": "EMP012", "password": "PW_EMP012", "role": 2, "status": 0}'),
+(13, N'{"user": "EMP013", "password": "PW_EMP013", "role": 2, "status": 0}'),
+(14, N'{"user": "EMP014", "password": "PW_EMP014", "role": 2, "status": 0}'),
+(15, N'{"user": "EMP015", "password": "PW_EMP015", "role": 2, "status": 0}'),
+(16, N'{"user": "EMP016", "password": "PW_EMP016", "role": 2, "status": 0}'),
+(17, N'{"user": "EMP017", "password": "PW_EMP017", "role": 2, "status": 0}'),
+(18, N'{"user": "EMP018", "password": "PW_EMP018", "role": 2, "status": 0}'),
+(19, N'{"user": "EMP019", "password": "PW_EMP019", "role": 2, "status": 0}'),
+(20, N'{"user": "EMP020", "password": "PW_EMP020", "role": 2, "status": 0}'),
+(21, N'{"user": "EMP021", "password": "PW_EMP021", "role": 2, "status": 0}'),
+(22, N'{"user": "EMP022", "password": "PW_EMP022", "role": 2, "status": 0}'),
+(23, N'{"user": "EMP023", "password": "PW_EMP023", "role": 2, "status": 0}'),
+(24, N'{"user": "EMP024", "password": "PW_EMP024", "role": 2, "status": 0}'),
+(25, N'{"user": "EMP025", "password": "PW_EMP025", "role": 2, "status": 0}'),
+(26, N'{"user": "EMP026", "password": "PW_EMP026", "role": 2, "status": 0}'),
+(27, N'{"user": "EMP027", "password": "PW_EMP027", "role": 2, "status": 0}'),
+(28, N'{"user": "EMP028", "password": "PW_EMP028", "role": 2, "status": 0}'),
+(29, N'{"user": "EMP029", "password": "PW_EMP029", "role": 2, "status": 0}'),
+(30, N'{"user": "EMP030", "password": "PW_EMP030", "role": 2, "status": 0}'),
+(31, N'{"user": "EMP031", "password": "PW_EMP031", "role": 2, "status": 0}'),
+(32, N'{"user": "EMP032", "password": "PW_EMP032", "role": 2, "status": 0}'),
+(33, N'{"user": "EMP033", "password": "PW_EMP033", "role": 2, "status": 0}'),
+(34, N'{"user": "EMP034", "password": "PW_EMP034", "role": 2, "status": 0}'),
+(35, N'{"user": "EMP035", "password": "PW_EMP035", "role": 2, "status": 0}'),
+(36, N'{"user": "EMP036", "password": "PW_EMP036", "role": 2, "status": 0}'),
+(37, N'{"user": "EMP037", "password": "PW_EMP037", "role": 2, "status": 0}'),
+(38, N'{"user": "EMP038", "password": "PW_EMP038", "role": 2, "status": 0}'),
+(39, N'{"user": "EMP039", "password": "PW_EMP039", "role": 2, "status": 0}'),
+(40, N'{"user": "EMP040", "password": "PW_EMP040", "role": 2, "status": 0}');
 GO

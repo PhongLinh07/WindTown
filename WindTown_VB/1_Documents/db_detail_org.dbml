@@ -181,10 +181,12 @@ Table payroll {
 
 // 6. Module hệ thống (System)
 Table account {
-  id int [pk, ref: > employee.id]
+  id int [pk, increment]
+  employee_id int [ref: > employee.id]
 //datas nvarchar(max) 
+  user nvarchar(255)  
   password nvarchar(255)  
-  role nvarchar(255) [default: 'ADMIN']
+  role int [default: 1] // 1:Admin, 2: Staff
   last_login datetime2
   last_logout datetime2
   note nvarchar(255)

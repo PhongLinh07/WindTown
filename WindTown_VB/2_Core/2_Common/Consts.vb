@@ -3,8 +3,14 @@ Public Enum DataIntent
     GetById        ' Lấy 1 bản ghi
     Insert         ' Thêm mới
     Update         ' Cập nhật
-    ' SoftDelete     ' Xóa tạm
+    'SoftDelete     ' Xóa tạm
     SoftDeleteMany ' Xóa tạm nhiều bản ghi
+
+#Region "'Employee Custom Intent"
+    GetEmployeesWithoutAccount
+#End Region
+
+
 End Enum
 
 Public Class Display_Field

@@ -306,6 +306,8 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="3_Modules\2_HR\1_Models\Employee.vb" />
+    <Compile Include="3_Modules\2_HR\2_Repositories\EmployeeRepository.vb" />
+    <Compile Include="3_Modules\2_HR\3_Service\EmployeeService.vb" />
     <Compile Include="3_Modules\2_HR\4_Forms\Employee_CRUD_Frm.Designer.vb">
       <DependentUpon>Employee_CRUD_Frm.vb</DependentUpon>
     </Compile>
@@ -458,9 +460,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="2_Core\3_Utils\1_SalaryEngine\" />
-    <Folder Include="3_Modules\2_HR\2_Repositories\" />
-    <Folder Include="3_Modules\2_HR\3_Services\" />
-    <Folder Include="3_Modules\2_HR\3_Service\" />
     <Folder Include="3_Modules\3_Operations\1_Models\" />
     <Folder Include="3_Modules\3_Operations\2_Repositories\" />
     <Folder Include="3_Modules\3_Operations\3_Services\" />

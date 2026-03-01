@@ -2,6 +2,7 @@ Imports System.ComponentModel
 Imports System.ComponentModel.DataAnnotations
 Imports Dapper.Contrib.Extensions
 
+<Table("employee")>
 Public Class Employee
     Inherits BaseEntity
 

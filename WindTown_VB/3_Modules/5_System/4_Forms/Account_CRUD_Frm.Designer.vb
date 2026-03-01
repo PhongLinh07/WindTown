@@ -36,6 +36,8 @@ Partial Class Account_CRUD_Frm
         Me.Label6 = New System.Windows.Forms.Label()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.ui_last_logout = New System.Windows.Forms.DateTimePicker()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.ui_user = New System.Windows.Forms.TextBox()
         Me.SuspendLayout()
         '
         'Label1
@@ -43,7 +45,7 @@ Partial Class Account_CRUD_Frm
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Label1.Location = New System.Drawing.Point(59, 67)
+        Me.Label1.Location = New System.Drawing.Point(59, 73)
         Me.Label1.Margin = New System.Windows.Forms.Padding(0)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(92, 20)
@@ -55,7 +57,7 @@ Partial Class Account_CRUD_Frm
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Label2.Location = New System.Drawing.Point(59, 147)
+        Me.Label2.Location = New System.Drawing.Point(59, 232)
         Me.Label2.Margin = New System.Windows.Forms.Padding(0)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(91, 20)
@@ -65,7 +67,7 @@ Partial Class Account_CRUD_Frm
         'ui_password
         '
         Me.ui_password.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ui_password.Location = New System.Drawing.Point(63, 170)
+        Me.ui_password.Location = New System.Drawing.Point(63, 255)
         Me.ui_password.Name = "ui_password"
         Me.ui_password.Size = New System.Drawing.Size(265, 26)
         Me.ui_password.TabIndex = 2
@@ -75,7 +77,7 @@ Partial Class Account_CRUD_Frm
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Label3.Location = New System.Drawing.Point(59, 321)
+        Me.Label3.Location = New System.Drawing.Point(59, 393)
         Me.Label3.Margin = New System.Windows.Forms.Padding(0)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(67, 20)
@@ -87,7 +89,7 @@ Partial Class Account_CRUD_Frm
         Me.ui_status.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ui_status.FormattingEnabled = True
         Me.ui_status.Items.AddRange(New Object() {"ACTIVE", "INACTIVE"})
-        Me.ui_status.Location = New System.Drawing.Point(63, 344)
+        Me.ui_status.Location = New System.Drawing.Point(63, 416)
         Me.ui_status.Name = "ui_status"
         Me.ui_status.Size = New System.Drawing.Size(265, 28)
         Me.ui_status.TabIndex = 6
@@ -95,9 +97,9 @@ Partial Class Account_CRUD_Frm
         'ui_note
         '
         Me.ui_note.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ui_note.Location = New System.Drawing.Point(409, 261)
+        Me.ui_note.Location = New System.Drawing.Point(409, 267)
         Me.ui_note.Name = "ui_note"
-        Me.ui_note.Size = New System.Drawing.Size(265, 111)
+        Me.ui_note.Size = New System.Drawing.Size(265, 177)
         Me.ui_note.TabIndex = 7
         Me.ui_note.Text = ""
         '
@@ -106,7 +108,7 @@ Partial Class Account_CRUD_Frm
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Label4.Location = New System.Drawing.Point(405, 238)
+        Me.Label4.Location = New System.Drawing.Point(405, 244)
         Me.Label4.Margin = New System.Windows.Forms.Padding(0)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(52, 20)
@@ -118,7 +120,7 @@ Partial Class Account_CRUD_Frm
         Me.ui_employee.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ui_employee.FormattingEnabled = True
         Me.ui_employee.Items.AddRange(New Object() {"ACTIVE", "INACTIVE"})
-        Me.ui_employee.Location = New System.Drawing.Point(63, 90)
+        Me.ui_employee.Location = New System.Drawing.Point(63, 96)
         Me.ui_employee.Name = "ui_employee"
         Me.ui_employee.Size = New System.Drawing.Size(265, 28)
         Me.ui_employee.TabIndex = 9
@@ -128,7 +130,7 @@ Partial Class Account_CRUD_Frm
         Me.ui_role.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ui_role.FormattingEnabled = True
         Me.ui_role.Items.AddRange(New Object() {"ACTIVE", "INACTIVE"})
-        Me.ui_role.Location = New System.Drawing.Point(63, 261)
+        Me.ui_role.Location = New System.Drawing.Point(63, 334)
         Me.ui_role.Name = "ui_role"
         Me.ui_role.Size = New System.Drawing.Size(265, 28)
         Me.ui_role.TabIndex = 11
@@ -138,7 +140,7 @@ Partial Class Account_CRUD_Frm
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Label5.Location = New System.Drawing.Point(59, 238)
+        Me.Label5.Location = New System.Drawing.Point(59, 311)
         Me.Label5.Margin = New System.Windows.Forms.Padding(0)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(51, 20)
@@ -151,7 +153,7 @@ Partial Class Account_CRUD_Frm
         Me.ui_last_login.Enabled = False
         Me.ui_last_login.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ui_last_login.Format = System.Windows.Forms.DateTimePickerFormat.Custom
-        Me.ui_last_login.Location = New System.Drawing.Point(409, 92)
+        Me.ui_last_login.Location = New System.Drawing.Point(409, 98)
         Me.ui_last_login.Name = "ui_last_login"
         Me.ui_last_login.Size = New System.Drawing.Size(265, 26)
         Me.ui_last_login.TabIndex = 12
@@ -161,7 +163,7 @@ Partial Class Account_CRUD_Frm
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Label6.Location = New System.Drawing.Point(405, 69)
+        Me.Label6.Location = New System.Drawing.Point(405, 75)
         Me.Label6.Margin = New System.Windows.Forms.Padding(0)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(98, 20)
@@ -173,7 +175,7 @@ Partial Class Account_CRUD_Frm
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label7.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Label7.Location = New System.Drawing.Point(405, 147)
+        Me.Label7.Location = New System.Drawing.Point(405, 153)
         Me.Label7.Margin = New System.Windows.Forms.Padding(0)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(110, 20)
@@ -186,17 +188,39 @@ Partial Class Account_CRUD_Frm
         Me.ui_last_logout.Enabled = False
         Me.ui_last_logout.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ui_last_logout.Format = System.Windows.Forms.DateTimePickerFormat.Custom
-        Me.ui_last_logout.Location = New System.Drawing.Point(409, 170)
+        Me.ui_last_logout.Location = New System.Drawing.Point(409, 176)
         Me.ui_last_logout.Name = "ui_last_logout"
         Me.ui_last_logout.Size = New System.Drawing.Size(265, 26)
         Me.ui_last_logout.TabIndex = 14
+        '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label8.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.Label8.Location = New System.Drawing.Point(59, 153)
+        Me.Label8.Margin = New System.Windows.Forms.Padding(0)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(52, 20)
+        Me.Label8.TabIndex = 17
+        Me.Label8.Text = "User:"
+        '
+        'ui_user
+        '
+        Me.ui_user.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ui_user.Location = New System.Drawing.Point(63, 176)
+        Me.ui_user.Name = "ui_user"
+        Me.ui_user.Size = New System.Drawing.Size(265, 26)
+        Me.ui_user.TabIndex = 16
         '
         'Account_CRUD_Frm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.ClientSize = New System.Drawing.Size(748, 479)
+        Me.ClientSize = New System.Drawing.Size(749, 492)
+        Me.Controls.Add(Me.Label8)
+        Me.Controls.Add(Me.ui_user)
         Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.ui_last_logout)
         Me.Controls.Add(Me.Label6)
@@ -229,6 +253,8 @@ Partial Class Account_CRUD_Frm
         Me.Controls.SetChildIndex(Me.Label6, 0)
         Me.Controls.SetChildIndex(Me.ui_last_logout, 0)
         Me.Controls.SetChildIndex(Me.Label7, 0)
+        Me.Controls.SetChildIndex(Me.ui_user, 0)
+        Me.Controls.SetChildIndex(Me.Label8, 0)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -247,4 +273,6 @@ Partial Class Account_CRUD_Frm
     Friend WithEvents Label6 As Label
     Friend WithEvents Label7 As Label
     Friend WithEvents ui_last_logout As DateTimePicker
+    Friend WithEvents Label8 As Label
+    Friend WithEvents ui_user As TextBox
 End Class

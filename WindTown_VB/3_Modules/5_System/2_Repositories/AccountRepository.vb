@@ -12,7 +12,7 @@ Public Class AccountRepository
             Dim sql As String = $"
                 SELECT a.*, e.* 
                 FROM account a
-                LEFT JOIN employee e ON a.id = e.id
+                LEFT JOIN employee e ON a.employee_id = e.id
                 WHERE CAST(JSON_VALUE(a.datas, '$.status') AS INT) <> @Status"
 
             ' 3. Thực thi Multi-Mapping

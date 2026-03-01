@@ -5,7 +5,7 @@ Public Class Employee_List_UC
     Inherits BaseList_UC
 
     Public Sub New()
-        MyBase.New(New BaseService(Of Employee), "Employee")
+        MyBase.New(New EmployeeService, "Employee")
         InitializeComponent()
         Init(GetType(Employee))
     End Sub

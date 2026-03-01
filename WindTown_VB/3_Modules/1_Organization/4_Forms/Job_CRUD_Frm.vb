@@ -77,14 +77,23 @@ Public Class Job_CRUD_Frm
             ui_department.Focus()
             Return False
         End If
+        If ui_department.SelectedValue IsNot Nothing Then
+            _data.Department = _deparments.FirstOrDefault(Function(x) x.id = Convert.ToInt32(ui_department.SelectedValue))
+        End If
+
+        Dim selectedId = If(ui_department.SelectedValue, 0)
+        Dim dept = _deparments.FirstOrDefault(Function(x) x.id = Convert.ToInt32(selectedId))
+        If dept Is Nothing Then
+            MessageBox.Show("Invalid Depatment selected")
+            ui_department.Focus()
+            Return False
+        End If
+        _data.Department = dept
 
         _data.code = ui_code.Text.Trim()
         _data.name = ui_name.Text.Trim()
         _data.note = ui_note.Text
 
-        If ui_department.SelectedValue IsNot Nothing Then
-            _data.Department = _deparments.FirstOrDefault(Function(x) x.id = Convert.ToInt32(ui_department.SelectedValue))
-        End If
 
         If ui_status.SelectedValue IsNot Nothing Then
             _data.status = ui_status.SelectedValue.ToString()

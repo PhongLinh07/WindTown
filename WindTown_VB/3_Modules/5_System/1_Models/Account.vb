@@ -12,7 +12,23 @@ Public Class Account
 #End Region
 
 #Region "Field Json"
-    <Write(False)> <DisplayName("Password")> <Display(Order:=2)>
+    <Browsable(False)>
+    Public ReadOnly Property employee_id As Integer
+        Get
+            Return Employee?.id
+        End Get
+    End Property
+
+    <Write(False)> <DisplayName("User")> <Display(Order:=2)>
+    Public Property user As String
+        Get
+            Return GetV(Of String)("user")
+        End Get
+        Set(value As String)
+            SetV("user", value)
+        End Set
+    End Property
+    <Write(False)> <DisplayName("Password")> <Display(Order:=3)>
     Public Property password As String
         Get
             Return GetV(Of String)("password")
@@ -30,7 +46,7 @@ Public Class Account
             SetV("role", value)
         End Set
     End Property
-    <Write(False)> <DisplayName("Last Login")> <DisplayFormat(DataFormatString:="{0:dd-MM-yyyy HH:mm}")> <Display(Order:=4)>
+    <Write(False)> <DisplayName("Last Login")> <DisplayFormat(DataFormatString:="{0:dd-MM-yyyy HH:mm}")> <Display(Order:=5)>
     Public Property last_login As DateTime? ' Thêm dấu ? để cho phép Null
         Get
             Return GetV(Of DateTime?)("last_login") ' Trả về giá trị mặc định nếu Null
@@ -40,7 +56,7 @@ Public Class Account
             SetV("last_login", value)
         End Set
     End Property
-    <Write(False)> <DisplayName("Last Logout")> <DisplayFormat(DataFormatString:="{0:dd-MM-yyyy HH:mm}")> <Display(Order:=4)>
+    <Write(False)> <DisplayName("Last Logout")> <DisplayFormat(DataFormatString:="{0:dd-MM-yyyy HH:mm}")> <Display(Order:=6)>
     Public Property last_logout As DateTime? ' Thêm dấu ? để cho phép Null
         Get
             Return GetV(Of DateTime?)("last_logout")
@@ -74,10 +90,10 @@ Public Class Account
 
 #Region "Field Display"
 
-    <Write(False)> <DisplayName("Role")> <Display(Order:=8)>
+    <Write(False)> <DisplayName("Role")> <Display(Order:=4)>
     Public ReadOnly Property role_UI As String
         Get
-            Return If(status = 1, "ADMIN", "STAFF")
+            Return If(role = 1, "ADMIN", "STAFF")
         End Get
     End Property
     <Write(False)> <DisplayName("Status")> <Display(Order:=8)>
@@ -87,7 +103,7 @@ Public Class Account
         End Get
     End Property
 
-    <Write(False)> <DisplayName("Employee")> <Display(Order:=3)>
+    <Write(False)> <DisplayName("Employee")> <Display(Order:=1)>
     Public ReadOnly Property Employee_UI As String
         Get
             Return If(Employee?.code, "---")
