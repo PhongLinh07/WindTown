@@ -58,7 +58,7 @@
 
     Dim btnHopDong As New Button With {
         .Text = "  Hợp đồng",
-        .Font = New Font("Microsoft YaHei UI", 11, FontStyle.Bold),
+        .Font = New Font("Microsoft YaHei UI", 12, FontStyle.Bold),
         .TextAlign = ContentAlignment.MiddleLeft,
         .Dock = DockStyle.Top,
         .Height = 35,

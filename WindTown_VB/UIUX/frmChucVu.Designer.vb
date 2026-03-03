@@ -23,7 +23,7 @@ Partial Class frmChucVu
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.tlpnlMainChucVu = New System.Windows.Forms.TableLayoutPanel()
-        Me.SidebarMenu1 = New QuanLyNhanSu.SidebarMenu()
+        Me.SidebarMenu1 = New SidebarMenu()
         Me.pnlHeader = New System.Windows.Forms.Panel()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Button1 = New System.Windows.Forms.Button()

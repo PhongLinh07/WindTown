@@ -29,7 +29,7 @@ Partial Class frmNhanSu
         Me.btnThemBoPhan = New System.Windows.Forms.Button()
         Me.txtTenCongTy = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.sbmNhanSu = New QuanLyNhanSu.SidebarMenu()
+        Me.sbmNhanSu = New WindTown_VB.SidebarMenu()
         Me.tvBoPhan = New System.Windows.Forms.TreeView()
         Me.pnlHeader = New System.Windows.Forms.Panel()
         Me.btnMoiNV = New System.Windows.Forms.Button()
@@ -41,14 +41,14 @@ Partial Class frmNhanSu
         Me.cbbxTrangThai = New System.Windows.Forms.ComboBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.dtgvDSNhanVien = New System.Windows.Forms.DataGridView()
-        Me.NameNV = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.maNV = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.emailNV = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.status = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.boPhan = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ngayBatDau = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.soDienThoai = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.gioiTinh = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.colTen = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.colMaNV = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.colEmail = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.colTrangThai = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.colBoPhan = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.colNgayBatDau = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.colSDT = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.colGioiTinh = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.tlpNhanSu.SuspendLayout()
         Me.pnlBoPhan.SuspendLayout()
         Me.pnlHeader.SuspendLayout()
@@ -276,7 +276,7 @@ Partial Class frmNhanSu
         '
         Me.dtgvDSNhanVien.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dtgvDSNhanVien.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dtgvDSNhanVien.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.NameNV, Me.maNV, Me.emailNV, Me.status, Me.boPhan, Me.ngayBatDau, Me.soDienThoai, Me.gioiTinh})
+        Me.dtgvDSNhanVien.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.colTen, Me.colMaNV, Me.colEmail, Me.colTrangThai, Me.colBoPhan, Me.colNgayBatDau, Me.colSDT, Me.colGioiTinh})
         Me.dtgvDSNhanVien.Dock = System.Windows.Forms.DockStyle.Fill
         Me.dtgvDSNhanVien.Location = New System.Drawing.Point(543, 203)
         Me.dtgvDSNhanVien.Name = "dtgvDSNhanVien"
@@ -285,53 +285,53 @@ Partial Class frmNhanSu
         Me.dtgvDSNhanVien.Size = New System.Drawing.Size(626, 447)
         Me.dtgvDSNhanVien.TabIndex = 4
         '
-        'NameNV
+        'colTen
         '
-        Me.NameNV.HeaderText = "Tên "
-        Me.NameNV.MinimumWidth = 6
-        Me.NameNV.Name = "NameNV"
+        Me.colTen.HeaderText = "Tên "
+        Me.colTen.MinimumWidth = 6
+        Me.colTen.Name = "colTen"
         '
-        'maNV
+        'colMaNV
         '
-        Me.maNV.HeaderText = "Mã nhân viên"
-        Me.maNV.MinimumWidth = 6
-        Me.maNV.Name = "maNV"
+        Me.colMaNV.HeaderText = "Mã nhân viên"
+        Me.colMaNV.MinimumWidth = 6
+        Me.colMaNV.Name = "colMaNV"
         '
-        'emailNV
+        'colEmail
         '
-        Me.emailNV.HeaderText = "Email"
-        Me.emailNV.MinimumWidth = 6
-        Me.emailNV.Name = "emailNV"
+        Me.colEmail.HeaderText = "Email"
+        Me.colEmail.MinimumWidth = 6
+        Me.colEmail.Name = "colEmail"
         '
-        'status
+        'colTrangThai
         '
-        Me.status.HeaderText = "Trạng thái"
-        Me.status.MinimumWidth = 6
-        Me.status.Name = "status"
+        Me.colTrangThai.HeaderText = "Trạng thái"
+        Me.colTrangThai.MinimumWidth = 6
+        Me.colTrangThai.Name = "colTrangThai"
         '
-        'boPhan
+        'colBoPhan
         '
-        Me.boPhan.HeaderText = "Bộ phận"
-        Me.boPhan.MinimumWidth = 6
-        Me.boPhan.Name = "boPhan"
+        Me.colBoPhan.HeaderText = "Bộ phận"
+        Me.colBoPhan.MinimumWidth = 6
+        Me.colBoPhan.Name = "colBoPhan"
         '
-        'ngayBatDau
+        'colNgayBatDau
         '
-        Me.ngayBatDau.HeaderText = "Ngày bắt đầu"
-        Me.ngayBatDau.MinimumWidth = 6
-        Me.ngayBatDau.Name = "ngayBatDau"
+        Me.colNgayBatDau.HeaderText = "Ngày bắt đầu"
+        Me.colNgayBatDau.MinimumWidth = 6
+        Me.colNgayBatDau.Name = "colNgayBatDau"
         '
-        'soDienThoai
+        'colSDT
         '
-        Me.soDienThoai.HeaderText = "Số điện thoại"
-        Me.soDienThoai.MinimumWidth = 6
-        Me.soDienThoai.Name = "soDienThoai"
+        Me.colSDT.HeaderText = "Số điện thoại"
+        Me.colSDT.MinimumWidth = 6
+        Me.colSDT.Name = "colSDT"
         '
-        'gioiTinh
+        'colGioiTinh
         '
-        Me.gioiTinh.HeaderText = "Giới tính"
-        Me.gioiTinh.MinimumWidth = 6
-        Me.gioiTinh.Name = "gioiTinh"
+        Me.colGioiTinh.HeaderText = "Giới tính"
+        Me.colGioiTinh.MinimumWidth = 6
+        Me.colGioiTinh.Name = "colGioiTinh"
         '
         'frmNhanSu
         '
@@ -376,12 +376,12 @@ Partial Class frmNhanSu
     Friend WithEvents cbbxTrangThai As ComboBox
     Friend WithEvents btnThemNV As Button
     Friend WithEvents dtgvDSNhanVien As DataGridView
-    Friend WithEvents NameNV As DataGridViewTextBoxColumn
-    Friend WithEvents maNV As DataGridViewTextBoxColumn
-    Friend WithEvents emailNV As DataGridViewTextBoxColumn
-    Friend WithEvents status As DataGridViewTextBoxColumn
-    Friend WithEvents boPhan As DataGridViewTextBoxColumn
-    Friend WithEvents ngayBatDau As DataGridViewTextBoxColumn
-    Friend WithEvents soDienThoai As DataGridViewTextBoxColumn
-    Friend WithEvents gioiTinh As DataGridViewTextBoxColumn
+    Friend WithEvents colTen As DataGridViewTextBoxColumn
+    Friend WithEvents colMaNV As DataGridViewTextBoxColumn
+    Friend WithEvents colEmail As DataGridViewTextBoxColumn
+    Friend WithEvents colTrangThai As DataGridViewTextBoxColumn
+    Friend WithEvents colBoPhan As DataGridViewTextBoxColumn
+    Friend WithEvents colNgayBatDau As DataGridViewTextBoxColumn
+    Friend WithEvents colSDT As DataGridViewTextBoxColumn
+    Friend WithEvents colGioiTinh As DataGridViewTextBoxColumn
 End Class

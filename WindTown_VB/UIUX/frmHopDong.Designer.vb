@@ -22,11 +22,13 @@ Partial Class frmHopDong
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmHopDong))
         Me.tlpnlMain = New System.Windows.Forms.TableLayoutPanel()
         Me.tlpDashboard = New System.Windows.Forms.TableLayoutPanel()
         Me.Panel6 = New System.Windows.Forms.Panel()
+        Me.btnThemHD = New System.Windows.Forms.Button()
+        Me.dtpkDenNgay = New System.Windows.Forms.DateTimePicker()
         Me.Panel5 = New System.Windows.Forms.Panel()
+        Me.dtpkTuNgay = New System.Windows.Forms.DateTimePicker()
         Me.cbbxCongTy = New System.Windows.Forms.ComboBox()
         Me.Panel4 = New System.Windows.Forms.Panel()
         Me.btnSearch = New System.Windows.Forms.Button()
@@ -41,17 +43,14 @@ Partial Class frmHopDong
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.cbbxLoaiHopDong = New System.Windows.Forms.ComboBox()
         Me.cbbxBoPhan = New System.Windows.Forms.ComboBox()
-        Me.dtpkTuNgay = New System.Windows.Forms.DateTimePicker()
-        Me.dtpkDenNgay = New System.Windows.Forms.DateTimePicker()
-        Me.btnThemHD = New System.Windows.Forms.Button()
         Me.dtgvDSHopDong = New System.Windows.Forms.DataGridView()
-        Me.SidebarMenu1 = New QuanLyNhanSu.SidebarMenu()
         Me.colCheckBox = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.colName = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.colStatus = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.colHuongLuong = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.colNgayBatDau = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.colNgayKetThuc = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.SidebarMenu1 = New WindTown_VB.SidebarMenu()
         Me.tlpnlMain.SuspendLayout()
         Me.tlpDashboard.SuspendLayout()
         Me.Panel6.SuspendLayout()
@@ -117,6 +116,26 @@ Partial Class frmHopDong
         Me.Panel6.Size = New System.Drawing.Size(190, 87)
         Me.Panel6.TabIndex = 6
         '
+        'btnThemHD
+        '
+        Me.btnThemHD.BackColor = System.Drawing.Color.LimeGreen
+        Me.btnThemHD.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.btnThemHD.ForeColor = System.Drawing.Color.White
+        Me.btnThemHD.Location = New System.Drawing.Point(0, 57)
+        Me.btnThemHD.Name = "btnThemHD"
+        Me.btnThemHD.Size = New System.Drawing.Size(190, 30)
+        Me.btnThemHD.TabIndex = 4
+        Me.btnThemHD.Text = "Thêm hợp đồng"
+        Me.btnThemHD.UseVisualStyleBackColor = False
+        '
+        'dtpkDenNgay
+        '
+        Me.dtpkDenNgay.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.dtpkDenNgay.Location = New System.Drawing.Point(0, 0)
+        Me.dtpkDenNgay.Name = "dtpkDenNgay"
+        Me.dtpkDenNgay.Size = New System.Drawing.Size(190, 27)
+        Me.dtpkDenNgay.TabIndex = 3
+        '
         'Panel5
         '
         Me.Panel5.BackColor = System.Drawing.Color.White
@@ -127,6 +146,14 @@ Partial Class frmHopDong
         Me.Panel5.Name = "Panel5"
         Me.Panel5.Size = New System.Drawing.Size(188, 87)
         Me.Panel5.TabIndex = 5
+        '
+        'dtpkTuNgay
+        '
+        Me.dtpkTuNgay.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.dtpkTuNgay.Location = New System.Drawing.Point(0, 0)
+        Me.dtpkTuNgay.Name = "dtpkTuNgay"
+        Me.dtpkTuNgay.Size = New System.Drawing.Size(188, 27)
+        Me.dtpkTuNgay.TabIndex = 2
         '
         'cbbxCongTy
         '
@@ -153,7 +180,7 @@ Partial Class frmHopDong
         '
         Me.btnSearch.FlatAppearance.BorderSize = 0
         Me.btnSearch.Font = New System.Drawing.Font("Arial Narrow", 8.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnSearch.Image = CType(resources.GetObject("btnSearch.Image"), System.Drawing.Image)
+        Me.btnSearch.Image = Global.WindTown_VB.My.Resources.Resources.search
         Me.btnSearch.Location = New System.Drawing.Point(159, 57)
         Me.btnSearch.Name = "btnSearch"
         Me.btnSearch.Size = New System.Drawing.Size(26, 26)
@@ -270,34 +297,6 @@ Partial Class frmHopDong
         Me.cbbxBoPhan.Size = New System.Drawing.Size(188, 30)
         Me.cbbxBoPhan.TabIndex = 0
         '
-        'dtpkTuNgay
-        '
-        Me.dtpkTuNgay.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.dtpkTuNgay.Location = New System.Drawing.Point(0, 0)
-        Me.dtpkTuNgay.Name = "dtpkTuNgay"
-        Me.dtpkTuNgay.Size = New System.Drawing.Size(188, 27)
-        Me.dtpkTuNgay.TabIndex = 2
-        '
-        'dtpkDenNgay
-        '
-        Me.dtpkDenNgay.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.dtpkDenNgay.Location = New System.Drawing.Point(0, 0)
-        Me.dtpkDenNgay.Name = "dtpkDenNgay"
-        Me.dtpkDenNgay.Size = New System.Drawing.Size(190, 27)
-        Me.dtpkDenNgay.TabIndex = 3
-        '
-        'btnThemHD
-        '
-        Me.btnThemHD.BackColor = System.Drawing.Color.LimeGreen
-        Me.btnThemHD.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.btnThemHD.ForeColor = System.Drawing.Color.White
-        Me.btnThemHD.Location = New System.Drawing.Point(0, 57)
-        Me.btnThemHD.Name = "btnThemHD"
-        Me.btnThemHD.Size = New System.Drawing.Size(190, 30)
-        Me.btnThemHD.TabIndex = 4
-        Me.btnThemHD.Text = "Thêm hợp đồng"
-        Me.btnThemHD.UseVisualStyleBackColor = False
-        '
         'dtgvDSHopDong
         '
         Me.dtgvDSHopDong.AllowUserToAddRows = False
@@ -316,15 +315,6 @@ Partial Class frmHopDong
         Me.dtgvDSHopDong.RowTemplate.Height = 24
         Me.dtgvDSHopDong.Size = New System.Drawing.Size(966, 461)
         Me.dtgvDSHopDong.TabIndex = 7
-        '
-        'SidebarMenu1
-        '
-        Me.SidebarMenu1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.SidebarMenu1.Location = New System.Drawing.Point(3, 4)
-        Me.SidebarMenu1.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
-        Me.SidebarMenu1.Name = "SidebarMenu1"
-        Me.SidebarMenu1.Size = New System.Drawing.Size(190, 635)
-        Me.SidebarMenu1.TabIndex = 0
         '
         'colCheckBox
         '
@@ -361,6 +351,15 @@ Partial Class frmHopDong
         Me.colNgayKetThuc.HeaderText = "Ngày kết thúc"
         Me.colNgayKetThuc.MinimumWidth = 6
         Me.colNgayKetThuc.Name = "colNgayKetThuc"
+        '
+        'SidebarMenu1
+        '
+        Me.SidebarMenu1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.SidebarMenu1.Location = New System.Drawing.Point(3, 4)
+        Me.SidebarMenu1.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.SidebarMenu1.Name = "SidebarMenu1"
+        Me.SidebarMenu1.Size = New System.Drawing.Size(190, 635)
+        Me.SidebarMenu1.TabIndex = 0
         '
         'frmHopDong
         '

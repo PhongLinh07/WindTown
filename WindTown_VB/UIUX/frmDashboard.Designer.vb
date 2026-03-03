@@ -23,6 +23,7 @@ Partial Class frmDashboard
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.tlpDasboard = New System.Windows.Forms.TableLayoutPanel()
+        Me.SidebarMenu1 = New WindTown_VB.SidebarMenu()
         Me.tlpDashboard = New System.Windows.Forms.TableLayoutPanel()
         Me.tlpTopCheckinMuon = New System.Windows.Forms.TableLayoutPanel()
         Me.lvTopCheckinMuon = New System.Windows.Forms.ListView()
@@ -61,7 +62,6 @@ Partial Class frmDashboard
         Me.Label10 = New System.Windows.Forms.Label()
         Me.lvTopCheckinSom = New System.Windows.Forms.ListView()
         Me.Label8 = New System.Windows.Forms.Label()
-        Me.SidebarMenu1 = New QuanLyNhanSu.SidebarMenu()
         Me.tlpDasboard.SuspendLayout()
         Me.tlpDashboard.SuspendLayout()
         Me.tlpTopCheckinMuon.SuspendLayout()
@@ -90,6 +90,15 @@ Partial Class frmDashboard
         Me.tlpDasboard.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
         Me.tlpDasboard.Size = New System.Drawing.Size(1172, 643)
         Me.tlpDasboard.TabIndex = 0
+        '
+        'SidebarMenu1
+        '
+        Me.SidebarMenu1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.SidebarMenu1.Location = New System.Drawing.Point(3, 4)
+        Me.SidebarMenu1.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.SidebarMenu1.Name = "SidebarMenu1"
+        Me.SidebarMenu1.Size = New System.Drawing.Size(190, 635)
+        Me.SidebarMenu1.TabIndex = 0
         '
         'tlpDashboard
         '
@@ -607,15 +616,6 @@ Partial Class frmDashboard
         Me.Label8.TabIndex = 7
         Me.Label8.Text = "0"
         Me.Label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'SidebarMenu1
-        '
-        Me.SidebarMenu1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.SidebarMenu1.Location = New System.Drawing.Point(3, 4)
-        Me.SidebarMenu1.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
-        Me.SidebarMenu1.Name = "SidebarMenu1"
-        Me.SidebarMenu1.Size = New System.Drawing.Size(190, 635)
-        Me.SidebarMenu1.TabIndex = 0
         '
         'frmDashboard
         '

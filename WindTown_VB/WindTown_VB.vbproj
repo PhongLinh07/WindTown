@@ -378,16 +378,34 @@
     <Compile Include="UIUX\control\SidebarMenu.vb">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="UIUX\frmChucVu.Designer.vb">
+      <DependentUpon>frmChucVu.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UIUX\frmChucVu.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="UIUX\frmDashboard.Designer.vb">
       <DependentUpon>frmDashboard.vb</DependentUpon>
     </Compile>
     <Compile Include="UIUX\frmDashboard.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="UIUX\frmHopDong.Designer.vb">
+      <DependentUpon>frmHopDong.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UIUX\frmHopDong.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="UIUX\frmLogin.Designer.vb">
       <DependentUpon>frmLogin.vb</DependentUpon>
     </Compile>
     <Compile Include="UIUX\frmLogin.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UIUX\frmNhanSu.Designer.vb">
+      <DependentUpon>frmNhanSu.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UIUX\frmNhanSu.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UIUX\frmRegister.Designer.vb">
@@ -455,11 +473,20 @@
     <EmbeddedResource Include="UIUX\control\SidebarMenu.resx">
       <DependentUpon>SidebarMenu.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UIUX\frmChucVu.resx">
+      <DependentUpon>frmChucVu.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UIUX\frmDashboard.resx">
       <DependentUpon>frmDashboard.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UIUX\frmHopDong.resx">
+      <DependentUpon>frmHopDong.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UIUX\frmLogin.resx">
       <DependentUpon>frmLogin.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UIUX\frmNhanSu.resx">
+      <DependentUpon>frmNhanSu.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UIUX\frmRegister.resx">
       <DependentUpon>frmRegister.vb</DependentUpon>
@@ -534,6 +561,8 @@
   <ItemGroup>
     <Content Include="1_Documents\db_json.sql" />
     <Content Include="1_Documents\db_study.sql" />
+    <None Include="Resources\search.png" />
+    <None Include="UIUX\images\search.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <Import Project="..\packages\Microsoft.Data.SqlClient.SNI.6.0.2\build\net462\Microsoft.Data.SqlClient.SNI.targets" Condition="Exists('..\packages\Microsoft.Data.SqlClient.SNI.6.0.2\build\net462\Microsoft.Data.SqlClient.SNI.targets')" />

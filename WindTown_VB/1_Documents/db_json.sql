@@ -18,7 +18,21 @@ IF DB_ID('wind_town') IS NOT NULL
     DROP DATABASE wind_town;
 GO
 
-CREATE DATABASE wind_town;
+CREATE DATABASE wind_town
+ON PRIMARY (
+    NAME = N'wind_town_data',
+    FILENAME = N'D:\FTC\Visual BasicNet\WindTown\WindTown_VB\2_Core\4_Database\wind_town_data.mdf',
+    SIZE = 256MB,
+    FILEGROWTH = 128MB,
+    MAXSIZE = UNLIMITED
+)
+LOG ON (
+    NAME = N'wind_town_Log',
+    FILENAME = N'D:\FTC\Visual BasicNet\WindTown\WindTown_VB\2_Core\4_Database\wind_town_Log.ldf',
+    SIZE = 128MB,
+    FILEGROWTH = 128MB,
+    MAXSIZE = UNLIMITED
+);
 GO
 
 USE wind_town;

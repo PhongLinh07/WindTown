@@ -39,7 +39,7 @@ Public Class DatabaseConfig
 
     ' ===== Database config =====
     Friend NotInheritable Class Database
-        Private Shared ReadOnly Config As String = "Data Source=localhost;Initial Catalog=wind_town;Integrated Security=True;TrustServerCertificate=True"
+        Private Shared ReadOnly Config As String = "Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\FTC\Visual BasicNet\WindTown\WindTown_VB\2_Core\4_Database\wind_town_data.mdf;Integrated Security=True;Connect Timeout=30"
         Public Shared Function GetConnection() As IDbConnection
             Return New SqlConnection(Config)
         End Function

@@ -1,6 +1,16 @@
 ﻿Imports System.Data.SqlClient
-
 Public Class frmLogin
+    Dim account As List(Of Account) = New List(Of Account)
+    Private Sub frmLogin_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        loadAccount()
+    End Sub
+    Private Sub loadAccount()
+        Dim accountSV = New AccountService()
+        Dim result = accountSV.Execute(DataIntent.GetList)
+        If result.IsSuccess Then
+            account = CType(result.Data, List(Of Account))
+        End If
+    End Sub
     Private Sub btnLogin_Click(sender As Object, e As EventArgs) Handles btnLogin.Click
         Dim username As String = tbxUsername.Text.Trim()
         Dim password As String = tbxPassword.Text.Trim()
@@ -22,10 +32,7 @@ Public Class frmLogin
         Me.Hide() ' Ẩn frmLogin khi mở frmRegister
     End Sub
     Private Function CheckLogin(username As String, password As String) As Boolean
-        If username = "admin" AndAlso password = "admin" Then
-            Return True
-        End If
-        Return False
+        Return account.Any(Function(acc) acc.user = username AndAlso acc.password = password)
     End Function
 
 End Class
