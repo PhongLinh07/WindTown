@@ -21,6 +21,10 @@ Public Class EmployeeService
                     Dim list = _repoEmp.GetEmployeesWithoutAccount()
                     Return ServiceResponse(Of Object).Success(list)
 
+                Case DataIntent.GetEmployeesWithoutContract
+                    Dim list = _repoEmp.GetEmployeesWithoutContract()
+                    Return ServiceResponse(Of Object).Success(list)
+
                 Case Else
                     ' 2. Sau khi kiểm tra xong, gọi MyBase.Execute để thực hiện các lệnh gốc.
                     ' LƯU Ý: Tại đây, khi MyBase gọi _repo.GetAll(), 

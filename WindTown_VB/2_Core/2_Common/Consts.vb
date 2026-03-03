@@ -7,6 +7,7 @@ Public Enum DataIntent
     SoftDeleteMany ' Xóa tạm nhiều bản ghi
 
 #Region "'Employee Custom Intent"
+    GetEmployeesWithoutContract
     GetEmployeesWithoutAccount
 #End Region
 

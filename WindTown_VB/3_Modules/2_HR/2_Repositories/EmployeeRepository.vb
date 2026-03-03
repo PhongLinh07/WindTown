@@ -21,4 +21,21 @@ Public Class EmployeeRepository
             Return db.Query(Of Employee)(sql)
         End Using
     End Function
+
+    Public Function GetEmployeesWithoutContract() As IEnumerable(Of Employee) ' ko cho phép 2 hợp đồng cùng Active tại 1 thời điểm
+        Using db As IDbConnection = Database.GetConnection()
+            ' Câu lệnh SQL: Lấy nhân viên mà KHÔNG CÓ hợp đồng nào đang active (status = 1)
+            ' Giả sử bảng employee có cột id và bảng contract có cột employee_id (hoặc id nếu dùng chung)
+            Dim tableEmp As String = GetType(Employee).Name.ToLower()
+            Dim tableCtr As String = GetType(Contract).Name.ToLower()
+            Dim sql As String = $"
+            SELECT e.*
+            FROM [{tableEmp}] e
+            LEFT JOIN [{tableCtr}] c ON e.id = c.employee_id AND CAST(JSON_VALUE(c.datas, '$.status') AS INT) = 1
+            WHERE c.id IS NULL"
+
+            ' Vì chỉ lấy thông tin Employee, không cần Multi-Mapping phức tạp
+            Return db.Query(Of Employee)(sql)
+        End Using
+    End Function
 End Class
