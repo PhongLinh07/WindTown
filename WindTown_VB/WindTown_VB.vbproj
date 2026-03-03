@@ -328,7 +328,22 @@
     <Compile Include="3_Modules\2_HR\4_Forms\Employee_List_UC.vb">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="3_Modules\3_Operations\1_Models\Attendance.vb" />
     <Compile Include="3_Modules\3_Operations\1_Models\Project.vb" />
+    <Compile Include="3_Modules\3_Operations\2_Repositories\AttendanceRepository.vb" />
+    <Compile Include="3_Modules\3_Operations\3_Service\AttendanceService.vb" />
+    <Compile Include="3_Modules\3_Operations\4_Forms\Attendance_CRUD_Frm.Designer.vb">
+      <DependentUpon>Attendance_CRUD_Frm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="3_Modules\3_Operations\4_Forms\Attendance_CRUD_Frm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="3_Modules\3_Operations\4_Forms\Attendance_List_UC.Designer.vb">
+      <DependentUpon>Attendance_List_UC.vb</DependentUpon>
+    </Compile>
+    <Compile Include="3_Modules\3_Operations\4_Forms\Attendance_List_UC.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="3_Modules\3_Operations\4_Forms\Project_CRUD_Frm.Designer.vb">
       <DependentUpon>Project_CRUD_Frm.vb</DependentUpon>
     </Compile>
@@ -453,6 +468,9 @@
     <EmbeddedResource Include="3_Modules\2_HR\4_Forms\Employee_List_UC.resx">
       <DependentUpon>Employee_List_UC.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="3_Modules\3_Operations\4_Forms\Attendance_CRUD_Frm.resx">
+      <DependentUpon>Attendance_CRUD_Frm.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="3_Modules\3_Operations\4_Forms\Project_CRUD_Frm.resx">
       <DependentUpon>Project_CRUD_Frm.vb</DependentUpon>
     </EmbeddedResource>
@@ -508,9 +526,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="2_Core\3_Utils\1_SalaryEngine\" />
-    <Folder Include="3_Modules\3_Operations\2_Repositories\" />
-    <Folder Include="3_Modules\3_Operations\3_Services\" />
-    <Folder Include="3_Modules\3_Operations\3_Service\" />
     <Folder Include="3_Modules\4_Payroll\1_Models\" />
     <Folder Include="3_Modules\4_Payroll\2_Repositories\" />
     <Folder Include="3_Modules\4_Payroll\3_Services\" />
