@@ -43,6 +43,10 @@
         For i As Integer = 0 To colCount - 1
             lvTopCheckinSom.Columns(i).Width = totalWidth \ colCount
         Next
+
+        For i As Integer = 0 To colCountMuon - 1
+            lvTopCheckinMuon.Columns(i).Width = totalWidthMuon \ colCountMuon
+        Next
     End Sub
 
     ' Nếu muốn tự động căn lại khi resize form:
