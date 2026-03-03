@@ -5,7 +5,6 @@ Imports Newtonsoft.Json.Linq
 
 Public MustInherit Class BaseEntity
 
-
     <Key> <Browsable(False)> Public Property id As Integer
     <Browsable(False)> Public Property datas As String ' Lưu JSON nvarchar(max)
 

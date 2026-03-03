@@ -245,6 +245,12 @@
     <Compile Include="2_Core\6_Forms\1_FormBase\BaseList_UC.vb">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="2_Core\6_Forms\1_FormBase\PhongBan.Designer.vb">
+      <DependentUpon>PhongBan.vb</DependentUpon>
+    </Compile>
+    <Compile Include="2_Core\6_Forms\1_FormBase\PhongBan.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="3_Modules\1_Organization\1_Models\level.vb" />
     <Compile Include="3_Modules\1_Organization\1_Models\Department.vb" />
     <Compile Include="2_Core\6_Forms\1_FormBase\BaseACRUDForm.Designer.vb">
@@ -305,7 +311,9 @@
     <Compile Include="3_Modules\1_Organization\4_Forms\Job_List_UC.vb">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="3_Modules\2_HR\1_Models\Contract.vb" />
     <Compile Include="3_Modules\2_HR\1_Models\Employee.vb" />
+    <Compile Include="3_Modules\2_HR\2_Repositories\ContractRepository.vb" />
     <Compile Include="3_Modules\2_HR\2_Repositories\EmployeeRepository.vb" />
     <Compile Include="3_Modules\2_HR\3_Service\EmployeeService.vb" />
     <Compile Include="3_Modules\2_HR\4_Forms\Employee_CRUD_Frm.Designer.vb">
@@ -323,6 +331,13 @@
     <Compile Include="3_Modules\5_System\1_Models\Account.vb" />
     <Compile Include="3_Modules\5_System\2_Repositories\AccountRepository.vb" />
     <Compile Include="3_Modules\5_System\3_Service\AccountService.vb" />
+    <Compile Include="3_Modules\2_HR\3_Service\ContractService.vb" />
+    <Compile Include="3_Modules\5_System\4_Forms\Contract_CRUD_Frm.Designer.vb">
+      <DependentUpon>Contract_CRUD_Frm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="3_Modules\5_System\4_Forms\Contract_CRUD_Frm.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="3_Modules\5_System\4_Forms\Account_CRUD_Frm.Designer.vb">
       <DependentUpon>Account_CRUD_Frm.vb</DependentUpon>
     </Compile>
@@ -335,10 +350,17 @@
     <Compile Include="3_Modules\5_System\4_Forms\Account_List_UC.vb">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="3_Modules\5_System\4_Forms\Contract_List_UC.Designer.vb">
+      <DependentUpon>Contract_List_UC.vb</DependentUpon>
+    </Compile>
+    <Compile Include="3_Modules\5_System\4_Forms\Contract_List_UC.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
       <DependentUpon>Application.myapp</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="My Project\Resources.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -391,6 +413,9 @@
     <EmbeddedResource Include="2_Core\6_Forms\1_FormBase\BaseList_UC.resx">
       <DependentUpon>BaseList_UC.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="2_Core\6_Forms\1_FormBase\PhongBan.resx">
+      <DependentUpon>PhongBan.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="2_Core\6_Forms\FormMain.resx">
       <DependentUpon>FormMain.vb</DependentUpon>
     </EmbeddedResource>
@@ -414,6 +439,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="3_Modules\2_HR\4_Forms\Employee_List_UC.resx">
       <DependentUpon>Employee_List_UC.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="3_Modules\5_System\4_Forms\Contract_CRUD_Frm.resx">
+      <DependentUpon>Contract_CRUD_Frm.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="3_Modules\5_System\4_Forms\Account_CRUD_Frm.resx">
       <DependentUpon>Account_CRUD_Frm.vb</DependentUpon>
