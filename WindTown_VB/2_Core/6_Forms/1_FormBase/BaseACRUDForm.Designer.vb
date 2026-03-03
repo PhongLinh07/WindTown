@@ -60,6 +60,7 @@ Partial Class BaseACRUDForm
         Me.ClientSize = New System.Drawing.Size(800, 505)
         Me.Controls.Add(Me.toolStrip)
         Me.Name = "BaseACRUDForm"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "ACRUDForm"
         Me.toolStrip.ResumeLayout(False)
         Me.toolStrip.PerformLayout()

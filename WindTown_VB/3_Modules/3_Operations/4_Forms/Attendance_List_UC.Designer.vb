@@ -1,6 +1,6 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-Partial Class SidebarMenu
-    Inherits System.Windows.Forms.UserControl
+<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
+Partial Class Attendance_List_UC
+    Inherits BaseList_UC
 
     'UserControl overrides dispose to clean up the component list.
     <System.Diagnostics.DebuggerNonUserCode()>
@@ -22,15 +22,8 @@ Partial Class SidebarMenu
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Me.SuspendLayout()
-        '
-        'SidebarMenu
-        '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
+        components = New System.ComponentModel.Container()
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.Name = "SidebarMenu"
-        Me.Size = New System.Drawing.Size(294, 647)
-        Me.ResumeLayout(False)
-
     End Sub
+
 End Class
