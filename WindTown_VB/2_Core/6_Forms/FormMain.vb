@@ -60,4 +60,9 @@ Partial Public Class FormMain
         Dim frm As New Contract_List_UC()
         OpenChildForm(frm)
     End Sub
+
+    Private Sub menu_project_Click(sender As Object, e As EventArgs) Handles menu_project.Click
+        Dim frm As New Project_List_UC()
+        OpenChildForm(frm)
+    End Sub
 End Class

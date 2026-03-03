@@ -328,14 +328,27 @@
     <Compile Include="3_Modules\2_HR\4_Forms\Employee_List_UC.vb">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="3_Modules\3_Operations\1_Models\Project.vb" />
+    <Compile Include="3_Modules\3_Operations\4_Forms\Project_CRUD_Frm.Designer.vb">
+      <DependentUpon>Project_CRUD_Frm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="3_Modules\3_Operations\4_Forms\Project_CRUD_Frm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="3_Modules\3_Operations\4_Forms\Project_List_UC.Designer.vb">
+      <DependentUpon>Project_List_UC.vb</DependentUpon>
+    </Compile>
+    <Compile Include="3_Modules\3_Operations\4_Forms\Project_List_UC.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="3_Modules\5_System\1_Models\Account.vb" />
     <Compile Include="3_Modules\5_System\2_Repositories\AccountRepository.vb" />
     <Compile Include="3_Modules\5_System\3_Service\AccountService.vb" />
     <Compile Include="3_Modules\2_HR\3_Service\ContractService.vb" />
-    <Compile Include="3_Modules\5_System\4_Forms\Contract_CRUD_Frm.Designer.vb">
+    <Compile Include="3_Modules\2_HR\4_Forms\Contract_CRUD_Frm.Designer.vb">
       <DependentUpon>Contract_CRUD_Frm.vb</DependentUpon>
     </Compile>
-    <Compile Include="3_Modules\5_System\4_Forms\Contract_CRUD_Frm.vb">
+    <Compile Include="3_Modules\2_HR\4_Forms\Contract_CRUD_Frm.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="3_Modules\5_System\4_Forms\Account_CRUD_Frm.Designer.vb">
@@ -350,10 +363,10 @@
     <Compile Include="3_Modules\5_System\4_Forms\Account_List_UC.vb">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="3_Modules\5_System\4_Forms\Contract_List_UC.Designer.vb">
+    <Compile Include="3_Modules\2_HR\4_Forms\Contract_List_UC.Designer.vb">
       <DependentUpon>Contract_List_UC.vb</DependentUpon>
     </Compile>
-    <Compile Include="3_Modules\5_System\4_Forms\Contract_List_UC.vb">
+    <Compile Include="3_Modules\2_HR\4_Forms\Contract_List_UC.vb">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
@@ -440,7 +453,13 @@
     <EmbeddedResource Include="3_Modules\2_HR\4_Forms\Employee_List_UC.resx">
       <DependentUpon>Employee_List_UC.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="3_Modules\5_System\4_Forms\Contract_CRUD_Frm.resx">
+    <EmbeddedResource Include="3_Modules\3_Operations\4_Forms\Project_CRUD_Frm.resx">
+      <DependentUpon>Project_CRUD_Frm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="3_Modules\3_Operations\4_Forms\Project_List_UC.resx">
+      <DependentUpon>Project_List_UC.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="3_Modules\2_HR\4_Forms\Contract_CRUD_Frm.resx">
       <DependentUpon>Contract_CRUD_Frm.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="3_Modules\5_System\4_Forms\Account_CRUD_Frm.resx">
@@ -472,6 +491,7 @@
     <None Include="1_Documents\23CĐTT02_WindTown.docx" />
     <None Include="1_Documents\db_datas_test.xlsx" />
     <None Include="1_Documents\db_detail_org.dbml" />
+    <None Include="1_Documents\Git_cmd.md" />
     <None Include="1_Documents\wind-town.pdf" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
@@ -488,11 +508,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="2_Core\3_Utils\1_SalaryEngine\" />
-    <Folder Include="3_Modules\3_Operations\1_Models\" />
     <Folder Include="3_Modules\3_Operations\2_Repositories\" />
     <Folder Include="3_Modules\3_Operations\3_Services\" />
     <Folder Include="3_Modules\3_Operations\3_Service\" />
-    <Folder Include="3_Modules\3_Operations\4_Forms\" />
     <Folder Include="3_Modules\4_Payroll\1_Models\" />
     <Folder Include="3_Modules\4_Payroll\2_Repositories\" />
     <Folder Include="3_Modules\4_Payroll\3_Services\" />
