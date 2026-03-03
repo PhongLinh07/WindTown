@@ -251,6 +251,12 @@
     <Compile Include="2_Core\6_Forms\1_FormBase\PhongBan.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="2_Core\6_Forms\Developer_Mode.Designer.vb">
+      <DependentUpon>Developer_Mode.vb</DependentUpon>
+    </Compile>
+    <Compile Include="2_Core\6_Forms\Developer_Mode.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="3_Modules\1_Organization\1_Models\level.vb" />
     <Compile Include="3_Modules\1_Organization\1_Models\Department.vb" />
     <Compile Include="2_Core\6_Forms\1_FormBase\BaseACRUDForm.Designer.vb">
@@ -409,6 +415,60 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="UIUX\control\SidebarMenu.Designer.vb">
+      <DependentUpon>SidebarMenu.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UIUX\control\SidebarMenu.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UIUX\frmChucVu.Designer.vb">
+      <DependentUpon>frmChucVu.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UIUX\frmChucVu.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UIUX\frmDashboard.Designer.vb">
+      <DependentUpon>frmDashboard.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UIUX\frmDashboard.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UIUX\frmHopDong.Designer.vb">
+      <DependentUpon>frmHopDong.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UIUX\frmHopDong.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UIUX\frmLogin.Designer.vb">
+      <DependentUpon>frmLogin.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UIUX\frmLogin.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UIUX\frmNhanSu.Designer.vb">
+      <DependentUpon>frmNhanSu.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UIUX\frmNhanSu.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UIUX\frmRegister.Designer.vb">
+      <DependentUpon>frmRegister.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UIUX\frmRegister.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UIUX\frmSystem.Designer.vb">
+      <DependentUpon>frmSystem.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UIUX\frmSystem.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UIUX\tesst.Designer.vb">
+      <DependentUpon>tesst.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UIUX\tesst.vb">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="2_Core\6_Forms\1_FormBase\BaseACRUDForm.resx">
@@ -422,6 +482,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="2_Core\6_Forms\1_FormBase\PhongBan.resx">
       <DependentUpon>PhongBan.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="2_Core\6_Forms\Developer_Mode.resx">
+      <DependentUpon>Developer_Mode.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="2_Core\6_Forms\FormMain.resx">
       <DependentUpon>FormMain.vb</DependentUpon>
@@ -467,6 +530,33 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UIUX\control\SidebarMenu.resx">
+      <DependentUpon>SidebarMenu.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UIUX\frmChucVu.resx">
+      <DependentUpon>frmChucVu.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UIUX\frmDashboard.resx">
+      <DependentUpon>frmDashboard.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UIUX\frmHopDong.resx">
+      <DependentUpon>frmHopDong.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UIUX\frmLogin.resx">
+      <DependentUpon>frmLogin.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UIUX\frmNhanSu.resx">
+      <DependentUpon>frmNhanSu.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UIUX\frmRegister.resx">
+      <DependentUpon>frmRegister.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UIUX\frmSystem.resx">
+      <DependentUpon>frmSystem.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UIUX\tesst.resx">
+      <DependentUpon>tesst.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -531,6 +621,7 @@
   <ItemGroup>
     <Content Include="1_Documents\db_json.sql" />
     <Content Include="1_Documents\db_study.sql" />
+    <Content Include="2_Core\Assets\search.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <Import Project="..\packages\Microsoft.Data.SqlClient.SNI.6.0.2\build\net462\Microsoft.Data.SqlClient.SNI.targets" Condition="Exists('..\packages\Microsoft.Data.SqlClient.SNI.6.0.2\build\net462\Microsoft.Data.SqlClient.SNI.targets')" />
