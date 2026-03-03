@@ -1,10 +1,15 @@
-﻿Imports System.Data.SqlClient
+Imports System.Data.SqlClient
 Public Class frmLogin
 
     Dim account As List(Of Account) = New List(Of Account)
+
+    Public Sub New()
+        ' This call is required by the designer.
+        InitializeComponent()
+        ' Add any initialization after the InitializeComponent() call.
+    End Sub
     Private Sub frmLogin_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         loadAccount()
-        InitializeComponent()
     End Sub
     Private Sub loadAccount()
         Dim accountSV = New AccountService()
@@ -23,7 +28,7 @@ Public Class frmLogin
             Dim frm As New frmDashboard()
             frm.Show()
 
-            Me.Hide() ' Ẩn frmLogin thay vì Close
+            Me.Close() ' Ẩn frmLogin thay vì Close  | ẩn là nó sẽ chạy ngầm | cơ  chế   1: chương trình sống cho tới khi form cuối cùng bị đóng  nếu ẩn sẽ bị ngầm. 2: chương trình sống cho tới khi form đầu tiên bị đóng  nếu ẩn sẽ bị ngầm
         Else
             MessageBox.Show("Sai tên đăng nhập hoặc mật khẩu!", "Lỗi")
         End If
@@ -31,7 +36,7 @@ Public Class frmLogin
     Private Sub btnRegister_Click(sender As Object, e As EventArgs) Handles btnRegister.Click, MyBase.Click
         Dim frm As New frmRegister
         frm.Show()
-        Me.Hide() ' Ẩn frmLogin khi mở frmRegister
+        Me.Close() ' Ẩn frmLogin khi mở frmRegister
     End Sub
     Private Function CheckLogin(username As String, password As String) As Boolean
         Return account.Any(Function(acc) acc.user = username AndAlso acc.password = password)
