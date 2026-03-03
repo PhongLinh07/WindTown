@@ -75,4 +75,9 @@ Partial Public Class FormMain
         Dim frm As New Position_List_UC()
         OpenChildForm(frm)
     End Sub
+
+    Private Sub menu_org_Click(sender As Object, e As EventArgs) Handles menu_org.Click
+        Dim frm As New Organization_UC()
+        OpenChildForm(frm)
+    End Sub
 End Class
