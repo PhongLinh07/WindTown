@@ -29,6 +29,9 @@ Partial Class FormMain
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Label4 = New System.Windows.Forms.Label()
+        Me.menu_attendance = New System.Windows.Forms.Button()
+        Me.menu_project = New System.Windows.Forms.Button()
+        Me.Label5 = New System.Windows.Forms.Label()
         Me.menu_contract = New System.Windows.Forms.Button()
         Me.menu_employee = New System.Windows.Forms.Button()
         Me.Label3 = New System.Windows.Forms.Label()
@@ -39,8 +42,7 @@ Partial Class FormMain
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.pnl_main = New System.Windows.Forms.Panel()
         Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
-        Me.Label5 = New System.Windows.Forms.Label()
-        Me.menu_project = New System.Windows.Forms.Button()
+        Me.Button2 = New System.Windows.Forms.Button()
         Me.TableLayoutPanel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.SuspendLayout()
@@ -51,7 +53,7 @@ Partial Class FormMain
         Me.TableLayoutPanel1.ColumnCount = 3
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 13.47113!))
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 86.52887!))
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 25.0!))
+        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 27.0!))
         Me.TableLayoutPanel1.Controls.Add(Me.Label1, 0, 0)
         Me.TableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top
         Me.TableLayoutPanel1.Location = New System.Drawing.Point(0, 0)
@@ -90,8 +92,10 @@ Partial Class FormMain
         Me.Panel2.BackColor = System.Drawing.Color.DeepSkyBlue
         Me.Panel2.Controls.Add(Me.Button1)
         Me.Panel2.Controls.Add(Me.Label4)
+        Me.Panel2.Controls.Add(Me.menu_attendance)
         Me.Panel2.Controls.Add(Me.menu_project)
         Me.Panel2.Controls.Add(Me.Label5)
+        Me.Panel2.Controls.Add(Me.Button2)
         Me.Panel2.Controls.Add(Me.menu_contract)
         Me.Panel2.Controls.Add(Me.menu_employee)
         Me.Panel2.Controls.Add(Me.Label3)
@@ -115,9 +119,9 @@ Partial Class FormMain
         Me.Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button1.Image = Global.WindTown_VB.My.Resources.Resources.home
         Me.Button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button1.Location = New System.Drawing.Point(0, 634)
+        Me.Button1.Location = New System.Drawing.Point(0, 720)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(268, 43)
+        Me.Button1.Size = New System.Drawing.Size(251, 43)
         Me.Button1.TabIndex = 14
         Me.Button1.Text = "Account"
         Me.Button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -128,14 +132,63 @@ Partial Class FormMain
         '
         Me.Label4.Dock = System.Windows.Forms.DockStyle.Top
         Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(0, 597)
+        Me.Label4.Location = New System.Drawing.Point(0, 683)
         Me.Label4.Margin = New System.Windows.Forms.Padding(0)
         Me.Label4.Name = "Label4"
         Me.Label4.Padding = New System.Windows.Forms.Padding(5)
-        Me.Label4.Size = New System.Drawing.Size(268, 37)
+        Me.Label4.Size = New System.Drawing.Size(251, 37)
         Me.Label4.TabIndex = 13
         Me.Label4.Text = "System"
         Me.Label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'menu_attendance
+        '
+        Me.menu_attendance.AutoSize = True
+        Me.menu_attendance.Dock = System.Windows.Forms.DockStyle.Top
+        Me.menu_attendance.FlatAppearance.BorderColor = System.Drawing.Color.White
+        Me.menu_attendance.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.menu_attendance.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.menu_attendance.Image = Global.WindTown_VB.My.Resources.Resources.home
+        Me.menu_attendance.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.menu_attendance.Location = New System.Drawing.Point(0, 640)
+        Me.menu_attendance.Name = "menu_attendance"
+        Me.menu_attendance.Size = New System.Drawing.Size(251, 43)
+        Me.menu_attendance.TabIndex = 18
+        Me.menu_attendance.Text = "Attendance"
+        Me.menu_attendance.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.menu_attendance.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.menu_attendance.UseVisualStyleBackColor = True
+        '
+        'menu_project
+        '
+        Me.menu_project.AutoSize = True
+        Me.menu_project.Dock = System.Windows.Forms.DockStyle.Top
+        Me.menu_project.FlatAppearance.BorderColor = System.Drawing.Color.White
+        Me.menu_project.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.menu_project.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.menu_project.Image = Global.WindTown_VB.My.Resources.Resources.home
+        Me.menu_project.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.menu_project.Location = New System.Drawing.Point(0, 597)
+        Me.menu_project.Name = "menu_project"
+        Me.menu_project.Size = New System.Drawing.Size(251, 43)
+        Me.menu_project.TabIndex = 17
+        Me.menu_project.Text = "Project"
+        Me.menu_project.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.menu_project.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.menu_project.UseVisualStyleBackColor = True
+        '
+        'Label5
+        '
+        Me.Label5.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.Location = New System.Drawing.Point(0, 560)
+        Me.Label5.Margin = New System.Windows.Forms.Padding(0)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Padding = New System.Windows.Forms.Padding(5)
+        Me.Label5.Size = New System.Drawing.Size(251, 37)
+        Me.Label5.TabIndex = 16
+        Me.Label5.Text = "Operation"
+        Me.Label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'menu_contract
         '
@@ -148,7 +201,7 @@ Partial Class FormMain
         Me.menu_contract.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.menu_contract.Location = New System.Drawing.Point(0, 474)
         Me.menu_contract.Name = "menu_contract"
-        Me.menu_contract.Size = New System.Drawing.Size(268, 43)
+        Me.menu_contract.Size = New System.Drawing.Size(251, 43)
         Me.menu_contract.TabIndex = 15
         Me.menu_contract.Text = "Contract"
         Me.menu_contract.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -166,7 +219,7 @@ Partial Class FormMain
         Me.menu_employee.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.menu_employee.Location = New System.Drawing.Point(0, 431)
         Me.menu_employee.Name = "menu_employee"
-        Me.menu_employee.Size = New System.Drawing.Size(268, 43)
+        Me.menu_employee.Size = New System.Drawing.Size(251, 43)
         Me.menu_employee.TabIndex = 12
         Me.menu_employee.Text = "Employee"
         Me.menu_employee.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -181,7 +234,7 @@ Partial Class FormMain
         Me.Label3.Margin = New System.Windows.Forms.Padding(0)
         Me.Label3.Name = "Label3"
         Me.Label3.Padding = New System.Windows.Forms.Padding(5)
-        Me.Label3.Size = New System.Drawing.Size(268, 37)
+        Me.Label3.Size = New System.Drawing.Size(251, 37)
         Me.Label3.TabIndex = 11
         Me.Label3.Text = "HR"
         Me.Label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -197,7 +250,7 @@ Partial Class FormMain
         Me.menu_level.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.menu_level.Location = New System.Drawing.Point(0, 350)
         Me.menu_level.Name = "menu_level"
-        Me.menu_level.Size = New System.Drawing.Size(268, 44)
+        Me.menu_level.Size = New System.Drawing.Size(251, 44)
         Me.menu_level.TabIndex = 10
         Me.menu_level.Text = "Level"
         Me.menu_level.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -215,7 +268,7 @@ Partial Class FormMain
         Me.menu_job.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.menu_job.Location = New System.Drawing.Point(0, 307)
         Me.menu_job.Name = "menu_job"
-        Me.menu_job.Size = New System.Drawing.Size(268, 43)
+        Me.menu_job.Size = New System.Drawing.Size(251, 43)
         Me.menu_job.TabIndex = 9
         Me.menu_job.Text = "Job"
         Me.menu_job.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -233,7 +286,7 @@ Partial Class FormMain
         Me.menu_department.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.menu_department.Location = New System.Drawing.Point(0, 264)
         Me.menu_department.Name = "menu_department"
-        Me.menu_department.Size = New System.Drawing.Size(268, 43)
+        Me.menu_department.Size = New System.Drawing.Size(251, 43)
         Me.menu_department.TabIndex = 8
         Me.menu_department.Text = "Department"
         Me.menu_department.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -248,7 +301,7 @@ Partial Class FormMain
         Me.Label2.Margin = New System.Windows.Forms.Padding(0)
         Me.Label2.Name = "Label2"
         Me.Label2.Padding = New System.Windows.Forms.Padding(5)
-        Me.Label2.Size = New System.Drawing.Size(268, 37)
+        Me.Label2.Size = New System.Drawing.Size(251, 37)
         Me.Label2.TabIndex = 4
         Me.Label2.Text = "Organization"
         Me.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -262,7 +315,7 @@ Partial Class FormMain
         Me.Panel3.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel3.Location = New System.Drawing.Point(0, 0)
         Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(268, 227)
+        Me.Panel3.Size = New System.Drawing.Size(251, 227)
         Me.Panel3.TabIndex = 0
         '
         'pnl_main
@@ -278,36 +331,23 @@ Partial Class FormMain
         Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
         Me.ContextMenuStrip1.Size = New System.Drawing.Size(61, 4)
         '
-        'Label5
+        'Button2
         '
-        Me.Label5.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(0, 517)
-        Me.Label5.Margin = New System.Windows.Forms.Padding(0)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Padding = New System.Windows.Forms.Padding(5)
-        Me.Label5.Size = New System.Drawing.Size(268, 37)
-        Me.Label5.TabIndex = 16
-        Me.Label5.Text = "Operation"
-        Me.Label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        '
-        'menu_project
-        '
-        Me.menu_project.AutoSize = True
-        Me.menu_project.Dock = System.Windows.Forms.DockStyle.Top
-        Me.menu_project.FlatAppearance.BorderColor = System.Drawing.Color.White
-        Me.menu_project.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.menu_project.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.menu_project.Image = Global.WindTown_VB.My.Resources.Resources.home
-        Me.menu_project.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.menu_project.Location = New System.Drawing.Point(0, 554)
-        Me.menu_project.Name = "menu_project"
-        Me.menu_project.Size = New System.Drawing.Size(268, 43)
-        Me.menu_project.TabIndex = 17
-        Me.menu_project.Text = "Project"
-        Me.menu_project.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.menu_project.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.menu_project.UseVisualStyleBackColor = True
+        Me.Button2.AutoSize = True
+        Me.Button2.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Button2.FlatAppearance.BorderColor = System.Drawing.Color.White
+        Me.Button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button2.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button2.Image = Global.WindTown_VB.My.Resources.Resources.home
+        Me.Button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.Button2.Location = New System.Drawing.Point(0, 517)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(251, 43)
+        Me.Button2.TabIndex = 19
+        Me.Button2.Text = "Position"
+        Me.Button2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.Button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.Button2.UseVisualStyleBackColor = True
         '
         'FormMain
         '
@@ -350,4 +390,6 @@ Partial Class FormMain
     Friend WithEvents menu_contract As Button
     Friend WithEvents Label5 As Label
     Friend WithEvents menu_project As Button
+    Friend WithEvents menu_attendance As Button
+    Friend WithEvents Button2 As Button
 End Class

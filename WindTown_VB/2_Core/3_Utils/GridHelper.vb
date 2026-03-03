@@ -9,7 +9,7 @@ Public Module GridHelper
             .AutoGenerateColumns = False
             .BackgroundColor = Color.White
             .BorderStyle = BorderStyle.None
-            .RowHeadersVisible = False ' Wind Town thường để False cho sạch
+            .RowHeadersVisible = True ' Wind Town thường để False cho sạch
             .SelectionMode = DataGridViewSelectionMode.FullRowSelect
             .DefaultCellStyle.Font = New Font("Segoe UI", 10)
             .ColumnHeadersDefaultCellStyle.Font = New Font("Segoe UI Semibold", 10)

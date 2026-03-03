@@ -2206,12 +2206,12 @@ INSERT INTO attendance (employee_id, datas) VALUES
 
 
 INSERT INTO holiday (datas) VALUES 
-(N'{"code": "NEW_YEAR_2026", "date": "2026-01-01", "name": "Tết Dương lịch", "day_mult": 3.0, "night_mult": 3.0, "ot_mult": 3.0, "note": "Nghỉ lễ theo luật", "status": 1}'),
-(N'{"code": "LUNAR_NEW_YEAR_2026_D1", "date": "2026-02-16", "name": "Tết Nguyên Đán - 30 Tết", "day_mult": 3.0, "night_mult": 3.0, "ot_mult": 3.0, "note": "Nghỉ Tết Âm lịch", "status": 1}'),
-(N'{"code": "LUNAR_NEW_YEAR_2026_D2", "date": "2026-02-17", "name": "Tết Nguyên Đán - Mùng 1", "day_mult": 3.0, "night_mult": 3.0, "ot_mult": 3.0, "note": "Nghỉ Tết Âm lịch", "status": 1}'),
-(N'{"code": "LUNAR_NEW_YEAR_2026_D3", "date": "2026-02-18", "name": "Tết Nguyên Đán - Mùng 2", "day_mult": 3.0, "night_mult": 3.0, "ot_mult": 3.0, "note": "Nghỉ Tết Âm lịch", "status": 1}'),
-(N'{"code": "LUNAR_NEW_YEAR_2026_D4", "date": "2026-02-19", "name": "Tết Nguyên Đán - Mùng 3", "day_mult": 3.0, "night_mult": 3.0, "ot_mult": 3.0, "note": "Nghỉ Tết Âm lịch", "status": 1}'),
-(N'{"code": "LUNAR_NEW_YEAR_2026_D5", "date": "2026-02-20", "name": "Tết Nguyên Đán - Mùng 4", "day_mult": 3.0, "night_mult": 3.0, "ot_mult": 3.0, "note": "Nghỉ Tết Âm lịch", "status": 1}');
+(N'{"code": "NEW_YEAR_2026", "of_date": "2026-01-01", "name": "Tết Dương lịch", "day_mult": 3.0, "night_mult": 3.0, "ot_mult": 3.0, "note": "Nghỉ lễ theo luật", "status": 1}'),
+(N'{"code": "LUNAR_NEW_YEAR_2026_D1", "of_date": "2026-02-16", "name": "Tết Nguyên Đán - 30 Tết", "day_mult": 3.0, "night_mult": 3.0, "ot_mult": 3.0, "note": "Nghỉ Tết Âm lịch", "status": 1}'),
+(N'{"code": "LUNAR_NEW_YEAR_2026_D2", "of_date": "2026-02-17", "name": "Tết Nguyên Đán - Mùng 1", "day_mult": 3.0, "night_mult": 3.0, "ot_mult": 3.0, "note": "Nghỉ Tết Âm lịch", "status": 1}'),
+(N'{"code": "LUNAR_NEW_YEAR_2026_D3", "of_date": "2026-02-18", "name": "Tết Nguyên Đán - Mùng 2", "day_mult": 3.0, "night_mult": 3.0, "ot_mult": 3.0, "note": "Nghỉ Tết Âm lịch", "status": 1}'),
+(N'{"code": "LUNAR_NEW_YEAR_2026_D4", "of_date": "2026-02-19", "name": "Tết Nguyên Đán - Mùng 3", "day_mult": 3.0, "night_mult": 3.0, "ot_mult": 3.0, "note": "Nghỉ Tết Âm lịch", "status": 1}'),
+(N'{"code": "LUNAR_NEW_YEAR_2026_D5", "of_date": "2026-02-20", "name": "Tết Nguyên Đán - Mùng 4", "day_mult": 3.0, "night_mult": 3.0, "ot_mult": 3.0, "note": "Nghỉ Tết Âm lịch", "status": 1}');
 GO
 
 -- =========================================================

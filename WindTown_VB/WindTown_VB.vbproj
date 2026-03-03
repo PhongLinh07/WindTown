@@ -329,14 +329,23 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="3_Modules\3_Operations\1_Models\Attendance.vb" />
+    <Compile Include="3_Modules\2_HR\1_Models\Position.vb" />
     <Compile Include="3_Modules\3_Operations\1_Models\Project.vb" />
     <Compile Include="3_Modules\3_Operations\2_Repositories\AttendanceRepository.vb" />
+    <Compile Include="3_Modules\2_HR\2_Repositories\PositionRepository.vb" />
     <Compile Include="3_Modules\3_Operations\3_Service\AttendanceService.vb" />
+    <Compile Include="3_Modules\2_HR\3_Service\PositionService.vb" />
     <Compile Include="3_Modules\3_Operations\4_Forms\Attendance_CRUD_Frm.Designer.vb">
       <DependentUpon>Attendance_CRUD_Frm.vb</DependentUpon>
     </Compile>
     <Compile Include="3_Modules\3_Operations\4_Forms\Attendance_CRUD_Frm.vb">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="3_Modules\2_HR\4_Forms\Position_List_UC.Designer.vb">
+      <DependentUpon>Position_List_UC.vb</DependentUpon>
+    </Compile>
+    <Compile Include="3_Modules\2_HR\4_Forms\Position_List_UC.vb">
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="3_Modules\3_Operations\4_Forms\Attendance_List_UC.Designer.vb">
       <DependentUpon>Attendance_List_UC.vb</DependentUpon>
@@ -400,36 +409,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="UIUX\control\SidebarMenu.Designer.vb">
-      <DependentUpon>SidebarMenu.vb</DependentUpon>
-    </Compile>
-    <Compile Include="UIUX\control\SidebarMenu.vb">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UIUX\frmDashboard.Designer.vb">
-      <DependentUpon>frmDashboard.vb</DependentUpon>
-    </Compile>
-    <Compile Include="UIUX\frmDashboard.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UIUX\frmLogin.Designer.vb">
-      <DependentUpon>frmLogin.vb</DependentUpon>
-    </Compile>
-    <Compile Include="UIUX\frmLogin.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UIUX\frmRegister.Designer.vb">
-      <DependentUpon>frmRegister.vb</DependentUpon>
-    </Compile>
-    <Compile Include="UIUX\frmRegister.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UIUX\frmSystem.Designer.vb">
-      <DependentUpon>frmSystem.vb</DependentUpon>
-    </Compile>
-    <Compile Include="UIUX\frmSystem.vb">
-      <SubType>Form</SubType>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="2_Core\6_Forms\1_FormBase\BaseACRUDForm.resx">
@@ -488,21 +467,6 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UIUX\control\SidebarMenu.resx">
-      <DependentUpon>SidebarMenu.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UIUX\frmDashboard.resx">
-      <DependentUpon>frmDashboard.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UIUX\frmLogin.resx">
-      <DependentUpon>frmLogin.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UIUX\frmRegister.resx">
-      <DependentUpon>frmRegister.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UIUX\frmSystem.resx">
-      <DependentUpon>frmSystem.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

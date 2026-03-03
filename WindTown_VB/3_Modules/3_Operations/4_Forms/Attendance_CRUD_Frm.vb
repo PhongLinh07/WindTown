@@ -10,7 +10,7 @@ Public Class Attendance_CRUD_Frm
         {1, "ACTIVE"}
     }
 
-    Private _employeesWithoutAccount As List(Of Employee)
+    Private _employees As List(Of Employee)
 
     Public Sub New(data As Attendance, Optional isCreate As Boolean = False)
 
@@ -41,12 +41,10 @@ Public Class Attendance_CRUD_Frm
         End If
 
         Dim employeetService As New EmployeeService()
-        Dim response = employeetService.Execute(DataIntent.GetEmployeesWithoutAccount)
-        _employeesWithoutAccount = If(response.IsSuccess, response.Data, New List(Of Employee))
+        Dim response = employeetService.Execute(DataIntent.GetList)
+        _employees = If(response.IsSuccess, response.Data, New List(Of Employee))
 
-        ui_employee.DataSource =
-            _employeesWithoutAccount.
-            Select(Function(x) New With {.Display = $"{x.code} - {x.name}", .Value = x.id}).ToList()
+        ui_employee.DataSource = _employees.Select(Function(x) New With {.Display = $"{x.code} - {x.name}", .Value = x.id}).ToList()
 
         ui_employee.DisplayMember = "Display"
         ui_employee.ValueMember = "Value"
@@ -61,13 +59,18 @@ Public Class Attendance_CRUD_Frm
             ui_employee.Enabled = False
         End If
 
-        ui_code.Text = _data.user
-        ui_office_hours.Text = _data.password
-        ui_shift.SelectedValue = _data.role
+        ui_code.Text = _data.code
+
+        ui_of_date.Value = If(_data.of_date, DateTime.Now)
+
+        ui_office_hours.Text = _data.office_hours
+
+        ui_overtime_hours.Text = _data.overtime_hours
+        ui_late_hours.Text = _data.late_hours
+        ui_early_hours.Text = _data.early_hours
 
 
-        ui_of_date.Value = If(_data.last_login, DateTime.Now)
-        ui_last_logout.Value = If(_data.last_logout, DateTime.Now)
+        ui_shift.SelectedValue = _data.shift
 
         ui_note.Text = _data.note
         ui_status.SelectedValue = _data.status
@@ -76,26 +79,9 @@ Public Class Attendance_CRUD_Frm
 
     Protected Overrides Function SyncUIToData() As Boolean
 
-        If isCreate AndAlso ui_employee.SelectedValue Is Nothing Then
-            MessageBox.Show("Please select employee")
-            Return False
-        End If
-
-        If String.IsNullOrWhiteSpace(ui_code.Text) Then
-            MessageBox.Show("User cannot be empty")
-            ui_code.Focus()
-            Return False
-        End If
-
-        If String.IsNullOrWhiteSpace(ui_office_hours.Text) Then
-            MessageBox.Show("Password cannot be empty")
-            ui_office_hours.Focus()
-            Return False
-        End If
-
         If isCreate Then
             Dim selectedId = If(ui_employee.SelectedValue, 0)
-            Dim employee = _employeesWithoutAccount.FirstOrDefault(Function(x) x.id = Convert.ToInt32(selectedId))
+            Dim employee = _employees.FirstOrDefault(Function(x) x.id = Convert.ToInt32(selectedId))
             If employee Is Nothing Then
                 MessageBox.Show("Invalid employee selected")
                 ui_employee.Focus()
@@ -104,12 +90,41 @@ Public Class Attendance_CRUD_Frm
             _data.Employee = employee
         End If
 
+        If String.IsNullOrWhiteSpace(ui_code.Text) Then
+            MessageBox.Show("User cannot be empty")
+            ui_code.Focus()
+            Return False
+        End If
 
-        _data.user = ui_code.Text.Trim()
-        _data.password = ui_office_hours.Text.Trim()
-        _data.role = CInt(ui_shift.SelectedValue)
+
+        If Not Decimal.TryParse(ui_office_hours.Text, _data.office_hours) Then
+            MessageBox.Show("Office Hours must be a valid number")
+            ui_office_hours.Focus()
+            Return False
+        End If
+        If Not Decimal.TryParse(ui_overtime_hours.Text, _data.overtime_hours) Then
+            MessageBox.Show("Overtime Hours must be a valid number")
+            ui_overtime_hours.Focus()
+            Return False
+        End If
+        If Not Decimal.TryParse(ui_late_hours.Text, _data.late_hours) Then
+            MessageBox.Show("Late Hours must be a valid number")
+            ui_late_hours.Focus()
+            Return False
+        End If
+        If Not Decimal.TryParse(ui_early_hours.Text, _data.early_hours) Then
+            MessageBox.Show("Early Hours must be a valid number")
+            ui_early_hours.Focus()
+            Return False
+        End If
+
+
+        _data.code = ui_code.Text.Trim()
+
+        _data.of_date = ui_of_date.Value
+        _data.status = CInt(ui_shift.SelectedValue)
+
         _data.note = ui_note.Text
-
         _data.status = CInt(ui_status.SelectedValue)
 
         Return True
@@ -119,6 +134,9 @@ Public Class Attendance_CRUD_Frm
     Protected Overrides Sub DataChanged() Handles ui_employee.SelectedIndexChanged,
                                         ui_code.TextChanged,
                                         ui_office_hours.TextChanged,
+                                        ui_overtime_hours.TextChanged,
+                                        ui_late_hours.TextChanged,
+                                        ui_early_hours.TextChanged,
                                         ui_shift.SelectedIndexChanged,
                                         ui_note.TextChanged,
                                         ui_status.SelectedIndexChanged
@@ -127,7 +145,4 @@ Public Class Attendance_CRUD_Frm
 
     End Sub
 
-    Private Sub DataChanged(sender As Object, e As EventArgs) Handles ui_status.SelectedIndexChanged, ui_shift.SelectedIndexChanged, ui_office_hours.TextChanged, ui_note.TextChanged, ui_employee.SelectedIndexChanged, ui_code.TextChanged
-
-    End Sub
 End Class
