@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class frmNhanSu
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,10 +20,12 @@ Partial Class frmNhanSu
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.tlpNhanSu = New System.Windows.Forms.TableLayoutPanel()
         Me.pnlBoPhan = New System.Windows.Forms.Panel()
+        Me.btnSearch = New System.Windows.Forms.Button()
+        Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.Button3 = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.btnThemBoPhan = New System.Windows.Forms.Button()
@@ -35,20 +37,13 @@ Partial Class frmNhanSu
         Me.btnMoiNV = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.btnXuLyNhanh = New System.Windows.Forms.Button()
         Me.btnThemNV = New System.Windows.Forms.Button()
         Me.btnNhapXuatNV = New System.Windows.Forms.Button()
         Me.cbbxGioiTinh = New System.Windows.Forms.ComboBox()
         Me.cbbxTrangThai = New System.Windows.Forms.ComboBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.dtgvDSNhanVien = New System.Windows.Forms.DataGridView()
-        Me.colTen = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.colMaNV = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.colEmail = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.colTrangThai = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.colBoPhan = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.colNgayBatDau = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.colSDT = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.colGioiTinh = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.tlpNhanSu.SuspendLayout()
         Me.pnlBoPhan.SuspendLayout()
         Me.pnlHeader.SuspendLayout()
@@ -81,6 +76,8 @@ Partial Class frmNhanSu
         'pnlBoPhan
         '
         Me.pnlBoPhan.BackColor = System.Drawing.Color.White
+        Me.pnlBoPhan.Controls.Add(Me.btnSearch)
+        Me.pnlBoPhan.Controls.Add(Me.TextBox1)
         Me.pnlBoPhan.Controls.Add(Me.Button3)
         Me.pnlBoPhan.Controls.Add(Me.Button2)
         Me.pnlBoPhan.Controls.Add(Me.btnThemBoPhan)
@@ -92,12 +89,30 @@ Partial Class frmNhanSu
         Me.pnlBoPhan.Size = New System.Drawing.Size(314, 114)
         Me.pnlBoPhan.TabIndex = 2
         '
+        'btnSearch
+        '
+        Me.btnSearch.BackColor = System.Drawing.Color.Blue
+        Me.btnSearch.ForeColor = System.Drawing.Color.White
+        Me.btnSearch.Location = New System.Drawing.Point(224, 45)
+        Me.btnSearch.Name = "btnSearch"
+        Me.btnSearch.Size = New System.Drawing.Size(87, 28)
+        Me.btnSearch.TabIndex = 7
+        Me.btnSearch.Text = "Tìm"
+        Me.btnSearch.UseVisualStyleBackColor = False
+        '
+        'TextBox1
+        '
+        Me.TextBox1.Location = New System.Drawing.Point(4, 45)
+        Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.Size = New System.Drawing.Size(213, 29)
+        Me.TextBox1.TabIndex = 6
+        '
         'Button3
         '
         Me.Button3.FlatAppearance.BorderSize = 0
         Me.Button3.Font = New System.Drawing.Font("Microsoft YaHei UI", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button3.ForeColor = System.Drawing.Color.Lime
-        Me.Button3.Location = New System.Drawing.Point(182, 57)
+        Me.Button3.Location = New System.Drawing.Point(181, 79)
         Me.Button3.Name = "Button3"
         Me.Button3.Size = New System.Drawing.Size(60, 32)
         Me.Button3.TabIndex = 5
@@ -109,7 +124,7 @@ Partial Class frmNhanSu
         Me.Button2.FlatAppearance.BorderSize = 0
         Me.Button2.Font = New System.Drawing.Font("Microsoft YaHei UI", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button2.ForeColor = System.Drawing.Color.Blue
-        Me.Button2.Location = New System.Drawing.Point(117, 57)
+        Me.Button2.Location = New System.Drawing.Point(116, 79)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(59, 32)
         Me.Button2.TabIndex = 4
@@ -121,7 +136,7 @@ Partial Class frmNhanSu
         Me.btnThemBoPhan.FlatAppearance.BorderSize = 0
         Me.btnThemBoPhan.Font = New System.Drawing.Font("Microsoft YaHei UI", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnThemBoPhan.ForeColor = System.Drawing.Color.Red
-        Me.btnThemBoPhan.Location = New System.Drawing.Point(248, 57)
+        Me.btnThemBoPhan.Location = New System.Drawing.Point(247, 79)
         Me.btnThemBoPhan.Name = "btnThemBoPhan"
         Me.btnThemBoPhan.Size = New System.Drawing.Size(53, 32)
         Me.btnThemBoPhan.TabIndex = 3
@@ -132,7 +147,7 @@ Partial Class frmNhanSu
         '
         Me.txtTenCongTy.AutoSize = True
         Me.txtTenCongTy.Font = New System.Drawing.Font("Microsoft YaHei UI", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtTenCongTy.Location = New System.Drawing.Point(3, 61)
+        Me.txtTenCongTy.Location = New System.Drawing.Point(2, 83)
         Me.txtTenCongTy.Name = "txtTenCongTy"
         Me.txtTenCongTy.Size = New System.Drawing.Size(111, 24)
         Me.txtTenCongTy.TabIndex = 2
@@ -180,6 +195,8 @@ Partial Class frmNhanSu
         '
         'btnMoiNV
         '
+        Me.btnMoiNV.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnMoiNV.BackColor = System.Drawing.Color.LimeGreen
         Me.btnMoiNV.FlatAppearance.BorderSize = 0
         Me.btnMoiNV.FlatStyle = System.Windows.Forms.FlatStyle.Flat
@@ -205,6 +222,7 @@ Partial Class frmNhanSu
         'Panel2
         '
         Me.Panel2.BackColor = System.Drawing.Color.White
+        Me.Panel2.Controls.Add(Me.btnXuLyNhanh)
         Me.Panel2.Controls.Add(Me.btnThemNV)
         Me.Panel2.Controls.Add(Me.btnNhapXuatNV)
         Me.Panel2.Controls.Add(Me.cbbxGioiTinh)
@@ -216,13 +234,32 @@ Partial Class frmNhanSu
         Me.Panel2.Size = New System.Drawing.Size(626, 114)
         Me.Panel2.TabIndex = 3
         '
+        'btnXuLyNhanh
+        '
+        Me.btnXuLyNhanh.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnXuLyNhanh.BackColor = System.Drawing.Color.LimeGreen
+        Me.btnXuLyNhanh.FlatAppearance.BorderSize = 0
+        Me.btnXuLyNhanh.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnXuLyNhanh.Font = New System.Drawing.Font("Microsoft YaHei UI", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnXuLyNhanh.ForeColor = System.Drawing.Color.White
+        Me.btnXuLyNhanh.Location = New System.Drawing.Point(298, 55)
+        Me.btnXuLyNhanh.Name = "btnXuLyNhanh"
+        Me.btnXuLyNhanh.Size = New System.Drawing.Size(128, 31)
+        Me.btnXuLyNhanh.TabIndex = 8
+        Me.btnXuLyNhanh.Text = "Xử lý nhanh"
+        Me.btnXuLyNhanh.UseVisualStyleBackColor = False
+        Me.btnXuLyNhanh.Visible = False
+        '
         'btnThemNV
         '
+        Me.btnThemNV.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnThemNV.BackColor = System.Drawing.Color.LimeGreen
         Me.btnThemNV.FlatAppearance.BorderSize = 0
         Me.btnThemNV.Font = New System.Drawing.Font("Microsoft YaHei UI", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnThemNV.ForeColor = System.Drawing.Color.White
-        Me.btnThemNV.Location = New System.Drawing.Point(457, 17)
+        Me.btnThemNV.Location = New System.Drawing.Point(467, 17)
         Me.btnThemNV.Name = "btnThemNV"
         Me.btnThemNV.Size = New System.Drawing.Size(156, 32)
         Me.btnThemNV.TabIndex = 7
@@ -231,13 +268,15 @@ Partial Class frmNhanSu
         '
         'btnNhapXuatNV
         '
+        Me.btnNhapXuatNV.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnNhapXuatNV.BackColor = System.Drawing.Color.White
         Me.btnNhapXuatNV.FlatAppearance.BorderSize = 0
         Me.btnNhapXuatNV.Font = New System.Drawing.Font("Microsoft YaHei UI", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnNhapXuatNV.ForeColor = System.Drawing.SystemColors.WindowFrame
-        Me.btnNhapXuatNV.Location = New System.Drawing.Point(403, 57)
+        Me.btnNhapXuatNV.Location = New System.Drawing.Point(432, 55)
         Me.btnNhapXuatNV.Name = "btnNhapXuatNV"
-        Me.btnNhapXuatNV.Size = New System.Drawing.Size(210, 32)
+        Me.btnNhapXuatNV.Size = New System.Drawing.Size(194, 32)
         Me.btnNhapXuatNV.TabIndex = 6
         Me.btnNhapXuatNV.Text = "Nhập xuất danh sách"
         Me.btnNhapXuatNV.UseVisualStyleBackColor = False
@@ -246,7 +285,7 @@ Partial Class frmNhanSu
         '
         Me.cbbxGioiTinh.FormattingEnabled = True
         Me.cbbxGioiTinh.Items.AddRange(New Object() {"Nam", "Nữ"})
-        Me.cbbxGioiTinh.Location = New System.Drawing.Point(185, 57)
+        Me.cbbxGioiTinh.Location = New System.Drawing.Point(156, 57)
         Me.cbbxGioiTinh.Name = "cbbxGioiTinh"
         Me.cbbxGioiTinh.Size = New System.Drawing.Size(121, 31)
         Me.cbbxGioiTinh.TabIndex = 5
@@ -274,64 +313,16 @@ Partial Class frmNhanSu
         '
         'dtgvDSNhanVien
         '
-        Me.dtgvDSNhanVien.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dtgvDSNhanVien.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dtgvDSNhanVien.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.colTen, Me.colMaNV, Me.colEmail, Me.colTrangThai, Me.colBoPhan, Me.colNgayBatDau, Me.colSDT, Me.colGioiTinh})
         Me.dtgvDSNhanVien.Dock = System.Windows.Forms.DockStyle.Fill
         Me.dtgvDSNhanVien.Location = New System.Drawing.Point(543, 203)
         Me.dtgvDSNhanVien.Name = "dtgvDSNhanVien"
+        Me.dtgvDSNhanVien.RowHeadersVisible = False
         Me.dtgvDSNhanVien.RowHeadersWidth = 51
         Me.dtgvDSNhanVien.RowTemplate.Height = 24
+        Me.dtgvDSNhanVien.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect
         Me.dtgvDSNhanVien.Size = New System.Drawing.Size(626, 447)
         Me.dtgvDSNhanVien.TabIndex = 4
-        '
-        'colTen
-        '
-        Me.colTen.HeaderText = "Tên "
-        Me.colTen.MinimumWidth = 6
-        Me.colTen.Name = "colTen"
-        '
-        'colMaNV
-        '
-        Me.colMaNV.HeaderText = "Mã nhân viên"
-        Me.colMaNV.MinimumWidth = 6
-        Me.colMaNV.Name = "colMaNV"
-        '
-        'colEmail
-        '
-        Me.colEmail.HeaderText = "Email"
-        Me.colEmail.MinimumWidth = 6
-        Me.colEmail.Name = "colEmail"
-        '
-        'colTrangThai
-        '
-        Me.colTrangThai.HeaderText = "Trạng thái"
-        Me.colTrangThai.MinimumWidth = 6
-        Me.colTrangThai.Name = "colTrangThai"
-        '
-        'colBoPhan
-        '
-        Me.colBoPhan.HeaderText = "Bộ phận"
-        Me.colBoPhan.MinimumWidth = 6
-        Me.colBoPhan.Name = "colBoPhan"
-        '
-        'colNgayBatDau
-        '
-        Me.colNgayBatDau.HeaderText = "Ngày bắt đầu"
-        Me.colNgayBatDau.MinimumWidth = 6
-        Me.colNgayBatDau.Name = "colNgayBatDau"
-        '
-        'colSDT
-        '
-        Me.colSDT.HeaderText = "Số điện thoại"
-        Me.colSDT.MinimumWidth = 6
-        Me.colSDT.Name = "colSDT"
-        '
-        'colGioiTinh
-        '
-        Me.colGioiTinh.HeaderText = "Giới tính"
-        Me.colGioiTinh.MinimumWidth = 6
-        Me.colGioiTinh.Name = "colGioiTinh"
         '
         'frmNhanSu
         '
@@ -376,12 +367,7 @@ Partial Class frmNhanSu
     Friend WithEvents cbbxTrangThai As ComboBox
     Friend WithEvents btnThemNV As Button
     Friend WithEvents dtgvDSNhanVien As DataGridView
-    Friend WithEvents colTen As DataGridViewTextBoxColumn
-    Friend WithEvents colMaNV As DataGridViewTextBoxColumn
-    Friend WithEvents colEmail As DataGridViewTextBoxColumn
-    Friend WithEvents colTrangThai As DataGridViewTextBoxColumn
-    Friend WithEvents colBoPhan As DataGridViewTextBoxColumn
-    Friend WithEvents colNgayBatDau As DataGridViewTextBoxColumn
-    Friend WithEvents colSDT As DataGridViewTextBoxColumn
-    Friend WithEvents colGioiTinh As DataGridViewTextBoxColumn
+    Friend WithEvents btnSearch As Button
+    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents btnXuLyNhanh As Button
 End Class
