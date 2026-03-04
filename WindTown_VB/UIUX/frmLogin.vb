@@ -26,7 +26,7 @@ Public Class frmLogin
             Dim frm As New frmDashboard()
             frm.Show()
 
-            Me.Hide() ' Ẩn frmLogin thay vì Close
+            Me.Close() ' Ẩn frmLogin thay vì Close
         Else
             MessageBox.Show("Sai tên đăng nhập hoặc mật khẩu!", "Lỗi")
         End If
@@ -34,7 +34,7 @@ Public Class frmLogin
     Private Sub btnRegister_Click(sender As Object, e As EventArgs) Handles btnRegister.Click, MyBase.Click
         Dim frm As New frmRegister
         frm.Show()
-        Me.Hide() ' Ẩn frmLogin khi mở frmRegister
+        Me.Close() ' Ẩn frmLogin khi mở frmRegister
     End Sub
     Private Function CheckLogin(username As String, password As String) As Boolean
         Return account.Any(Function(acc) acc.user = username AndAlso acc.password = password)

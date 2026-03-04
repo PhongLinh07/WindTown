@@ -10,7 +10,7 @@
     Private Sub loadForm()
         loadData()
         loadBoPhan()
-        dtgvDSNhanVien.AutoGenerateColumns = False
+        SetupGrid()
     End Sub
     ' ================= LOAD DATA =================
     Private Sub loadData()
@@ -112,15 +112,10 @@
     End Sub
 
     ' ================= GRIDVIEW =================
-    Private Sub AddDataToGridView(ds As List(Of Employee))
+    Private Sub SetupGrid()
 
-        'Dim dt As New DataTable()
+        dtgvDSNhanVien.AutoGenerateColumns = False
 
-        'dt.Columns.Add("Id")
-        'dt.Columns.Add("Code")
-        'dt.Columns.Add("Name")
-        'dt.Columns.Add("DepartmentId")
-        'dt.Columns.Add("JobId")
         dtgvDSNhanVien.Columns("colTenNV").DataPropertyName = "name"
         dtgvDSNhanVien.Columns("colMaNV").DataPropertyName = "code"
         dtgvDSNhanVien.Columns("colEmail").DataPropertyName = "email"
@@ -129,6 +124,11 @@
         dtgvDSNhanVien.Columns("colNgayBatDau").DataPropertyName = "start_date"
         dtgvDSNhanVien.Columns("colSDT").DataPropertyName = "phone"
         dtgvDSNhanVien.Columns("colGioiTinh").DataPropertyName = "gender"
+
+    End Sub
+    Private Sub AddDataToGridView(ds As List(Of Employee))
+        dtgvDSNhanVien.DataSource = Nothing
+        dtgvDSNhanVien.DataSource = ds
     End Sub
 
 End Class

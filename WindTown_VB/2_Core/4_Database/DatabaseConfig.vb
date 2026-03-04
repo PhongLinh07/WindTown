@@ -39,7 +39,7 @@ Public Class DatabaseConfig
 
     ' ===== Database config =====
     Friend NotInheritable Class Database
-        Private Shared ReadOnly Config As String = "Data Source=localhost;Initial Catalog=wind_town;Integrated Security=True;TrustServerCertificate=True"
+        Private Shared ReadOnly Config As String = "Data Source=.;Initial Catalog=wind_town;Integrated Security=True;TrustServerCertificate=True"
         Public Shared Function GetConnection() As IDbConnection
             Return New SqlConnection(Config)
         End Function
