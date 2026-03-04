@@ -57,11 +57,11 @@
     }
 
     Dim btnHopDong As New Button With {
-        .Text = "  Hợp đồng",
+        .Text = "Hợp Đồng",
         .Font = New Font("Microsoft YaHei UI", 12, FontStyle.Bold),
         .TextAlign = ContentAlignment.MiddleLeft,
         .Dock = DockStyle.Top,
-        .Height = 35,
+        .Height = 40,
         .FlatStyle = FlatStyle.Flat,
         .ForeColor = Color.White
     }
@@ -135,7 +135,7 @@
             f.Show()
         End If
 
-        currentForm.Close() ' chỉ ẩn
+        currentForm.Close()
     End Sub
 
     ' Mở Chức vụ

@@ -469,6 +469,7 @@
     <Compile Include="UIUX\frmSystem.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="UIUX\NhanVien.vb" />
     <Compile Include="UIUX\tesst.Designer.vb">
       <DependentUpon>tesst.vb</DependentUpon>
     </Compile>
