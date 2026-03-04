@@ -111,7 +111,7 @@ Partial Class frmLogin
         Me.tbxPassword.Name = "tbxPassword"
         Me.tbxPassword.Size = New System.Drawing.Size(258, 29)
         Me.tbxPassword.TabIndex = 2
-        Me.tbxPassword.Text = "admin"
+        Me.tbxPassword.Text = "123"
         Me.tbxPassword.UseSystemPasswordChar = True
         '
         'Label3
