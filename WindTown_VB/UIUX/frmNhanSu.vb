@@ -116,14 +116,14 @@
 
         dtgvDSNhanVien.AutoGenerateColumns = False
 
-        dtgvDSNhanVien.Columns("colTenNV").DataPropertyName = "name"
-        dtgvDSNhanVien.Columns("colMaNV").DataPropertyName = "code"
-        dtgvDSNhanVien.Columns("colEmail").DataPropertyName = "email"
-        dtgvDSNhanVien.Columns("colTrangThai").DataPropertyName = "status"
-        dtgvDSNhanVien.Columns("colBoPhan").DataPropertyName = "department_id"
-        dtgvDSNhanVien.Columns("colNgayBatDau").DataPropertyName = "start_date"
-        dtgvDSNhanVien.Columns("colSDT").DataPropertyName = "phone"
-        dtgvDSNhanVien.Columns("colGioiTinh").DataPropertyName = "gender"
+        '   dtgvDSNhanVien.Columns("colTenNV").DataPropertyName = "name"
+        '   dtgvDSNhanVien.Columns("colMaNV").DataPropertyName = "code"
+        '   dtgvDSNhanVien.Columns("colEmail").DataPropertyName = "email"
+        '   dtgvDSNhanVien.Columns("colTrangThai").DataPropertyName = "status"
+        '   dtgvDSNhanVien.Columns("colBoPhan").DataPropertyName = "department_id"
+        '   dtgvDSNhanVien.Columns("colNgayBatDau").DataPropertyName = "start_date"
+        '   dtgvDSNhanVien.Columns("colSDT").DataPropertyName = "phone"
+        '   dtgvDSNhanVien.Columns("colGioiTinh").DataPropertyName = "gender"
 
     End Sub
     Private Sub AddDataToGridView(ds As List(Of Employee))

@@ -105,7 +105,7 @@
             f.Show()
         End If
 
-        currentForm.Hide() ' chỉ ẩn, không đóng
+        currentForm.Close() ' chỉ ẩn, không đóng
     End Sub
 
     ' Toggle panel QLNS
@@ -135,7 +135,7 @@
             f.Show()
         End If
 
-        currentForm.Hide() ' chỉ ẩn
+        currentForm.Close() ' chỉ ẩn
     End Sub
 
     ' Mở Chức vụ
@@ -154,7 +154,7 @@
             f.Show()
         End If
 
-        currentForm.Hide() ' chỉ ẩn
+        currentForm.Close() ' chỉ ẩn
     End Sub
 
     ' Mở Hợp đồng
@@ -169,6 +169,6 @@
             f.BringToFront()
             f.Show()
         End If
-        currentForm.Hide() ' chỉ ẩn
+        currentForm.Close() ' chỉ ẩn
     End Sub
 End Class
