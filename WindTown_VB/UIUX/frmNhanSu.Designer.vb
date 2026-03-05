@@ -31,7 +31,6 @@ Partial Class frmNhanSu
         Me.btnThemBoPhan = New System.Windows.Forms.Button()
         Me.txtTenCongTy = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.sbmNhanSu = New WindTown_VB.SidebarMenu()
         Me.tvBoPhan = New System.Windows.Forms.TreeView()
         Me.pnlHeader = New System.Windows.Forms.Panel()
         Me.btnMoiNV = New System.Windows.Forms.Button()
@@ -44,6 +43,7 @@ Partial Class frmNhanSu
         Me.cbbxTrangThai = New System.Windows.Forms.ComboBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.dtgvDSNhanVien = New System.Windows.Forms.DataGridView()
+        Me.sbmNhanSu = New WindTown_VB.SidebarMenu()
         Me.tlpNhanSu.SuspendLayout()
         Me.pnlBoPhan.SuspendLayout()
         Me.pnlHeader.SuspendLayout()
@@ -162,16 +162,6 @@ Partial Class frmNhanSu
         Me.Label2.Size = New System.Drawing.Size(95, 27)
         Me.Label2.TabIndex = 1
         Me.Label2.Text = "Bộ phận"
-        '
-        'sbmNhanSu
-        '
-        Me.sbmNhanSu.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.sbmNhanSu.Location = New System.Drawing.Point(4, 4)
-        Me.sbmNhanSu.Margin = New System.Windows.Forms.Padding(4)
-        Me.sbmNhanSu.Name = "sbmNhanSu"
-        Me.tlpNhanSu.SetRowSpan(Me.sbmNhanSu, 3)
-        Me.sbmNhanSu.Size = New System.Drawing.Size(212, 645)
-        Me.sbmNhanSu.TabIndex = 0
         '
         'tvBoPhan
         '
@@ -323,6 +313,16 @@ Partial Class frmNhanSu
         Me.dtgvDSNhanVien.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect
         Me.dtgvDSNhanVien.Size = New System.Drawing.Size(626, 447)
         Me.dtgvDSNhanVien.TabIndex = 4
+        '
+        'sbmNhanSu
+        '
+        Me.sbmNhanSu.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.sbmNhanSu.Location = New System.Drawing.Point(4, 4)
+        Me.sbmNhanSu.Margin = New System.Windows.Forms.Padding(4)
+        Me.sbmNhanSu.Name = "sbmNhanSu"
+        Me.tlpNhanSu.SetRowSpan(Me.sbmNhanSu, 3)
+        Me.sbmNhanSu.Size = New System.Drawing.Size(212, 645)
+        Me.sbmNhanSu.TabIndex = 0
         '
         'frmNhanSu
         '
