@@ -55,4 +55,7 @@
         AdjustColumnWidth()
     End Sub
 
+    Private Sub SidebarMenu1_Load(sender As Object, e As EventArgs) Handles SidebarMenu1.Load
+
+    End Sub
 End Class

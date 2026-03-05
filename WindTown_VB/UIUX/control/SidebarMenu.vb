@@ -66,6 +66,16 @@
         .ForeColor = Color.White
     }
 
+    Dim btnLuong As New Button With {
+        .Text = "Lương",
+        .Font = New Font("Microsoft YaHei UI", 12, FontStyle.Bold),
+        .TextAlign = ContentAlignment.MiddleLeft,
+        .Dock = DockStyle.Top,
+        .Height = 40,
+        .FlatStyle = FlatStyle.Flat,
+        .ForeColor = Color.White
+    }
+
     Public Sub New()
         InitializeComponent()
 
@@ -74,6 +84,7 @@
         pnlQLNS.Controls.Add(btnChucVu)
 
         ' Thêm các nút vào sidebar
+        pnl.Controls.Add(btnLuong)
         pnl.Controls.Add(btnHopDong)
         pnl.Controls.Add(pnlQLNS)
         pnl.Controls.Add(btnQLNS)
@@ -164,6 +175,21 @@
         Dim f = Application.OpenForms.OfType(Of frmHopDong)().FirstOrDefault()
         If f Is Nothing Then
             f = New frmHopDong()
+            f.Show()
+        Else
+            f.BringToFront()
+            f.Show()
+        End If
+        currentForm.Close() ' chỉ ẩn
+    End Sub
+
+    ' Mở lương 
+    Private Sub btnLuong_Click(sender As Object, e As EventArgs)
+        Dim currentForm As Form = Me.FindForm()
+        If TypeOf currentForm Is frmLuong Then Return
+        Dim f = Application.OpenForms.OfType(Of frmLuong)().FirstOrDefault()
+        If f Is Nothing Then
+            f = New frmLuong()
             f.Show()
         Else
             f.BringToFront()

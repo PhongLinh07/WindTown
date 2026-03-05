@@ -35,14 +35,15 @@ Partial Class frmDashboard
         Me.Panel4 = New System.Windows.Forms.Panel()
         Me.txtChuaCheckin = New System.Windows.Forms.Label()
         Me.Label13 = New System.Windows.Forms.Label()
-        Me.Label14 = New System.Windows.Forms.Label()
-        Me.dtpkThongKe = New System.Windows.Forms.DateTimePicker()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.txtDungGio = New System.Windows.Forms.Label()
         Me.Label11 = New System.Windows.Forms.Label()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.Label7 = New System.Windows.Forms.Label()
+        Me.Panel6 = New System.Windows.Forms.Panel()
+        Me.Label14 = New System.Windows.Forms.Label()
+        Me.dtpkThongKe = New System.Windows.Forms.DateTimePicker()
         Me.tlpNhanVien = New System.Windows.Forms.TableLayoutPanel()
         Me.btnMoiNV = New System.Windows.Forms.Button()
         Me.txtSoBoPhan = New System.Windows.Forms.Label()
@@ -62,7 +63,6 @@ Partial Class frmDashboard
         Me.Label10 = New System.Windows.Forms.Label()
         Me.lvTopCheckinSom = New System.Windows.Forms.ListView()
         Me.Label8 = New System.Windows.Forms.Label()
-        Me.Panel6 = New System.Windows.Forms.Panel()
         Me.tlpDasboard.SuspendLayout()
         Me.tlpDashboard.SuspendLayout()
         Me.tlpTopCheckinMuon.SuspendLayout()
@@ -71,10 +71,10 @@ Partial Class frmDashboard
         Me.Panel4.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.Panel3.SuspendLayout()
+        Me.Panel6.SuspendLayout()
         Me.tlpNhanVien.SuspendLayout()
         Me.Panel1.SuspendLayout()
         Me.tlpTopCheckin.SuspendLayout()
-        Me.Panel6.SuspendLayout()
         Me.SuspendLayout()
         '
         'tlpDasboard
@@ -257,27 +257,6 @@ Partial Class frmDashboard
         Me.Label13.TabIndex = 0
         Me.Label13.Text = "Chưa checkin"
         '
-        'Label14
-        '
-        Me.Label14.AutoSize = True
-        Me.Label14.Font = New System.Drawing.Font("Microsoft YaHei UI", 10.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label14.Location = New System.Drawing.Point(10, 9)
-        Me.Label14.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
-        Me.Label14.Name = "Label14"
-        Me.Label14.Size = New System.Drawing.Size(202, 25)
-        Me.Label14.TabIndex = 0
-        Me.Label14.Text = "Thống kê chấm công"
-        Me.Label14.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        '
-        'dtpkThongKe
-        '
-        Me.dtpkThongKe.CalendarFont = New System.Drawing.Font("Arial Narrow", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.dtpkThongKe.Location = New System.Drawing.Point(216, 9)
-        Me.dtpkThongKe.Margin = New System.Windows.Forms.Padding(2, 3, 2, 3)
-        Me.dtpkThongKe.Name = "dtpkThongKe"
-        Me.dtpkThongKe.Size = New System.Drawing.Size(187, 27)
-        Me.dtpkThongKe.TabIndex = 1
-        '
         'Panel2
         '
         Me.Panel2.Controls.Add(Me.Panel3)
@@ -344,6 +323,38 @@ Partial Class frmDashboard
         Me.Label7.Size = New System.Drawing.Size(68, 22)
         Me.Label7.TabIndex = 0
         Me.Label7.Text = "Đúng giờ"
+        '
+        'Panel6
+        '
+        Me.tlpThongKe.SetColumnSpan(Me.Panel6, 3)
+        Me.Panel6.Controls.Add(Me.Label14)
+        Me.Panel6.Controls.Add(Me.dtpkThongKe)
+        Me.Panel6.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Panel6.Location = New System.Drawing.Point(3, 3)
+        Me.Panel6.Name = "Panel6"
+        Me.Panel6.Size = New System.Drawing.Size(407, 45)
+        Me.Panel6.TabIndex = 5
+        '
+        'Label14
+        '
+        Me.Label14.AutoSize = True
+        Me.Label14.Font = New System.Drawing.Font("Microsoft YaHei UI", 10.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label14.Location = New System.Drawing.Point(10, 9)
+        Me.Label14.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label14.Name = "Label14"
+        Me.Label14.Size = New System.Drawing.Size(202, 25)
+        Me.Label14.TabIndex = 0
+        Me.Label14.Text = "Thống kê chấm công"
+        Me.Label14.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'dtpkThongKe
+        '
+        Me.dtpkThongKe.CalendarFont = New System.Drawing.Font("Arial Narrow", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.dtpkThongKe.Location = New System.Drawing.Point(216, 9)
+        Me.dtpkThongKe.Margin = New System.Windows.Forms.Padding(2, 3, 2, 3)
+        Me.dtpkThongKe.Name = "dtpkThongKe"
+        Me.dtpkThongKe.Size = New System.Drawing.Size(187, 27)
+        Me.dtpkThongKe.TabIndex = 1
         '
         'tlpNhanVien
         '
@@ -538,6 +549,8 @@ Partial Class frmDashboard
         '
         'btnSetting
         '
+        Me.btnSetting.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnSetting.Font = New System.Drawing.Font("Microsoft YaHei UI", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnSetting.Location = New System.Drawing.Point(850, 23)
         Me.btnSetting.Margin = New System.Windows.Forms.Padding(2, 3, 2, 3)
@@ -615,17 +628,6 @@ Partial Class frmDashboard
         Me.Label8.Text = "0"
         Me.Label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
-        'Panel6
-        '
-        Me.tlpThongKe.SetColumnSpan(Me.Panel6, 3)
-        Me.Panel6.Controls.Add(Me.Label14)
-        Me.Panel6.Controls.Add(Me.dtpkThongKe)
-        Me.Panel6.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Panel6.Location = New System.Drawing.Point(3, 3)
-        Me.Panel6.Name = "Panel6"
-        Me.Panel6.Size = New System.Drawing.Size(407, 45)
-        Me.Panel6.TabIndex = 5
-        '
         'frmDashboard
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 22.0!)
@@ -650,14 +652,14 @@ Partial Class frmDashboard
         Me.Panel2.PerformLayout()
         Me.Panel3.ResumeLayout(False)
         Me.Panel3.PerformLayout()
+        Me.Panel6.ResumeLayout(False)
+        Me.Panel6.PerformLayout()
         Me.tlpNhanVien.ResumeLayout(False)
         Me.tlpNhanVien.PerformLayout()
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
         Me.tlpTopCheckin.ResumeLayout(False)
         Me.tlpTopCheckin.PerformLayout()
-        Me.Panel6.ResumeLayout(False)
-        Me.Panel6.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
