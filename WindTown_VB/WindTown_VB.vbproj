@@ -434,6 +434,18 @@
     <Compile Include="UIUX\control\SidebarMenu.vb">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="UIUX\control\SidebarMenuV2.Designer.vb">
+      <DependentUpon>SidebarMenuV2.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UIUX\control\SidebarMenuV2.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UIUX\frmChamCong.Designer.vb">
+      <DependentUpon>frmChamCong.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UIUX\frmChamCong.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="UIUX\frmChucVu.Designer.vb">
       <DependentUpon>frmChucVu.vb</DependentUpon>
     </Compile>
@@ -483,8 +495,9 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UIUX\Helpers\ImageExtensions.vb" />
-    <Compile Include="UIUX\models\HopDong.vb" />
-    <Compile Include="UIUX\models\NhanVien.vb" />
+    <Compile Include="UIUX\Modules\HopDong.vb" />
+    <Compile Include="UIUX\Modules\NavigationService.vb" />
+    <Compile Include="UIUX\Modules\NhanVien.vb" />
     <Compile Include="UIUX\tesst.Designer.vb">
       <DependentUpon>tesst.vb</DependentUpon>
     </Compile>
@@ -561,6 +574,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UIUX\control\SidebarMenu.resx">
       <DependentUpon>SidebarMenu.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UIUX\control\SidebarMenuV2.resx">
+      <DependentUpon>SidebarMenuV2.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UIUX\frmChamCong.resx">
+      <DependentUpon>frmChamCong.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UIUX\frmChucVu.resx">
       <DependentUpon>frmChucVu.vb</DependentUpon>
@@ -652,6 +671,8 @@
   <ItemGroup>
     <Content Include="2_Core\Assets\bin.png" />
     <Content Include="2_Core\Assets\compose.png" />
+    <None Include="2_Core\Assets\ErrorImage.png" />
+    <Content Include="2_Core\Assets\LogoHR.png" />
     <Content Include="2_Core\Assets\search.png" />
     <Content Include="2_Core\Assets\word.png" />
   </ItemGroup>
