@@ -639,7 +639,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="1_Documents\db_json.sql" />
-    <Content Include="1_Documents\db_study.sql" />
     <Content Include="2_Core\Assets\search.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
