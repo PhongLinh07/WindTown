@@ -22,6 +22,7 @@ Partial Class frmLogin
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmLogin))
         Me.tlpLogin = New System.Windows.Forms.TableLayoutPanel()
         Me.pnLogin = New System.Windows.Forms.Panel()
         Me.lbQuenMK = New System.Windows.Forms.Label()
@@ -49,8 +50,8 @@ Partial Class frmLogin
         Me.tlpLogin.Name = "tlpLogin"
         Me.tlpLogin.RowCount = 1
         Me.tlpLogin.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.tlpLogin.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 15.0!))
-        Me.tlpLogin.Size = New System.Drawing.Size(1000, 647)
+        Me.tlpLogin.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 673.0!))
+        Me.tlpLogin.Size = New System.Drawing.Size(887, 602)
         Me.tlpLogin.TabIndex = 0
         '
         'pnLogin
@@ -65,9 +66,9 @@ Partial Class frmLogin
         Me.pnLogin.Controls.Add(Me.Label2)
         Me.pnLogin.Controls.Add(Me.Label1)
         Me.pnLogin.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.pnLogin.Location = New System.Drawing.Point(503, 3)
+        Me.pnLogin.Location = New System.Drawing.Point(446, 3)
         Me.pnLogin.Name = "pnLogin"
-        Me.pnLogin.Size = New System.Drawing.Size(494, 641)
+        Me.pnLogin.Size = New System.Drawing.Size(438, 596)
         Me.pnLogin.TabIndex = 1
         '
         'lbQuenMK
@@ -160,16 +161,17 @@ Partial Class frmLogin
         Me.pnLogoApp.Dock = System.Windows.Forms.DockStyle.Fill
         Me.pnLogoApp.Location = New System.Drawing.Point(3, 3)
         Me.pnLogoApp.Name = "pnLogoApp"
-        Me.pnLogoApp.Size = New System.Drawing.Size(494, 641)
+        Me.pnLogoApp.Size = New System.Drawing.Size(437, 596)
         Me.pnLogoApp.TabIndex = 0
         '
         'frmLogin
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(10.0!, 23.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1000, 647)
+        Me.ClientSize = New System.Drawing.Size(887, 602)
         Me.Controls.Add(Me.tlpLogin)
         Me.Font = New System.Drawing.Font("Microsoft YaHei UI", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "frmLogin"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen

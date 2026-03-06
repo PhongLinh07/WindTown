@@ -1,5 +1,6 @@
 ﻿Module NavigationService
     Public MainPanel As Panel
+    Public pnlMain As Form
 
     Public Sub LoadForm(f As Form)
 

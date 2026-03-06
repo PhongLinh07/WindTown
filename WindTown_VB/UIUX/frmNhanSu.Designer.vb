@@ -22,6 +22,7 @@ Partial Class frmNhanSu
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmNhanSu))
         Me.tlpNhanSu = New System.Windows.Forms.TableLayoutPanel()
         Me.pnlBoPhan = New System.Windows.Forms.Panel()
         Me.btnSearch = New System.Windows.Forms.Button()
@@ -43,7 +44,6 @@ Partial Class frmNhanSu
         Me.cbbxTrangThai = New System.Windows.Forms.ComboBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.dtgvDSNhanVien = New System.Windows.Forms.DataGridView()
-        Me.sbmNhanSu = New WindTown_VB.SidebarMenu()
         Me.tlpNhanSu.SuspendLayout()
         Me.pnlBoPhan.SuspendLayout()
         Me.pnlHeader.SuspendLayout()
@@ -53,16 +53,15 @@ Partial Class frmNhanSu
         '
         'tlpNhanSu
         '
-        Me.tlpNhanSu.ColumnCount = 3
-        Me.tlpNhanSu.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 220.0!))
+        Me.tlpNhanSu.ColumnCount = 2
         Me.tlpNhanSu.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 320.0!))
         Me.tlpNhanSu.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle())
-        Me.tlpNhanSu.Controls.Add(Me.pnlBoPhan, 1, 1)
-        Me.tlpNhanSu.Controls.Add(Me.sbmNhanSu, 0, 0)
-        Me.tlpNhanSu.Controls.Add(Me.tvBoPhan, 1, 2)
-        Me.tlpNhanSu.Controls.Add(Me.pnlHeader, 1, 0)
-        Me.tlpNhanSu.Controls.Add(Me.Panel2, 2, 1)
-        Me.tlpNhanSu.Controls.Add(Me.dtgvDSNhanVien, 2, 2)
+        Me.tlpNhanSu.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
+        Me.tlpNhanSu.Controls.Add(Me.pnlBoPhan, 0, 1)
+        Me.tlpNhanSu.Controls.Add(Me.tvBoPhan, 0, 2)
+        Me.tlpNhanSu.Controls.Add(Me.pnlHeader, 0, 0)
+        Me.tlpNhanSu.Controls.Add(Me.Panel2, 1, 1)
+        Me.tlpNhanSu.Controls.Add(Me.dtgvDSNhanVien, 1, 2)
         Me.tlpNhanSu.Dock = System.Windows.Forms.DockStyle.Fill
         Me.tlpNhanSu.Location = New System.Drawing.Point(0, 0)
         Me.tlpNhanSu.Name = "tlpNhanSu"
@@ -70,7 +69,7 @@ Partial Class frmNhanSu
         Me.tlpNhanSu.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 80.0!))
         Me.tlpNhanSu.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 120.0!))
         Me.tlpNhanSu.RowStyles.Add(New System.Windows.Forms.RowStyle())
-        Me.tlpNhanSu.Size = New System.Drawing.Size(1172, 643)
+        Me.tlpNhanSu.Size = New System.Drawing.Size(1262, 673)
         Me.tlpNhanSu.TabIndex = 0
         '
         'pnlBoPhan
@@ -84,7 +83,7 @@ Partial Class frmNhanSu
         Me.pnlBoPhan.Controls.Add(Me.txtTenCongTy)
         Me.pnlBoPhan.Controls.Add(Me.Label2)
         Me.pnlBoPhan.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.pnlBoPhan.Location = New System.Drawing.Point(223, 83)
+        Me.pnlBoPhan.Location = New System.Drawing.Point(3, 83)
         Me.pnlBoPhan.Name = "pnlBoPhan"
         Me.pnlBoPhan.Size = New System.Drawing.Size(314, 114)
         Me.pnlBoPhan.TabIndex = 2
@@ -166,9 +165,9 @@ Partial Class frmNhanSu
         'tvBoPhan
         '
         Me.tvBoPhan.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.tvBoPhan.Location = New System.Drawing.Point(223, 203)
+        Me.tvBoPhan.Location = New System.Drawing.Point(3, 203)
         Me.tvBoPhan.Name = "tvBoPhan"
-        Me.tvBoPhan.Size = New System.Drawing.Size(314, 447)
+        Me.tvBoPhan.Size = New System.Drawing.Size(314, 467)
         Me.tvBoPhan.TabIndex = 1
         '
         'pnlHeader
@@ -178,9 +177,9 @@ Partial Class frmNhanSu
         Me.pnlHeader.Controls.Add(Me.btnMoiNV)
         Me.pnlHeader.Controls.Add(Me.Label1)
         Me.pnlHeader.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.pnlHeader.Location = New System.Drawing.Point(223, 3)
+        Me.pnlHeader.Location = New System.Drawing.Point(3, 3)
         Me.pnlHeader.Name = "pnlHeader"
-        Me.pnlHeader.Size = New System.Drawing.Size(946, 74)
+        Me.pnlHeader.Size = New System.Drawing.Size(1256, 74)
         Me.pnlHeader.TabIndex = 1
         '
         'btnMoiNV
@@ -192,7 +191,7 @@ Partial Class frmNhanSu
         Me.btnMoiNV.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnMoiNV.Font = New System.Drawing.Font("Microsoft YaHei UI", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnMoiNV.ForeColor = System.Drawing.Color.White
-        Me.btnMoiNV.Location = New System.Drawing.Point(752, 26)
+        Me.btnMoiNV.Location = New System.Drawing.Point(1062, 26)
         Me.btnMoiNV.Name = "btnMoiNV"
         Me.btnMoiNV.Size = New System.Drawing.Size(177, 31)
         Me.btnMoiNV.TabIndex = 1
@@ -219,9 +218,9 @@ Partial Class frmNhanSu
         Me.Panel2.Controls.Add(Me.cbbxTrangThai)
         Me.Panel2.Controls.Add(Me.Label3)
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Panel2.Location = New System.Drawing.Point(543, 83)
+        Me.Panel2.Location = New System.Drawing.Point(323, 83)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(626, 114)
+        Me.Panel2.Size = New System.Drawing.Size(936, 114)
         Me.Panel2.TabIndex = 3
         '
         'btnXuLyNhanh
@@ -233,7 +232,7 @@ Partial Class frmNhanSu
         Me.btnXuLyNhanh.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnXuLyNhanh.Font = New System.Drawing.Font("Microsoft YaHei UI", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnXuLyNhanh.ForeColor = System.Drawing.Color.White
-        Me.btnXuLyNhanh.Location = New System.Drawing.Point(298, 55)
+        Me.btnXuLyNhanh.Location = New System.Drawing.Point(608, 55)
         Me.btnXuLyNhanh.Name = "btnXuLyNhanh"
         Me.btnXuLyNhanh.Size = New System.Drawing.Size(128, 31)
         Me.btnXuLyNhanh.TabIndex = 8
@@ -249,7 +248,7 @@ Partial Class frmNhanSu
         Me.btnThemNV.FlatAppearance.BorderSize = 0
         Me.btnThemNV.Font = New System.Drawing.Font("Microsoft YaHei UI", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnThemNV.ForeColor = System.Drawing.Color.White
-        Me.btnThemNV.Location = New System.Drawing.Point(467, 17)
+        Me.btnThemNV.Location = New System.Drawing.Point(777, 17)
         Me.btnThemNV.Name = "btnThemNV"
         Me.btnThemNV.Size = New System.Drawing.Size(156, 32)
         Me.btnThemNV.TabIndex = 7
@@ -264,7 +263,7 @@ Partial Class frmNhanSu
         Me.btnNhapXuatNV.FlatAppearance.BorderSize = 0
         Me.btnNhapXuatNV.Font = New System.Drawing.Font("Microsoft YaHei UI", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnNhapXuatNV.ForeColor = System.Drawing.SystemColors.WindowFrame
-        Me.btnNhapXuatNV.Location = New System.Drawing.Point(432, 55)
+        Me.btnNhapXuatNV.Location = New System.Drawing.Point(742, 55)
         Me.btnNhapXuatNV.Name = "btnNhapXuatNV"
         Me.btnNhapXuatNV.Size = New System.Drawing.Size(194, 32)
         Me.btnNhapXuatNV.TabIndex = 6
@@ -305,33 +304,24 @@ Partial Class frmNhanSu
         '
         Me.dtgvDSNhanVien.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dtgvDSNhanVien.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.dtgvDSNhanVien.Location = New System.Drawing.Point(543, 203)
+        Me.dtgvDSNhanVien.Location = New System.Drawing.Point(323, 203)
         Me.dtgvDSNhanVien.Name = "dtgvDSNhanVien"
         Me.dtgvDSNhanVien.RowHeadersVisible = False
         Me.dtgvDSNhanVien.RowHeadersWidth = 51
         Me.dtgvDSNhanVien.RowTemplate.Height = 24
         Me.dtgvDSNhanVien.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect
-        Me.dtgvDSNhanVien.Size = New System.Drawing.Size(626, 447)
+        Me.dtgvDSNhanVien.Size = New System.Drawing.Size(936, 467)
         Me.dtgvDSNhanVien.TabIndex = 4
-        '
-        'sbmNhanSu
-        '
-        Me.sbmNhanSu.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.sbmNhanSu.Location = New System.Drawing.Point(4, 4)
-        Me.sbmNhanSu.Margin = New System.Windows.Forms.Padding(4)
-        Me.sbmNhanSu.Name = "sbmNhanSu"
-        Me.tlpNhanSu.SetRowSpan(Me.sbmNhanSu, 3)
-        Me.sbmNhanSu.Size = New System.Drawing.Size(212, 645)
-        Me.sbmNhanSu.TabIndex = 0
         '
         'frmNhanSu
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(10.0!, 23.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ButtonFace
-        Me.ClientSize = New System.Drawing.Size(1172, 643)
+        Me.ClientSize = New System.Drawing.Size(1262, 673)
         Me.Controls.Add(Me.tlpNhanSu)
         Me.Font = New System.Drawing.Font("Microsoft YaHei UI", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.Name = "frmNhanSu"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
@@ -349,7 +339,6 @@ Partial Class frmNhanSu
     End Sub
 
     Friend WithEvents tlpNhanSu As TableLayoutPanel
-    Friend WithEvents sbmNhanSu As SidebarMenu
     Friend WithEvents pnlHeader As Panel
     Friend WithEvents btnMoiNV As Button
     Friend WithEvents Label1 As Label
