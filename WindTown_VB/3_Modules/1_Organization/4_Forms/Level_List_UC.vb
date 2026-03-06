@@ -5,7 +5,7 @@ Public Class Level_List_UC
     Inherits BaseList_UC
 
     Public Sub New()
-        MyBase.New(New BaseService(Of Level), "Level")
+        MyBase.New(New BaseService(Of Level), "Trình độ")
         InitializeComponent()
         Init(GetType(Level))
     End Sub

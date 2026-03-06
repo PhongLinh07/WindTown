@@ -2,7 +2,7 @@ Public Class Job_List_UC
     Inherits BaseList_UC
 
     Public Sub New()
-        MyBase.New(New JobService(), "Job")
+        MyBase.New(New JobService(), "Công Việc")
         InitializeComponent()
         Init(GetType(Job))
     End Sub
