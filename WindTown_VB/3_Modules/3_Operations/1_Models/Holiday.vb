@@ -16,10 +16,6 @@ Public Class Holiday
         note = ""
         status = 3
     End Sub
-#Region "Join"
-    <Write(False)> <Browsable(False)>
-    Public Property Employee = New Employee()
-#End Region
 
 #Region "Field Json"
     <Write(False)> <DisplayName("Mã ngày lễ")> <Display(Order:=2)>
@@ -40,7 +36,7 @@ Public Class Holiday
             SetV("name", value)
         End Set
     End Property
-    <Write(False)> <DisplayName("Thời gian")> <DisplayFormat(DataFormatString:="{0:dd-MM-yyyy}")> <Display(Order:=5)>
+    <Write(False)> <DisplayName("Thời gian")> <DisplayFormat(DataFormatString:="{0:dd-MM-yyyy}")> <Display(Order:=2)>
     Public Property of_date As DateTime? ' Thêm dấu ? để cho phép Null
         Get
             Return GetV(Of DateTime?)("of_date") ' Trả về giá trị mặc định nếu Null
@@ -99,12 +95,21 @@ Public Class Holiday
 #End Region
 
 #Region "Field Display"
+
     <Write(False)> <DisplayName("Trạng thái")> <Display(Order:=2)>
     Public ReadOnly Property status_UI As String
         Get
-            Return If(status = 1, "Đang hoạt động", "Ngừng hoạt động")
+            Return If(Dict_Status.ContainsKey(Me.status), Dict_Status(Me.status), "---")
         End Get
     End Property
-
 #End Region
+
+
+#Region "Dictionary Display" 'chứa các dictionary dùng chung trong toàn bộ module Operations, tránh việc phải tạo nhiều dictionary giống nhau ở nhiều form khác
+    Public Shared ReadOnly Dict_Status As New Dictionary(Of Integer, String) From {
+        {0, "Ngừng hoạt động"},
+        {1, "Đang hoạt động"}
+    }
+#End Region
+
 End Class

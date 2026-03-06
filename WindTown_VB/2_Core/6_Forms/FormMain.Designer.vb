@@ -27,7 +27,6 @@ Partial Class FormMain
         Me.ContextMenuStrip2 = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.ContextMenuStrip3 = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.pnl_main = New System.Windows.Forms.Panel()
-        Me.ColorDialog1 = New System.Windows.Forms.ColorDialog()
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
         Me.ToolStripMenuItem2 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
@@ -48,6 +47,8 @@ Partial Class FormMain
         Me.menu_account = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
         Me._title = New System.Windows.Forms.ToolStripLabel()
+        Me.ColorDialog1 = New System.Windows.Forms.ColorDialog()
+        Me.menu_holiday = New System.Windows.Forms.ToolStripMenuItem()
         Me.pnl_main.SuspendLayout()
         Me.ToolStrip1.SuspendLayout()
         Me.SuspendLayout()
@@ -109,19 +110,19 @@ Partial Class FormMain
         '
         Me.menu_department.Image = Global.WindTown_VB.My.Resources.Resources.home
         Me.menu_department.Name = "menu_department"
-        Me.menu_department.Size = New System.Drawing.Size(180, 24)
+        Me.menu_department.Size = New System.Drawing.Size(145, 24)
         Me.menu_department.Text = "Phòng ban"
         '
         'menu_job
         '
         Me.menu_job.Name = "menu_job"
-        Me.menu_job.Size = New System.Drawing.Size(180, 24)
+        Me.menu_job.Size = New System.Drawing.Size(145, 24)
         Me.menu_job.Text = "Công việc"
         '
         'menu_level
         '
         Me.menu_level.Name = "menu_level"
-        Me.menu_level.Size = New System.Drawing.Size(180, 24)
+        Me.menu_level.Size = New System.Drawing.Size(145, 24)
         Me.menu_level.Text = "Trình độ"
         '
         'DvsdvToolStripMenuItem
@@ -134,24 +135,24 @@ Partial Class FormMain
         'menu_empolyee
         '
         Me.menu_empolyee.Name = "menu_empolyee"
-        Me.menu_empolyee.Size = New System.Drawing.Size(180, 24)
+        Me.menu_empolyee.Size = New System.Drawing.Size(140, 24)
         Me.menu_empolyee.Text = "Nhân viên"
         '
         'menu_contract
         '
         Me.menu_contract.Name = "menu_contract"
-        Me.menu_contract.Size = New System.Drawing.Size(180, 24)
+        Me.menu_contract.Size = New System.Drawing.Size(140, 24)
         Me.menu_contract.Text = "Hợp đồng"
         '
         'menu_position
         '
         Me.menu_position.Name = "menu_position"
-        Me.menu_position.Size = New System.Drawing.Size(180, 24)
+        Me.menu_position.Size = New System.Drawing.Size(140, 24)
         Me.menu_position.Text = "Chức vụ"
         '
         'SdvfToolStripMenuItem
         '
-        Me.SdvfToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.menu_project, Me.menu_attendance})
+        Me.SdvfToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.menu_project, Me.menu_attendance, Me.menu_holiday})
         Me.SdvfToolStripMenuItem.Name = "SdvfToolStripMenuItem"
         Me.SdvfToolStripMenuItem.Size = New System.Drawing.Size(80, 29)
         Me.SdvfToolStripMenuItem.Text = "Vận hành"
@@ -159,13 +160,13 @@ Partial Class FormMain
         'menu_project
         '
         Me.menu_project.Name = "menu_project"
-        Me.menu_project.Size = New System.Drawing.Size(180, 24)
+        Me.menu_project.Size = New System.Drawing.Size(200, 24)
         Me.menu_project.Text = "Dự án"
         '
         'menu_attendance
         '
         Me.menu_attendance.Name = "menu_attendance"
-        Me.menu_attendance.Size = New System.Drawing.Size(180, 24)
+        Me.menu_attendance.Size = New System.Drawing.Size(200, 24)
         Me.menu_attendance.Text = "Chấm công"
         '
         'ChínhSáchToolStripMenuItem
@@ -205,6 +206,12 @@ Partial Class FormMain
         Me._title.Name = "_title"
         Me._title.Size = New System.Drawing.Size(38, 26)
         Me._title.Text = "Title"
+        '
+        'menu_holiday
+        '
+        Me.menu_holiday.Name = "menu_holiday"
+        Me.menu_holiday.Size = New System.Drawing.Size(200, 24)
+        Me.menu_holiday.Text = "Hệ số lương ngày lễ"
         '
         'FormMain
         '
@@ -250,4 +257,5 @@ Partial Class FormMain
     Friend WithEvents menu_account As ToolStripMenuItem
     Friend WithEvents ToolStripSeparator2 As ToolStripSeparator
     Friend WithEvents _title As ToolStripLabel
+    Friend WithEvents menu_holiday As ToolStripMenuItem
 End Class
