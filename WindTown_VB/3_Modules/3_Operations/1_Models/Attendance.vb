@@ -30,7 +30,7 @@ Public Class Attendance
         End Get
     End Property
 
-    <Write(False)> <DisplayName("Code")> <Display(Order:=2)>
+    <Write(False)> <DisplayName("Mã chấm công")> <Display(Order:=1)>
     Public Property code As String
         Get
             Return GetV(Of String)("code")
@@ -39,7 +39,7 @@ Public Class Attendance
             SetV("code", value)
         End Set
     End Property
-    <Write(False)> <DisplayName("Date")> <DisplayFormat(DataFormatString:="{0:dd-MM-yyyy}")> <Display(Order:=5)>
+    <Write(False)> <DisplayName("Ngày chấm công")> <DisplayFormat(DataFormatString:="{0:dd-MM-yyyy}")> <Display(Order:=3)>
     Public Property of_date As DateTime? ' Thêm dấu ? để cho phép Null
         Get
             Return GetV(Of DateTime?)("of_date") ' Trả về giá trị mặc định nếu Null
@@ -49,7 +49,7 @@ Public Class Attendance
             SetV("of_date", value)
         End Set
     End Property
-    <Write(False)> <DisplayName("Office Hours")> <Display(Order:=2)>
+    <Write(False)> <DisplayName("số Giờ hành chính")> <Display(Order:=5)>
     Public Property office_hours As Decimal
         Get
             Return GetV(Of Decimal)("office_hours")
@@ -58,7 +58,7 @@ Public Class Attendance
             SetV("office_hours", value)
         End Set
     End Property
-    <Write(False)> <DisplayName("Overtime Hours")> <Display(Order:=2)>
+    <Write(False)> <DisplayName("số Giờ tăng ca")> <Display(Order:=6)>
     Public Property overtime_hours As Decimal
         Get
             Return GetV(Of Decimal)("overtime_hours")
@@ -67,7 +67,7 @@ Public Class Attendance
             SetV("overtime_hours", value)
         End Set
     End Property
-    <Write(False)> <DisplayName("Late Hours")> <Display(Order:=2)>
+    <Write(False)> <DisplayName("Số giờ đi muộn")> <Display(Order:=7)>
     Public Property late_hours As Decimal
         Get
             Return GetV(Of Decimal)("late_hours")
@@ -76,7 +76,7 @@ Public Class Attendance
             SetV("late_hours", value)
         End Set
     End Property
-    <Write(False)> <DisplayName("Early Hours")> <Display(Order:=2)>
+    <Write(False)> <DisplayName("Số giờ về sớm")> <Display(Order:=8)>
     Public Property early_hours As Decimal
         Get
             Return GetV(Of Decimal)("early_hours")
@@ -94,16 +94,6 @@ Public Class Attendance
             SetV("shift", value)
         End Set
     End Property
-    <Write(False)> <DisplayName("Note")> <Display(Order:=7)>
-    Public Property note As String
-        Get
-            Return GetV(Of String)("note")
-        End Get
-        Set(value As String)
-            SetV("note", value)
-        End Set
-    End Property
-
     <Write(False)> <Browsable(False)>
     Public Property status As Integer
         Get
@@ -113,26 +103,33 @@ Public Class Attendance
             SetV("status", value)
         End Set
     End Property
-
-
+    <Write(False)> <DisplayName("Ghi chú")> <Display(Order:=10)>
+    Public Property note As String
+        Get
+            Return GetV(Of String)("note")
+        End Get
+        Set(value As String)
+            SetV("note", value)
+        End Set
+    End Property
 #End Region
 
 #Region "Field Display"
 
-    <Write(False)> <DisplayName("Shift")> <Display(Order:=4)>
+    <Write(False)> <DisplayName("Ca làm")> <Display(Order:=4)>
     Public ReadOnly Property shift_UI As String
         Get
             Return If(Dict_Shift.ContainsKey(Me.shift), Dict_Shift(Me.shift), "---")
         End Get
     End Property
-    <Write(False)> <DisplayName("Status")> <Display(Order:=8)>
+    <Write(False)> <DisplayName("Trạng thái")> <Display(Order:=9)>
     Public ReadOnly Property status_UI As String
         Get
-            Return If(status = 1, "Active", "Inactive")
+            Return If(status = 1, "Đang hoạt động", "Ngừng hoạt động")
         End Get
     End Property
 
-    <Write(False)> <DisplayName("Employee")> <Display(Order:=1)>
+    <Write(False)> <DisplayName("Nhân viên")> <Display(Order:=2)>
     Public ReadOnly Property Employee_UI As String
         Get
             Return If(Employee?.code, "---")
@@ -143,9 +140,15 @@ Public Class Attendance
 
 #Region "Dictionary Display" 'chứa các dictionary dùng chung trong toàn bộ module Operations, tránh việc phải tạo nhiều dictionary giống nhau ở nhiều form khác
     Public Shared ReadOnly Dict_Shift As New Dictionary(Of Integer, String) From {
-        {0, "NIGHT"},
-        {1, "DAY"}
+        {0, "Ngày"},
+        {1, "Đêm"}
     }
 
 #End Region
 End Class
+
+
+
+
+
+

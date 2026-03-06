@@ -19,7 +19,7 @@ Public Class Contract
         End Get
     End Property
 
-    <Write(False)> <DisplayName("Code")> <Display(Order:=1)>
+    <Write(False)> <DisplayName("Mã hợp đồng")> <Display(Order:=1)>
     Public Property code As String
         Get
             Return GetV(Of String)("code")
@@ -28,7 +28,7 @@ Public Class Contract
             SetV("code", value)
         End Set
     End Property
-    <Write(False)> <DisplayName("Start Date")> <DisplayFormat(DataFormatString:="{0:dd-MM-yyyy}")> <Display(Order:=3)>
+    <Write(False)> <DisplayName("Ngày bắt đầu")> <DisplayFormat(DataFormatString:="{0:dd-MM-yyyy}")> <Display(Order:=3)>
     Public Property start_date As DateTime? ' Thêm dấu ? để cho phép Null
         Get
             Return GetV(Of DateTime?)("start_date") ' Trả về giá trị mặc định nếu Null
@@ -38,7 +38,7 @@ Public Class Contract
             SetV("start_date", value)
         End Set
     End Property
-    <Write(False)> <DisplayName("End Date")> <DisplayFormat(DataFormatString:="{0:dd-MM-yyyy}")> <Display(Order:=4)>
+    <Write(False)> <DisplayName("Ngày kết thúc")> <DisplayFormat(DataFormatString:="{0:dd-MM-yyyy}")> <Display(Order:=4)>
     Public Property end_date As DateTime? ' Thêm dấu ? để cho phép Null
         Get
             Return GetV(Of DateTime?)("end_date")
@@ -48,7 +48,7 @@ Public Class Contract
             SetV("end_date", value)
         End Set
     End Property
-    <Write(False)> <DisplayName("Base Salary")> <DisplayFormat(DataFormatString:="{0:N0}")> <Display(Order:=5)>
+    <Write(False)> <DisplayName("Lương cơ bản")> <DisplayFormat(DataFormatString:="{0:N0}")> <Display(Order:=5)>
     Public Property base_salary As Decimal? ' Thêm dấu ? để cho phép Null
         Get
             Return GetV(Of Decimal?)("base_salary")
@@ -58,16 +58,6 @@ Public Class Contract
             SetV("base_salary", value)
         End Set
     End Property
-    <Write(False)> <DisplayName("Note")> <Display(Order:=6)>
-    Public Property note As String
-        Get
-            Return GetV(Of String)("note")
-        End Get
-        Set(value As String)
-            SetV("note", value)
-        End Set
-    End Property
-
     <Write(False)> <Browsable(False)>
     Public Property status As Integer
         Get
@@ -77,19 +67,28 @@ Public Class Contract
             SetV("status", value)
         End Set
     End Property
+    <Write(False)> <DisplayName("Ghi chú")> <Display(Order:=7)>
+    Public Property note As String
+        Get
+            Return GetV(Of String)("note")
+        End Get
+        Set(value As String)
+            SetV("note", value)
+        End Set
+    End Property
 
 #End Region
 
 #Region "Field Display"
 
-    <Write(False)> <DisplayName("Status")> <Display(Order:=7)>
+    <Write(False)> <DisplayName("Trạng thái")> <Display(Order:=6)>
     Public ReadOnly Property status_UI As String
         Get
-            Return If(status = 1, "Active", "Inactive")
+            Return If(status = 1, "Đang hoạt động", "Ngừng hoạt động")
         End Get
     End Property
 
-    <Write(False)> <DisplayName("Employee")> <Display(Order:=2)>
+    <Write(False)> <DisplayName("Nhân viên")> <Display(Order:=2)>
     Public ReadOnly Property Employee_UI As String
         Get
             Return If(Employee?.code, "---")

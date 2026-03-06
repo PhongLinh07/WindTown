@@ -17,7 +17,6 @@ Public Class BaseList_UC
         Me.Text = "Quản lý " & title
         _service = service
 
-
     End Sub
 
     Protected Sub Init(modelType As Type)

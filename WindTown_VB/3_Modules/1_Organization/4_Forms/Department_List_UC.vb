@@ -5,7 +5,7 @@ Public Class Department_List_UC
     Inherits BaseList_UC
 
     Public Sub New()
-        MyBase.New(New BaseService(Of Department), "Department")
+        MyBase.New(New BaseService(Of Department), "Phòng ban")
         InitializeComponent()
         Init(GetType(Department))
     End Sub

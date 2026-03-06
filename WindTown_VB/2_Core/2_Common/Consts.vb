@@ -7,8 +7,9 @@ Public Enum DataIntent
     SoftDeleteMany ' Xóa tạm nhiều bản ghi
 
 #Region "'Employee Custom Intent"
-    GetEmployeesWithoutContract
-    GetEmployeesWithoutAccount
+    GetEmployeesWithoutContract ' Những nhân viên đang ko có hợp đồng nào Active
+    GetEmployeesWithoutAccount  ' Những nhân viên đang ko có tài khoản nào Active
+    GetContractWithoutPosition  ' Những Hợp đồng Active đang ko có vị trí nào Active 
 #End Region
 
 

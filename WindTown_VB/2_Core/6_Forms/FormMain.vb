@@ -17,6 +17,7 @@ Partial Public Class FormMain
         End If
 
         currentForm = childForm
+        _title.Text = childForm.Text
         childForm.Dock = DockStyle.Fill
         pnl_main.Controls.Add(childForm)
         pnl_main.Tag = childForm
@@ -24,11 +25,6 @@ Partial Public Class FormMain
         childForm.Show()
     End Sub
 
-
-    Private Sub menuItem_Product_Click(sender As Object, e As EventArgs)
-        If currentForm IsNot Nothing AndAlso currentForm.Name = "ProductsForm" Then Return
-        ' //' OpenChildForm(New ProductsForm())
-    End Sub
 
 
     Private Sub menu_department_Click(sender As Object, e As EventArgs) Handles menu_department.Click
@@ -46,18 +42,18 @@ Partial Public Class FormMain
         OpenChildForm(frm)
     End Sub
 
-    Private Sub menu_employee_Click(sender As Object, e As EventArgs) Handles menu_employee.Click
+    Private Sub menu_empolyee_Click(sender As Object, e As EventArgs) Handles menu_empolyee.Click
         Dim frm As New Employee_List_UC()
-        OpenChildForm(frm)
-    End Sub
-
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        Dim frm As New Account_List_UC()
         OpenChildForm(frm)
     End Sub
 
     Private Sub menu_contract_Click(sender As Object, e As EventArgs) Handles menu_contract.Click
         Dim frm As New Contract_List_UC()
+        OpenChildForm(frm)
+    End Sub
+
+    Private Sub menu_position_Click(sender As Object, e As EventArgs) Handles menu_position.Click
+        Dim frm As New Position_List_UC()
         OpenChildForm(frm)
     End Sub
 
@@ -71,13 +67,8 @@ Partial Public Class FormMain
         OpenChildForm(frm)
     End Sub
 
-    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
-        Dim frm As New Position_List_UC()
-        OpenChildForm(frm)
-    End Sub
-
-    Private Sub menu_org_Click(sender As Object, e As EventArgs) Handles menu_org.Click
-        Dim frm As New Organization_UC()
+    Private Sub menu_account_Click(sender As Object, e As EventArgs) Handles menu_account.Click
+        Dim frm As New Account_List_UC()
         OpenChildForm(frm)
     End Sub
 End Class

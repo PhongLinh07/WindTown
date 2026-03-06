@@ -21,7 +21,7 @@ Public Class Job
 #End Region
 
 #Region "Field Json"
-    <Write(False)> <DisplayName("Code")> <Display(Order:=1)>
+    <Write(False)> <DisplayName("Mã công việc")> <Display(Order:=1)>
     Public Property code As String
         Get
             Return GetV(Of String)("code")
@@ -31,23 +31,13 @@ Public Class Job
         End Set
     End Property
 
-    <Write(False)> <DisplayName("Name")> <Display(Order:=2)>
+    <Write(False)> <DisplayName("Tên công việc")> <Display(Order:=2)>
     Public Property name As String
         Get
             Return GetV(Of String)("name")
         End Get
         Set(value As String)
             SetV("name", value)
-        End Set
-    End Property
-
-    <Write(False)> <DisplayName("Note")> <Display(Order:=7)>
-    Public Property note As String
-        Get
-            Return GetV(Of String)("note")
-        End Get
-        Set(value As String)
-            SetV("note", value)
         End Set
     End Property
 
@@ -60,19 +50,28 @@ Public Class Job
             SetV("status", value)
         End Set
     End Property
+    <Write(False)> <DisplayName("Ghi chú")> <Display(Order:=5)>
+    Public Property note As String
+        Get
+            Return GetV(Of String)("note")
+        End Get
+        Set(value As String)
+            SetV("note", value)
+        End Set
+    End Property
 
 #End Region
 
 #Region "Field Display"
 
-    <Write(False)> <DisplayName("Status")> <Display(Order:=8)>
+    <Write(False)> <DisplayName("Trạng thái")> <Display(Order:=4)>
     Public ReadOnly Property status_UI As String
         Get
-            Return If(status = 1, "Active", "Inactive")
+            Return If(status = 1, "Đang hoạt động", "Ngừng hoạt động")
         End Get
     End Property
 
-    <Write(False)> <DisplayName("Department")> <Display(Order:=3)>
+    <Write(False)> <DisplayName("Phòng ban")> <Display(Order:=3)>
     Public ReadOnly Property Department_UI As String
         Get
             Return If(Department?.name, "---")
