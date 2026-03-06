@@ -1,5 +1,6 @@
 ﻿Public Class frmDashboard
     Private Sub load_form(sender As Object, e As EventArgs) Handles MyBase.Load
+
         ' Tạo cột cho Top Checkin Sớm
         lvTopCheckinSom.View = View.Details
         lvTopCheckinSom.Columns.Add("Tên nhân viên")
@@ -54,4 +55,7 @@
         AdjustColumnWidth()
     End Sub
 
+    Private Sub SidebarMenu1_Load(sender As Object, e As EventArgs) Handles SidebarMenu1.Load
+
+    End Sub
 End Class

@@ -458,6 +458,12 @@
     <Compile Include="UIUX\frmLogin.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="UIUX\frmLuong.Designer.vb">
+      <DependentUpon>frmLuong.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UIUX\frmLuong.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="UIUX\frmNhanSu.Designer.vb">
       <DependentUpon>frmNhanSu.vb</DependentUpon>
     </Compile>
@@ -476,6 +482,9 @@
     <Compile Include="UIUX\frmSystem.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="UIUX\Helpers\ImageExtensions.vb" />
+    <Compile Include="UIUX\models\HopDong.vb" />
+    <Compile Include="UIUX\models\NhanVien.vb" />
     <Compile Include="UIUX\tesst.Designer.vb">
       <DependentUpon>tesst.vb</DependentUpon>
     </Compile>
@@ -565,6 +574,9 @@
     <EmbeddedResource Include="UIUX\frmLogin.resx">
       <DependentUpon>frmLogin.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UIUX\frmLuong.resx">
+      <DependentUpon>frmLuong.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UIUX\frmNhanSu.resx">
       <DependentUpon>frmNhanSu.vb</DependentUpon>
     </EmbeddedResource>
@@ -638,8 +650,10 @@
     <None Include="2_Core\Assets\user.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="1_Documents\db_json.sql" />
+    <Content Include="2_Core\Assets\bin.png" />
+    <Content Include="2_Core\Assets\compose.png" />
     <Content Include="2_Core\Assets\search.png" />
+    <Content Include="2_Core\Assets\word.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <Import Project="..\packages\Microsoft.Data.SqlClient.SNI.6.0.2\build\net462\Microsoft.Data.SqlClient.SNI.targets" Condition="Exists('..\packages\Microsoft.Data.SqlClient.SNI.6.0.2\build\net462\Microsoft.Data.SqlClient.SNI.targets')" />

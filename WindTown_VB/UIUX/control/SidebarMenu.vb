@@ -57,11 +57,21 @@
     }
 
     Dim btnHopDong As New Button With {
-        .Text = "  Hợp đồng",
+        .Text = "Hợp Đồng",
         .Font = New Font("Microsoft YaHei UI", 12, FontStyle.Bold),
         .TextAlign = ContentAlignment.MiddleLeft,
         .Dock = DockStyle.Top,
-        .Height = 35,
+        .Height = 40,
+        .FlatStyle = FlatStyle.Flat,
+        .ForeColor = Color.White
+    }
+
+    Dim btnLuong As New Button With {
+        .Text = "Lương",
+        .Font = New Font("Microsoft YaHei UI", 12, FontStyle.Bold),
+        .TextAlign = ContentAlignment.MiddleLeft,
+        .Dock = DockStyle.Top,
+        .Height = 40,
         .FlatStyle = FlatStyle.Flat,
         .ForeColor = Color.White
     }
@@ -74,6 +84,7 @@
         pnlQLNS.Controls.Add(btnChucVu)
 
         ' Thêm các nút vào sidebar
+        pnl.Controls.Add(btnLuong)
         pnl.Controls.Add(btnHopDong)
         pnl.Controls.Add(pnlQLNS)
         pnl.Controls.Add(btnQLNS)
@@ -105,7 +116,7 @@
             f.Show()
         End If
 
-        currentForm.Hide() ' chỉ ẩn, không đóng
+        currentForm.Close() ' chỉ ẩn, không đóng
     End Sub
 
     ' Toggle panel QLNS
@@ -135,7 +146,7 @@
             f.Show()
         End If
 
-        currentForm.Hide() ' chỉ ẩn
+        currentForm.Close()
     End Sub
 
     ' Mở Chức vụ
@@ -154,7 +165,7 @@
             f.Show()
         End If
 
-        currentForm.Hide() ' chỉ ẩn
+        currentForm.Close() ' chỉ ẩn
     End Sub
 
     ' Mở Hợp đồng
@@ -169,6 +180,21 @@
             f.BringToFront()
             f.Show()
         End If
-        currentForm.Hide() ' chỉ ẩn
+        currentForm.Close() ' chỉ ẩn
+    End Sub
+
+    ' Mở lương 
+    Private Sub btnLuong_Click(sender As Object, e As EventArgs)
+        Dim currentForm As Form = Me.FindForm()
+        If TypeOf currentForm Is frmLuong Then Return
+        Dim f = Application.OpenForms.OfType(Of frmLuong)().FirstOrDefault()
+        If f Is Nothing Then
+            f = New frmLuong()
+            f.Show()
+        Else
+            f.BringToFront()
+            f.Show()
+        End If
+        currentForm.Close() ' chỉ ẩn
     End Sub
 End Class
