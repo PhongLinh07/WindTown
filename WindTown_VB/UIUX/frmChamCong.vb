@@ -5,14 +5,14 @@
 
     Private Sub frmMain_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-        tlpMain.ColumnCount = 2
+        'tlpMain.ColumnCount = 2
 
-        tlpMain.ColumnStyles.Clear()
+        'tlpMain.ColumnStyles.Clear()
 
-        tlpMain.ColumnStyles.Add(New ColumnStyle(SizeType.Absolute, 260))
-        tlpMain.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 100))
+        'tlpMain.ColumnStyles.Add(New ColumnStyle(SizeType.Absolute, 260))
+        'tlpMain.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 100))
 
-        NavigationService.MainPanel = pnlMain
+        'NavigationService.MainPanel = pnlMain
 
     End Sub
 
