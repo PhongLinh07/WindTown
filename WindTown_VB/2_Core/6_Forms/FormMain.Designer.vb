@@ -26,7 +26,11 @@ Partial Class FormMain
         Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.ContextMenuStrip2 = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.ContextMenuStrip3 = New System.Windows.Forms.ContextMenuStrip(Me.components)
-        Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
+        Me.pnl_main = New System.Windows.Forms.Panel()
+        Me.ColorDialog1 = New System.Windows.Forms.ColorDialog()
+        Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
+        Me.ToolStripMenuItem2 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
         Me.SdvsdToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.menu_department = New System.Windows.Forms.ToolStripMenuItem()
         Me.menu_job = New System.Windows.Forms.ToolStripMenuItem()
@@ -42,11 +46,10 @@ Partial Class FormMain
         Me.TàiChínhToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.HệThốngToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.menu_account = New System.Windows.Forms.ToolStripMenuItem()
-        Me.pnl_main = New System.Windows.Forms.Panel()
-        Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ColorDialog1 = New System.Windows.Forms.ColorDialog()
-        Me.MenuStrip1.SuspendLayout()
+        Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
+        Me._title = New System.Windows.Forms.ToolStripLabel()
         Me.pnl_main.SuspendLayout()
+        Me.ToolStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'ContextMenuStrip1
@@ -64,15 +67,36 @@ Partial Class FormMain
         Me.ContextMenuStrip3.Name = "ContextMenuStrip3"
         Me.ContextMenuStrip3.Size = New System.Drawing.Size(61, 4)
         '
-        'MenuStrip1
+        'pnl_main
         '
-        Me.MenuStrip1.Font = New System.Drawing.Font("Segoe UI", 10.0!)
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem1, Me.SdvsdToolStripMenuItem, Me.DvsdvToolStripMenuItem, Me.SdvfToolStripMenuItem, Me.ChínhSáchToolStripMenuItem, Me.TàiChínhToolStripMenuItem, Me.HệThốngToolStripMenuItem})
-        Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
-        Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(1424, 33)
-        Me.MenuStrip1.TabIndex = 0
-        Me.MenuStrip1.Text = "MenuStrip1"
+        Me.pnl_main.Controls.Add(Me.ToolStrip1)
+        Me.pnl_main.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.pnl_main.Location = New System.Drawing.Point(0, 0)
+        Me.pnl_main.Name = "pnl_main"
+        Me.pnl_main.Size = New System.Drawing.Size(1424, 821)
+        Me.pnl_main.TabIndex = 3
+        '
+        'ToolStrip1
+        '
+        Me.ToolStrip1.Font = New System.Drawing.Font("Segoe UI", 10.0!)
+        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem2, Me.ToolStripSeparator1, Me.SdvsdToolStripMenuItem, Me.DvsdvToolStripMenuItem, Me.SdvfToolStripMenuItem, Me.ChínhSáchToolStripMenuItem, Me.TàiChínhToolStripMenuItem, Me.HệThốngToolStripMenuItem, Me.ToolStripSeparator2, Me._title})
+        Me.ToolStrip1.Location = New System.Drawing.Point(0, 0)
+        Me.ToolStrip1.Name = "ToolStrip1"
+        Me.ToolStrip1.Size = New System.Drawing.Size(1424, 29)
+        Me.ToolStrip1.TabIndex = 1
+        Me.ToolStrip1.Text = "ToolStrip1"
+        '
+        'ToolStripMenuItem2
+        '
+        Me.ToolStripMenuItem2.Font = New System.Drawing.Font("Segoe UI", 14.0!, System.Drawing.FontStyle.Bold)
+        Me.ToolStripMenuItem2.Name = "ToolStripMenuItem2"
+        Me.ToolStripMenuItem2.Size = New System.Drawing.Size(125, 29)
+        Me.ToolStripMenuItem2.Text = "Wind Town"
+        '
+        'ToolStripSeparator1
+        '
+        Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(6, 29)
         '
         'SdvsdToolStripMenuItem
         '
@@ -110,19 +134,19 @@ Partial Class FormMain
         'menu_empolyee
         '
         Me.menu_empolyee.Name = "menu_empolyee"
-        Me.menu_empolyee.Size = New System.Drawing.Size(140, 24)
+        Me.menu_empolyee.Size = New System.Drawing.Size(180, 24)
         Me.menu_empolyee.Text = "Nhân viên"
         '
         'menu_contract
         '
         Me.menu_contract.Name = "menu_contract"
-        Me.menu_contract.Size = New System.Drawing.Size(140, 24)
+        Me.menu_contract.Size = New System.Drawing.Size(180, 24)
         Me.menu_contract.Text = "Hợp đồng"
         '
         'menu_position
         '
         Me.menu_position.Name = "menu_position"
-        Me.menu_position.Size = New System.Drawing.Size(140, 24)
+        Me.menu_position.Size = New System.Drawing.Size(180, 24)
         Me.menu_position.Text = "Chức vụ"
         '
         'SdvfToolStripMenuItem
@@ -135,13 +159,13 @@ Partial Class FormMain
         'menu_project
         '
         Me.menu_project.Name = "menu_project"
-        Me.menu_project.Size = New System.Drawing.Size(148, 24)
+        Me.menu_project.Size = New System.Drawing.Size(180, 24)
         Me.menu_project.Text = "Dự án"
         '
         'menu_attendance
         '
         Me.menu_attendance.Name = "menu_attendance"
-        Me.menu_attendance.Size = New System.Drawing.Size(148, 24)
+        Me.menu_attendance.Size = New System.Drawing.Size(180, 24)
         Me.menu_attendance.Text = "Chấm công"
         '
         'ChínhSáchToolStripMenuItem
@@ -166,24 +190,21 @@ Partial Class FormMain
         'menu_account
         '
         Me.menu_account.Name = "menu_account"
-        Me.menu_account.Size = New System.Drawing.Size(135, 24)
+        Me.menu_account.Size = New System.Drawing.Size(180, 24)
         Me.menu_account.Text = "Tài khoản"
         '
-        'pnl_main
+        'ToolStripSeparator2
         '
-        Me.pnl_main.Controls.Add(Me.MenuStrip1)
-        Me.pnl_main.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.pnl_main.Location = New System.Drawing.Point(0, 0)
-        Me.pnl_main.Name = "pnl_main"
-        Me.pnl_main.Size = New System.Drawing.Size(1424, 821)
-        Me.pnl_main.TabIndex = 3
+        Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
+        Me.ToolStripSeparator2.Size = New System.Drawing.Size(6, 29)
         '
-        'ToolStripMenuItem1
+        '_title
         '
-        Me.ToolStripMenuItem1.Font = New System.Drawing.Font("Segoe UI", 14.0!, System.Drawing.FontStyle.Bold)
-        Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
-        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(125, 29)
-        Me.ToolStripMenuItem1.Text = "Wind Town"
+        Me._title.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me._title.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Bold)
+        Me._title.Name = "_title"
+        Me._title.Size = New System.Drawing.Size(38, 26)
+        Me._title.Text = "Title"
         '
         'FormMain
         '
@@ -194,22 +215,24 @@ Partial Class FormMain
         Me.Controls.Add(Me.pnl_main)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D
         Me.ImeMode = System.Windows.Forms.ImeMode.[On]
-        Me.MainMenuStrip = Me.MenuStrip1
         Me.Name = "FormMain"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "FormMain"
-        Me.MenuStrip1.ResumeLayout(False)
-        Me.MenuStrip1.PerformLayout()
         Me.pnl_main.ResumeLayout(False)
         Me.pnl_main.PerformLayout()
+        Me.ToolStrip1.ResumeLayout(False)
+        Me.ToolStrip1.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
     Friend WithEvents ContextMenuStrip1 As ContextMenuStrip
     Friend WithEvents ContextMenuStrip2 As ContextMenuStrip
     Friend WithEvents ContextMenuStrip3 As ContextMenuStrip
-    Friend WithEvents MenuStrip1 As MenuStrip
-    Friend WithEvents ToolStripMenuItem1 As ToolStripMenuItem
+    Friend WithEvents pnl_main As Panel
+    Friend WithEvents ColorDialog1 As ColorDialog
+    Friend WithEvents ToolStrip1 As ToolStrip
+    Friend WithEvents ToolStripMenuItem2 As ToolStripMenuItem
+    Friend WithEvents ToolStripSeparator1 As ToolStripSeparator
     Friend WithEvents SdvsdToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents menu_department As ToolStripMenuItem
     Friend WithEvents menu_job As ToolStripMenuItem
@@ -225,6 +248,6 @@ Partial Class FormMain
     Friend WithEvents TàiChínhToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents HệThốngToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents menu_account As ToolStripMenuItem
-    Friend WithEvents pnl_main As Panel
-    Friend WithEvents ColorDialog1 As ColorDialog
+    Friend WithEvents ToolStripSeparator2 As ToolStripSeparator
+    Friend WithEvents _title As ToolStripLabel
 End Class

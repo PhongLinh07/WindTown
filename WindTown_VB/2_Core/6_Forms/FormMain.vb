@@ -17,6 +17,7 @@ Partial Public Class FormMain
         End If
 
         currentForm = childForm
+        _title.Text = childForm.Text
         childForm.Dock = DockStyle.Fill
         pnl_main.Controls.Add(childForm)
         pnl_main.Tag = childForm
