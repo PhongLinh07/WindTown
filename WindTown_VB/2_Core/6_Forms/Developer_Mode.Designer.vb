@@ -63,7 +63,6 @@ Partial Class Developer_Mode
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.ClientSize = New System.Drawing.Size(549, 271)
-        Me.ControlBox = False
         Me.Controls.Add(Me.btn_fontend)
         Me.Controls.Add(Me.btn_backend)
         Me.Controls.Add(Me.Label1)

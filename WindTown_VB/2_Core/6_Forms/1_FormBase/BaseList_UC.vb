@@ -11,9 +11,10 @@ Public Class BaseList_UC
         InitializeComponent()
     End Sub
 
-    Public Sub New(service As IBaseService, title As String)
+    Public Sub New(service As IBaseService, tag As String, title As String)
         InitializeComponent()
         ' Thiết lập cơ bản cho Form
+        Me.Tag = tag
         Me.Text = "Quản lý " & title
         _service = service
 

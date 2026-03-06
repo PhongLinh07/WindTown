@@ -28,7 +28,6 @@ Partial Class BaseList_UC
         Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
         Me.toolStrip = New System.Windows.Forms.ToolStrip()
-        Me.ui_title = New System.Windows.Forms.ToolStripLabel()
         Me.tool_new = New System.Windows.Forms.ToolStripButton()
         Me.tool_delete = New System.Windows.Forms.ToolStripButton()
         Me.viewSelected = New System.Windows.Forms.Label()
@@ -80,20 +79,13 @@ Partial Class BaseList_UC
         Me.toolStrip.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
         Me.toolStrip.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden
         Me.toolStrip.ImageScalingSize = New System.Drawing.Size(24, 24)
-        Me.toolStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ui_title, Me.tool_new, tool_refresh, Me.tool_delete})
+        Me.toolStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tool_new, tool_refresh, Me.tool_delete})
         Me.toolStrip.Location = New System.Drawing.Point(0, 0)
         Me.toolStrip.Name = "toolStrip"
         Me.toolStrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.System
         Me.toolStrip.Size = New System.Drawing.Size(1232, 34)
         Me.toolStrip.TabIndex = 0
         Me.toolStrip.Text = "ToolStrip1"
-        '
-        'ui_title
-        '
-        Me.ui_title.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Bold)
-        Me.ui_title.Name = "ui_title"
-        Me.ui_title.Size = New System.Drawing.Size(38, 31)
-        Me.ui_title.Text = "Title"
         '
         'tool_new
         '
@@ -243,5 +235,4 @@ Partial Class BaseList_UC
     Friend WithEvents Column5 As DataGridViewTextBoxColumn
     Friend WithEvents Column6 As DataGridViewTextBoxColumn
     Protected WithEvents _dgv As DataGridView
-    Protected WithEvents ui_title As ToolStripLabel
 End Class

@@ -1,10 +1,10 @@
-Public Class Holiday_List_UC
+Public Class Leave_List_UC
     Inherits BaseList_UC
 
     Public Sub New()
-        MyBase.New(New BaseService(Of Holiday), "Holiday_List_UC", "Hệ số lương ngày lễ")
+        MyBase.New(New LeaveService(), "Leave_List_UC", "Nghỉ phép")
         InitializeComponent()
-        Init(GetType(Holiday))
+        Init(GetType(Leave))
     End Sub
 
 
@@ -16,9 +16,9 @@ Public Class Holiday_List_UC
         Dim row As DataGridViewRow = _dgv.Rows(e.RowIndex)
 
         ' Tạo bản sao của đối tượng để tránh sửa trực tiếp trên DataGridView
-        Dim data = Utils.DeepClone(CType(row.DataBoundItem, Holiday))
+        Dim data = Utils.DeepClone(CType(row.DataBoundItem, Leave))
 
-        Dim crud As New Holiday_CRUD_Frm(data)
+        Dim crud As New Leave_CRUD_Frm(data)
         If crud.ShowDialog() = DialogResult.OK Then
 
             Dim result = _service.Execute(DataIntent.Update, data)
@@ -34,9 +34,9 @@ Public Class Holiday_List_UC
 
     Protected Overrides Sub tool_new_Click(sender As Object, e As EventArgs)
         ' Tạo bản sao của đối tượng để tránh sửa trực tiếp trên DataGridView
-        Dim data = New Holiday() ' tạo mới đối tượng với giá trị mặc định
+        Dim data = New Leave() ' tạo mới đối tượng với giá trị mặc định
 
-        Dim crud As New Holiday_CRUD_Frm(data, True)
+        Dim crud As New Leave_CRUD_Frm(data, True)
         If crud.ShowDialog() = DialogResult.OK Then
 
             Dim result = _service.Execute(DataIntent.Insert, data)
@@ -60,9 +60,9 @@ Public Class Holiday_List_UC
         If MessageBox.Show($"Delete {_dgv.SelectedRows.Count} record?", "Confirm", MessageBoxButtons.YesNo) = DialogResult.No Then Return
 
 
-        Dim items As List(Of Holiday) = _dgv.SelectedRows.
+        Dim items As List(Of Leave) = _dgv.SelectedRows.
                                                 Cast(Of DataGridViewRow)().
-                                                Select(Function(r) TryCast(r.DataBoundItem, Holiday)).
+                                                Select(Function(r) TryCast(r.DataBoundItem, Leave)).
                                                 Where(Function(x) x IsNot Nothing).
                                                 ToList()
 
