@@ -39,8 +39,8 @@ Public Class Position
     End Property
 
 
-    <Write(False)> <DisplayName("Code")> <Display(Order:=2)>
-    Public Property user As String
+    <Write(False)> <DisplayName("Mã chức vụ")> <Display(Order:=1)>
+    Public Property code As String
         Get
             Return GetV(Of String)("code")
         End Get
@@ -48,7 +48,7 @@ Public Class Position
             SetV("code", value)
         End Set
     End Property
-    <Write(False)> <DisplayName("Start Date")> <DisplayFormat(DataFormatString:="{0:dd-MM-yyyy}")> <Display(Order:=3)>
+    <Write(False)> <DisplayName("Ngày bắt đầu")> <DisplayFormat(DataFormatString:="{0:dd-MM-yyyy}")> <Display(Order:=5)>
     Public Property start_date As DateTime? ' Thêm dấu ? để cho phép Null
         Get
             Return GetV(Of DateTime?)("start_date") ' Trả về giá trị mặc định nếu Null
@@ -58,7 +58,7 @@ Public Class Position
             SetV("start_date", value)
         End Set
     End Property
-    <Write(False)> <DisplayName("End Date")> <DisplayFormat(DataFormatString:="{0:dd-MM-yyyy}")> <Display(Order:=4)>
+    <Write(False)> <DisplayName("Ngày kết thúc")> <DisplayFormat(DataFormatString:="{0:dd-MM-yyyy}")> <Display(Order:=6)>
     Public Property end_date As DateTime? ' Thêm dấu ? để cho phép Null
         Get
             Return GetV(Of DateTime?)("end_date")
@@ -68,16 +68,6 @@ Public Class Position
             SetV("end_date", value)
         End Set
     End Property
-    <Write(False)> <DisplayName("Note")> <Display(Order:=7)>
-    Public Property note As String
-        Get
-            Return GetV(Of String)("note")
-        End Get
-        Set(value As String)
-            SetV("note", value)
-        End Set
-    End Property
-
     <Write(False)> <Browsable(False)>
     Public Property status As Integer
         Get
@@ -87,25 +77,39 @@ Public Class Position
             SetV("status", value)
         End Set
     End Property
-
+    <Write(False)> <DisplayName("Ghi chú")> <Display(Order:=8)>
+    Public Property note As String
+        Get
+            Return GetV(Of String)("note")
+        End Get
+        Set(value As String)
+            SetV("note", value)
+        End Set
+    End Property
 #End Region
 
 #Region "Field Display"
 
-    <Write(False)> <DisplayName("Status")> <Display(Order:=8)>
+    <Write(False)> <DisplayName("Trạng thái")> <Display(Order:=7)>
     Public ReadOnly Property status_UI As String
         Get
-            Return If(status = 1, "Active", "Inactive")
+            Return If(status = 1, "Đang hoạt động", "Ngừng hoạt động")
         End Get
     End Property
 
-    <Write(False)> <DisplayName("Contract")> <Display(Order:=1)>
+    <Write(False)> <DisplayName("Hợp đồng")> <Display(Order:=2)>
     Public ReadOnly Property contract_UI As String
         Get
-            Return If(Contract?.code, "---")
+            Return If(Contract IsNot Nothing, $"{Contract.code}", "---")
         End Get
     End Property
-    <Write(False)> <DisplayName("Job")> <Display(Order:=1)>
+    <Write(False)> <DisplayName("Nhân viên")> <Display(Order:=2)>
+    Public ReadOnly Property employee_UI As String
+        Get
+            Return If(Job IsNot Nothing, $"{Contract?.Employee?.code} - {Contract?.Employee?.name}", "---")
+        End Get
+    End Property
+    <Write(False)> <DisplayName("Công việc")> <Display(Order:=3)>
     Public ReadOnly Property job_UI As String
         Get
             ' Sử dụng String Interpolation giúp code sạch và dễ đọc hơn
@@ -113,7 +117,7 @@ Public Class Position
         End Get
     End Property
 
-    <Write(False)> <DisplayName("Level")> <Display(Order:=1)>
+    <Write(False)> <DisplayName("Trình độ")> <Display(Order:=4)>
     Public ReadOnly Property level_UI As String
         Get
             Return If(Level IsNot Nothing, $"{Level.code} - {Level.name}", "---")

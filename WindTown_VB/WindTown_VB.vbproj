@@ -328,6 +328,12 @@
     <Compile Include="3_Modules\2_HR\2_Repositories\ContractRepository.vb" />
     <Compile Include="3_Modules\2_HR\2_Repositories\EmployeeRepository.vb" />
     <Compile Include="3_Modules\2_HR\3_Service\EmployeeService.vb" />
+    <Compile Include="3_Modules\2_HR\4_Forms\Position_CRUD_Frm.Designer.vb">
+      <DependentUpon>Position_CRUD_Frm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="3_Modules\2_HR\4_Forms\Position_CRUD_Frm.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="3_Modules\2_HR\4_Forms\Employee_CRUD_Frm.Designer.vb">
       <DependentUpon>Employee_CRUD_Frm.vb</DependentUpon>
     </Compile>
@@ -342,6 +348,7 @@
     </Compile>
     <Compile Include="3_Modules\3_Operations\1_Models\Attendance.vb" />
     <Compile Include="3_Modules\2_HR\1_Models\Position.vb" />
+    <Compile Include="3_Modules\3_Operations\1_Models\Holiday.vb" />
     <Compile Include="3_Modules\3_Operations\1_Models\Project.vb" />
     <Compile Include="3_Modules\3_Operations\2_Repositories\AttendanceRepository.vb" />
     <Compile Include="3_Modules\2_HR\2_Repositories\PositionRepository.vb" />
@@ -512,6 +519,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="3_Modules\1_Organization\4_Forms\Organization_UC.resx">
       <DependentUpon>Organization_UC.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="3_Modules\2_HR\4_Forms\Position_CRUD_Frm.resx">
+      <DependentUpon>Position_CRUD_Frm.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="3_Modules\2_HR\4_Forms\Employee_CRUD_Frm.resx">
       <DependentUpon>Employee_CRUD_Frm.vb</DependentUpon>

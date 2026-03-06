@@ -7,7 +7,7 @@ Public Class Employee
     Inherits BaseEntity
 
 #Region "Field json"
-    <Write(False)> <DisplayName("Code")> <Display(Order:=0)>
+    <Write(False)> <DisplayName("Mã nhân viên")> <Display(Order:=0)>
     Public Property code As String
         Get
             Return GetV(Of String)("code")
@@ -16,7 +16,7 @@ Public Class Employee
             SetV("code", value)
         End Set
     End Property
-    <Write(False)> <DisplayName("Name")> <Display(Order:=1)>
+    <Write(False)> <DisplayName("Tên nhân viên")> <Display(Order:=1)>
     Public Property name As String
         Get
             Return GetV(Of String)("name")
@@ -43,7 +43,7 @@ Public Class Employee
             SetV("cccd", value)
         End Set
     End Property
-    <Write(False)> <DisplayName("Birth Date")> <DisplayFormat(DataFormatString:="{0:dd-MM-yyyy}")> <Display(Order:=4)>
+    <Write(False)> <DisplayName("Ngày sinh")> <DisplayFormat(DataFormatString:="{0:dd-MM-yyyy}")> <Display(Order:=4)>
     Public Property birth_date As DateTime? ' Thêm dấu ? để cho phép Null
         Get
             Return GetV(Of DateTime?)("birth_date")
@@ -53,7 +53,7 @@ Public Class Employee
             SetV("birth_date", value)
         End Set
     End Property
-    <Write(False)> <DisplayName("Address")> <Display(Order:=5)>
+    <Write(False)> <DisplayName("Địa chỉ")> <Display(Order:=5)>
     Public Property address As String
         Get
             Return GetV(Of String)("address")
@@ -89,16 +89,6 @@ Public Class Employee
             SetV("bank", value)
         End Set
     End Property
-    <Write(False)> <DisplayName("Note")> <Display(Order:=9)>
-    Public Property note As String
-        Get
-            Return GetV(Of String)("note")
-        End Get
-        Set(value As String)
-            SetV("note", value)
-        End Set
-    End Property
-
     <Write(False)> <Browsable(False)>
     Public Property status As Integer
         Get
@@ -108,20 +98,29 @@ Public Class Employee
             SetV("status", value)
         End Set
     End Property
+    <Write(False)> <DisplayName("Ghi chú")> <Display(Order:=10)>
+    Public Property note As String
+        Get
+            Return GetV(Of String)("note")
+        End Get
+        Set(value As String)
+            SetV("note", value)
+        End Set
+    End Property
 #End Region
 
 #Region "Field Display"
-    <Write(False)> <DisplayName("Gender")> <Display(Order:=2)>
+    <Write(False)> <DisplayName("Giới tính")> <Display(Order:=2)>
     Public ReadOnly Property gender_UI As String
         Get
-            Return If(gender = 1, "Male", If(gender = 0, "Female", "Other"))
+            Return If(gender = 1, "Nam", If(gender = 0, "Nữ", "Khác"))
         End Get
     End Property
 
-    <Write(False)> <DisplayName("Status")> <Display(Order:=10)>
+    <Write(False)> <DisplayName("Trạng thái")> <Display(Order:=9)>
     Public ReadOnly Property status_UI As String
         Get
-            Return If(status = 1, "Active", "Inactive")
+            Return If(status = 1, "Đang hoạt động", "Ngừng hoạt động")
         End Get
     End Property
 #End Region

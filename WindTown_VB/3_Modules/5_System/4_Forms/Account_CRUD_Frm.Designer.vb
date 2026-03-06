@@ -32,10 +32,8 @@ Partial Class Account_CRUD_Frm
         Me.ui_employee = New System.Windows.Forms.ComboBox()
         Me.ui_role = New System.Windows.Forms.ComboBox()
         Me.Label5 = New System.Windows.Forms.Label()
-        Me.ui_last_login = New System.Windows.Forms.DateTimePicker()
+        Me.ui_last_active = New System.Windows.Forms.DateTimePicker()
         Me.Label6 = New System.Windows.Forms.Label()
-        Me.Label7 = New System.Windows.Forms.Label()
-        Me.ui_last_logout = New System.Windows.Forms.DateTimePicker()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.ui_user = New System.Windows.Forms.TextBox()
         Me.SuspendLayout()
@@ -97,9 +95,9 @@ Partial Class Account_CRUD_Frm
         'ui_note
         '
         Me.ui_note.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ui_note.Location = New System.Drawing.Point(409, 267)
+        Me.ui_note.Location = New System.Drawing.Point(409, 185)
         Me.ui_note.Name = "ui_note"
-        Me.ui_note.Size = New System.Drawing.Size(265, 177)
+        Me.ui_note.Size = New System.Drawing.Size(265, 259)
         Me.ui_note.TabIndex = 7
         Me.ui_note.Text = ""
         '
@@ -108,7 +106,7 @@ Partial Class Account_CRUD_Frm
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Label4.Location = New System.Drawing.Point(405, 244)
+        Me.Label4.Location = New System.Drawing.Point(405, 162)
         Me.Label4.Margin = New System.Windows.Forms.Padding(0)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(52, 20)
@@ -147,16 +145,16 @@ Partial Class Account_CRUD_Frm
         Me.Label5.TabIndex = 10
         Me.Label5.Text = "Role:"
         '
-        'ui_last_login
+        'ui_last_active
         '
-        Me.ui_last_login.CustomFormat = "dd-MM-yyyy HH:mm:ss"
-        Me.ui_last_login.Enabled = False
-        Me.ui_last_login.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ui_last_login.Format = System.Windows.Forms.DateTimePickerFormat.Custom
-        Me.ui_last_login.Location = New System.Drawing.Point(409, 98)
-        Me.ui_last_login.Name = "ui_last_login"
-        Me.ui_last_login.Size = New System.Drawing.Size(265, 26)
-        Me.ui_last_login.TabIndex = 12
+        Me.ui_last_active.CustomFormat = "dd-MM-yyyy HH:mm:ss"
+        Me.ui_last_active.Enabled = False
+        Me.ui_last_active.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ui_last_active.Format = System.Windows.Forms.DateTimePickerFormat.Custom
+        Me.ui_last_active.Location = New System.Drawing.Point(409, 98)
+        Me.ui_last_active.Name = "ui_last_active"
+        Me.ui_last_active.Size = New System.Drawing.Size(265, 26)
+        Me.ui_last_active.TabIndex = 12
         '
         'Label6
         '
@@ -166,32 +164,9 @@ Partial Class Account_CRUD_Frm
         Me.Label6.Location = New System.Drawing.Point(405, 75)
         Me.Label6.Margin = New System.Windows.Forms.Padding(0)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(98, 20)
+        Me.Label6.Size = New System.Drawing.Size(103, 20)
         Me.Label6.TabIndex = 13
-        Me.Label6.Text = "Last Login:"
-        '
-        'Label7
-        '
-        Me.Label7.AutoSize = True
-        Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Label7.Location = New System.Drawing.Point(405, 153)
-        Me.Label7.Margin = New System.Windows.Forms.Padding(0)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(110, 20)
-        Me.Label7.TabIndex = 15
-        Me.Label7.Text = "Last Logout:"
-        '
-        'ui_last_logout
-        '
-        Me.ui_last_logout.CustomFormat = "dd-MM-yyyy HH:mm:ss"
-        Me.ui_last_logout.Enabled = False
-        Me.ui_last_logout.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ui_last_logout.Format = System.Windows.Forms.DateTimePickerFormat.Custom
-        Me.ui_last_logout.Location = New System.Drawing.Point(409, 176)
-        Me.ui_last_logout.Name = "ui_last_logout"
-        Me.ui_last_logout.Size = New System.Drawing.Size(265, 26)
-        Me.ui_last_logout.TabIndex = 14
+        Me.Label6.Text = "Last Active:"
         '
         'Label8
         '
@@ -221,10 +196,8 @@ Partial Class Account_CRUD_Frm
         Me.ClientSize = New System.Drawing.Size(749, 492)
         Me.Controls.Add(Me.Label8)
         Me.Controls.Add(Me.ui_user)
-        Me.Controls.Add(Me.Label7)
-        Me.Controls.Add(Me.ui_last_logout)
         Me.Controls.Add(Me.Label6)
-        Me.Controls.Add(Me.ui_last_login)
+        Me.Controls.Add(Me.ui_last_active)
         Me.Controls.Add(Me.ui_role)
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.ui_employee)
@@ -249,10 +222,8 @@ Partial Class Account_CRUD_Frm
         Me.Controls.SetChildIndex(Me.ui_employee, 0)
         Me.Controls.SetChildIndex(Me.Label5, 0)
         Me.Controls.SetChildIndex(Me.ui_role, 0)
-        Me.Controls.SetChildIndex(Me.ui_last_login, 0)
+        Me.Controls.SetChildIndex(Me.ui_last_active, 0)
         Me.Controls.SetChildIndex(Me.Label6, 0)
-        Me.Controls.SetChildIndex(Me.ui_last_logout, 0)
-        Me.Controls.SetChildIndex(Me.Label7, 0)
         Me.Controls.SetChildIndex(Me.ui_user, 0)
         Me.Controls.SetChildIndex(Me.Label8, 0)
         Me.ResumeLayout(False)
@@ -269,10 +240,8 @@ Partial Class Account_CRUD_Frm
     Friend WithEvents ui_employee As ComboBox
     Friend WithEvents ui_role As ComboBox
     Friend WithEvents Label5 As Label
-    Friend WithEvents ui_last_login As DateTimePicker
+    Friend WithEvents ui_last_active As DateTimePicker
     Friend WithEvents Label6 As Label
-    Friend WithEvents Label7 As Label
-    Friend WithEvents ui_last_logout As DateTimePicker
     Friend WithEvents Label8 As Label
     Friend WithEvents ui_user As TextBox
 End Class

@@ -16,7 +16,7 @@ Public Class BaseList_UC
         ' Thiết lập cơ bản cho Form
         Me.Text = "Quản lý " & title
         _service = service
-
+        ui_title.Text = Me.Text
 
     End Sub
 

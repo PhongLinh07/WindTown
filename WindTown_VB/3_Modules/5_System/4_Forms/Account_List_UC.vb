@@ -5,6 +5,7 @@ Public Class Account_List_UC
         MyBase.New(New AccountService(), "Account")
         InitializeComponent()
         Init(GetType(Account))
+
     End Sub
 
 

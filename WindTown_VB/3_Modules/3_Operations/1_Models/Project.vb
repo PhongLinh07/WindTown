@@ -9,7 +9,7 @@ Public Class Project
 
 #Region "Field Json"
 
-    <Write(False)> <DisplayName("Code")> <Display(Order:=1)>
+    <Write(False)> <DisplayName("Mã dự án")> <Display(Order:=1)>
     Public Property code As String
         Get
             Return GetV(Of String)("code")
@@ -18,7 +18,7 @@ Public Class Project
             SetV("code", value)
         End Set
     End Property
-    <Write(False)> <DisplayName("Name")> <Display(Order:=2)>
+    <Write(False)> <DisplayName("Tên dự án")> <Display(Order:=2)>
     Public Property name As String
         Get
             Return GetV(Of String)("name")
@@ -27,7 +27,7 @@ Public Class Project
             SetV("name", value)
         End Set
     End Property
-    <Write(False)> <DisplayName("Start Date")> <DisplayFormat(DataFormatString:="{0:dd-MM-yyyy}")> <Display(Order:=3)>
+    <Write(False)> <DisplayName("Ngày bắt đầu")> <DisplayFormat(DataFormatString:="{0:dd-MM-yyyy}")> <Display(Order:=3)>
     Public Property start_date As DateTime? ' Thêm dấu ? để cho phép Null
         Get
             Return GetV(Of DateTime?)("start_date") ' Trả về giá trị mặc định nếu Null
@@ -37,7 +37,7 @@ Public Class Project
             SetV("start_date", value)
         End Set
     End Property
-    <Write(False)> <DisplayName("End Date")> <DisplayFormat(DataFormatString:="{0:dd-MM-yyyy}")> <Display(Order:=4)>
+    <Write(False)> <DisplayName("Ngày kết thúc dự kiến")> <DisplayFormat(DataFormatString:="{0:dd-MM-yyyy}")> <Display(Order:=4)>
     Public Property end_date As DateTime? ' Thêm dấu ? để cho phép Null
         Get
             Return GetV(Of DateTime?)("end_date")
@@ -47,16 +47,6 @@ Public Class Project
             SetV("end_date", value)
         End Set
     End Property
-    <Write(False)> <DisplayName("Note")> <Display(Order:=6)>
-    Public Property note As String
-        Get
-            Return GetV(Of String)("note")
-        End Get
-        Set(value As String)
-            SetV("note", value)
-        End Set
-    End Property
-
     <Write(False)> <Browsable(False)>
     Public Property status As Integer
         Get
@@ -66,12 +56,20 @@ Public Class Project
             SetV("status", value)
         End Set
     End Property
-
+    <Write(False)> <DisplayName("Ghi chú")> <Display(Order:=5)>
+    Public Property note As String
+        Get
+            Return GetV(Of String)("note")
+        End Get
+        Set(value As String)
+            SetV("note", value)
+        End Set
+    End Property
 #End Region
 
 #Region "Field Display"
 
-    <Write(False)> <DisplayName("Status")> <Display(Order:=7)>
+    <Write(False)> <DisplayName("Trạng thái")> <Display(Order:=4)>
     Public ReadOnly Property status_UI As String
         Get
             Return If(Dict_Status.ContainsKey(Me.status), Dict_Status(Me.status), "---")
@@ -82,10 +80,10 @@ Public Class Project
 
 #Region "Dictionary Display" 'chứa các dictionary dùng chung trong toàn bộ module Operations, tránh việc phải tạo nhiều dictionary giống nhau ở nhiều form khác
     Public Shared ReadOnly Dict_Status As New Dictionary(Of Integer, String) From {
-        {0, "REJECTED"},
-        {1, "PLANNING"},
-        {2, "DOING"},
-        {3, "COMPLETED"}
+        {0, "Đã bị từ chối"},
+        {1, "Đang lập kế hoạch"},
+        {2, "Đang thực hiện"},
+        {3, "Đã hoàn thành"}
     }
 #End Region
 End Class

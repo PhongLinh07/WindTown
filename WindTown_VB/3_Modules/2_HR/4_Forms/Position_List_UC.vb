@@ -2,7 +2,7 @@ Public Class Position_List_UC
     Inherits BaseList_UC
 
     Public Sub New()
-        MyBase.New(New PositionService(), "Attendance")
+        MyBase.New(New PositionService(), "Position")
         InitializeComponent()
         Init(GetType(Position))
     End Sub
@@ -16,9 +16,9 @@ Public Class Position_List_UC
         Dim row As DataGridViewRow = _dgv.Rows(e.RowIndex)
 
         ' Tạo bản sao của đối tượng để tránh sửa trực tiếp trên DataGridView
-        Dim data = Utils.DeepClone(CType(row.DataBoundItem, Attendance))
+        Dim data = Utils.DeepClone(CType(row.DataBoundItem, Position))
 
-        Dim crud As New Attendance_CRUD_Frm(data)
+        Dim crud As New Position_CRUD_Frm(data)
         If crud.ShowDialog() = DialogResult.OK Then
 
             Dim result = _service.Execute(DataIntent.Update, data)
@@ -34,9 +34,9 @@ Public Class Position_List_UC
 
     Protected Overrides Sub tool_new_Click(sender As Object, e As EventArgs)
         ' Tạo bản sao của đối tượng để tránh sửa trực tiếp trên DataGridView
-        Dim data = New Attendance() ' tạo mới đối tượng với giá trị mặc định
+        Dim data = New Position() ' tạo mới đối tượng với giá trị mặc định
 
-        Dim crud As New Attendance_CRUD_Frm(data, True)
+        Dim crud As New Position_CRUD_Frm(data, True)
         If crud.ShowDialog() = DialogResult.OK Then
 
             Dim result = _service.Execute(DataIntent.Insert, data)
@@ -60,9 +60,9 @@ Public Class Position_List_UC
         If MessageBox.Show($"Delete {_dgv.SelectedRows.Count} record?", "Confirm", MessageBoxButtons.YesNo) = DialogResult.No Then Return
 
 
-        Dim items As List(Of Attendance) = _dgv.SelectedRows.
+        Dim items As List(Of Position) = _dgv.SelectedRows.
                                                 Cast(Of DataGridViewRow)().
-                                                Select(Function(r) TryCast(r.DataBoundItem, Attendance)).
+                                                Select(Function(r) TryCast(r.DataBoundItem, Position)).
                                                 Where(Function(x) x IsNot Nothing).
                                                 ToList()
 

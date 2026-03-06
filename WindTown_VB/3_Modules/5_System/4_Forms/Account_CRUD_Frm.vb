@@ -26,18 +26,6 @@ Public Class Account_CRUD_Frm
 
         Me.Text = If(isCreate, "New", "Detail")
 
-
-        If isCreate Then
-
-            _data.user = ""
-            _data.password = ""
-            _data.role = 1
-            _data.last_login = DateTime.Now
-            _data.last_logout = DateTime.Now
-            _data.note = ""
-            _data.status = 0
-        End If
-
         BindDataToUI()
 
         tool_save.Enabled = False
@@ -82,8 +70,7 @@ Public Class Account_CRUD_Frm
         ui_role.SelectedValue = _data.role
 
 
-        ui_last_login.Value = If(_data.last_login, DateTime.Now)
-        ui_last_logout.Value = If(_data.last_logout, DateTime.Now)
+        ui_last_active.Value = If(_data.last_active, DateTime.Now)
 
         ui_note.Text = _data.note
         ui_status.SelectedValue = _data.status
