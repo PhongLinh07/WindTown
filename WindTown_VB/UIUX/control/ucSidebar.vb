@@ -42,7 +42,7 @@
 
 
     '============================
-    ' Xác định TableLayoutPanel
+    ' Xác d?nh TableLayoutPanel
     '============================
     Private Sub InitSidebarLayout()
 
@@ -56,7 +56,7 @@
 
 
     '============================
-    ' Lấy kích thước sidebar
+    ' L?y kích thu?c sidebar
     '============================
     Private Sub InitSidebarSize()
 
@@ -89,7 +89,7 @@
 
         If isCollapsed Then
 
-            '===== MỞ SIDEBAR =====
+            '===== M? SIDEBAR =====
             col.Width = expandedWidth
             ptbLogo.Visible = True
             designToggleButton(False)
@@ -100,7 +100,8 @@
 
                     Dim btn As Button = CType(ctrl, Button)
 
-                    btn.Text = btn.Tag?.ToString()
+                    Dim menuTitle As String = toolTipMenu.GetToolTip(btn)
+                    btn.Text = If(String.IsNullOrWhiteSpace(menuTitle), btn.Text, "   " & menuTitle)
 
                 End If
 
@@ -120,7 +121,6 @@
 
                     Dim btn As Button = CType(ctrl, Button)
 
-                    btn.Tag = btn.Text
                     btn.Text = ""
 
                 End If
@@ -172,7 +172,7 @@
             btnToggle.MaximumSize = New Size(40, 40)
             btnToggle.MinimumSize = New Size(40, 40)
 
-            ' ===== Căn giữa =====
+            ' ===== Can gi?a =====
             btnToggle.Left = 4
             btnToggle.Top = 4
 
@@ -189,24 +189,24 @@
 
         menuData.Add(New MenuItemModel("Dashboard", GetType(frmDashboard), ResizeImage(My.Resources.home1, 38, 38))) ' icon dashboard
 
-        Dim qlns As New MenuItemModel("Quản lý nhân sự", Nothing, ResizeImage(My.Resources.saff, 38, 38)) ' icon nhân sự
+        Dim qlns As New MenuItemModel("Quản lý nhân sự", Nothing, ResizeImage(My.Resources.saff, 38, 38)) ' icon nhân s?
 
-        qlns.Children.Add(New MenuItemModel("Nhân sự", GetType(frmNhanSu))) ' icon người dùng
-        qlns.Children.Add(New MenuItemModel("Chức vụ", GetType(frmChucVu))) ' icon chức vụ
+        qlns.Children.Add(New MenuItemModel("Nhân sự", GetType(frmNhanSu))) ' icon ngu?i dùng
+        qlns.Children.Add(New MenuItemModel("Chức vụ", GetType(frmChucVu))) ' icon ch?c v?
 
         menuData.Add(qlns)
 
-        menuData.Add(New MenuItemModel("Hợp đồng", GetType(frmHopDong), ResizeImage(My.Resources.contract, 38, 38))) ' icon hợp đồng
-        menuData.Add(New MenuItemModel("Chấm công", GetType(frmChamCong), ResizeImage(My.Resources.checkin, 38, 38))) ' icon chấm công
+        menuData.Add(New MenuItemModel("Hợp đồng", GetType(frmHopDong), ResizeImage(My.Resources.contract, 38, 38))) ' icon h?p d?ng
+        menuData.Add(New MenuItemModel("Chấm công", GetType(frmChamCong), ResizeImage(My.Resources.checkin, 38, 38))) ' icon ch?m công
 
-        Dim luong As New MenuItemModel("Lương", Nothing, ResizeImage(My.Resources.salary, 38, 38)) ' icon lương
+        Dim luong As New MenuItemModel("Lương", Nothing, ResizeImage(My.Resources.salary, 38, 38)) ' icon luong
 
-        luong.Children.Add(New MenuItemModel("Kỳ lương", GetType(frmKyLuong))) ' icon kỳ lương
+        luong.Children.Add(New MenuItemModel("Kỳ lương", GetType(frmKyLuong))) ' icon k? luong
         luong.Children.Add(New MenuItemModel("Tính lương", GetType(frmTinhLuong)))
 
         menuData.Add(luong)
 
-        menuData.Add(New MenuItemModel("Cài đặt", GetType(frmSystem), ResizeImage(My.Resources.gear, 38, 38))) ' icon cài đặt
+        menuData.Add(New MenuItemModel("Cài đặt", GetType(frmSystem), ResizeImage(My.Resources.gear, 38, 38))) ' icon cài d?t
 
     End Sub
 
@@ -414,7 +414,7 @@
 
 
     '============================
-    ' Mở form
+    ' M? form
     '============================
     Private Sub OpenForm(type As Type)
 
@@ -435,3 +435,4 @@
     End Sub
 
 End Class
+
