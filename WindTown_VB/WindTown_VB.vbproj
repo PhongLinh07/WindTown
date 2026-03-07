@@ -718,10 +718,15 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="2_Core\Assets\bin.png" />
+    <None Include="2_Core\Assets\checkin.ico" />
     <Content Include="2_Core\Assets\compose.png" />
     <None Include="2_Core\Assets\ErrorImage.png" />
     <None Include="2_Core\Assets\gear.png" />
+    <None Include="2_Core\Assets\contract.ico" />
+    <None Include="2_Core\Assets\home.ico" />
     <Content Include="2_Core\Assets\LogoHR.png" />
+    <None Include="2_Core\Assets\salary.ico" />
+    <None Include="2_Core\Assets\saff.ico" />
     <Content Include="2_Core\Assets\search.png" />
     <Content Include="2_Core\Assets\word.png" />
   </ItemGroup>
