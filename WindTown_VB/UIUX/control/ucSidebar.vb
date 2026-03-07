@@ -439,6 +439,11 @@
     '============================
     Private Sub OpenForm(type As Type)
 
+        If NavigationService.IsInitialized Then
+            NavigationService.NavigateInMain(type)
+            Return
+        End If
+
         If mainPanel Is Nothing Then Return
 
         For i As Integer = mainPanel.Controls.Count - 1 To 0 Step -1
@@ -460,3 +465,4 @@
     End Sub
 
 End Class
+

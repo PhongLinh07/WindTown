@@ -253,7 +253,6 @@
     <Compile Include="2_Core\6_Forms\Developer_Mode.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="2_Core\6_Forms\T.vb" />
     <Compile Include="3_Modules\1_Organization\1_Models\level.vb" />
     <Compile Include="3_Modules\1_Organization\1_Models\Department.vb" />
     <Compile Include="2_Core\6_Forms\1_FormBase\BaseACRUDForm.Designer.vb">

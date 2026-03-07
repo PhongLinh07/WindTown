@@ -193,7 +193,7 @@ Public Class frmNhanSu
     ' ================= CHECKBOX COMMIT =================
     Private Sub dtgvDSNhanVien_CurrentCellDirtyStateChanged(
         sender As Object,
-        e As EventArgs) Handles dtgvDSNhanVien.CurrentCellDirtyStateChanged
+        e As EventArgs)
 
         If dtgvDSNhanVien.IsCurrentCellDirty Then
             dtgvDSNhanVien.CommitEdit(DataGridViewDataErrorContexts.Commit)
@@ -204,7 +204,7 @@ Public Class frmNhanSu
     ' ================= HIỆN / ẨN NÚT =================
     Private Sub dtgvDSNhanVien_CellValueChanged(
         sender As Object,
-        e As DataGridViewCellEventArgs) Handles dtgvDSNhanVien.CellValueChanged
+        e As DataGridViewCellEventArgs)
 
         If e.ColumnIndex = dtgvDSNhanVien.Columns("colChon").Index Then
 
