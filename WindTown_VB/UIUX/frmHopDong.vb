@@ -11,7 +11,7 @@ Public Class frmHopDong
 
     ' ============== Load ảnh cho các nút chức năng ==============
     Private Sub loadControls()
-        btnSearch.ResizeImageButton() '.Image = ResizeImage(My.Resources.search, 26, 26)
+        btnSearch.Image = ResizeImage(My.Resources.search, 20, 20)
     End Sub
 
     Private Function ResizeImage(img As Image, newWidth As Integer, newHeight As Integer) As Image

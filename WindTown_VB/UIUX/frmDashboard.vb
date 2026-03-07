@@ -1,6 +1,18 @@
 ﻿Public Class frmDashboard
     Private Sub load_form(sender As Object, e As EventArgs) Handles MyBase.Load
 
+        load_data()
+
+        ' Căn đều cột
+        AdjustColumnWidth()
+    End Sub
+
+    Private menuCaiDat As ContextMenuStrip
+    Private Sub load_data()
+        menuCaiDat = New ContextMenuStrip()
+
+        menuCaiDat.Items.Add("Đăng xuất", Nothing, AddressOf XuLy_DangXuat)
+
         ' Tạo cột cho Top Checkin Sớm
         lvTopCheckinSom.View = View.Details
         lvTopCheckinSom.Columns.Add("Tên nhân viên")
@@ -27,9 +39,16 @@
         Dim item4 As New ListViewItem("Phạm Thị D")
         item4.SubItems.Add(DateTime.Now.AddMinutes(45).ToString("HH:mm:ss dd/MM/yyyy"))
         lvTopCheckinMuon.Items.Add(item4)
+    End Sub
 
-        ' Căn đều cột
-        AdjustColumnWidth()
+    Private Sub XuLy_DangXuat(sender As Object, e As EventArgs)
+
+        Dim rs = MessageBox.Show("Bạn có chắc muốn đăng xuất?", "Xác nhận", MessageBoxButtons.YesNo)
+
+        If rs = DialogResult.Yes Then
+            NavigationService.LogoutToLogin()
+        End If
+
     End Sub
 
     Private Sub AdjustColumnWidth()
@@ -57,5 +76,9 @@
 
     Private Sub SidebarMenu1_Load(sender As Object, e As EventArgs)
 
+    End Sub
+
+    Private Sub btnSetting_Click(sender As Object, e As EventArgs) Handles btnSetting.Click
+        menuCaiDat.Show(btnSetting, 0, btnSetting.Height)
     End Sub
 End Class

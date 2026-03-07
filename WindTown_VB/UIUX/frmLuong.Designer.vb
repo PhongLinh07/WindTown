@@ -32,19 +32,19 @@ Partial Class frmLuong
         Me.btnSearch = New System.Windows.Forms.Button()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.ComboBox4 = New System.Windows.Forms.ComboBox()
-        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
-        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
-        Me.ComboBox2 = New System.Windows.Forms.ComboBox()
-        Me.Panel2 = New System.Windows.Forms.Panel()
-        Me.Label6 = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.ComboBox2 = New System.Windows.Forms.ComboBox()
+        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
+        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.tlpDasboard.SuspendLayout()
         Me.tlpBody.SuspendLayout()
         Me.Panel4.SuspendLayout()
         Me.Panel3.SuspendLayout()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.Panel2.SuspendLayout()
         Me.Panel1.SuspendLayout()
+        Me.Panel2.SuspendLayout()
+        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'tlpDasboard
@@ -59,7 +59,7 @@ Partial Class frmLuong
         Me.tlpDasboard.Name = "tlpDasboard"
         Me.tlpDasboard.RowCount = 1
         Me.tlpDasboard.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.tlpDasboard.Size = New System.Drawing.Size(1262, 673)
+        Me.tlpDasboard.Size = New System.Drawing.Size(1040, 665)
         Me.tlpDasboard.TabIndex = 1
         '
         'tlpBody
@@ -82,7 +82,7 @@ Partial Class frmLuong
         Me.tlpBody.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 77.0!))
         Me.tlpBody.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 90.0!))
         Me.tlpBody.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.tlpBody.Size = New System.Drawing.Size(1258, 667)
+        Me.tlpBody.Size = New System.Drawing.Size(1036, 659)
         Me.tlpBody.TabIndex = 1
         '
         'Panel4
@@ -91,9 +91,9 @@ Partial Class frmLuong
         Me.Panel4.Controls.Add(Me.Button1)
         Me.Panel4.Controls.Add(Me.ComboBox6)
         Me.Panel4.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Panel4.Location = New System.Drawing.Point(841, 80)
+        Me.Panel4.Location = New System.Drawing.Point(693, 80)
         Me.Panel4.Name = "Panel4"
-        Me.Panel4.Size = New System.Drawing.Size(414, 84)
+        Me.Panel4.Size = New System.Drawing.Size(340, 84)
         Me.Panel4.TabIndex = 4
         '
         'Button1
@@ -106,7 +106,7 @@ Partial Class frmLuong
         Me.Button1.ForeColor = System.Drawing.Color.White
         Me.Button1.Location = New System.Drawing.Point(4, 50)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(406, 28)
+        Me.Button1.Size = New System.Drawing.Size(332, 28)
         Me.Button1.TabIndex = 10
         Me.Button1.Text = "Thêm bảng lương"
         Me.Button1.UseVisualStyleBackColor = False
@@ -119,7 +119,7 @@ Partial Class frmLuong
         Me.ComboBox6.FormattingEnabled = True
         Me.ComboBox6.Location = New System.Drawing.Point(4, 3)
         Me.ComboBox6.Name = "ComboBox6"
-        Me.ComboBox6.Size = New System.Drawing.Size(406, 30)
+        Me.ComboBox6.Size = New System.Drawing.Size(332, 30)
         Me.ComboBox6.TabIndex = 2
         '
         'Panel3
@@ -129,9 +129,9 @@ Partial Class frmLuong
         Me.Panel3.Controls.Add(Me.TextBox1)
         Me.Panel3.Controls.Add(Me.ComboBox4)
         Me.Panel3.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Panel3.Location = New System.Drawing.Point(422, 80)
+        Me.Panel3.Location = New System.Drawing.Point(348, 80)
         Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(413, 84)
+        Me.Panel3.Size = New System.Drawing.Size(339, 84)
         Me.Panel3.TabIndex = 3
         '
         'btnSearch
@@ -142,9 +142,11 @@ Partial Class frmLuong
         Me.btnSearch.BackColor = System.Drawing.Color.White
         Me.btnSearch.Font = New System.Drawing.Font("Arial Narrow", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnSearch.ForeColor = System.Drawing.Color.Black
-        Me.btnSearch.Location = New System.Drawing.Point(224, 51)
+        Me.btnSearch.Location = New System.Drawing.Point(236, 50)
+        Me.btnSearch.MaximumSize = New System.Drawing.Size(100, 28)
+        Me.btnSearch.MinimumSize = New System.Drawing.Size(100, 28)
         Me.btnSearch.Name = "btnSearch"
-        Me.btnSearch.Size = New System.Drawing.Size(182, 28)
+        Me.btnSearch.Size = New System.Drawing.Size(100, 28)
         Me.btnSearch.TabIndex = 9
         Me.btnSearch.Text = "Tìm"
         Me.btnSearch.UseVisualStyleBackColor = False
@@ -156,7 +158,7 @@ Partial Class frmLuong
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TextBox1.Location = New System.Drawing.Point(4, 51)
         Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(308, 27)
+        Me.TextBox1.Size = New System.Drawing.Size(234, 27)
         Me.TextBox1.TabIndex = 8
         '
         'ComboBox4
@@ -167,54 +169,20 @@ Partial Class frmLuong
         Me.ComboBox4.FormattingEnabled = True
         Me.ComboBox4.Location = New System.Drawing.Point(4, 3)
         Me.ComboBox4.Name = "ComboBox4"
-        Me.ComboBox4.Size = New System.Drawing.Size(406, 30)
+        Me.ComboBox4.Size = New System.Drawing.Size(332, 30)
         Me.ComboBox4.TabIndex = 2
         '
-        'DataGridView1
+        'Panel1
         '
-        Me.DataGridView1.BackgroundColor = System.Drawing.Color.White
-        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.tlpBody.SetColumnSpan(Me.DataGridView1, 3)
-        Me.DataGridView1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.DataGridView1.Location = New System.Drawing.Point(3, 170)
-        Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.RowHeadersWidth = 51
-        Me.DataGridView1.RowTemplate.Height = 24
-        Me.DataGridView1.Size = New System.Drawing.Size(1252, 494)
-        Me.DataGridView1.TabIndex = 5
-        '
-        'ComboBox1
-        '
-        Me.ComboBox1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Location = New System.Drawing.Point(3, 3)
-        Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(407, 30)
-        Me.ComboBox1.TabIndex = 0
-        '
-        'ComboBox2
-        '
-        Me.ComboBox2.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.ComboBox2.FormattingEnabled = True
-        Me.ComboBox2.Location = New System.Drawing.Point(3, 51)
-        Me.ComboBox2.Name = "ComboBox2"
-        Me.ComboBox2.Size = New System.Drawing.Size(407, 30)
-        Me.ComboBox2.TabIndex = 1
-        '
-        'Panel2
-        '
-        Me.Panel2.BackColor = System.Drawing.Color.White
-        Me.Panel2.Controls.Add(Me.ComboBox2)
-        Me.Panel2.Controls.Add(Me.ComboBox1)
-        Me.Panel2.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Panel2.Location = New System.Drawing.Point(3, 80)
-        Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(413, 84)
-        Me.Panel2.TabIndex = 2
+        Me.Panel1.BackColor = System.Drawing.Color.White
+        Me.tlpBody.SetColumnSpan(Me.Panel1, 3)
+        Me.Panel1.Controls.Add(Me.Label6)
+        Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Panel1.Location = New System.Drawing.Point(2, 3)
+        Me.Panel1.Margin = New System.Windows.Forms.Padding(2, 3, 2, 3)
+        Me.Panel1.Name = "Panel1"
+        Me.Panel1.Size = New System.Drawing.Size(1032, 71)
+        Me.Panel1.TabIndex = 1
         '
         'Label6
         '
@@ -227,24 +195,58 @@ Partial Class frmLuong
         Me.Label6.TabIndex = 0
         Me.Label6.Text = "Tính lương"
         '
-        'Panel1
+        'Panel2
         '
-        Me.Panel1.BackColor = System.Drawing.Color.White
-        Me.tlpBody.SetColumnSpan(Me.Panel1, 3)
-        Me.Panel1.Controls.Add(Me.Label6)
-        Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Panel1.Location = New System.Drawing.Point(2, 3)
-        Me.Panel1.Margin = New System.Windows.Forms.Padding(2, 3, 2, 3)
-        Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(1254, 71)
-        Me.Panel1.TabIndex = 1
+        Me.Panel2.BackColor = System.Drawing.Color.White
+        Me.Panel2.Controls.Add(Me.ComboBox2)
+        Me.Panel2.Controls.Add(Me.ComboBox1)
+        Me.Panel2.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Panel2.Location = New System.Drawing.Point(3, 80)
+        Me.Panel2.Name = "Panel2"
+        Me.Panel2.Size = New System.Drawing.Size(339, 84)
+        Me.Panel2.TabIndex = 2
+        '
+        'ComboBox2
+        '
+        Me.ComboBox2.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.ComboBox2.FormattingEnabled = True
+        Me.ComboBox2.Location = New System.Drawing.Point(3, 51)
+        Me.ComboBox2.Name = "ComboBox2"
+        Me.ComboBox2.Size = New System.Drawing.Size(333, 30)
+        Me.ComboBox2.TabIndex = 1
+        '
+        'ComboBox1
+        '
+        Me.ComboBox1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.ComboBox1.FormattingEnabled = True
+        Me.ComboBox1.Location = New System.Drawing.Point(3, 3)
+        Me.ComboBox1.Name = "ComboBox1"
+        Me.ComboBox1.Size = New System.Drawing.Size(333, 30)
+        Me.ComboBox1.TabIndex = 0
+        '
+        'DataGridView1
+        '
+        Me.DataGridView1.BackgroundColor = System.Drawing.Color.White
+        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.tlpBody.SetColumnSpan(Me.DataGridView1, 3)
+        Me.DataGridView1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.DataGridView1.Location = New System.Drawing.Point(3, 170)
+        Me.DataGridView1.Name = "DataGridView1"
+        Me.DataGridView1.RowHeadersWidth = 51
+        Me.DataGridView1.RowTemplate.Height = 24
+        Me.DataGridView1.Size = New System.Drawing.Size(1030, 486)
+        Me.DataGridView1.TabIndex = 5
         '
         'frmLuong
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 22.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.LightGray
-        Me.ClientSize = New System.Drawing.Size(1262, 673)
+        Me.ClientSize = New System.Drawing.Size(1040, 665)
         Me.Controls.Add(Me.tlpDasboard)
         Me.Font = New System.Drawing.Font("Arial Narrow", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ForeColor = System.Drawing.SystemColors.ControlText
@@ -258,10 +260,10 @@ Partial Class frmLuong
         Me.Panel4.ResumeLayout(False)
         Me.Panel3.ResumeLayout(False)
         Me.Panel3.PerformLayout()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.Panel2.ResumeLayout(False)
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
+        Me.Panel2.ResumeLayout(False)
+        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
