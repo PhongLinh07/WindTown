@@ -1,4 +1,4 @@
-Imports System.Data.SqlClient
+﻿Imports System.Data.SqlClient
 Public Class frmLogin
 
     Dim account As List(Of Account) = New List(Of Account)
@@ -21,20 +21,20 @@ Public Class frmLogin
         Dim password As String = tbxPassword.Text.Trim()
 
         If CheckLogin(username, password) Then
-            MessageBox.Show("Đăng nhập thành công!", "Thông báo")
+            MessageBox.Show("ÄÄƒng nháº­p thÃ nh cÃ´ng!", "ThÃ´ng bÃ¡o")
 
             Dim frm As New frmMain()
             frm.Show()
 
-            Me.Close() ' Ẩn frmLogin thay vì Close
+            Me.Close()
         Else
-            MessageBox.Show("Sai tên đăng nhập hoặc mật khẩu!", "Lỗi")
+            MessageBox.Show("Sai tÃªn Ä‘Äƒng nháº­p hoáº·c máº­t kháº©u!", "Lá»—i")
         End If
     End Sub
-    Private Sub btnRegister_Click(sender As Object, e As EventArgs) Handles btnRegister.Click, MyBase.Click
+    Private Sub btnRegister_Click(sender As Object, e As EventArgs) Handles btnRegister.Click
         Dim frm As New frmRegister
         frm.Show()
-        Me.Close() ' Ẩn frmLogin khi mở frmRegister
+        Me.Close() ' áº¨n frmLogin khi má»Ÿ frmRegister
     End Sub
     Private Function CheckLogin(username As String, password As String) As Boolean
         Return account.Any(Function(acc) acc.user = username AndAlso acc.password = password)
