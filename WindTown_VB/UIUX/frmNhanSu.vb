@@ -12,6 +12,10 @@ Public Class frmNhanSu
     Private jobs As New List(Of Job)
     Private positions As New List(Of Position)
     Private allNhanVienView As New List(Of NhanVien)
+    Private boPhanUi As New List(Of BoPhan)
+    Private employeeByCode As New Dictionary(Of String, Employee)(StringComparer.OrdinalIgnoreCase)
+    Private positionByEmployeeId As New Dictionary(Of Integer, Position)()
+    Private jobById As New Dictionary(Of Integer, Job)()
 
     Private menuXuLyNhanh As ContextMenuStrip
     Private _lblTreeSelection As Label
@@ -75,8 +79,12 @@ Public Class frmNhanSu
         Dim employeeResponse = _employeeService.Execute(DataIntent.GetList)
         If employeeResponse Is Nothing OrElse Not employeeResponse.IsSuccess Then
             nhanVien = New List(Of Employee)()
+            employeeByCode = New Dictionary(Of String, Employee)(StringComparer.OrdinalIgnoreCase)
+            positionByEmployeeId = New Dictionary(Of Integer, Position)()
+            jobById = New Dictionary(Of Integer, Job)()
             MessageBox.Show("Không tải được danh sách nhân viên: " & If(employeeResponse?.Message, "Lỗi không xác định."))
             allNhanVienView = New List(Of NhanVien)()
+            boPhanUi = New List(Of BoPhan)()
             Return
         End If
 
@@ -84,6 +92,10 @@ Public Class frmNhanSu
         If nhanVien Is Nothing Then
             nhanVien = New List(Of Employee)()
         End If
+        employeeByCode = nhanVien.
+            Where(Function(emp) emp IsNot Nothing AndAlso Not String.IsNullOrWhiteSpace(emp.code)).
+            GroupBy(Function(emp) emp.code, StringComparer.OrdinalIgnoreCase).
+            ToDictionary(Function(g) g.Key, Function(g) g.First(), StringComparer.OrdinalIgnoreCase)
 
         Dim departmentResponse = _departmentService.Execute(DataIntent.GetList)
         phongBan = TryCast(departmentResponse?.Data, IEnumerable(Of Department))?.ToList()
@@ -102,13 +114,16 @@ Public Class frmNhanSu
         If jobs Is Nothing Then
             jobs = New List(Of Job)()
         End If
+        jobById = jobs.
+            Where(Function(j) j IsNot Nothing).
+            GroupBy(Function(j) j.id).
+            ToDictionary(Function(g) Convert.ToInt32(g.Key), Function(g) g.First())
 
-        ' Ưu tiên vị trí active và gần nhất để hiển thị bộ phận/ngày bắt đầu.
-        Dim positionMap = positions.
+        positionByEmployeeId = positions.
             Where(Function(p) p IsNot Nothing AndAlso p.Contract IsNot Nothing AndAlso p.Contract.Employee IsNot Nothing).
-            GroupBy(Function(p) p.Contract.Employee.id).
+            GroupBy(Function(p) Convert.ToInt32(p.Contract.Employee.id)).
             ToDictionary(
-                Function(g) g.Key,
+                Function(g) Convert.ToInt32(g.Key),
                 Function(g) g.
                     OrderByDescending(Function(p) If(p.status = 1, 1, 0)).
                     ThenByDescending(Function(p) If(p.start_date, DateTime.MinValue)).
@@ -117,11 +132,32 @@ Public Class frmNhanSu
         allNhanVienView = nhanVien.Select(
             Function(emp)
                 Dim pos As Position = Nothing
+                Dim deptId As Integer? = Nothing
+                Dim jobId As Integer? = Nothing
                 Dim deptName As String = "---"
+                Dim jobName As String = "---"
                 Dim ngayBatDau As String = String.Empty
 
-                If positionMap.TryGetValue(emp.id, pos) Then
-                    deptName = If(pos?.Job?.Department?.name, "---")
+                If positionByEmployeeId.TryGetValue(emp.id, pos) Then
+                    If pos IsNot Nothing AndAlso pos.Job IsNot Nothing Then
+                        jobId = pos.Job.id
+
+                        Dim resolvedJob As Job = Nothing
+                        If jobById.TryGetValue(pos.Job.id, resolvedJob) Then
+                            jobName = If(resolvedJob.name, "---")
+                            If resolvedJob.Department IsNot Nothing Then
+                                deptId = resolvedJob.Department.id
+                                deptName = If(resolvedJob.Department.name, "---")
+                            End If
+                        Else
+                            jobName = If(pos.Job.name, "---")
+                            If pos.Job.Department IsNot Nothing Then
+                                deptId = pos.Job.Department.id
+                                deptName = If(pos.Job.Department.name, "---")
+                            End If
+                        End If
+                    End If
+
                     Dim startDate As DateTime? = Nothing
                     If pos IsNot Nothing AndAlso pos.start_date.HasValue Then
                         startDate = pos.start_date
@@ -135,6 +171,10 @@ Public Class frmNhanSu
                 End If
 
                 Return New NhanVien With {
+                    .Id = emp.id,
+                    .DepartmentId = deptId,
+                    .JobId = jobId,
+                    .JobName = jobName,
                     .Code = emp.code,
                     .Name = emp.name,
                     .Email = emp.email,
@@ -145,27 +185,82 @@ Public Class frmNhanSu
                     .Gender = ConvertGender(emp.gender)
                 }
             End Function).ToList()
+
+        BuildBoPhanUiModel(positionByEmployeeId)
     End Sub
 
     ' ================= TREEVIEW =================
+    Private Sub BuildBoPhanUiModel(positionMap As Dictionary(Of Integer, Position))
+        Dim jobsByDepartment = jobs.
+            Where(Function(j) j IsNot Nothing AndAlso j.Department IsNot Nothing AndAlso j.status <> -1).
+            GroupBy(Function(j) j.Department.id).
+            ToDictionary(Function(g) Convert.ToInt32(g.Key), Function(g) g.OrderBy(Function(x) x.code).ToList())
+
+        boPhanUi = phongBan.
+            Where(Function(d) d IsNot Nothing AndAlso d.status <> -1).
+            OrderBy(Function(d) d.name).
+            Select(
+                Function(d)
+                    Dim jobsInDepartment As List(Of Job) = Nothing
+                    If Not jobsByDepartment.TryGetValue(d.id, jobsInDepartment) Then
+                        jobsInDepartment = New List(Of Job)()
+                    End If
+
+                    Return New BoPhan With {
+                        .Id = d.id,
+                        .Code = d.code,
+                        .Name = d.name,
+                        .CongViec = jobsInDepartment.
+                            Select(Function(j) New CongViec With {
+                                .Id = j.id,
+                                .DepartmentId = d.id,
+                                .Code = j.code,
+                                .Name = j.name,
+                                .NhanVien = New List(Of NhanVien)()
+                            }).ToList()
+                    }
+                End Function).ToList()
+
+        Dim jobUiMap As New Dictionary(Of Integer, CongViec)()
+        For Each bp In boPhanUi
+            If bp.CongViec Is Nothing Then Continue For
+            For Each cv In bp.CongViec
+                jobUiMap(cv.Id) = cv
+            Next
+        Next
+
+        For Each nv In allNhanVienView
+            Dim pos As Position = Nothing
+            If Not positionMap.TryGetValue(nv.Id, pos) Then Continue For
+            If pos Is Nothing OrElse pos.Job Is Nothing Then Continue For
+
+            Dim targetJob As CongViec = Nothing
+            If jobUiMap.TryGetValue(pos.Job.id, targetJob) Then
+                targetJob.NhanVien.Add(nv)
+            End If
+        Next
+    End Sub
+
     Private Sub loadBoPhan()
         tvBoPhan.Nodes.Clear()
 
-        Dim root = tvBoPhan.Nodes.Add(txtTenCongTy.Text)
+        Dim root = tvBoPhan.Nodes.Add($"{txtTenCongTy.Text} ({allNhanVienView.Count})")
         root.Tag = New TreeNodeMeta With {.NodeType = NODE_ROOT, .Id = 0, .ParentDepartmentId = 0}
 
-        For Each dept In phongBan.Where(Function(d) d IsNot Nothing AndAlso d.status <> -1).OrderBy(Function(d) d.name)
-            Dim deptNode = root.Nodes.Add(dept.name)
-            deptNode.Tag = New TreeNodeMeta With {.NodeType = NODE_DEPARTMENT, .Id = dept.id, .ParentDepartmentId = dept.id}
+        For Each bp In boPhanUi
+            Dim departmentCount As Integer = 0
+            If bp.CongViec IsNot Nothing Then
+                departmentCount = bp.CongViec.Sum(Function(cv) If(cv.NhanVien IsNot Nothing, cv.NhanVien.Count, 0))
+            End If
 
-            Dim jobsInDept = jobs.
-                Where(Function(j) j IsNot Nothing AndAlso j.Department IsNot Nothing AndAlso j.Department.id = dept.id AndAlso j.status <> -1).
-                OrderBy(Function(j) j.code).
-                ToList()
+            Dim deptNode = root.Nodes.Add($"{bp.Code} - {bp.Name} ({departmentCount})")
+            deptNode.Tag = New TreeNodeMeta With {.NodeType = NODE_DEPARTMENT, .Id = bp.Id, .ParentDepartmentId = bp.Id}
 
-            For Each job In jobsInDept
-                Dim jobNode = deptNode.Nodes.Add($"{job.code} - {job.name}")
-                jobNode.Tag = New TreeNodeMeta With {.NodeType = NODE_JOB, .Id = job.id, .ParentDepartmentId = dept.id}
+            If bp.CongViec Is Nothing Then Continue For
+            For Each cv In bp.CongViec
+                Dim jobCount = If(cv.NhanVien IsNot Nothing, cv.NhanVien.Count, 0)
+                Dim jobNode = deptNode.Nodes.Add($"{cv.Code} - {cv.Name} ({jobCount})")
+                jobNode.Tag = New TreeNodeMeta With {.NodeType = NODE_JOB, .Id = cv.Id, .ParentDepartmentId = bp.Id}
             Next
         Next
 
@@ -259,6 +354,7 @@ Public Class frmNhanSu
 
         ExecuteTransfer(selectedEmployees, transfer, True)
     End Sub
+
     Private Sub XuLy_NghiViec(sender As Object, e As EventArgs)
         Dim selectedEmployees = GetSelectedEmployees()
         If selectedEmployees.Count = 0 Then Return
@@ -387,6 +483,7 @@ Public Class frmNhanSu
 
         ExecuteTransfer(draggedEmployees, transfer, True)
     End Sub
+
     Private Sub cbbxTrangThai_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbbxTrangThai.SelectedIndexChanged
         ApplyFilters()
     End Sub
@@ -453,6 +550,7 @@ Public Class frmNhanSu
             DeleteJob(meta.Id)
         End If
     End Sub
+
     Private Sub dtgvDSNhanVien_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dtgvDSNhanVien.CellContentClick
         If e.RowIndex < 0 Then Return
         If e.ColumnIndex <> dtgvDSNhanVien.Columns("colChiTiet").Index Then Return
@@ -495,10 +593,15 @@ Public Class frmNhanSu
                 query = query.Where(Function(x) x.Gender = "Nữ")
         End Select
 
-        Dim selectedDept = GetSelectedDepartmentFromTree()
-        If selectedDept IsNot Nothing Then
-            query = query.Where(Function(x) x.DepartmentName = selectedDept.name)
+        Dim selectedMeta = GetSelectedNodeMeta()
+        If selectedMeta IsNot Nothing Then
+            If selectedMeta.NodeType = NODE_DEPARTMENT Then
+                query = query.Where(Function(x) x.DepartmentId.HasValue AndAlso x.DepartmentId.Value = selectedMeta.Id)
+            ElseIf selectedMeta.NodeType = NODE_JOB Then
+                query = query.Where(Function(x) x.JobId.HasValue AndAlso x.JobId.Value = selectedMeta.Id)
+            End If
         End If
+
         dtgvDSNhanVien.DataSource = New BindingList(Of NhanVien)(query.ToList())
         btnXuLyNhanh.Visible = False
     End Sub
@@ -529,8 +632,9 @@ Public Class frmNhanSu
                 Return "Khác"
         End Select
     End Function
+
     Private Function GetDraggedEmployeesFromGrid() As List(Of Employee)
-        Dim rowIndexes = dtgvDSNhanVien.SelectedCells.Cast(Of DataGridViewCell)().Select(Function(c) c.RowIndex).Distinct().ToList()
+        Dim rowIndexes = dtgvDSNhanVien.SelectedCells.Cast(Of DataGridViewCell)().Select(Function(cel) cel.RowIndex).Distinct().ToList()
         Dim selectedCodes As New HashSet(Of String)(StringComparer.OrdinalIgnoreCase)
 
         For Each idx In rowIndexes
@@ -548,7 +652,15 @@ Public Class frmNhanSu
             Return GetSelectedEmployees()
         End If
 
-        Return nhanVien.Where(Function(emp) selectedCodes.Contains(emp.code)).ToList()
+        Dim result As New List(Of Employee)()
+        For Each code In selectedCodes
+            Dim emp As Employee = Nothing
+            If employeeByCode.TryGetValue(code, emp) Then
+                result.Add(emp)
+            End If
+        Next
+
+        Return result
     End Function
 
     Private Function BuildTransferFromNode(node As TreeNode) As TransferSelection
@@ -557,7 +669,8 @@ Public Class frmNhanSu
         If meta Is Nothing Then Return Nothing
 
         If meta.NodeType = NODE_JOB Then
-            Dim targetJob = jobs.FirstOrDefault(Function(j) j.id = meta.Id)
+            Dim targetJob As Job = Nothing
+            If Not jobById.TryGetValue(meta.Id, targetJob) Then Return Nothing
             If targetJob Is Nothing Then Return Nothing
             Return New TransferSelection With {
                 .UseJob = True,
@@ -582,77 +695,39 @@ Public Class frmNhanSu
         If selectedEmployees Is Nothing OrElse selectedEmployees.Count = 0 Then Return
         If transfer Is Nothing Then Return
 
-        Dim updatedCount As Integer = 0
-        Dim failCount As Integer = 0
-
-        For Each emp In selectedEmployees
-            Dim activePosition = positions.
-                Where(Function(p) p IsNot Nothing AndAlso p.Contract IsNot Nothing AndAlso p.Contract.Employee IsNot Nothing AndAlso p.Contract.Employee.id = emp.id).
-                OrderByDescending(Function(p) If(p.status = 1, 1, 0)).
-                ThenByDescending(Function(p) If(p.start_date, DateTime.MinValue)).
-                FirstOrDefault()
-
-            If activePosition Is Nothing Then
-                failCount += 1
-                Continue For
-            End If
-
-            If transfer.UseJob Then
-                activePosition.Job = transfer.Job
-                Dim response = _positionService.Execute(DataIntent.Update, activePosition)
-                If response Is Nothing OrElse Not response.IsSuccess Then
-                    failCount += 1
-                Else
-                    updatedCount += 1
-                End If
-            Else
-                Dim handled As Boolean = False
-
-                If transfer.PreferNullJob Then
-                    activePosition.Job = Nothing
-                    Dim nullResponse = _positionService.Execute(DataIntent.Update, activePosition)
-                    If nullResponse IsNot Nothing AndAlso nullResponse.IsSuccess Then
-                        updatedCount += 1
-                        handled = True
-                    End If
-                End If
-
-                If Not handled Then
-                    Dim fallbackJob = GetFirstJobInDepartment(transfer.DepartmentId)
-                    If fallbackJob Is Nothing Then
-                        failCount += 1
-                        Continue For
-                    End If
-
-                    activePosition.Job = fallbackJob
-                    Dim fallbackResponse = _positionService.Execute(DataIntent.Update, activePosition)
-                    If fallbackResponse Is Nothing OrElse Not fallbackResponse.IsSuccess Then
-                        failCount += 1
-                    Else
-                        updatedCount += 1
-                    End If
-                End If
-            End If
-        Next
+        Dim transferService As New NhanSuTransferService(_positionService)
+        Dim result = transferService.ExecuteTransfer(New NhanSuTransferRequest With {
+            .SelectedEmployees = selectedEmployees,
+            .Positions = positions,
+            .Jobs = jobs,
+            .UseJob = transfer.UseJob,
+            .TargetJob = transfer.Job,
+            .TargetDepartmentId = transfer.DepartmentId,
+            .PreferNullJob = transfer.PreferNullJob
+        })
 
         ReloadDataAndView()
 
         If showResult Then
-            MessageBox.Show($"Đã chuyển thành công {updatedCount} nhân viên. Lỗi: {failCount}.")
+            MessageBox.Show($"Đã chuyển thành công {result.UpdatedCount} nhân viên. Lỗi: {result.FailCount}.")
         End If
     End Sub
+
     Private Function GetSelectedEmployees() As List(Of Employee)
         Dim selectedCodes = GetSelected().
             Select(Function(x) x.Code).
             Where(Function(code) Not String.IsNullOrWhiteSpace(code)).
             Distinct(StringComparer.OrdinalIgnoreCase)
 
-        Dim codeSet As New HashSet(Of String)(selectedCodes, StringComparer.OrdinalIgnoreCase)
-        If codeSet.Count = 0 Then
-            Return New List(Of Employee)()
-        End If
+        Dim result As New List(Of Employee)()
+        For Each code In selectedCodes
+            Dim emp As Employee = Nothing
+            If employeeByCode.TryGetValue(code, emp) Then
+                result.Add(emp)
+            End If
+        Next
 
-        Return nhanVien.Where(Function(emp) codeSet.Contains(emp.code)).ToList()
+        Return result
     End Function
 
     Private Function GetSelectedDepartmentFromTree() As Department
@@ -762,13 +837,6 @@ Public Class frmNhanSu
         }
     End Function
 
-    Private Function GetFirstJobInDepartment(departmentId As Integer) As Job
-        Return jobs.
-            Where(Function(j) j IsNot Nothing AndAlso j.Department IsNot Nothing AndAlso j.Department.id = departmentId AndAlso j.status <> -1).
-            OrderBy(Function(j) j.code).
-            FirstOrDefault()
-    End Function
-
     Private Function GetSelectedNodeMeta() As TreeNodeMeta
         If tvBoPhan.SelectedNode Is Nothing Then Return Nothing
 
@@ -786,6 +854,7 @@ Public Class frmNhanSu
 
         Return Nothing
     End Function
+
     Private Sub AddDepartment()
         Dim data As New Department()
         Dim crud As New Department_CRUD_Frm(data, True)
@@ -913,6 +982,7 @@ Public Class frmNhanSu
 
         ReloadDataAndView()
     End Sub
+
     Private Sub ReloadDataAndView()
         loadData()
         loadBoPhan()
@@ -934,8 +1004,8 @@ Public Class frmNhanSu
             Return
         End If
 
-        Dim employee = nhanVien.FirstOrDefault(Function(x) String.Equals(x.code, viewModel.Code, StringComparison.OrdinalIgnoreCase))
-        If employee Is Nothing Then
+        Dim employee As Employee = Nothing
+        If Not employeeByCode.TryGetValue(viewModel.Code, employee) Then
             MessageBox.Show("Không tìm thấy dữ liệu nhân viên trong bộ nhớ hiện tại.")
             Return
         End If
@@ -998,6 +1068,25 @@ Public Class frmNhanSu
         End If
     End Sub
 End Class
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

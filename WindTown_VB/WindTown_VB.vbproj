@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -548,6 +548,9 @@
     <Compile Include="UIUX\Modules\NavigationService.vb" />
     <Compile Include="UIUX\Modules\DashboardService.vb" />
     <Compile Include="UIUX\Modules\DashboardSummaryDto.vb" />
+    <Compile Include="UIUX\Modules\BoPhan.vb" />
+    <Compile Include="UIUX\Modules\CongViec.vb" />
+    <Compile Include="UIUX\Modules\NhanSuTransferService.vb" />
     <Compile Include="UIUX\Modules\NhanVien.vb" />
     <Compile Include="UIUX\tesst.Designer.vb">
       <DependentUpon>tesst.vb</DependentUpon>
@@ -673,7 +676,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="1_Documents\23CĐTT02_WindTown.docx" />
+    <None Include="1_Documents\23CÄTT02_WindTown.docx" />
     <None Include="1_Documents\db_datas_test.xlsx" />
     <None Include="1_Documents\db_detail_org.dbml" />
     <None Include="1_Documents\Git_cmd.md" />
@@ -755,3 +758,4 @@
     <Error Condition="!Exists('..\packages\Microsoft.Data.SqlClient.SNI.6.0.2\build\net462\Microsoft.Data.SqlClient.SNI.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Data.SqlClient.SNI.6.0.2\build\net462\Microsoft.Data.SqlClient.SNI.targets'))" />
   </Target>
 </Project>
+
