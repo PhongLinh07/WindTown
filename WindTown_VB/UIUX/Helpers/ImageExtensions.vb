@@ -3,6 +3,28 @@ Imports System.Runtime.CompilerServices
 
 Module ImageExtensions
     <Extension()>
+    Public Function ResizeImage(sourceImage As Image, width As Integer, height As Integer) As Image
+
+        ' Tạo bitmap mới theo kích thước mong muốn
+        Dim newBitmap As New Bitmap(width, height)
+
+        ' Vẽ lại ảnh vào bitmap mới
+        Using g As Graphics = Graphics.FromImage(newBitmap)
+
+            ' Tăng chất lượng resize
+            g.InterpolationMode = InterpolationMode.HighQualityBicubic
+            g.SmoothingMode = SmoothingMode.HighQuality
+            g.PixelOffsetMode = PixelOffsetMode.HighQuality
+            g.CompositingQuality = CompositingQuality.HighQuality
+
+            g.DrawImage(sourceImage, 0, 0, width, height)
+
+        End Using
+
+        Return newBitmap
+
+    End Function
+    <Extension()>
     Public Sub ResizeImageControl(ctrl As Control)
 
         If ctrl.BackgroundImage Is Nothing Then Exit Sub
@@ -54,4 +76,5 @@ Module ImageExtensions
         btn.Image = bmp
 
     End Sub
+
 End Module

@@ -55,7 +55,7 @@ Partial Class frmChucVu
         Me.tlpnlMainChucVu.RowCount = 2
         Me.tlpnlMainChucVu.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 80.0!))
         Me.tlpnlMainChucVu.RowStyles.Add(New System.Windows.Forms.RowStyle())
-        Me.tlpnlMainChucVu.Size = New System.Drawing.Size(1172, 643)
+        Me.tlpnlMainChucVu.Size = New System.Drawing.Size(1040, 665)
         Me.tlpnlMainChucVu.TabIndex = 0
         '
         'Panel1
@@ -64,9 +64,9 @@ Partial Class frmChucVu
         Me.Panel1.Controls.Add(Me.Label2)
         Me.Panel1.Controls.Add(Me.Button5)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Panel1.Location = New System.Drawing.Point(589, 83)
+        Me.Panel1.Location = New System.Drawing.Point(523, 83)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(580, 571)
+        Me.Panel1.Size = New System.Drawing.Size(514, 579)
         Me.Panel1.TabIndex = 3
         '
         'Label2
@@ -100,7 +100,7 @@ Partial Class frmChucVu
         Me.pnlBody.Dock = System.Windows.Forms.DockStyle.Fill
         Me.pnlBody.Location = New System.Drawing.Point(3, 83)
         Me.pnlBody.Name = "pnlBody"
-        Me.pnlBody.Size = New System.Drawing.Size(580, 571)
+        Me.pnlBody.Size = New System.Drawing.Size(514, 579)
         Me.pnlBody.TabIndex = 2
         '
         'tvChucVu
@@ -150,15 +150,17 @@ Partial Class frmChucVu
         Me.pnlHeader.Dock = System.Windows.Forms.DockStyle.Fill
         Me.pnlHeader.Location = New System.Drawing.Point(3, 3)
         Me.pnlHeader.Name = "pnlHeader"
-        Me.pnlHeader.Size = New System.Drawing.Size(1166, 74)
+        Me.pnlHeader.Size = New System.Drawing.Size(1034, 74)
         Me.pnlHeader.TabIndex = 1
         '
         'Button1
         '
+        Me.Button1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Button1.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer))
         Me.Button1.Font = New System.Drawing.Font("Microsoft YaHei UI", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button1.ForeColor = System.Drawing.Color.White
-        Me.Button1.Location = New System.Drawing.Point(743, 20)
+        Me.Button1.Location = New System.Drawing.Point(845, 20)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(180, 31)
         Me.Button1.TabIndex = 1
@@ -180,7 +182,7 @@ Partial Class frmChucVu
         Me.AutoScaleDimensions = New System.Drawing.SizeF(12.0!, 27.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.LightGray
-        Me.ClientSize = New System.Drawing.Size(1172, 643)
+        Me.ClientSize = New System.Drawing.Size(1040, 665)
         Me.Controls.Add(Me.tlpnlMainChucVu)
         Me.Font = New System.Drawing.Font("Microsoft YaHei UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Margin = New System.Windows.Forms.Padding(5)

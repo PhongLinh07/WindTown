@@ -1,7 +1,4 @@
 ﻿Public Class frmChamCong
-    Private originalSidebarWidth As Integer
-    Private collapsedWidth As Integer = 60
-    Private isSidebarCollapsed As Boolean = False
 
     Private Sub frmMain_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 

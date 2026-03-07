@@ -38,21 +38,21 @@ Partial Class frmHopDong
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.cbbxHopDong = New System.Windows.Forms.ComboBox()
         Me.cbbxTrangThai = New System.Windows.Forms.ComboBox()
-        Me.dtgvDSHopDong = New System.Windows.Forms.DataGridView()
-        Me.cbbxBoPhan = New System.Windows.Forms.ComboBox()
-        Me.cbbxLoaiHopDong = New System.Windows.Forms.ComboBox()
-        Me.Panel2 = New System.Windows.Forms.Panel()
-        Me.Label6 = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.cbbxLoaiHopDong = New System.Windows.Forms.ComboBox()
+        Me.cbbxBoPhan = New System.Windows.Forms.ComboBox()
+        Me.dtgvDSHopDong = New System.Windows.Forms.DataGridView()
         Me.tlpnlMain.SuspendLayout()
         Me.tlpDashboard.SuspendLayout()
         Me.Panel6.SuspendLayout()
         Me.Panel5.SuspendLayout()
         Me.Panel4.SuspendLayout()
         Me.Panel3.SuspendLayout()
-        CType(Me.dtgvDSHopDong, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.Panel2.SuspendLayout()
         Me.Panel1.SuspendLayout()
+        Me.Panel2.SuspendLayout()
+        CType(Me.dtgvDSHopDong, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'tlpnlMain
@@ -67,7 +67,7 @@ Partial Class frmHopDong
         Me.tlpnlMain.Name = "tlpnlMain"
         Me.tlpnlMain.RowCount = 1
         Me.tlpnlMain.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.tlpnlMain.Size = New System.Drawing.Size(1172, 643)
+        Me.tlpnlMain.Size = New System.Drawing.Size(1040, 665)
         Me.tlpnlMain.TabIndex = 1
         '
         'tlpDashboard
@@ -94,7 +94,7 @@ Partial Class frmHopDong
         Me.tlpDashboard.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 77.0!))
         Me.tlpDashboard.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 13.39286!))
         Me.tlpDashboard.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 86.60714!))
-        Me.tlpDashboard.Size = New System.Drawing.Size(1168, 637)
+        Me.tlpDashboard.Size = New System.Drawing.Size(1036, 659)
         Me.tlpDashboard.TabIndex = 2
         '
         'Panel6
@@ -103,17 +103,21 @@ Partial Class frmHopDong
         Me.Panel6.Controls.Add(Me.btnThemHD)
         Me.Panel6.Controls.Add(Me.dtpkDenNgay)
         Me.Panel6.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Panel6.Location = New System.Drawing.Point(935, 80)
+        Me.Panel6.Location = New System.Drawing.Point(831, 80)
         Me.Panel6.Name = "Panel6"
-        Me.Panel6.Size = New System.Drawing.Size(230, 69)
+        Me.Panel6.Size = New System.Drawing.Size(202, 71)
         Me.Panel6.TabIndex = 6
         '
         'btnThemHD
         '
+        Me.btnThemHD.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnThemHD.BackColor = System.Drawing.Color.LimeGreen
-        Me.btnThemHD.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.btnThemHD.ForeColor = System.Drawing.Color.White
         Me.btnThemHD.Location = New System.Drawing.Point(0, 39)
+        Me.btnThemHD.MaximumSize = New System.Drawing.Size(230, 30)
+        Me.btnThemHD.MinimumSize = New System.Drawing.Size(230, 30)
         Me.btnThemHD.Name = "btnThemHD"
         Me.btnThemHD.Size = New System.Drawing.Size(230, 30)
         Me.btnThemHD.TabIndex = 4
@@ -125,7 +129,7 @@ Partial Class frmHopDong
         Me.dtpkDenNgay.Dock = System.Windows.Forms.DockStyle.Fill
         Me.dtpkDenNgay.Location = New System.Drawing.Point(0, 0)
         Me.dtpkDenNgay.Name = "dtpkDenNgay"
-        Me.dtpkDenNgay.Size = New System.Drawing.Size(230, 27)
+        Me.dtpkDenNgay.Size = New System.Drawing.Size(202, 27)
         Me.dtpkDenNgay.TabIndex = 3
         '
         'Panel5
@@ -134,9 +138,9 @@ Partial Class frmHopDong
         Me.Panel5.Controls.Add(Me.dtpkTuNgay)
         Me.Panel5.Controls.Add(Me.cbbxCongTy)
         Me.Panel5.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Panel5.Location = New System.Drawing.Point(702, 80)
+        Me.Panel5.Location = New System.Drawing.Point(624, 80)
         Me.Panel5.Name = "Panel5"
-        Me.Panel5.Size = New System.Drawing.Size(227, 69)
+        Me.Panel5.Size = New System.Drawing.Size(201, 71)
         Me.Panel5.TabIndex = 5
         '
         'dtpkTuNgay
@@ -144,16 +148,16 @@ Partial Class frmHopDong
         Me.dtpkTuNgay.Dock = System.Windows.Forms.DockStyle.Fill
         Me.dtpkTuNgay.Location = New System.Drawing.Point(0, 0)
         Me.dtpkTuNgay.Name = "dtpkTuNgay"
-        Me.dtpkTuNgay.Size = New System.Drawing.Size(227, 27)
+        Me.dtpkTuNgay.Size = New System.Drawing.Size(201, 27)
         Me.dtpkTuNgay.TabIndex = 2
         '
         'cbbxCongTy
         '
         Me.cbbxCongTy.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.cbbxCongTy.FormattingEnabled = True
-        Me.cbbxCongTy.Location = New System.Drawing.Point(0, 39)
+        Me.cbbxCongTy.Location = New System.Drawing.Point(0, 41)
         Me.cbbxCongTy.Name = "cbbxCongTy"
-        Me.cbbxCongTy.Size = New System.Drawing.Size(227, 30)
+        Me.cbbxCongTy.Size = New System.Drawing.Size(201, 30)
         Me.cbbxCongTy.TabIndex = 1
         '
         'Panel4
@@ -163,9 +167,9 @@ Partial Class frmHopDong
         Me.Panel4.Controls.Add(Me.tbxSearch)
         Me.Panel4.Controls.Add(Me.cbbxThoiGianHD)
         Me.Panel4.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Panel4.Location = New System.Drawing.Point(469, 80)
+        Me.Panel4.Location = New System.Drawing.Point(417, 80)
         Me.Panel4.Name = "Panel4"
-        Me.Panel4.Size = New System.Drawing.Size(227, 69)
+        Me.Panel4.Size = New System.Drawing.Size(201, 71)
         Me.Panel4.TabIndex = 4
         '
         'btnSearch
@@ -176,11 +180,12 @@ Partial Class frmHopDong
         Me.btnSearch.FlatAppearance.BorderSize = 0
         Me.btnSearch.Font = New System.Drawing.Font("Arial Narrow", 8.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnSearch.Image = Global.WindTown_VB.My.Resources.Resources.search
-        Me.btnSearch.Location = New System.Drawing.Point(162, 42)
+        Me.btnSearch.Location = New System.Drawing.Point(173, 42)
+        Me.btnSearch.MaximumSize = New System.Drawing.Size(28, 28)
+        Me.btnSearch.MinimumSize = New System.Drawing.Size(28, 28)
         Me.btnSearch.Name = "btnSearch"
-        Me.btnSearch.Size = New System.Drawing.Size(65, 26)
+        Me.btnSearch.Size = New System.Drawing.Size(28, 28)
         Me.btnSearch.TabIndex = 2
-        Me.btnSearch.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnSearch.UseVisualStyleBackColor = True
         '
         'tbxSearch
@@ -190,7 +195,7 @@ Partial Class frmHopDong
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.tbxSearch.Location = New System.Drawing.Point(3, 42)
         Me.tbxSearch.Name = "tbxSearch"
-        Me.tbxSearch.Size = New System.Drawing.Size(189, 27)
+        Me.tbxSearch.Size = New System.Drawing.Size(169, 27)
         Me.tbxSearch.TabIndex = 1
         '
         'cbbxThoiGianHD
@@ -199,7 +204,7 @@ Partial Class frmHopDong
         Me.cbbxThoiGianHD.FormattingEnabled = True
         Me.cbbxThoiGianHD.Location = New System.Drawing.Point(0, 0)
         Me.cbbxThoiGianHD.Name = "cbbxThoiGianHD"
-        Me.cbbxThoiGianHD.Size = New System.Drawing.Size(227, 30)
+        Me.cbbxThoiGianHD.Size = New System.Drawing.Size(201, 30)
         Me.cbbxThoiGianHD.TabIndex = 0
         '
         'Panel3
@@ -208,18 +213,18 @@ Partial Class frmHopDong
         Me.Panel3.Controls.Add(Me.cbbxHopDong)
         Me.Panel3.Controls.Add(Me.cbbxTrangThai)
         Me.Panel3.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Panel3.Location = New System.Drawing.Point(236, 80)
+        Me.Panel3.Location = New System.Drawing.Point(210, 80)
         Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(227, 69)
+        Me.Panel3.Size = New System.Drawing.Size(201, 71)
         Me.Panel3.TabIndex = 3
         '
         'cbbxHopDong
         '
         Me.cbbxHopDong.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.cbbxHopDong.FormattingEnabled = True
-        Me.cbbxHopDong.Location = New System.Drawing.Point(0, 39)
+        Me.cbbxHopDong.Location = New System.Drawing.Point(0, 41)
         Me.cbbxHopDong.Name = "cbbxHopDong"
-        Me.cbbxHopDong.Size = New System.Drawing.Size(227, 30)
+        Me.cbbxHopDong.Size = New System.Drawing.Size(201, 30)
         Me.cbbxHopDong.TabIndex = 1
         '
         'cbbxTrangThai
@@ -228,66 +233,8 @@ Partial Class frmHopDong
         Me.cbbxTrangThai.FormattingEnabled = True
         Me.cbbxTrangThai.Location = New System.Drawing.Point(0, 0)
         Me.cbbxTrangThai.Name = "cbbxTrangThai"
-        Me.cbbxTrangThai.Size = New System.Drawing.Size(227, 30)
+        Me.cbbxTrangThai.Size = New System.Drawing.Size(201, 30)
         Me.cbbxTrangThai.TabIndex = 0
-        '
-        'dtgvDSHopDong
-        '
-        Me.dtgvDSHopDong.AllowUserToAddRows = False
-        Me.dtgvDSHopDong.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
-        Me.dtgvDSHopDong.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders
-        Me.dtgvDSHopDong.BackgroundColor = System.Drawing.Color.White
-        Me.dtgvDSHopDong.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.tlpDashboard.SetColumnSpan(Me.dtgvDSHopDong, 5)
-        Me.dtgvDSHopDong.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.dtgvDSHopDong.Location = New System.Drawing.Point(3, 155)
-        Me.dtgvDSHopDong.Name = "dtgvDSHopDong"
-        Me.dtgvDSHopDong.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        Me.dtgvDSHopDong.RowHeadersVisible = False
-        Me.dtgvDSHopDong.RowHeadersWidth = 51
-        Me.dtgvDSHopDong.RowTemplate.Height = 24
-        Me.dtgvDSHopDong.Size = New System.Drawing.Size(1162, 479)
-        Me.dtgvDSHopDong.TabIndex = 7
-        '
-        'cbbxBoPhan
-        '
-        Me.cbbxBoPhan.Dock = System.Windows.Forms.DockStyle.Top
-        Me.cbbxBoPhan.FormattingEnabled = True
-        Me.cbbxBoPhan.Location = New System.Drawing.Point(0, 0)
-        Me.cbbxBoPhan.Name = "cbbxBoPhan"
-        Me.cbbxBoPhan.Size = New System.Drawing.Size(227, 30)
-        Me.cbbxBoPhan.TabIndex = 0
-        '
-        'cbbxLoaiHopDong
-        '
-        Me.cbbxLoaiHopDong.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.cbbxLoaiHopDong.FormattingEnabled = True
-        Me.cbbxLoaiHopDong.Location = New System.Drawing.Point(0, 39)
-        Me.cbbxLoaiHopDong.Name = "cbbxLoaiHopDong"
-        Me.cbbxLoaiHopDong.Size = New System.Drawing.Size(227, 30)
-        Me.cbbxLoaiHopDong.TabIndex = 1
-        '
-        'Panel2
-        '
-        Me.Panel2.BackColor = System.Drawing.Color.White
-        Me.Panel2.Controls.Add(Me.cbbxLoaiHopDong)
-        Me.Panel2.Controls.Add(Me.cbbxBoPhan)
-        Me.Panel2.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Panel2.Location = New System.Drawing.Point(3, 80)
-        Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(227, 69)
-        Me.Panel2.TabIndex = 2
-        '
-        'Label6
-        '
-        Me.Label6.AutoSize = True
-        Me.Label6.Font = New System.Drawing.Font("Microsoft YaHei UI", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.Location = New System.Drawing.Point(11, 20)
-        Me.Label6.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(219, 31)
-        Me.Label6.TabIndex = 0
-        Me.Label6.Text = "Quản lý hợp đồng"
         '
         'Panel1
         '
@@ -298,15 +245,73 @@ Partial Class frmHopDong
         Me.Panel1.Location = New System.Drawing.Point(2, 3)
         Me.Panel1.Margin = New System.Windows.Forms.Padding(2, 3, 2, 3)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(1164, 71)
+        Me.Panel1.Size = New System.Drawing.Size(1032, 71)
         Me.Panel1.TabIndex = 1
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Font = New System.Drawing.Font("Microsoft YaHei UI", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label6.Location = New System.Drawing.Point(11, 20)
+        Me.Label6.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(224, 31)
+        Me.Label6.TabIndex = 0
+        Me.Label6.Text = "Quản lý hợp đồng"
+        '
+        'Panel2
+        '
+        Me.Panel2.BackColor = System.Drawing.Color.White
+        Me.Panel2.Controls.Add(Me.cbbxLoaiHopDong)
+        Me.Panel2.Controls.Add(Me.cbbxBoPhan)
+        Me.Panel2.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Panel2.Location = New System.Drawing.Point(3, 80)
+        Me.Panel2.Name = "Panel2"
+        Me.Panel2.Size = New System.Drawing.Size(201, 71)
+        Me.Panel2.TabIndex = 2
+        '
+        'cbbxLoaiHopDong
+        '
+        Me.cbbxLoaiHopDong.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.cbbxLoaiHopDong.FormattingEnabled = True
+        Me.cbbxLoaiHopDong.Location = New System.Drawing.Point(0, 41)
+        Me.cbbxLoaiHopDong.Name = "cbbxLoaiHopDong"
+        Me.cbbxLoaiHopDong.Size = New System.Drawing.Size(201, 30)
+        Me.cbbxLoaiHopDong.TabIndex = 1
+        '
+        'cbbxBoPhan
+        '
+        Me.cbbxBoPhan.Dock = System.Windows.Forms.DockStyle.Top
+        Me.cbbxBoPhan.FormattingEnabled = True
+        Me.cbbxBoPhan.Location = New System.Drawing.Point(0, 0)
+        Me.cbbxBoPhan.Name = "cbbxBoPhan"
+        Me.cbbxBoPhan.Size = New System.Drawing.Size(201, 30)
+        Me.cbbxBoPhan.TabIndex = 0
+        '
+        'dtgvDSHopDong
+        '
+        Me.dtgvDSHopDong.AllowUserToAddRows = False
+        Me.dtgvDSHopDong.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.dtgvDSHopDong.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders
+        Me.dtgvDSHopDong.BackgroundColor = System.Drawing.Color.White
+        Me.dtgvDSHopDong.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.tlpDashboard.SetColumnSpan(Me.dtgvDSHopDong, 5)
+        Me.dtgvDSHopDong.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.dtgvDSHopDong.Location = New System.Drawing.Point(3, 157)
+        Me.dtgvDSHopDong.Name = "dtgvDSHopDong"
+        Me.dtgvDSHopDong.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
+        Me.dtgvDSHopDong.RowHeadersVisible = False
+        Me.dtgvDSHopDong.RowHeadersWidth = 51
+        Me.dtgvDSHopDong.RowTemplate.Height = 24
+        Me.dtgvDSHopDong.Size = New System.Drawing.Size(1030, 499)
+        Me.dtgvDSHopDong.TabIndex = 7
         '
         'frmHopDong
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 22.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.LightGray
-        Me.ClientSize = New System.Drawing.Size(1172, 643)
+        Me.ClientSize = New System.Drawing.Size(1040, 665)
         Me.Controls.Add(Me.tlpnlMain)
         Me.Font = New System.Drawing.Font("Arial Narrow", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
@@ -321,10 +326,10 @@ Partial Class frmHopDong
         Me.Panel4.ResumeLayout(False)
         Me.Panel4.PerformLayout()
         Me.Panel3.ResumeLayout(False)
-        CType(Me.dtgvDSHopDong, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.Panel2.ResumeLayout(False)
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
+        Me.Panel2.ResumeLayout(False)
+        CType(Me.dtgvDSHopDong, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub

@@ -6,7 +6,7 @@
     Private activeButton As Button
 
     Private expandedWidth As Integer
-    Private collapsedWidth As Integer = 60
+    Private collapsedWidth As Integer = 64
     Private isCollapsed As Boolean = False
 
     Private parentTable As TableLayoutPanel
@@ -30,6 +30,8 @@
 
         BuildMenuUI()
 
+        designToggleButton(False)
+
         toolTipMenu.AutoPopDelay = 5000
         toolTipMenu.InitialDelay = 200
         toolTipMenu.ReshowDelay = 100
@@ -40,7 +42,7 @@
 
 
     '============================
-    ' Xác định TableLayoutPanel
+    ' Xác d?nh TableLayoutPanel
     '============================
     Private Sub InitSidebarLayout()
 
@@ -54,7 +56,7 @@
 
 
     '============================
-    ' Lấy kích thước sidebar
+    ' L?y kích thu?c sidebar
     '============================
     Private Sub InitSidebarSize()
 
@@ -79,60 +81,78 @@
     '============================
     Private Sub ToggleSidebar()
 
-        If parentTable Is Nothing Then Return
-        If columnIndex < 0 Then Return
+        Dim col As ColumnStyle = Nothing
 
-        Dim col = parentTable.ColumnStyles(columnIndex)
-
-        col.SizeType = SizeType.Absolute
+        If parentTable IsNot Nothing AndAlso columnIndex >= 0 Then
+            col = parentTable.ColumnStyles(columnIndex)
+            col.SizeType = SizeType.Absolute
+        End If
 
         If isCollapsed Then
 
-            '===== MỞ SIDEBAR =====
-            col.Width = expandedWidth
-
+            '===== M? SIDEBAR =====
+            If col IsNot Nothing Then
+                col.Width = expandedWidth
+            Else
+                Me.Width = expandedWidth
+            End If
             ptbLogo.Visible = True
-
-            For Each ctrl As Control In flpnlMenu.Controls
-
-                If TypeOf ctrl Is Button Then
-
-                    Dim btn As Button = CType(ctrl, Button)
-
-                    btn.Text = btn.Tag?.ToString()
-
-                End If
-
-            Next
+            designToggleButton(False)
+            UpdateMenuButtonText(True)
 
         Else
 
             '===== THU SIDEBAR =====
-            col.Width = collapsedWidth
-
+            If col IsNot Nothing Then
+                col.Width = collapsedWidth
+            Else
+                Me.Width = collapsedWidth
+            End If
             ptbLogo.Visible = False
 
-            For Each ctrl As Control In flpnlMenu.Controls
-
-                If TypeOf ctrl Is Button Then
-
-                    Dim btn As Button = CType(ctrl, Button)
-
-                    btn.Tag = btn.Text
-                    btn.Text = ""
-
-                End If
-
-            Next
+            designToggleButton(True)
+            UpdateMenuButtonText(False)
 
         End If
 
-        parentTable.PerformLayout()
+        If parentTable IsNot Nothing Then
+            parentTable.PerformLayout()
+        Else
+            Me.PerformLayout()
+        End If
 
         isCollapsed = Not isCollapsed
 
     End Sub
 
+    Private Sub UpdateMenuButtonText(isExpandedState As Boolean)
+
+        For Each ctrl As Control In flpnlMenu.Controls
+            UpdateButtonTextRecursive(ctrl, isExpandedState)
+        Next
+
+    End Sub
+
+    Private Sub UpdateButtonTextRecursive(ctrl As Control, isExpandedState As Boolean)
+
+        If TypeOf ctrl Is Button Then
+
+            Dim btn As Button = CType(ctrl, Button)
+
+            If isExpandedState Then
+                Dim menuTitle As String = toolTipMenu.GetToolTip(btn)
+                btn.Text = If(String.IsNullOrWhiteSpace(menuTitle), btn.Text, "   " & menuTitle)
+            Else
+                btn.Text = ""
+            End If
+
+        End If
+
+        For Each child As Control In ctrl.Controls
+            UpdateButtonTextRecursive(child, isExpandedState)
+        Next
+
+    End Sub
 
     '============================
     ' Nút toggle
@@ -143,6 +163,40 @@
 
     End Sub
 
+    Private Sub designToggleButton(status As Boolean)
+
+        If status = False Then
+            btnToggle.Size = New Size(40, 40)
+            btnToggle.Text = "<"
+            btnToggle.Dock = DockStyle.Right
+            btnToggle.FlatStyle = FlatStyle.Flat
+            btnToggle.FlatAppearance.BorderSize = 0
+            btnToggle.BackColor = Color.White
+            btnToggle.ForeColor = Color.Black
+            btnToggle.MaximumSize = New Size(40, 40)
+            btnToggle.MinimumSize = New Size(40, 40)
+        ElseIf status = True Then
+
+            btnToggle.Size = New Size(40, 40)
+            btnToggle.Text = ">"
+            btnToggle.Dock = DockStyle.None
+            btnToggle.Anchor = AnchorStyles.None
+
+            btnToggle.FlatStyle = FlatStyle.Flat
+            btnToggle.FlatAppearance.BorderSize = 0
+            btnToggle.BackColor = Color.White
+            btnToggle.ForeColor = Color.Black
+
+            btnToggle.MaximumSize = New Size(40, 40)
+            btnToggle.MinimumSize = New Size(40, 40)
+
+            ' ===== Can gi?a =====
+            btnToggle.Left = 4
+            btnToggle.Top = 4
+
+        End If
+    End Sub
+
 
     '============================
     ' Khai báo menu
@@ -151,26 +205,26 @@
 
         menuData = New List(Of MenuItemModel)
 
-        menuData.Add(New MenuItemModel("Dashboard", GetType(frmDashboard), My.Resources.ErrorImage)) ' icon dashboard
+        menuData.Add(New MenuItemModel("Dashboard", GetType(frmDashboard), ResizeImage(My.Resources.home1, 38, 38))) ' icon dashboard
 
-        Dim qlns As New MenuItemModel("Quản lý nhân sự", Nothing, My.Resources.ErrorImage) ' icon nhân sự
+        Dim qlns As New MenuItemModel("Quản lý nhân sự", Nothing, ResizeImage(My.Resources.saff, 38, 38)) ' icon nhân s?
 
-        qlns.Children.Add(New MenuItemModel("Nhân sự", GetType(frmNhanSu), My.Resources.user)) ' icon người dùng
-        qlns.Children.Add(New MenuItemModel("Chức vụ", GetType(frmChucVu), My.Resources.ErrorImage)) ' icon chức vụ
+        qlns.Children.Add(New MenuItemModel("Nhân sự", GetType(frmNhanSu))) ' icon ngu?i dùng
+        qlns.Children.Add(New MenuItemModel("Chức vụ", GetType(frmChucVu))) ' icon ch?c v?
 
         menuData.Add(qlns)
 
-        menuData.Add(New MenuItemModel("Hợp đồng", GetType(frmHopDong), My.Resources.ErrorImage)) ' icon hợp đồng
-        menuData.Add(New MenuItemModel("Chấm công", GetType(frmChamCong), My.Resources.ErrorImage)) ' icon chấm công
+        menuData.Add(New MenuItemModel("Hợp đồng", GetType(frmHopDong), ResizeImage(My.Resources.contract, 38, 38))) ' icon h?p d?ng
+        menuData.Add(New MenuItemModel("Chấm công", GetType(frmChamCong), ResizeImage(My.Resources.checkin, 38, 38))) ' icon ch?m công
 
-        Dim luong As New MenuItemModel("Lương", Nothing, My.Resources.ErrorImage) ' icon lương
+        Dim luong As New MenuItemModel("Lương", Nothing, ResizeImage(My.Resources.salary, 38, 38)) ' icon luong
 
-        luong.Children.Add(New MenuItemModel("Kỳ lương", GetType(frmKyLuong), My.Resources.ErrorImage)) ' icon kỳ lương
-        luong.Children.Add(New MenuItemModel("Tính lương", GetType(frmTinhLuong), My.Resources.money))
+        luong.Children.Add(New MenuItemModel("Kỳ lương", GetType(frmKyLuong))) ' icon k? luong
+        luong.Children.Add(New MenuItemModel("Tính lương", GetType(frmTinhLuong)))
 
         menuData.Add(luong)
 
-        menuData.Add(New MenuItemModel("Cài đặt", GetType(frmSystem), My.Resources.gear)) ' icon cài đặt
+        menuData.Add(New MenuItemModel("Cài đặt", GetType(frmSystem), ResizeImage(My.Resources.gear, 38, 38))) ' icon cài d?t
 
     End Sub
 
@@ -201,7 +255,9 @@
                 subPanel.Height = 0
                 subPanel.Visible = False
 
-                For Each child In item.Children
+                For i As Integer = item.Children.Count - 1 To 0 Step -1
+
+                    Dim child = item.Children(i)
 
                     Dim subBtn = CreateSubButton(child.Title)
 
@@ -282,6 +338,7 @@
         btn.FlatAppearance.BorderSize = 0
 
         AddHandler btn.Click, AddressOf SubButton_Click
+        toolTipMenu.SetToolTip(btn, text)
 
         Return btn
 
@@ -378,13 +435,22 @@
 
 
     '============================
-    ' Mở form
+    ' M? form
     '============================
     Private Sub OpenForm(type As Type)
 
+        If NavigationService.IsInitialized Then
+            NavigationService.NavigateInMain(type)
+            Return
+        End If
+
         If mainPanel Is Nothing Then Return
 
-        mainPanel.Controls.Clear()
+        For i As Integer = mainPanel.Controls.Count - 1 To 0 Step -1
+            Dim oldCtrl As Control = mainPanel.Controls(i)
+            mainPanel.Controls.RemoveAt(i)
+            oldCtrl.Dispose()
+        Next
 
         Dim frm As Form = CType(Activator.CreateInstance(type), Form)
 
@@ -399,3 +465,4 @@
     End Sub
 
 End Class
+

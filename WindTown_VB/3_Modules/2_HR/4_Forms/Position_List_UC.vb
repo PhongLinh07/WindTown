@@ -2,7 +2,7 @@ Public Class Position_List_UC
     Inherits BaseList_UC
 
     Public Sub New()
-        MyBase.New(New PositionService(), "Chức vụ")
+        MyBase.New(New PositionService(), "Position_List_UC", "Chức vụ")
         InitializeComponent()
         Init(GetType(Position))
     End Sub
