@@ -546,6 +546,8 @@
     <Compile Include="UIUX\Modules\HopDong.vb" />
     <Compile Include="UIUX\Modules\MenuItemModel.vb" />
     <Compile Include="UIUX\Modules\NavigationService.vb" />
+    <Compile Include="UIUX\Modules\DashboardService.vb" />
+    <Compile Include="UIUX\Modules\DashboardSummaryDto.vb" />
     <Compile Include="UIUX\Modules\NhanVien.vb" />
     <Compile Include="UIUX\tesst.Designer.vb">
       <DependentUpon>tesst.vb</DependentUpon>

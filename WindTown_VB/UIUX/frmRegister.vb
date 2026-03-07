@@ -100,4 +100,8 @@
 
         Return True
     End Function
+
+    Private Sub btnBack_Click(sender As Object, e As EventArgs) Handles btnBack.Click
+        NavigationService.SwitchTopLevel(Of frmLogin)(Me)
+    End Sub
 End Class

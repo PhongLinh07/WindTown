@@ -25,24 +25,23 @@ Partial Class frmNhanSu
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmNhanSu))
         Me.dtgvDSNhanVien = New System.Windows.Forms.DataGridView()
         Me.Panel2 = New System.Windows.Forms.Panel()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.cbbxTrangThai = New System.Windows.Forms.ComboBox()
-        Me.cbbxGioiTinh = New System.Windows.Forms.ComboBox()
-        Me.btnNhapXuatNV = New System.Windows.Forms.Button()
-        Me.btnThemNV = New System.Windows.Forms.Button()
         Me.btnXuLyNhanh = New System.Windows.Forms.Button()
+        Me.btnThemNV = New System.Windows.Forms.Button()
+        Me.btnNhapXuatNV = New System.Windows.Forms.Button()
+        Me.cbbxGioiTinh = New System.Windows.Forms.ComboBox()
+        Me.cbbxTrangThai = New System.Windows.Forms.ComboBox()
+        Me.txtTenCongTy = New System.Windows.Forms.Label()
         Me.pnlHeader = New System.Windows.Forms.Panel()
-        Me.Label1 = New System.Windows.Forms.Label()
         Me.btnMoiNV = New System.Windows.Forms.Button()
+        Me.Label1 = New System.Windows.Forms.Label()
         Me.tvBoPhan = New System.Windows.Forms.TreeView()
         Me.pnlBoPhan = New System.Windows.Forms.Panel()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.txtTenCongTy = New System.Windows.Forms.Label()
-        Me.btnThemBoPhan = New System.Windows.Forms.Button()
-        Me.Button2 = New System.Windows.Forms.Button()
-        Me.Button3 = New System.Windows.Forms.Button()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.btnSearch = New System.Windows.Forms.Button()
+        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.btnSuaBoPhan = New System.Windows.Forms.Button()
+        Me.btnThemBoPhan = New System.Windows.Forms.Button()
+        Me.btnXoaBoPhan = New System.Windows.Forms.Button()
+        Me.Label2 = New System.Windows.Forms.Label()
         Me.tlpNhanSu = New System.Windows.Forms.TableLayoutPanel()
         CType(Me.dtgvDSNhanVien, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel2.SuspendLayout()
@@ -54,7 +53,6 @@ Partial Class frmNhanSu
         'dtgvDSNhanVien
         '
         Me.dtgvDSNhanVien.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dtgvDSNhanVien.Dock = System.Windows.Forms.DockStyle.Fill
         Me.dtgvDSNhanVien.Location = New System.Drawing.Point(323, 203)
         Me.dtgvDSNhanVien.Name = "dtgvDSNhanVien"
         Me.dtgvDSNhanVien.RowHeadersWidth = 51
@@ -70,72 +68,12 @@ Partial Class frmNhanSu
         Me.Panel2.Controls.Add(Me.btnNhapXuatNV)
         Me.Panel2.Controls.Add(Me.cbbxGioiTinh)
         Me.Panel2.Controls.Add(Me.cbbxTrangThai)
-        Me.Panel2.Controls.Add(Me.Label3)
+        Me.Panel2.Controls.Add(Me.txtTenCongTy)
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel2.Location = New System.Drawing.Point(323, 83)
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(714, 114)
         Me.Panel2.TabIndex = 3
-        '
-        'Label3
-        '
-        Me.Label3.AutoSize = True
-        Me.Label3.Font = New System.Drawing.Font("Microsoft YaHei UI", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(13, 17)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(111, 24)
-        Me.Label3.TabIndex = 3
-        Me.Label3.Text = "Tên công ty"
-        '
-        'cbbxTrangThai
-        '
-        Me.cbbxTrangThai.FormattingEnabled = True
-        Me.cbbxTrangThai.Items.AddRange(New Object() {"Đang làm việc", "Đã nghỉ ", "Chưa kích hoạt"})
-        Me.cbbxTrangThai.Location = New System.Drawing.Point(29, 57)
-        Me.cbbxTrangThai.Name = "cbbxTrangThai"
-        Me.cbbxTrangThai.Size = New System.Drawing.Size(121, 31)
-        Me.cbbxTrangThai.TabIndex = 4
-        Me.cbbxTrangThai.Text = "Trạng thái"
-        '
-        'cbbxGioiTinh
-        '
-        Me.cbbxGioiTinh.FormattingEnabled = True
-        Me.cbbxGioiTinh.Items.AddRange(New Object() {"Nam", "Nữ"})
-        Me.cbbxGioiTinh.Location = New System.Drawing.Point(156, 57)
-        Me.cbbxGioiTinh.Name = "cbbxGioiTinh"
-        Me.cbbxGioiTinh.Size = New System.Drawing.Size(121, 31)
-        Me.cbbxGioiTinh.TabIndex = 5
-        Me.cbbxGioiTinh.Text = "Giới tính"
-        '
-        'btnNhapXuatNV
-        '
-        Me.btnNhapXuatNV.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnNhapXuatNV.BackColor = System.Drawing.Color.White
-        Me.btnNhapXuatNV.FlatAppearance.BorderSize = 0
-        Me.btnNhapXuatNV.Font = New System.Drawing.Font("Microsoft YaHei UI", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnNhapXuatNV.ForeColor = System.Drawing.SystemColors.WindowFrame
-        Me.btnNhapXuatNV.Location = New System.Drawing.Point(520, 55)
-        Me.btnNhapXuatNV.Name = "btnNhapXuatNV"
-        Me.btnNhapXuatNV.Size = New System.Drawing.Size(194, 32)
-        Me.btnNhapXuatNV.TabIndex = 6
-        Me.btnNhapXuatNV.Text = "Nhập xuất danh sách"
-        Me.btnNhapXuatNV.UseVisualStyleBackColor = False
-        '
-        'btnThemNV
-        '
-        Me.btnThemNV.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnThemNV.BackColor = System.Drawing.Color.LimeGreen
-        Me.btnThemNV.FlatAppearance.BorderSize = 0
-        Me.btnThemNV.Font = New System.Drawing.Font("Microsoft YaHei UI", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnThemNV.ForeColor = System.Drawing.Color.White
-        Me.btnThemNV.Location = New System.Drawing.Point(555, 17)
-        Me.btnThemNV.Name = "btnThemNV"
-        Me.btnThemNV.Size = New System.Drawing.Size(156, 32)
-        Me.btnThemNV.TabIndex = 7
-        Me.btnThemNV.Text = "Thêm nhân viên"
-        Me.btnThemNV.UseVisualStyleBackColor = False
         '
         'btnXuLyNhanh
         '
@@ -154,6 +92,66 @@ Partial Class frmNhanSu
         Me.btnXuLyNhanh.UseVisualStyleBackColor = False
         Me.btnXuLyNhanh.Visible = False
         '
+        'btnThemNV
+        '
+        Me.btnThemNV.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnThemNV.BackColor = System.Drawing.Color.LimeGreen
+        Me.btnThemNV.FlatAppearance.BorderSize = 0
+        Me.btnThemNV.Font = New System.Drawing.Font("Microsoft YaHei UI", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnThemNV.ForeColor = System.Drawing.Color.White
+        Me.btnThemNV.Location = New System.Drawing.Point(555, 17)
+        Me.btnThemNV.Name = "btnThemNV"
+        Me.btnThemNV.Size = New System.Drawing.Size(156, 32)
+        Me.btnThemNV.TabIndex = 7
+        Me.btnThemNV.Text = "Thêm nhân viên"
+        Me.btnThemNV.UseVisualStyleBackColor = False
+        '
+        'btnNhapXuatNV
+        '
+        Me.btnNhapXuatNV.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnNhapXuatNV.BackColor = System.Drawing.Color.White
+        Me.btnNhapXuatNV.FlatAppearance.BorderSize = 0
+        Me.btnNhapXuatNV.Font = New System.Drawing.Font("Microsoft YaHei UI", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnNhapXuatNV.ForeColor = System.Drawing.SystemColors.WindowFrame
+        Me.btnNhapXuatNV.Location = New System.Drawing.Point(520, 55)
+        Me.btnNhapXuatNV.Name = "btnNhapXuatNV"
+        Me.btnNhapXuatNV.Size = New System.Drawing.Size(194, 32)
+        Me.btnNhapXuatNV.TabIndex = 6
+        Me.btnNhapXuatNV.Text = "Nhập xuất danh sách"
+        Me.btnNhapXuatNV.UseVisualStyleBackColor = False
+        '
+        'cbbxGioiTinh
+        '
+        Me.cbbxGioiTinh.FormattingEnabled = True
+        Me.cbbxGioiTinh.Items.AddRange(New Object() {"Tất cả", "Nam", "Nữ"})
+        Me.cbbxGioiTinh.Location = New System.Drawing.Point(156, 57)
+        Me.cbbxGioiTinh.Name = "cbbxGioiTinh"
+        Me.cbbxGioiTinh.Size = New System.Drawing.Size(121, 31)
+        Me.cbbxGioiTinh.TabIndex = 5
+        Me.cbbxGioiTinh.Text = "Giới tính"
+        '
+        'cbbxTrangThai
+        '
+        Me.cbbxTrangThai.FormattingEnabled = True
+        Me.cbbxTrangThai.Items.AddRange(New Object() {"Đang làm việc", "Đã nghỉ ", "Chưa kích hoạt"})
+        Me.cbbxTrangThai.Location = New System.Drawing.Point(29, 57)
+        Me.cbbxTrangThai.Name = "cbbxTrangThai"
+        Me.cbbxTrangThai.Size = New System.Drawing.Size(121, 31)
+        Me.cbbxTrangThai.TabIndex = 4
+        Me.cbbxTrangThai.Text = "Trạng thái"
+        '
+        'txtTenCongTy
+        '
+        Me.txtTenCongTy.AutoSize = True
+        Me.txtTenCongTy.Font = New System.Drawing.Font("Microsoft YaHei UI", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtTenCongTy.Location = New System.Drawing.Point(13, 17)
+        Me.txtTenCongTy.Name = "txtTenCongTy"
+        Me.txtTenCongTy.Size = New System.Drawing.Size(93, 24)
+        Me.txtTenCongTy.TabIndex = 3
+        Me.txtTenCongTy.Text = "HRM APP"
+        '
         'pnlHeader
         '
         Me.pnlHeader.BackColor = System.Drawing.Color.White
@@ -165,16 +163,6 @@ Partial Class frmNhanSu
         Me.pnlHeader.Name = "pnlHeader"
         Me.pnlHeader.Size = New System.Drawing.Size(1034, 74)
         Me.pnlHeader.TabIndex = 1
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Microsoft YaHei UI", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(16, 26)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(109, 31)
-        Me.Label1.TabIndex = 0
-        Me.Label1.Text = "Nhân sự"
         '
         'btnMoiNV
         '
@@ -192,9 +180,18 @@ Partial Class frmNhanSu
         Me.btnMoiNV.Text = "+ Mời thành viên"
         Me.btnMoiNV.UseVisualStyleBackColor = False
         '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Font = New System.Drawing.Font("Microsoft YaHei UI", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Location = New System.Drawing.Point(16, 26)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(109, 31)
+        Me.Label1.TabIndex = 0
+        Me.Label1.Text = "Nhân sự"
+        '
         'tvBoPhan
         '
-        Me.tvBoPhan.Dock = System.Windows.Forms.DockStyle.Fill
         Me.tvBoPhan.Location = New System.Drawing.Point(3, 203)
         Me.tvBoPhan.Name = "tvBoPhan"
         Me.tvBoPhan.Size = New System.Drawing.Size(314, 459)
@@ -205,79 +202,15 @@ Partial Class frmNhanSu
         Me.pnlBoPhan.BackColor = System.Drawing.Color.White
         Me.pnlBoPhan.Controls.Add(Me.btnSearch)
         Me.pnlBoPhan.Controls.Add(Me.TextBox1)
-        Me.pnlBoPhan.Controls.Add(Me.Button3)
-        Me.pnlBoPhan.Controls.Add(Me.Button2)
+        Me.pnlBoPhan.Controls.Add(Me.btnSuaBoPhan)
         Me.pnlBoPhan.Controls.Add(Me.btnThemBoPhan)
-        Me.pnlBoPhan.Controls.Add(Me.txtTenCongTy)
+        Me.pnlBoPhan.Controls.Add(Me.btnXoaBoPhan)
         Me.pnlBoPhan.Controls.Add(Me.Label2)
         Me.pnlBoPhan.Dock = System.Windows.Forms.DockStyle.Fill
         Me.pnlBoPhan.Location = New System.Drawing.Point(3, 83)
         Me.pnlBoPhan.Name = "pnlBoPhan"
         Me.pnlBoPhan.Size = New System.Drawing.Size(314, 114)
         Me.pnlBoPhan.TabIndex = 2
-        '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Microsoft YaHei UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(13, 14)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(95, 27)
-        Me.Label2.TabIndex = 1
-        Me.Label2.Text = "Bộ phận"
-        '
-        'txtTenCongTy
-        '
-        Me.txtTenCongTy.AutoSize = True
-        Me.txtTenCongTy.Font = New System.Drawing.Font("Microsoft YaHei UI", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtTenCongTy.Location = New System.Drawing.Point(2, 83)
-        Me.txtTenCongTy.Name = "txtTenCongTy"
-        Me.txtTenCongTy.Size = New System.Drawing.Size(111, 24)
-        Me.txtTenCongTy.TabIndex = 2
-        Me.txtTenCongTy.Text = "Tên công ty"
-        '
-        'btnThemBoPhan
-        '
-        Me.btnThemBoPhan.FlatAppearance.BorderSize = 0
-        Me.btnThemBoPhan.Font = New System.Drawing.Font("Microsoft YaHei UI", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnThemBoPhan.ForeColor = System.Drawing.Color.Red
-        Me.btnThemBoPhan.Location = New System.Drawing.Point(247, 79)
-        Me.btnThemBoPhan.Name = "btnThemBoPhan"
-        Me.btnThemBoPhan.Size = New System.Drawing.Size(53, 32)
-        Me.btnThemBoPhan.TabIndex = 3
-        Me.btnThemBoPhan.Text = "Xóa"
-        Me.btnThemBoPhan.UseVisualStyleBackColor = True
-        '
-        'Button2
-        '
-        Me.Button2.FlatAppearance.BorderSize = 0
-        Me.Button2.Font = New System.Drawing.Font("Microsoft YaHei UI", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button2.ForeColor = System.Drawing.Color.Blue
-        Me.Button2.Location = New System.Drawing.Point(116, 79)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(59, 32)
-        Me.Button2.TabIndex = 4
-        Me.Button2.Text = "Thêm"
-        Me.Button2.UseVisualStyleBackColor = True
-        '
-        'Button3
-        '
-        Me.Button3.FlatAppearance.BorderSize = 0
-        Me.Button3.Font = New System.Drawing.Font("Microsoft YaHei UI", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button3.ForeColor = System.Drawing.Color.Lime
-        Me.Button3.Location = New System.Drawing.Point(181, 79)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(60, 32)
-        Me.Button3.TabIndex = 5
-        Me.Button3.Text = "Sửa"
-        Me.Button3.UseVisualStyleBackColor = True
-        '
-        'TextBox1
-        '
-        Me.TextBox1.Location = New System.Drawing.Point(4, 45)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(213, 29)
-        Me.TextBox1.TabIndex = 6
         '
         'btnSearch
         '
@@ -289,6 +222,59 @@ Partial Class frmNhanSu
         Me.btnSearch.TabIndex = 7
         Me.btnSearch.Text = "Tìm"
         Me.btnSearch.UseVisualStyleBackColor = False
+        '
+        'TextBox1
+        '
+        Me.TextBox1.Location = New System.Drawing.Point(4, 45)
+        Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.Size = New System.Drawing.Size(213, 29)
+        Me.TextBox1.TabIndex = 6
+        '
+        'btnSuaBoPhan
+        '
+        Me.btnSuaBoPhan.FlatAppearance.BorderSize = 0
+        Me.btnSuaBoPhan.Font = New System.Drawing.Font("Microsoft YaHei UI", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnSuaBoPhan.ForeColor = System.Drawing.Color.Lime
+        Me.btnSuaBoPhan.Location = New System.Drawing.Point(192, 7)
+        Me.btnSuaBoPhan.Name = "btnSuaBoPhan"
+        Me.btnSuaBoPhan.Size = New System.Drawing.Size(60, 32)
+        Me.btnSuaBoPhan.TabIndex = 5
+        Me.btnSuaBoPhan.Text = "Sửa"
+        Me.btnSuaBoPhan.UseVisualStyleBackColor = True
+        '
+        'btnThemBoPhan
+        '
+        Me.btnThemBoPhan.FlatAppearance.BorderSize = 0
+        Me.btnThemBoPhan.Font = New System.Drawing.Font("Microsoft YaHei UI", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnThemBoPhan.ForeColor = System.Drawing.Color.Blue
+        Me.btnThemBoPhan.Location = New System.Drawing.Point(127, 7)
+        Me.btnThemBoPhan.Name = "btnThemBoPhan"
+        Me.btnThemBoPhan.Size = New System.Drawing.Size(59, 32)
+        Me.btnThemBoPhan.TabIndex = 4
+        Me.btnThemBoPhan.Text = "Thêm"
+        Me.btnThemBoPhan.UseVisualStyleBackColor = True
+        '
+        'btnXoaBoPhan
+        '
+        Me.btnXoaBoPhan.FlatAppearance.BorderSize = 0
+        Me.btnXoaBoPhan.Font = New System.Drawing.Font("Microsoft YaHei UI", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnXoaBoPhan.ForeColor = System.Drawing.Color.Red
+        Me.btnXoaBoPhan.Location = New System.Drawing.Point(258, 7)
+        Me.btnXoaBoPhan.Name = "btnXoaBoPhan"
+        Me.btnXoaBoPhan.Size = New System.Drawing.Size(53, 32)
+        Me.btnXoaBoPhan.TabIndex = 3
+        Me.btnXoaBoPhan.Text = "Xóa"
+        Me.btnXoaBoPhan.UseVisualStyleBackColor = True
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Font = New System.Drawing.Font("Microsoft YaHei UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Location = New System.Drawing.Point(13, 14)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(95, 27)
+        Me.Label2.TabIndex = 1
+        Me.Label2.Text = "Bộ phận"
         '
         'tlpNhanSu
         '
@@ -343,16 +329,15 @@ Partial Class frmNhanSu
     Friend WithEvents btnNhapXuatNV As Button
     Friend WithEvents cbbxGioiTinh As ComboBox
     Friend WithEvents cbbxTrangThai As ComboBox
-    Friend WithEvents Label3 As Label
+    Friend WithEvents txtTenCongTy As Label
     Friend WithEvents pnlHeader As Panel
     Friend WithEvents tlpNhanSu As TableLayoutPanel
     Friend WithEvents pnlBoPhan As Panel
     Friend WithEvents btnSearch As Button
     Friend WithEvents TextBox1 As TextBox
-    Friend WithEvents Button3 As Button
-    Friend WithEvents Button2 As Button
+    Friend WithEvents btnSuaBoPhan As Button
     Friend WithEvents btnThemBoPhan As Button
-    Friend WithEvents txtTenCongTy As Label
+    Friend WithEvents btnXoaBoPhan As Button
     Friend WithEvents Label2 As Label
     Friend WithEvents tvBoPhan As TreeView
     Friend WithEvents btnMoiNV As Button

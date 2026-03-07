@@ -20,6 +20,7 @@
         End Get
     End Property
 
+    ' Gọi hàm này khi đăng nhập thành công để thiết lập form chính và panel chứa nội dung
     Public Sub Initialize(mainHostForm As Form, mainPanel As Panel)
 
         If mainHostForm Is Nothing OrElse mainPanel Is Nothing Then Return
@@ -32,6 +33,7 @@
 
     End Sub
 
+    ' formType phải là một lớp kế thừa từ Form
     Public Sub NavigateInMain(formType As Type, Optional addToHistory As Boolean = True)
 
         If Not IsInitialized Then Return
@@ -46,10 +48,12 @@
 
     End Sub
 
+    ' Generic version để gọi dễ dàng hơn, ví dụ: NavigateInMain(Of frmDashboard)()
     Public Sub NavigateInMain(Of T As Form)(Optional addToHistory As Boolean = True)
         NavigateInMain(GetType(T), addToHistory)
     End Sub
 
+    ' Trả về true nếu đã quay lại thành công, false nếu không thể quay lại (ví dụ: không có lịch sử)
     Public Function GoBackInMain() As Boolean
 
         If Not CanGoBack Then Return False
@@ -61,6 +65,7 @@
 
     End Function
 
+    ' Đóng form hiện tại và mở form mới ở cấp độ top-level (không trong panel)
     Public Sub SwitchTopLevel(currentForm As Form, nextForm As Form)
 
         If nextForm Is Nothing Then Return
@@ -73,11 +78,13 @@
 
     End Sub
 
+    ' Phiên bản generic để gọi dễ dàng hơn, ví dụ: SwitchTopLevel(Of frmLogin)(Me)
     Public Sub SwitchTopLevel(Of T As {Form, New})(currentForm As Form)
         Dim nextForm As New T()
         SwitchTopLevel(currentForm, nextForm)
     End Sub
 
+    ' Đăng xuất về form đăng nhập, đồng thời đóng form chính nếu đang ở trong đó
     Public Sub LogoutToLogin()
 
         Dim login As New frmLogin()
@@ -90,6 +97,7 @@
 
     End Sub
 
+    ' Khi form chính bị đóng, nếu đang chuyển từ form chính sang form khác thì không thoát ứng dụng
     Public Function ShouldTerminateWhenMainClosed() As Boolean
 
         If _isSwitchingFromMain Then
@@ -101,6 +109,7 @@
 
     End Function
 
+    ' Hàm nội bộ để hiển thị form trong panel chính, sẽ dispose form cũ nếu có
     Private Sub ShowInMain(formType As Type)
 
         If _mainPanel Is Nothing Then Return

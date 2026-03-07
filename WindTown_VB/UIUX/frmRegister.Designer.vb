@@ -34,6 +34,7 @@ Partial Class frmRegister
         Me.ErrorProvider1 = New System.Windows.Forms.ErrorProvider(Me.components)
         Me.Label5 = New System.Windows.Forms.Label()
         Me.cbxEmployeeId = New System.Windows.Forms.ComboBox()
+        Me.btnBack = New System.Windows.Forms.Button()
         CType(Me.ErrorProvider1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -136,12 +137,25 @@ Partial Class frmRegister
         Me.cbxEmployeeId.Size = New System.Drawing.Size(258, 28)
         Me.cbxEmployeeId.TabIndex = 12
         '
+        'btnBack
+        '
+        Me.btnBack.BackColor = System.Drawing.Color.DodgerBlue
+        Me.btnBack.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnBack.ForeColor = System.Drawing.Color.White
+        Me.btnBack.Location = New System.Drawing.Point(12, 12)
+        Me.btnBack.Name = "btnBack"
+        Me.btnBack.Size = New System.Drawing.Size(75, 30)
+        Me.btnBack.TabIndex = 13
+        Me.btnBack.Text = "Quay lại"
+        Me.btnBack.UseVisualStyleBackColor = False
+        '
         'frmRegister
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(10.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.Orange
         Me.ClientSize = New System.Drawing.Size(678, 562)
+        Me.Controls.Add(Me.btnBack)
         Me.Controls.Add(Me.cbxEmployeeId)
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.btnRegister)
@@ -174,4 +188,5 @@ Partial Class frmRegister
     Friend WithEvents ErrorProvider1 As ErrorProvider
     Friend WithEvents Label5 As Label
     Friend WithEvents cbxEmployeeId As ComboBox
+    Friend WithEvents btnBack As Button
 End Class
