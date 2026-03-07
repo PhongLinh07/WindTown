@@ -81,60 +81,78 @@
     '============================
     Private Sub ToggleSidebar()
 
-        If parentTable Is Nothing Then Return
-        If columnIndex < 0 Then Return
+        Dim col As ColumnStyle = Nothing
 
-        Dim col = parentTable.ColumnStyles(columnIndex)
-        col.SizeType = SizeType.Absolute
+        If parentTable IsNot Nothing AndAlso columnIndex >= 0 Then
+            col = parentTable.ColumnStyles(columnIndex)
+            col.SizeType = SizeType.Absolute
+        End If
 
         If isCollapsed Then
 
             '===== M? SIDEBAR =====
-            col.Width = expandedWidth
+            If col IsNot Nothing Then
+                col.Width = expandedWidth
+            Else
+                Me.Width = expandedWidth
+            End If
             ptbLogo.Visible = True
             designToggleButton(False)
-
-            For Each ctrl As Control In flpnlMenu.Controls
-
-                If TypeOf ctrl Is Button Then
-
-                    Dim btn As Button = CType(ctrl, Button)
-
-                    Dim menuTitle As String = toolTipMenu.GetToolTip(btn)
-                    btn.Text = If(String.IsNullOrWhiteSpace(menuTitle), btn.Text, "   " & menuTitle)
-
-                End If
-
-            Next
+            UpdateMenuButtonText(True)
 
         Else
 
             '===== THU SIDEBAR =====
-            col.Width = collapsedWidth
+            If col IsNot Nothing Then
+                col.Width = collapsedWidth
+            Else
+                Me.Width = collapsedWidth
+            End If
             ptbLogo.Visible = False
 
             designToggleButton(True)
-
-            For Each ctrl As Control In flpnlMenu.Controls
-
-                If TypeOf ctrl Is Button Then
-
-                    Dim btn As Button = CType(ctrl, Button)
-
-                    btn.Text = ""
-
-                End If
-
-            Next
+            UpdateMenuButtonText(False)
 
         End If
 
-        parentTable.PerformLayout()
+        If parentTable IsNot Nothing Then
+            parentTable.PerformLayout()
+        Else
+            Me.PerformLayout()
+        End If
 
         isCollapsed = Not isCollapsed
 
     End Sub
 
+    Private Sub UpdateMenuButtonText(isExpandedState As Boolean)
+
+        For Each ctrl As Control In flpnlMenu.Controls
+            UpdateButtonTextRecursive(ctrl, isExpandedState)
+        Next
+
+    End Sub
+
+    Private Sub UpdateButtonTextRecursive(ctrl As Control, isExpandedState As Boolean)
+
+        If TypeOf ctrl Is Button Then
+
+            Dim btn As Button = CType(ctrl, Button)
+
+            If isExpandedState Then
+                Dim menuTitle As String = toolTipMenu.GetToolTip(btn)
+                btn.Text = If(String.IsNullOrWhiteSpace(menuTitle), btn.Text, "   " & menuTitle)
+            Else
+                btn.Text = ""
+            End If
+
+        End If
+
+        For Each child As Control In ctrl.Controls
+            UpdateButtonTextRecursive(child, isExpandedState)
+        Next
+
+    End Sub
 
     '============================
     ' Nút toggle
@@ -237,7 +255,9 @@
                 subPanel.Height = 0
                 subPanel.Visible = False
 
-                For Each child In item.Children
+                For i As Integer = item.Children.Count - 1 To 0 Step -1
+
+                    Dim child = item.Children(i)
 
                     Dim subBtn = CreateSubButton(child.Title)
 
@@ -318,6 +338,7 @@
         btn.FlatAppearance.BorderSize = 0
 
         AddHandler btn.Click, AddressOf SubButton_Click
+        toolTipMenu.SetToolTip(btn, text)
 
         Return btn
 
@@ -420,7 +441,11 @@
 
         If mainPanel Is Nothing Then Return
 
-        mainPanel.Controls.Clear()
+        For i As Integer = mainPanel.Controls.Count - 1 To 0 Step -1
+            Dim oldCtrl As Control = mainPanel.Controls(i)
+            mainPanel.Controls.RemoveAt(i)
+            oldCtrl.Dispose()
+        Next
 
         Dim frm As Form = CType(Activator.CreateInstance(type), Form)
 
@@ -435,4 +460,3 @@
     End Sub
 
 End Class
-
