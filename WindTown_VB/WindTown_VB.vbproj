@@ -250,7 +250,6 @@
     <Compile Include="2_Core\6_Forms\Developer_Mode.Designer.vb">
       <DependentUpon>Developer_Mode.vb</DependentUpon>
     </Compile>
-    <Compile Include="2_Core\6_Forms\Developer_Mode.vb" />
     <Compile Include="2_Core\6_Forms\Developer_Mode.vb">
       <SubType>Form</SubType>
     </Compile>
