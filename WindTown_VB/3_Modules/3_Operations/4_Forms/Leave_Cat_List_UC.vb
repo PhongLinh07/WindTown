@@ -1,27 +1,24 @@
-Imports System.ComponentModel
-
-
-Public Class Employee_List_UC
+Public Class Leave_Cat_List_UC
     Inherits BaseList_UC
 
     Public Sub New()
-        MyBase.New(New EmployeeService, "Employee_List_UC", "Nhân viên")
+        MyBase.New(New BaseService(Of Leave_Cat), "Leave_Cat_List_UC", "Danh mục nghỉ phép")
         InitializeComponent()
-        Init(GetType(Employee))
+        Init(GetType(Leave_Cat))
     End Sub
 
 
 
     Protected Overrides Sub Dgv_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs)
-        ' Bỏ click header
+
         If e.RowIndex < 0 OrElse e.ColumnIndex < 0 Then Return
 
         Dim row As DataGridViewRow = _dgv.Rows(e.RowIndex)
 
         ' Tạo bản sao của đối tượng để tránh sửa trực tiếp trên DataGridView
-        Dim data = Utils.DeepClone(CType(row.DataBoundItem, Employee))
+        Dim data = Utils.DeepClone(CType(row.DataBoundItem, Leave_Cat))
 
-        Dim crud As New Employee_CRUD_Frm(data)
+        Dim crud As New Leave_Cat_CRUD_Frm(data)
         If crud.ShowDialog() = DialogResult.OK Then
 
             Dim result = _service.Execute(DataIntent.Update, data)
@@ -37,9 +34,9 @@ Public Class Employee_List_UC
 
     Protected Overrides Sub tool_new_Click(sender As Object, e As EventArgs)
         ' Tạo bản sao của đối tượng để tránh sửa trực tiếp trên DataGridView
-        Dim data = New Employee() ' tạo mới đối tượng với giá trị mặc định
+        Dim data = New Leave_Cat() ' tạo mới đối tượng với giá trị mặc định
 
-        Dim crud As New Employee_CRUD_Frm(data, True)
+        Dim crud As New Leave_Cat_CRUD_Frm(data, True)
         If crud.ShowDialog() = DialogResult.OK Then
 
             Dim result = _service.Execute(DataIntent.Insert, data)
@@ -63,9 +60,9 @@ Public Class Employee_List_UC
         If MessageBox.Show($"Delete {_dgv.SelectedRows.Count} record?", "Confirm", MessageBoxButtons.YesNo) = DialogResult.No Then Return
 
 
-        Dim items As List(Of Employee) = _dgv.SelectedRows.
+        Dim items As List(Of Leave_Cat) = _dgv.SelectedRows.
                                                 Cast(Of DataGridViewRow)().
-                                                Select(Function(r) TryCast(r.DataBoundItem, Employee)).
+                                                Select(Function(r) TryCast(r.DataBoundItem, Leave_Cat)).
                                                 Where(Function(x) x IsNot Nothing).
                                                 ToList()
 

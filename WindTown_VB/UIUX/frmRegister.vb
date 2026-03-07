@@ -1,4 +1,4 @@
-﻿
+
 Public Class frmRegister
     Dim account As List(Of Account) = New List(Of Account)
     Dim employee As List(Of Employee) = New List(Of Employee)

@@ -2,7 +2,7 @@ Public Class Account_List_UC
     Inherits BaseList_UC
 
     Public Sub New()
-        MyBase.New(New AccountService(), "Tài khoản")
+        MyBase.New(New AccountService(), "Account_List_UC", "Tài khoản")
         InitializeComponent()
         Init(GetType(Account))
 

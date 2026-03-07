@@ -5,7 +5,7 @@ Public Class Project_List_UC
     Inherits BaseList_UC
 
     Public Sub New()
-        MyBase.New(New BaseService(Of Project), "Dự án")
+        MyBase.New(New BaseService(Of Project), "Project_List_UC", "Dự án")
         InitializeComponent()
         Init(GetType(Project))
     End Sub
