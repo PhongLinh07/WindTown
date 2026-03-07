@@ -23,7 +23,7 @@ Public Class frmLogin
         If CheckLogin(username, password) Then
             MessageBox.Show("Đăng nhập thành công!", "Thông báo")
 
-            Dim frm As New frmDashboard()
+            Dim frm As New frmMain()
             frm.Show()
 
             Me.Close() ' Ẩn frmLogin thay vì Close

@@ -132,7 +132,9 @@
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.13.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="System" />
+    <Reference Include="System">
+      <HintPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.8\System.dll</HintPath>
+    </Reference>
     <Reference Include="System.Buffers, Version=4.0.5.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Buffers.4.6.1\lib\net462\System.Buffers.dll</HintPath>
     </Reference>
@@ -463,6 +465,24 @@
     <Compile Include="UIUX\control\SidebarMenu.vb">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="UIUX\control\SidebarMenuV2.Designer.vb">
+      <DependentUpon>SidebarMenuV2.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UIUX\control\SidebarMenuV2.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UIUX\control\ucSidebar.Designer.vb">
+      <DependentUpon>ucSidebar.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UIUX\control\ucSidebar.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UIUX\frmChamCong.Designer.vb">
+      <DependentUpon>frmChamCong.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UIUX\frmChamCong.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="UIUX\frmChucVu.Designer.vb">
       <DependentUpon>frmChucVu.vb</DependentUpon>
     </Compile>
@@ -481,6 +501,12 @@
     <Compile Include="UIUX\frmHopDong.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="UIUX\frmKyLuong.Designer.vb">
+      <DependentUpon>frmKyLuong.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UIUX\frmKyLuong.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="UIUX\frmLogin.Designer.vb">
       <DependentUpon>frmLogin.vb</DependentUpon>
     </Compile>
@@ -491,6 +517,12 @@
       <DependentUpon>frmLuong.vb</DependentUpon>
     </Compile>
     <Compile Include="UIUX\frmLuong.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UIUX\frmMain.Designer.vb">
+      <DependentUpon>frmMain.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UIUX\frmMain.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UIUX\frmNhanSu.Designer.vb">
@@ -511,9 +543,23 @@
     <Compile Include="UIUX\frmSystem.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="UIUX\frmTest.Designer.vb">
+      <DependentUpon>frmTest.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UIUX\frmTest.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UIUX\frmTinhLuong.Designer.vb">
+      <DependentUpon>frmTinhLuong.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UIUX\frmTinhLuong.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="UIUX\Helpers\ImageExtensions.vb" />
-    <Compile Include="UIUX\models\HopDong.vb" />
-    <Compile Include="UIUX\models\NhanVien.vb" />
+    <Compile Include="UIUX\Modules\HopDong.vb" />
+    <Compile Include="UIUX\Modules\MenuItemModel.vb" />
+    <Compile Include="UIUX\Modules\NavigationService.vb" />
+    <Compile Include="UIUX\Modules\NhanVien.vb" />
     <Compile Include="UIUX\tesst.Designer.vb">
       <DependentUpon>tesst.vb</DependentUpon>
     </Compile>
@@ -594,6 +640,15 @@
     <EmbeddedResource Include="UIUX\control\SidebarMenu.resx">
       <DependentUpon>SidebarMenu.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UIUX\control\SidebarMenuV2.resx">
+      <DependentUpon>SidebarMenuV2.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UIUX\control\ucSidebar.resx">
+      <DependentUpon>ucSidebar.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UIUX\frmChamCong.resx">
+      <DependentUpon>frmChamCong.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UIUX\frmChucVu.resx">
       <DependentUpon>frmChucVu.vb</DependentUpon>
     </EmbeddedResource>
@@ -603,11 +658,17 @@
     <EmbeddedResource Include="UIUX\frmHopDong.resx">
       <DependentUpon>frmHopDong.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UIUX\frmKyLuong.resx">
+      <DependentUpon>frmKyLuong.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UIUX\frmLogin.resx">
       <DependentUpon>frmLogin.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UIUX\frmLuong.resx">
       <DependentUpon>frmLuong.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UIUX\frmMain.resx">
+      <DependentUpon>frmMain.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UIUX\frmNhanSu.resx">
       <DependentUpon>frmNhanSu.vb</DependentUpon>
@@ -617,6 +678,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UIUX\frmSystem.resx">
       <DependentUpon>frmSystem.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UIUX\frmTest.resx">
+      <DependentUpon>frmTest.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UIUX\frmTinhLuong.resx">
+      <DependentUpon>frmTinhLuong.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UIUX\tesst.resx">
       <DependentUpon>tesst.vb</DependentUpon>
@@ -684,7 +751,15 @@
   <ItemGroup>
     <Content Include="1_Documents\db_json.sql" />
     <Content Include="2_Core\Assets\bin.png" />
+    <None Include="2_Core\Assets\checkin.ico" />
     <Content Include="2_Core\Assets\compose.png" />
+    <None Include="2_Core\Assets\ErrorImage.png" />
+    <None Include="2_Core\Assets\gear.png" />
+    <None Include="2_Core\Assets\contract.ico" />
+    <None Include="2_Core\Assets\home.ico" />
+    <Content Include="2_Core\Assets\LogoHR.png" />
+    <None Include="2_Core\Assets\salary.ico" />
+    <None Include="2_Core\Assets\saff.ico" />
     <Content Include="2_Core\Assets\search.png" />
     <Content Include="2_Core\Assets\word.png" />
   </ItemGroup>

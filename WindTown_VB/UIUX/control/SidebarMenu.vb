@@ -98,6 +98,7 @@
         AddHandler btnNhanSu.Click, AddressOf btnNhanSu_Click
         AddHandler btnChucVu.Click, AddressOf btnChucVu_Click
         AddHandler btnHopDong.Click, AddressOf btnHopDong_Click
+        AddHandler btnLuong.Click, AddressOf btnLuong_Click
     End Sub
 
     ' Mở Dashboard

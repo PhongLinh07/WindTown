@@ -156,7 +156,7 @@ Partial Class frmRegister
         Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "frmRegister"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "frmRegister"
+        Me.Text = "Đăng ký tài khoản"
         CType(Me.ErrorProvider1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
