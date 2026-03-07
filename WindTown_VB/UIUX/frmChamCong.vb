@@ -1,5 +1,10 @@
 ﻿Public Class frmChamCong
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> a237b626e31cfb5486ef5d7b0f3e81258780b91e
     Private Sub frmMain_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         'tlpMain.ColumnCount = 2
@@ -34,4 +39,8 @@
         End Select
 
     End Sub
+<<<<<<< HEAD
+>>>>>>> b8b1ee3e3c86ee9f34e596c8a2296823ce7993f5
+=======
+>>>>>>> a237b626e31cfb5486ef5d7b0f3e81258780b91e
 End Class
