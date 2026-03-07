@@ -1,4 +1,8 @@
 ﻿Public Class NhanVien
+    Public Property Id As Integer
+    Public Property DepartmentId As Integer?
+    Public Property JobId As Integer?
+    Public Property JobName As String
     Public Property Code As String
     Public Property Name As String
     Public Property Email As String
