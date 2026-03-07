@@ -25,8 +25,8 @@ Partial Class ucSidebar
         Me.tlpMain = New System.Windows.Forms.TableLayoutPanel()
         Me.pnlHeader = New System.Windows.Forms.Panel()
         Me.btnToggle = New System.Windows.Forms.Button()
-        Me.flpnlMenu = New System.Windows.Forms.FlowLayoutPanel()
         Me.ptbLogo = New System.Windows.Forms.PictureBox()
+        Me.flpnlMenu = New System.Windows.Forms.FlowLayoutPanel()
         Me.tlpMain.SuspendLayout()
         Me.pnlHeader.SuspendLayout()
         CType(Me.ptbLogo, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -70,15 +70,6 @@ Partial Class ucSidebar
         Me.btnToggle.Text = "<"
         Me.btnToggle.UseVisualStyleBackColor = True
         '
-        'flpnlMenu
-        '
-        Me.flpnlMenu.AutoScroll = True
-        Me.flpnlMenu.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.flpnlMenu.Location = New System.Drawing.Point(3, 83)
-        Me.flpnlMenu.Name = "flpnlMenu"
-        Me.flpnlMenu.Size = New System.Drawing.Size(204, 614)
-        Me.flpnlMenu.TabIndex = 1
-        '
         'ptbLogo
         '
         Me.ptbLogo.Dock = System.Windows.Forms.DockStyle.Left
@@ -91,6 +82,15 @@ Partial Class ucSidebar
         Me.ptbLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
         Me.ptbLogo.TabIndex = 0
         Me.ptbLogo.TabStop = False
+        '
+        'flpnlMenu
+        '
+        Me.flpnlMenu.AutoScroll = True
+        Me.flpnlMenu.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.flpnlMenu.Location = New System.Drawing.Point(3, 83)
+        Me.flpnlMenu.Name = "flpnlMenu"
+        Me.flpnlMenu.Size = New System.Drawing.Size(204, 614)
+        Me.flpnlMenu.TabIndex = 1
         '
         'ucSidebar
         '
