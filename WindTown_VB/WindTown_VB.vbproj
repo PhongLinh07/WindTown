@@ -247,28 +247,20 @@
     <Compile Include="2_Core\6_Forms\1_FormBase\BaseList_UC.vb">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="2_Core\6_Forms\1_FormBase\PhongBan.Designer.vb">
-      <DependentUpon>PhongBan.vb</DependentUpon>
-    </Compile>
-    <Compile Include="2_Core\6_Forms\1_FormBase\PhongBan.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="2_Core\6_Forms\Developer_Mode.Designer.vb">
       <DependentUpon>Developer_Mode.vb</DependentUpon>
     </Compile>
     <Compile Include="2_Core\6_Forms\Developer_Mode.vb" />
+    <Compile Include="2_Core\6_Forms\Developer_Mode.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="2_Core\6_Forms\T.vb" />
     <Compile Include="3_Modules\1_Organization\1_Models\level.vb" />
     <Compile Include="3_Modules\1_Organization\1_Models\Department.vb" />
     <Compile Include="2_Core\6_Forms\1_FormBase\BaseACRUDForm.Designer.vb">
       <DependentUpon>BaseACRUDForm.vb</DependentUpon>
     </Compile>
     <Compile Include="2_Core\6_Forms\1_FormBase\BaseACRUDForm.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="2_Core\6_Forms\1_FormBase\AForm.Designer.vb">
-      <DependentUpon>AForm.vb</DependentUpon>
-    </Compile>
-    <Compile Include="2_Core\6_Forms\1_FormBase\AForm.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="2_Core\4_Database\DatabaseConfig.vb" />
@@ -349,11 +341,51 @@
     <Compile Include="3_Modules\3_Operations\1_Models\Attendance.vb" />
     <Compile Include="3_Modules\2_HR\1_Models\Position.vb" />
     <Compile Include="3_Modules\3_Operations\1_Models\Holiday.vb" />
+    <Compile Include="3_Modules\3_Operations\1_Models\Leave_Cat.vb" />
+    <Compile Include="3_Modules\3_Operations\1_Models\Leave.vb" />
     <Compile Include="3_Modules\3_Operations\1_Models\Project.vb" />
+    <Compile Include="3_Modules\3_Operations\2_Repositories\LeaveRepository.vb" />
     <Compile Include="3_Modules\3_Operations\2_Repositories\AttendanceRepository.vb" />
     <Compile Include="3_Modules\2_HR\2_Repositories\PositionRepository.vb" />
+    <Compile Include="3_Modules\3_Operations\3_Service\LeaveService.vb" />
     <Compile Include="3_Modules\3_Operations\3_Service\AttendanceService.vb" />
     <Compile Include="3_Modules\2_HR\3_Service\PositionService.vb" />
+    <Compile Include="3_Modules\3_Operations\4_Forms\Leave_CRUD_Frm.Designer.vb">
+      <DependentUpon>Leave_CRUD_Frm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="3_Modules\3_Operations\4_Forms\Leave_CRUD_Frm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="3_Modules\3_Operations\4_Forms\Leave_Cat_CRUD_Frm.Designer.vb">
+      <DependentUpon>Leave_Cat_CRUD_Frm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="3_Modules\3_Operations\4_Forms\Leave_Cat_CRUD_Frm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="3_Modules\3_Operations\4_Forms\Leave_List_UC.Designer.vb">
+      <DependentUpon>Leave_List_UC.vb</DependentUpon>
+    </Compile>
+    <Compile Include="3_Modules\3_Operations\4_Forms\Leave_List_UC.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="3_Modules\3_Operations\4_Forms\Leave_Cat_List_UC.Designer.vb">
+      <DependentUpon>Leave_Cat_List_UC.vb</DependentUpon>
+    </Compile>
+    <Compile Include="3_Modules\3_Operations\4_Forms\Leave_Cat_List_UC.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="3_Modules\3_Operations\4_Forms\Holiday_List_UC.Designer.vb">
+      <DependentUpon>Holiday_List_UC.vb</DependentUpon>
+    </Compile>
+    <Compile Include="3_Modules\3_Operations\4_Forms\Holiday_List_UC.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="3_Modules\3_Operations\4_Forms\Holiday_CRUD_Frm.Designer.vb">
+      <DependentUpon>Holiday_CRUD_Frm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="3_Modules\3_Operations\4_Forms\Holiday_CRUD_Frm.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="3_Modules\3_Operations\4_Forms\Attendance_CRUD_Frm.Designer.vb">
       <DependentUpon>Attendance_CRUD_Frm.vb</DependentUpon>
     </Compile>
@@ -528,14 +560,8 @@
     <EmbeddedResource Include="2_Core\6_Forms\1_FormBase\BaseACRUDForm.resx">
       <DependentUpon>BaseACRUDForm.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="2_Core\6_Forms\1_FormBase\AForm.resx">
-      <DependentUpon>AForm.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="2_Core\6_Forms\1_FormBase\BaseList_UC.resx">
       <DependentUpon>BaseList_UC.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="2_Core\6_Forms\1_FormBase\PhongBan.resx">
-      <DependentUpon>PhongBan.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="2_Core\6_Forms\Developer_Mode.resx">
       <DependentUpon>Developer_Mode.vb</DependentUpon>
@@ -569,6 +595,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="3_Modules\2_HR\4_Forms\Employee_List_UC.resx">
       <DependentUpon>Employee_List_UC.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="3_Modules\3_Operations\4_Forms\Leave_CRUD_Frm.resx">
+      <DependentUpon>Leave_CRUD_Frm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="3_Modules\3_Operations\4_Forms\Leave_Cat_CRUD_Frm.resx">
+      <DependentUpon>Leave_Cat_CRUD_Frm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="3_Modules\3_Operations\4_Forms\Holiday_CRUD_Frm.resx">
+      <DependentUpon>Holiday_CRUD_Frm.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="3_Modules\3_Operations\4_Forms\Attendance_CRUD_Frm.resx">
       <DependentUpon>Attendance_CRUD_Frm.vb</DependentUpon>
@@ -697,6 +732,7 @@
     <None Include="2_Core\Assets\user.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="1_Documents\db_json.sql" />
     <Content Include="2_Core\Assets\bin.png" />
     <None Include="2_Core\Assets\checkin.ico" />
     <Content Include="2_Core\Assets\compose.png" />

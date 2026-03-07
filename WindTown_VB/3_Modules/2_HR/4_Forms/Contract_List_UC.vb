@@ -2,7 +2,7 @@ Public Class Contract_List_UC
     Inherits BaseList_UC
 
     Public Sub New()
-        MyBase.New(New ContractService(), "Hợp đồng")
+        MyBase.New(New ContractService(), "Contract_List_UC", "Hợp đồng")
         InitializeComponent()
         Init(GetType(Contract))
     End Sub

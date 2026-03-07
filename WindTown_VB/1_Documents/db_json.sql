@@ -37,6 +37,7 @@ IF OBJECT_ID('position', 'U')     IS NOT NULL DROP TABLE position;
 
 IF OBJECT_ID('project', 'U')      IS NOT NULL DROP TABLE project;
 IF OBJECT_ID('assignment', 'U')   IS NOT NULL DROP TABLE assignment;
+IF OBJECT_ID('leave_cat', 'U')        IS NOT NULL DROP TABLE leave_cat;
 IF OBJECT_ID('leave', 'U')        IS NOT NULL DROP TABLE leave;
 IF OBJECT_ID('attendance', 'U')   IS NOT NULL DROP TABLE attendance;
 IF OBJECT_ID('holiday', 'U')      IS NOT NULL DROP TABLE holiday;
@@ -125,9 +126,16 @@ CREATE TABLE holiday (
     datas NVARCHAR(max)
 );
 
+CREATE TABLE leave_cat (
+    id INT IDENTITY(1,1) PRIMARY KEY,
+    datas NVARCHAR(max)
+);
+
 CREATE TABLE leave (
     id INT IDENTITY(1,1) PRIMARY KEY,
     employee_id INT,
+    approved_id INT,
+    leave_cat_id INT,
     datas NVARCHAR(max)
 );
 
@@ -190,6 +198,8 @@ ALTER TABLE assignment ADD CONSTRAINT FK_assignment_project FOREIGN KEY (project
 ALTER TABLE attendance ADD CONSTRAINT FK_attendance_employee FOREIGN KEY (employee_id) REFERENCES employee(id);
 
 ALTER TABLE leave ADD CONSTRAINT FK_leave_employee FOREIGN KEY (employee_id) REFERENCES employee(id);
+ALTER TABLE leave ADD CONSTRAINT FK_leave_approved FOREIGN KEY (approved_id) REFERENCES employee(id);
+ALTER TABLE leave ADD CONSTRAINT FK_leave_leave_cat FOREIGN KEY (leave_cat_id) REFERENCES leave_cat(id);
 
 -- Module: Tài chính
 ALTER TABLE payroll ADD CONSTRAINT FK_payroll_period FOREIGN KEY (period_id) REFERENCES pay_period(id);
@@ -2204,7 +2214,6 @@ INSERT INTO attendance (employee_id, datas) VALUES
 (40, N'{"code": "ATTD01800", "of_date": "2026-02-28", "office_hours": 8, "overtime_hours": 0, "late_hours": 0, "early_hours": 0, "shift": 0, "note": "", "status": 1}' );
 
 
-
 INSERT INTO holiday (datas) VALUES 
 (N'{"code": "NEW_YEAR_2026", "of_date": "2026-01-01", "name": "Tết Dương lịch", "day_mult": 3.0, "night_mult": 3.0, "ot_mult": 3.0, "note": "Nghỉ lễ theo luật", "status": 1}'),
 (N'{"code": "LUNAR_NEW_YEAR_2026_D1", "of_date": "2026-02-16", "name": "Tết Nguyên Đán - 30 Tết", "day_mult": 3.0, "night_mult": 3.0, "ot_mult": 3.0, "note": "Nghỉ Tết Âm lịch", "status": 1}'),
@@ -2213,6 +2222,47 @@ INSERT INTO holiday (datas) VALUES
 (N'{"code": "LUNAR_NEW_YEAR_2026_D4", "of_date": "2026-02-19", "name": "Tết Nguyên Đán - Mùng 3", "day_mult": 3.0, "night_mult": 3.0, "ot_mult": 3.0, "note": "Nghỉ Tết Âm lịch", "status": 1}'),
 (N'{"code": "LUNAR_NEW_YEAR_2026_D5", "of_date": "2026-02-20", "name": "Tết Nguyên Đán - Mùng 4", "day_mult": 3.0, "night_mult": 3.0, "ot_mult": 3.0, "note": "Nghỉ Tết Âm lịch", "status": 1}');
 GO
+
+INSERT INTO leave_cat (datas)
+VALUES
+(N'{
+  "code": "AL",
+  "name": "Nghỉ phép năm",
+  "benefit": 1,
+  "note": "Annual Leave",
+  "status": 1
+}'),
+
+(N'{
+  "code": "SL",
+  "name": "Nghỉ bệnh",
+  "benefit": 1,
+  "note": "Sick Leave ",
+  "status": 1
+}'),
+
+(N'{
+  "code": "PL",
+  "name": "Nghỉ việc cá nhân",
+  "benefit": 0,
+  "note": "Personal Leave",
+  "status": 1
+}'),
+
+(N'{
+  "code": "ML",
+  "name": "Nghỉ thai sản",
+  "benefit": 1,
+  "note": "Maternity Leave",
+  "status": 1
+}'),
+(N'{
+  "code": "ST",
+  "name": "Nghỉ học tập / đào tạo",
+  "benefit": 0,
+  "note": "Study Leave",
+  "status": 1
+}');
 
 -- =========================================================
 -- INSERT DATA FOR ACCOUNT (Relational IDs + JSON Datas)

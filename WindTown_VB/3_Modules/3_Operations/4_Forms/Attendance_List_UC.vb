@@ -2,7 +2,7 @@ Public Class Attendance_List_UC
     Inherits BaseList_UC
 
     Public Sub New()
-        MyBase.New(New AttendanceService(), "Chấm Công")
+        MyBase.New(New AttendanceService(), "Attendance_List_UC", "Chấm Công")
         InitializeComponent()
         Init(GetType(Attendance))
     End Sub
