@@ -250,6 +250,7 @@
     <Compile Include="2_Core\6_Forms\Developer_Mode.Designer.vb">
       <DependentUpon>Developer_Mode.vb</DependentUpon>
     </Compile>
+    <Compile Include="2_Core\6_Forms\Developer_Mode.vb" />
     <Compile Include="2_Core\6_Forms\Developer_Mode.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -459,18 +460,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="UIUX\control\SidebarMenu.Designer.vb">
-      <DependentUpon>SidebarMenu.vb</DependentUpon>
-    </Compile>
-    <Compile Include="UIUX\control\SidebarMenu.vb">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UIUX\control\SidebarMenuV2.Designer.vb">
-      <DependentUpon>SidebarMenuV2.vb</DependentUpon>
-    </Compile>
-    <Compile Include="UIUX\control\SidebarMenuV2.vb">
-      <SubType>UserControl</SubType>
-    </Compile>
     <Compile Include="UIUX\control\ucSidebar.Designer.vb">
       <DependentUpon>ucSidebar.vb</DependentUpon>
     </Compile>
@@ -636,12 +625,6 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UIUX\control\SidebarMenu.resx">
-      <DependentUpon>SidebarMenu.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UIUX\control\SidebarMenuV2.resx">
-      <DependentUpon>SidebarMenuV2.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UIUX\control\ucSidebar.resx">
       <DependentUpon>ucSidebar.vb</DependentUpon>

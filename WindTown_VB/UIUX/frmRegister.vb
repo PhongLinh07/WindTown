@@ -92,7 +92,7 @@ Public Class frmRegister
 
                 Dim frm As New frmLogin()
                 frm.Show()
-                Me.Hide()
+                Me.Close()
             Else
                 MessageBox.Show(result.Message, "Lỗi")
             End If
