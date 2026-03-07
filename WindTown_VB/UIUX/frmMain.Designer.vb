@@ -24,18 +24,18 @@ Partial Class frmMain
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmMain))
         Me.tlpMain = New System.Windows.Forms.TableLayoutPanel()
-        Me.UcSidebar1 = New WindTown_VB.ucSidebar()
         Me.pnlMain = New System.Windows.Forms.Panel()
+        Me.UcSidebar1 = New WindTown_VB.ucSidebar()
         Me.tlpMain.SuspendLayout()
         Me.SuspendLayout()
         '
         'tlpMain
         '
         Me.tlpMain.ColumnCount = 2
-        Me.tlpMain.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 234.0!))
+        Me.tlpMain.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 222.0!))
         Me.tlpMain.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.tlpMain.Controls.Add(Me.UcSidebar1, 0, 0)
         Me.tlpMain.Controls.Add(Me.pnlMain, 1, 0)
+        Me.tlpMain.Controls.Add(Me.UcSidebar1, 0, 0)
         Me.tlpMain.Dock = System.Windows.Forms.DockStyle.Fill
         Me.tlpMain.Location = New System.Drawing.Point(0, 0)
         Me.tlpMain.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
@@ -45,24 +45,24 @@ Partial Class frmMain
         Me.tlpMain.Size = New System.Drawing.Size(1262, 673)
         Me.tlpMain.TabIndex = 0
         '
+        'pnlMain
+        '
+        Me.pnlMain.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.pnlMain.Font = New System.Drawing.Font("Arial", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.pnlMain.Location = New System.Drawing.Point(225, 4)
+        Me.pnlMain.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.pnlMain.Name = "pnlMain"
+        Me.pnlMain.Size = New System.Drawing.Size(1034, 665)
+        Me.pnlMain.TabIndex = 1
+        '
         'UcSidebar1
         '
         Me.UcSidebar1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.UcSidebar1.Location = New System.Drawing.Point(3, 4)
         Me.UcSidebar1.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.UcSidebar1.Name = "UcSidebar1"
-        Me.UcSidebar1.Size = New System.Drawing.Size(228, 665)
-        Me.UcSidebar1.TabIndex = 0
-        '
-        'pnlMain
-        '
-        Me.pnlMain.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.pnlMain.Font = New System.Drawing.Font("Arial", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.pnlMain.Location = New System.Drawing.Point(237, 4)
-        Me.pnlMain.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
-        Me.pnlMain.Name = "pnlMain"
-        Me.pnlMain.Size = New System.Drawing.Size(1022, 665)
-        Me.pnlMain.TabIndex = 1
+        Me.UcSidebar1.Size = New System.Drawing.Size(216, 665)
+        Me.UcSidebar1.TabIndex = 2
         '
         'frmMain
         '
@@ -82,6 +82,6 @@ Partial Class frmMain
     End Sub
 
     Friend WithEvents tlpMain As TableLayoutPanel
-    Friend WithEvents UcSidebar1 As ucSidebar
     Friend WithEvents pnlMain As Panel
+    Friend WithEvents UcSidebar1 As ucSidebar
 End Class

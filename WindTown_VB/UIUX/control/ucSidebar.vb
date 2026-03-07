@@ -6,7 +6,7 @@
     Private activeButton As Button
 
     Private expandedWidth As Integer
-    Private collapsedWidth As Integer = 60
+    Private collapsedWidth As Integer = 64
     Private isCollapsed As Boolean = False
 
     Private parentTable As TableLayoutPanel
@@ -29,6 +29,8 @@
         BuildMenuData()
 
         BuildMenuUI()
+
+        designToggleButton(False)
 
         toolTipMenu.AutoPopDelay = 5000
         toolTipMenu.InitialDelay = 200
@@ -83,15 +85,14 @@
         If columnIndex < 0 Then Return
 
         Dim col = parentTable.ColumnStyles(columnIndex)
-
         col.SizeType = SizeType.Absolute
 
         If isCollapsed Then
 
             '===== MỞ SIDEBAR =====
             col.Width = expandedWidth
-
             ptbLogo.Visible = True
+            designToggleButton(False)
 
             For Each ctrl As Control In flpnlMenu.Controls
 
@@ -109,8 +110,9 @@
 
             '===== THU SIDEBAR =====
             col.Width = collapsedWidth
-
             ptbLogo.Visible = False
+
+            designToggleButton(True)
 
             For Each ctrl As Control In flpnlMenu.Controls
 
@@ -143,6 +145,40 @@
 
     End Sub
 
+    Private Sub designToggleButton(status As Boolean)
+
+        If status = False Then
+            btnToggle.Size = New Size(40, 40)
+            btnToggle.Text = "<"
+            btnToggle.Dock = DockStyle.Right
+            btnToggle.FlatStyle = FlatStyle.Flat
+            btnToggle.FlatAppearance.BorderSize = 0
+            btnToggle.BackColor = Color.White
+            btnToggle.ForeColor = Color.Black
+            btnToggle.MaximumSize = New Size(40, 40)
+            btnToggle.MinimumSize = New Size(40, 40)
+        ElseIf status = True Then
+
+            btnToggle.Size = New Size(40, 40)
+            btnToggle.Text = ">"
+            btnToggle.Dock = DockStyle.None
+            btnToggle.Anchor = AnchorStyles.None
+
+            btnToggle.FlatStyle = FlatStyle.Flat
+            btnToggle.FlatAppearance.BorderSize = 0
+            btnToggle.BackColor = Color.White
+            btnToggle.ForeColor = Color.Black
+
+            btnToggle.MaximumSize = New Size(40, 40)
+            btnToggle.MinimumSize = New Size(40, 40)
+
+            ' ===== Căn giữa =====
+            btnToggle.Left = 4
+            btnToggle.Top = 4
+
+        End If
+    End Sub
+
 
     '============================
     ' Khai báo menu
@@ -151,26 +187,26 @@
 
         menuData = New List(Of MenuItemModel)
 
-        menuData.Add(New MenuItemModel("Dashboard", GetType(frmDashboard), My.Resources.ErrorImage)) ' icon dashboard
+        menuData.Add(New MenuItemModel("Dashboard", GetType(frmDashboard), ResizeImage(My.Resources.home1, 38, 38))) ' icon dashboard
 
-        Dim qlns As New MenuItemModel("Quản lý nhân sự", Nothing, My.Resources.ErrorImage) ' icon nhân sự
+        Dim qlns As New MenuItemModel("Quản lý nhân sự", Nothing, ResizeImage(My.Resources.saff, 38, 38)) ' icon nhân sự
 
-        qlns.Children.Add(New MenuItemModel("Nhân sự", GetType(frmNhanSu), My.Resources.user)) ' icon người dùng
-        qlns.Children.Add(New MenuItemModel("Chức vụ", GetType(frmChucVu), My.Resources.ErrorImage)) ' icon chức vụ
+        qlns.Children.Add(New MenuItemModel("Nhân sự", GetType(frmNhanSu))) ' icon người dùng
+        qlns.Children.Add(New MenuItemModel("Chức vụ", GetType(frmChucVu))) ' icon chức vụ
 
         menuData.Add(qlns)
 
-        menuData.Add(New MenuItemModel("Hợp đồng", GetType(frmHopDong), My.Resources.ErrorImage)) ' icon hợp đồng
-        menuData.Add(New MenuItemModel("Chấm công", GetType(frmChamCong), My.Resources.ErrorImage)) ' icon chấm công
+        menuData.Add(New MenuItemModel("Hợp đồng", GetType(frmHopDong), ResizeImage(My.Resources.contract, 38, 38))) ' icon hợp đồng
+        menuData.Add(New MenuItemModel("Chấm công", GetType(frmChamCong), ResizeImage(My.Resources.checkin, 38, 38))) ' icon chấm công
 
-        Dim luong As New MenuItemModel("Lương", Nothing, My.Resources.ErrorImage) ' icon lương
+        Dim luong As New MenuItemModel("Lương", Nothing, ResizeImage(My.Resources.salary, 38, 38)) ' icon lương
 
-        luong.Children.Add(New MenuItemModel("Kỳ lương", GetType(frmKyLuong), My.Resources.ErrorImage)) ' icon kỳ lương
-        luong.Children.Add(New MenuItemModel("Tính lương", GetType(frmTinhLuong), My.Resources.money))
+        luong.Children.Add(New MenuItemModel("Kỳ lương", GetType(frmKyLuong))) ' icon kỳ lương
+        luong.Children.Add(New MenuItemModel("Tính lương", GetType(frmTinhLuong)))
 
         menuData.Add(luong)
 
-        menuData.Add(New MenuItemModel("Cài đặt", GetType(frmSystem), My.Resources.gear)) ' icon cài đặt
+        menuData.Add(New MenuItemModel("Cài đặt", GetType(frmSystem), ResizeImage(My.Resources.gear, 38, 38))) ' icon cài đặt
 
     End Sub
 
