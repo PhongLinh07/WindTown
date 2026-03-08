@@ -856,18 +856,45 @@ Public Class frmNhanSu
     End Function
 
     Private Sub AddDepartment()
+
         Dim data As New Department()
-        Dim crud As New Department_CRUD_Frm(data, True)
-        If crud.ShowDialog() <> DialogResult.OK Then Return
 
-        Dim response = _departmentService.Execute(DataIntent.Insert, data)
-        If response Is Nothing OrElse Not response.IsSuccess Then
-            MessageBox.Show("Thêm bộ phận không thành công: " & If(response?.Message, "Lỗi không xác định."))
-            Return
-        End If
+        Using crud As New Department_CRUD_Frm(data, True)
 
-        ReloadDataAndView()
+            If crud.ShowDialog() <> DialogResult.OK Then Return
+
+        End Using
+
+        Try
+
+            Dim response = _departmentService.Execute(DataIntent.Insert, data)
+
+            If response Is Nothing OrElse Not response.IsSuccess Then
+                MessageBox.Show("Thêm bộ phận không thành công: " & If(response?.Message, "Lỗi không xác định."))
+                Return
+            End If
+
+            ReloadDataAndView()
+
+        Catch ex As Exception
+            MessageBox.Show("Lỗi hệ thống: " & ex.Message)
+        End Try
+
     End Sub
+
+    'Private Sub AddDepartment()
+    '    Dim data As New Department()
+    '    Dim crud As New Department_CRUD_Frm(data, True)
+    '    If crud.ShowDialog() <> DialogResult.OK Then Return
+    '
+    '    Dim response = _departmentService.Execute(DataIntent.Insert, data)
+    '    If response Is Nothing OrElse Not response.IsSuccess Then
+    '        MessageBox.Show("Thêm bộ phận không thành công: " & If(response?.Message, "Lỗi không xác định."))
+    '        Return
+    '    End If
+    '
+    '    ReloadDataAndView()
+    'End Sub
 
     Private Sub AddJob(departmentId As Integer)
         Dim dept = phongBan.FirstOrDefault(Function(d) d.id = departmentId)
@@ -1067,32 +1094,8 @@ Public Class frmNhanSu
             _lblTreeSelection.Text = "Đang chọn: Job - " & If(job?.code, "?") & " / " & If(job?.name, "(không rõ)")
         End If
     End Sub
+
+    Private Sub btnNhapXuatNV_Click(sender As Object, e As EventArgs) Handles btnNhapXuatNV.Click
+
+    End Sub
 End Class
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

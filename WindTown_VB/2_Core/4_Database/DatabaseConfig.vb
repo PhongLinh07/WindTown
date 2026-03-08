@@ -1,4 +1,4 @@
-Imports System.ComponentModel
+﻿Imports System.ComponentModel
 Imports System.Data.SqlClient
 
 Public Class DatabaseConfig
@@ -35,14 +35,24 @@ Public Class DatabaseConfig
     '    Logout
     '    Register
     'End Enum
-
-
     ' ===== Database config =====
     Friend NotInheritable Class Database
-        Private Shared ReadOnly Config As String = "Data Source=.;Initial Catalog=wind_town;Integrated Security=True;TrustServerCertificate=True"
+        Private Shared ReadOnly DefaultConfig As String = "Data Source=.;Initial Catalog=wind_town;Integrated Security=True;TrustServerCertificate=True"
+        Private Shared _runtimeConfig As String = DefaultConfig
+
+        Public Shared Sub SetConnectionString(connectionString As String)
+            If String.IsNullOrWhiteSpace(connectionString) Then
+                _runtimeConfig = DefaultConfig
+            Else
+                _runtimeConfig = connectionString.Trim()
+            End If
+        End Sub
+
         Public Shared Function GetConnection() As IDbConnection
-            Return New SqlConnection(Config)
+            Return New SqlConnection(_runtimeConfig)
         End Function
     End Class
 
 End Class
+
+
