@@ -173,6 +173,7 @@ Partial Class frmDashboard
         'Label12
         '
         Me.Label12.AutoSize = True
+        Me.Label12.BackColor = System.Drawing.Color.Orange
         Me.tlpTopCheckinMuon.SetColumnSpan(Me.Label12, 3)
         Me.Label12.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Label12.Font = New System.Drawing.Font("Microsoft YaHei UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -181,7 +182,7 @@ Partial Class frmDashboard
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(436, 87)
         Me.Label12.TabIndex = 1
-        Me.Label12.Text = "Đi muộn hôm nay"
+        Me.Label12.Text = "Đi muộn trong tuần"
         Me.Label12.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'tlpThongKe
@@ -223,7 +224,7 @@ Partial Class frmDashboard
         Me.Label15.AutoSize = True
         Me.Label15.Font = New System.Drawing.Font("Microsoft YaHei UI", 16.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label15.ForeColor = System.Drawing.Color.Yellow
-        Me.Label15.Location = New System.Drawing.Point(76, 81)
+        Me.Label15.Location = New System.Drawing.Point(60, 81)
         Me.Label15.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label15.Name = "Label15"
         Me.Label15.Size = New System.Drawing.Size(34, 37)
@@ -233,7 +234,7 @@ Partial Class frmDashboard
         'txDenMuon
         '
         Me.txDenMuon.AutoSize = True
-        Me.txDenMuon.Location = New System.Drawing.Point(55, 40)
+        Me.txDenMuon.Location = New System.Drawing.Point(39, 40)
         Me.txDenMuon.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.txDenMuon.Name = "txDenMuon"
         Me.txDenMuon.Size = New System.Drawing.Size(68, 22)
@@ -256,7 +257,7 @@ Partial Class frmDashboard
         Me.txtChuaCheckin.AutoSize = True
         Me.txtChuaCheckin.Font = New System.Drawing.Font("Microsoft YaHei UI", 16.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtChuaCheckin.ForeColor = System.Drawing.Color.Red
-        Me.txtChuaCheckin.Location = New System.Drawing.Point(75, 81)
+        Me.txtChuaCheckin.Location = New System.Drawing.Point(57, 81)
         Me.txtChuaCheckin.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.txtChuaCheckin.Name = "txtChuaCheckin"
         Me.txtChuaCheckin.Size = New System.Drawing.Size(34, 37)
@@ -266,7 +267,7 @@ Partial Class frmDashboard
         'Label13
         '
         Me.Label13.AutoSize = True
-        Me.Label13.Location = New System.Drawing.Point(41, 40)
+        Me.Label13.Location = New System.Drawing.Point(23, 40)
         Me.Label13.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label13.Name = "Label13"
         Me.Label13.Size = New System.Drawing.Size(97, 22)
@@ -301,7 +302,7 @@ Partial Class frmDashboard
         Me.txtDungGio.AutoSize = True
         Me.txtDungGio.Font = New System.Drawing.Font("Microsoft YaHei UI", 16.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtDungGio.ForeColor = System.Drawing.Color.LimeGreen
-        Me.txtDungGio.Location = New System.Drawing.Point(60, 81)
+        Me.txtDungGio.Location = New System.Drawing.Point(55, 81)
         Me.txtDungGio.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.txtDungGio.Name = "txtDungGio"
         Me.txtDungGio.Size = New System.Drawing.Size(34, 37)
@@ -311,7 +312,7 @@ Partial Class frmDashboard
         'Label11
         '
         Me.Label11.AutoSize = True
-        Me.Label11.Location = New System.Drawing.Point(39, 40)
+        Me.Label11.Location = New System.Drawing.Point(34, 40)
         Me.Label11.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(68, 22)
@@ -409,6 +410,7 @@ Partial Class frmDashboard
         '
         'btnMoiNV
         '
+        Me.btnMoiNV.BackColor = System.Drawing.Color.Yellow
         Me.tlpNhanVien.SetColumnSpan(Me.btnMoiNV, 2)
         Me.btnMoiNV.Dock = System.Windows.Forms.DockStyle.Fill
         Me.btnMoiNV.Location = New System.Drawing.Point(294, 178)
@@ -417,7 +419,7 @@ Partial Class frmDashboard
         Me.btnMoiNV.Size = New System.Drawing.Size(290, 41)
         Me.btnMoiNV.TabIndex = 10
         Me.btnMoiNV.Text = "Mời nhân viên"
-        Me.btnMoiNV.UseVisualStyleBackColor = True
+        Me.btnMoiNV.UseVisualStyleBackColor = False
         '
         'txtSoBoPhan
         '
@@ -543,15 +545,17 @@ Partial Class frmDashboard
         '
         'btnThemNV
         '
+        Me.btnThemNV.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
         Me.tlpNhanVien.SetColumnSpan(Me.btnThemNV, 2)
         Me.btnThemNV.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.btnThemNV.ForeColor = System.Drawing.Color.Black
         Me.btnThemNV.Location = New System.Drawing.Point(2, 178)
         Me.btnThemNV.Margin = New System.Windows.Forms.Padding(2, 3, 2, 3)
         Me.btnThemNV.Name = "btnThemNV"
         Me.btnThemNV.Size = New System.Drawing.Size(288, 41)
         Me.btnThemNV.TabIndex = 9
         Me.btnThemNV.Text = "+ Thêm nhân viên"
-        Me.btnThemNV.UseVisualStyleBackColor = True
+        Me.btnThemNV.UseVisualStyleBackColor = False
         '
         'Panel1
         '
@@ -611,6 +615,7 @@ Partial Class frmDashboard
         'Label10
         '
         Me.Label10.AutoSize = True
+        Me.Label10.BackColor = System.Drawing.Color.Cyan
         Me.tlpTopCheckin.SetColumnSpan(Me.Label10, 3)
         Me.Label10.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Label10.Font = New System.Drawing.Font("Microsoft YaHei UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))

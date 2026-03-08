@@ -79,9 +79,9 @@ Public Class frmDashboard
         lvTopCheckinMuon.Columns.Add("Nhan vien", 250)
         lvTopCheckinMuon.Columns.Add("Tong gio di muon", 180)
 
-        Label10.Text = "Top dung gio trong thang"
-        Label12.Text = "Di muon 7 ngay gan nhat"
-        txDenMuon.Text = "Di muon (7 ngay)"
+        'Label10.Text = "Top dung gio trong thang"
+        'Label12.Text = "Di muon 7 ngay gan nhat"
+        'txDenMuon.Text = "Di muon (7 ngay)"
 
     End Sub
 
@@ -222,6 +222,7 @@ Public Class frmDashboard
             Return False
         End Try
     End Function
+
 End Class
 
 

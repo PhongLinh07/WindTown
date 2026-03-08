@@ -551,6 +551,7 @@
     <Compile Include="UIUX\Modules\BoPhan.vb" />
     <Compile Include="UIUX\Modules\CongViec.vb" />
     <Compile Include="UIUX\Modules\NhanSuTransferService.vb" />
+    <Compile Include="UIUX\Modules\DatabaseBootstrapService.vb" />
     <Compile Include="UIUX\Modules\NhanVien.vb" />
     <Compile Include="UIUX\tesst.Designer.vb">
       <DependentUpon>tesst.vb</DependentUpon>
@@ -758,4 +759,5 @@
     <Error Condition="!Exists('..\packages\Microsoft.Data.SqlClient.SNI.6.0.2\build\net462\Microsoft.Data.SqlClient.SNI.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Data.SqlClient.SNI.6.0.2\build\net462\Microsoft.Data.SqlClient.SNI.targets'))" />
   </Target>
 </Project>
+
 
