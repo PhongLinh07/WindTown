@@ -60,10 +60,11 @@ Partial Class FormMain
         Me.contextMenu_tab = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.menu_close = New System.Windows.Forms.ToolStripMenuItem()
         Me.menu_close_all_tab = New System.Windows.Forms.ToolStripMenuItem()
-        Me.menu_move_to_splitB = New System.Windows.Forms.ToolStripMenuItem()
         Me.menu_move_to_splitA = New System.Windows.Forms.ToolStripMenuItem()
         Me.menu_move_all_to_splitA = New System.Windows.Forms.ToolStripMenuItem()
+        Me.menu_move_to_splitB = New System.Windows.Forms.ToolStripMenuItem()
         Me.menu_move_all_to_splitB = New System.Windows.Forms.ToolStripMenuItem()
+        Me.menu_assignment = New System.Windows.Forms.ToolStripMenuItem()
         Me.pnl_main.SuspendLayout()
         CType(Me.split_main, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.split_main.Panel1.SuspendLayout()
@@ -221,19 +222,19 @@ Partial Class FormMain
         '
         Me.menu_department.Image = Global.WindTown_VB.My.Resources.Resources.home
         Me.menu_department.Name = "menu_department"
-        Me.menu_department.Size = New System.Drawing.Size(145, 24)
+        Me.menu_department.Size = New System.Drawing.Size(180, 24)
         Me.menu_department.Text = "Phòng ban"
         '
         'menu_job
         '
         Me.menu_job.Name = "menu_job"
-        Me.menu_job.Size = New System.Drawing.Size(145, 24)
+        Me.menu_job.Size = New System.Drawing.Size(180, 24)
         Me.menu_job.Text = "Công việc"
         '
         'menu_level
         '
         Me.menu_level.Name = "menu_level"
-        Me.menu_level.Size = New System.Drawing.Size(145, 24)
+        Me.menu_level.Size = New System.Drawing.Size(180, 24)
         Me.menu_level.Text = "Trình độ"
         '
         'DvsdvToolStripMenuItem
@@ -246,24 +247,24 @@ Partial Class FormMain
         'menu_empolyee
         '
         Me.menu_empolyee.Name = "menu_empolyee"
-        Me.menu_empolyee.Size = New System.Drawing.Size(140, 24)
+        Me.menu_empolyee.Size = New System.Drawing.Size(180, 24)
         Me.menu_empolyee.Text = "Nhân viên"
         '
         'menu_contract
         '
         Me.menu_contract.Name = "menu_contract"
-        Me.menu_contract.Size = New System.Drawing.Size(140, 24)
+        Me.menu_contract.Size = New System.Drawing.Size(180, 24)
         Me.menu_contract.Text = "Hợp đồng"
         '
         'menu_position
         '
         Me.menu_position.Name = "menu_position"
-        Me.menu_position.Size = New System.Drawing.Size(140, 24)
+        Me.menu_position.Size = New System.Drawing.Size(180, 24)
         Me.menu_position.Text = "Chức vụ"
         '
         'SdvfToolStripMenuItem
         '
-        Me.SdvfToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.menu_project, Me.menu_attendance, Me.menu_holiday, Me.menu_leave_cat, Me.menu_leave})
+        Me.SdvfToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.menu_project, Me.menu_assignment, Me.menu_attendance, Me.menu_holiday, Me.menu_leave_cat, Me.menu_leave})
         Me.SdvfToolStripMenuItem.Name = "SdvfToolStripMenuItem"
         Me.SdvfToolStripMenuItem.Size = New System.Drawing.Size(80, 29)
         Me.SdvfToolStripMenuItem.Text = "Vận hành"
@@ -354,12 +355,6 @@ Partial Class FormMain
         Me.menu_close_all_tab.Size = New System.Drawing.Size(186, 22)
         Me.menu_close_all_tab.Text = "Đóng tất cả các tab"
         '
-        'menu_move_to_splitB
-        '
-        Me.menu_move_to_splitB.Name = "menu_move_to_splitB"
-        Me.menu_move_to_splitB.Size = New System.Drawing.Size(186, 22)
-        Me.menu_move_to_splitB.Text = "Chuyển sang B"
-        '
         'menu_move_to_splitA
         '
         Me.menu_move_to_splitA.Name = "menu_move_to_splitA"
@@ -372,11 +367,23 @@ Partial Class FormMain
         Me.menu_move_all_to_splitA.Size = New System.Drawing.Size(186, 22)
         Me.menu_move_all_to_splitA.Text = "Chuyển tất cả sang A"
         '
+        'menu_move_to_splitB
+        '
+        Me.menu_move_to_splitB.Name = "menu_move_to_splitB"
+        Me.menu_move_to_splitB.Size = New System.Drawing.Size(186, 22)
+        Me.menu_move_to_splitB.Text = "Chuyển sang B"
+        '
         'menu_move_all_to_splitB
         '
         Me.menu_move_all_to_splitB.Name = "menu_move_all_to_splitB"
         Me.menu_move_all_to_splitB.Size = New System.Drawing.Size(186, 22)
         Me.menu_move_all_to_splitB.Text = "Chuyển tất cả sang B"
+        '
+        'menu_assignment
+        '
+        Me.menu_assignment.Name = "menu_assignment"
+        Me.menu_assignment.Size = New System.Drawing.Size(207, 24)
+        Me.menu_assignment.Text = "Phân công dự án"
         '
         'FormMain
         '
@@ -445,4 +452,5 @@ Partial Class FormMain
     Friend WithEvents TabPage6 As TabPage
     Friend WithEvents menu_move_all_to_splitA As ToolStripMenuItem
     Friend WithEvents menu_move_all_to_splitB As ToolStripMenuItem
+    Friend WithEvents menu_assignment As ToolStripMenuItem
 End Class

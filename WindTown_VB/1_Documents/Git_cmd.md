@@ -13,3 +13,8 @@ Nếu có conflict → sửa file bị xung đột, sau đó:
 
 git add .
 git commit
+
+
+
+git fetch origin
+git merge origin/main

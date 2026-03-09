@@ -196,6 +196,9 @@ Partial Public Class FormMain
     Private Sub menu_project_Click(sender As Object, e As EventArgs) Handles menu_project.Click
         OpenMultTabMode(Of Project_List_UC)(tabControl_A)
     End Sub
+    Private Sub menu_assignment_Click(sender As Object, e As EventArgs) Handles menu_assignment.Click
+        OpenMultTabMode(Of Assignment_List_UC)(tabControl_A)
+    End Sub
 
     Private Sub menu_attendance_Click(sender As Object, e As EventArgs) Handles menu_attendance.Click
         OpenMultTabMode(Of Attendance_List_UC)(tabControl_A)

@@ -2,44 +2,41 @@ Imports System.ComponentModel
 Imports System.ComponentModel.DataAnnotations
 Imports Dapper.Contrib.Extensions
 
-<Table("position")>
-Public Class Position
+<Table("assignment")>
+Public Class Assignment
     Inherits BaseEntity
+
+    Public Sub New()
+        code = ""
+        start_date = DateTime.Now
+        end_date = DateTime.Now
+        note = ""
+        status = 0
+    End Sub
 
 #Region "Join"
     <Write(False)> <Browsable(False)>
-    Public Property Contract = New Contract()
+    Public Property Position = New Position()
 
     <Write(False)> <Browsable(False)>
-    Public Property Job = New Job()
-
-    <Write(False)> <Browsable(False)>
-    Public Property Level = New Level()
-
+    Public Property Project = New Project()
 #End Region
 
 #Region "Field Json"
     <Browsable(False)>
-    Public ReadOnly Property contract_id As Integer
+    Public ReadOnly Property position_id As Integer
         Get
-            Return Contract?.id
+            Return Position?.id
         End Get
     End Property
     <Browsable(False)>
-    Public ReadOnly Property job_id As Integer
+    Public ReadOnly Property project_id As Integer
         Get
-            Return Job?.id
-        End Get
-    End Property
-    <Browsable(False)>
-    Public ReadOnly Property level_id As Integer
-        Get
-            Return Level?.id
+            Return Project?.id
         End Get
     End Property
 
-
-    <Write(False)> <DisplayName("Mã chức vụ")> <Display(Order:=1)>
+    <Write(False)> <DisplayName("Mã phân công")> <Display(Order:=1)>
     Public Property code As String
         Get
             Return GetV(Of String)("code")
@@ -48,7 +45,16 @@ Public Class Position
             SetV("code", value)
         End Set
     End Property
-    <Write(False)> <DisplayName("Ngày bắt đầu")> <DisplayFormat(DataFormatString:="{0:dd-MM-yyyy}")> <Display(Order:=5)>
+    <Write(False)> <Browsable(False)>
+    Public Property role As Integer
+        Get
+            Return GetV(Of Integer)("role")
+        End Get
+        Set(value As Integer)
+            SetV("role", value)
+        End Set
+    End Property
+    <Write(False)> <DisplayName("Ngày bắt đầu")> <DisplayFormat(DataFormatString:="{0:dd-MM-yyyy}")> <Display(Order:=7)>
     Public Property start_date As DateTime? ' Thêm dấu ? để cho phép Null
         Get
             Return GetV(Of DateTime?)("start_date") ' Trả về giá trị mặc định nếu Null
@@ -58,7 +64,7 @@ Public Class Position
             SetV("start_date", value)
         End Set
     End Property
-    <Write(False)> <DisplayName("Ngày kết thúc")> <DisplayFormat(DataFormatString:="{0:dd-MM-yyyy}")> <Display(Order:=6)>
+    <Write(False)> <DisplayName("Ngày kết thúc")> <DisplayFormat(DataFormatString:="{0:dd-MM-yyyy}")> <Display(Order:=8)>
     Public Property end_date As DateTime? ' Thêm dấu ? để cho phép Null
         Get
             Return GetV(Of DateTime?)("end_date")
@@ -68,6 +74,7 @@ Public Class Position
             SetV("end_date", value)
         End Set
     End Property
+
     <Write(False)> <Browsable(False)>
     Public Property status As Integer
         Get
@@ -77,7 +84,7 @@ Public Class Position
             SetV("status", value)
         End Set
     End Property
-    <Write(False)> <DisplayName("Ghi chú")> <Display(Order:=8)>
+    <Write(False)> <DisplayName("Ghi chú")> <Display(Order:=10)>
     Public Property note As String
         Get
             Return GetV(Of String)("note")
@@ -90,37 +97,47 @@ Public Class Position
 
 #Region "Field Display"
 
-    <Write(False)> <DisplayName("Trạng thái")> <Display(Order:=7)>
+    <Write(False)> <DisplayName("Trạng thái")> <Display(Order:=9)>
     Public ReadOnly Property status_UI As String
         Get
             Return If(status_Dict.ContainsKey(Me.status), status_Dict(Me.status), "---")
+
+        End Get
+    End Property
+    <Write(False)> <DisplayName("Quyền hạn")> <Display(Order:=6)>
+    Public ReadOnly Property role_UI As String
+        Get
+            Return If(role_Dict.ContainsKey(Me.role), role_Dict(Me.role), "---")
         End Get
     End Property
 
-    <Write(False)> <DisplayName("Hợp đồng")> <Display(Order:=2)>
-    Public ReadOnly Property contract_UI As String
+    <Write(False)> <DisplayName("Dự án")> <Display(Order:=5)>
+    Public ReadOnly Property project_UI As String
         Get
-            Return If(Contract IsNot Nothing, $"{Contract.code}", "---")
+            Return If(Project IsNot Nothing, $"{Project?.name} ({Project.code})", "---")
         End Get
     End Property
+
+
+
+
     <Write(False)> <DisplayName("Nhân viên")> <Display(Order:=2)>
     Public ReadOnly Property employee_UI As String
         Get
-            Return If(Contract IsNot Nothing, $"{Contract?.Employee?.name} ({Contract?.Employee?.code})", "---")
+            Return Position?.employee_UI
         End Get
     End Property
     <Write(False)> <DisplayName("Công việc")> <Display(Order:=3)>
     Public ReadOnly Property job_UI As String
         Get
-            ' Sử dụng String Interpolation giúp code sạch và dễ đọc hơn
-            Return If(Job IsNot Nothing, $"{Job.name} ({Job.code})", "---")
+            Return Position?.job_UI
         End Get
     End Property
 
     <Write(False)> <DisplayName("Trình độ")> <Display(Order:=4)>
     Public ReadOnly Property level_UI As String
         Get
-            Return If(Level IsNot Nothing, $"{Level.name} ({Level.code})", "---")
+            Return Position?.level_UI
         End Get
     End Property
 #End Region
@@ -129,6 +146,10 @@ Public Class Position
     Public Shared ReadOnly status_Dict As New Dictionary(Of Integer, String) From {
         {0, "Ngừng hoạt động"},
         {1, "Đang hoạt động"}
+    }
+    Public Shared ReadOnly role_Dict As New Dictionary(Of Integer, String) From {
+        {1, "Quản lý dự án"},
+        {2, "Phát triển"}
     }
 
 #End Region

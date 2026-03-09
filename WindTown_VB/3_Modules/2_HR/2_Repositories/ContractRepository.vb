@@ -32,7 +32,7 @@ Public Class ContractRepository
 
     ' Đăng ký chức vụ theo hợp đồng
     ' Lấy những hợp đồng đang Active mà Không có thông tin vị trí (Position) tương ứng được Active
-    Public Function GetContractWithoutPosition() As IEnumerable(Of Contract)
+    Public Function GetContractsWithoutPosition() As IEnumerable(Of Contract)
         Using db As IDbConnection = Database.GetConnection()
 
             Dim sql As String = "

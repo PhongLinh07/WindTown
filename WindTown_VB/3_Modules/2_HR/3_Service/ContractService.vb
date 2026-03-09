@@ -15,8 +15,8 @@ Public Class ContractService
 
         Try
             Select Case intent
-                Case DataIntent.GetContractWithoutPosition
-                    Dim list = _repoCustom.GetContractWithoutPosition()
+                Case DataIntent.GetContractsWithoutPosition
+                    Dim list = _repoCustom.GetContractsWithoutPosition()
                     Return ServiceResponse(Of Object).Success(list)
 
                 Case Else
