@@ -37,7 +37,6 @@ Partial Class FormMain
         Me.ToolStripMenuItem2 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
         Me.SdvsdToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.menu_department = New System.Windows.Forms.ToolStripMenuItem()
         Me.menu_job = New System.Windows.Forms.ToolStripMenuItem()
         Me.menu_level = New System.Windows.Forms.ToolStripMenuItem()
         Me.DvsdvToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -65,6 +64,8 @@ Partial Class FormMain
         Me.menu_move_to_splitB = New System.Windows.Forms.ToolStripMenuItem()
         Me.menu_move_all_to_splitB = New System.Windows.Forms.ToolStripMenuItem()
         Me.menu_assignment = New System.Windows.Forms.ToolStripMenuItem()
+        Me.menu_department = New System.Windows.Forms.ToolStripMenuItem()
+        Me.menu_pay_period = New System.Windows.Forms.ToolStripMenuItem()
         Me.pnl_main.SuspendLayout()
         CType(Me.split_main, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.split_main.Panel1.SuspendLayout()
@@ -218,23 +219,16 @@ Partial Class FormMain
         Me.SdvsdToolStripMenuItem.Size = New System.Drawing.Size(68, 29)
         Me.SdvsdToolStripMenuItem.Text = "Tổ chức"
         '
-        'menu_department
-        '
-        Me.menu_department.Image = Global.WindTown_VB.My.Resources.Resources.home
-        Me.menu_department.Name = "menu_department"
-        Me.menu_department.Size = New System.Drawing.Size(180, 24)
-        Me.menu_department.Text = "Phòng ban"
-        '
         'menu_job
         '
         Me.menu_job.Name = "menu_job"
-        Me.menu_job.Size = New System.Drawing.Size(180, 24)
+        Me.menu_job.Size = New System.Drawing.Size(145, 24)
         Me.menu_job.Text = "Công việc"
         '
         'menu_level
         '
         Me.menu_level.Name = "menu_level"
-        Me.menu_level.Size = New System.Drawing.Size(180, 24)
+        Me.menu_level.Size = New System.Drawing.Size(145, 24)
         Me.menu_level.Text = "Trình độ"
         '
         'DvsdvToolStripMenuItem
@@ -247,19 +241,19 @@ Partial Class FormMain
         'menu_empolyee
         '
         Me.menu_empolyee.Name = "menu_empolyee"
-        Me.menu_empolyee.Size = New System.Drawing.Size(180, 24)
+        Me.menu_empolyee.Size = New System.Drawing.Size(140, 24)
         Me.menu_empolyee.Text = "Nhân viên"
         '
         'menu_contract
         '
         Me.menu_contract.Name = "menu_contract"
-        Me.menu_contract.Size = New System.Drawing.Size(180, 24)
+        Me.menu_contract.Size = New System.Drawing.Size(140, 24)
         Me.menu_contract.Text = "Hợp đồng"
         '
         'menu_position
         '
         Me.menu_position.Name = "menu_position"
-        Me.menu_position.Size = New System.Drawing.Size(180, 24)
+        Me.menu_position.Size = New System.Drawing.Size(140, 24)
         Me.menu_position.Text = "Chức vụ"
         '
         'SdvfToolStripMenuItem
@@ -307,6 +301,7 @@ Partial Class FormMain
         '
         'TàiChínhToolStripMenuItem
         '
+        Me.TàiChínhToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.menu_pay_period})
         Me.TàiChínhToolStripMenuItem.Name = "TàiChínhToolStripMenuItem"
         Me.TàiChínhToolStripMenuItem.Size = New System.Drawing.Size(73, 29)
         Me.TàiChínhToolStripMenuItem.Text = "Tài chính"
@@ -321,7 +316,7 @@ Partial Class FormMain
         'menu_account
         '
         Me.menu_account.Name = "menu_account"
-        Me.menu_account.Size = New System.Drawing.Size(135, 24)
+        Me.menu_account.Size = New System.Drawing.Size(180, 24)
         Me.menu_account.Text = "Tài khoản"
         '
         'ToolStripSeparator2
@@ -384,6 +379,19 @@ Partial Class FormMain
         Me.menu_assignment.Name = "menu_assignment"
         Me.menu_assignment.Size = New System.Drawing.Size(207, 24)
         Me.menu_assignment.Text = "Phân công dự án"
+        '
+        'menu_department
+        '
+        Me.menu_department.Image = Global.WindTown_VB.My.Resources.Resources.home
+        Me.menu_department.Name = "menu_department"
+        Me.menu_department.Size = New System.Drawing.Size(145, 24)
+        Me.menu_department.Text = "Phòng ban"
+        '
+        'menu_pay_period
+        '
+        Me.menu_pay_period.Name = "menu_pay_period"
+        Me.menu_pay_period.Size = New System.Drawing.Size(180, 24)
+        Me.menu_pay_period.Text = "Chu kỳ lương"
         '
         'FormMain
         '
@@ -453,4 +461,5 @@ Partial Class FormMain
     Friend WithEvents menu_move_all_to_splitA As ToolStripMenuItem
     Friend WithEvents menu_move_all_to_splitB As ToolStripMenuItem
     Friend WithEvents menu_assignment As ToolStripMenuItem
+    Friend WithEvents menu_pay_period As ToolStripMenuItem
 End Class

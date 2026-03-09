@@ -59,6 +59,7 @@ Partial Class BaseACRUDForm
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.ClientSize = New System.Drawing.Size(800, 505)
         Me.Controls.Add(Me.toolStrip)
+        Me.Margin = New System.Windows.Forms.Padding(2, 3, 2, 3)
         Me.Name = "BaseACRUDForm"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "ACRUDForm"

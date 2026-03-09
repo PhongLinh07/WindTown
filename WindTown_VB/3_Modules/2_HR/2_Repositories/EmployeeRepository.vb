@@ -10,7 +10,7 @@ Public Class EmployeeRepository
             ' Câu lệnh SQL: Lấy nhân viên mà KHÔNG CÓ dòng tương ứng trong bảng account
             ' Giả sử bảng employee có cột id và bảng account có cột employee_id (hoặc id nếu dùng chung)
             Dim tableEmp As String = GetType(Employee).Name.ToLower()
-            Dim tableAcc As String = GetType(Account).Name.ToLower()
+            Dim tableAcc As String = GetType(Pay_Period).Name.ToLower()
             Dim sql As String = $"
             SELECT e.*
             FROM [{tableEmp}] e

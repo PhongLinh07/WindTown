@@ -68,4 +68,12 @@ Public Class BaseList_UC
     Protected Overridable Sub tool_delete_Click(sender As Object, e As EventArgs) Handles tool_delete.Click
         ' TODO: implement
     End Sub
+
+    Private Sub tool_hide_column_Click(sender As Object, e As EventArgs) Handles tool_hide_column.Click
+        ' Khởi tạo Form thiết lập, truyền DataGridView1 vào
+        Dim frm As New DgvDisplay_frm(_dgv)
+
+        ' Hiển thị Form theo dạng Dialog (cửa sổ con hiện lên đè lên form chính)
+        frm.ShowDialog()
+    End Sub
 End Class
