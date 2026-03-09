@@ -9,7 +9,12 @@ Public Enum DataIntent
 #Region "'Employee Custom Intent"
     GetEmployeesWithoutContract ' Những nhân viên đang ko có hợp đồng nào Active
     GetEmployeesWithoutAccount  ' Những nhân viên đang ko có tài khoản nào Active
-    GetContractWithoutPosition  ' Những Hợp đồng Active đang ko có vị trí nào Active 
+    GetContractsWithoutPosition  ' Những Hợp đồng Active đang ko có vị trí nào Active 
+#End Region
+
+#Region "'Position Custom Intent"
+    GetProjectsIsActive ' Những dự án đang trong tiến trình hoạt động | status != (-1.delete, 0.jected,3.complete )
+    GetPositionsWithoutAssignment ' Những Position đang ko có Phân công nào Active
 #End Region
 
 

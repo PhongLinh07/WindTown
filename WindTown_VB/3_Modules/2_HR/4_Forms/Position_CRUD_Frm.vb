@@ -49,7 +49,7 @@ Public Class Position_CRUD_Frm
 
         ' Lấy tất cả nhân viên chưa có vị trí nào (có thể đang có hợp đồng nhưng không có vị trí)
         Dim contracService As New ContractService()
-        Dim response = contracService.Execute(DataIntent.GetContractWithoutPosition)
+        Dim response = contracService.Execute(DataIntent.GetContractsWithoutPosition)
         _contracsWithoutPosition = If(response.IsSuccess, response.Data, New List(Of Contract))
 
         If (_contracsWithoutPosition.Count = 0) Then
