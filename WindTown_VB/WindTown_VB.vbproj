@@ -253,6 +253,12 @@
     <Compile Include="2_Core\6_Forms\Developer_Mode.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="2_Core\6_Forms\DgvDisplay_frm.Designer.vb">
+      <DependentUpon>DgvDisplay_frm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="2_Core\6_Forms\DgvDisplay_frm.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="3_Modules\1_Organization\1_Models\level.vb" />
     <Compile Include="3_Modules\1_Organization\1_Models\Department.vb" />
     <Compile Include="2_Core\6_Forms\1_FormBase\BaseACRUDForm.Designer.vb">
@@ -431,6 +437,21 @@
     <Compile Include="3_Modules\3_Operations\4_Forms\Project_List_UC.vb">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="3_Modules\4_Payroll\1_Models\Pay_Period.vb" />
+    <Compile Include="3_Modules\4_Payroll\2_Repositories\Pay_PeriodRepository.vb" />
+    <Compile Include="3_Modules\4_Payroll\3_Service\Pay_PeriodService.vb" />
+    <Compile Include="3_Modules\4_Payroll\4_Forms\Pay_Period_CRUD_Frm.Designer.vb">
+      <DependentUpon>Pay_Period_CRUD_Frm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="3_Modules\4_Payroll\4_Forms\Pay_Period_CRUD_Frm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="3_Modules\4_Payroll\4_Forms\Pay_Period_List_UC.Designer.vb">
+      <DependentUpon>Pay_Period_List_UC.vb</DependentUpon>
+    </Compile>
+    <Compile Include="3_Modules\4_Payroll\4_Forms\Pay_Period_List_UC.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="3_Modules\5_System\1_Models\Account.vb" />
     <Compile Include="3_Modules\5_System\2_Repositories\AccountRepository.vb" />
     <Compile Include="3_Modules\5_System\3_Service\AccountService.vb" />
@@ -587,6 +608,9 @@
     <EmbeddedResource Include="2_Core\6_Forms\Developer_Mode.resx">
       <DependentUpon>Developer_Mode.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="2_Core\6_Forms\DgvDisplay_frm.resx">
+      <DependentUpon>DgvDisplay_frm.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="2_Core\6_Forms\FormMain.resx">
       <DependentUpon>FormMain.vb</DependentUpon>
     </EmbeddedResource>
@@ -640,6 +664,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="3_Modules\2_HR\4_Forms\Contract_CRUD_Frm.resx">
       <DependentUpon>Contract_CRUD_Frm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="3_Modules\4_Payroll\4_Forms\Pay_Period_CRUD_Frm.resx">
+      <DependentUpon>Pay_Period_CRUD_Frm.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="3_Modules\5_System\4_Forms\Account_CRUD_Frm.resx">
       <DependentUpon>Account_CRUD_Frm.vb</DependentUpon>
@@ -716,11 +743,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="2_Core\3_Utils\1_SalaryEngine\" />
-    <Folder Include="3_Modules\4_Payroll\1_Models\" />
-    <Folder Include="3_Modules\4_Payroll\2_Repositories\" />
-    <Folder Include="3_Modules\4_Payroll\3_Services\" />
-    <Folder Include="3_Modules\4_Payroll\3_Service\" />
-    <Folder Include="3_Modules\4_Payroll\4_Forms\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="2_Core\Assets\c959aa2c-d8e5-4cc8-bf55-4d8278dbe91f.png" />
@@ -763,6 +785,7 @@
     <None Include="2_Core\Assets\gear.png" />
     <None Include="2_Core\Assets\contract.ico" />
     <None Include="2_Core\Assets\home.ico" />
+    <None Include="2_Core\Assets\hidden_32px.png" />
     <Content Include="2_Core\Assets\LogoHR.png" />
     <None Include="2_Core\Assets\salary.ico" />
     <None Include="2_Core\Assets\saff.ico" />
