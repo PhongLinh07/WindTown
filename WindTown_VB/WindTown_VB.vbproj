@@ -437,14 +437,29 @@
     <Compile Include="3_Modules\3_Operations\4_Forms\Project_List_UC.vb">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="3_Modules\4_Payroll\1_Models\Payroll.vb" />
     <Compile Include="3_Modules\4_Payroll\1_Models\Pay_Period.vb" />
+    <Compile Include="3_Modules\4_Payroll\2_Repositories\PayrollRepository.vb" />
     <Compile Include="3_Modules\4_Payroll\2_Repositories\Pay_PeriodRepository.vb" />
+    <Compile Include="3_Modules\4_Payroll\3_Service\PayrollService.vb" />
     <Compile Include="3_Modules\4_Payroll\3_Service\Pay_PeriodService.vb" />
+    <Compile Include="3_Modules\4_Payroll\4_Forms\Payroll_CRUD_Frm.Designer.vb">
+      <DependentUpon>Payroll_CRUD_Frm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="3_Modules\4_Payroll\4_Forms\Payroll_CRUD_Frm.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="3_Modules\4_Payroll\4_Forms\Pay_Period_CRUD_Frm.Designer.vb">
       <DependentUpon>Pay_Period_CRUD_Frm.vb</DependentUpon>
     </Compile>
     <Compile Include="3_Modules\4_Payroll\4_Forms\Pay_Period_CRUD_Frm.vb">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="3_Modules\4_Payroll\4_Forms\Payroll_List_UC.Designer.vb">
+      <DependentUpon>Payroll_List_UC.vb</DependentUpon>
+    </Compile>
+    <Compile Include="3_Modules\4_Payroll\4_Forms\Payroll_List_UC.vb">
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="3_Modules\4_Payroll\4_Forms\Pay_Period_List_UC.Designer.vb">
       <DependentUpon>Pay_Period_List_UC.vb</DependentUpon>
@@ -664,6 +679,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="3_Modules\2_HR\4_Forms\Contract_CRUD_Frm.resx">
       <DependentUpon>Contract_CRUD_Frm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="3_Modules\4_Payroll\4_Forms\Payroll_CRUD_Frm.resx">
+      <DependentUpon>Payroll_CRUD_Frm.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="3_Modules\4_Payroll\4_Forms\Pay_Period_CRUD_Frm.resx">
       <DependentUpon>Pay_Period_CRUD_Frm.vb</DependentUpon>
