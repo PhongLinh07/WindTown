@@ -1,7 +1,7 @@
 Public Class AccountService
     Inherits BaseService(Of Account)
 
-    ' Constructor: Ép Service sử dụng JobRepository chuyên biệt thay vì GenericRepository
+    Private _repoAcc As AccountRepository = New AccountRepository()
     Public Sub New()
         ' Vì JobRepository kế thừa từ GenericRepository(Of Job), 
         ' nên việc gán này là hoàn toàn hợp lệ (Tính đa hình).
@@ -14,13 +14,38 @@ Public Class AccountService
     ''' </summary>
     Public Overrides Function Execute(intent As DataIntent, Optional data As Object = Nothing) As ServiceResponse(Of Object)
 
-        ' 1. Bổ sung logic Kiểm tra (Validation) riêng cho Job
+        Try
+            Select Case intent
+
+                Case DataIntent.Login
+
+                    Dim accInput As Account = TryCast(data, Account)
+
+                    If accInput Is Nothing Then
+                        Return ServiceResponse(Of Object).Fail("Đăng nhập thất bại: Thiếu thông tin đăng nhập")
+                    End If
+
+                    Dim acc = _repoAcc.GetAccountByUsername(accInput)
+
+                    If acc Is Nothing Then
+                        Return ServiceResponse(Of Object).Fail("Đăng nhập thất bại: Tài khoản không tồn tại")
+                    End If
+
+                    If acc.user = accInput.user AndAlso acc.password = accInput.password Then
+                        Return ServiceResponse(Of Object).Success(Nothing) ' ko trả về
+                    Else
+                        Return ServiceResponse(Of Object).Fail("Đăng nhập thất bại: Sai mật khẩu")
+                    End If
 
 
-        ' 2. Sau khi kiểm tra xong, gọi MyBase.Execute để thực hiện các lệnh gốc.
-        ' LƯU Ý: Tại đây, khi MyBase gọi _repo.GetAll(), 
-        ' nó sẽ TỰ ĐỘNG gọi hàm GetAll() có JOIN (Snap) mà bạn đã viết ở JobRepository.
-        Return MyBase.Execute(intent, data)
+                Case Else
+                    Return MyBase.Execute(intent, data)
+
+            End Select
+
+        Catch ex As Exception
+            Return ServiceResponse(Of Object).Fail("Lỗi hệ thống: " & ex.Message, ex)
+        End Try
 
     End Function
 End Class

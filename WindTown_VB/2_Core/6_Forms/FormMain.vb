@@ -224,6 +224,10 @@ Partial Public Class FormMain
         OpenMultTabMode(Of Pay_Period_List_UC)(tabControl_A)
     End Sub
 
+    Private Sub menu_payroll_Click(sender As Object, e As EventArgs) Handles menu_payroll.Click
+        OpenMultTabMode(Of Payroll_List_UC)(tabControl_A)
+    End Sub
+
 #End Region
 
 End Class
