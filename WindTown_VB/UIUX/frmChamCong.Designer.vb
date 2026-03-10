@@ -24,26 +24,26 @@ Partial Class frmChamCong
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmChamCong))
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.Panel3 = New System.Windows.Forms.Panel()
+        Me.Label6 = New System.Windows.Forms.Label()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
         Me.ComboBox1 = New System.Windows.Forms.ComboBox()
+        Me.Button2 = New System.Windows.Forms.Button()
+        Me.Panel4 = New System.Windows.Forms.Panel()
         Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
         Me.DateTimePicker2 = New System.Windows.Forms.DateTimePicker()
         Me.ComboBox2 = New System.Windows.Forms.ComboBox()
-        Me.ComboBox3 = New System.Windows.Forms.ComboBox()
+        Me.Panel2 = New System.Windows.Forms.Panel()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.Button1 = New System.Windows.Forms.Button()
-        Me.Panel2 = New System.Windows.Forms.Panel()
-        Me.Button2 = New System.Windows.Forms.Button()
+        Me.ComboBox3 = New System.Windows.Forms.ComboBox()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
-        Me.Panel3 = New System.Windows.Forms.Panel()
-        Me.Label6 = New System.Windows.Forms.Label()
-        Me.Panel4 = New System.Windows.Forms.Panel()
         Me.Panel1.SuspendLayout()
+        Me.Panel3.SuspendLayout()
         Me.TableLayoutPanel1.SuspendLayout()
+        Me.Panel4.SuspendLayout()
         Me.Panel2.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.Panel3.SuspendLayout()
-        Me.Panel4.SuspendLayout()
         Me.SuspendLayout()
         '
         'Panel1
@@ -59,6 +59,25 @@ Partial Class frmChamCong
         Me.Panel1.Size = New System.Drawing.Size(1040, 665)
         Me.Panel1.TabIndex = 2
         '
+        'Panel3
+        '
+        Me.Panel3.Controls.Add(Me.Label6)
+        Me.Panel3.Location = New System.Drawing.Point(0, 0)
+        Me.Panel3.Name = "Panel3"
+        Me.Panel3.Size = New System.Drawing.Size(1040, 74)
+        Me.Panel3.TabIndex = 4
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Font = New System.Drawing.Font("Microsoft YaHei UI", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label6.Location = New System.Drawing.Point(11, 21)
+        Me.Label6.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(242, 31)
+        Me.Label6.TabIndex = 1
+        Me.Label6.Text = "Quản lý chấm Công"
+        '
         'TableLayoutPanel1
         '
         Me.TableLayoutPanel1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
@@ -71,7 +90,7 @@ Partial Class frmChamCong
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 149.0!))
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 188.0!))
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 251.0!))
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 109.0!))
+        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 111.0!))
         Me.TableLayoutPanel1.Controls.Add(Me.ComboBox1, 0, 0)
         Me.TableLayoutPanel1.Controls.Add(Me.Button2, 5, 0)
         Me.TableLayoutPanel1.Controls.Add(Me.Panel4, 1, 0)
@@ -93,6 +112,25 @@ Partial Class frmChamCong
         Me.ComboBox1.Size = New System.Drawing.Size(98, 27)
         Me.ComboBox1.TabIndex = 0
         '
+        'Button2
+        '
+        Me.Button2.BackColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer))
+        Me.Button2.Location = New System.Drawing.Point(931, 3)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(102, 27)
+        Me.Button2.TabIndex = 6
+        Me.Button2.Text = "Xuất báo cáo"
+        Me.Button2.UseVisualStyleBackColor = False
+        '
+        'Panel4
+        '
+        Me.Panel4.Controls.Add(Me.DateTimePicker1)
+        Me.Panel4.Controls.Add(Me.DateTimePicker2)
+        Me.Panel4.Location = New System.Drawing.Point(107, 3)
+        Me.Panel4.Name = "Panel4"
+        Me.Panel4.Size = New System.Drawing.Size(230, 30)
+        Me.Panel4.TabIndex = 6
+        '
         'DateTimePicker1
         '
         Me.DateTimePicker1.Location = New System.Drawing.Point(3, 1)
@@ -110,21 +148,19 @@ Partial Class frmChamCong
         'ComboBox2
         '
         Me.ComboBox2.FormattingEnabled = True
-        Me.ComboBox2.Location = New System.Drawing.Point(345, 3)
+        Me.ComboBox2.Location = New System.Drawing.Point(343, 3)
         Me.ComboBox2.Name = "ComboBox2"
         Me.ComboBox2.Size = New System.Drawing.Size(143, 27)
         Me.ComboBox2.TabIndex = 1
         '
-        'ComboBox3
+        'Panel2
         '
-        Me.ComboBox3.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.ComboBox3.FormattingEnabled = True
-        Me.ComboBox3.Location = New System.Drawing.Point(494, 3)
-        Me.ComboBox3.Name = "ComboBox3"
-        Me.ComboBox3.Size = New System.Drawing.Size(182, 27)
-        Me.ComboBox3.TabIndex = 4
+        Me.Panel2.Controls.Add(Me.TextBox1)
+        Me.Panel2.Controls.Add(Me.Button1)
+        Me.Panel2.Location = New System.Drawing.Point(680, 3)
+        Me.Panel2.Name = "Panel2"
+        Me.Panel2.Size = New System.Drawing.Size(245, 30)
+        Me.Panel2.TabIndex = 5
         '
         'TextBox1
         '
@@ -142,24 +178,16 @@ Partial Class frmChamCong
         Me.Button1.Text = "Tìm kiến"
         Me.Button1.UseVisualStyleBackColor = True
         '
-        'Panel2
+        'ComboBox3
         '
-        Me.Panel2.Controls.Add(Me.TextBox1)
-        Me.Panel2.Controls.Add(Me.Button1)
-        Me.Panel2.Location = New System.Drawing.Point(682, 3)
-        Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(245, 30)
-        Me.Panel2.TabIndex = 5
-        '
-        'Button2
-        '
-        Me.Button2.BackColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer))
-        Me.Button2.Location = New System.Drawing.Point(933, 3)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(102, 27)
-        Me.Button2.TabIndex = 6
-        Me.Button2.Text = "Xuất báo cáo"
-        Me.Button2.UseVisualStyleBackColor = False
+        Me.ComboBox3.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.ComboBox3.FormattingEnabled = True
+        Me.ComboBox3.Location = New System.Drawing.Point(492, 3)
+        Me.ComboBox3.Name = "ComboBox3"
+        Me.ComboBox3.Size = New System.Drawing.Size(182, 27)
+        Me.ComboBox3.TabIndex = 4
         '
         'DataGridView1
         '
@@ -171,34 +199,6 @@ Partial Class frmChamCong
         Me.DataGridView1.RowTemplate.Height = 24
         Me.DataGridView1.Size = New System.Drawing.Size(1040, 547)
         Me.DataGridView1.TabIndex = 3
-        '
-        'Panel3
-        '
-        Me.Panel3.Controls.Add(Me.Label6)
-        Me.Panel3.Location = New System.Drawing.Point(0, 0)
-        Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(1040, 74)
-        Me.Panel3.TabIndex = 4
-        '
-        'Label6
-        '
-        Me.Label6.AutoSize = True
-        Me.Label6.Font = New System.Drawing.Font("Microsoft YaHei UI", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.Location = New System.Drawing.Point(11, 21)
-        Me.Label6.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(242, 31)
-        Me.Label6.TabIndex = 1
-        Me.Label6.Text = "Quản lý chấm Công"
-        '
-        'Panel4
-        '
-        Me.Panel4.Controls.Add(Me.DateTimePicker1)
-        Me.Panel4.Controls.Add(Me.DateTimePicker2)
-        Me.Panel4.Location = New System.Drawing.Point(107, 3)
-        Me.Panel4.Name = "Panel4"
-        Me.Panel4.Size = New System.Drawing.Size(232, 30)
-        Me.Panel4.TabIndex = 6
         '
         'frmChamCong
         '
@@ -214,13 +214,13 @@ Partial Class frmChamCong
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Chấm công"
         Me.Panel1.ResumeLayout(False)
+        Me.Panel3.ResumeLayout(False)
+        Me.Panel3.PerformLayout()
         Me.TableLayoutPanel1.ResumeLayout(False)
+        Me.Panel4.ResumeLayout(False)
         Me.Panel2.ResumeLayout(False)
         Me.Panel2.PerformLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.Panel3.ResumeLayout(False)
-        Me.Panel3.PerformLayout()
-        Me.Panel4.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub

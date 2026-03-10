@@ -17,6 +17,11 @@ Public Enum DataIntent
     GetPositionsWithoutAssignment ' Những Position đang ko có Phân công nào Active
 #End Region
 
+#Region "'Account Custom Intent"
+    Login
+    GetAccountByUsername 'lấy thông tin tài khoản bằng user
+#End Region
+
 
 End Enum
 
