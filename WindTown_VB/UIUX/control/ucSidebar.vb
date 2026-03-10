@@ -224,6 +224,13 @@
 
         menuData.Add(luong)
 
+        Dim duAN As New MenuItemModel("Dự án", Nothing, ResizeImage(My.Resources.ErrorImage, 38, 38))
+
+        duAN.Children.Add(New MenuItemModel("Danh sách dự án", GetType(frmDuAn)))
+        duAN.Children.Add(New MenuItemModel("Phân công", GetType(frmPhanCongDA)))
+
+        menuData.Add(duAN)
+
         menuData.Add(New MenuItemModel("Cài đặt", GetType(frmSystem), ResizeImage(My.Resources.gear, 38, 38))) ' icon cài d?t
 
     End Sub
