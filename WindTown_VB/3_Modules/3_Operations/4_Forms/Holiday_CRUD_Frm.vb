@@ -12,7 +12,7 @@ Public Class Holiday_CRUD_Frm
         Me._data = data
         Me.isCreate = isCreate
 
-        Me.Text = If(isCreate, "New", "Hệ số lương ngày lễ")
+        Me.Text = If(isCreate, "Thêm ngày lễ", "Chi tiết ngày lễ")
 
         InitComboBox()
         BindDataToUI()
@@ -22,7 +22,7 @@ Public Class Holiday_CRUD_Frm
 
     Private Sub InitComboBox()
 
-        ui_status.DataSource = New BindingSource(Holiday.Dict_Status, Nothing)
+        ui_status.DataSource = New BindingSource(Holiday.status_Dict, Nothing)
         ui_status.DisplayMember = "Value"
         ui_status.ValueMember = "Key"
 

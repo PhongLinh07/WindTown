@@ -22,6 +22,10 @@ Public Enum DataIntent
     GetAccountByUsername 'lấy thông tin tài khoản bằng user
 #End Region
 
+#Region "'Pay_Item Custom Intent"
+    GetPayItemByPayroll 'lấy các khoản tiền theo payroll
+#End Region
+
 
 End Enum
 

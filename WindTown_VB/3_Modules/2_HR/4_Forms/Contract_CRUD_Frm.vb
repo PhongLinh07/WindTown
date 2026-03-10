@@ -5,11 +5,6 @@ Public Class Contract_CRUD_Frm
     Inherits BaseACRUDForm
     Protected _data As Contract
 
-    Private _displayStatus As New Dictionary(Of Integer, String) From {
-        {0, "INACTIVE"},
-        {1, "ACTIVE"}
-    }
-
     Private _employeesWithoutAccount As List(Of Employee)
 
     Public Sub New(data As Contract, Optional isCreate As Boolean = False)
@@ -20,18 +15,7 @@ Public Class Contract_CRUD_Frm
         Me.isCreate = isCreate
         InitComboBox()
 
-        Me.Text = If(isCreate, "New", "Detail")
-
-
-        If isCreate Then
-
-            _data.code = ""
-            _data.start_date = DateTime.Now
-            _data.end_date = DateTime.Now
-            _data.base_salary = 0.0
-            _data.note = ""
-            _data.status = 0
-        End If
+        Me.Text = If(isCreate, "Thêm hợp đồng mới", "Chi tiết hợp đồng")
 
         BindDataToUI()
 
@@ -39,7 +23,7 @@ Public Class Contract_CRUD_Frm
     End Sub
     Private Sub InitComboBox()
 
-        ui_status.DataSource = New BindingSource(_displayStatus, Nothing)
+        ui_status.DataSource = New BindingSource(Contract.status_Dict, Nothing)
         ui_status.DisplayMember = "Value"
         ui_status.ValueMember = "Key"
 
@@ -79,7 +63,7 @@ Public Class Contract_CRUD_Frm
         ui_start_date.Value = If(_data.start_date, DateTime.Now)
         ui_end_date.Value = If(_data.end_date, DateTime.Now)
 
-        ui_base_salary.Text = If(_data.base_salary.HasValue, _data.base_salary.Value.ToString("N0"), "0")
+        ui_base_salary.Value = _data.base_salary
 
         ui_note.Text = _data.note
         ui_status.SelectedValue = _data.status
@@ -95,7 +79,7 @@ Public Class Contract_CRUD_Frm
             Return False
         End If
 
-        If Not Decimal.TryParse(ui_base_salary.Text, _data.base_salary) Then
+        If Not Decimal.TryParse(ui_base_salary.Value, _data.base_salary) Then
             MessageBox.Show("Base salary must be a valid number")
             ui_base_salary.Focus()
             Return False
@@ -126,7 +110,7 @@ Public Class Contract_CRUD_Frm
 
     Protected Overrides Sub DataChanged() Handles ui_employee.SelectedIndexChanged,
                                         ui_code.TextChanged,
-                                        ui_base_salary.TextChanged,
+                                        ui_base_salary.ValueChanged,
                                         ui_start_date.ValueChanged,
                                         ui_end_date.ValueChanged,
                                         ui_note.TextChanged,
@@ -135,6 +119,5 @@ Public Class Contract_CRUD_Frm
         tool_save.Enabled = True
 
     End Sub
-
 
 End Class

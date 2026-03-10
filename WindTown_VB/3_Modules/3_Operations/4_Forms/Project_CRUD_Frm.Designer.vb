@@ -47,31 +47,31 @@ Partial Class Project_CRUD_Frm
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.Label1.Location = New System.Drawing.Point(59, 67)
         Me.Label1.Margin = New System.Windows.Forms.Padding(0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(56, 20)
+        Me.Label1.Size = New System.Drawing.Size(86, 19)
         Me.Label1.TabIndex = 1
-        Me.Label1.Text = "Code:"
+        Me.Label1.Text = "Mã dự án:"
         '
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Label2.Location = New System.Drawing.Point(59, 136)
+        Me.Label2.Location = New System.Drawing.Point(59, 146)
         Me.Label2.Margin = New System.Windows.Forms.Padding(0)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(60, 20)
+        Me.Label2.Size = New System.Drawing.Size(93, 19)
         Me.Label2.TabIndex = 3
-        Me.Label2.Text = "Name:"
+        Me.Label2.Text = "Tên dự án:"
         '
         'ui_name
         '
         Me.ui_name.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ui_name.Location = New System.Drawing.Point(63, 159)
+        Me.ui_name.Location = New System.Drawing.Point(63, 169)
         Me.ui_name.Name = "ui_name"
         Me.ui_name.Size = New System.Drawing.Size(265, 26)
         Me.ui_name.TabIndex = 2
@@ -79,21 +79,21 @@ Partial Class Project_CRUD_Frm
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Label3.Location = New System.Drawing.Point(385, 65)
+        Me.Label3.Location = New System.Drawing.Point(385, 68)
         Me.Label3.Margin = New System.Windows.Forms.Padding(0)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(67, 20)
+        Me.Label3.Size = New System.Drawing.Size(91, 19)
         Me.Label3.TabIndex = 5
-        Me.Label3.Text = "Status:"
+        Me.Label3.Text = "Trạng thái:"
         '
         'ui_status
         '
         Me.ui_status.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ui_status.FormattingEnabled = True
         Me.ui_status.Items.AddRange(New Object() {"ACTIVE", "INACTIVE"})
-        Me.ui_status.Location = New System.Drawing.Point(389, 88)
+        Me.ui_status.Location = New System.Drawing.Point(389, 90)
         Me.ui_status.Name = "ui_status"
         Me.ui_status.Size = New System.Drawing.Size(265, 28)
         Me.ui_status.TabIndex = 6
@@ -101,35 +101,35 @@ Partial Class Project_CRUD_Frm
         'ui_note
         '
         Me.ui_note.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ui_note.Location = New System.Drawing.Point(389, 180)
+        Me.ui_note.Location = New System.Drawing.Point(389, 169)
         Me.ui_note.Name = "ui_note"
-        Me.ui_note.Size = New System.Drawing.Size(265, 170)
+        Me.ui_note.Size = New System.Drawing.Size(265, 181)
         Me.ui_note.TabIndex = 7
         Me.ui_note.Text = ""
         '
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Label4.Location = New System.Drawing.Point(385, 157)
+        Me.Label4.Location = New System.Drawing.Point(385, 146)
         Me.Label4.Margin = New System.Windows.Forms.Padding(0)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(52, 20)
+        Me.Label4.Size = New System.Drawing.Size(74, 19)
         Me.Label4.TabIndex = 8
-        Me.Label4.Text = "Note:"
+        Me.Label4.Text = "Ghi chú:"
         '
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label7.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label7.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.Label7.Location = New System.Drawing.Point(59, 301)
         Me.Label7.Margin = New System.Windows.Forms.Padding(0)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(90, 20)
+        Me.Label7.Size = New System.Drawing.Size(126, 19)
         Me.Label7.TabIndex = 19
-        Me.Label7.Text = "End Date:"
+        Me.Label7.Text = "Ngày kết thúc::"
         '
         'ui_end_date
         '
@@ -144,14 +144,14 @@ Partial Class Project_CRUD_Frm
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label6.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.Label6.Location = New System.Drawing.Point(59, 222)
         Me.Label6.Margin = New System.Windows.Forms.Padding(0)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(98, 20)
+        Me.Label6.Size = New System.Drawing.Size(116, 19)
         Me.Label6.TabIndex = 17
-        Me.Label6.Text = "Start Date:"
+        Me.Label6.Text = "Ngày bắt đầu:"
         '
         'ui_start_date
         '

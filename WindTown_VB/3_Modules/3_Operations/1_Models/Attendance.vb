@@ -119,27 +119,31 @@ Public Class Attendance
     <Write(False)> <DisplayName("Ca làm")> <Display(Order:=4)>
     Public ReadOnly Property shift_UI As String
         Get
-            Return If(Dict_Shift.ContainsKey(Me.shift), Dict_Shift(Me.shift), "---")
+            Return If(shift_Dic.ContainsKey(Me.shift), shift_Dic(Me.shift), "---")
         End Get
     End Property
     <Write(False)> <DisplayName("Trạng thái")> <Display(Order:=9)>
     Public ReadOnly Property status_UI As String
         Get
-            Return If(status = 1, "Đang hoạt động", "Ngừng hoạt động")
+            Return If(status_Dict.ContainsKey(Me.status), status_Dict(Me.status), "---")
         End Get
     End Property
 
     <Write(False)> <DisplayName("Nhân viên")> <Display(Order:=2)>
-    Public ReadOnly Property Employee_UI As String
+    Public ReadOnly Property employee_UI As String
         Get
-            Return If(Employee?.code, "---")
+            Return If(Employee IsNot Nothing, $"{Employee?.name} ({Employee?.code})", "---")
         End Get
     End Property
 #End Region
 
 
 #Region "Dictionary Display" 'chứa các dictionary dùng chung trong toàn bộ module Operations, tránh việc phải tạo nhiều dictionary giống nhau ở nhiều form khác
-    Public Shared ReadOnly Dict_Shift As New Dictionary(Of Integer, String) From {
+    Public Shared ReadOnly status_Dict As New Dictionary(Of Integer, String) From {
+        {0, "Ngừng hoạt động"},
+        {1, "Đang hoạt động"}
+    }
+    Public Shared ReadOnly shift_Dic As New Dictionary(Of Integer, String) From {
         {0, "Ngày"},
         {1, "Đêm"}
     }

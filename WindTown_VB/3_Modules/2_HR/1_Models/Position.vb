@@ -5,16 +5,23 @@ Imports Dapper.Contrib.Extensions
 <Table("position")>
 Public Class Position
     Inherits BaseEntity
+    Public Sub New()
+        code = ""
+        start_date = DateTime.Now
+        end_date = DateTime.Now
+        note = ""
+        status = 0
+    End Sub
 
 #Region "Join"
     <Write(False)> <Browsable(False)>
-    Public Property Contract = New Contract()
+    Public Property Contract As Contract = New Contract()
 
     <Write(False)> <Browsable(False)>
-    Public Property Job = New Job()
+    Public Property Job As Job = New Job()
 
     <Write(False)> <Browsable(False)>
-    Public Property Level = New Level()
+    Public Property Level As Level = New Level()
 
 #End Region
 
@@ -100,13 +107,13 @@ Public Class Position
     <Write(False)> <DisplayName("Hợp đồng")> <Display(Order:=2)>
     Public ReadOnly Property contract_UI As String
         Get
-            Return If(Contract IsNot Nothing, $"{Contract.code}", "---")
+            Return If(Contract?.code, "---")
         End Get
     End Property
     <Write(False)> <DisplayName("Nhân viên")> <Display(Order:=2)>
     Public ReadOnly Property employee_UI As String
         Get
-            Return If(Contract IsNot Nothing, $"{Contract?.Employee?.name} ({Contract?.Employee?.code})", "---")
+            Return Contract?.employee_UI
         End Get
     End Property
     <Write(False)> <DisplayName("Công việc")> <Display(Order:=3)>

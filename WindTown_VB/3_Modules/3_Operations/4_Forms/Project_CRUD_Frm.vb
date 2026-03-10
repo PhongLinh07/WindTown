@@ -16,18 +16,7 @@ Public Class Project_CRUD_Frm
         Me.isCreate = isCreate
         InitComboBox()
 
-        Me.Text = If(isCreate, "New", "Detail")
-
-
-        If isCreate Then
-
-            _data.code = ""
-            _data.name = ""
-            _data.start_date = DateTime.Now
-            _data.end_date = DateTime.Now
-            _data.note = ""
-            _data.status = 0
-        End If
+        Me.Text = If(isCreate, "Thêm dự án", "Chi tiết dự án")
 
         BindDataToUI()
 
@@ -35,7 +24,7 @@ Public Class Project_CRUD_Frm
     End Sub
     Private Sub InitComboBox()
 
-        ui_status.DataSource = New BindingSource(Project.Dict_Status, Nothing)
+        ui_status.DataSource = New BindingSource(Project.status_Dict, Nothing)
         ui_status.DisplayMember = "Value"
         ui_status.ValueMember = "Key"
 
@@ -59,13 +48,13 @@ Public Class Project_CRUD_Frm
 
 
         If String.IsNullOrWhiteSpace(ui_code.Text) Then
-            MessageBox.Show("Code cannot be empty")
+            MessageBox.Show("Mã dự án không hợp lệ")
             ui_code.Focus()
             Return False
         End If
 
         If String.IsNullOrWhiteSpace(ui_name.Text) Then
-            MessageBox.Show("Name cannot be empty")
+            MessageBox.Show("Tên dự án không hợp lệ")
             ui_code.Focus()
             Return False
         End If

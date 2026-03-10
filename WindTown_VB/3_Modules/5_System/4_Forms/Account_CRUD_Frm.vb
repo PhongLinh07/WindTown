@@ -4,16 +4,6 @@ Public Class Account_CRUD_Frm
     Inherits BaseACRUDForm
     Protected _data As Account
 
-
-    Private _displayStatus As New Dictionary(Of Integer, String) From {
-        {0, "INACTIVE"},
-        {1, "ACTIVE"}
-    }
-    Private _displayRole As New Dictionary(Of Integer, String) From {
-        {1, "ADMIN"},
-        {2, "STAFF"}
-    }
-
     Private _employeesWithoutAccount As List(Of Employee)
 
     Public Sub New(data As Account, Optional isCreate As Boolean = False)
@@ -24,7 +14,7 @@ Public Class Account_CRUD_Frm
         Me.isCreate = isCreate
         InitComboBox()
 
-        Me.Text = If(isCreate, "New", "Detail")
+        Me.Text = If(isCreate, "Thêm tài khoản mới", "Chi tiết tài khoản")
 
         BindDataToUI()
 
@@ -32,11 +22,11 @@ Public Class Account_CRUD_Frm
     End Sub
     Private Sub InitComboBox()
 
-        ui_status.DataSource = New BindingSource(_displayStatus, Nothing)
+        ui_status.DataSource = New BindingSource(Account.status_Dict, Nothing)
         ui_status.DisplayMember = "Value"
         ui_status.ValueMember = "Key"
 
-        ui_role.DataSource = New BindingSource(_displayRole, Nothing)
+        ui_role.DataSource = New BindingSource(Account.role_Dict, Nothing)
         ui_role.DisplayMember = "Value"
         ui_role.ValueMember = "Key"
 

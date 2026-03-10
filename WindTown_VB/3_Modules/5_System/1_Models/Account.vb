@@ -16,7 +16,7 @@ Public Class Account
     End Sub
 #Region "Join"
     <Write(False)> <Browsable(False)>
-    Public Property Employee = New Employee()
+    Public Property Employee As Employee = New Employee()
 #End Region
 
 #Region "Field Json"
@@ -91,21 +91,35 @@ Public Class Account
     <Write(False)> <DisplayName("Quyền")> <Display(Order:=4)>
     Public ReadOnly Property role_UI As String
         Get
-            Return If(role = 1, "ADMIN", "STAFF")
+            Return If(role_Dict.ContainsKey(Me.role), role_Dict(Me.role), "---")
+
         End Get
     End Property
     <Write(False)> <DisplayName("Trạng thái")> <Display(Order:=6)>
     Public ReadOnly Property status_UI As String
         Get
-            Return If(status = 1, "Đang hoạt động", "Ngừng hoạt động")
+            Return If(status_Dict.ContainsKey(Me.status), status_Dict(Me.status), "---")
+
         End Get
     End Property
 
     <Write(False)> <DisplayName("Nhân viên")> <Display(Order:=1)>
-    Public ReadOnly Property Employee_UI As String
+    Public ReadOnly Property employee_UI As String
         Get
-            Return If(Employee?.code, "---")
+            Return If(Employee?.employee_UI, "---")
         End Get
     End Property
 #End Region
+#Region "Dictionary Display" 'chứa các dictionary dùng chung trong toàn bộ module Operations, tránh việc phải tạo nhiều dictionary giống nhau ở nhiều form khác
+    Public Shared ReadOnly status_Dict As New Dictionary(Of Integer, String) From {
+        {0, "Ngừng hoạt động"},
+        {1, "Đang hoạt động"}
+    }
+    Public Shared ReadOnly role_Dict As New Dictionary(Of Integer, String) From {
+        {1, "ADMIN"},
+        {2, "STAFF "}
+    }
+
+#End Region
+
 End Class

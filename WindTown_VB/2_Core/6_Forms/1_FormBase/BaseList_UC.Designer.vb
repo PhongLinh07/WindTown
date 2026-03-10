@@ -21,13 +21,16 @@ Partial Class BaseList_UC
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Dim tool_refresh As System.Windows.Forms.ToolStripButton
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim tool_refresh As System.Windows.Forms.ToolStripButton
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
         Me.toolStrip = New System.Windows.Forms.ToolStrip()
+        Me.tool_new = New System.Windows.Forms.ToolStripButton()
+        Me.tool_delete = New System.Windows.Forms.ToolStripButton()
+        Me.tool_hide_column = New System.Windows.Forms.ToolStripButton()
         Me.viewSelected = New System.Windows.Forms.Label()
         Me._dgv = New System.Windows.Forms.DataGridView()
         Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -36,14 +39,23 @@ Partial Class BaseList_UC
         Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.tool_new = New System.Windows.Forms.ToolStripButton()
-        Me.tool_delete = New System.Windows.Forms.ToolStripButton()
-        Me.tool_hide_column = New System.Windows.Forms.ToolStripButton()
         tool_refresh = New System.Windows.Forms.ToolStripButton()
         Me.TableLayoutPanel1.SuspendLayout()
         Me.toolStrip.SuspendLayout()
         CType(Me._dgv, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
+        '
+        'tool_refresh
+        '
+        tool_refresh.BackColor = System.Drawing.Color.Transparent
+        tool_refresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        tool_refresh.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        tool_refresh.Image = Global.WindTown_VB.My.Resources.Resources.cloud_sync
+        tool_refresh.ImageTransparentColor = System.Drawing.Color.Magenta
+        tool_refresh.Margin = New System.Windows.Forms.Padding(3, 3, 20, 3)
+        tool_refresh.Name = "tool_refresh"
+        tool_refresh.Size = New System.Drawing.Size(28, 28)
+        tool_refresh.Text = "ToolStripButton1"
         '
         'TableLayoutPanel1
         '
@@ -76,11 +88,45 @@ Partial Class BaseList_UC
         Me.toolStrip.TabIndex = 0
         Me.toolStrip.Text = "ToolStrip1"
         '
+        'tool_new
+        '
+        Me.tool_new.BackColor = System.Drawing.Color.Transparent
+        Me.tool_new.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.tool_new.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.tool_new.Image = Global.WindTown_VB.My.Resources.Resources.new_data
+        Me.tool_new.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.tool_new.Margin = New System.Windows.Forms.Padding(3, 3, 20, 3)
+        Me.tool_new.Name = "tool_new"
+        Me.tool_new.Size = New System.Drawing.Size(28, 28)
+        Me.tool_new.Text = "Thêm mới"
+        Me.tool_new.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'tool_delete
+        '
+        Me.tool_delete.BackColor = System.Drawing.Color.Transparent
+        Me.tool_delete.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.tool_delete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.tool_delete.Image = Global.WindTown_VB.My.Resources.Resources.delete
+        Me.tool_delete.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.tool_delete.Margin = New System.Windows.Forms.Padding(3, 3, 20, 3)
+        Me.tool_delete.Name = "tool_delete"
+        Me.tool_delete.Size = New System.Drawing.Size(28, 28)
+        Me.tool_delete.Text = "Xóa dòng đã chọn"
+        '
+        'tool_hide_column
+        '
+        Me.tool_hide_column.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.tool_hide_column.Image = Global.WindTown_VB.My.Resources.Resources.hidden_32px
+        Me.tool_hide_column.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.tool_hide_column.Name = "tool_hide_column"
+        Me.tool_hide_column.Size = New System.Drawing.Size(28, 31)
+        Me.tool_hide_column.Text = "Ẩn cột dữ liệu"
+        '
         'viewSelected
         '
         Me.viewSelected.AutoSize = True
         Me.viewSelected.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.viewSelected.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.viewSelected.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.viewSelected.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
         Me.viewSelected.Location = New System.Drawing.Point(3, 91)
         Me.viewSelected.Name = "viewSelected"
@@ -116,7 +162,7 @@ Partial Class BaseList_UC
         Me._dgv.ReadOnly = True
         DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.ButtonHighlight
-        DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Arial", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText
         DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight
         DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText
@@ -169,51 +215,6 @@ Partial Class BaseList_UC
         Me.Column6.HeaderText = "Column6"
         Me.Column6.Name = "Column6"
         Me.Column6.ReadOnly = True
-        '
-        'tool_new
-        '
-        Me.tool_new.BackColor = System.Drawing.Color.Transparent
-        Me.tool_new.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.tool_new.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.tool_new.Image = Global.WindTown_VB.My.Resources.Resources.new_data
-        Me.tool_new.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.tool_new.Margin = New System.Windows.Forms.Padding(3, 3, 20, 3)
-        Me.tool_new.Name = "tool_new"
-        Me.tool_new.Size = New System.Drawing.Size(28, 28)
-        Me.tool_new.Text = "New"
-        '
-        'tool_refresh
-        '
-        tool_refresh.BackColor = System.Drawing.Color.Transparent
-        tool_refresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        tool_refresh.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        tool_refresh.Image = Global.WindTown_VB.My.Resources.Resources.cloud_sync
-        tool_refresh.ImageTransparentColor = System.Drawing.Color.Magenta
-        tool_refresh.Margin = New System.Windows.Forms.Padding(3, 3, 20, 3)
-        tool_refresh.Name = "tool_refresh"
-        tool_refresh.Size = New System.Drawing.Size(28, 28)
-        tool_refresh.Text = "ToolStripButton1"
-        '
-        'tool_delete
-        '
-        Me.tool_delete.BackColor = System.Drawing.Color.Transparent
-        Me.tool_delete.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.tool_delete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.tool_delete.Image = Global.WindTown_VB.My.Resources.Resources.delete
-        Me.tool_delete.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.tool_delete.Margin = New System.Windows.Forms.Padding(3, 3, 20, 3)
-        Me.tool_delete.Name = "tool_delete"
-        Me.tool_delete.Size = New System.Drawing.Size(28, 28)
-        Me.tool_delete.Text = "ToolStripButton1"
-        '
-        'tool_hide_column
-        '
-        Me.tool_hide_column.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.tool_hide_column.Image = Global.WindTown_VB.My.Resources.Resources.hidden_32px
-        Me.tool_hide_column.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.tool_hide_column.Name = "tool_hide_column"
-        Me.tool_hide_column.Size = New System.Drawing.Size(28, 31)
-        Me.tool_hide_column.ToolTipText = "Hide Column"
         '
         'BaseList_UC
         '

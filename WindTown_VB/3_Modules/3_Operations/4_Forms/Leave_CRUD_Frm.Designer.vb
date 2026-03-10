@@ -84,9 +84,9 @@ Partial Class Leave_CRUD_Frm
         Me.Label3.Location = New System.Drawing.Point(783, 79)
         Me.Label3.Margin = New System.Windows.Forms.Padding(0)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(55, 16)
+        Me.Label3.Size = New System.Drawing.Size(80, 16)
         Me.Label3.TabIndex = 5
-        Me.Label3.Text = "Status:"
+        Me.Label3.Text = "Trạng thái:"
         Me.Label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'ui_status
@@ -219,9 +219,9 @@ Partial Class Leave_CRUD_Frm
         Me.Label5.Location = New System.Drawing.Point(783, 167)
         Me.Label5.Margin = New System.Windows.Forms.Padding(0)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(44, 16)
+        Me.Label5.Size = New System.Drawing.Size(65, 16)
         Me.Label5.TabIndex = 29
-        Me.Label5.Text = "Note:"
+        Me.Label5.Text = "Ghi chú:"
         Me.Label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'ui_note

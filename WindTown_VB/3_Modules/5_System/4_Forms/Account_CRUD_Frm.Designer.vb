@@ -41,53 +41,53 @@ Partial Class Account_CRUD_Frm
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.Label1.Location = New System.Drawing.Point(59, 73)
         Me.Label1.Margin = New System.Windows.Forms.Padding(0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(92, 20)
+        Me.Label1.Size = New System.Drawing.Size(92, 19)
         Me.Label1.TabIndex = 1
-        Me.Label1.Text = "Employee:"
+        Me.Label1.Text = "Nhân viên:"
         '
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Label2.Location = New System.Drawing.Point(59, 232)
+        Me.Label2.Location = New System.Drawing.Point(59, 242)
         Me.Label2.Margin = New System.Windows.Forms.Padding(0)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(91, 20)
+        Me.Label2.Size = New System.Drawing.Size(84, 19)
         Me.Label2.TabIndex = 3
-        Me.Label2.Text = "Password:"
+        Me.Label2.Text = "Mật khẩu:"
         '
         'ui_password
         '
         Me.ui_password.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ui_password.Location = New System.Drawing.Point(63, 255)
+        Me.ui_password.Location = New System.Drawing.Point(63, 265)
         Me.ui_password.Name = "ui_password"
-        Me.ui_password.Size = New System.Drawing.Size(265, 26)
+        Me.ui_password.Size = New System.Drawing.Size(258, 26)
         Me.ui_password.TabIndex = 2
         '
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Label3.Location = New System.Drawing.Point(59, 393)
+        Me.Label3.Location = New System.Drawing.Point(373, 158)
         Me.Label3.Margin = New System.Windows.Forms.Padding(0)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(67, 20)
+        Me.Label3.Size = New System.Drawing.Size(85, 19)
         Me.Label3.TabIndex = 5
-        Me.Label3.Text = "Status:"
+        Me.Label3.Text = "Trạng thái"
         '
         'ui_status
         '
         Me.ui_status.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ui_status.FormattingEnabled = True
         Me.ui_status.Items.AddRange(New Object() {"ACTIVE", "INACTIVE"})
-        Me.ui_status.Location = New System.Drawing.Point(63, 416)
+        Me.ui_status.Location = New System.Drawing.Point(377, 181)
         Me.ui_status.Name = "ui_status"
         Me.ui_status.Size = New System.Drawing.Size(265, 28)
         Me.ui_status.TabIndex = 6
@@ -95,23 +95,23 @@ Partial Class Account_CRUD_Frm
         'ui_note
         '
         Me.ui_note.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ui_note.Location = New System.Drawing.Point(409, 185)
+        Me.ui_note.Location = New System.Drawing.Point(377, 265)
         Me.ui_note.Name = "ui_note"
-        Me.ui_note.Size = New System.Drawing.Size(265, 259)
+        Me.ui_note.Size = New System.Drawing.Size(265, 119)
         Me.ui_note.TabIndex = 7
         Me.ui_note.Text = ""
         '
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Label4.Location = New System.Drawing.Point(405, 162)
+        Me.Label4.Location = New System.Drawing.Point(373, 243)
         Me.Label4.Margin = New System.Windows.Forms.Padding(0)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(52, 20)
+        Me.Label4.Size = New System.Drawing.Size(74, 19)
         Me.Label4.TabIndex = 8
-        Me.Label4.Text = "Note:"
+        Me.Label4.Text = "Ghi chú:"
         '
         'ui_employee
         '
@@ -120,7 +120,7 @@ Partial Class Account_CRUD_Frm
         Me.ui_employee.Items.AddRange(New Object() {"ACTIVE", "INACTIVE"})
         Me.ui_employee.Location = New System.Drawing.Point(63, 96)
         Me.ui_employee.Name = "ui_employee"
-        Me.ui_employee.Size = New System.Drawing.Size(265, 28)
+        Me.ui_employee.Size = New System.Drawing.Size(258, 28)
         Me.ui_employee.TabIndex = 9
         '
         'ui_role
@@ -128,22 +128,22 @@ Partial Class Account_CRUD_Frm
         Me.ui_role.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ui_role.FormattingEnabled = True
         Me.ui_role.Items.AddRange(New Object() {"ACTIVE", "INACTIVE"})
-        Me.ui_role.Location = New System.Drawing.Point(63, 334)
+        Me.ui_role.Location = New System.Drawing.Point(63, 356)
         Me.ui_role.Name = "ui_role"
-        Me.ui_role.Size = New System.Drawing.Size(265, 28)
+        Me.ui_role.Size = New System.Drawing.Size(258, 28)
         Me.ui_role.TabIndex = 11
         '
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Label5.Location = New System.Drawing.Point(59, 311)
+        Me.Label5.Location = New System.Drawing.Point(59, 333)
         Me.Label5.Margin = New System.Windows.Forms.Padding(0)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(51, 20)
+        Me.Label5.Size = New System.Drawing.Size(170, 19)
         Me.Label5.TabIndex = 10
-        Me.Label5.Text = "Role:"
+        Me.Label5.Text = "Quyền hạn hệ thống:"
         '
         'ui_last_active
         '
@@ -151,7 +151,7 @@ Partial Class Account_CRUD_Frm
         Me.ui_last_active.Enabled = False
         Me.ui_last_active.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ui_last_active.Format = System.Windows.Forms.DateTimePickerFormat.Custom
-        Me.ui_last_active.Location = New System.Drawing.Point(409, 98)
+        Me.ui_last_active.Location = New System.Drawing.Point(377, 96)
         Me.ui_last_active.Name = "ui_last_active"
         Me.ui_last_active.Size = New System.Drawing.Size(265, 26)
         Me.ui_last_active.TabIndex = 12
@@ -159,33 +159,33 @@ Partial Class Account_CRUD_Frm
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label6.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Label6.Location = New System.Drawing.Point(405, 75)
+        Me.Label6.Location = New System.Drawing.Point(373, 73)
         Me.Label6.Margin = New System.Windows.Forms.Padding(0)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(103, 20)
+        Me.Label6.Size = New System.Drawing.Size(163, 19)
         Me.Label6.TabIndex = 13
-        Me.Label6.Text = "Last Active:"
+        Me.Label6.Text = "Lần cuối hoạt động:"
         '
         'Label8
         '
         Me.Label8.AutoSize = True
-        Me.Label8.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label8.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label8.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Label8.Location = New System.Drawing.Point(59, 153)
+        Me.Label8.Location = New System.Drawing.Point(59, 158)
         Me.Label8.Margin = New System.Windows.Forms.Padding(0)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(52, 20)
+        Me.Label8.Size = New System.Drawing.Size(118, 19)
         Me.Label8.TabIndex = 17
-        Me.Label8.Text = "User:"
+        Me.Label8.Text = "Tên tài khoản:"
         '
         'ui_user
         '
         Me.ui_user.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ui_user.Location = New System.Drawing.Point(63, 176)
+        Me.ui_user.Location = New System.Drawing.Point(63, 181)
         Me.ui_user.Name = "ui_user"
-        Me.ui_user.Size = New System.Drawing.Size(265, 26)
+        Me.ui_user.Size = New System.Drawing.Size(258, 26)
         Me.ui_user.TabIndex = 16
         '
         'Account_CRUD_Frm
@@ -193,7 +193,7 @@ Partial Class Account_CRUD_Frm
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.ClientSize = New System.Drawing.Size(749, 492)
+        Me.ClientSize = New System.Drawing.Size(711, 437)
         Me.Controls.Add(Me.Label8)
         Me.Controls.Add(Me.ui_user)
         Me.Controls.Add(Me.Label6)

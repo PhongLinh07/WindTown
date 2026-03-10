@@ -6,6 +6,15 @@ Imports Dapper.Contrib.Extensions
 Public Class Contract
     Inherits BaseEntity
 
+    Public Sub New()
+        code = ""
+        start_date = DateTime.Now
+        end_date = DateTime.Now
+        base_salary = 0.0
+        note = ""
+        status = 0
+    End Sub
+
 #Region "Join"
     <Write(False)> <Browsable(False)>
     Public Property Employee = New Employee()
@@ -79,20 +88,29 @@ Public Class Contract
 
 #End Region
 
-#Region "Field Display"
 
-    <Write(False)> <DisplayName("Trạng thái")> <Display(Order:=6)>
+#Region "Field Display"
+    <Write(False)> <DisplayName("Nhân viên")> <Display(Order:=2)>
+    Public ReadOnly Property employee_UI As String
+        Get
+            Return If(Employee?.employee_UI, "---")
+        End Get
+    End Property
+
+    <Write(False)> <DisplayName("Trạng thái")> <Display(Order:=7)>
     Public ReadOnly Property status_UI As String
         Get
-            Return If(status = 1, "Đang hoạt động", "Ngừng hoạt động")
+            Return If(status_Dict.ContainsKey(Me.status), status_Dict(Me.status), "---")
         End Get
     End Property
 
-    <Write(False)> <DisplayName("Nhân viên")> <Display(Order:=2)>
-    Public ReadOnly Property Employee_UI As String
-        Get
-            Return If(Employee?.code, "---")
-        End Get
-    End Property
 #End Region
+
+#Region "Dictionary Display" 'chứa các dictionary dùng chung trong toàn bộ module Operations, tránh việc phải tạo nhiều dictionary giống nhau ở nhiều form khác
+    Public Shared ReadOnly status_Dict As New Dictionary(Of Integer, String) From {
+        {0, "Ngừng hoạt động"},
+        {1, "Đang hoạt động"}
+    }
+#End Region
+
 End Class

@@ -13,7 +13,7 @@ Public Class Leave_Cat_CRUD_Frm
         Me.isCreate = isCreate
         InitComboBox()
 
-        Me.Text = If(isCreate, "New", "Detail")
+        Me.Text = If(isCreate, "Thêm danh mục nghỉ phép", "Chi tiết danh mục nghỉ phép")
 
         BindDataToUI()
 

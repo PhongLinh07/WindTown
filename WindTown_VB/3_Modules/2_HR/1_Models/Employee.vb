@@ -6,6 +6,15 @@ Imports Dapper.Contrib.Extensions
 Public Class Employee
     Inherits BaseEntity
 
+    Public Sub New()
+        code = ""
+        name = ""
+        note = ""
+        status = 0
+        gender = 0
+        birth_date = DateTime.Now
+    End Sub
+
 #Region "Field json"
     <Write(False)> <DisplayName("Mã nhân viên")> <Display(Order:=0)>
     Public Property code As String
@@ -110,18 +119,38 @@ Public Class Employee
 #End Region
 
 #Region "Field Display"
+    <Write(False)> <Browsable(False)>
+    Public ReadOnly Property employee_UI As String
+        Get
+            Return $"{name} ({code})"
+        End Get
+    End Property
     <Write(False)> <DisplayName("Giới tính")> <Display(Order:=2)>
     Public ReadOnly Property gender_UI As String
         Get
-            Return If(gender = 1, "Nam", If(gender = 0, "Nữ", "Khác"))
+            Return If(gender_Dict.ContainsKey(Me.gender), gender_Dict(Me.gender), "---")
         End Get
     End Property
 
-    <Write(False)> <DisplayName("Trạng thái")> <Display(Order:=9)>
+    <Write(False)> <DisplayName("Trạng thái")> <Display(Order:=7)>
     Public ReadOnly Property status_UI As String
         Get
-            Return If(status = 1, "Đang hoạt động", "Ngừng hoạt động")
+            Return If(status_Dict.ContainsKey(Me.status), status_Dict(Me.status), "---")
         End Get
     End Property
+    
+#End Region
+
+#Region "Dictionary Display" 'chứa các dictionary dùng chung trong toàn bộ module Operations, tránh việc phải tạo nhiều dictionary giống nhau ở nhiều form khác
+    Public Shared ReadOnly status_Dict As New Dictionary(Of Integer, String) From {
+        {0, "Ngừng hoạt động"},
+        {1, "Đang hoạt động"}
+    }
+
+    Public Shared ReadOnly gender_Dict As New Dictionary(Of Integer, String) From {
+        {0, "Nữ"},
+        {1, "Nam"},
+        {2, "Khác"}
+    }
 #End Region
 End Class

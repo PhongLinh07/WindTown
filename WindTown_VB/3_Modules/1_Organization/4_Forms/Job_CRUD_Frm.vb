@@ -2,10 +2,7 @@ Public Class Job_CRUD_Frm
     Inherits BaseACRUDForm
     Protected _data As Job
 
-    Private _displayStatus As New Dictionary(Of Integer, String) From {
-        {0, "INACTIVE"},
-        {1, "ACTIVE"}
-    }
+
     Private _deparments As List(Of Department)
 
     Public Sub New(data As Job, Optional isCreate As Boolean = False)
@@ -16,18 +13,12 @@ Public Class Job_CRUD_Frm
         Me._data = data
         Me.isCreate = isCreate
 
-        ui_status.DataSource = New BindingSource(_displayStatus, Nothing)
+        ui_status.DataSource = New BindingSource(Department.status_Dict, Nothing)
         ui_status.DisplayMember = "Value"
         ui_status.ValueMember = "Key"
 
-        Me.Text = If(isCreate, "New", "Detail")
+        Me.Text = If(isCreate, "Thêm chức danh", "Chi tiết chức danh")
 
-        If isCreate Then
-            _data.code = ""
-            _data.name = ""
-            _data.note = ""
-            _data.status = 0
-        End If
 
         BindDataToUI()
 

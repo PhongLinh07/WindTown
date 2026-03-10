@@ -23,7 +23,7 @@ Partial Public Class BaseACRUDForm
     Protected Overridable Sub ACRUDForm_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
         If isConfirm Then Return ' Xác nhận bằng nút tool_save
 
-        Dim result As DialogResult = MessageBox.Show("Do you want to close ?", "Confirm close", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+        Dim result As DialogResult = MessageBox.Show("Đóng và không lưu những gì thay đổi ?", "Xác nhận đóng", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
 
         If result = DialogResult.No Then
             e.Cancel = True ' Hủy đóng form

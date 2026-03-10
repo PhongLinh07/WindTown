@@ -43,8 +43,9 @@ IF OBJECT_ID('attendance', 'U')   IS NOT NULL DROP TABLE attendance;
 IF OBJECT_ID('holiday', 'U')      IS NOT NULL DROP TABLE holiday;
 
 IF OBJECT_ID('policy', 'U')       IS NOT NULL DROP TABLE policy;
-IF OBJECT_ID('pay_period', 'U')   IS NOT NULL DROP TABLE pay_period;
+IF OBJECT_ID('pay_item', 'U')      IS NOT NULL DROP TABLE pay_item;
 IF OBJECT_ID('payroll', 'U')      IS NOT NULL DROP TABLE payroll;
+IF OBJECT_ID('pay_period', 'U')   IS NOT NULL DROP TABLE pay_period;
 
 IF OBJECT_ID('account', 'U')      IS NOT NULL DROP TABLE account;
 GO
@@ -152,6 +153,12 @@ CREATE TABLE policy (
 -- 6. MODULE: TÀI CHÍNH (FINANCE)
 -- =============================================
 
+CREATE TABLE pay_item (
+    id INT IDENTITY(1,1) PRIMARY KEY,
+    payroll_id INT,
+    datas NVARCHAR(max)
+);
+
 CREATE TABLE pay_period (
     id INT IDENTITY(1,1) PRIMARY KEY,
     datas NVARCHAR(max)
@@ -203,8 +210,8 @@ ALTER TABLE leave ADD CONSTRAINT FK_leave_leave_cat FOREIGN KEY (leave_cat_id) R
 
 -- Module: Tài chính
 ALTER TABLE payroll ADD CONSTRAINT FK_payroll_period FOREIGN KEY (period_id) REFERENCES pay_period(id);
-
 ALTER TABLE payroll ADD CONSTRAINT FK_payroll_position FOREIGN KEY (position_id) REFERENCES position(id);
+ALTER TABLE pay_item ADD CONSTRAINT FK_pay_item_payroll FOREIGN KEY (payroll_id) REFERENCES payroll(id);
 
 -- Module: Hệ thống
 ALTER TABLE account ADD CONSTRAINT FK_account_employee FOREIGN KEY (employee_id) REFERENCES employee(id);

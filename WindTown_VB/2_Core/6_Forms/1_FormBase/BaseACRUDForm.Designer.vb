@@ -49,7 +49,7 @@ Partial Class BaseACRUDForm
         Me.tool_save.Margin = New System.Windows.Forms.Padding(3, 3, 20, 3)
         Me.tool_save.Name = "tool_save"
         Me.tool_save.Size = New System.Drawing.Size(28, 28)
-        Me.tool_save.Text = "Ssve"
+        Me.tool_save.Text = "Lưu kết quả"
         '
         'BaseACRUDForm
         '

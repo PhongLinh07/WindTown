@@ -31,7 +31,7 @@ Public Class BaseList_UC
     End Sub
 
     ' load data từ service và gán vào DataGridView thông qua BindingSource để hỗ trợ tính năng lọc (Search)
-    Protected Sub LoadData()
+    Protected Overridable Sub LoadData()
         Dim response = _service.Execute(DataIntent.GetList)
         If response.IsSuccess Then
             ' Gán danh sách vào BindingSource để hỗ trợ lọc (Search)

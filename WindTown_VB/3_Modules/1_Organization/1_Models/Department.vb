@@ -6,6 +6,13 @@ Imports Dapper.Contrib.Extensions
 Public Class Department
     Inherits BaseEntity
 
+    Public Sub New()
+        code = ""
+        name = ""
+        note = ""
+        status = 0
+    End Sub
+
 #Region "Field json"
     <Write(False)> <DisplayName("Mã phòng ban")> <Display(Order:=0)>
     Public Property code As String
@@ -35,7 +42,7 @@ Public Class Department
             SetV("status", value)
         End Set
     End Property
-    <Write(False)> <DisplayName("Ghi chú")> <Display(Order:=3)>
+    <Write(False)> <DisplayName("Ghi chú")> <Display(Order:=4)>
     Public Property note As String
         Get
             Return GetV(Of String)("note")
@@ -46,13 +53,24 @@ Public Class Department
     End Property
 #End Region
 
+
 #Region "Field Display"
-    <Write(False)> <DisplayName("Trạng thái")> <Display(Order:=2)>
+
+    <Write(False)> <DisplayName("Trạng thái")> <Display(Order:=3)>
     Public ReadOnly Property status_UI As String
         Get
-            Return If(status = 1, "Đang hoạt động", "Ngừng hoạt động")
+            Return If(status_Dict.ContainsKey(Me.status), status_Dict(Me.status), "---")
         End Get
     End Property
+
+#End Region
+
+#Region "Dictionary Display" 'chứa các dictionary dùng chung trong toàn bộ module Operations, tránh việc phải tạo nhiều dictionary giống nhau ở nhiều form khác
+    Public Shared ReadOnly status_Dict As New Dictionary(Of Integer, String) From {
+        {0, "Ngừng hoạt động"},
+        {1, "Đang hoạt động"}
+    }
+
 #End Region
 End Class
 

@@ -5,10 +5,6 @@ Public Class Attendance_CRUD_Frm
     Protected _data As Attendance
 
 
-    Private _displayStatus As New Dictionary(Of Integer, String) From {
-        {0, "INACTIVE"},
-        {1, "ACTIVE"}
-    }
 
     Private _employees As List(Of Employee)
 
@@ -20,7 +16,7 @@ Public Class Attendance_CRUD_Frm
         Me.isCreate = isCreate
         InitComboBox()
 
-        Me.Text = If(isCreate, "New", "Detail")
+        Me.Text = If(isCreate, "Thêm mới chấm công", "Chi tiết chấm công")
 
         BindDataToUI()
 
@@ -28,11 +24,11 @@ Public Class Attendance_CRUD_Frm
     End Sub
     Private Sub InitComboBox()
 
-        ui_status.DataSource = New BindingSource(_displayStatus, Nothing)
+        ui_status.DataSource = New BindingSource(Attendance.status_Dict, Nothing)
         ui_status.DisplayMember = "Value"
         ui_status.ValueMember = "Key"
 
-        ui_shift.DataSource = New BindingSource(Attendance.Dict_Shift, Nothing)
+        ui_shift.DataSource = New BindingSource(Attendance.shift_Dic, Nothing)
         ui_shift.DisplayMember = "Value"
         ui_shift.ValueMember = "Key"
 

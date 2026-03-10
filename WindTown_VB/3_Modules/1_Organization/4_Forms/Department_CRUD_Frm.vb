@@ -5,11 +5,6 @@ Public Class Department_CRUD_Frm
     Protected _data As Department
 
 
-    Private _displayStatus As New Dictionary(Of Integer, String) From {
-        {0, "INACTIVE"},
-        {1, "ACTIVE"}
-    }
-
     Public Sub New(data As Department, Optional isCreate As Boolean = False)
 
         InitializeComponent()
@@ -17,18 +12,11 @@ Public Class Department_CRUD_Frm
         Me._data = data
         Me.isCreate = isCreate
 
-        ui_status.DataSource = New BindingSource(_displayStatus, Nothing)
+        ui_status.DataSource = New BindingSource(Department.status_Dict, Nothing)
         ui_status.DisplayMember = "Value"
         ui_status.ValueMember = "Key"
 
-        Me.Text = If(isCreate, "New", "Detail")
-
-        If isCreate Then
-            _data.code = ""
-            _data.name = ""
-            _data.note = ""
-            _data.status = 0
-        End If
+        Me.Text = If(isCreate, "Thêm phòng ban", "Chi tiết phòng ban")
 
         BindDataToUI()
 

@@ -5,17 +5,6 @@ Public Class Employee_CRUD_Frm
 
     Protected _data As Employee
 
-    Private _displayStatus As New Dictionary(Of Integer, String) From {
-        {0, "INACTIVE"},
-        {1, "ACTIVE"}
-    }
-
-    Private _displayGender As New Dictionary(Of Integer, String) From {
-        {0, "Female"},
-        {1, "Male"},
-        {2, "Other"}
-    }
-
     Public Sub New(data As Employee, Optional isCreate As Boolean = False)
 
         InitializeComponent()
@@ -24,25 +13,16 @@ Public Class Employee_CRUD_Frm
         Me.isCreate = isCreate
 
         ' ===== Status =====
-        ui_status.DataSource = New BindingSource(_displayStatus, Nothing)
+        ui_status.DataSource = New BindingSource(Employee.status_Dict, Nothing)
         ui_status.DisplayMember = "Value"
         ui_status.ValueMember = "Key"
 
         ' ===== Gender =====
-        ui_gender.DataSource = New BindingSource(_displayGender, Nothing)
+        ui_gender.DataSource = New BindingSource(Employee.gender_Dict, Nothing)
         ui_gender.DisplayMember = "Value"
         ui_gender.ValueMember = "Key"
 
-        Me.Text = If(isCreate, "New Employee", "Employee Detail")
-
-        If isCreate Then
-            _data.code = ""
-            _data.name = ""
-            _data.note = ""
-            _data.status = 0
-            _data.gender = 0
-            _data.birth_date = DateTime.Now
-        End If
+        Me.Text = If(isCreate, "Thêm nhân viên mới", "Chi tiết nhân viên")
 
         BindDataToUI()
 

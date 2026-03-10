@@ -9,6 +9,8 @@ Public Class Payroll_CRUD_Frm
     Private _positions As List(Of Position) 'dùng chức vị để phân công vào dự án
     Private _payPeriod As List(Of Pay_Period)
 
+    Private _pay_item_list_uc As Pay_Item_List_UC
+
     Public Sub New(data As Payroll, Optional isCreate As Boolean = False)
 
         InitializeComponent()
@@ -21,6 +23,13 @@ Public Class Payroll_CRUD_Frm
         BindDataToUI()
 
         tool_save.Enabled = False
+
+
+
+        grb_pay_item.Controls.Clear()
+        _pay_item_list_uc = New Pay_Item_List_UC(_data)
+        grb_pay_item.Controls.Add(_pay_item_list_uc)
+        _pay_item_list_uc.Dock = DockStyle.Fill
     End Sub
 
     Private Sub InitComboBox()
@@ -183,5 +192,6 @@ Public Class Payroll_CRUD_Frm
         ui_level.Text = pos.level_UI
 
     End Sub
+
 
 End Class

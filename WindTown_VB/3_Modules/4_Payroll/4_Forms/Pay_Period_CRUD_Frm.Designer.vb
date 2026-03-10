@@ -111,9 +111,9 @@ Partial Class Pay_Period_CRUD_Frm
         Me.Label4.Location = New System.Drawing.Point(415, 161)
         Me.Label4.Margin = New System.Windows.Forms.Padding(0)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(51, 19)
+        Me.Label4.Size = New System.Drawing.Size(74, 19)
         Me.Label4.TabIndex = 24
-        Me.Label4.Text = "Note:"
+        Me.Label4.Text = "Ghi chú:"
         '
         'ui_note
         '
@@ -142,9 +142,9 @@ Partial Class Pay_Period_CRUD_Frm
         Me.Label3.Location = New System.Drawing.Point(415, 82)
         Me.Label3.Margin = New System.Windows.Forms.Padding(0)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(64, 19)
+        Me.Label3.Size = New System.Drawing.Size(91, 19)
         Me.Label3.TabIndex = 21
-        Me.Label3.Text = "Status:"
+        Me.Label3.Text = "Trạng thái:"
         '
         'Label1
         '

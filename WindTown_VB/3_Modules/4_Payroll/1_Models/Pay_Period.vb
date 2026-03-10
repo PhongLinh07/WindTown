@@ -89,6 +89,12 @@ Public Class Pay_Period
 #End Region
 
 #Region "Field Display"
+    <Write(False)> <Browsable(False)>
+    Public ReadOnly Property pay_period_UI As String
+        Get
+            Return $"{name} ({code})"
+        End Get
+    End Property
 
     <Write(False)> <DisplayName("Trạng thái")> <Display(Order:=6)>
     Public ReadOnly Property status_UI As String

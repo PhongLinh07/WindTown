@@ -228,6 +228,10 @@ Partial Public Class FormMain
         OpenMultTabMode(Of Payroll_List_UC)(tabControl_A)
     End Sub
 
+    Private Sub DfToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DfToolStripMenuItem.Click
+        OpenMultTabMode(Of Pay_Item_List_UC)(tabControl_A)
+    End Sub
+
 #End Region
 
 End Class

@@ -6,6 +6,13 @@ Imports Dapper.Contrib.Extensions
 Public Class Job
     Inherits BaseEntity
 
+    Public Sub New()
+        code = ""
+        name = ""
+        note = ""
+        status = 0
+    End Sub
+
 #Region "Join"
     <Write(False)> <Browsable(False)>
     Public Property Department = New Department()
@@ -62,20 +69,34 @@ Public Class Job
 
 #End Region
 
-#Region "Field Display"
 
-    <Write(False)> <DisplayName("Trạng thái")> <Display(Order:=4)>
-    Public ReadOnly Property status_UI As String
+#Region "Field Display"
+    <Write(False)> <Browsable(False)>
+    Public ReadOnly Property job_UI As String
         Get
-            Return If(status = 1, "Đang hoạt động", "Ngừng hoạt động")
+            Return $"{name} ({code})"
         End Get
     End Property
-
     <Write(False)> <DisplayName("Phòng ban")> <Display(Order:=3)>
     Public ReadOnly Property Department_UI As String
         Get
             Return If(Department?.name, "---")
         End Get
     End Property
+    <Write(False)> <DisplayName("Trạng thái")> <Display(Order:=4)>
+    Public ReadOnly Property status_UI As String
+        Get
+            Return If(status_Dict.ContainsKey(Me.status), status_Dict(Me.status), "---")
+        End Get
+    End Property
 #End Region
+
+#Region "Dictionary Display" 'chứa các dictionary dùng chung trong toàn bộ module Operations, tránh việc phải tạo nhiều dictionary giống nhau ở nhiều form khác
+    Public Shared ReadOnly status_Dict As New Dictionary(Of Integer, String) From {
+        {0, "Ngừng hoạt động"},
+        {1, "Đang hoạt động"}
+    }
+
+#End Region
+
 End Class

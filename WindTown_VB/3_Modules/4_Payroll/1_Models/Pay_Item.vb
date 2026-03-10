@@ -2,19 +2,32 @@ Imports System.ComponentModel
 Imports System.ComponentModel.DataAnnotations
 Imports Dapper.Contrib.Extensions
 
-<Table("level")>
-Public Class Level
+<Table("pay_item")>
+Public Class Pay_Item
     Inherits BaseEntity
 
     Public Sub New()
         code = ""
         name = ""
+        value = 0
         note = ""
-        rank = 1
         status = 0
     End Sub
-#Region "Field json"
-    <Write(False)> <DisplayName("Mã trình độ")> <Display(Order:=0)>
+
+#Region "Join"
+    <Write(False)> <Browsable(False)>
+    Public Property Payroll As Payroll = New Payroll()
+#End Region
+
+#Region "Field Json"
+    <Browsable(False)>
+    Public ReadOnly Property payroll_id As Integer
+        Get
+            Return Payroll?.id
+        End Get
+    End Property
+
+    <Write(False)> <DisplayName("Mã khoản tiền")> <Display(Order:=1)>
     Public Property code As String
         Get
             Return GetV(Of String)("code")
@@ -23,7 +36,7 @@ Public Class Level
             SetV("code", value)
         End Set
     End Property
-    <Write(False)> <DisplayName("Tên trình độ")> <Display(Order:=1)>
+    <Write(False)> <DisplayName("Tên khoản tiền")> <Display(Order:=1)>
     Public Property name As String
         Get
             Return GetV(Of String)("name")
@@ -32,15 +45,16 @@ Public Class Level
             SetV("name", value)
         End Set
     End Property
-    <Write(False)> <DisplayName("Giá trị cấp bậc")> <Display(Order:=2)>
-    Public Property rank As Integer
+    <Write(False)> <DisplayName("Tiền VND")> <Display(Order:=1)>
+    Public Property value As String
         Get
-            Return GetV(Of String)("rank")
+            Return GetV(Of String)("value")
         End Get
-        Set(value As Integer)
-            SetV("rank", value)
+        Set(value As String)
+            SetV("value", value)
         End Set
     End Property
+
     <Write(False)> <Browsable(False)>
     Public Property status As Integer
         Get
@@ -50,7 +64,7 @@ Public Class Level
             SetV("status", value)
         End Set
     End Property
-    <Write(False)> <DisplayName("Ghi chú")> <Display(Order:=4)>
+    <Write(False)> <DisplayName("Ghi chú")> <Display(Order:=10)>
     Public Property note As String
         Get
             Return GetV(Of String)("note")
@@ -62,28 +76,21 @@ Public Class Level
 #End Region
 
 #Region "Field Display"
-    <Write(False)> <DisplayName("Trạng thái")> <Display(Order:=3)>
+
+    <Write(False)> <DisplayName("Trạng thái")> <Display(Order:=9)>
     Public ReadOnly Property status_UI As String
         Get
             Return If(status_Dict.ContainsKey(Me.status), status_Dict(Me.status), "---")
+
         End Get
     End Property
+
 #End Region
 
 #Region "Dictionary Display" 'chứa các dictionary dùng chung trong toàn bộ module Operations, tránh việc phải tạo nhiều dictionary giống nhau ở nhiều form khác
     Public Shared ReadOnly status_Dict As New Dictionary(Of Integer, String) From {
-        {0, "Ngừng áp dụng"},
-        {1, "Đang áp dụng"}
+        {0, "Chưa xác nhận"},
+        {1, "đã xác nhận"}
     }
-
 #End Region
 End Class
-
-
-
-
-
-
-
-
-

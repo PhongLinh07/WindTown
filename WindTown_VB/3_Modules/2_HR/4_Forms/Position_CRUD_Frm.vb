@@ -5,10 +5,6 @@ Public Class Position_CRUD_Frm
 
     Protected _data As Position
 
-    Private _displayStatus As New Dictionary(Of Integer, String) From {
-        {0, "INACTIVE"},
-        {1, "ACTIVE"}
-    }
 
     Private _contracsWithoutPosition As List(Of Contract)
     Private _jobs As List(Of Job)
@@ -21,16 +17,8 @@ Public Class Position_CRUD_Frm
         Me._data = data
         Me.isCreate = isCreate
 
-        Me.Text = If(isCreate, "New Position", "Position Detail")
+        Me.Text = If(isCreate, "Thêm mới chức vụ", "Chi tiết chức vụ")
         InitComboBox()
-
-        If isCreate Then
-            _data.code = ""
-            _data.start_date = DateTime.Now
-            _data.end_date = DateTime.Now
-            _data.note = ""
-            _data.status = 0
-        End If
 
         BindDataToUI()
 
@@ -39,7 +27,7 @@ Public Class Position_CRUD_Frm
 
     Private Sub InitComboBox()
         ' ===== Status =====
-        ui_status.DataSource = New BindingSource(_displayStatus, Nothing)
+        ui_status.DataSource = New BindingSource(Position.status_Dict, Nothing)
         ui_status.DisplayMember = "Value"
         ui_status.ValueMember = "Key"
 

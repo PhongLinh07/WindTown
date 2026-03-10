@@ -14,10 +14,10 @@ Public Class Payroll
 
 #Region "Join"
     <Write(False)> <Browsable(False)>
-    Public Property Position = New Position()
+    Public Property Position As Position = New Position()
 
     <Write(False)> <Browsable(False)>
-    Public Property Pay_Period = New Pay_Period()
+    Public Property Pay_Period As Pay_Period = New Pay_Period()
 #End Region
 
 #Region "Field Json"
@@ -77,7 +77,7 @@ Public Class Payroll
     <Write(False)> <DisplayName("Kỳ lương")> <Display(Order:=2)>
     Public ReadOnly Property pay_period_UI As String
         Get
-            Return If(Pay_Period IsNot Nothing, $"{Pay_Period?.name} ({Pay_Period.code})", "---")
+            Return If(Pay_Period?.pay_period_UI, "---")
         End Get
     End Property
 

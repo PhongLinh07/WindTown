@@ -6,6 +6,14 @@ Imports Dapper.Contrib.Extensions
 Public Class Project
     Inherits BaseEntity
 
+    Public Sub New()
+        code = ""
+        name = ""
+        start_date = DateTime.Now
+        end_date = DateTime.Now
+        note = ""
+        status = 0
+    End Sub
 
 #Region "Field Json"
 
@@ -72,14 +80,14 @@ Public Class Project
     <Write(False)> <DisplayName("Trạng thái")> <Display(Order:=4)>
     Public ReadOnly Property status_UI As String
         Get
-            Return If(Dict_Status.ContainsKey(Me.status), Dict_Status(Me.status), "---")
+            Return If(status_Dict.ContainsKey(Me.status), status_Dict(Me.status), "---")
         End Get
     End Property
 #End Region
 
 
 #Region "Dictionary Display" 'chứa các dictionary dùng chung trong toàn bộ module Operations, tránh việc phải tạo nhiều dictionary giống nhau ở nhiều form khác
-    Public Shared ReadOnly Dict_Status As New Dictionary(Of Integer, String) From {
+    Public Shared ReadOnly status_Dict As New Dictionary(Of Integer, String) From {
         {0, "Đã bị từ chối"},
         {1, "Đang lập kế hoạch"},
         {2, "Đang thực hiện"},
