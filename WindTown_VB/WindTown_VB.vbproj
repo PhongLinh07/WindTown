@@ -526,6 +526,12 @@
     <Compile Include="UIUX\frmDuAn.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="UIUX\frmDuAnEdit.Designer.vb">
+      <DependentUpon>frmDuAnEdit.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UIUX\frmDuAnEdit.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="UIUX\frmHopDong.Designer.vb">
       <DependentUpon>frmHopDong.vb</DependentUpon>
     </Compile>
@@ -566,6 +572,12 @@
       <DependentUpon>frmPhanCongDA.vb</DependentUpon>
     </Compile>
     <Compile Include="UIUX\frmPhanCongDA.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UIUX\frmPhanCongDAEdit.Designer.vb">
+      <DependentUpon>frmPhanCongDAEdit.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UIUX\frmPhanCongDAEdit.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UIUX\frmRegister.Designer.vb">
@@ -704,6 +716,9 @@
     <EmbeddedResource Include="UIUX\frmDuAn.resx">
       <DependentUpon>frmDuAn.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UIUX\frmDuAnEdit.resx">
+      <DependentUpon>frmDuAnEdit.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UIUX\frmHopDong.resx">
       <DependentUpon>frmHopDong.vb</DependentUpon>
     </EmbeddedResource>
@@ -724,6 +739,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UIUX\frmPhanCongDA.resx">
       <DependentUpon>frmPhanCongDA.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UIUX\frmPhanCongDAEdit.resx">
+      <DependentUpon>frmPhanCongDAEdit.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UIUX\frmRegister.resx">
       <DependentUpon>frmRegister.vb</DependentUpon>
