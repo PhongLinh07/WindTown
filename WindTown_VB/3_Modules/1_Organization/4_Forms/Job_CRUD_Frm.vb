@@ -96,7 +96,7 @@ Public Class Job_CRUD_Frm
 
 
         If ui_status.SelectedValue IsNot Nothing Then
-            _data.status = ui_status.SelectedValue.ToString()
+            _data.status = CInt(ui_status.SelectedValue)
         End If
 
         Return True

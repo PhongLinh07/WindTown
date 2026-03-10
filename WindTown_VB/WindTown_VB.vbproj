@@ -41,6 +41,9 @@
     <OptionExplicit>On</OptionExplicit>
   </PropertyGroup>
   <PropertyGroup>
+    <GenerateResourceUsePreserializedResources>true</GenerateResourceUsePreserializedResources>
+  </PropertyGroup>
+  <PropertyGroup>
     <OptionCompare>Binary</OptionCompare>
   </PropertyGroup>
   <PropertyGroup>
@@ -50,6 +53,9 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="System.Resources.Extensions">
+      <HintPath>lib\System.Resources.Extensions\net472\System.Resources.Extensions.dll</HintPath>
+    </Reference>
     <Reference Include="Azure.Core, Version=1.50.0.0, Culture=neutral, PublicKeyToken=92742159e12e44c8, processorArchitecture=MSIL">
       <HintPath>..\packages\Azure.Core.1.50.0\lib\net472\Azure.Core.dll</HintPath>
     </Reference>
@@ -438,8 +444,11 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="3_Modules\4_Payroll\1_Models\Pay_Period.vb" />
+    <Compile Include="3_Modules\4_Payroll\1_Models\Payroll.vb" />
     <Compile Include="3_Modules\4_Payroll\2_Repositories\Pay_PeriodRepository.vb" />
+    <Compile Include="3_Modules\4_Payroll\2_Repositories\PayrollRepository.vb" />
     <Compile Include="3_Modules\4_Payroll\3_Service\Pay_PeriodService.vb" />
+    <Compile Include="3_Modules\4_Payroll\3_Service\PayrollService.vb" />
     <Compile Include="3_Modules\4_Payroll\4_Forms\Pay_Period_CRUD_Frm.Designer.vb">
       <DependentUpon>Pay_Period_CRUD_Frm.vb</DependentUpon>
     </Compile>
@@ -508,10 +517,16 @@
     <Compile Include="UIUX\frmChamCong.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="UIUX\frmChamCongEdit.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="UIUX\frmChucVu.Designer.vb">
       <DependentUpon>frmChucVu.vb</DependentUpon>
     </Compile>
     <Compile Include="UIUX\frmChucVu.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UIUX\frmChucVuEdit.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UIUX\frmDashboard.Designer.vb">
@@ -530,6 +545,9 @@
       <DependentUpon>frmHopDong.vb</DependentUpon>
     </Compile>
     <Compile Include="UIUX\frmHopDong.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UIUX\frmHopDongEdit.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UIUX\frmKyLuong.Designer.vb">
@@ -592,6 +610,9 @@
     <Compile Include="UIUX\frmTinhLuong.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="UIUX\frmTinhLuongEdit.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="UIUX\Helpers\ImageExtensions.vb" />
     <Compile Include="UIUX\Modules\HopDong.vb" />
     <Compile Include="UIUX\Modules\MenuItemModel.vb" />
@@ -603,6 +624,7 @@
     <Compile Include="UIUX\Modules\NhanSuTransferService.vb" />
     <Compile Include="UIUX\Modules\DatabaseBootstrapService.vb" />
     <Compile Include="UIUX\Modules\NhanVien.vb" />
+    <Compile Include="UIUX\Modules\EmployeeExcelTransfer.vb" />
     <Compile Include="UIUX\tesst.Designer.vb">
       <DependentUpon>tesst.vb</DependentUpon>
     </Compile>
@@ -706,6 +728,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UIUX\frmHopDong.resx">
       <DependentUpon>frmHopDong.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UIUX\frmHopDongEdit.resx">
+      <DependentUpon>frmHopDongEdit.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UIUX\frmKyLuong.resx">
       <DependentUpon>frmKyLuong.vb</DependentUpon>

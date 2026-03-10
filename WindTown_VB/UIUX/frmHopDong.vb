@@ -1,17 +1,51 @@
-Public Class frmHopDong
-    Private Sub loadForm(sender As Object, e As EventArgs) Handles MyBase.Load
-        loadControls()
-        CauHinhDTGV()
-        TaoCotHopDong()
-        TaoCotChucNang()
-        CauHinhQuyenCot()
+Imports System.Linq
 
-        LoadDuLieu()
+Public Class frmHopDong
+    Private ReadOnly _service As New ContractService()
+    Private _contracts As New List(Of Contract)()
+    Private ReadOnly _binding As New BindingSource()
+
+    Private Sub loadForm(sender As Object, e As EventArgs) Handles MyBase.Load
+        InitFilters()
+        InitGrid()
+        LoadData()
+        ApplyFilters()
     End Sub
 
-    ' ============== Load ảnh cho các nút chức năng ==============
-    Private Sub loadControls()
+    Private Sub InitFilters()
         btnSearch.Image = ResizeImage(My.Resources.search, 20, 20)
+
+        cbbxTrangThai.DataSource = New List(Of KeyValuePair(Of Integer, String)) From {
+            New KeyValuePair(Of Integer, String)(-1, "Tất cả"),
+            New KeyValuePair(Of Integer, String)(1, "Đang hoạt động"),
+            New KeyValuePair(Of Integer, String)(0, "Ngừng hoạt động")
+        }
+        cbbxTrangThai.DisplayMember = "Value"
+        cbbxTrangThai.ValueMember = "Key"
+        cbbxTrangThai.SelectedValue = -1
+
+        cbbxThoiGianHD.DataSource = New List(Of KeyValuePair(Of Integer, String)) From {
+            New KeyValuePair(Of Integer, String)(0, "Không lọc ngày"),
+            New KeyValuePair(Of Integer, String)(1, "Theo ngày bắt đầu"),
+            New KeyValuePair(Of Integer, String)(2, "Theo ngày kết thúc")
+        }
+        cbbxThoiGianHD.DisplayMember = "Value"
+        cbbxThoiGianHD.ValueMember = "Key"
+        cbbxThoiGianHD.SelectedValue = 0
+
+        AddHandler btnSearch.Click, Sub() ApplyFilters()
+        AddHandler tbxSearch.KeyDown, AddressOf tbxSearch_KeyDown
+        AddHandler cbbxTrangThai.SelectedIndexChanged, Sub() ApplyFilters()
+        AddHandler dtpkTuNgay.ValueChanged, Sub() ApplyFilters()
+        AddHandler btnThemHD.Click, AddressOf btnThemHD_Click
+    End Sub
+
+    Private Sub tbxSearch_KeyDown(sender As Object, e As KeyEventArgs)
+        If e.KeyCode = Keys.Enter Then
+            ApplyFilters()
+            e.Handled = True
+            e.SuppressKeyPress = True
+        End If
     End Sub
 
     Private Function ResizeImage(img As Image, newWidth As Integer, newHeight As Integer) As Image
@@ -23,9 +57,7 @@ Public Class frmHopDong
         Return bmp
     End Function
 
-    ' =============== Cấu hình chung cho DataGridView ===============
-    Private Sub CauHinhDTGV()
-
+    Private Sub InitGrid()
         With dtgvDSHopDong
             .AutoGenerateColumns = False
             .AllowUserToAddRows = False
@@ -37,235 +69,234 @@ Public Class frmHopDong
             .BackgroundColor = Color.White
             .BorderStyle = BorderStyle.None
             .ColumnHeadersHeight = 40
-            .RowTemplate.Height = 60
+            .RowTemplate.Height = 48
         End With
 
+        BuildColumns()
+        dtgvDSHopDong.DataSource = _binding
+
+        AddHandler dtgvDSHopDong.CellClick, AddressOf dtgvDSHopDong_CellClick
     End Sub
-    Private Sub CauHinhQuyenCot()
+
+    Private Sub BuildColumns()
+        dtgvDSHopDong.Columns.Clear()
+
+        Dim colChon As New DataGridViewCheckBoxColumn() With {
+            .Name = "colChon",
+            .HeaderText = "",
+            .Width = 40,
+            .Frozen = True
+        }
+        dtgvDSHopDong.Columns.Add(colChon)
+
+        Dim colCode As New DataGridViewTextBoxColumn() With {
+            .Name = "colCode",
+            .HeaderText = "Mã hợp đồng",
+            .DataPropertyName = "code",
+            .Width = 140,
+            .Frozen = True
+        }
+        dtgvDSHopDong.Columns.Add(colCode)
+
+        Dim colNhanVien As New DataGridViewTextBoxColumn() With {
+            .Name = "colNhanVien",
+            .HeaderText = "Nhân viên",
+            .DataPropertyName = "Employee_UI",
+            .Width = 180
+        }
+        dtgvDSHopDong.Columns.Add(colNhanVien)
+
+        Dim colStart As New DataGridViewTextBoxColumn() With {
+            .Name = "colStart",
+            .HeaderText = "Ngày bắt đầu",
+            .DataPropertyName = "start_date",
+            .Width = 120
+        }
+        colStart.DefaultCellStyle.Format = "dd-MM-yyyy"
+        dtgvDSHopDong.Columns.Add(colStart)
+
+        Dim colEnd As New DataGridViewTextBoxColumn() With {
+            .Name = "colEnd",
+            .HeaderText = "Ngày kết thúc",
+            .DataPropertyName = "end_date",
+            .Width = 120
+        }
+        colEnd.DefaultCellStyle.Format = "dd-MM-yyyy"
+        dtgvDSHopDong.Columns.Add(colEnd)
+
+        Dim colSalary As New DataGridViewTextBoxColumn() With {
+            .Name = "colSalary",
+            .HeaderText = "Lương cơ bản",
+            .DataPropertyName = "base_salary",
+            .Width = 140
+        }
+        colSalary.DefaultCellStyle.Format = "N0"
+        dtgvDSHopDong.Columns.Add(colSalary)
+
+        Dim colStatus As New DataGridViewTextBoxColumn() With {
+            .Name = "colStatus",
+            .HeaderText = "Trạng thái",
+            .DataPropertyName = "status_UI",
+            .Width = 140
+        }
+        dtgvDSHopDong.Columns.Add(colStatus)
+
+        Dim colNote As New DataGridViewTextBoxColumn() With {
+            .Name = "colNote",
+            .HeaderText = "Ghi chú",
+            .DataPropertyName = "note",
+            .Width = 220
+        }
+        dtgvDSHopDong.Columns.Add(colNote)
+
+        Dim colExport As New DataGridViewImageColumn() With {
+            .Name = "colExport",
+            .HeaderText = "",
+            .Image = My.Resources.word,
+            .Width = 40,
+            .ImageLayout = DataGridViewImageCellLayout.Zoom
+        }
+        dtgvDSHopDong.Columns.Add(colExport)
+
+        Dim colEdit As New DataGridViewImageColumn() With {
+            .Name = "colEdit",
+            .HeaderText = "",
+            .Image = My.Resources.compose,
+            .Width = 40,
+            .ImageLayout = DataGridViewImageCellLayout.Zoom
+        }
+        dtgvDSHopDong.Columns.Add(colEdit)
+
+        Dim colDelete As New DataGridViewImageColumn() With {
+            .Name = "colDelete",
+            .HeaderText = "",
+            .Image = My.Resources.bin,
+            .Width = 40,
+            .ImageLayout = DataGridViewImageCellLayout.Zoom
+        }
+        dtgvDSHopDong.Columns.Add(colDelete)
 
         For Each col As DataGridViewColumn In dtgvDSHopDong.Columns
             col.ReadOnly = True
         Next
-
         dtgvDSHopDong.Columns("colChon").ReadOnly = False
         dtgvDSHopDong.Columns("colExport").ReadOnly = False
         dtgvDSHopDong.Columns("colEdit").ReadOnly = False
         dtgvDSHopDong.Columns("colDelete").ReadOnly = False
-
     End Sub
 
-    ' ============= Tạo cột dữ liệu cho DataGridView ===============
-    Private Sub TaoCotHopDong()
-
-        dtgvDSHopDong.Columns.Clear()
-
-        'Checkbox
-        Dim colChon As New DataGridViewCheckBoxColumn()
-        colChon.Name = "colChon"
-        colChon.HeaderText = ""
-        colChon.Width = 40
-        colChon.Frozen = True
-        dtgvDSHopDong.Columns.Add(colChon)
-
-        'Nhân viên
-        Dim colNhanVien As New DataGridViewTextBoxColumn()
-        colNhanVien.Name = "colNhanVien"
-        colNhanVien.HeaderText = "Nhân viên"
-        colNhanVien.Width = 180
-        colNhanVien.Frozen = True
-        dtgvDSHopDong.Columns.Add(colNhanVien)
-
-        'Tên hợp đồng
-        Dim colTenHopDong As New DataGridViewTextBoxColumn()
-        colTenHopDong.Name = "colTenHopDong"
-        colTenHopDong.HeaderText = "Tên hợp đồng"
-        colTenHopDong.Width = 180
-        dtgvDSHopDong.Columns.Add(colTenHopDong)
-
-        'Loại hợp đồng
-        Dim colLoaiHopDong As New DataGridViewTextBoxColumn()
-        colLoaiHopDong.Name = "colLoaiHopDong"
-        colLoaiHopDong.HeaderText = "Loại hợp đồng"
-        colLoaiHopDong.Width = 200
-        dtgvDSHopDong.Columns.Add(colLoaiHopDong)
-
-        'Trạng thái
-        Dim colTrangThai As New DataGridViewTextBoxColumn()
-        colTrangThai.Name = "colTrangThai"
-        colTrangThai.HeaderText = "Trạng thái hợp đồng"
-        colTrangThai.Width = 160
-        dtgvDSHopDong.Columns.Add(colTrangThai)
-
-        'Chế độ lương
-        Dim colCheDoLuong As New DataGridViewTextBoxColumn()
-        colCheDoLuong.Name = "colCheDoLuong"
-        colCheDoLuong.HeaderText = "Chế độ lương"
-        colCheDoLuong.Width = 180
-        dtgvDSHopDong.Columns.Add(colCheDoLuong)
-
-        'Hình thức hưởng lương
-        Dim colHinhThucLuong As New DataGridViewTextBoxColumn()
-        colHinhThucLuong.Name = "colHinhThucLuong"
-        colHinhThucLuong.HeaderText = "Hình thức hưởng lương"
-        colHinhThucLuong.Width = 180
-        dtgvDSHopDong.Columns.Add(colHinhThucLuong)
-
-        '% Hưởng lương
-        Dim colPhanTramLuong As New DataGridViewTextBoxColumn()
-        colPhanTramLuong.Name = "colPhanTramLuong"
-        colPhanTramLuong.HeaderText = "% Hưởng lương"
-        colPhanTramLuong.Width = 120
-        dtgvDSHopDong.Columns.Add(colPhanTramLuong)
-
-        'Ngày bắt đầu
-        Dim colNgayBatDau As New DataGridViewTextBoxColumn()
-        colNgayBatDau.Name = "colNgayBatDau"
-        colNgayBatDau.HeaderText = "Ngày bắt đầu"
-        colNgayBatDau.Width = 130
-        dtgvDSHopDong.Columns.Add(colNgayBatDau)
-
-        'Ngày hết hạn
-        Dim colNgayHetHan As New DataGridViewTextBoxColumn()
-        colNgayHetHan.Name = "colNgayHetHan"
-        colNgayHetHan.HeaderText = "Ngày hết hạn"
-        colNgayHetHan.Width = 130
-        dtgvDSHopDong.Columns.Add(colNgayHetHan)
-
-
+    Private Sub LoadData()
+        Dim response = _service.Execute(DataIntent.GetList)
+        _contracts = TryCast(response?.Data, IEnumerable(Of Contract))?.Where(Function(c) c IsNot Nothing).ToList()
+        If _contracts Is Nothing Then _contracts = New List(Of Contract)()
     End Sub
 
-    ' =============== Tạo cột chức năng (Xuất file, chỉnh sửa, xóa) ===============
-    Private Sub TaoCotChucNang()
+    Private Sub ApplyFilters()
+        If _contracts Is Nothing Then Return
 
-        'Xuất file
-        Dim colExport As New DataGridViewImageColumn()
-        colExport.Name = "colExport"
-        colExport.HeaderText = ""
-        colExport.Image = My.Resources.word
-        colExport.Width = 40
-        'colExport.ResizeImageCol()
-        colExport.ImageLayout = DataGridViewImageCellLayout.Zoom
-        dtgvDSHopDong.Columns.Add(colExport)
+        Dim query = If(tbxSearch.Text, String.Empty).Trim()
+        Dim statusFilter = Convert.ToInt32(cbbxTrangThai.SelectedValue)
+        Dim dateMode = Convert.ToInt32(cbbxThoiGianHD.SelectedValue)
 
-        'Chỉnh sửa
-        Dim colEdit As New DataGridViewImageColumn()
-        colEdit.Name = "colEdit"
-        colEdit.HeaderText = ""
-        colEdit.Image = My.Resources.compose
-        colEdit.Width = 40
-        'colEdit.ResizeImageCol()
-        colEdit.ImageLayout = DataGridViewImageCellLayout.Zoom
-        dtgvDSHopDong.Columns.Add(colEdit)
+        Dim fromDate = dtpkTuNgay.Value.Date
+        Dim toDate = dtpkDenNgay.Value.Date
+        If fromDate > toDate Then
+            Dim tmp = fromDate
+            fromDate = toDate
+            toDate = tmp
+        End If
 
-        'Xóa
-        Dim colDelete As New DataGridViewImageColumn()
-        colDelete.Name = "colDelete"
-        colDelete.HeaderText = ""
-        colDelete.Image = My.Resources.bin
-        colDelete.Width = 40
-        'colDelete.ResizeImageCol()
-        colDelete.ImageLayout = DataGridViewImageCellLayout.Zoom
-        dtgvDSHopDong.Columns.Add(colDelete)
+        Dim filtered = _contracts.Where(
+            Function(c)
+                If c Is Nothing Then Return False
 
+                If statusFilter <> -1 AndAlso c.status <> statusFilter Then Return False
+
+                If Not String.IsNullOrWhiteSpace(query) Then
+                    Dim code = If(c.code, String.Empty)
+                    Dim empName = If(c.Employee?.name, String.Empty)
+                    Dim empCode = If(c.Employee?.code, String.Empty)
+                    If code.IndexOf(query, StringComparison.OrdinalIgnoreCase) < 0 AndAlso
+                       empName.IndexOf(query, StringComparison.OrdinalIgnoreCase) < 0 AndAlso
+                       empCode.IndexOf(query, StringComparison.OrdinalIgnoreCase) < 0 Then
+                        Return False
+                    End If
+                End If
+
+                If dateMode = 1 Then
+                    If Not c.start_date.HasValue Then Return False
+                    If c.start_date.Value.Date < fromDate OrElse c.start_date.Value.Date > toDate Then Return False
+                ElseIf dateMode = 2 Then
+                    If Not c.end_date.HasValue Then Return False
+                    If c.end_date.Value.Date < fromDate OrElse c.end_date.Value.Date > toDate Then Return False
+                End If
+
+                Return True
+            End Function).ToList()
+
+        _binding.DataSource = filtered
     End Sub
 
-    ' ============ Sử lý sư kiện click vào các nút chức năng ============
-    Private Sub dtgvDSHopDong_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles dtgvDSHopDong.CellClick
+    Private Sub btnThemHD_Click(sender As Object, e As EventArgs)
+        Dim data As New Contract()
+        Using crud As New frmHopDongEdit(data, True)
+            If crud.ShowDialog(Me) <> DialogResult.OK Then Return
+        End Using
 
+        Dim result = _service.Execute(DataIntent.Insert, data)
+        If result Is Nothing OrElse Not result.IsSuccess Then
+            MessageBox.Show("Thêm hợp đồng không thành công: " & If(result?.Message, "Lỗi không xác định."), "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Return
+        End If
+
+        LoadData()
+        ApplyFilters()
+    End Sub
+
+    Private Sub dtgvDSHopDong_CellClick(sender As Object, e As DataGridViewCellEventArgs)
         If e.RowIndex < 0 Then Exit Sub
 
-        If dtgvDSHopDong.Columns(e.ColumnIndex).Name = "colExport" Then
-            MessageBox.Show("Xuất hợp đồng")
+        Dim row As DataGridViewRow = dtgvDSHopDong.Rows(e.RowIndex)
+        Dim data = TryCast(row.DataBoundItem, Contract)
+        If data Is Nothing Then Return
+
+        Dim colName = dtgvDSHopDong.Columns(e.ColumnIndex).Name
+
+        If colName = "colExport" Then
+            MessageBox.Show("Xuất hợp đồng đang được chuẩn bị.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Return
         End If
 
-        If dtgvDSHopDong.Columns(e.ColumnIndex).Name = "colEdit" Then
-            MessageBox.Show("Chỉnh sửa hợp đồng")
+        If colName = "colEdit" Then
+            Dim clone = Utils.DeepClone(data)
+            Using crud As New frmHopDongEdit(clone)
+                If crud.ShowDialog(Me) <> DialogResult.OK Then Return
+            End Using
+
+            Dim result = _service.Execute(DataIntent.Update, clone)
+            If result Is Nothing OrElse Not result.IsSuccess Then
+                MessageBox.Show("Cập nhật hợp đồng không thành công: " & If(result?.Message, "Lỗi không xác định."), "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Return
+            End If
+
+            LoadData()
+            ApplyFilters()
+            Return
         End If
 
-        If dtgvDSHopDong.Columns(e.ColumnIndex).Name = "colDelete" Then
-            MessageBox.Show("Xóa hợp đồng")
-        End If
+        If colName = "colDelete" Then
+            If MessageBox.Show("Xác nhận xóa hợp đồng?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.No Then
+                Return
+            End If
 
+            Dim result = _service.Execute(DataIntent.SoftDeleteMany, New List(Of Contract) From {data})
+            If result Is Nothing OrElse Not result.IsSuccess Then
+                MessageBox.Show("Xóa hợp đồng không thành công: " & If(result?.Message, "Lỗi không xác định."), "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Return
+            End If
+
+            LoadData()
+            ApplyFilters()
+        End If
     End Sub
-    '=========== Xử lý sự kiện khi checkbox được chọn để cập nhật trạng thái chọn =============
-    Private Sub dtgvDSHopDong_CurrentCellDirtyStateChanged(sender As Object, e As EventArgs) Handles dtgvDSHopDong.CurrentCellDirtyStateChanged
-        If dtgvDSHopDong.IsCurrentCellDirty Then
-            dtgvDSHopDong.CommitEdit(DataGridViewDataErrorContexts.Commit)
-        End If
-    End Sub
-    ' =============== Load dữ liệu lên DataGridView ===============
-    Private Sub LoadDuLieu()
-
-        Dim ds = TaoDuLieuDemo()
-
-        dtgvDSHopDong.Rows.Clear()
-
-        For Each hd In ds
-
-            dtgvDSHopDong.Rows.Add(
-                False,
-                hd.TenNhanVien,
-                hd.TenHopDong,
-                hd.LoaiHopDong,
-                hd.TrangThai,
-                hd.CheDoLuong,
-                hd.HinhThucLuong,
-                hd.PhanTramLuong,
-                hd.NgayBatDau.ToString("dd/MM/yyyy"),
-                hd.NgayHetHan
-            )
-
-        Next
-
-    End Sub
-
-    ' =============== Tạo dữ liệu demo để hiển thị lên DataGridView ===============
-    Private Function TaoDuLieuDemo() As List(Of HopDong)
-
-        Dim ds As New List(Of HopDong)
-
-        ds.Add(New HopDong With {
-            .MaHopDong = "HD001",
-            .TenNhanVien = "Luong Thanh Tung",
-            .TenHopDong = "Hợp đồng thử việc",
-            .LoaiHopDong = "Không xác định thời hạn",
-            .TrangThai = "Có hiệu lực",
-            .CheDoLuong = "Chế độ lương mặc định",
-            .HinhThucLuong = "Theo thỏa thuận",
-            .PhanTramLuong = 1,
-            .NgayBatDau = #03/03/2026#,
-            .NgayHetHan = "Không thời hạn"
-        })
-
-        ds.Add(New HopDong With {
-            .MaHopDong = "HD002",
-            .TenNhanVien = "Nguyễn Văn A",
-            .TenHopDong = "Hợp đồng chính thức",
-            .LoaiHopDong = "12 tháng",
-            .TrangThai = "Có hiệu lực",
-            .CheDoLuong = "Lương cơ bản",
-            .HinhThucLuong = "Theo KPI",
-            .PhanTramLuong = 1,
-            .NgayBatDau = #01/01/2026#,
-            .NgayHetHan = "01/01/2027"
-        })
-
-        ds.Add(New HopDong With {
-            .MaHopDong = "HD003",
-            .TenNhanVien = "Trần Thị B",
-            .TenHopDong = "Hợp đồng thời vụ",
-            .LoaiHopDong = "6 tháng",
-            .TrangThai = "Hết hạn",
-            .CheDoLuong = "Lương thời vụ",
-            .HinhThucLuong = "Theo ngày",
-            .PhanTramLuong = 1,
-            .NgayBatDau = #01/06/2025#,
-            .NgayHetHan = "01/12/2025"
-        })
-
-        Return ds
-
-    End Function
-
-
 End Class

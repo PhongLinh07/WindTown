@@ -1,8 +1,11 @@
 ﻿Imports System.ComponentModel
 Imports System.Linq
+Imports System.IO
+Imports System.Data
 
 Public Class frmNhanSu
     Private ReadOnly _employeeService As New EmployeeService()
+    Private _menuNhapXuatNV As ContextMenuStrip
     Private ReadOnly _departmentService As New BaseService(Of Department)()
     Private ReadOnly _positionService As New PositionService()
     Private ReadOnly _jobService As New JobService()
@@ -494,6 +497,7 @@ Public Class frmNhanSu
 
     Private Sub btnSearch_Click(sender As Object, e As EventArgs) Handles btnSearch.Click
         ApplyFilters()
+
     End Sub
 
     Private Sub btnMoiNV_Click(sender As Object, e As EventArgs) Handles btnMoiNV.Click, btnThemNV.Click
@@ -604,6 +608,7 @@ Public Class frmNhanSu
 
         dtgvDSNhanVien.DataSource = New BindingList(Of NhanVien)(query.ToList())
         btnXuLyNhanh.Visible = False
+        TextBox1.Clear()
     End Sub
 
     Private Function ContainsIgnoreCase(source As String, keyword As String) As Boolean
@@ -1097,5 +1102,58 @@ Public Class frmNhanSu
 
     Private Sub btnNhapXuatNV_Click(sender As Object, e As EventArgs) Handles btnNhapXuatNV.Click
 
+        If _menuNhapXuatNV Is Nothing Then
+            _menuNhapXuatNV = New ContextMenuStrip()
+            _menuNhapXuatNV.Items.Add("Nhập danh sách Excel", Nothing, AddressOf XuLy_NhapNhanSuExcel)
+            _menuNhapXuatNV.Items.Add("Xuất Excel (bảng ô)", Nothing, AddressOf XuLy_XuatNhanSuExcel)
+        End If
+
+        _menuNhapXuatNV.Show(btnNhapXuatNV, 0, btnNhapXuatNV.Height)
+
+    End Sub
+
+    Private Sub XuLy_NhapNhanSuExcel(sender As Object, e As EventArgs)
+        Using dialog As New OpenFileDialog()
+            dialog.Title = "Nhập danh sách nhân sự"
+            dialog.Filter = "Excel/CSV (*.xlsx;*.xls;*.csv)|*.xlsx;*.xls;*.csv"
+            dialog.Multiselect = False
+            If dialog.ShowDialog(Me) <> DialogResult.OK Then Return
+
+            Dim table As DataTable = Nothing
+            Dim err As String = Nothing
+            If Not EmployeeExcelTransfer.LoadToDataTable(dialog.FileName, table, err) Then
+                MessageBox.Show("Không đọc được file: " & If(err, "Lỗi không xác định."), "Nhập Excel", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                Return
+            End If
+
+            Cursor = Cursors.WaitCursor
+            Try
+                Dim rs = EmployeeExcelTransfer.ImportEmployees(table, _employeeService, employeeByCode)
+                MessageBox.Show($"Đã xử lý: {rs.Total} dòng. Thêm mới: {rs.Inserted}. Cập nhật: {rs.Updated}. Lỗi: {rs.Failed}.", "Nhập Excel", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Finally
+                Cursor = Cursors.Default
+            End Try
+
+            ReloadDataAndView()
+        End Using
+    End Sub
+
+    Private Sub XuLy_XuatNhanSuExcel(sender As Object, e As EventArgs)
+        Using dialog As New SaveFileDialog()
+            dialog.Title = "Xuất danh sách nhân sự"
+            dialog.Filter = "Excel (*.xls)|*.xls"
+            dialog.FileName = $"NhanSu_{DateTime.Now:yyyyMMdd_HHmm}.xls"
+            If dialog.ShowDialog(Me) <> DialogResult.OK Then Return
+
+            Dim rows = TryCast(dtgvDSNhanVien.DataSource, IEnumerable(Of NhanVien))
+            If rows Is Nothing Then rows = allNhanVienView
+
+            Try
+                EmployeeExcelTransfer.ExportNhanVienToXlsHtml(rows, dialog.FileName)
+                MessageBox.Show("Xuất file thành công: " & dialog.FileName, "Xuất Excel", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Catch ex As Exception
+                MessageBox.Show("Xuất file không thành công: " & ex.Message, "Xuất Excel", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End Try
+        End Using
     End Sub
 End Class

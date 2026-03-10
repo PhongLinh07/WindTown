@@ -91,7 +91,13 @@ Public Class Contract
     <Write(False)> <DisplayName("Nhân viên")> <Display(Order:=2)>
     Public ReadOnly Property Employee_UI As String
         Get
-            Return If(Employee?.code, "---")
+            Dim code = If(Employee?.code, String.Empty)
+            Dim name = If(Employee?.name, String.Empty)
+
+            If String.IsNullOrWhiteSpace(code) AndAlso String.IsNullOrWhiteSpace(name) Then Return "---"
+            If String.IsNullOrWhiteSpace(name) Then Return code
+            If String.IsNullOrWhiteSpace(code) Then Return name
+            Return $"{name} ({code})"
         End Get
     End Property
 #End Region
