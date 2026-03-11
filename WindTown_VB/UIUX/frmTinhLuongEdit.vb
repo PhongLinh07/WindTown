@@ -154,7 +154,7 @@ Public Class frmTinhLuongEdit
         If _positions Is Nothing Then _positions = New List(Of Position)()
 
         cboPosition.DataSource = _positions.Select(Function(p) New With {
-            .Display = $"{p.Contract?.Employee?.code} - {p.Contract?.Employee?.name} | {p.Job?.code} - {p.Job?.name}",
+            .Display = $"{If(String.IsNullOrWhiteSpace(p.Contract?.Employee?.name), "---", p.Contract?.Employee?.name)} | {p.Job?.code} - {p.Job?.name}",
             .Value = p.id
         }).ToList()
         cboPosition.DisplayMember = "Display"

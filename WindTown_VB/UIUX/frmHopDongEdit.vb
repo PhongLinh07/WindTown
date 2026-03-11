@@ -139,7 +139,7 @@ Public Class frmHopDongEdit
         If _employees Is Nothing Then _employees = New List(Of Employee)()
 
         cboEmployee.DataSource = _employees.Select(Function(e) New With {
-            .Display = $"{e.code} - {e.name}",
+            .Display = If(String.IsNullOrWhiteSpace(e.name), "---", e.name),
             .Value = e.id
         }).ToList()
         cboEmployee.DisplayMember = "Display"

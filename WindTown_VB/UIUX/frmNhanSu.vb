@@ -256,7 +256,7 @@ Public Class frmNhanSu
                 departmentCount = bp.CongViec.Sum(Function(cv) If(cv.NhanVien IsNot Nothing, cv.NhanVien.Count, 0))
             End If
 
-            Dim deptNode = root.Nodes.Add($"{bp.Code} - {bp.Name} ({departmentCount})")
+            Dim deptNode = root.Nodes.Add($"{bp.Name} ({departmentCount})")
             deptNode.Tag = New TreeNodeMeta With {.NodeType = NODE_DEPARTMENT, .Id = bp.Id, .ParentDepartmentId = bp.Id}
 
             If bp.CongViec Is Nothing Then Continue For
@@ -301,7 +301,6 @@ Public Class frmNhanSu
                 .Frozen = True
             })
 
-            .Columns.Add(New DataGridViewTextBoxColumn With {.Name = "colMaNV", .HeaderText = "Mã", .DataPropertyName = "Code", .Frozen = True})
             .Columns.Add(New DataGridViewTextBoxColumn With {.Name = "colTenNV", .HeaderText = "Tên", .DataPropertyName = "Name", .Frozen = True})
             .Columns.Add(New DataGridViewTextBoxColumn With {.Name = "colEmail", .HeaderText = "Email", .DataPropertyName = "Email"})
             .Columns.Add(New DataGridViewTextBoxColumn With {.Name = "colTrangThai", .HeaderText = "Trạng thái", .DataPropertyName = "Status"})
@@ -767,7 +766,7 @@ Public Class frmNhanSu
         Dim cbbDept As New ComboBox With {.DropDownStyle = ComboBoxStyle.DropDownList, .Location = New Point(12, 66), .Width = 430}
 
         Dim deptList = phongBan.Where(Function(d) d IsNot Nothing AndAlso d.status <> -1).OrderBy(Function(d) d.name).ToList()
-        cbbDept.DataSource = deptList.Select(Function(d) New With {.Display = $"{d.code} - {d.name}", .Value = d.id}).ToList()
+        cbbDept.DataSource = deptList.Select(Function(d) New With {.Display = $"{d.name}", .Value = d.id}).ToList()
         cbbDept.DisplayMember = "Display"
         cbbDept.ValueMember = "Value"
 
@@ -786,7 +785,7 @@ Public Class frmNhanSu
             OrderBy(Function(j) j.Department.name).
             ThenBy(Function(j) j.code).
             ToList()
-        cbbJob.DataSource = jobList.Select(Function(j) New With {.Display = $"[{j.Department.name}] {j.code} - {j.name}", .Value = j}).ToList()
+        cbbJob.DataSource = jobList.Select(Function(j) New With {.Display = $"[{j.Department.name}] {j.name}", .Value = j}).ToList()
         cbbJob.DisplayMember = "Display"
         cbbJob.ValueMember = "Value"
 

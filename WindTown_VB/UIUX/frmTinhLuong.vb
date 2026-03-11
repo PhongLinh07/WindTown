@@ -71,7 +71,7 @@ Public Class frmTinhLuong
         Dim employeeItems As New List(Of Object)
         employeeItems.Add(New With {.Display = "Tất cả nhân viên", .Value = 0})
         employeeItems.AddRange(employees.Select(Function(e) New With {
-            .Display = $"{e.code} - {e.name}",
+            .Display = If(String.IsNullOrWhiteSpace(e.name), "---", e.name),
             .Value = e.id
         }))
         ComboBox3.DataSource = employeeItems

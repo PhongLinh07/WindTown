@@ -120,8 +120,8 @@ Public Class frmChucVu
             Dim query = (If(searchText, String.Empty)).Trim()
             Dim hasSearch = Not String.IsNullOrWhiteSpace(query) AndAlso query <> "Tìm kiếm"
 
-            For Each dept In _departments.OrderBy(Function(d) d.code)
-                Dim deptNode As New TreeNode($"[{dept.code}] {dept.name}")
+            For Each dept In _departments.OrderBy(Function(d) d.name)
+                Dim deptNode As New TreeNode($"{dept.name}")
                 deptNode.Tag = New NodeMeta With {.NodeType = NODE_DEPARTMENT, .Id = dept.id}
 
                 Dim jobsInDept = _jobs.
@@ -186,7 +186,7 @@ Public Class frmChucVu
         Dim dept = GetSelectedDepartment()
         If dept IsNot Nothing Then
             Label2.Text = "Mô tả chức vụ:" & Environment.NewLine &
-                         $"- Bộ phận: [{dept.code}] {dept.name}" & Environment.NewLine &
+                         $"- Bộ phận: {dept.name}" & Environment.NewLine &
                          "- Chọn 1 chức vụ để xem chi tiết."
             UpdateActionButtons()
             Return

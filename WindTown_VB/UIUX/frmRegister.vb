@@ -26,7 +26,7 @@ Public Class frmRegister
 
         cbxEmployeeId.DataSource = employee.
             Select(Function(x) New With {
-                .Display = x.code & " - " & x.name,
+                .Display = If(String.IsNullOrWhiteSpace(x.name), "---", x.name),
                 .Value = x.id
             }).ToList()
 

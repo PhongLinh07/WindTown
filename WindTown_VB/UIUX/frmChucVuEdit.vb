@@ -134,7 +134,7 @@ Public Class frmChucVuEdit
         If _departments Is Nothing Then _departments = New List(Of Department)()
 
         cboDepartment.DataSource = _departments.Select(Function(d) New With {
-            .Display = $"[{d.code}] {d.name}",
+            .Display = $"{d.name}",
             .Value = d.id
         }).ToList()
         cboDepartment.DisplayMember = "Display"

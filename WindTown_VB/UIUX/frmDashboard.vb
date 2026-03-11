@@ -125,14 +125,16 @@ Public Class frmDashboard
 
         lvTopCheckinSom.Items.Clear()
         For Each item In summary.TopOnTimeInMonth
-            Dim row As New ListViewItem($"{item.EmployeeCode} - {item.EmployeeName}")
+            Dim name = If(String.IsNullOrWhiteSpace(item.EmployeeName), "---", item.EmployeeName)
+            Dim row As New ListViewItem(name)
             row.SubItems.Add(item.MetricValue.ToString("0"))
             lvTopCheckinSom.Items.Add(row)
         Next
 
         lvTopCheckinMuon.Items.Clear()
         For Each item In summary.TopLateInWeek
-            Dim row As New ListViewItem($"{item.EmployeeCode} - {item.EmployeeName}")
+            Dim name = If(String.IsNullOrWhiteSpace(item.EmployeeName), "---", item.EmployeeName)
+            Dim row As New ListViewItem(name)
             row.SubItems.Add(item.MetricValue.ToString("0.##"))
             lvTopCheckinMuon.Items.Add(row)
         Next

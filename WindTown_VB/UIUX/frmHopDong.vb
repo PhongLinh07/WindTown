@@ -36,8 +36,11 @@ Public Class frmHopDong
         AddHandler btnSearch.Click, Sub() ApplyFilters()
         AddHandler tbxSearch.KeyDown, AddressOf tbxSearch_KeyDown
         AddHandler cbbxTrangThai.SelectedIndexChanged, Sub() ApplyFilters()
+        AddHandler cbbxThoiGianHD.SelectedIndexChanged, Sub() ApplyFilters()
         AddHandler dtpkTuNgay.ValueChanged, Sub() ApplyFilters()
+        AddHandler dtpkDenNgay.ValueChanged, Sub() ApplyFilters()
         AddHandler btnThemHD.Click, AddressOf btnThemHD_Click
+        AddHandler btnEdit.Click, AddressOf btnEdit_Click
     End Sub
 
     Private Sub tbxSearch_KeyDown(sender As Object, e As KeyEventArgs)
@@ -253,6 +256,16 @@ Public Class frmHopDong
         ApplyFilters()
     End Sub
 
+    Private Sub btnEdit_Click(sender As Object, e As EventArgs)
+        Dim data = GetSelectedContract()
+        If data Is Nothing Then
+            MessageBox.Show("Vui lòng chọn một hợp đồng để chỉnh sửa.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Return
+        End If
+
+        EditContract(data)
+    End Sub
+
     Private Sub dtgvDSHopDong_CellClick(sender As Object, e As DataGridViewCellEventArgs)
         If e.RowIndex < 0 Then Exit Sub
 
@@ -268,19 +281,7 @@ Public Class frmHopDong
         End If
 
         If colName = "colEdit" Then
-            Dim clone = Utils.DeepClone(data)
-            Using crud As New frmHopDongEdit(clone)
-                If crud.ShowDialog(Me) <> DialogResult.OK Then Return
-            End Using
-
-            Dim result = _service.Execute(DataIntent.Update, clone)
-            If result Is Nothing OrElse Not result.IsSuccess Then
-                MessageBox.Show("Cập nhật hợp đồng không thành công: " & If(result?.Message, "Lỗi không xác định."), "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                Return
-            End If
-
-            LoadData()
-            ApplyFilters()
+            EditContract(data)
             Return
         End If
 
@@ -298,5 +299,36 @@ Public Class frmHopDong
             LoadData()
             ApplyFilters()
         End If
+    End Sub
+
+    Private Function GetSelectedContract() As Contract
+        Dim row As DataGridViewRow = Nothing
+
+        If dtgvDSHopDong.SelectedRows.Count > 0 Then
+            row = dtgvDSHopDong.SelectedRows(0)
+        Else
+            row = dtgvDSHopDong.CurrentRow
+        End If
+
+        If row Is Nothing Then Return Nothing
+        Return TryCast(row.DataBoundItem, Contract)
+    End Function
+
+    Private Sub EditContract(data As Contract)
+        If data Is Nothing Then Return
+
+        Dim clone = Utils.DeepClone(data)
+        Using crud As New frmHopDongEdit(clone)
+            If crud.ShowDialog(Me) <> DialogResult.OK Then Return
+        End Using
+
+        Dim result = _service.Execute(DataIntent.Update, clone)
+        If result Is Nothing OrElse Not result.IsSuccess Then
+            MessageBox.Show("Cập nhật hợp đồng không thành công: " & If(result?.Message, "Lỗi không xác định."), "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Return
+        End If
+
+        LoadData()
+        ApplyFilters()
     End Sub
 End Class

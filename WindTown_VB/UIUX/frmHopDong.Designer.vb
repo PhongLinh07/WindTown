@@ -34,10 +34,11 @@ Partial Class frmHopDong
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.Panel2 = New System.Windows.Forms.Panel()
-        Me.cbbxTrangThai = New System.Windows.Forms.ComboBox()
-        Me.dtgvDSHopDong = New System.Windows.Forms.DataGridView()
-        Me.tbxSearch = New System.Windows.Forms.TextBox()
         Me.btnSearch = New System.Windows.Forms.Button()
+        Me.cbbxTrangThai = New System.Windows.Forms.ComboBox()
+        Me.tbxSearch = New System.Windows.Forms.TextBox()
+        Me.dtgvDSHopDong = New System.Windows.Forms.DataGridView()
+        Me.btnEdit = New System.Windows.Forms.Button()
         Me.tlpnlMain.SuspendLayout()
         Me.tlpDashboard.SuspendLayout()
         Me.Panel4.SuspendLayout()
@@ -88,6 +89,7 @@ Partial Class frmHopDong
         'Panel4
         '
         Me.Panel4.BackColor = System.Drawing.Color.White
+        Me.Panel4.Controls.Add(Me.btnEdit)
         Me.Panel4.Controls.Add(Me.btnThemHD)
         Me.Panel4.Controls.Add(Me.dtpkDenNgay)
         Me.Panel4.Dock = System.Windows.Forms.DockStyle.Fill
@@ -101,9 +103,9 @@ Partial Class frmHopDong
         Me.btnThemHD.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnThemHD.BackColor = System.Drawing.Color.LimeGreen
         Me.btnThemHD.ForeColor = System.Drawing.Color.White
-        Me.btnThemHD.Location = New System.Drawing.Point(118, 40)
+        Me.btnThemHD.Location = New System.Drawing.Point(118, 33)
         Me.btnThemHD.Name = "btnThemHD"
-        Me.btnThemHD.Size = New System.Drawing.Size(157, 30)
+        Me.btnThemHD.Size = New System.Drawing.Size(157, 37)
         Me.btnThemHD.TabIndex = 4
         Me.btnThemHD.Text = "Thêm hợp đồng"
         Me.btnThemHD.UseVisualStyleBackColor = False
@@ -179,6 +181,20 @@ Partial Class frmHopDong
         Me.Panel2.Size = New System.Drawing.Size(448, 71)
         Me.Panel2.TabIndex = 2
         '
+        'btnSearch
+        '
+        Me.btnSearch.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnSearch.FlatAppearance.BorderSize = 0
+        Me.btnSearch.Font = New System.Drawing.Font("Arial Narrow", 8.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnSearch.Image = Global.WindTown_VB.My.Resources.Resources.search
+        Me.btnSearch.Location = New System.Drawing.Point(415, 38)
+        Me.btnSearch.MaximumSize = New System.Drawing.Size(30, 30)
+        Me.btnSearch.MinimumSize = New System.Drawing.Size(30, 30)
+        Me.btnSearch.Name = "btnSearch"
+        Me.btnSearch.Size = New System.Drawing.Size(30, 30)
+        Me.btnSearch.TabIndex = 2
+        Me.btnSearch.UseVisualStyleBackColor = True
+        '
         'cbbxTrangThai
         '
         Me.cbbxTrangThai.Dock = System.Windows.Forms.DockStyle.Top
@@ -187,6 +203,16 @@ Partial Class frmHopDong
         Me.cbbxTrangThai.Name = "cbbxTrangThai"
         Me.cbbxTrangThai.Size = New System.Drawing.Size(448, 30)
         Me.cbbxTrangThai.TabIndex = 0
+        '
+        'tbxSearch
+        '
+        Me.tbxSearch.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.tbxSearch.Location = New System.Drawing.Point(0, 44)
+        Me.tbxSearch.MaximumSize = New System.Drawing.Size(383, 27)
+        Me.tbxSearch.MinimumSize = New System.Drawing.Size(383, 27)
+        Me.tbxSearch.Name = "tbxSearch"
+        Me.tbxSearch.Size = New System.Drawing.Size(383, 27)
+        Me.tbxSearch.TabIndex = 1
         '
         'dtgvDSHopDong
         '
@@ -206,29 +232,18 @@ Partial Class frmHopDong
         Me.dtgvDSHopDong.Size = New System.Drawing.Size(1030, 499)
         Me.dtgvDSHopDong.TabIndex = 7
         '
-        'tbxSearch
+        'btnEdit
         '
-        Me.tbxSearch.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.tbxSearch.Location = New System.Drawing.Point(0, 44)
-        Me.tbxSearch.MaximumSize = New System.Drawing.Size(383, 27)
-        Me.tbxSearch.MinimumSize = New System.Drawing.Size(383, 27)
-        Me.tbxSearch.Name = "tbxSearch"
-        Me.tbxSearch.Size = New System.Drawing.Size(383, 27)
-        Me.tbxSearch.TabIndex = 1
-        '
-        'btnSearch
-        '
-        Me.btnSearch.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnSearch.FlatAppearance.BorderSize = 0
-        Me.btnSearch.Font = New System.Drawing.Font("Arial Narrow", 8.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnSearch.Image = Global.WindTown_VB.My.Resources.Resources.search
-        Me.btnSearch.Location = New System.Drawing.Point(415, 38)
-        Me.btnSearch.MaximumSize = New System.Drawing.Size(30, 30)
-        Me.btnSearch.MinimumSize = New System.Drawing.Size(30, 30)
-        Me.btnSearch.Name = "btnSearch"
-        Me.btnSearch.Size = New System.Drawing.Size(30, 30)
-        Me.btnSearch.TabIndex = 2
-        Me.btnSearch.UseVisualStyleBackColor = True
+        Me.btnEdit.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.btnEdit.BackColor = System.Drawing.Color.DodgerBlue
+        Me.btnEdit.Location = New System.Drawing.Point(19, 34)
+        Me.btnEdit.MaximumSize = New System.Drawing.Size(93, 34)
+        Me.btnEdit.MinimumSize = New System.Drawing.Size(93, 34)
+        Me.btnEdit.Name = "btnEdit"
+        Me.btnEdit.Size = New System.Drawing.Size(93, 34)
+        Me.btnEdit.TabIndex = 5
+        Me.btnEdit.Text = "Chỉnh sửa"
+        Me.btnEdit.UseVisualStyleBackColor = False
         '
         'frmHopDong
         '
@@ -271,4 +286,5 @@ Partial Class frmHopDong
     Friend WithEvents dtgvDSHopDong As DataGridView
     Friend WithEvents btnSearch As Button
     Friend WithEvents tbxSearch As TextBox
+    Friend WithEvents btnEdit As Button
 End Class

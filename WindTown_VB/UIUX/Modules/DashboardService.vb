@@ -83,14 +83,14 @@
                        Dim emp = GetEmployee(employeeMap, g.Key)
 
                        Return New DashboardTopItem With {
-                           .EmployeeCode = emp.code,
+                           .EmployeeCode = String.Empty,
                            .EmployeeName = emp.name,
                            .MetricValue = g.Count()
                        }
 
                    End Function).
             OrderByDescending(Function(x) x.MetricValue).
-            ThenBy(Function(x) x.EmployeeCode).
+            ThenBy(Function(x) x.EmployeeName).
             Take(10).
             ToList()
 
@@ -103,14 +103,14 @@
                        Dim emp = GetEmployee(employeeMap, g.Key)
 
                        Return New DashboardTopItem With {
-                           .EmployeeCode = emp.code,
+                           .EmployeeCode = String.Empty,
                            .EmployeeName = emp.name,
                            .MetricValue = g.Sum(Function(x) x.late_hours)
                        }
 
                    End Function).
             OrderByDescending(Function(x) x.MetricValue).
-            ThenBy(Function(x) x.EmployeeCode).
+            ThenBy(Function(x) x.EmployeeName).
             Take(10).
             ToList()
 
@@ -179,7 +179,7 @@
         End If
 
         Return New Employee With {
-            .code = "EMP-NA",
+            .code = "",
             .name = "Khong xac dinh"
         }
 
