@@ -28,12 +28,12 @@ Partial Class Pay_Item_CRUD_Frm
         Me.ui_status = New System.Windows.Forms.ComboBox()
         Me.ui_note = New System.Windows.Forms.RichTextBox()
         Me.Label4 = New System.Windows.Forms.Label()
-        Me.ui_pay_period = New System.Windows.Forms.ComboBox()
         Me.Label10 = New System.Windows.Forms.Label()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.ui_name = New System.Windows.Forms.TextBox()
         Me.ui_value = New System.Windows.Forms.NumericUpDown()
         Me.Label2 = New System.Windows.Forms.Label()
+        Me.ui_payroll = New System.Windows.Forms.TextBox()
         CType(Me.ui_value, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -99,16 +99,6 @@ Partial Class Pay_Item_CRUD_Frm
         Me.Label4.TabIndex = 8
         Me.Label4.Text = "Ghi chú:"
         '
-        'ui_pay_period
-        '
-        Me.ui_pay_period.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
-        Me.ui_pay_period.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ui_pay_period.FormattingEnabled = True
-        Me.ui_pay_period.Location = New System.Drawing.Point(60, 193)
-        Me.ui_pay_period.Name = "ui_pay_period"
-        Me.ui_pay_period.Size = New System.Drawing.Size(291, 28)
-        Me.ui_pay_period.TabIndex = 51
-        '
         'Label10
         '
         Me.Label10.AutoSize = True
@@ -124,7 +114,6 @@ Partial Class Pay_Item_CRUD_Frm
         'Label9
         '
         Me.Label9.AutoSize = True
-        Me.Label9.Enabled = False
         Me.Label9.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label9.ForeColor = System.Drawing.SystemColors.InactiveCaptionText
         Me.Label9.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -140,14 +129,13 @@ Partial Class Pay_Item_CRUD_Frm
         Me.ui_name.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ui_name.Location = New System.Drawing.Point(60, 278)
         Me.ui_name.Name = "ui_name"
-        Me.ui_name.ReadOnly = True
         Me.ui_name.Size = New System.Drawing.Size(291, 26)
         Me.ui_name.TabIndex = 62
         '
         'ui_value
         '
         Me.ui_value.Font = New System.Drawing.Font("Arial Narrow", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ui_value.Increment = New Decimal(New Integer() {-1486618624, 232830643, 0, 0})
+        Me.ui_value.Increment = New Decimal(New Integer() {100000, 0, 0, 0})
         Me.ui_value.Location = New System.Drawing.Point(60, 368)
         Me.ui_value.Maximum = New Decimal(New Integer() {-1486618624, 232830643, 0, 0})
         Me.ui_value.Name = "ui_value"
@@ -167,17 +155,25 @@ Partial Class Pay_Item_CRUD_Frm
         Me.Label2.TabIndex = 64
         Me.Label2.Text = "Tiền VND"
         '
+        'ui_payroll
+        '
+        Me.ui_payroll.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ui_payroll.Location = New System.Drawing.Point(60, 193)
+        Me.ui_payroll.Name = "ui_payroll"
+        Me.ui_payroll.Size = New System.Drawing.Size(291, 26)
+        Me.ui_payroll.TabIndex = 66
+        '
         'Pay_Item_CRUD_Frm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.ClientSize = New System.Drawing.Size(768, 451)
+        Me.Controls.Add(Me.ui_payroll)
         Me.Controls.Add(Me.ui_value)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label9)
         Me.Controls.Add(Me.ui_name)
-        Me.Controls.Add(Me.ui_pay_period)
         Me.Controls.Add(Me.Label10)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.ui_note)
@@ -196,11 +192,11 @@ Partial Class Pay_Item_CRUD_Frm
         Me.Controls.SetChildIndex(Me.ui_note, 0)
         Me.Controls.SetChildIndex(Me.Label4, 0)
         Me.Controls.SetChildIndex(Me.Label10, 0)
-        Me.Controls.SetChildIndex(Me.ui_pay_period, 0)
         Me.Controls.SetChildIndex(Me.ui_name, 0)
         Me.Controls.SetChildIndex(Me.Label9, 0)
         Me.Controls.SetChildIndex(Me.Label2, 0)
         Me.Controls.SetChildIndex(Me.ui_value, 0)
+        Me.Controls.SetChildIndex(Me.ui_payroll, 0)
         CType(Me.ui_value, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
@@ -213,10 +209,10 @@ Partial Class Pay_Item_CRUD_Frm
     Friend WithEvents ui_status As ComboBox
     Friend WithEvents ui_note As RichTextBox
     Friend WithEvents Label4 As Label
-    Friend WithEvents ui_pay_period As ComboBox
     Friend WithEvents Label10 As Label
     Friend WithEvents Label9 As Label
     Friend WithEvents ui_name As TextBox
     Friend WithEvents ui_value As NumericUpDown
     Friend WithEvents Label2 As Label
+    Friend WithEvents ui_payroll As TextBox
 End Class

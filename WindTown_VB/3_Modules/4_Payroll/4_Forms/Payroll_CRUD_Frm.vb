@@ -17,14 +17,16 @@ Public Class Payroll_CRUD_Frm
         Me._data = data
         Me.isCreate = isCreate
 
-        Me.Text = If(isCreate, "Thêm bảng lương", "bảng lưuong chi tiết")
+        Me.Text = If(isCreate, "Thêm bảng lương", "Bảng lương chi tiết")
         InitComboBox()
 
         BindDataToUI()
 
         tool_save.Enabled = False
 
-
+        If isCreate Then
+            Return 'chỉ mở khi ko phải tạo
+        End If
 
         grb_pay_item.Controls.Clear()
         _pay_item_list_uc = New Pay_Item_List_UC(_data)

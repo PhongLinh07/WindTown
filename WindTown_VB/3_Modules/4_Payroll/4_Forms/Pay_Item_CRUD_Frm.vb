@@ -40,8 +40,8 @@ Public Class Pay_Item_CRUD_Frm
 
         ui_code.Text = _data.code
         ui_name.Text = _data.name
+        ui_payroll.Text = _data.Payroll?.code
         ui_value.Value = _data.value
-
         ui_note.Text = _data.note
         ui_status.SelectedValue = _data.status
 
@@ -93,13 +93,11 @@ Public Class Pay_Item_CRUD_Frm
     ' =============================
     Protected Overrides Sub DataChanged() _
         Handles ui_code.TextChanged,
-                ui_pay_period.SelectedValueChanged,
                 ui_value.ValueChanged,
                 ui_note.TextChanged,
                 ui_status.SelectedIndexChanged
 
         tool_save.Enabled = True
     End Sub
-
 
 End Class

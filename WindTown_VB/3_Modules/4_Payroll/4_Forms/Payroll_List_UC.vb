@@ -35,7 +35,7 @@ Public Class Payroll_List_UC
 
     Protected Overrides Sub tool_new_Click(sender As Object, e As EventArgs)
         ' Tạo bản sao của đối tượng để tránh sửa trực tiếp trên DataGridView
-        Dim data = New Payroll() ' tạo mới đối tượng với giá trị mặc định
+        Dim data As Payroll = New Payroll() ' tạo mới đối tượng với giá trị mặc định
 
         Dim crud As New Payroll_CRUD_Frm(data, True)
         If crud.ShowDialog() = DialogResult.OK Then

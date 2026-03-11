@@ -13,13 +13,20 @@ Public Class Pay_Item_List_UC
     Public Sub New(payroll As Payroll)
         MyBase.New(New Pay_ItemService(), "Pay_Item_List_UC", "Khoản tiền")
         InitializeComponent()
-        Init(GetType(Pay_Item))
         _payroll = payroll
         _lockTarget = True
+
+        Init(GetType(Pay_Item))
     End Sub
 
 
     Protected Overrides Sub LoadData()
+
+        If Not _lockTarget Then
+            MyBase.LoadData() ' Test
+            Return
+        End If
+
         Dim response = _service.Execute(DataIntent.GetPayItemByPayroll, _payroll)
         If response.IsSuccess Then
             ' Gán danh sách vào BindingSource để hỗ trợ lọc (Search)
@@ -60,7 +67,7 @@ Public Class Pay_Item_List_UC
 
     Protected Overrides Sub tool_new_Click(sender As Object, e As EventArgs)
         ' Tạo bản sao của đối tượng để tránh sửa trực tiếp trên DataGridView
-        Dim data = New Pay_Item() ' tạo mới đối tượng với giá trị mặc định
+        Dim data As Pay_Item = New Pay_Item With {.Payroll = _payroll} ' tạo mới đối tượng với giá trị mặc định
 
         Dim crud As New Pay_Item_CRUD_Frm(data, True)
         If crud.ShowDialog() = DialogResult.OK Then
