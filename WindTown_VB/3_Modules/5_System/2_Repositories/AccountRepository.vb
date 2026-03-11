@@ -29,4 +29,28 @@ Public Class AccountRepository
             )
         End Using
     End Function
+
+    Public Function GetAccountByUsername(data As Account) As Account
+        Using db As IDbConnection = Database.GetConnection()
+
+            Dim sql = "
+            SELECT a.*, e.*
+            FROM account a
+            LEFT JOIN employee e ON a.employee_id = e.id
+            WHERE JSON_VALUE(a.datas, '$.status') <> '-1'
+            AND JSON_VALUE(a.datas, '$.user') = @User 
+            "
+
+            Return db.Query(Of Account, Employee, Account)(
+                sql,
+                Function(acc, emp)
+                    acc.Employee = emp
+                    Return acc
+                End Function,
+                New With {.User = data.user},
+                splitOn:="id"
+            ).FirstOrDefault()
+
+        End Using
+    End Function
 End Class
