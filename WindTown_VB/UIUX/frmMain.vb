@@ -1,4 +1,5 @@
-﻿Public Class frmMain
+Public Class frmMain
+    ' Ghi chu: cap nhat nho theo yeu cau, khong thay doi logic.
 
     Private Sub frmMain_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
@@ -14,14 +15,14 @@
 
     Private Sub frmMain_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
 #If DEBUG Then
-        ' Ghi log danh sách form còn mở để truy vết khi ứng dụng không thoát.
+        ' Ghi log danh s�ch form c�n m? d? truy v?t khi ?ng d?ng kh�ng tho�t.
         Dim openForms = Application.OpenForms.Cast(Of Form)().Select(Function(f) f.Name).ToArray()
         System.Diagnostics.Debug.WriteLine("[frmMain.FormClosing] OpenForms: " & String.Join(", ", openForms))
 #End If
     End Sub
 
     Private Sub frmMain_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
-        ' Đóng frmMain bằng nút tắt thì thoát hẳn; riêng luồng logout thì không thoát app.
+        ' ��ng frmMain b?ng n�t t?t th� tho�t h?n; ri�ng lu?ng logout th� kh�ng tho�t app.
         If NavigationService.ShouldTerminateWhenMainClosed() Then
             Application.Exit()
         End If
@@ -29,7 +30,7 @@
 
     Private Sub frmMain_KeyDown(sender As Object, e As KeyEventArgs) Handles MyBase.KeyDown
 
-        ' Alt+Left để quay lại màn trước trong vùng nội dung chính.
+        ' Alt+Left d? quay l?i m�n tru?c trong v�ng n?i dung ch�nh.
         If e.Alt AndAlso e.KeyCode = Keys.Left Then
             If NavigationService.GoBackInMain() Then
                 e.Handled = True

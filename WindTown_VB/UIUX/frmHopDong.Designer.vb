@@ -180,7 +180,7 @@ Partial Class frmHopDong
         Me.btnSearch.FlatAppearance.BorderSize = 0
         Me.btnSearch.Font = New System.Drawing.Font("Arial Narrow", 8.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnSearch.Image = Global.WindTown_VB.My.Resources.Resources.search
-        Me.btnSearch.Location = New System.Drawing.Point(173, 42)
+        Me.btnSearch.Location = New System.Drawing.Point(173, 41)
         Me.btnSearch.MaximumSize = New System.Drawing.Size(28, 28)
         Me.btnSearch.MinimumSize = New System.Drawing.Size(28, 28)
         Me.btnSearch.Name = "btnSearch"

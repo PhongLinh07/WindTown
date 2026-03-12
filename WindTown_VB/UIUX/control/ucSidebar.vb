@@ -210,7 +210,7 @@
         Dim qlns As New MenuItemModel("Quản lý nhân sự", Nothing, ResizeImage(My.Resources.saff, 38, 38)) ' icon nhân s?
 
         qlns.Children.Add(New MenuItemModel("Nhân sự", GetType(frmNhanSu))) ' icon ngu?i dùng
-        qlns.Children.Add(New MenuItemModel("Chức vụ", GetType(frmChucVu))) ' icon ch?c v?
+        qlns.Children.Add(New MenuItemModel("Chức vụ", GetType(frmPhongBan))) ' icon ch?c v?
 
         menuData.Add(qlns)
 

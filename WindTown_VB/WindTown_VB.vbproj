@@ -538,12 +538,6 @@
     <Compile Include="UIUX\frmChamCong.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UIUX\frmChucVu.Designer.vb">
-      <DependentUpon>frmChucVu.vb</DependentUpon>
-    </Compile>
-    <Compile Include="UIUX\frmChucVu.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="UIUX\frmDashboard.Designer.vb">
       <DependentUpon>frmDashboard.vb</DependentUpon>
     </Compile>
@@ -584,6 +578,12 @@
       <DependentUpon>frmNhanSu.vb</DependentUpon>
     </Compile>
     <Compile Include="UIUX\frmNhanSu.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UIUX\frmPhongBan.Designer.vb">
+      <DependentUpon>frmPhongBan.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UIUX\frmPhongBan.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UIUX\frmRegister.Designer.vb">
@@ -719,9 +719,6 @@
     <EmbeddedResource Include="UIUX\frmChamCong.resx">
       <DependentUpon>frmChamCong.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UIUX\frmChucVu.resx">
-      <DependentUpon>frmChucVu.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="UIUX\frmDashboard.resx">
       <DependentUpon>frmDashboard.vb</DependentUpon>
     </EmbeddedResource>
@@ -742,6 +739,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UIUX\frmNhanSu.resx">
       <DependentUpon>frmNhanSu.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UIUX\frmPhongBan.resx">
+      <DependentUpon>frmPhongBan.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UIUX\frmRegister.resx">
       <DependentUpon>frmRegister.vb</DependentUpon>
