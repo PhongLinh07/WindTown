@@ -20,7 +20,7 @@ Public Class frmDashboard
 
     Private Sub InitSettingMenu()
         menuCaiDat = New ContextMenuStrip()
-        menuCaiDat.Items.Add("Dang xuat", Nothing, AddressOf XuLy_DangXuat)
+        menuCaiDat.Items.Add("Đăng Xuất", Nothing, AddressOf XuLy_DangXuat)
     End Sub
 
     Private Sub InitDashboardActions()
@@ -36,7 +36,7 @@ Public Class frmDashboard
 
         _lblLoading = New Label With {
             .Name = "lblLoading",
-            .Text = "Dang tai...",
+            .Text = "Đang tải...",
             .AutoSize = True,
             .Visible = False,
             .Anchor = AnchorStyles.Top Or AnchorStyles.Right
@@ -69,15 +69,15 @@ Public Class frmDashboard
         lvTopCheckinSom.FullRowSelect = True
         lvTopCheckinSom.GridLines = True
         lvTopCheckinSom.Columns.Clear()
-        lvTopCheckinSom.Columns.Add("Nhan vien", 320)
-        lvTopCheckinSom.Columns.Add("So ngay dung gio", 220)
+        lvTopCheckinSom.Columns.Add("Nhân viên", 320)
+        lvTopCheckinSom.Columns.Add("Số ngày đúng giờ", 220)
 
         lvTopCheckinMuon.View = View.Details
         lvTopCheckinMuon.FullRowSelect = True
         lvTopCheckinMuon.GridLines = True
         lvTopCheckinMuon.Columns.Clear()
-        lvTopCheckinMuon.Columns.Add("Nhan vien", 250)
-        lvTopCheckinMuon.Columns.Add("Tong gio di muon", 180)
+        lvTopCheckinMuon.Columns.Add("Nhân viên", 250)
+        lvTopCheckinMuon.Columns.Add("Tổng giờ đi muộn", 180)
 
         'Label10.Text = "Top dung gio trong thang"
         'Label12.Text = "Di muon 7 ngay gan nhat"
@@ -97,7 +97,7 @@ Public Class frmDashboard
             Dim summary = Await Task.Run(Function() _dashboardService.BuildSummary(selectedDate))
             BindSummary(summary)
         Catch ex As Exception
-            MessageBox.Show("Khong tai duoc du lieu dashboard: " & ex.Message, "Loi")
+            MessageBox.Show("Lỗi kết nối CSDL: " & ex.Message, "Lỗi")
         Finally
             SetLoadingState(False)
             _isLoading = False
@@ -143,7 +143,7 @@ Public Class frmDashboard
 
     Private Sub XuLy_DangXuat(sender As Object, e As EventArgs)
 
-        Dim rs = MessageBox.Show("Ban co chac muon dang xuat?", "Xac nhan", MessageBoxButtons.YesNo)
+        Dim rs = MessageBox.Show("Bạn có chắc muốn đăng xuất?", "Xác nhận", MessageBoxButtons.YesNo)
 
         If rs = DialogResult.Yes Then
             NavigationService.LogoutToLogin()
@@ -193,25 +193,25 @@ Public Class frmDashboard
 
         Dim response = _employeeService.Execute(DataIntent.Insert, newEmployee)
         If response Is Nothing OrElse Not response.IsSuccess Then
-            MessageBox.Show("Them nhan vien khong thanh cong: " & If(response?.Message, "Loi khong xac dinh."), "Loi")
+            MessageBox.Show("Thêm nhân viên thành công: " & If(response?.Message, "Lỗi không xác định."), "Lỗi")
             Return
         End If
 
-        MessageBox.Show("Da them nhan vien moi.", "Thong bao")
+        MessageBox.Show("Thêm thành công nhân viên mới.", "Thông báo")
         Await LoadDashboardDataAsync()
     End Sub
 
     Private Sub btnMoiNV_Click(sender As Object, e As EventArgs) Handles btnMoiNV.Click
-        Dim email = Interaction.InputBox("Nhap email nhan vien can moi:", "Moi nhan vien", "")
+        Dim email = Interaction.InputBox("Nhập email:", "Mời nhân viên", "")
         If String.IsNullOrWhiteSpace(email) Then Return
 
         email = email.Trim()
         If Not IsValidEmail(email) Then
-            MessageBox.Show("Email khong hop le.", "Thong bao")
+            MessageBox.Show("Email không hợp lệ.", "Thông báo")
             Return
         End If
 
-        MessageBox.Show("Da moi nhan vien: " & email, "Thong bao")
+        MessageBox.Show("Mời thành công: " & email, "Thông báo")
     End Sub
 
     Private Function IsValidEmail(email As String) As Boolean

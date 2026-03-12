@@ -1,4 +1,4 @@
-Public Class frmRegister
+﻿Public Class frmRegister
     Private account As New List(Of Account)
     Private employee As New List(Of Employee)
 

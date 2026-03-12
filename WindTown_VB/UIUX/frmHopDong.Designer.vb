@@ -1,4 +1,4 @@
-<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class frmHopDong
     Inherits System.Windows.Forms.Form
 
@@ -26,7 +26,6 @@ Partial Class frmHopDong
         Me.tlpnlMain = New System.Windows.Forms.TableLayoutPanel()
         Me.tlpDashboard = New System.Windows.Forms.TableLayoutPanel()
         Me.Panel6 = New System.Windows.Forms.Panel()
-        Me.btnThemHD = New System.Windows.Forms.Button()
         Me.dtpkDenNgay = New System.Windows.Forms.DateTimePicker()
         Me.Panel5 = New System.Windows.Forms.Panel()
         Me.dtpkTuNgay = New System.Windows.Forms.DateTimePicker()
@@ -38,7 +37,12 @@ Partial Class frmHopDong
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.cbbxHopDong = New System.Windows.Forms.ComboBox()
         Me.cbbxTrangThai = New System.Windows.Forms.ComboBox()
-        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.pnlHeader = New System.Windows.Forms.Panel()
+        Me.btnSuaHangLoat = New System.Windows.Forms.Button()
+        Me.btnXoaHD = New System.Windows.Forms.Button()
+        Me.btnSuaHD = New System.Windows.Forms.Button()
+        Me.btnXuatHD = New System.Windows.Forms.Button()
+        Me.btnThemHD = New System.Windows.Forms.Button()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.cbbxLoaiHopDong = New System.Windows.Forms.ComboBox()
@@ -50,7 +54,7 @@ Partial Class frmHopDong
         Me.Panel5.SuspendLayout()
         Me.Panel4.SuspendLayout()
         Me.Panel3.SuspendLayout()
-        Me.Panel1.SuspendLayout()
+        Me.pnlHeader.SuspendLayout()
         Me.Panel2.SuspendLayout()
         CType(Me.dtgvDSHopDong, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -83,7 +87,7 @@ Partial Class frmHopDong
         Me.tlpDashboard.Controls.Add(Me.Panel5, 3, 1)
         Me.tlpDashboard.Controls.Add(Me.Panel4, 2, 1)
         Me.tlpDashboard.Controls.Add(Me.Panel3, 1, 1)
-        Me.tlpDashboard.Controls.Add(Me.Panel1, 0, 0)
+        Me.tlpDashboard.Controls.Add(Me.pnlHeader, 0, 0)
         Me.tlpDashboard.Controls.Add(Me.Panel2, 0, 1)
         Me.tlpDashboard.Controls.Add(Me.dtgvDSHopDong, 0, 2)
         Me.tlpDashboard.Dock = System.Windows.Forms.DockStyle.Fill
@@ -100,29 +104,12 @@ Partial Class frmHopDong
         'Panel6
         '
         Me.Panel6.BackColor = System.Drawing.Color.White
-        Me.Panel6.Controls.Add(Me.btnThemHD)
         Me.Panel6.Controls.Add(Me.dtpkDenNgay)
         Me.Panel6.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel6.Location = New System.Drawing.Point(831, 80)
         Me.Panel6.Name = "Panel6"
         Me.Panel6.Size = New System.Drawing.Size(202, 71)
         Me.Panel6.TabIndex = 6
-        '
-        'btnThemHD
-        '
-        Me.btnThemHD.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnThemHD.BackColor = System.Drawing.Color.LimeGreen
-        Me.btnThemHD.ForeColor = System.Drawing.Color.White
-        Me.btnThemHD.Location = New System.Drawing.Point(0, 39)
-        Me.btnThemHD.MaximumSize = New System.Drawing.Size(230, 30)
-        Me.btnThemHD.MinimumSize = New System.Drawing.Size(230, 30)
-        Me.btnThemHD.Name = "btnThemHD"
-        Me.btnThemHD.Size = New System.Drawing.Size(230, 30)
-        Me.btnThemHD.TabIndex = 4
-        Me.btnThemHD.Text = "Thêm hợp đồng"
-        Me.btnThemHD.UseVisualStyleBackColor = False
         '
         'dtpkDenNgay
         '
@@ -174,28 +161,26 @@ Partial Class frmHopDong
         '
         'btnSearch
         '
-        Me.btnSearch.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnSearch.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnSearch.FlatAppearance.BorderSize = 0
         Me.btnSearch.Font = New System.Drawing.Font("Arial Narrow", 8.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnSearch.Image = Global.WindTown_VB.My.Resources.Resources.search
-        Me.btnSearch.Location = New System.Drawing.Point(173, 42)
-        Me.btnSearch.MaximumSize = New System.Drawing.Size(28, 28)
-        Me.btnSearch.MinimumSize = New System.Drawing.Size(28, 28)
+        Me.btnSearch.Location = New System.Drawing.Point(166, 41)
+        Me.btnSearch.MaximumSize = New System.Drawing.Size(30, 30)
+        Me.btnSearch.MinimumSize = New System.Drawing.Size(30, 30)
         Me.btnSearch.Name = "btnSearch"
-        Me.btnSearch.Size = New System.Drawing.Size(28, 28)
+        Me.btnSearch.Size = New System.Drawing.Size(30, 30)
         Me.btnSearch.TabIndex = 2
         Me.btnSearch.UseVisualStyleBackColor = True
         '
         'tbxSearch
         '
-        Me.tbxSearch.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.tbxSearch.Location = New System.Drawing.Point(3, 42)
+        Me.tbxSearch.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.tbxSearch.Location = New System.Drawing.Point(0, 41)
+        Me.tbxSearch.MaximumSize = New System.Drawing.Size(160, 30)
+        Me.tbxSearch.MinimumSize = New System.Drawing.Size(160, 30)
         Me.tbxSearch.Name = "tbxSearch"
-        Me.tbxSearch.Size = New System.Drawing.Size(169, 27)
+        Me.tbxSearch.Size = New System.Drawing.Size(160, 30)
         Me.tbxSearch.TabIndex = 1
         '
         'cbbxThoiGianHD
@@ -236,17 +221,87 @@ Partial Class frmHopDong
         Me.cbbxTrangThai.Size = New System.Drawing.Size(201, 30)
         Me.cbbxTrangThai.TabIndex = 0
         '
-        'Panel1
+        'pnlHeader
         '
-        Me.Panel1.BackColor = System.Drawing.Color.White
-        Me.tlpDashboard.SetColumnSpan(Me.Panel1, 5)
-        Me.Panel1.Controls.Add(Me.Label6)
-        Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Panel1.Location = New System.Drawing.Point(2, 3)
-        Me.Panel1.Margin = New System.Windows.Forms.Padding(2, 3, 2, 3)
-        Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(1032, 71)
-        Me.Panel1.TabIndex = 1
+        Me.pnlHeader.BackColor = System.Drawing.Color.White
+        Me.tlpDashboard.SetColumnSpan(Me.pnlHeader, 5)
+        Me.pnlHeader.Controls.Add(Me.btnSuaHangLoat)
+        Me.pnlHeader.Controls.Add(Me.btnXoaHD)
+        Me.pnlHeader.Controls.Add(Me.btnSuaHD)
+        Me.pnlHeader.Controls.Add(Me.btnXuatHD)
+        Me.pnlHeader.Controls.Add(Me.btnThemHD)
+        Me.pnlHeader.Controls.Add(Me.Label6)
+        Me.pnlHeader.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.pnlHeader.Location = New System.Drawing.Point(2, 3)
+        Me.pnlHeader.Margin = New System.Windows.Forms.Padding(2, 3, 2, 3)
+        Me.pnlHeader.Name = "pnlHeader"
+        Me.pnlHeader.Size = New System.Drawing.Size(1032, 71)
+        Me.pnlHeader.TabIndex = 1
+        '
+        'btnSuaHangLoat
+        '
+        Me.btnSuaHangLoat.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnSuaHangLoat.BackColor = System.Drawing.Color.DimGray
+        Me.btnSuaHangLoat.ForeColor = System.Drawing.Color.White
+        Me.btnSuaHangLoat.Location = New System.Drawing.Point(328, 20)
+        Me.btnSuaHangLoat.Name = "btnSuaHangLoat"
+        Me.btnSuaHangLoat.Size = New System.Drawing.Size(160, 31)
+        Me.btnSuaHangLoat.TabIndex = 5
+        Me.btnSuaHangLoat.Text = "Sửa hàng loạt"
+        Me.btnSuaHangLoat.UseVisualStyleBackColor = False
+        '
+        'btnXoaHD
+        '
+        Me.btnXoaHD.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnXoaHD.BackColor = System.Drawing.Color.Red
+        Me.btnXoaHD.ForeColor = System.Drawing.Color.White
+        Me.btnXoaHD.Location = New System.Drawing.Point(494, 20)
+        Me.btnXoaHD.Name = "btnXoaHD"
+        Me.btnXoaHD.Size = New System.Drawing.Size(110, 31)
+        Me.btnXoaHD.TabIndex = 4
+        Me.btnXoaHD.Text = "Xóa"
+        Me.btnXoaHD.UseVisualStyleBackColor = False
+        '
+        'btnSuaHD
+        '
+        Me.btnSuaHD.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnSuaHD.BackColor = System.Drawing.Color.Gold
+        Me.btnSuaHD.ForeColor = System.Drawing.Color.Black
+        Me.btnSuaHD.Location = New System.Drawing.Point(610, 20)
+        Me.btnSuaHD.Name = "btnSuaHD"
+        Me.btnSuaHD.Size = New System.Drawing.Size(110, 31)
+        Me.btnSuaHD.TabIndex = 3
+        Me.btnSuaHD.Text = "Sửa"
+        Me.btnSuaHD.UseVisualStyleBackColor = False
+        '
+        'btnXuatHD
+        '
+        Me.btnXuatHD.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnXuatHD.BackColor = System.Drawing.Color.DodgerBlue
+        Me.btnXuatHD.ForeColor = System.Drawing.Color.White
+        Me.btnXuatHD.Location = New System.Drawing.Point(726, 20)
+        Me.btnXuatHD.Name = "btnXuatHD"
+        Me.btnXuatHD.Size = New System.Drawing.Size(110, 31)
+        Me.btnXuatHD.TabIndex = 2
+        Me.btnXuatHD.Text = "Xuất file"
+        Me.btnXuatHD.UseVisualStyleBackColor = False
+        '
+        'btnThemHD
+        '
+        Me.btnThemHD.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnThemHD.BackColor = System.Drawing.Color.LimeGreen
+        Me.btnThemHD.ForeColor = System.Drawing.Color.White
+        Me.btnThemHD.Location = New System.Drawing.Point(842, 20)
+        Me.btnThemHD.Name = "btnThemHD"
+        Me.btnThemHD.Size = New System.Drawing.Size(180, 31)
+        Me.btnThemHD.TabIndex = 1
+        Me.btnThemHD.Text = "Thêm hợp đồng"
+        Me.btnThemHD.UseVisualStyleBackColor = False
         '
         'Label6
         '
@@ -318,7 +373,7 @@ Partial Class frmHopDong
         Me.Margin = New System.Windows.Forms.Padding(2, 3, 2, 3)
         Me.Name = "frmHopDong"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "Hợp đông"
+        Me.Text = "Hop dong"
         Me.tlpnlMain.ResumeLayout(False)
         Me.tlpDashboard.ResumeLayout(False)
         Me.Panel6.ResumeLayout(False)
@@ -326,8 +381,8 @@ Partial Class frmHopDong
         Me.Panel4.ResumeLayout(False)
         Me.Panel4.PerformLayout()
         Me.Panel3.ResumeLayout(False)
-        Me.Panel1.ResumeLayout(False)
-        Me.Panel1.PerformLayout()
+        Me.pnlHeader.ResumeLayout(False)
+        Me.pnlHeader.PerformLayout()
         Me.Panel2.ResumeLayout(False)
         CType(Me.dtgvDSHopDong, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
@@ -349,10 +404,15 @@ Partial Class frmHopDong
     Friend WithEvents dtpkTuNgay As DateTimePicker
     Friend WithEvents dtpkDenNgay As DateTimePicker
     Friend WithEvents btnThemHD As Button
-    Friend WithEvents Panel1 As Panel
+    Friend WithEvents btnXuatHD As Button
+    Friend WithEvents btnSuaHD As Button
+    Friend WithEvents btnXoaHD As Button
+    Friend WithEvents btnSuaHangLoat As Button
+    Friend WithEvents pnlHeader As Panel
     Friend WithEvents Label6 As Label
     Friend WithEvents Panel2 As Panel
     Friend WithEvents cbbxLoaiHopDong As ComboBox
     Friend WithEvents cbbxBoPhan As ComboBox
     Friend WithEvents dtgvDSHopDong As DataGridView
 End Class
+

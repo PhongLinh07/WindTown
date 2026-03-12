@@ -4,3 +4,21 @@
 - Keep code identifiers (function/class/variable names) in English unless user asks otherwise.
 - Comments in code should be Vietnamese when adding new comments.
 - Commit messages and PR summaries should be Vietnamese.
+## Quy ước dự án
+- Chỉ chỉnh sửa ở bên trong UIUX/
+- Chỉ tham chiếu tới các thư mục, file khác không trực tiếp thay đổi nội dung của chúng.
+- Luôn lưu lại thiết kế cập nhật thiết kế.
+- Luôn lưu lại chỉnh sửa.
+- Luôn lưu lại tiến trình.
+- Luôn lưu lại lỗi để lần sau không còn mắc phải.
+- Luôn thử các trường hợp fail trước khi thử pass test.
+- Luôn chạy thử và sửa đến khi pass.
+- Trước khi sửa: ghi rõ mục tiêu thay đổi và phạm vi file.
+- Sau khi sửa: ghi tóm tắt “đã làm gì” + “vì sao làm”.
+- Luôn chạy tối thiểu 1 test nhanh hoặc build trước khi kết luận hoàn tất.
+- Ghi lại bước tái hiện lỗi (repro steps) khi phát hiện bug.
+- Không thay đổi API công khai nếu chưa thống nhất.
+- Ưu tiên sửa nhỏ, ít rủi ro hơn là “refactor lớn”.
+- Lưu lại các thay đổi thiết kế, logic, lỗi, changes.md, error.md, progress.md, design.md bên trong thư mục .agent/.
+- Sử dụng tiếng việt có không dấu cho các biến, hàm, class 
+- Sử dụng tiếng việt có dấu cho các comment, commit message, PR summary, documentation.

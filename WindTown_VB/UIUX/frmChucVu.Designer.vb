@@ -2,7 +2,6 @@
 Partial Class frmChucVu
     Inherits System.Windows.Forms.Form
 
-    'Form overrides dispose to clean up the component list.
     <System.Diagnostics.DebuggerNonUserCode()> _
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
@@ -14,12 +13,8 @@ Partial Class frmChucVu
         End Try
     End Sub
 
-    'Required by the Windows Form Designer
     Private components As System.ComponentModel.IContainer
 
-    'NOTE: The following procedure is required by the Windows Form Designer
-    'It can be modified using the Windows Form Designer.  
-    'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.tlpnlMainChucVu = New System.Windows.Forms.TableLayoutPanel()
@@ -76,7 +71,7 @@ Partial Class frmChucVu
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(151, 27)
         Me.Label2.TabIndex = 2
-        Me.Label2.Text = "Mô tả chức vụ:"
+        Me.Label2.Text = "Mo ta chuc vu:"
         '
         'Button5
         '
@@ -87,7 +82,7 @@ Partial Class frmChucVu
         Me.Button5.Name = "Button5"
         Me.Button5.Size = New System.Drawing.Size(180, 31)
         Me.Button5.TabIndex = 1
-        Me.Button5.Text = "+ Thêm chức vụ"
+        Me.Button5.Text = "+ Them chuc vu"
         Me.Button5.UseVisualStyleBackColor = False
         '
         'pnlBody
@@ -117,7 +112,7 @@ Partial Class frmChucVu
         Me.Button3.Name = "Button3"
         Me.Button3.Size = New System.Drawing.Size(75, 31)
         Me.Button3.TabIndex = 3
-        Me.Button3.Text = "Tìm"
+        Me.Button3.Text = "Tim"
         Me.Button3.UseVisualStyleBackColor = True
         '
         'tbxSearch
@@ -127,7 +122,7 @@ Partial Class frmChucVu
         Me.tbxSearch.Name = "tbxSearch"
         Me.tbxSearch.Size = New System.Drawing.Size(300, 29)
         Me.tbxSearch.TabIndex = 2
-        Me.tbxSearch.Text = "Tìm kiếm"
+        Me.tbxSearch.Text = "Tim kiem"
         '
         'Button2
         '
@@ -138,7 +133,7 @@ Partial Class frmChucVu
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(180, 31)
         Me.Button2.TabIndex = 1
-        Me.Button2.Text = "+ Thêm chức vụ"
+        Me.Button2.Text = "+ Them chuc vu"
         Me.Button2.UseVisualStyleBackColor = False
         '
         'pnlHeader
@@ -164,7 +159,7 @@ Partial Class frmChucVu
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(180, 31)
         Me.Button1.TabIndex = 1
-        Me.Button1.Text = "+ Thêm chức vụ"
+        Me.Button1.Text = "+ Them chuc vu"
         Me.Button1.UseVisualStyleBackColor = False
         '
         'Label1
@@ -175,7 +170,7 @@ Partial Class frmChucVu
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(90, 27)
         Me.Label1.TabIndex = 0
-        Me.Label1.Text = "Chức vụ"
+        Me.Label1.Text = "Chuc vu"
         '
         'frmChucVu
         '
