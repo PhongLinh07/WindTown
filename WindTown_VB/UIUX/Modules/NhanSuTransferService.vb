@@ -1,4 +1,4 @@
-﻿Public Class NhanSuTransferRequest
+Public Class NhanSuTransferRequest
     Public Property SelectedEmployees As List(Of Employee)
     Public Property Positions As List(Of Position)
     Public Property Jobs As List(Of Job)

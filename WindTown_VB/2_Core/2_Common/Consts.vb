@@ -26,6 +26,10 @@ Public Enum DataIntent
     GetPayItemByPayroll 'lấy các khoản tiền theo payroll
 #End Region
 
+#Region "'Salary_Mult Custom Intent"
+    GetSalaryMultItemByJob 'lấy dải hệ số theo công việc
+#End Region
+
 
 End Enum
 

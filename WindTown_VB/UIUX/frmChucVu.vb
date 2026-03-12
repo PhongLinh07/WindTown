@@ -1,3 +1,3 @@
-﻿Public Class frmChucVu
+Public Class frmChucVu
 
 End Class

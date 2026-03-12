@@ -1,5 +1,3 @@
-Imports System.Windows.Forms
-
 Public Class BaseList_UC
     Inherits UserControl
 
@@ -21,7 +19,7 @@ Public Class BaseList_UC
     End Sub
 
     Protected Sub Init(modelType As Type)
-       GridHelper.SetupGrid(_dgv, modelType)
+        GridHelper.SetupGrid(_dgv, modelType)
 
         LoadData()
     End Sub

@@ -1,3 +1,3 @@
-﻿Public Class frmLuong
+Public Class frmLuong
 
 End Class

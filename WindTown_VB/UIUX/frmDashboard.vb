@@ -1,5 +1,3 @@
-﻿Imports Microsoft.VisualBasic
-
 Public Class frmDashboard
 
     Private ReadOnly _dashboardService As New DashboardService()

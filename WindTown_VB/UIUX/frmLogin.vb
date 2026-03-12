@@ -1,4 +1,3 @@
-Imports System.Data.SqlClient
 Public Class frmLogin
 
     ' Dim account As List(Of Account) = New List(Of Account)

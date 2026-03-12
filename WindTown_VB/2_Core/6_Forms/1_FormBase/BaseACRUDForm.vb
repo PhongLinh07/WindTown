@@ -1,6 +1,3 @@
-Imports System.Net.NetworkInformation
-Imports System.Text
-
 Partial Public Class BaseACRUDForm
     Inherits Form
 

@@ -1,7 +1,6 @@
 Imports System.ComponentModel
 Imports System.ComponentModel.DataAnnotations
 Imports Dapper.Contrib.Extensions
-Imports Microsoft.Identity.Client
 
 <Table("leave_cat")>
 Public Class Leave_Cat

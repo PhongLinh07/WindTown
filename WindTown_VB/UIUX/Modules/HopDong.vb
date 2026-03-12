@@ -1,4 +1,4 @@
-﻿Public Class HopDong
+Public Class HopDong
     Public Property MaHopDong As String
     Public Property TenNhanVien As String
     Public Property TenHopDong As String

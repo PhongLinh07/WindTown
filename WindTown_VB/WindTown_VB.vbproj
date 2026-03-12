@@ -275,13 +275,28 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="3_Modules\1_Organization\1_Models\Job.vb" />
+    <Compile Include="3_Modules\1_Organization\1_Models\Salary_Mult.vb" />
     <Compile Include="3_Modules\1_Organization\2_Repositories\JobRepository.vb" />
+    <Compile Include="3_Modules\1_Organization\2_Repositories\Salary_MultRepository.vb" />
     <Compile Include="3_Modules\1_Organization\3_Service\JobService.vb" />
+    <Compile Include="3_Modules\1_Organization\3_Service\Salary_MultService.vb" />
     <Compile Include="3_Modules\1_Organization\4_Forms\Department_CRUD_Frm.Designer.vb">
       <DependentUpon>Department_CRUD_Frm.vb</DependentUpon>
     </Compile>
     <Compile Include="3_Modules\1_Organization\4_Forms\Department_CRUD_Frm.vb">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="3_Modules\1_Organization\4_Forms\Job_CRUD_Frm.Designer.vb">
+      <DependentUpon>Job_CRUD_Frm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="3_Modules\1_Organization\4_Forms\Job_CRUD_Frm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="3_Modules\1_Organization\4_Forms\Salary_Mult_List_UC.Designer.vb">
+      <DependentUpon>Salary_Mult_List_UC.vb</DependentUpon>
+    </Compile>
+    <Compile Include="3_Modules\1_Organization\4_Forms\Salary_Mult_List_UC.vb">
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="3_Modules\1_Organization\4_Forms\Level_CRUD_Frm.Designer.vb">
       <DependentUpon>Level_CRUD_Frm.vb</DependentUpon>
@@ -301,10 +316,10 @@
     <Compile Include="3_Modules\1_Organization\4_Forms\Level_List_UC.vb">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="3_Modules\1_Organization\4_Forms\Job_CRUD_Frm.Designer.vb">
-      <DependentUpon>Job_CRUD_Frm.vb</DependentUpon>
+    <Compile Include="3_Modules\1_Organization\4_Forms\Salary_Mult_CRUD_Frm.Designer.vb">
+      <DependentUpon>Salary_Mult_CRUD_Frm.vb</DependentUpon>
     </Compile>
-    <Compile Include="3_Modules\1_Organization\4_Forms\Job_CRUD_Frm.vb">
+    <Compile Include="3_Modules\1_Organization\4_Forms\Salary_Mult_CRUD_Frm.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="3_Modules\1_Organization\4_Forms\Job_List_UC.Designer.vb">
@@ -647,6 +662,9 @@
     <EmbeddedResource Include="3_Modules\1_Organization\4_Forms\Department_CRUD_Frm.resx">
       <DependentUpon>Department_CRUD_Frm.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="3_Modules\1_Organization\4_Forms\Job_CRUD_Frm.resx">
+      <DependentUpon>Job_CRUD_Frm.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="3_Modules\1_Organization\4_Forms\Level_CRUD_Frm.resx">
       <DependentUpon>Level_CRUD_Frm.vb</DependentUpon>
     </EmbeddedResource>
@@ -656,8 +674,8 @@
     <EmbeddedResource Include="3_Modules\1_Organization\4_Forms\Level_List_UC.resx">
       <DependentUpon>Level_List_UC.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="3_Modules\1_Organization\4_Forms\Job_CRUD_Frm.resx">
-      <DependentUpon>Job_CRUD_Frm.vb</DependentUpon>
+    <EmbeddedResource Include="3_Modules\1_Organization\4_Forms\Salary_Mult_CRUD_Frm.resx">
+      <DependentUpon>Salary_Mult_CRUD_Frm.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="3_Modules\1_Organization\4_Forms\Organization_UC.resx">
       <DependentUpon>Organization_UC.vb</DependentUpon>

@@ -1,2 +1,2 @@
-﻿Public Class frmChamCong
+Public Class frmChamCong
 End Class

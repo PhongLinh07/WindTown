@@ -1,5 +1,3 @@
-Imports Microsoft.Data.Common
-
 Partial Public Class FormMain
     Inherits Form
 
@@ -230,6 +228,10 @@ Partial Public Class FormMain
 
     Private Sub DfToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DfToolStripMenuItem.Click
         OpenMultTabMode(Of Pay_Item_List_UC)(tabControl_A)
+    End Sub
+
+    Private Sub menu_salary_mult_Click(sender As Object, e As EventArgs) Handles menu_salary_mult.Click
+        OpenMultTabMode(Of Salary_Mult_List_UC)(tabControl_A)
     End Sub
 
 #End Region

@@ -1,4 +1,4 @@
-﻿Public Class tesst
+Public Class tesst
     Dim Lab As New Label
     Dim TextBox As New TextBox
     Private Sub tesst_Load(sender As Object, e As EventArgs) Handles MyBase.Load

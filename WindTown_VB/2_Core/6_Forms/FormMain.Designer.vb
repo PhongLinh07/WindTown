@@ -40,6 +40,7 @@ Partial Class FormMain
         Me.menu_department = New System.Windows.Forms.ToolStripMenuItem()
         Me.menu_job = New System.Windows.Forms.ToolStripMenuItem()
         Me.menu_level = New System.Windows.Forms.ToolStripMenuItem()
+        Me.menu_salary_mult = New System.Windows.Forms.ToolStripMenuItem()
         Me.DvsdvToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.menu_empolyee = New System.Windows.Forms.ToolStripMenuItem()
         Me.menu_contract = New System.Windows.Forms.ToolStripMenuItem()
@@ -55,6 +56,7 @@ Partial Class FormMain
         Me.TàiChínhToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.menu_pay_period = New System.Windows.Forms.ToolStripMenuItem()
         Me.menu_payroll = New System.Windows.Forms.ToolStripMenuItem()
+        Me.DfToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.HệThốngToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.menu_account = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
@@ -67,7 +69,6 @@ Partial Class FormMain
         Me.menu_move_all_to_splitA = New System.Windows.Forms.ToolStripMenuItem()
         Me.menu_move_to_splitB = New System.Windows.Forms.ToolStripMenuItem()
         Me.menu_move_all_to_splitB = New System.Windows.Forms.ToolStripMenuItem()
-        Me.DfToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.pnl_main.SuspendLayout()
         CType(Me.split_main, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.split_main.Panel1.SuspendLayout()
@@ -216,7 +217,7 @@ Partial Class FormMain
         '
         'SdvsdToolStripMenuItem
         '
-        Me.SdvsdToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.menu_department, Me.menu_job, Me.menu_level})
+        Me.SdvsdToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.menu_department, Me.menu_job, Me.menu_level, Me.menu_salary_mult})
         Me.SdvsdToolStripMenuItem.Name = "SdvsdToolStripMenuItem"
         Me.SdvsdToolStripMenuItem.Size = New System.Drawing.Size(68, 29)
         Me.SdvsdToolStripMenuItem.Text = "Tổ chức"
@@ -225,20 +226,26 @@ Partial Class FormMain
         '
         Me.menu_department.Image = Global.WindTown_VB.My.Resources.Resources.home
         Me.menu_department.Name = "menu_department"
-        Me.menu_department.Size = New System.Drawing.Size(145, 24)
+        Me.menu_department.Size = New System.Drawing.Size(192, 24)
         Me.menu_department.Text = "Phòng ban"
         '
         'menu_job
         '
         Me.menu_job.Name = "menu_job"
-        Me.menu_job.Size = New System.Drawing.Size(145, 24)
+        Me.menu_job.Size = New System.Drawing.Size(192, 24)
         Me.menu_job.Text = "Công việc"
         '
         'menu_level
         '
         Me.menu_level.Name = "menu_level"
-        Me.menu_level.Size = New System.Drawing.Size(145, 24)
+        Me.menu_level.Size = New System.Drawing.Size(192, 24)
         Me.menu_level.Text = "Trình độ"
+        '
+        'menu_salary_mult
+        '
+        Me.menu_salary_mult.Name = "menu_salary_mult"
+        Me.menu_salary_mult.Size = New System.Drawing.Size(192, 24)
+        Me.menu_salary_mult.Text = "Hệ số lương (TEST)"
         '
         'DvsdvToolStripMenuItem
         '
@@ -324,14 +331,20 @@ Partial Class FormMain
         'menu_pay_period
         '
         Me.menu_pay_period.Name = "menu_pay_period"
-        Me.menu_pay_period.Size = New System.Drawing.Size(180, 24)
+        Me.menu_pay_period.Size = New System.Drawing.Size(174, 24)
         Me.menu_pay_period.Text = "Chu kỳ lương"
         '
         'menu_payroll
         '
         Me.menu_payroll.Name = "menu_payroll"
-        Me.menu_payroll.Size = New System.Drawing.Size(180, 24)
+        Me.menu_payroll.Size = New System.Drawing.Size(174, 24)
         Me.menu_payroll.Text = "Bảng lương"
+        '
+        'DfToolStripMenuItem
+        '
+        Me.DfToolStripMenuItem.Name = "DfToolStripMenuItem"
+        Me.DfToolStripMenuItem.Size = New System.Drawing.Size(174, 24)
+        Me.DfToolStripMenuItem.Text = "Pay_Item (TEST)"
         '
         'HệThốngToolStripMenuItem
         '
@@ -400,12 +413,6 @@ Partial Class FormMain
         Me.menu_move_all_to_splitB.Name = "menu_move_all_to_splitB"
         Me.menu_move_all_to_splitB.Size = New System.Drawing.Size(186, 22)
         Me.menu_move_all_to_splitB.Text = "Chuyển tất cả sang B"
-        '
-        'DfToolStripMenuItem
-        '
-        Me.DfToolStripMenuItem.Name = "DfToolStripMenuItem"
-        Me.DfToolStripMenuItem.Size = New System.Drawing.Size(180, 24)
-        Me.DfToolStripMenuItem.Text = "Pay_Item (TEST)"
         '
         'FormMain
         '
@@ -478,4 +485,5 @@ Partial Class FormMain
     Friend WithEvents menu_pay_period As ToolStripMenuItem
     Friend WithEvents menu_payroll As ToolStripMenuItem
     Friend WithEvents DfToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents menu_salary_mult As ToolStripMenuItem
 End Class

@@ -1,3 +1,3 @@
-﻿Public Class frmSystem
+Public Class frmSystem
 
 End Class

@@ -1,3 +1,3 @@
-﻿Public Class frmKyLuong
+Public Class frmKyLuong
 
 End Class

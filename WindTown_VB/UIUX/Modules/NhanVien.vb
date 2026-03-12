@@ -1,4 +1,4 @@
-﻿Public Class NhanVien
+Public Class NhanVien
     Public Property Id As Integer
     Public Property DepartmentId As Integer?
     Public Property JobId As Integer?

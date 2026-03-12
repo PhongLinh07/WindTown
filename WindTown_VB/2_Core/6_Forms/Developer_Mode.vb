@@ -1,4 +1,4 @@
-﻿Public Class Developer_Mode
+Public Class Developer_Mode
     Private Sub Developer_Mode_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Dim bootstrap = DatabaseBootstrapService.EnsureReady()
         If Not bootstrap.IsSuccess Then

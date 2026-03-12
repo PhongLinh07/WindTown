@@ -1,5 +1,3 @@
-Imports Microsoft.IdentityModel.Tokens
-
 Public Class Attendance_CRUD_Frm
     Inherits BaseACRUDForm
     Protected _data As Attendance

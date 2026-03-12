@@ -1,6 +1,5 @@
 Imports Dapper
 Imports WindTown_VB.DatabaseConfig
-Imports System.Data
 
 Public Class Pay_ItemRepository
     Inherits GenericRepository(Of Pay_Item)

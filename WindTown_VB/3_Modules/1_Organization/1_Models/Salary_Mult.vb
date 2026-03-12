@@ -2,43 +2,47 @@ Imports System.ComponentModel
 Imports System.ComponentModel.DataAnnotations
 Imports Dapper.Contrib.Extensions
 
-<Table("level")>
-Public Class Level
+<Table("salary_mult")>
+Public Class Salary_Mult
     Inherits BaseEntity
 
     Public Sub New()
-        code = ""
-        name = ""
+
+        mult = 1
         note = ""
-        rank = 1
         status = 0
     End Sub
+
+#Region "Join"
+    <Write(False)> <Browsable(False)>
+    Public Property Job As Job = New Job()
+
+    <Write(False)> <Browsable(False)>
+    Public Property Level As Level = New Level()
+#End Region
+
 #Region "Field json"
-    <Write(False)> <DisplayName("Mã trình độ")> <Display(Order:=0)>
-    Public Property code As String
+    <Browsable(False)>
+    Public ReadOnly Property job_id As Integer
         Get
-            Return GetV(Of String)("code")
+            Return Job?.id
         End Get
-        Set(value As String)
-            SetV("code", value)
-        End Set
     End Property
-    <Write(False)> <DisplayName("Tên trình độ")> <Display(Order:=1)>
-    Public Property name As String
+
+    <Browsable(False)>
+    Public ReadOnly Property level_id As Integer
         Get
-            Return GetV(Of String)("name")
+            Return Level?.id
         End Get
-        Set(value As String)
-            SetV("name", value)
-        End Set
     End Property
-    <Write(False)> <DisplayName("Giá trị cấp bậc")> <Display(Order:=2)>
-    Public Property rank As Integer
+
+    <Write(False)> <DisplayName("Hệ số")> <Display(Order:=2)>
+    Public Property mult As Decimal
         Get
-            Return GetV(Of String)("rank")
+            Return GetV(Of Decimal)("mult")
         End Get
-        Set(value As Integer)
-            SetV("rank", value)
+        Set(value As Decimal)
+            SetV("mult", value)
         End Set
     End Property
     <Write(False)> <Browsable(False)>
@@ -61,19 +65,24 @@ Public Class Level
     End Property
 #End Region
 
+
 #Region "Field Display"
-    <Write(False)> <Browsable(False)>
+
+    <Write(False)> <DisplayName("Cấp bậc")> <Display(Order:=1)>
     Public ReadOnly Property level_UI As String
         Get
-            Return $"{name} ({code})"
+            Return If(Level?.name, "---")
         End Get
     End Property
+
     <Write(False)> <DisplayName("Trạng thái")> <Display(Order:=3)>
     Public ReadOnly Property status_UI As String
         Get
             Return If(status_Dict.ContainsKey(Me.status), status_Dict(Me.status), "---")
         End Get
     End Property
+
+
 #End Region
 
 #Region "Dictionary Display" 'chứa các dictionary dùng chung trong toàn bộ module Operations, tránh việc phải tạo nhiều dictionary giống nhau ở nhiều form khác

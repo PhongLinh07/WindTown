@@ -5,6 +5,8 @@ Public Class Job_CRUD_Frm
 
     Private _deparments As List(Of Department)
 
+    Private _salary_mult_list_uc As Salary_Mult_List_UC
+
     Public Sub New(data As Job, Optional isCreate As Boolean = False)
 
         InitializeComponent()
@@ -23,6 +25,15 @@ Public Class Job_CRUD_Frm
         BindDataToUI()
 
         tool_save.Enabled = False
+
+        If isCreate Then
+            Return 'chỉ mở khi ko phải tạo
+        End If
+
+        grb_salary_mult.Controls.Clear()
+        _salary_mult_list_uc = New Salary_Mult_List_UC(_data)
+        grb_salary_mult.Controls.Add(_salary_mult_list_uc)
+        _salary_mult_list_uc.Dock = DockStyle.Fill
     End Sub
 
     Private Sub InitComboBox()

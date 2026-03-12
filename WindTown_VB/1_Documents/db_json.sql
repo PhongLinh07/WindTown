@@ -28,6 +28,7 @@ GO
 -- 2. DROP TABLES IF EXISTS
 -- =======================
 IF OBJECT_ID('department', 'U')   IS NOT NULL DROP TABLE department;
+IF OBJECT_ID('salary_mult', 'U')   IS NOT NULL DROP TABLE salary_mult;
 IF OBJECT_ID('job', 'U')          IS NOT NULL DROP TABLE job;
 IF OBJECT_ID('level', 'U')        IS NOT NULL DROP TABLE level;
 
@@ -74,6 +75,13 @@ CREATE TABLE job (
 
 CREATE TABLE level (
     id INT IDENTITY(1,1) PRIMARY KEY,
+    datas NVARCHAR(max)
+);
+
+CREATE TABLE salary_mult (
+    id INT IDENTITY(1,1) PRIMARY KEY,
+    job_id INT,
+    level_id INT,
     datas NVARCHAR(max)
 );
 
@@ -188,14 +196,15 @@ GO
 -- Module: Tổ chức
 ALTER TABLE job ADD CONSTRAINT FK_job_department FOREIGN KEY (department_id) REFERENCES department(id);
 
+ALTER TABLE salary_mult ADD CONSTRAINT FK_salary_mult_job FOREIGN KEY (job_id) REFERENCES job(id);
+ALTER TABLE salary_mult ADD CONSTRAINT FK_salary_mult_level FOREIGN KEY (level_id) REFERENCES level(id);
 -- Module: Nhân sự
 ALTER TABLE contract ADD CONSTRAINT FK_contract_employee FOREIGN KEY (employee_id) REFERENCES employee(id);
 
 ALTER TABLE position ADD CONSTRAINT FK_position_contract FOREIGN KEY (contract_id) REFERENCES contract(id);
-
 ALTER TABLE position ADD CONSTRAINT FK_position_job FOREIGN KEY (job_id) REFERENCES job(id);
-
 ALTER TABLE position ADD CONSTRAINT FK_position_level FOREIGN KEY (level_id) REFERENCES level(id);
+
 
 -- Module: Vận hành
 ALTER TABLE assignment ADD CONSTRAINT FK_assignment_position FOREIGN KEY (position_id) REFERENCES position(id);
@@ -243,11 +252,55 @@ INSERT INTO job (department_id, datas) VALUES
 (4, N'{"code": "JOB_FA", "name": "Tài chính & Kế toán", "note": "Finance & Accounting", "status": 1}');
 
 INSERT INTO level (datas) VALUES
-(N'{"code": "LVL_1", "name": "Intern", "rank": 1, "note": "Học việc, hỗ trợ task đơn giản (Thử việc 1-3 tháng).", "status": 1}'),
-(N'{"code": "LVL_2", "name": "Junior", "rank": 2, "note": "Thực thi có hướng dẫn, tự chủ task module nhỏ.", "status": 1}'),
-(N'{"code": "LVL_3", "name": "Middle", "rank": 3, "note": "Nòng cốt: Tự xử lý tính năng lớn, mentor Junior.", "status": 1}'),
-(N'{"code": "LVL_4", "name": "Senior/Lead", "rank": 4, "note": "Chuyên gia hoặc dẫn dắt nhóm nhỏ/dự án.", "status": 1}'),
-(N'{"code": "LVL_5", "name": "Founder/Core", "rank": 5, "note": "Ban điều hành, quyết định chiến lược và vận mệnh.", "status": 1}');
+(N'{"code": "LVL_1", "name": "Thực tập", "rank": 1, "note": "Học việc, hỗ trợ task đơn giản (Thử việc 1-3 tháng).", "status": 1}'),
+(N'{"code": "LVL_2", "name": "Nhân viên", "rank": 2, "note": "Thực thi có hướng dẫn, tự chủ task module nhỏ.", "status": 1}'),
+(N'{"code": "LVL_3", "name": "Chuyên viên", "rank": 3, "note": "Nòng cốt: tự xử lý tính năng lớn, mentor Junior.", "status": 1}'),
+(N'{"code": "LVL_4", "name": "Trưởng nhóm", "rank": 4, "note": "Chuyên gia hoặc dẫn dắt nhóm nhỏ/dự án.", "status": 1}'),
+(N'{"code": "LVL_5", "name": "Điều hành", "rank": 5, "note": "Ban điều hành, quyết định chiến lược.", "status": 1}');
+
+-- Dữ liệu mẫu cho bảng salary_mult (Bảng trung gian định nghĩa Hệ số và Lương cơ bản)
+-- Cấu trúc JSON trong datas: {"mult": hệ_số, "base": lương_cơ_bản_triệu_vnđ}
+
+INSERT INTO salary_mult (job_id, level_id, datas) VALUES 
+-- 1. Ban điều hành (Chỉ có L5)
+(1, 5, N'{"mult": 5.0, "note": "CEO Level", "status": 1}'), -- CEO
+(2, 5, N'{"mult": 4.5, "note": "CTO Level", "status": 1}'), -- CTO
+(3, 5, N'{"mult": 4.2, "note": "CD Level", "status": 1}'),  -- Creative Director
+
+-- 2. Game Designer (L2 - L4)
+(4, 2, N'{"mult": 1.5, "note": "Junior GD", "status": 1}'),
+(4, 3, N'{"mult": 2.2, "note": "Middle GD", "status": 1}'),
+(4, 4, N'{"mult": 3.0, "note": "Senior GD", "status": 1}'),
+
+-- 3. Artist (L2 - L4)
+(5, 2, N'{"mult": 1.4, "note": "Junior Artist", "status": 1}'),
+(5, 3, N'{"mult": 2.1, "note": "Middle Artist", "status": 1}'),
+(5, 4, N'{"mult": 3.2, "note": "Senior/Lead Artist", "status": 1}'),
+
+-- 4. Programmer (L2 - L4)
+(6, 2, N'{"mult": 1.8, "note": "Junior Developer", "status": 1}'),
+(6, 3, N'{"mult": 2.5, "note": "Middle Developer", "status": 1}'),
+(6, 4, N'{"mult": 4.0, "note": "Senior/Lead Developer", "status": 1}'),
+
+-- 5. Tester (L1 - L2)
+(7, 1, N'{"mult": 1.1, "note": "Intern Tester", "status": 1}'),
+(7, 2, N'{"mult": 1.4, "note": "Junior Tester", "status": 1}'),
+
+-- 6. Marketing (L2 - L3)
+(8, 2, N'{"mult": 1.5, "note": "Junior Marketing", "status": 1}'),
+(8, 3, N'{"mult": 2.0, "note": "Middle Marketing", "status": 1}'),
+
+-- 7. Community (L2 - L3)
+(9, 2, N'{"mult": 1.3, "note": "Junior Community", "status": 1}'),
+(9, 3, N'{"mult": 1.9, "note": "Middle Community", "status": 1}'),
+
+-- 8. HR (L2 - L3)
+(10, 2, N'{"mult": 1.4, "note": "Junior HR", "status": 1}'),
+(10, 3, N'{"mult": 2.0, "note": "Middle HR", "status": 1}'),
+
+-- 9. Finance (L2 - L3)
+(11, 2, N'{"mult": 1.5, "note": "Junior Finance", "status": 1}'),
+(11, 3, N'{"mult": 2.2, "note": "Middle Finance", "status": 1}');
 
 -- Chèn dữ liệu cho Employee
 INSERT INTO employee (datas) VALUES

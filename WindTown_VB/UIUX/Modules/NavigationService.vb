@@ -1,4 +1,4 @@
-﻿Module NavigationService
+Module NavigationService
 
     Private _mainPanel As Panel
     Private _mainHostForm As Form

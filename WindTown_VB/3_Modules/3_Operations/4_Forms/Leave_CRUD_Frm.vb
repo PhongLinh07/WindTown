@@ -1,6 +1,3 @@
-
-Imports WindTown_VB
-
 Public Class Leave_CRUD_Frm
     Inherits BaseACRUDForm
     Protected _data As WindTown_VB.Leave

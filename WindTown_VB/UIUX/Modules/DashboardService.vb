@@ -1,4 +1,4 @@
-﻿Public Class DashboardService
+Public Class DashboardService
 
     Private ReadOnly _employeeService As New EmployeeService()
     Private ReadOnly _attendanceService As New AttendanceService()

@@ -1,3 +1,3 @@
-﻿Public Class frmTinhLuong
+Public Class frmTinhLuong
 
 End Class
