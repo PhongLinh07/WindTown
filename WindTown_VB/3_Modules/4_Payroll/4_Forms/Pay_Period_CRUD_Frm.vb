@@ -15,6 +15,7 @@ Public Class Pay_Period_CRUD_Frm
         BindDataToUI()
 
         tool_save.Enabled = False
+
     End Sub
     Private Sub InitComboBox()
 
@@ -84,10 +85,19 @@ Public Class Pay_Period_CRUD_Frm
 
     End Sub
 
-    Private Sub Calculator() Handles ui_start_date.ValueChanged,
-                                     ui_end_date.ValueChanged
+    Private Sub Calculator() Handles btn_std_hours_cal.Click
 
-        'call...
+        _data.start_date = ui_start_date.Value
+        _data.end_date = ui_end_date.Value
+        Dim periodSV As Pay_PeriodService = New Pay_PeriodService()
+        Dim response = periodSV.Execute(DataIntent.StandardHoursCalculator, _data)
+
+        If response.IsSuccess Then
+            ui_std_hours.Value = response.Data
+
+        Else
+            MessageBox.Show(response.Message)
+        End If
     End Sub
 
 End Class

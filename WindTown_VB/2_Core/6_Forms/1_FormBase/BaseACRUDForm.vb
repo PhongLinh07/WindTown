@@ -31,7 +31,6 @@ Partial Public Class BaseACRUDForm
 
     ' ===== tool_save Click =====
     Protected Overridable Sub BindDataToUI()
-
     End Sub
     Protected Overridable Function SyncUIToData() As Boolean
         Return True

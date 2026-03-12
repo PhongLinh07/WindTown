@@ -31,7 +31,7 @@ Public Class Holiday_CRUD_Frm
         ui_code.Text = _data.code
         ui_name.Text = _data.name
 
-        ui_of_date.Value = If(_data.of_date, DateTime.Now)
+        ui_of_date.Value = _data.of_date
 
         ui_day_mult.Text = _data.day_mult
         ui_night_mult.Text = _data.night_mult

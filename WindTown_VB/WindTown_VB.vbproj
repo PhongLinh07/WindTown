@@ -234,9 +234,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="2_Core\2_Common\Consts.vb" />
+    <Compile Include="2_Core\3_Utils\1_SalaryEngine\StandardHoursCalculator.vb" />
     <Compile Include="2_Core\3_Utils\2_JsonHelper\CloneHelper.vb" />
-    <Compile Include="2_Core\3_Utils\AutoCrudHelper.vb" />
-    <Compile Include="2_Core\3_Utils\GridHelper.vb" />
+    <Compile Include="2_Core\3_Utils\3_UIConfig\AutoCrudHelper.vb" />
+    <Compile Include="2_Core\3_Utils\3_UIConfig\GridHelper.vb" />
+    <Compile Include="2_Core\3_Utils\4_LoggerDialog\Logger.vb" />
+    <Compile Include="2_Core\3_Utils\4_LoggerDialog\LoggerForm.Designer.vb">
+      <DependentUpon>LoggerForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="2_Core\3_Utils\4_LoggerDialog\LoggerForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="2_Core\4_Database\GenericRepository.vb" />
     <Compile Include="2_Core\4_Database\ServiceResponse.vb" />
     <Compile Include="2_Core\5_Base\BaseEntity.vb" />
@@ -498,8 +506,6 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="3_Modules\5_System\1_Models\Account.vb" />
-    <Compile Include="3_Modules\5_System\2_Repositories\AccountRepository.vb" />
-    <Compile Include="3_Modules\5_System\3_Service\AccountService.vb" />
     <Compile Include="3_Modules\2_HR\3_Service\ContractService.vb" />
     <Compile Include="3_Modules\2_HR\4_Forms\Contract_CRUD_Frm.Designer.vb">
       <DependentUpon>Contract_CRUD_Frm.vb</DependentUpon>
@@ -507,6 +513,8 @@
     <Compile Include="3_Modules\2_HR\4_Forms\Contract_CRUD_Frm.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="3_Modules\5_System\2_Repositories\AccountRepository.vb" />
+    <Compile Include="3_Modules\5_System\3_Service\AccountService.vb" />
     <Compile Include="3_Modules\5_System\4_Forms\Account_CRUD_Frm.Designer.vb">
       <DependentUpon>Account_CRUD_Frm.vb</DependentUpon>
     </Compile>
@@ -523,6 +531,20 @@
       <DependentUpon>Contract_List_UC.vb</DependentUpon>
     </Compile>
     <Compile Include="3_Modules\2_HR\4_Forms\Contract_List_UC.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="3_Modules\6_RuleEngine\1_Models\Policy.vb" />
+    <Compile Include="3_Modules\6_RuleEngine\1_Models\PolicyParameter.vb" />
+    <Compile Include="3_Modules\6_RuleEngine\4_Forms\Policy_CRUD_Frm.Designer.vb">
+      <DependentUpon>Policy_CRUD_Frm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="3_Modules\6_RuleEngine\4_Forms\Policy_CRUD_Frm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="3_Modules\6_RuleEngine\4_Forms\Policy_List_UC.Designer.vb">
+      <DependentUpon>Policy_List_UC.vb</DependentUpon>
+    </Compile>
+    <Compile Include="3_Modules\6_RuleEngine\4_Forms\Policy_List_UC.vb">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
@@ -644,6 +666,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="2_Core\3_Utils\4_LoggerDialog\LoggerForm.resx">
+      <DependentUpon>LoggerForm.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="2_Core\6_Forms\1_FormBase\BaseACRUDForm.resx">
       <DependentUpon>BaseACRUDForm.vb</DependentUpon>
     </EmbeddedResource>
@@ -725,6 +750,9 @@
     <EmbeddedResource Include="3_Modules\5_System\4_Forms\Account_CRUD_Frm.resx">
       <DependentUpon>Account_CRUD_Frm.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="3_Modules\6_RuleEngine\4_Forms\Policy_CRUD_Frm.resx">
+      <DependentUpon>Policy_CRUD_Frm.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
@@ -796,7 +824,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="2_Core\3_Utils\1_SalaryEngine\" />
+    <Folder Include="3_Modules\6_RuleEngine\2_Repositories\" />
+    <Folder Include="3_Modules\6_RuleEngine\3_Service\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="2_Core\Assets\c959aa2c-d8e5-4cc8-bf55-4d8278dbe91f.png" />

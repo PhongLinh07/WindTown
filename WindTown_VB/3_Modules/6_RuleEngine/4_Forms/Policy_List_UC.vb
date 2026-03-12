@@ -1,10 +1,11 @@
-Public Class Assignment_List_UC
+Public Class Policy_List_UC
     Inherits BaseList_UC
 
     Public Sub New()
-        MyBase.New(New AssignmentService(), "Assignment_List_UC", "Phân công")
+        MyBase.New(New BaseService(Of Policy), "Policy_List_UC", "Chính sách")
         InitializeComponent()
-        Init(GetType(Assignment))
+        Init(GetType(Policy))
+
     End Sub
 
 
@@ -16,9 +17,9 @@ Public Class Assignment_List_UC
         Dim row As DataGridViewRow = _dgv.Rows(e.RowIndex)
 
         ' Tạo bản sao của đối tượng để tránh sửa trực tiếp trên DataGridView
-        Dim data = Utils.DeepClone(CType(row.DataBoundItem, Assignment))
+        Dim data = Utils.DeepClone(CType(row.DataBoundItem, Policy))
 
-        Dim crud As New Assignment_CRUD_Frm(data)
+        Dim crud As New Policy_CRUD_Frm(data)
         If crud.ShowDialog() = DialogResult.OK Then
 
             Dim result = _service.Execute(DataIntent.Update, data)
@@ -34,9 +35,9 @@ Public Class Assignment_List_UC
 
     Protected Overrides Sub tool_new_Click(sender As Object, e As EventArgs)
         ' Tạo bản sao của đối tượng để tránh sửa trực tiếp trên DataGridView
-        Dim data = New Assignment() ' tạo mới đối tượng với giá trị mặc định
+        Dim data = New Policy() ' tạo mới đối tượng với giá trị mặc định
 
-        Dim crud As New Assignment_CRUD_Frm(data, True)
+        Dim crud As New Policy_CRUD_Frm(data, True)
         If crud.ShowDialog() = DialogResult.OK Then
 
             Dim result = _service.Execute(DataIntent.Insert, data)
@@ -60,9 +61,9 @@ Public Class Assignment_List_UC
         If MessageBox.Show($"Delete {_dgv.SelectedRows.Count} record?", "Confirm", MessageBoxButtons.YesNo) = DialogResult.No Then Return
 
 
-        Dim items As List(Of Assignment) = _dgv.SelectedRows.
+        Dim items As List(Of Policy) = _dgv.SelectedRows.
                                                 Cast(Of DataGridViewRow)().
-                                                Select(Function(r) TryCast(r.DataBoundItem, Assignment)).
+                                                Select(Function(r) TryCast(r.DataBoundItem, Policy)).
                                                 Where(Function(x) x IsNot Nothing).
                                                 ToList()
 
@@ -74,7 +75,7 @@ Public Class Assignment_List_UC
         Else
             MessageBox.Show(result.Message, "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information)
         End If
-        'LoadData()
+        LoadData()
 
     End Sub
 End Class

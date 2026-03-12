@@ -50,14 +50,13 @@ Public Class Salary_Mult_CRUD_Frm
     Protected Overrides Sub BindDataToUI()
 
         If isCreate Then
-            ui_job.SelectedIndex = -1
             ui_level.SelectedIndex = -1
 
         Else
-            ui_job.Text = _data.Job?.job_UI
-            ui_level.Text = _data.level_UI
+            ui_level.SelectedValue = _data.level_UI
 
         End If
+        ui_job.Text = _data.Job?.job_UI
 
 
         ui_mult.Value = _data.mult
@@ -97,10 +96,12 @@ Public Class Salary_Mult_CRUD_Frm
     End Function
 
     Protected Overrides Sub DataChanged() Handles ui_job.SelectedIndexChanged,
+                                 ui_level.SelectedIndexChanged,
                                  ui_status.SelectedIndexChanged,
                                  ui_note.TextChanged,
                                  ui_status.SelectedIndexChanged
         tool_save.Enabled = True
     End Sub
+
 
 End Class

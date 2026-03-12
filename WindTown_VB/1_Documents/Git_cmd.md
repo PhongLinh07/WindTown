@@ -18,3 +18,22 @@ git commit
 
 git fetch origin
 git merge origin/main
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+work flow salary
+
+
+tạo kỳ lương -> tính tổng giờ công chuản của chu kỳ

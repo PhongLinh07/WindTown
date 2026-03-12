@@ -11,6 +11,10 @@ Partial Public Class FormMain
         UpdateLayout()
     End Sub
 
+    Private Sub FormMain_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
+        Developer_Mode.Instance.Close()
+    End Sub
+
 #Region "Helper Methods"
 
     Private Sub ResetTabControl(tc As TabControl)
@@ -233,6 +237,15 @@ Partial Public Class FormMain
     Private Sub menu_salary_mult_Click(sender As Object, e As EventArgs) Handles menu_salary_mult.Click
         OpenMultTabMode(Of Salary_Mult_List_UC)(tabControl_A)
     End Sub
+
+    Private Sub menu_policy_Click(sender As Object, e As EventArgs) Handles menu_policy.Click
+        OpenMultTabMode(Of Policy_List_UC)(tabControl_A)
+    End Sub
+
+    Private Sub tool_logger_Click(sender As Object, e As EventArgs) Handles tool_logger.Click
+        Logger.Instance.Show()
+    End Sub
+
 
 #End Region
 

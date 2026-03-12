@@ -124,12 +124,13 @@ Partial Class Salary_Mult_CRUD_Frm
         '
         'ui_mult
         '
+        Me.ui_mult.DecimalPlaces = 2
         Me.ui_mult.Font = New System.Drawing.Font("Arial Narrow", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ui_mult.Increment = New Decimal(New Integer() {1, 0, 0, 65536})
         Me.ui_mult.Location = New System.Drawing.Point(46, 279)
         Me.ui_mult.Name = "ui_mult"
         Me.ui_mult.Size = New System.Drawing.Size(291, 26)
         Me.ui_mult.TabIndex = 67
-        Me.ui_mult.ThousandsSeparator = True
         '
         'Label2
         '

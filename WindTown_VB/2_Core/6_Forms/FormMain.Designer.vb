@@ -37,7 +37,6 @@ Partial Class FormMain
         Me.ToolStripMenuItem2 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
         Me.SdvsdToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.menu_department = New System.Windows.Forms.ToolStripMenuItem()
         Me.menu_job = New System.Windows.Forms.ToolStripMenuItem()
         Me.menu_level = New System.Windows.Forms.ToolStripMenuItem()
         Me.menu_salary_mult = New System.Windows.Forms.ToolStripMenuItem()
@@ -52,7 +51,7 @@ Partial Class FormMain
         Me.menu_holiday = New System.Windows.Forms.ToolStripMenuItem()
         Me.menu_leave_cat = New System.Windows.Forms.ToolStripMenuItem()
         Me.menu_leave = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ChínhSáchToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.menu_policy = New System.Windows.Forms.ToolStripMenuItem()
         Me.TàiChínhToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.menu_pay_period = New System.Windows.Forms.ToolStripMenuItem()
         Me.menu_payroll = New System.Windows.Forms.ToolStripMenuItem()
@@ -69,6 +68,8 @@ Partial Class FormMain
         Me.menu_move_all_to_splitA = New System.Windows.Forms.ToolStripMenuItem()
         Me.menu_move_to_splitB = New System.Windows.Forms.ToolStripMenuItem()
         Me.menu_move_all_to_splitB = New System.Windows.Forms.ToolStripMenuItem()
+        Me.menu_department = New System.Windows.Forms.ToolStripMenuItem()
+        Me.tool_logger = New System.Windows.Forms.ToolStripMenuItem()
         Me.pnl_main.SuspendLayout()
         CType(Me.split_main, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.split_main.Panel1.SuspendLayout()
@@ -196,7 +197,7 @@ Partial Class FormMain
         'ToolStrip1
         '
         Me.ToolStrip1.Font = New System.Drawing.Font("Segoe UI", 10.0!)
-        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem2, Me.ToolStripSeparator1, Me.SdvsdToolStripMenuItem, Me.DvsdvToolStripMenuItem, Me.SdvfToolStripMenuItem, Me.ChínhSáchToolStripMenuItem, Me.TàiChínhToolStripMenuItem, Me.HệThốngToolStripMenuItem, Me.ToolStripSeparator2, Me._title})
+        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem2, Me.ToolStripSeparator1, Me.SdvsdToolStripMenuItem, Me.DvsdvToolStripMenuItem, Me.SdvfToolStripMenuItem, Me.menu_policy, Me.TàiChínhToolStripMenuItem, Me.HệThốngToolStripMenuItem, Me.tool_logger, Me.ToolStripSeparator2, Me._title})
         Me.ToolStrip1.Location = New System.Drawing.Point(0, 0)
         Me.ToolStrip1.Name = "ToolStrip1"
         Me.ToolStrip1.Size = New System.Drawing.Size(1279, 29)
@@ -221,13 +222,6 @@ Partial Class FormMain
         Me.SdvsdToolStripMenuItem.Name = "SdvsdToolStripMenuItem"
         Me.SdvsdToolStripMenuItem.Size = New System.Drawing.Size(68, 29)
         Me.SdvsdToolStripMenuItem.Text = "Tổ chức"
-        '
-        'menu_department
-        '
-        Me.menu_department.Image = Global.WindTown_VB.My.Resources.Resources.home
-        Me.menu_department.Name = "menu_department"
-        Me.menu_department.Size = New System.Drawing.Size(192, 24)
-        Me.menu_department.Text = "Phòng ban"
         '
         'menu_job
         '
@@ -315,11 +309,11 @@ Partial Class FormMain
         Me.menu_leave.Size = New System.Drawing.Size(207, 24)
         Me.menu_leave.Text = "Nghỉ phép"
         '
-        'ChínhSáchToolStripMenuItem
+        'menu_policy
         '
-        Me.ChínhSáchToolStripMenuItem.Name = "ChínhSáchToolStripMenuItem"
-        Me.ChínhSáchToolStripMenuItem.Size = New System.Drawing.Size(144, 29)
-        Me.ChínhSáchToolStripMenuItem.Text = "Quy tắc & Chính sách"
+        Me.menu_policy.Name = "menu_policy"
+        Me.menu_policy.Size = New System.Drawing.Size(88, 29)
+        Me.menu_policy.Text = "Chính sách"
         '
         'TàiChínhToolStripMenuItem
         '
@@ -356,7 +350,7 @@ Partial Class FormMain
         'menu_account
         '
         Me.menu_account.Name = "menu_account"
-        Me.menu_account.Size = New System.Drawing.Size(135, 24)
+        Me.menu_account.Size = New System.Drawing.Size(180, 24)
         Me.menu_account.Text = "Tài khoản"
         '
         'ToolStripSeparator2
@@ -414,6 +408,20 @@ Partial Class FormMain
         Me.menu_move_all_to_splitB.Size = New System.Drawing.Size(186, 22)
         Me.menu_move_all_to_splitB.Text = "Chuyển tất cả sang B"
         '
+        'menu_department
+        '
+        Me.menu_department.Image = Global.WindTown_VB.My.Resources.Resources.home
+        Me.menu_department.Name = "menu_department"
+        Me.menu_department.Size = New System.Drawing.Size(192, 24)
+        Me.menu_department.Text = "Phòng ban"
+        '
+        'tool_logger
+        '
+        Me.tool_logger.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tool_logger.Name = "tool_logger"
+        Me.tool_logger.Size = New System.Drawing.Size(51, 29)
+        Me.tool_logger.Text = "Log"
+        '
         'FormMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -462,7 +470,7 @@ Partial Class FormMain
     Friend WithEvents menu_holiday As ToolStripMenuItem
     Friend WithEvents menu_leave_cat As ToolStripMenuItem
     Friend WithEvents menu_leave As ToolStripMenuItem
-    Friend WithEvents ChínhSáchToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents menu_policy As ToolStripMenuItem
     Friend WithEvents TàiChínhToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents HệThốngToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents menu_account As ToolStripMenuItem
@@ -486,4 +494,5 @@ Partial Class FormMain
     Friend WithEvents menu_payroll As ToolStripMenuItem
     Friend WithEvents DfToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents menu_salary_mult As ToolStripMenuItem
+    Friend WithEvents tool_logger As ToolStripMenuItem
 End Class

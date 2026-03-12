@@ -1,4 +1,12 @@
 Public Class Developer_Mode
+
+    Public Shared Instance As Developer_Mode
+
+    Public Sub New()
+        InitializeComponent()
+
+        Developer_Mode.Instance = Me
+    End Sub
     Private Sub Developer_Mode_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Dim bootstrap = DatabaseBootstrapService.EnsureReady()
         If Not bootstrap.IsSuccess Then
@@ -16,12 +24,12 @@ Public Class Developer_Mode
     Private Sub btn_backend_Click(sender As Object, e As EventArgs) Handles btn_backend.Click
         Dim f As New FormMain()
         f.Show()
-        Me.Close() ' ÄÃ³ng háº³n Form chá»n, giáº£i phÃ³ng bá»™ nhá»› ngay láº­p tá»©c
+        Me.Hide() ' ÄÃ³ng háº³n Form chá»n, giáº£i phÃ³ng bá»™ nhá»› ngay láº­p tá»©c
     End Sub
 
     Private Sub btn_fontend_Click(sender As Object, e As EventArgs) Handles btn_fontend.Click
         Dim f As New frmLogin()
         f.Show()
-        Me.Close() ' ÄÃ³ng háº³n Form chá»n, giáº£i phÃ³ng bá»™ nhá»› ngay láº­p tá»©c
+        Me.Hide() ' ÄÃ³ng háº³n Form chá»n, giáº£i phÃ³ng bá»™ nhá»› ngay láº­p tá»©c
     End Sub
 End Class
