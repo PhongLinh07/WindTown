@@ -20,7 +20,7 @@ Public Class frmDashboard
 
     Private Sub InitSettingMenu()
         menuCaiDat = New ContextMenuStrip()
-        menuCaiDat.Items.Add("Đăng xuất", Nothing, AddressOf XuLy_DangXuat)
+        menuCaiDat.Items.Add("Đăng Xuất", Nothing, AddressOf XuLy_DangXuat)
     End Sub
 
     Private Sub InitDashboardActions()
