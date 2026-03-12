@@ -20,5 +20,5 @@
 - Không thay đổi API công khai nếu chưa thống nhất.
 - Ưu tiên sửa nhỏ, ít rủi ro hơn là “refactor lớn”.
 - Lưu lại các thay đổi thiết kế, logic, lỗi, changes.md, error.md, progress.md, design.md bên trong thư mục .agent/.
-- Sử dụng tiếng việt không dấu cho các biến, hàm, class 
+- Sử dụng tiếng việt có không dấu cho các biến, hàm, class 
 - Sử dụng tiếng việt có dấu cho các comment, commit message, PR summary, documentation.

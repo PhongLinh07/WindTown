@@ -1,4 +1,4 @@
-Imports System.Data.SqlClient
+﻿Imports System.Data.SqlClient
 Public Class frmLogin
 
     ' Dim account As List(Of Account) = New List(Of Account)
@@ -7,9 +7,10 @@ Public Class frmLogin
         InitializeComponent()
     End Sub
     Private Sub frmLogin_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        HoTroPhongChu.ApDungPhongChu(Me)
         Dim bootstrap = DatabaseBootstrapService.EnsureReady()
         If Not bootstrap.IsSuccess Then
-            MessageBox.Show("Khong the ket noi database: " & bootstrap.Message, "Loi ket noi DB", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show("Lỗi kết nối CSDL: " & bootstrap.Message, "Lỗi kết nối", MessageBoxButtons.OK, MessageBoxIcon.Error)
             btnLogin.Enabled = False
             btnRegister.Enabled = False
             Return
@@ -49,3 +50,4 @@ Public Class frmLogin
     End Function
 
 End Class
+

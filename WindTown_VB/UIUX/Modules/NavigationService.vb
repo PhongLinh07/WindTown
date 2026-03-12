@@ -70,6 +70,7 @@
 
         If nextForm Is Nothing Then Return
 
+        HoTroPhongChu.ApDungPhongChu(nextForm)
         nextForm.Show()
 
         If currentForm IsNot Nothing AndAlso Not currentForm.IsDisposed Then
@@ -88,6 +89,7 @@
     Public Sub LogoutToLogin()
 
         Dim login As New frmLogin()
+        HoTroPhongChu.ApDungPhongChu(login)
         login.Show()
 
         If _mainHostForm IsNot Nothing AndAlso Not _mainHostForm.IsDisposed Then
@@ -124,12 +126,31 @@
         frm.TopLevel = False
         frm.FormBorderStyle = FormBorderStyle.None
         frm.Dock = DockStyle.Fill
+        HoTroPhongChu.ApDungPhongChu(frm)
 
         _mainPanel.Controls.Add(frm)
         frm.Show()
 
         _currentFormType = formType
 
+    End Sub
+
+End Module
+
+Module HoTroPhongChu
+
+    Private ReadOnly _phongChuUngDung As New Font("Microsoft YaHei UI", 10.0!, FontStyle.Regular, GraphicsUnit.Point)
+
+    Public Sub ApDungPhongChu(root As Control)
+        If root Is Nothing Then Return
+        ApDungPhongChuDeQuy(root, _phongChuUngDung)
+    End Sub
+
+    Private Sub ApDungPhongChuDeQuy(ctrl As Control, phongChu As Font)
+        ctrl.Font = phongChu
+        For Each child As Control In ctrl.Controls
+            ApDungPhongChuDeQuy(child, phongChu)
+        Next
     End Sub
 
 End Module

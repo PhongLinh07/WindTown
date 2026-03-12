@@ -214,20 +214,26 @@ Partial Class frmNhanSu
         '
         'btnSearch
         '
+        Me.btnSearch.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnSearch.BackColor = System.Drawing.Color.Blue
         Me.btnSearch.ForeColor = System.Drawing.Color.White
-        Me.btnSearch.Location = New System.Drawing.Point(224, 45)
+        Me.btnSearch.Location = New System.Drawing.Point(231, 45)
+        Me.btnSearch.MaximumSize = New System.Drawing.Size(80, 30)
+        Me.btnSearch.MinimumSize = New System.Drawing.Size(80, 30)
         Me.btnSearch.Name = "btnSearch"
-        Me.btnSearch.Size = New System.Drawing.Size(87, 28)
+        Me.btnSearch.Size = New System.Drawing.Size(80, 30)
         Me.btnSearch.TabIndex = 7
         Me.btnSearch.Text = "Tìm"
         Me.btnSearch.UseVisualStyleBackColor = False
         '
         'TextBox1
         '
+        Me.TextBox1.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.TextBox1.Location = New System.Drawing.Point(4, 45)
+        Me.TextBox1.MaximumSize = New System.Drawing.Size(215, 30)
+        Me.TextBox1.MinimumSize = New System.Drawing.Size(215, 30)
         Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(213, 29)
+        Me.TextBox1.Size = New System.Drawing.Size(215, 30)
         Me.TextBox1.TabIndex = 6
         '
         'btnSuaBoPhan

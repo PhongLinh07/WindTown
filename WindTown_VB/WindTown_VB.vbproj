@@ -612,6 +612,7 @@
     </Compile>
     <Compile Include="UIUX\Helpers\ImageExtensions.vb" />
     <Compile Include="UIUX\Modules\HopDong.vb" />
+    <Compile Include="UIUX\Modules\HopDongDataModel.vb" />
     <Compile Include="UIUX\Modules\MenuItemModel.vb" />
     <Compile Include="UIUX\Modules\NavigationService.vb" />
     <Compile Include="UIUX\Modules\DashboardService.vb" />
