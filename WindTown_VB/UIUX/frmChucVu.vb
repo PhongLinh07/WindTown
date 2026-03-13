@@ -7,9 +7,11 @@ Public Class frmChucVu
     Private _contextMenu As ContextMenuStrip
 
     Private Sub frmChucVu_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        HoTroPhongChu.ApDungPhongChu(Me)
+
         Dim bootstrap = DatabaseBootstrapService.EnsureReady()
         If Not bootstrap.IsSuccess Then
-            MessageBox.Show("Khong the ket noi database: " & bootstrap.Message, "Loi ket noi DB", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show("Lỗi kết nối CSDL: " & bootstrap.Message, "Lỗi kết nối CSDL", MessageBoxButtons.OK, MessageBoxIcon.Error)
             DisableUi()
             Return
         End If
@@ -20,23 +22,23 @@ Public Class frmChucVu
     End Sub
 
     Private Sub InitFormLayout()
-        Label1.Text = "Chuc vu"
-        Me.Text = "Chuc vu"
+        Label1.Text = "Chức vụ"
+        Me.Text = "Chức vụ"
 
         Button1.Visible = True
         Button2.Visible = False
 
         Button5.Visible = True
-        Button5.Text = "Sua chuc vu"
+        Button5.Text = "Sửa chức vụ"
         Button5.Enabled = False
 
-        Label2.Text = "Chi tiet chuc vu:"
+        Label2.Text = "Chi tiết:"
         tvChucVu.HideSelection = False
     End Sub
 
     Private Sub InitContextMenu()
         _contextMenu = New ContextMenuStrip()
-        Dim itemDelete As New ToolStripMenuItem("Xoa chuc vu")
+        Dim itemDelete As New ToolStripMenuItem("Xóa chức vụ")
         AddHandler itemDelete.Click, AddressOf ContextDelete_Click
         _contextMenu.Items.Add(itemDelete)
         tvChucVu.ContextMenuStrip = _contextMenu
@@ -60,7 +62,7 @@ Public Class frmChucVu
             _positions = If(data IsNot Nothing, data.ToList(), New List(Of Position)())
         Else
             _positions = New List(Of Position)()
-            MessageBox.Show(response.Message, "Loi du lieu", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show(response.Message, "Lỗi dữ liệu ", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End If
 
         Dim filtered = ApplySearch(_positions, keyword)
@@ -69,7 +71,7 @@ Public Class frmChucVu
 
     Private Function ApplySearch(source As List(Of Position), keyword As String) As List(Of Position)
         If source Is Nothing Then Return New List(Of Position)()
-        If String.IsNullOrWhiteSpace(keyword) OrElse keyword.Trim().ToLowerInvariant() = "tim kiem" Then
+        If String.IsNullOrWhiteSpace(keyword) OrElse keyword.Trim().ToLowerInvariant() = "Tìm kiếm" Then
             Return source
         End If
 
@@ -84,8 +86,8 @@ Public Class frmChucVu
         tvChucVu.BeginUpdate()
         tvChucVu.Nodes.Clear()
 
-        Dim nodeActive As New TreeNode("Dang hoat dong")
-        Dim nodeInactive As New TreeNode("Ngung hoat dong")
+        Dim nodeActive As New TreeNode("Đang hoạt động")
+        Dim nodeInactive As New TreeNode("Ngưng hoạt động")
 
         For Each pos In list
             Dim text = $"{pos.code} | {pos.employee_UI} | {pos.job_UI} | {pos.level_UI}"
@@ -107,7 +109,7 @@ Public Class frmChucVu
 
     Private Sub UpdateDetail(pos As Position)
         If pos Is Nothing Then
-            Label2.Text = "Chi tiet chuc vu:"
+            Label2.Text = "Chi tiết chức vụ:"
             Button5.Enabled = False
             Return
         End If
@@ -115,16 +117,16 @@ Public Class frmChucVu
         Button5.Enabled = True
         Dim statusText = If(Position.status_Dict.ContainsKey(pos.status), Position.status_Dict(pos.status), "---")
 
-        Label2.Text = "Chi tiet chuc vu:" & vbCrLf &
-                      $"Ma: {pos.code}" & vbCrLf &
-                      $"Nhan vien: {pos.employee_UI}" & vbCrLf &
-                      $"Hop dong: {pos.contract_UI}" & vbCrLf &
-                      $"Cong viec: {pos.job_UI}" & vbCrLf &
-                      $"Trinh do: {pos.level_UI}" & vbCrLf &
-                      $"Trang thai: {statusText}" & vbCrLf &
-                      $"Tu ngay: {pos.start_date:dd-MM-yyyy}" & vbCrLf &
-                      $"Den ngay: {pos.end_date:dd-MM-yyyy}" & vbCrLf &
-                      $"Ghi chu: {pos.note}"
+        Label2.Text = "Chi tiết chức vụ:" & vbCrLf &
+                      $"Mã: {pos.code}" & vbCrLf &
+                      $"Nhân viên: {pos.employee_UI}" & vbCrLf &
+                      $"Hợp đồng: {pos.contract_UI}" & vbCrLf &
+                      $"Công việc: {pos.job_UI}" & vbCrLf &
+                      $"Trình độ: {pos.level_UI}" & vbCrLf &
+                      $"Trạng thái: {statusText}" & vbCrLf &
+                      $"Từ ngày: {pos.start_date:dd-MM-yyyy}" & vbCrLf &
+                      $"Đến ngày: {pos.end_date:dd-MM-yyyy}" & vbCrLf &
+                      $"Ghi chú: {pos.note}"
     End Sub
 
     Private Function GetSelectedPosition() As Position
@@ -139,17 +141,17 @@ Public Class frmChucVu
         If crud.ShowDialog() = DialogResult.OK Then
             Dim result = _service.Execute(DataIntent.Insert, data)
             If result.IsSuccess Then
-                MessageBox.Show("Them moi thanh cong", "Thong bao", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                MessageBox.Show("Thêm thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information)
                 LoadData(tbxSearch.Text)
             Else
-                MessageBox.Show(result.Message, "Thong bao", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                MessageBox.Show(result.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             End If
         End If
     End Sub
 
     Private Sub OpenEdit(pos As Position)
         If pos Is Nothing Then
-            MessageBox.Show("Vui long chon chuc vu can sua.", "Thong bao", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            MessageBox.Show("Vui lòng chọn chức vụ cần sửa.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information)
             Return
         End If
 
@@ -158,31 +160,31 @@ Public Class frmChucVu
         If crud.ShowDialog() = DialogResult.OK Then
             Dim result = _service.Execute(DataIntent.Update, data)
             If result.IsSuccess Then
-                MessageBox.Show("Cap nhat thanh cong", "Thong bao", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                MessageBox.Show("Cập nhật thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information)
                 LoadData(tbxSearch.Text)
             Else
-                MessageBox.Show(result.Message, "Thong bao", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                MessageBox.Show(result.Message, "Thông báo ", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             End If
         End If
     End Sub
 
     Private Sub DeleteSelected(pos As Position)
         If pos Is Nothing Then
-            MessageBox.Show("Vui long chon chuc vu can xoa.", "Thong bao", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            MessageBox.Show("Vui lòng chọn chức vụ cần xóa.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information)
             Return
         End If
 
-        If MessageBox.Show($"Xac nhan xoa chuc vu '{pos.code}'?", "Xac nhan", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.No Then
+        If MessageBox.Show($"Xác nhận xóa chức vụ '{pos.code}'?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.No Then
             Return
         End If
 
         Dim items As New List(Of Position) From {pos}
         Dim result = _service.Execute(DataIntent.SoftDeleteMany, items)
         If result.IsSuccess Then
-            MessageBox.Show("Xoa thanh cong", "Thong bao", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            MessageBox.Show("Xóa thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information)
             LoadData(tbxSearch.Text)
         Else
-            MessageBox.Show(result.Message, "Thong bao", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            MessageBox.Show(result.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning)
         End If
     End Sub
 
@@ -226,14 +228,14 @@ Public Class frmChucVu
     End Sub
 
     Private Sub tbxSearch_Enter(sender As Object, e As EventArgs) Handles tbxSearch.Enter
-        If tbxSearch.Text.Trim().ToLowerInvariant() = "tim kiem" Then
+        If tbxSearch.Text.Trim().ToLowerInvariant() = "Tìm kiếm" Then
             tbxSearch.Text = ""
         End If
     End Sub
 
     Private Sub tbxSearch_Leave(sender As Object, e As EventArgs) Handles tbxSearch.Leave
         If String.IsNullOrWhiteSpace(tbxSearch.Text) Then
-            tbxSearch.Text = "Tim kiem"
+            tbxSearch.Text = "Tìm kiếm"
         End If
     End Sub
 

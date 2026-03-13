@@ -15,3 +15,10 @@
 - Đã thêm nút Sửa hàng loạt và xử lý cập nhật trường chung.
 - Đã chuyển module áp dụng font vào UIUX/Modules/NavigationService.vb.
 - Đã chạy build Debug: PASS (0 warning, 0 error).
+
+## 2026-03-12 (bổ sung 2)
+- Mục tiêu: đặt lại text có dấu trực tiếp trong Designer và chuẩn hóa font form.
+- Phạm vi: UIUX/frmHopDong.Designer.vb, UIUX/frmHopDong.vb.
+- Đã cập nhật text có dấu trong Designer và bỏ set text trong code.
+- Đã cập nhật font form sang Microsoft YaHei UI.
+- Đã chạy build Debug: PASS (0 warning, 0 error).

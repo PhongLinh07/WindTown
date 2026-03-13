@@ -196,7 +196,7 @@ Partial Class frmPhongBan
         Me.btnThemPhongBan.Name = "btnThemPhongBan"
         Me.btnThemPhongBan.Size = New System.Drawing.Size(156, 34)
         Me.btnThemPhongBan.TabIndex = 1
-        Me.btnThemPhongBan.Text = "+ Thêm phòng ban"
+        Me.btnThemPhongBan.Text = "+ Thêm"
         Me.btnThemPhongBan.UseVisualStyleBackColor = False
         '
         'Label1

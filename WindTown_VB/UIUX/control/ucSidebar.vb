@@ -42,7 +42,7 @@
 
 
     '============================
-    ' Xác d?nh TableLayoutPanel
+    ' Xác định TableLayoutPanel
     '============================
     Private Sub InitSidebarLayout()
 
@@ -56,7 +56,7 @@
 
 
     '============================
-    ' L?y kích thu?c sidebar
+    ' Lấy kích thước sidebar
     '============================
     Private Sub InitSidebarSize()
 
@@ -90,7 +90,7 @@
 
         If isCollapsed Then
 
-            '===== M? SIDEBAR =====
+            '===== MỞ SIDEBAR =====
             If col IsNot Nothing Then
                 col.Width = expandedWidth
             Else
@@ -190,7 +190,7 @@
             btnToggle.MaximumSize = New Size(40, 40)
             btnToggle.MinimumSize = New Size(40, 40)
 
-            ' ===== Can gi?a =====
+            ' ===== Căn giữa =====
             btnToggle.Left = 4
             btnToggle.Top = 4
 
@@ -207,24 +207,24 @@
 
         menuData.Add(New MenuItemModel("Dashboard", GetType(frmDashboard), ResizeImage(My.Resources.home1, 38, 38))) ' icon dashboard
 
-        Dim qlns As New MenuItemModel("Quản lý nhân sự", Nothing, ResizeImage(My.Resources.saff, 38, 38)) ' icon nhân s?
+        Dim qlns As New MenuItemModel("Quản lý nhân sự", Nothing, ResizeImage(My.Resources.saff, 38, 38)) ' icon nhân sự
 
-        qlns.Children.Add(New MenuItemModel("Nhân sự", GetType(frmNhanSu))) ' icon ngu?i dùng
-        qlns.Children.Add(New MenuItemModel("Chức vụ", GetType(frmPhongBan))) ' icon ch?c v?
+        qlns.Children.Add(New MenuItemModel("Nhân sự", GetType(frmNhanSu))) ' icon người dùng
+        qlns.Children.Add(New MenuItemModel("Chức vụ", GetType(frmPhongBan))) ' icon chức vụ
 
         menuData.Add(qlns)
 
-        menuData.Add(New MenuItemModel("Hợp đồng", GetType(frmHopDong), ResizeImage(My.Resources.contract, 38, 38))) ' icon h?p d?ng
-        menuData.Add(New MenuItemModel("Chấm công", GetType(frmChamCong), ResizeImage(My.Resources.checkin, 38, 38))) ' icon ch?m công
+        menuData.Add(New MenuItemModel("Hợp đồng", GetType(frmHopDong), ResizeImage(My.Resources.contract, 38, 38))) ' icon hợp đồng
+        menuData.Add(New MenuItemModel("Chấm công", GetType(frmChamCong), ResizeImage(My.Resources.checkin, 38, 38))) ' icon chấm công
 
-        Dim luong As New MenuItemModel("Lương", Nothing, ResizeImage(My.Resources.salary, 38, 38)) ' icon luong
+        Dim luong As New MenuItemModel("Lương", Nothing, ResizeImage(My.Resources.salary, 38, 38)) ' icon lương
 
-        luong.Children.Add(New MenuItemModel("Kỳ lương", GetType(frmKyLuong))) ' icon k? luong
+        luong.Children.Add(New MenuItemModel("Kỳ lương", GetType(frmKyLuong))) ' icon kỳ lương
         luong.Children.Add(New MenuItemModel("Tính lương", GetType(frmTinhLuong)))
 
         menuData.Add(luong)
 
-        menuData.Add(New MenuItemModel("Cài đặt", GetType(frmSystem), ResizeImage(My.Resources.gear, 38, 38))) ' icon cài d?t
+        menuData.Add(New MenuItemModel("Cài đặt", GetType(frmSystem), ResizeImage(My.Resources.gear, 38, 38))) ' icon cài đặt
 
     End Sub
 
@@ -465,4 +465,5 @@
     End Sub
 
 End Class
+
 

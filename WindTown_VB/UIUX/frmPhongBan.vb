@@ -23,6 +23,8 @@ Public Class frmPhongBan
     End Class
 
     Private Sub frmPhongBan_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        HoTroPhongChu.ApDungPhongChu(Me)
+
         Dim bootstrap = DatabaseBootstrapService.EnsureReady()
         If Not bootstrap.IsSuccess Then
             MessageBox.Show("Lỗi kết nối cơ sở dữ liệu: " & bootstrap.Message, "Lỗi kết nối DB", MessageBoxButtons.OK, MessageBoxIcon.Error)

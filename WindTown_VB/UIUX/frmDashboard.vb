@@ -10,6 +10,8 @@ Public Class frmDashboard
     Private _isLoading As Boolean
 
     Private Async Sub load_form(sender As Object, e As EventArgs) Handles MyBase.Load
+        HoTroPhongChu.ApDungPhongChu(Me)
+
         InitSettingMenu()
         InitDashboardActions()
         InitListViews()

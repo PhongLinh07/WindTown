@@ -13,3 +13,4 @@
 - Áp dụng font Microsoft YaHei UI cho dialog thêm/sửa và sửa hàng loạt.
 - Đặt module áp dụng font trong UIUX/Modules/NavigationService.vb để tránh lỗi build.
 - Chuẩn hóa chuỗi hiển thị trong Designer về ASCII để tránh lỗi mã hóa.
+- Đặt lại text có dấu trực tiếp trong Designer và đổi font form sang Microsoft YaHei UI.
