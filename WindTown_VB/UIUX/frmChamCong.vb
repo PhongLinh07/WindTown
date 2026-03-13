@@ -1,4 +1,5 @@
-﻿Imports System.Linq
+﻿Imports System.Data
+Imports System.Linq
 
 Public Class frmChamCong
 
@@ -39,8 +40,8 @@ Public Class frmChamCong
         ComboBox2.Enabled = False
         ComboBox3.Enabled = False
         cbbxThoiGianNhanh.Enabled = False
-        DateTimePicker1.Enabled = False
-        DateTimePicker2.Enabled = False
+        dtpkToday.Enabled = False
+        dtpkInday.Enabled = False
         TextBox1.Enabled = False
         Button1.Enabled = False
         btnBaoCao.Enabled = False
@@ -146,15 +147,21 @@ Public Class frmChamCong
         colGhiChu.HeaderText = "Ghi chú"
         colGhiChu.Width = 200
         DataGridView1.Columns.Add(colGhiChu)
+
+        UiDinhDang.ApDungDinhDangCotNgay(colNgay)
+        UiDinhDang.ApDungDinhDangCotSo(colGioHanhChinh, "N2")
+        UiDinhDang.ApDungDinhDangCotSo(colGioTangCa, "N2")
+        UiDinhDang.ApDungDinhDangCotSo(colDiMuon, "N2")
+        UiDinhDang.ApDungDinhDangCotSo(colVeSom, "N2")
     End Sub
 
     Private Sub TaiBoLoc()
         cbbxThoiGian.Items.Clear()
-        cbbxThoiGian.Items.AddRange(New Object() {"Táº¥t cáº£", "Theo khoáº£ng"})
+        cbbxThoiGian.Items.AddRange(New Object() {"Tất cả", "Theo khoảng thời gian"})
         cbbxThoiGian.SelectedIndex = 0
 
         Dim trangThaiItems As New List(Of LuaChon(Of Integer)) From {
-            New LuaChon(Of Integer) With {.HienThi = "Táº¥t cáº£", .GiaTri = -999}
+            New LuaChon(Of Integer) With {.HienThi = "Tất cả", .GiaTri = -999}
         }
         For Each kv In Attendance.status_Dict
             trangThaiItems.Add(New LuaChon(Of Integer) With {.HienThi = kv.Value, .GiaTri = kv.Key})
@@ -164,7 +171,7 @@ Public Class frmChamCong
         ComboBox1.ValueMember = "GiaTri"
 
         Dim caLamItems As New List(Of LuaChon(Of Integer)) From {
-            New LuaChon(Of Integer) With {.HienThi = "Táº¥t cáº£", .GiaTri = -999}
+            New LuaChon(Of Integer) With {.HienThi = "Tất cả", .GiaTri = -999}
         }
         For Each kv In Attendance.shift_Dic
             caLamItems.Add(New LuaChon(Of Integer) With {.HienThi = kv.Value, .GiaTri = kv.Key})
@@ -176,12 +183,12 @@ Public Class frmChamCong
         Try
             _danhSachNhanVien = _duLieu.TaiDanhSachNhanVien()
         Catch ex As Exception
-            MessageBox.Show("Không thể tải danh sách nhân viên: " & ex.Message, "Lá»—i", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            MessageBox.Show("Không thể tải danh sách nhân viên: " & ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             _danhSachNhanVien = New List(Of Employee)()
         End Try
 
         Dim nhanVienItems As New List(Of LuaChon(Of Integer)) From {
-            New LuaChon(Of Integer) With {.HienThi = "Táº¥t cáº£", .GiaTri = -999}
+            New LuaChon(Of Integer) With {.HienThi = "Tất cả", .GiaTri = -999}
         }
         For Each nv In _danhSachNhanVien
             nhanVienItems.Add(New LuaChon(Of Integer) With {.HienThi = $"{nv.code} - {nv.name}", .GiaTri = nv.id})
@@ -194,16 +201,23 @@ Public Class frmChamCong
         cbbxThoiGianNhanh.Items.AddRange(New Object() {"Không áp dụng", "Tháng này", "Tháng trước", "Quý này", "Quý trước", "Năm nay"})
         cbbxThoiGianNhanh.SelectedIndex = 0
 
-        DateTimePicker1.Value = DateTime.Today.AddMonths(-1)
-        DateTimePicker2.Value = DateTime.Today
+        UiDinhDang.ApDungDinhDangNgayPicker(dtpkToday)
+        UiDinhDang.ApDungDinhDangNgayPicker(dtpkInday)
+        dtpkToday.Value = DateTime.Today.AddMonths(-1)
+        dtpkInday.Value = DateTime.Today
+        CapNhatTrangThaiThoiGian()
     End Sub
 
     Private Sub TaiDuLieu()
+        Dim danhSachKhoa As Control() = {btnThemChamCong, btnSuaChamCong, btnXoaChamCong, btnBaoCao, DataGridView1}
+        UiTrangThai.BatLoading(Me, danhSachKhoa)
         Try
             _danhSachChamCong = _duLieu.TaiDanhSachChamCong()
         Catch ex As Exception
-            MessageBox.Show("Không thể tải danh sách chấm công: " & ex.Message, "Lá»—i", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show("Không thể tải danh sách chấm công: " & ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error)
             _danhSachChamCong = New List(Of Attendance)()
+        Finally
+            UiTrangThai.TatLoading(Me, danhSachKhoa)
         End Try
 
         _trangHienTai = 1
@@ -237,9 +251,9 @@ Public Class frmChamCong
             query = query.Where(Function(x) x.employee_id = nvId)
         End If
 
-        If cbbxThoiGian.SelectedItem IsNot Nothing AndAlso cbbxThoiGian.SelectedItem.ToString() = "Theo khoáº£ng" Then
-            Dim tuNgay = DateTimePicker1.Value.Date
-            Dim denNgay = DateTimePicker2.Value.Date
+        If DangLocKhoangThoiGian() Then
+            Dim tuNgay = dtpkToday.Value.Date
+            Dim denNgay = dtpkInday.Value.Date
             If tuNgay > denNgay Then
                 Dim tmp = tuNgay
                 tuNgay = denNgay
@@ -253,6 +267,16 @@ Public Class frmChamCong
 
         Return query.ToList()
     End Function
+
+    Private Function DangLocKhoangThoiGian() As Boolean
+        Return cbbxThoiGian.SelectedItem IsNot Nothing AndAlso cbbxThoiGian.SelectedItem.ToString() = "Theo khoảng thời gian"
+    End Function
+
+    Private Sub CapNhatTrangThaiThoiGian()
+        Dim batLoc = DangLocKhoangThoiGian()
+        dtpkToday.Enabled = batLoc
+        dtpkInday.Enabled = batLoc
+    End Sub
 
     Private Function LayGiaTriBoLoc(cb As ComboBox) As Integer
         If cb Is Nothing Then Return -999
@@ -297,8 +321,11 @@ Public Class frmChamCong
         Next
     End Sub
 
-    Private Sub SuKienLoc(sender As Object, e As EventArgs) Handles Button1.Click, ComboBox1.SelectedIndexChanged, ComboBox2.SelectedIndexChanged, ComboBox3.SelectedIndexChanged, DateTimePicker1.ValueChanged, DateTimePicker2.ValueChanged, TextBox1.TextChanged, cbbxThoiGian.SelectedIndexChanged
+    Private Sub SuKienLoc(sender As Object, e As EventArgs) Handles Button1.Click, ComboBox1.SelectedIndexChanged, ComboBox2.SelectedIndexChanged, ComboBox3.SelectedIndexChanged, dtpkToday.ValueChanged, dtpkInday.ValueChanged, TextBox1.TextChanged, cbbxThoiGian.SelectedIndexChanged
         If Not _daTai Then Return
+        If sender Is cbbxThoiGian Then
+            CapNhatTrangThaiThoiGian()
+        End If
         _trangHienTai = 1
         CapNhatTrang()
     End Sub
@@ -308,20 +335,25 @@ Public Class frmChamCong
     End Sub
 
     Private Sub mnuBaoCaoLoc_Click(sender As Object, e As EventArgs) Handles mnuBaoCaoLoc.Click
-        MessageBox.Show("Chức năng xuất theo bộ lọc đang được phát triển.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        Dim dsLoc = ApDungLoc(_danhSachChamCong)
+        Dim bang = TaoBangChamCong(dsLoc)
+        BaoCaoXuat.XuatTuDataTable(bang, "cham_cong_loc")
     End Sub
 
     Private Sub mnuBaoCaoChon_Click(sender As Object, e As EventArgs) Handles mnuBaoCaoChon.Click
         Dim dsChon = LayDanhSachChon()
         If dsChon.Count = 0 Then
-            MessageBox.Show("Vui lòng chọn ít nhất một dòng để xuất.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            UiThongBao.HienThiCanhBao("Vui lòng chọn ít nhất một dòng để xuất.")
             Return
         End If
-        MessageBox.Show("Chức năng xuất theo lựa chọn đang được phát triển.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        Dim bang = TaoBangChamCong(dsChon)
+        BaoCaoXuat.XuatTuDataTable(bang, "cham_cong_chon")
     End Sub
 
     Private Sub mnuBaoCaoTongHop_Click(sender As Object, e As EventArgs) Handles mnuBaoCaoTongHop.Click
-        MessageBox.Show("Chức năng tổng hợp tháng/quý đang được phát triển.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        Dim dsLoc = ApDungLoc(_danhSachChamCong)
+        Dim bang = TaoBangChamCong(dsLoc)
+        BaoCaoXuat.XuatTuDataTable(bang, "cham_cong_tong_hop")
     End Sub
 
     Private Sub cbbxThoiGianNhanh_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbbxThoiGianNhanh.SelectedIndexChanged
@@ -336,8 +368,9 @@ Public Class frmChamCong
         ComboBox3.SelectedIndex = 0
         cbbxThoiGian.SelectedIndex = 0
         cbbxThoiGianNhanh.SelectedIndex = 0
-        DateTimePicker1.Value = DateTime.Today.AddMonths(-1)
-        DateTimePicker2.Value = DateTime.Today
+        dtpkToday.Value = DateTime.Today.AddMonths(-1)
+        dtpkInday.Value = DateTime.Today
+        CapNhatTrangThaiThoiGian()
         _trangHienTai = 1
         CapNhatTrang()
     End Sub
@@ -511,7 +544,7 @@ Public Class frmChamCong
             Dim lblGhiChu As New Label() With {.Text = "Ghi chú", .Location = New Point(20, 380), .AutoSize = True}
             Dim txtGhiChu As New TextBox() With {.Location = New Point(190, 378), .Width = 300, .Text = data.note}
 
-            Dim btnOk As New Button() With {.Text = "Lưu", .Location = New Point(330, 420), .Width = 75, .DialogResult = DialogResult.OK}
+            Dim btnOk As New Button() With {.Text = "Luu", .Location = New Point(330, 420), .Width = 75, .DialogResult = DialogResult.OK}
             Dim btnHuy As New Button() With {.Text = "Hủy", .Location = New Point(415, 420), .Width = 75, .DialogResult = DialogResult.Cancel}
 
             frm.Controls.AddRange(New Control() {lblCode, txtCode, lblEmp, cboEmp, lblNgay, dtNgay, lblCa, cboCa, lblGioHC, numGioHC, lblTangCa, numTangCa, lblDiMuon, numDiMuon, lblVeSom, numVeSom, lblTrangThai, cboTrangThai, lblGhiChu, txtGhiChu, btnOk, btnHuy})
@@ -597,12 +630,44 @@ Public Class frmChamCong
                 Return
         End Select
 
-        DateTimePicker1.Value = tuNgay
-        DateTimePicker2.Value = denNgay
+        dtpkToday.Value = tuNgay
+        dtpkInday.Value = denNgay
         cbbxThoiGian.SelectedIndex = 1
         _trangHienTai = 1
         CapNhatTrang()
     End Sub
+
+    Private Function TaoBangChamCong(ds As IEnumerable(Of Attendance)) As DataTable
+        Dim bang As New DataTable()
+        bang.Columns.Add("Mã chấm công")
+        bang.Columns.Add("Nhân viên")
+        bang.Columns.Add("Ngày chấm công")
+        bang.Columns.Add("Ca làm")
+        bang.Columns.Add("Giờ hành chính")
+        bang.Columns.Add("Giờ tăng ca")
+        bang.Columns.Add("Giờ đi muộn")
+        bang.Columns.Add("Giờ về sớm")
+        bang.Columns.Add("Trạng thái")
+        bang.Columns.Add("Ghi chú")
+
+        If ds Is Nothing Then Return bang
+        For Each cc In ds
+            bang.Rows.Add(
+                cc.code,
+                cc.employee_UI,
+                If(cc.of_date, DateTime.MinValue).ToString(UiDinhDang.DinhDangNgayMacDinh),
+                cc.shift_UI,
+                cc.office_hours.ToString("N2"),
+                cc.overtime_hours.ToString("N2"),
+                cc.late_hours.ToString("N2"),
+                cc.early_hours.ToString("N2"),
+                cc.status_UI,
+                cc.note
+            )
+        Next
+
+        Return bang
+    End Function
 
 End Class
 
@@ -642,6 +707,8 @@ Friend Class ChamCongDataModel
     End Function
 
 End Class
+
+
 
 
 

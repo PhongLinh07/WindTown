@@ -19,3 +19,7 @@
 - Chuyển “Xuất báo cáo” thành menu phụ (Báo cáo) để tách khỏi CRUD.
 - Bổ sung kiểm tra trùng mã chấm công trước khi lưu (tạo/sửa).
 - Chuẩn hóa lại text hiển thị tiếng Việt có dấu trong frmChamCong.
+
+## 2026-03-13
+- Sửa lọc theo khoảng thời gian để dùng `dtpkToday` (từ ngày) và `dtpkInday` (đến ngày).
+- Đồng bộ trạng thái bật/tắt bộ lọc thời gian theo lựa chọn `cbbxThoiGian`.

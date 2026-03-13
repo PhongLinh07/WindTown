@@ -7,3 +7,4 @@
 - 2026-03-13: Thiết kế khu vực phân quyền chi tiết theo chức năng trong `frmSystem`.
 - 2026-03-13: Khởi chạy WinAppDriver và mở ứng dụng để kiểm tra nhanh trạng thái chạy.
 - 2026-03-13: Build Debug PASS sau khi cập nhật khu vực phân quyền.
+- 2026-03-13: Tải dữ liệu cấu hình CSDL khi mở `frmSystem`.

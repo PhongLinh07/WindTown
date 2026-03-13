@@ -31,6 +31,10 @@ Public Class frmLogin
         Dim username As String = tbxUsername.Text.Trim()
         Dim password As String = tbxPassword.Text.Trim()
 
+        If Not KiemTraDuLieuDangNhap(username, password) Then
+            Return
+        End If
+
         If CheckLogin(username, password) Then
             MessageBox.Show("Đăng nhập thành công!", "Thành công")
 
@@ -47,6 +51,22 @@ Public Class frmLogin
         Dim accService As AccountService = New AccountService()
         Dim result = accService.Execute(DataIntent.Login, New Account With {.user = username, .password = password})
         Return result.IsSuccess
+    End Function
+
+    Private Function KiemTraDuLieuDangNhap(username As String, password As String) As Boolean
+        If String.IsNullOrWhiteSpace(username) Then
+            MessageBox.Show("Vui lòng nhập tên đăng nhập.", "Thiếu thông tin")
+            tbxUsername.Focus()
+            Return False
+        End If
+
+        If String.IsNullOrWhiteSpace(password) Then
+            MessageBox.Show("Vui lòng nhập mật khẩu.", "Thiếu thông tin")
+            tbxPassword.Focus()
+            Return False
+        End If
+
+        Return True
     End Function
 
 End Class

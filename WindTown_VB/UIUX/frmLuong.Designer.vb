@@ -34,6 +34,7 @@ Partial Class frmLuong
         Me.ComboBox4 = New System.Windows.Forms.ComboBox()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Label6 = New System.Windows.Forms.Label()
+        Me.btnXuatBaoCao = New System.Windows.Forms.Button()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.ComboBox2 = New System.Windows.Forms.ComboBox()
         Me.ComboBox1 = New System.Windows.Forms.ComboBox()
@@ -176,6 +177,7 @@ Partial Class frmLuong
         '
         Me.Panel1.BackColor = System.Drawing.Color.White
         Me.tlpBody.SetColumnSpan(Me.Panel1, 3)
+        Me.Panel1.Controls.Add(Me.btnXuatBaoCao)
         Me.Panel1.Controls.Add(Me.Label6)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel1.Location = New System.Drawing.Point(2, 3)
@@ -194,6 +196,19 @@ Partial Class frmLuong
         Me.Label6.Size = New System.Drawing.Size(138, 31)
         Me.Label6.TabIndex = 0
         Me.Label6.Text = "Tính lương"
+        '
+        'btnXuatBaoCao
+        '
+        Me.btnXuatBaoCao.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnXuatBaoCao.BackColor = System.Drawing.Color.DodgerBlue
+        Me.btnXuatBaoCao.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnXuatBaoCao.ForeColor = System.Drawing.Color.White
+        Me.btnXuatBaoCao.Location = New System.Drawing.Point(888, 20)
+        Me.btnXuatBaoCao.Name = "btnXuatBaoCao"
+        Me.btnXuatBaoCao.Size = New System.Drawing.Size(130, 32)
+        Me.btnXuatBaoCao.TabIndex = 2
+        Me.btnXuatBaoCao.Text = "Xuất báo cáo"
+        Me.btnXuatBaoCao.UseVisualStyleBackColor = False
         '
         'Panel2
         '
@@ -279,6 +294,7 @@ Partial Class frmLuong
     Friend WithEvents Button1 As Button
     Friend WithEvents Panel1 As Panel
     Friend WithEvents Label6 As Label
+    Friend WithEvents btnXuatBaoCao As Button
     Friend WithEvents Panel2 As Panel
     Friend WithEvents ComboBox2 As ComboBox
     Friend WithEvents ComboBox1 As ComboBox

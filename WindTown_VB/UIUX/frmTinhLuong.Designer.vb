@@ -17,8 +17,8 @@ Partial Class frmTinhLuong
 
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmTinhLuong))
         Me.components = New System.ComponentModel.Container()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmTinhLuong))
         Me.pnlHeader = New System.Windows.Forms.Panel()
         Me.pnlHanhDong = New System.Windows.Forms.Panel()
         Me.btnTaoBangLuong = New System.Windows.Forms.Button()
@@ -74,7 +74,7 @@ Partial Class frmTinhLuong
         Me.pnlHanhDong.Controls.Add(Me.btnBaoCao)
         Me.pnlHanhDong.Location = New System.Drawing.Point(590, 20)
         Me.pnlHanhDong.Name = "pnlHanhDong"
-        Me.pnlHanhDong.Size = New System.Drawing.Size(430, 40)
+        Me.pnlHanhDong.Size = New System.Drawing.Size(430, 44)
         Me.pnlHanhDong.TabIndex = 1
         '
         'btnTaoBangLuong
@@ -84,7 +84,7 @@ Partial Class frmTinhLuong
         Me.btnTaoBangLuong.ForeColor = System.Drawing.Color.White
         Me.btnTaoBangLuong.Location = New System.Drawing.Point(0, 6)
         Me.btnTaoBangLuong.Name = "btnTaoBangLuong"
-        Me.btnTaoBangLuong.Size = New System.Drawing.Size(130, 27)
+        Me.btnTaoBangLuong.Size = New System.Drawing.Size(130, 33)
         Me.btnTaoBangLuong.TabIndex = 0
         Me.btnTaoBangLuong.Text = "Tạo bảng lương"
         Me.btnTaoBangLuong.UseVisualStyleBackColor = False
@@ -96,7 +96,7 @@ Partial Class frmTinhLuong
         Me.btnDongBangLuong.ForeColor = System.Drawing.Color.White
         Me.btnDongBangLuong.Location = New System.Drawing.Point(140, 6)
         Me.btnDongBangLuong.Name = "btnDongBangLuong"
-        Me.btnDongBangLuong.Size = New System.Drawing.Size(130, 27)
+        Me.btnDongBangLuong.Size = New System.Drawing.Size(130, 33)
         Me.btnDongBangLuong.TabIndex = 1
         Me.btnDongBangLuong.Text = "Đóng bảng lương"
         Me.btnDongBangLuong.UseVisualStyleBackColor = False
@@ -108,7 +108,7 @@ Partial Class frmTinhLuong
         Me.btnBaoCao.ForeColor = System.Drawing.Color.White
         Me.btnBaoCao.Location = New System.Drawing.Point(280, 6)
         Me.btnBaoCao.Name = "btnBaoCao"
-        Me.btnBaoCao.Size = New System.Drawing.Size(130, 27)
+        Me.btnBaoCao.Size = New System.Drawing.Size(130, 33)
         Me.btnBaoCao.TabIndex = 2
         Me.btnBaoCao.Text = "Báo cáo"
         Me.btnBaoCao.UseVisualStyleBackColor = False
@@ -155,7 +155,7 @@ Partial Class frmTinhLuong
         Me.btnLamMoi.ForeColor = System.Drawing.Color.White
         Me.btnLamMoi.Location = New System.Drawing.Point(880, 62)
         Me.btnLamMoi.Name = "btnLamMoi"
-        Me.btnLamMoi.Size = New System.Drawing.Size(120, 27)
+        Me.btnLamMoi.Size = New System.Drawing.Size(120, 33)
         Me.btnLamMoi.TabIndex = 15
         Me.btnLamMoi.Text = "Làm mới"
         Me.btnLamMoi.UseVisualStyleBackColor = False
@@ -167,7 +167,7 @@ Partial Class frmTinhLuong
         Me.btnTimKiem.ForeColor = System.Drawing.Color.White
         Me.btnTimKiem.Location = New System.Drawing.Point(880, 18)
         Me.btnTimKiem.Name = "btnTimKiem"
-        Me.btnTimKiem.Size = New System.Drawing.Size(120, 27)
+        Me.btnTimKiem.Size = New System.Drawing.Size(120, 33)
         Me.btnTimKiem.TabIndex = 14
         Me.btnTimKiem.Text = "Tìm kiếm"
         Me.btnTimKiem.UseVisualStyleBackColor = False
@@ -196,7 +196,6 @@ Partial Class frmTinhLuong
         Me.cbbTrangThai.Name = "cbbTrangThai"
         Me.cbbTrangThai.Size = New System.Drawing.Size(200, 31)
         Me.cbbTrangThai.TabIndex = 3
-        
         '
         'cbbViTri
         '
@@ -229,7 +228,6 @@ Partial Class frmTinhLuong
         Me.dtDenNgay.Name = "dtDenNgay"
         Me.dtDenNgay.Size = New System.Drawing.Size(180, 29)
         Me.dtDenNgay.TabIndex = 6
-        
         '
         'cbbThoiGianNhanh
         '
@@ -245,7 +243,7 @@ Partial Class frmTinhLuong
         Me.lblKyLuong.AutoSize = True
         Me.lblKyLuong.Location = New System.Drawing.Point(400, 22)
         Me.lblKyLuong.Name = "lblKyLuong"
-        Me.lblKyLuong.Size = New System.Drawing.Size(66, 23)
+        Me.lblKyLuong.Size = New System.Drawing.Size(79, 23)
         Me.lblKyLuong.TabIndex = 9
         Me.lblKyLuong.Text = "Kỳ lương"
         '
@@ -254,17 +252,16 @@ Partial Class frmTinhLuong
         Me.lblTrangThai.AutoSize = True
         Me.lblTrangThai.Location = New System.Drawing.Point(400, 96)
         Me.lblTrangThai.Name = "lblTrangThai"
-        Me.lblTrangThai.Size = New System.Drawing.Size(84, 23)
+        Me.lblTrangThai.Size = New System.Drawing.Size(89, 23)
         Me.lblTrangThai.TabIndex = 10
-        Me.lblTrangThai.Text = "Tr?ng th?i"
-        
+        Me.lblTrangThai.Text = "Trạng thái"
         '
         'lblViTri
         '
         Me.lblViTri.AutoSize = True
         Me.lblViTri.Location = New System.Drawing.Point(400, 66)
         Me.lblViTri.Name = "lblViTri"
-        Me.lblViTri.Size = New System.Drawing.Size(45, 23)
+        Me.lblViTri.Size = New System.Drawing.Size(55, 23)
         Me.lblViTri.TabIndex = 11
         Me.lblViTri.Text = "V? tr?"
         '
@@ -273,9 +270,9 @@ Partial Class frmTinhLuong
         Me.lblTuKhoa.AutoSize = True
         Me.lblTuKhoa.Location = New System.Drawing.Point(12, 22)
         Me.lblTuKhoa.Name = "lblTuKhoa"
-        Me.lblTuKhoa.Size = New System.Drawing.Size(65, 23)
+        Me.lblTuKhoa.Size = New System.Drawing.Size(73, 23)
         Me.lblTuKhoa.TabIndex = 12
-        Me.lblTuKhoa.Text = "T? kh?a"
+        Me.lblTuKhoa.Text = "Từ khóa"
         '
         'lblThoiGian
         '
@@ -284,16 +281,16 @@ Partial Class frmTinhLuong
         Me.lblThoiGian.Name = "lblThoiGian"
         Me.lblThoiGian.Size = New System.Drawing.Size(84, 23)
         Me.lblThoiGian.TabIndex = 13
-        Me.lblThoiGian.Text = "Th?i gian"
+        Me.lblThoiGian.Text = "Thời gian"
         '
         'lblLocNhanh
         '
         Me.lblLocNhanh.AutoSize = True
         Me.lblLocNhanh.Location = New System.Drawing.Point(12, 96)
         Me.lblLocNhanh.Name = "lblLocNhanh"
-        Me.lblLocNhanh.Size = New System.Drawing.Size(78, 23)
+        Me.lblLocNhanh.Size = New System.Drawing.Size(91, 23)
         Me.lblLocNhanh.TabIndex = 16
-        Me.lblLocNhanh.Text = "L?c nhanh"
+        Me.lblLocNhanh.Text = "Lọc nhanh"
         '
         'dgvBangLuong
         '
@@ -312,25 +309,25 @@ Partial Class frmTinhLuong
         Me.cmsBaoCao.ImageScalingSize = New System.Drawing.Size(20, 20)
         Me.cmsBaoCao.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuBaoCaoLoc, Me.mnuBaoCaoChon, Me.mnuBaoCaoTongHop})
         Me.cmsBaoCao.Name = "cmsBaoCao"
-        Me.cmsBaoCao.Size = New System.Drawing.Size(261, 76)
+        Me.cmsBaoCao.Size = New System.Drawing.Size(235, 76)
         '
         'mnuBaoCaoLoc
         '
         Me.mnuBaoCaoLoc.Name = "mnuBaoCaoLoc"
-        Me.mnuBaoCaoLoc.Size = New System.Drawing.Size(260, 24)
-        Me.mnuBaoCaoLoc.Text = "Xu?t theo b? l?c hi?n t?i"
+        Me.mnuBaoCaoLoc.Size = New System.Drawing.Size(234, 24)
+        Me.mnuBaoCaoLoc.Text = "Xuất theo bản lọc hiện tại"
         '
         'mnuBaoCaoChon
         '
         Me.mnuBaoCaoChon.Name = "mnuBaoCaoChon"
-        Me.mnuBaoCaoChon.Size = New System.Drawing.Size(260, 24)
-        Me.mnuBaoCaoChon.Text = "Xu?t theo l?a ch?n"
+        Me.mnuBaoCaoChon.Size = New System.Drawing.Size(234, 24)
+        Me.mnuBaoCaoChon.Text = "Xuất theo lựa chọn"
         '
         'mnuBaoCaoTongHop
         '
         Me.mnuBaoCaoTongHop.Name = "mnuBaoCaoTongHop"
-        Me.mnuBaoCaoTongHop.Size = New System.Drawing.Size(260, 24)
-        Me.mnuBaoCaoTongHop.Text = "T?ng h?p th?ng/qu?"
+        Me.mnuBaoCaoTongHop.Size = New System.Drawing.Size(234, 24)
+        Me.mnuBaoCaoTongHop.Text = "Tổng hợp báo cáo"
         '
         'frmTinhLuong
         '

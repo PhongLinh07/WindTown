@@ -30,6 +30,22 @@ Partial Class frmSystem
         Me.grpDanhMuc = New System.Windows.Forms.GroupBox()
         Me.lstDanhMuc = New System.Windows.Forms.ListBox()
         Me.pnlNoiDung = New System.Windows.Forms.Panel()
+        Me.grpPhanQuyen = New System.Windows.Forms.GroupBox()
+        Me.tlpPhanQuyen = New System.Windows.Forms.TableLayoutPanel()
+        Me.dgvPhanQuyen = New System.Windows.Forms.DataGridView()
+        Me.colChucNang = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.colXem = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.colThem = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.colSua = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.colXoa = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.colXuat = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.pnlPhanQuyen = New System.Windows.Forms.Panel()
+        Me.btnDatLaiQuyen = New System.Windows.Forms.Button()
+        Me.btnSaoChepQuyen = New System.Windows.Forms.Button()
+        Me.btnLuuQuyen = New System.Windows.Forms.Button()
+        Me.cboVaiTroQuyen = New System.Windows.Forms.ComboBox()
+        Me.lblVaiTroQuyen = New System.Windows.Forms.Label()
+        Me.lblHuongDanQuyen = New System.Windows.Forms.Label()
         Me.grpTaiKhoan = New System.Windows.Forms.GroupBox()
         Me.tlpTaiKhoan = New System.Windows.Forms.TableLayoutPanel()
         Me.dgvTaiKhoan = New System.Windows.Forms.DataGridView()
@@ -51,22 +67,6 @@ Partial Class frmSystem
         Me.lblHoTen = New System.Windows.Forms.Label()
         Me.txtTenDangNhap = New System.Windows.Forms.TextBox()
         Me.lblTenDangNhap = New System.Windows.Forms.Label()
-        Me.grpPhanQuyen = New System.Windows.Forms.GroupBox()
-        Me.tlpPhanQuyen = New System.Windows.Forms.TableLayoutPanel()
-        Me.dgvPhanQuyen = New System.Windows.Forms.DataGridView()
-        Me.colChucNang = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.colXem = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.colThem = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.colSua = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.colXoa = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.colXuat = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.pnlPhanQuyen = New System.Windows.Forms.Panel()
-        Me.btnDatLaiQuyen = New System.Windows.Forms.Button()
-        Me.btnSaoChepQuyen = New System.Windows.Forms.Button()
-        Me.btnLuuQuyen = New System.Windows.Forms.Button()
-        Me.cboVaiTroQuyen = New System.Windows.Forms.ComboBox()
-        Me.lblVaiTroQuyen = New System.Windows.Forms.Label()
-        Me.lblHuongDanQuyen = New System.Windows.Forms.Label()
         Me.grpHienThi = New System.Windows.Forms.GroupBox()
         Me.tlpHienThi = New System.Windows.Forms.TableLayoutPanel()
         Me.chkThongBao = New System.Windows.Forms.CheckBox()
@@ -86,22 +86,22 @@ Partial Class frmSystem
         Me.txtMayChu = New System.Windows.Forms.TextBox()
         Me.lblMayChu = New System.Windows.Forms.Label()
         Me.pnlChanTrang = New System.Windows.Forms.Panel()
+        Me.lblTrangThai = New System.Windows.Forms.Label()
         Me.btnDong = New System.Windows.Forms.Button()
         Me.btnLuu = New System.Windows.Forms.Button()
-        Me.lblTrangThai = New System.Windows.Forms.Label()
         Me.tlpMain.SuspendLayout()
         Me.pnlTieuDe.SuspendLayout()
         Me.tlpNoiDung.SuspendLayout()
         Me.grpDanhMuc.SuspendLayout()
         Me.pnlNoiDung.SuspendLayout()
-        Me.grpTaiKhoan.SuspendLayout()
-        Me.tlpTaiKhoan.SuspendLayout()
-        CType(Me.dgvTaiKhoan, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.pnlTaiKhoan.SuspendLayout()
         Me.grpPhanQuyen.SuspendLayout()
         Me.tlpPhanQuyen.SuspendLayout()
         CType(Me.dgvPhanQuyen, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlPhanQuyen.SuspendLayout()
+        Me.grpTaiKhoan.SuspendLayout()
+        Me.tlpTaiKhoan.SuspendLayout()
+        CType(Me.dgvTaiKhoan, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.pnlTaiKhoan.SuspendLayout()
         Me.grpHienThi.SuspendLayout()
         Me.tlpHienThi.SuspendLayout()
         Me.grpCoSoDuLieu.SuspendLayout()
@@ -144,7 +144,7 @@ Partial Class frmSystem
         Me.lblMoTa.ForeColor = System.Drawing.Color.DimGray
         Me.lblMoTa.Location = New System.Drawing.Point(26, 44)
         Me.lblMoTa.Name = "lblMoTa"
-        Me.lblMoTa.Size = New System.Drawing.Size(448, 23)
+        Me.lblMoTa.Size = New System.Drawing.Size(472, 23)
         Me.lblMoTa.TabIndex = 1
         Me.lblMoTa.Text = "Quản lý cấu hình cơ sở dữ liệu, hiển thị và tùy chọn chung."
         '
@@ -154,7 +154,7 @@ Partial Class frmSystem
         Me.lblTieuDe.Font = New System.Drawing.Font("Microsoft YaHei UI", 16.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblTieuDe.Location = New System.Drawing.Point(24, 10)
         Me.lblTieuDe.Name = "lblTieuDe"
-        Me.lblTieuDe.Size = New System.Drawing.Size(210, 37)
+        Me.lblTieuDe.Size = New System.Drawing.Size(251, 37)
         Me.lblTieuDe.TabIndex = 0
         Me.lblTieuDe.Text = "Cài đặt hệ thống"
         '
@@ -210,215 +210,6 @@ Partial Class frmSystem
         Me.pnlNoiDung.Size = New System.Drawing.Size(796, 524)
         Me.pnlNoiDung.TabIndex = 1
         '
-        'grpTaiKhoan
-        '
-        Me.grpTaiKhoan.Controls.Add(Me.tlpTaiKhoan)
-        Me.grpTaiKhoan.Dock = System.Windows.Forms.DockStyle.Top
-        Me.grpTaiKhoan.Location = New System.Drawing.Point(0, 410)
-        Me.grpTaiKhoan.Name = "grpTaiKhoan"
-        Me.grpTaiKhoan.Padding = New System.Windows.Forms.Padding(12)
-        Me.grpTaiKhoan.Size = New System.Drawing.Size(796, 380)
-        Me.grpTaiKhoan.TabIndex = 2
-        Me.grpTaiKhoan.TabStop = False
-        Me.grpTaiKhoan.Text = "Quản lý tài khoản"
-        '
-        'tlpTaiKhoan
-        '
-        Me.tlpTaiKhoan.ColumnCount = 2
-        Me.tlpTaiKhoan.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 280.0!))
-        Me.tlpTaiKhoan.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.tlpTaiKhoan.Controls.Add(Me.dgvTaiKhoan, 1, 0)
-        Me.tlpTaiKhoan.Controls.Add(Me.pnlTaiKhoan, 0, 0)
-        Me.tlpTaiKhoan.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.tlpTaiKhoan.Location = New System.Drawing.Point(12, 35)
-        Me.tlpTaiKhoan.Name = "tlpTaiKhoan"
-        Me.tlpTaiKhoan.RowCount = 1
-        Me.tlpTaiKhoan.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.tlpTaiKhoan.Size = New System.Drawing.Size(772, 333)
-        Me.tlpTaiKhoan.TabIndex = 0
-        '
-        'dgvTaiKhoan
-        '
-        Me.dgvTaiKhoan.AllowUserToAddRows = False
-        Me.dgvTaiKhoan.AllowUserToDeleteRows = False
-        Me.dgvTaiKhoan.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
-        Me.dgvTaiKhoan.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvTaiKhoan.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.colTenDangNhap, Me.colHoTen, Me.colVaiTro, Me.colTrangThai})
-        Me.dgvTaiKhoan.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.dgvTaiKhoan.Location = New System.Drawing.Point(283, 3)
-        Me.dgvTaiKhoan.MultiSelect = False
-        Me.dgvTaiKhoan.Name = "dgvTaiKhoan"
-        Me.dgvTaiKhoan.ReadOnly = True
-        Me.dgvTaiKhoan.RowHeadersWidth = 51
-        Me.dgvTaiKhoan.RowTemplate.Height = 24
-        Me.dgvTaiKhoan.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgvTaiKhoan.Size = New System.Drawing.Size(486, 327)
-        Me.dgvTaiKhoan.TabIndex = 1
-        '
-        'colTenDangNhap
-        '
-        Me.colTenDangNhap.HeaderText = "Tên đăng nhập"
-        Me.colTenDangNhap.MinimumWidth = 6
-        Me.colTenDangNhap.Name = "colTenDangNhap"
-        Me.colTenDangNhap.ReadOnly = True
-        '
-        'colHoTen
-        '
-        Me.colHoTen.HeaderText = "Họ tên"
-        Me.colHoTen.MinimumWidth = 6
-        Me.colHoTen.Name = "colHoTen"
-        Me.colHoTen.ReadOnly = True
-        '
-        'colVaiTro
-        '
-        Me.colVaiTro.HeaderText = "Vai trò"
-        Me.colVaiTro.MinimumWidth = 6
-        Me.colVaiTro.Name = "colVaiTro"
-        Me.colVaiTro.ReadOnly = True
-        '
-        'colTrangThai
-        '
-        Me.colTrangThai.HeaderText = "Trạng thái"
-        Me.colTrangThai.MinimumWidth = 6
-        Me.colTrangThai.Name = "colTrangThai"
-        Me.colTrangThai.ReadOnly = True
-        '
-        'pnlTaiKhoan
-        '
-        Me.pnlTaiKhoan.Controls.Add(Me.btnPhanQuyen)
-        Me.pnlTaiKhoan.Controls.Add(Me.btnXoaTaiKhoan)
-        Me.pnlTaiKhoan.Controls.Add(Me.btnSuaTaiKhoan)
-        Me.pnlTaiKhoan.Controls.Add(Me.btnThemTaiKhoan)
-        Me.pnlTaiKhoan.Controls.Add(Me.chkKichHoat)
-        Me.pnlTaiKhoan.Controls.Add(Me.cboVaiTro)
-        Me.pnlTaiKhoan.Controls.Add(Me.lblVaiTro)
-        Me.pnlTaiKhoan.Controls.Add(Me.txtEmail)
-        Me.pnlTaiKhoan.Controls.Add(Me.lblEmail)
-        Me.pnlTaiKhoan.Controls.Add(Me.txtHoTen)
-        Me.pnlTaiKhoan.Controls.Add(Me.lblHoTen)
-        Me.pnlTaiKhoan.Controls.Add(Me.txtTenDangNhap)
-        Me.pnlTaiKhoan.Controls.Add(Me.lblTenDangNhap)
-        Me.pnlTaiKhoan.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.pnlTaiKhoan.Location = New System.Drawing.Point(3, 3)
-        Me.pnlTaiKhoan.Name = "pnlTaiKhoan"
-        Me.pnlTaiKhoan.Size = New System.Drawing.Size(274, 327)
-        Me.pnlTaiKhoan.TabIndex = 0
-        '
-        'btnPhanQuyen
-        '
-        Me.btnPhanQuyen.Location = New System.Drawing.Point(144, 290)
-        Me.btnPhanQuyen.Name = "btnPhanQuyen"
-        Me.btnPhanQuyen.Size = New System.Drawing.Size(120, 32)
-        Me.btnPhanQuyen.TabIndex = 12
-        Me.btnPhanQuyen.Text = "Phân quyền"
-        Me.btnPhanQuyen.UseVisualStyleBackColor = True
-        '
-        'btnXoaTaiKhoan
-        '
-        Me.btnXoaTaiKhoan.Location = New System.Drawing.Point(12, 290)
-        Me.btnXoaTaiKhoan.Name = "btnXoaTaiKhoan"
-        Me.btnXoaTaiKhoan.Size = New System.Drawing.Size(120, 32)
-        Me.btnXoaTaiKhoan.TabIndex = 11
-        Me.btnXoaTaiKhoan.Text = "Xóa"
-        Me.btnXoaTaiKhoan.UseVisualStyleBackColor = True
-        '
-        'btnSuaTaiKhoan
-        '
-        Me.btnSuaTaiKhoan.Location = New System.Drawing.Point(144, 252)
-        Me.btnSuaTaiKhoan.Name = "btnSuaTaiKhoan"
-        Me.btnSuaTaiKhoan.Size = New System.Drawing.Size(120, 32)
-        Me.btnSuaTaiKhoan.TabIndex = 10
-        Me.btnSuaTaiKhoan.Text = "Sửa"
-        Me.btnSuaTaiKhoan.UseVisualStyleBackColor = True
-        '
-        'btnThemTaiKhoan
-        '
-        Me.btnThemTaiKhoan.Location = New System.Drawing.Point(12, 252)
-        Me.btnThemTaiKhoan.Name = "btnThemTaiKhoan"
-        Me.btnThemTaiKhoan.Size = New System.Drawing.Size(120, 32)
-        Me.btnThemTaiKhoan.TabIndex = 9
-        Me.btnThemTaiKhoan.Text = "Thêm"
-        Me.btnThemTaiKhoan.UseVisualStyleBackColor = True
-        '
-        'chkKichHoat
-        '
-        Me.chkKichHoat.AutoSize = True
-        Me.chkKichHoat.Checked = True
-        Me.chkKichHoat.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.chkKichHoat.Location = New System.Drawing.Point(12, 218)
-        Me.chkKichHoat.Name = "chkKichHoat"
-        Me.chkKichHoat.Size = New System.Drawing.Size(89, 27)
-        Me.chkKichHoat.TabIndex = 8
-        Me.chkKichHoat.Text = "Kích hoạt"
-        Me.chkKichHoat.UseVisualStyleBackColor = True
-        '
-        'cboVaiTro
-        '
-        Me.cboVaiTro.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cboVaiTro.FormattingEnabled = True
-        Me.cboVaiTro.Items.AddRange(New Object() {"Quản trị", "Nhân sự", "Kế toán", "Quản lý", "Nhân viên"})
-        Me.cboVaiTro.Location = New System.Drawing.Point(12, 182)
-        Me.cboVaiTro.Name = "cboVaiTro"
-        Me.cboVaiTro.Size = New System.Drawing.Size(252, 31)
-        Me.cboVaiTro.TabIndex = 7
-        '
-        'lblVaiTro
-        '
-        Me.lblVaiTro.AutoSize = True
-        Me.lblVaiTro.Location = New System.Drawing.Point(12, 156)
-        Me.lblVaiTro.Name = "lblVaiTro"
-        Me.lblVaiTro.Size = New System.Drawing.Size(60, 23)
-        Me.lblVaiTro.TabIndex = 6
-        Me.lblVaiTro.Text = "Vai trò"
-        '
-        'txtEmail
-        '
-        Me.txtEmail.Location = New System.Drawing.Point(12, 124)
-        Me.txtEmail.Name = "txtEmail"
-        Me.txtEmail.Size = New System.Drawing.Size(252, 29)
-        Me.txtEmail.TabIndex = 5
-        '
-        'lblEmail
-        '
-        Me.lblEmail.AutoSize = True
-        Me.lblEmail.Location = New System.Drawing.Point(12, 98)
-        Me.lblEmail.Name = "lblEmail"
-        Me.lblEmail.Size = New System.Drawing.Size(46, 23)
-        Me.lblEmail.TabIndex = 4
-        Me.lblEmail.Text = "Email"
-        '
-        'txtHoTen
-        '
-        Me.txtHoTen.Location = New System.Drawing.Point(12, 68)
-        Me.txtHoTen.Name = "txtHoTen"
-        Me.txtHoTen.Size = New System.Drawing.Size(252, 29)
-        Me.txtHoTen.TabIndex = 3
-        '
-        'lblHoTen
-        '
-        Me.lblHoTen.AutoSize = True
-        Me.lblHoTen.Location = New System.Drawing.Point(12, 42)
-        Me.lblHoTen.Name = "lblHoTen"
-        Me.lblHoTen.Size = New System.Drawing.Size(53, 23)
-        Me.lblHoTen.TabIndex = 2
-        Me.lblHoTen.Text = "Họ tên"
-        '
-        'txtTenDangNhap
-        '
-        Me.txtTenDangNhap.Location = New System.Drawing.Point(12, 24)
-        Me.txtTenDangNhap.Name = "txtTenDangNhap"
-        Me.txtTenDangNhap.Size = New System.Drawing.Size(252, 29)
-        Me.txtTenDangNhap.TabIndex = 1
-        '
-        'lblTenDangNhap
-        '
-        Me.lblTenDangNhap.AutoSize = True
-        Me.lblTenDangNhap.Location = New System.Drawing.Point(12, 2)
-        Me.lblTenDangNhap.Name = "lblTenDangNhap"
-        Me.lblTenDangNhap.Size = New System.Drawing.Size(118, 23)
-        Me.lblTenDangNhap.TabIndex = 0
-        Me.lblTenDangNhap.Text = "Tên đăng nhập"
-        '
         'grpPhanQuyen
         '
         Me.grpPhanQuyen.Controls.Add(Me.tlpPhanQuyen)
@@ -426,7 +217,7 @@ Partial Class frmSystem
         Me.grpPhanQuyen.Location = New System.Drawing.Point(0, 790)
         Me.grpPhanQuyen.Name = "grpPhanQuyen"
         Me.grpPhanQuyen.Padding = New System.Windows.Forms.Padding(12)
-        Me.grpPhanQuyen.Size = New System.Drawing.Size(796, 360)
+        Me.grpPhanQuyen.Size = New System.Drawing.Size(775, 360)
         Me.grpPhanQuyen.TabIndex = 3
         Me.grpPhanQuyen.TabStop = False
         Me.grpPhanQuyen.Text = "Phân quyền"
@@ -438,12 +229,12 @@ Partial Class frmSystem
         Me.tlpPhanQuyen.Controls.Add(Me.dgvPhanQuyen, 0, 1)
         Me.tlpPhanQuyen.Controls.Add(Me.pnlPhanQuyen, 0, 0)
         Me.tlpPhanQuyen.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.tlpPhanQuyen.Location = New System.Drawing.Point(12, 35)
+        Me.tlpPhanQuyen.Location = New System.Drawing.Point(12, 34)
         Me.tlpPhanQuyen.Name = "tlpPhanQuyen"
         Me.tlpPhanQuyen.RowCount = 2
         Me.tlpPhanQuyen.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 86.0!))
         Me.tlpPhanQuyen.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.tlpPhanQuyen.Size = New System.Drawing.Size(772, 313)
+        Me.tlpPhanQuyen.Size = New System.Drawing.Size(751, 314)
         Me.tlpPhanQuyen.TabIndex = 0
         '
         'dgvPhanQuyen
@@ -458,7 +249,7 @@ Partial Class frmSystem
         Me.dgvPhanQuyen.Name = "dgvPhanQuyen"
         Me.dgvPhanQuyen.RowHeadersWidth = 51
         Me.dgvPhanQuyen.RowTemplate.Height = 24
-        Me.dgvPhanQuyen.Size = New System.Drawing.Size(766, 221)
+        Me.dgvPhanQuyen.Size = New System.Drawing.Size(745, 222)
         Me.dgvPhanQuyen.TabIndex = 1
         '
         'colChucNang
@@ -508,13 +299,13 @@ Partial Class frmSystem
         Me.pnlPhanQuyen.Dock = System.Windows.Forms.DockStyle.Fill
         Me.pnlPhanQuyen.Location = New System.Drawing.Point(3, 3)
         Me.pnlPhanQuyen.Name = "pnlPhanQuyen"
-        Me.pnlPhanQuyen.Size = New System.Drawing.Size(766, 80)
+        Me.pnlPhanQuyen.Size = New System.Drawing.Size(745, 80)
         Me.pnlPhanQuyen.TabIndex = 0
         '
         'btnDatLaiQuyen
         '
         Me.btnDatLaiQuyen.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnDatLaiQuyen.Location = New System.Drawing.Point(641, 40)
+        Me.btnDatLaiQuyen.Location = New System.Drawing.Point(620, 40)
         Me.btnDatLaiQuyen.Name = "btnDatLaiQuyen"
         Me.btnDatLaiQuyen.Size = New System.Drawing.Size(112, 32)
         Me.btnDatLaiQuyen.TabIndex = 5
@@ -524,7 +315,7 @@ Partial Class frmSystem
         'btnSaoChepQuyen
         '
         Me.btnSaoChepQuyen.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnSaoChepQuyen.Location = New System.Drawing.Point(501, 40)
+        Me.btnSaoChepQuyen.Location = New System.Drawing.Point(480, 40)
         Me.btnSaoChepQuyen.Name = "btnSaoChepQuyen"
         Me.btnSaoChepQuyen.Size = New System.Drawing.Size(130, 32)
         Me.btnSaoChepQuyen.TabIndex = 4
@@ -534,7 +325,7 @@ Partial Class frmSystem
         'btnLuuQuyen
         '
         Me.btnLuuQuyen.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnLuuQuyen.Location = New System.Drawing.Point(381, 40)
+        Me.btnLuuQuyen.Location = New System.Drawing.Point(360, 40)
         Me.btnLuuQuyen.Name = "btnLuuQuyen"
         Me.btnLuuQuyen.Size = New System.Drawing.Size(110, 32)
         Me.btnLuuQuyen.TabIndex = 3
@@ -556,7 +347,7 @@ Partial Class frmSystem
         Me.lblVaiTroQuyen.AutoSize = True
         Me.lblVaiTroQuyen.Location = New System.Drawing.Point(10, 14)
         Me.lblVaiTroQuyen.Name = "lblVaiTroQuyen"
-        Me.lblVaiTroQuyen.Size = New System.Drawing.Size(123, 23)
+        Me.lblVaiTroQuyen.Size = New System.Drawing.Size(106, 23)
         Me.lblVaiTroQuyen.TabIndex = 1
         Me.lblVaiTroQuyen.Text = "Chọn vai trò"
         '
@@ -566,9 +357,218 @@ Partial Class frmSystem
         Me.lblHuongDanQuyen.ForeColor = System.Drawing.Color.DimGray
         Me.lblHuongDanQuyen.Location = New System.Drawing.Point(250, 14)
         Me.lblHuongDanQuyen.Name = "lblHuongDanQuyen"
-        Me.lblHuongDanQuyen.Size = New System.Drawing.Size(444, 23)
+        Me.lblHuongDanQuyen.Size = New System.Drawing.Size(430, 23)
         Me.lblHuongDanQuyen.TabIndex = 0
         Me.lblHuongDanQuyen.Text = "Chọn vai trò và đánh dấu quyền cho từng chức năng."
+        '
+        'grpTaiKhoan
+        '
+        Me.grpTaiKhoan.Controls.Add(Me.tlpTaiKhoan)
+        Me.grpTaiKhoan.Dock = System.Windows.Forms.DockStyle.Top
+        Me.grpTaiKhoan.Location = New System.Drawing.Point(0, 410)
+        Me.grpTaiKhoan.Name = "grpTaiKhoan"
+        Me.grpTaiKhoan.Padding = New System.Windows.Forms.Padding(12)
+        Me.grpTaiKhoan.Size = New System.Drawing.Size(775, 380)
+        Me.grpTaiKhoan.TabIndex = 2
+        Me.grpTaiKhoan.TabStop = False
+        Me.grpTaiKhoan.Text = "Quản lý tài khoản"
+        '
+        'tlpTaiKhoan
+        '
+        Me.tlpTaiKhoan.ColumnCount = 2
+        Me.tlpTaiKhoan.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 280.0!))
+        Me.tlpTaiKhoan.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
+        Me.tlpTaiKhoan.Controls.Add(Me.dgvTaiKhoan, 1, 0)
+        Me.tlpTaiKhoan.Controls.Add(Me.pnlTaiKhoan, 0, 0)
+        Me.tlpTaiKhoan.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.tlpTaiKhoan.Location = New System.Drawing.Point(12, 34)
+        Me.tlpTaiKhoan.Name = "tlpTaiKhoan"
+        Me.tlpTaiKhoan.RowCount = 1
+        Me.tlpTaiKhoan.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
+        Me.tlpTaiKhoan.Size = New System.Drawing.Size(751, 334)
+        Me.tlpTaiKhoan.TabIndex = 0
+        '
+        'dgvTaiKhoan
+        '
+        Me.dgvTaiKhoan.AllowUserToAddRows = False
+        Me.dgvTaiKhoan.AllowUserToDeleteRows = False
+        Me.dgvTaiKhoan.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.dgvTaiKhoan.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgvTaiKhoan.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.colTenDangNhap, Me.colHoTen, Me.colVaiTro, Me.colTrangThai})
+        Me.dgvTaiKhoan.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.dgvTaiKhoan.Location = New System.Drawing.Point(283, 3)
+        Me.dgvTaiKhoan.MultiSelect = False
+        Me.dgvTaiKhoan.Name = "dgvTaiKhoan"
+        Me.dgvTaiKhoan.ReadOnly = True
+        Me.dgvTaiKhoan.RowHeadersWidth = 51
+        Me.dgvTaiKhoan.RowTemplate.Height = 24
+        Me.dgvTaiKhoan.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.dgvTaiKhoan.Size = New System.Drawing.Size(465, 328)
+        Me.dgvTaiKhoan.TabIndex = 1
+        '
+        'colTenDangNhap
+        '
+        Me.colTenDangNhap.HeaderText = "Tên đăng nhập"
+        Me.colTenDangNhap.MinimumWidth = 6
+        Me.colTenDangNhap.Name = "colTenDangNhap"
+        Me.colTenDangNhap.ReadOnly = True
+        '
+        'colHoTen
+        '
+        Me.colHoTen.HeaderText = "Họ tên"
+        Me.colHoTen.MinimumWidth = 6
+        Me.colHoTen.Name = "colHoTen"
+        Me.colHoTen.ReadOnly = True
+        '
+        'colVaiTro
+        '
+        Me.colVaiTro.HeaderText = "Vai trò"
+        Me.colVaiTro.MinimumWidth = 6
+        Me.colVaiTro.Name = "colVaiTro"
+        Me.colVaiTro.ReadOnly = True
+        '
+        'colTrangThai
+        '
+        Me.colTrangThai.HeaderText = "Trạng thái"
+        Me.colTrangThai.MinimumWidth = 6
+        Me.colTrangThai.Name = "colTrangThai"
+        Me.colTrangThai.ReadOnly = True
+        '
+        'pnlTaiKhoan
+        '
+        Me.pnlTaiKhoan.Controls.Add(Me.btnPhanQuyen)
+        Me.pnlTaiKhoan.Controls.Add(Me.btnXoaTaiKhoan)
+        Me.pnlTaiKhoan.Controls.Add(Me.btnSuaTaiKhoan)
+        Me.pnlTaiKhoan.Controls.Add(Me.btnThemTaiKhoan)
+        Me.pnlTaiKhoan.Controls.Add(Me.chkKichHoat)
+        Me.pnlTaiKhoan.Controls.Add(Me.cboVaiTro)
+        Me.pnlTaiKhoan.Controls.Add(Me.lblVaiTro)
+        Me.pnlTaiKhoan.Controls.Add(Me.txtEmail)
+        Me.pnlTaiKhoan.Controls.Add(Me.lblEmail)
+        Me.pnlTaiKhoan.Controls.Add(Me.txtHoTen)
+        Me.pnlTaiKhoan.Controls.Add(Me.lblHoTen)
+        Me.pnlTaiKhoan.Controls.Add(Me.txtTenDangNhap)
+        Me.pnlTaiKhoan.Controls.Add(Me.lblTenDangNhap)
+        Me.pnlTaiKhoan.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.pnlTaiKhoan.Location = New System.Drawing.Point(3, 3)
+        Me.pnlTaiKhoan.Name = "pnlTaiKhoan"
+        Me.pnlTaiKhoan.Size = New System.Drawing.Size(274, 328)
+        Me.pnlTaiKhoan.TabIndex = 0
+        '
+        'btnPhanQuyen
+        '
+        Me.btnPhanQuyen.Location = New System.Drawing.Point(144, 290)
+        Me.btnPhanQuyen.Name = "btnPhanQuyen"
+        Me.btnPhanQuyen.Size = New System.Drawing.Size(120, 32)
+        Me.btnPhanQuyen.TabIndex = 12
+        Me.btnPhanQuyen.Text = "Phân quyền"
+        Me.btnPhanQuyen.UseVisualStyleBackColor = True
+        '
+        'btnXoaTaiKhoan
+        '
+        Me.btnXoaTaiKhoan.Location = New System.Drawing.Point(12, 290)
+        Me.btnXoaTaiKhoan.Name = "btnXoaTaiKhoan"
+        Me.btnXoaTaiKhoan.Size = New System.Drawing.Size(120, 32)
+        Me.btnXoaTaiKhoan.TabIndex = 11
+        Me.btnXoaTaiKhoan.Text = "Xóa"
+        Me.btnXoaTaiKhoan.UseVisualStyleBackColor = True
+        '
+        'btnSuaTaiKhoan
+        '
+        Me.btnSuaTaiKhoan.Location = New System.Drawing.Point(144, 252)
+        Me.btnSuaTaiKhoan.Name = "btnSuaTaiKhoan"
+        Me.btnSuaTaiKhoan.Size = New System.Drawing.Size(120, 32)
+        Me.btnSuaTaiKhoan.TabIndex = 10
+        Me.btnSuaTaiKhoan.Text = "Sửa"
+        Me.btnSuaTaiKhoan.UseVisualStyleBackColor = True
+        '
+        'btnThemTaiKhoan
+        '
+        Me.btnThemTaiKhoan.Location = New System.Drawing.Point(12, 252)
+        Me.btnThemTaiKhoan.Name = "btnThemTaiKhoan"
+        Me.btnThemTaiKhoan.Size = New System.Drawing.Size(120, 32)
+        Me.btnThemTaiKhoan.TabIndex = 9
+        Me.btnThemTaiKhoan.Text = "Thêm"
+        Me.btnThemTaiKhoan.UseVisualStyleBackColor = True
+        '
+        'chkKichHoat
+        '
+        Me.chkKichHoat.AutoSize = True
+        Me.chkKichHoat.Checked = True
+        Me.chkKichHoat.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.chkKichHoat.Location = New System.Drawing.Point(12, 218)
+        Me.chkKichHoat.Name = "chkKichHoat"
+        Me.chkKichHoat.Size = New System.Drawing.Size(108, 27)
+        Me.chkKichHoat.TabIndex = 8
+        Me.chkKichHoat.Text = "Kích hoạt"
+        Me.chkKichHoat.UseVisualStyleBackColor = True
+        '
+        'cboVaiTro
+        '
+        Me.cboVaiTro.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cboVaiTro.FormattingEnabled = True
+        Me.cboVaiTro.Items.AddRange(New Object() {"Quản trị", "Nhân sự", "Kế toán", "Quản lý", "Nhân viên"})
+        Me.cboVaiTro.Location = New System.Drawing.Point(12, 182)
+        Me.cboVaiTro.Name = "cboVaiTro"
+        Me.cboVaiTro.Size = New System.Drawing.Size(252, 31)
+        Me.cboVaiTro.TabIndex = 7
+        '
+        'lblVaiTro
+        '
+        Me.lblVaiTro.AutoSize = True
+        Me.lblVaiTro.Location = New System.Drawing.Point(12, 156)
+        Me.lblVaiTro.Name = "lblVaiTro"
+        Me.lblVaiTro.Size = New System.Drawing.Size(64, 23)
+        Me.lblVaiTro.TabIndex = 6
+        Me.lblVaiTro.Text = "Vai trò"
+        '
+        'txtEmail
+        '
+        Me.txtEmail.Location = New System.Drawing.Point(12, 124)
+        Me.txtEmail.Name = "txtEmail"
+        Me.txtEmail.Size = New System.Drawing.Size(252, 29)
+        Me.txtEmail.TabIndex = 5
+        '
+        'lblEmail
+        '
+        Me.lblEmail.AutoSize = True
+        Me.lblEmail.Location = New System.Drawing.Point(12, 98)
+        Me.lblEmail.Name = "lblEmail"
+        Me.lblEmail.Size = New System.Drawing.Size(54, 23)
+        Me.lblEmail.TabIndex = 4
+        Me.lblEmail.Text = "Email"
+        '
+        'txtHoTen
+        '
+        Me.txtHoTen.Location = New System.Drawing.Point(12, 68)
+        Me.txtHoTen.Name = "txtHoTen"
+        Me.txtHoTen.Size = New System.Drawing.Size(252, 29)
+        Me.txtHoTen.TabIndex = 3
+        '
+        'lblHoTen
+        '
+        Me.lblHoTen.AutoSize = True
+        Me.lblHoTen.Location = New System.Drawing.Point(12, 42)
+        Me.lblHoTen.Name = "lblHoTen"
+        Me.lblHoTen.Size = New System.Drawing.Size(63, 23)
+        Me.lblHoTen.TabIndex = 2
+        Me.lblHoTen.Text = "Họ tên"
+        '
+        'txtTenDangNhap
+        '
+        Me.txtTenDangNhap.Location = New System.Drawing.Point(12, 24)
+        Me.txtTenDangNhap.Name = "txtTenDangNhap"
+        Me.txtTenDangNhap.Size = New System.Drawing.Size(252, 29)
+        Me.txtTenDangNhap.TabIndex = 1
+        '
+        'lblTenDangNhap
+        '
+        Me.lblTenDangNhap.AutoSize = True
+        Me.lblTenDangNhap.Location = New System.Drawing.Point(12, 2)
+        Me.lblTenDangNhap.Name = "lblTenDangNhap"
+        Me.lblTenDangNhap.Size = New System.Drawing.Size(131, 23)
+        Me.lblTenDangNhap.TabIndex = 0
+        Me.lblTenDangNhap.Text = "Tên đăng nhập"
         '
         'grpHienThi
         '
@@ -577,7 +577,7 @@ Partial Class frmSystem
         Me.grpHienThi.Location = New System.Drawing.Point(0, 240)
         Me.grpHienThi.Name = "grpHienThi"
         Me.grpHienThi.Padding = New System.Windows.Forms.Padding(12)
-        Me.grpHienThi.Size = New System.Drawing.Size(796, 170)
+        Me.grpHienThi.Size = New System.Drawing.Size(775, 170)
         Me.grpHienThi.TabIndex = 1
         Me.grpHienThi.TabStop = False
         Me.grpHienThi.Text = "Hiển thị"
@@ -593,13 +593,13 @@ Partial Class frmSystem
         Me.tlpHienThi.Controls.Add(Me.cboNgonNgu, 1, 0)
         Me.tlpHienThi.Controls.Add(Me.lblNgonNgu, 0, 0)
         Me.tlpHienThi.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.tlpHienThi.Location = New System.Drawing.Point(12, 35)
+        Me.tlpHienThi.Location = New System.Drawing.Point(12, 34)
         Me.tlpHienThi.Name = "tlpHienThi"
         Me.tlpHienThi.RowCount = 3
         Me.tlpHienThi.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 36.0!))
         Me.tlpHienThi.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 36.0!))
         Me.tlpHienThi.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.tlpHienThi.Size = New System.Drawing.Size(772, 123)
+        Me.tlpHienThi.Size = New System.Drawing.Size(751, 124)
         Me.tlpHienThi.TabIndex = 0
         '
         'chkThongBao
@@ -609,7 +609,7 @@ Partial Class frmSystem
         Me.chkThongBao.CheckState = System.Windows.Forms.CheckState.Checked
         Me.chkThongBao.Location = New System.Drawing.Point(183, 75)
         Me.chkThongBao.Name = "chkThongBao"
-        Me.chkThongBao.Size = New System.Drawing.Size(284, 27)
+        Me.chkThongBao.Size = New System.Drawing.Size(313, 27)
         Me.chkThongBao.TabIndex = 4
         Me.chkThongBao.Text = "Hiển thị thông báo trong ứng dụng"
         Me.chkThongBao.UseVisualStyleBackColor = True
@@ -622,7 +622,7 @@ Partial Class frmSystem
         Me.cboDinhDangNgay.Items.AddRange(New Object() {"dd/MM/yyyy", "MM/dd/yyyy", "yyyy-MM-dd"})
         Me.cboDinhDangNgay.Location = New System.Drawing.Point(183, 39)
         Me.cboDinhDangNgay.Name = "cboDinhDangNgay"
-        Me.cboDinhDangNgay.Size = New System.Drawing.Size(586, 31)
+        Me.cboDinhDangNgay.Size = New System.Drawing.Size(565, 31)
         Me.cboDinhDangNgay.TabIndex = 3
         '
         'lblDinhDangNgay
@@ -630,7 +630,7 @@ Partial Class frmSystem
         Me.lblDinhDangNgay.AutoSize = True
         Me.lblDinhDangNgay.Location = New System.Drawing.Point(3, 36)
         Me.lblDinhDangNgay.Name = "lblDinhDangNgay"
-        Me.lblDinhDangNgay.Size = New System.Drawing.Size(120, 23)
+        Me.lblDinhDangNgay.Size = New System.Drawing.Size(137, 23)
         Me.lblDinhDangNgay.TabIndex = 2
         Me.lblDinhDangNgay.Text = "Định dạng ngày"
         '
@@ -642,7 +642,7 @@ Partial Class frmSystem
         Me.cboNgonNgu.Items.AddRange(New Object() {"Tiếng Việt", "English"})
         Me.cboNgonNgu.Location = New System.Drawing.Point(183, 3)
         Me.cboNgonNgu.Name = "cboNgonNgu"
-        Me.cboNgonNgu.Size = New System.Drawing.Size(586, 31)
+        Me.cboNgonNgu.Size = New System.Drawing.Size(565, 31)
         Me.cboNgonNgu.TabIndex = 1
         '
         'lblNgonNgu
@@ -650,7 +650,7 @@ Partial Class frmSystem
         Me.lblNgonNgu.AutoSize = True
         Me.lblNgonNgu.Location = New System.Drawing.Point(3, 0)
         Me.lblNgonNgu.Name = "lblNgonNgu"
-        Me.lblNgonNgu.Size = New System.Drawing.Size(80, 23)
+        Me.lblNgonNgu.Size = New System.Drawing.Size(91, 23)
         Me.lblNgonNgu.TabIndex = 0
         Me.lblNgonNgu.Text = "Ngôn ngữ"
         '
@@ -661,7 +661,7 @@ Partial Class frmSystem
         Me.grpCoSoDuLieu.Location = New System.Drawing.Point(0, 0)
         Me.grpCoSoDuLieu.Name = "grpCoSoDuLieu"
         Me.grpCoSoDuLieu.Padding = New System.Windows.Forms.Padding(12)
-        Me.grpCoSoDuLieu.Size = New System.Drawing.Size(796, 240)
+        Me.grpCoSoDuLieu.Size = New System.Drawing.Size(775, 240)
         Me.grpCoSoDuLieu.TabIndex = 0
         Me.grpCoSoDuLieu.TabStop = False
         Me.grpCoSoDuLieu.Text = "Cơ sở dữ liệu"
@@ -681,7 +681,7 @@ Partial Class frmSystem
         Me.tlpCoSoDuLieu.Controls.Add(Me.txtMayChu, 1, 0)
         Me.tlpCoSoDuLieu.Controls.Add(Me.lblMayChu, 0, 0)
         Me.tlpCoSoDuLieu.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.tlpCoSoDuLieu.Location = New System.Drawing.Point(12, 35)
+        Me.tlpCoSoDuLieu.Location = New System.Drawing.Point(12, 34)
         Me.tlpCoSoDuLieu.Name = "tlpCoSoDuLieu"
         Me.tlpCoSoDuLieu.RowCount = 5
         Me.tlpCoSoDuLieu.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 36.0!))
@@ -689,7 +689,7 @@ Partial Class frmSystem
         Me.tlpCoSoDuLieu.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 36.0!))
         Me.tlpCoSoDuLieu.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 36.0!))
         Me.tlpCoSoDuLieu.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 44.0!))
-        Me.tlpCoSoDuLieu.Size = New System.Drawing.Size(772, 193)
+        Me.tlpCoSoDuLieu.Size = New System.Drawing.Size(751, 194)
         Me.tlpCoSoDuLieu.TabIndex = 0
         '
         'btnKiemTraKetNoi
@@ -706,7 +706,7 @@ Partial Class frmSystem
         Me.txtMatKhau.Dock = System.Windows.Forms.DockStyle.Fill
         Me.txtMatKhau.Location = New System.Drawing.Point(183, 111)
         Me.txtMatKhau.Name = "txtMatKhau"
-        Me.txtMatKhau.Size = New System.Drawing.Size(586, 29)
+        Me.txtMatKhau.Size = New System.Drawing.Size(565, 29)
         Me.txtMatKhau.TabIndex = 7
         Me.txtMatKhau.UseSystemPasswordChar = True
         '
@@ -715,7 +715,7 @@ Partial Class frmSystem
         Me.lblMatKhau.AutoSize = True
         Me.lblMatKhau.Location = New System.Drawing.Point(3, 108)
         Me.lblMatKhau.Name = "lblMatKhau"
-        Me.lblMatKhau.Size = New System.Drawing.Size(73, 23)
+        Me.lblMatKhau.Size = New System.Drawing.Size(85, 23)
         Me.lblMatKhau.TabIndex = 6
         Me.lblMatKhau.Text = "Mật khẩu"
         '
@@ -724,7 +724,7 @@ Partial Class frmSystem
         Me.txtTaiKhoan.Dock = System.Windows.Forms.DockStyle.Fill
         Me.txtTaiKhoan.Location = New System.Drawing.Point(183, 75)
         Me.txtTaiKhoan.Name = "txtTaiKhoan"
-        Me.txtTaiKhoan.Size = New System.Drawing.Size(586, 29)
+        Me.txtTaiKhoan.Size = New System.Drawing.Size(565, 29)
         Me.txtTaiKhoan.TabIndex = 5
         '
         'lblTaiKhoan
@@ -732,7 +732,7 @@ Partial Class frmSystem
         Me.lblTaiKhoan.AutoSize = True
         Me.lblTaiKhoan.Location = New System.Drawing.Point(3, 72)
         Me.lblTaiKhoan.Name = "lblTaiKhoan"
-        Me.lblTaiKhoan.Size = New System.Drawing.Size(78, 23)
+        Me.lblTaiKhoan.Size = New System.Drawing.Size(88, 23)
         Me.lblTaiKhoan.TabIndex = 4
         Me.lblTaiKhoan.Text = "Tài khoản"
         '
@@ -741,7 +741,7 @@ Partial Class frmSystem
         Me.txtTenCSDL.Dock = System.Windows.Forms.DockStyle.Fill
         Me.txtTenCSDL.Location = New System.Drawing.Point(183, 39)
         Me.txtTenCSDL.Name = "txtTenCSDL"
-        Me.txtTenCSDL.Size = New System.Drawing.Size(586, 29)
+        Me.txtTenCSDL.Size = New System.Drawing.Size(565, 29)
         Me.txtTenCSDL.TabIndex = 3
         '
         'lblTenCSDL
@@ -749,7 +749,7 @@ Partial Class frmSystem
         Me.lblTenCSDL.AutoSize = True
         Me.lblTenCSDL.Location = New System.Drawing.Point(3, 36)
         Me.lblTenCSDL.Name = "lblTenCSDL"
-        Me.lblTenCSDL.Size = New System.Drawing.Size(109, 23)
+        Me.lblTenCSDL.Size = New System.Drawing.Size(144, 23)
         Me.lblTenCSDL.TabIndex = 2
         Me.lblTenCSDL.Text = "Tên cơ sở dữ liệu"
         '
@@ -758,7 +758,7 @@ Partial Class frmSystem
         Me.txtMayChu.Dock = System.Windows.Forms.DockStyle.Fill
         Me.txtMayChu.Location = New System.Drawing.Point(183, 3)
         Me.txtMayChu.Name = "txtMayChu"
-        Me.txtMayChu.Size = New System.Drawing.Size(586, 29)
+        Me.txtMayChu.Size = New System.Drawing.Size(565, 29)
         Me.txtMayChu.TabIndex = 1
         '
         'lblMayChu
@@ -766,7 +766,7 @@ Partial Class frmSystem
         Me.lblMayChu.AutoSize = True
         Me.lblMayChu.Location = New System.Drawing.Point(3, 0)
         Me.lblMayChu.Name = "lblMayChu"
-        Me.lblMayChu.Size = New System.Drawing.Size(65, 23)
+        Me.lblMayChu.Size = New System.Drawing.Size(78, 23)
         Me.lblMayChu.TabIndex = 0
         Me.lblMayChu.Text = "Máy chủ"
         '
@@ -783,9 +783,20 @@ Partial Class frmSystem
         Me.pnlChanTrang.Size = New System.Drawing.Size(1094, 54)
         Me.pnlChanTrang.TabIndex = 2
         '
+        'lblTrangThai
+        '
+        Me.lblTrangThai.AutoSize = True
+        Me.lblTrangThai.ForeColor = System.Drawing.Color.DimGray
+        Me.lblTrangThai.Location = New System.Drawing.Point(18, 17)
+        Me.lblTrangThai.Name = "lblTrangThai"
+        Me.lblTrangThai.Size = New System.Drawing.Size(182, 23)
+        Me.lblTrangThai.TabIndex = 0
+        Me.lblTrangThai.Text = "Chưa lưu thay đổi nào"
+        '
         'btnDong
         '
         Me.btnDong.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnDong.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.btnDong.Location = New System.Drawing.Point(960, 11)
         Me.btnDong.Name = "btnDong"
         Me.btnDong.Size = New System.Drawing.Size(118, 32)
@@ -803,16 +814,6 @@ Partial Class frmSystem
         Me.btnLuu.Text = "Lưu cấu hình"
         Me.btnLuu.UseVisualStyleBackColor = True
         '
-        'lblTrangThai
-        '
-        Me.lblTrangThai.AutoSize = True
-        Me.lblTrangThai.ForeColor = System.Drawing.Color.DimGray
-        Me.lblTrangThai.Location = New System.Drawing.Point(18, 17)
-        Me.lblTrangThai.Name = "lblTrangThai"
-        Me.lblTrangThai.Size = New System.Drawing.Size(163, 23)
-        Me.lblTrangThai.TabIndex = 0
-        Me.lblTrangThai.Text = "Chưa lưu thay đổi nào"
-        '
         'frmSystem
         '
         Me.AcceptButton = Me.btnLuu
@@ -822,7 +823,7 @@ Partial Class frmSystem
         Me.ClientSize = New System.Drawing.Size(1100, 700)
         Me.Controls.Add(Me.tlpMain)
         Me.Font = New System.Drawing.Font("Microsoft YaHei UI", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "frmSystem"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Cài đặt hệ thống"
@@ -832,16 +833,16 @@ Partial Class frmSystem
         Me.tlpNoiDung.ResumeLayout(False)
         Me.grpDanhMuc.ResumeLayout(False)
         Me.pnlNoiDung.ResumeLayout(False)
-        Me.grpTaiKhoan.ResumeLayout(False)
-        Me.tlpTaiKhoan.ResumeLayout(False)
-        CType(Me.dgvTaiKhoan, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.pnlTaiKhoan.ResumeLayout(False)
-        Me.pnlTaiKhoan.PerformLayout()
         Me.grpPhanQuyen.ResumeLayout(False)
         Me.tlpPhanQuyen.ResumeLayout(False)
         CType(Me.dgvPhanQuyen, System.ComponentModel.ISupportInitialize).EndInit()
         Me.pnlPhanQuyen.ResumeLayout(False)
         Me.pnlPhanQuyen.PerformLayout()
+        Me.grpTaiKhoan.ResumeLayout(False)
+        Me.tlpTaiKhoan.ResumeLayout(False)
+        CType(Me.dgvTaiKhoan, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.pnlTaiKhoan.ResumeLayout(False)
+        Me.pnlTaiKhoan.PerformLayout()
         Me.grpHienThi.ResumeLayout(False)
         Me.tlpHienThi.ResumeLayout(False)
         Me.tlpHienThi.PerformLayout()

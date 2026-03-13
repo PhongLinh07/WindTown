@@ -41,3 +41,8 @@
 - Mục tiêu: sửa lỗi `ArgumentNullException` do container null trong Designer.
 - Phạm vi: UIUX/frmChamCong.Designer.vb.
 - Đã khởi tạo `components` trước khi tạo `ContextMenuStrip`.
+
+## 2026-03-13 (bổ sung)
+- Mục tiêu: chuẩn hóa lọc khoảng thời gian trong bộ lọc chấm công.
+- Phạm vi: UIUX/frmChamCong.vb.
+- Đã dùng `dtpkToday` làm từ ngày và `dtpkInday` làm đến ngày.

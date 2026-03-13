@@ -1,4 +1,5 @@
-﻿Imports System.Linq
+﻿Imports System.Data
+Imports System.Linq
 
 Public Class frmTinhLuong
 
@@ -21,7 +22,7 @@ Public Class frmTinhLuong
 
         Dim bootstrap = DatabaseBootstrapService.EnsureReady()
         If Not bootstrap.IsSuccess Then
-            MessageBox.Show("Kh?ng th? k?t n?i database: " & bootstrap.Message, "L?i k?t n?i DB", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show("Không thể kết nối CSDL: " & bootstrap.Message, "Lỗi kêt nối", MessageBoxButtons.OK, MessageBoxIcon.Error)
             KhoaUI()
             Return
         End If
@@ -100,13 +101,13 @@ Public Class frmTinhLuong
 
         Dim colNhanVien As New DataGridViewTextBoxColumn()
         colNhanVien.Name = "colNhanVien"
-        colNhanVien.HeaderText = "Nh?n vi?n"
+        colNhanVien.HeaderText = "Nhân viên"
         colNhanVien.Width = 160
         dgvBangLuong.Columns.Add(colNhanVien)
 
         Dim colCongViec As New DataGridViewTextBoxColumn()
         colCongViec.Name = "colCongViec"
-        colCongViec.HeaderText = "C?ng vi?c"
+        colCongViec.HeaderText = "Công việc"
         colCongViec.Width = 140
         dgvBangLuong.Columns.Add(colCongViec)
 
@@ -118,20 +119,20 @@ Public Class frmTinhLuong
 
         Dim colTrangThai As New DataGridViewTextBoxColumn()
         colTrangThai.Name = "colTrangThai"
-        colTrangThai.HeaderText = "Tr?ng th?i"
+        colTrangThai.HeaderText = "Trạng thái"
         colTrangThai.Width = 120
         dgvBangLuong.Columns.Add(colTrangThai)
 
         Dim colGhiChu As New DataGridViewTextBoxColumn()
         colGhiChu.Name = "colGhiChu"
-        colGhiChu.HeaderText = "Ghi ch?"
+        colGhiChu.HeaderText = "Ghi chú"
         colGhiChu.Width = 200
         dgvBangLuong.Columns.Add(colGhiChu)
     End Sub
 
     Private Sub TaiBoLoc()
         Dim trangThaiItems As New List(Of LuaChon(Of Integer)) From {
-            New LuaChon(Of Integer) With {.HienThi = "T?t c?", .GiaTri = -999}
+            New LuaChon(Of Integer) With {.HienThi = "Tất cả", .GiaTri = -999}
         }
         For Each kv In Payroll.status_Dict
             trangThaiItems.Add(New LuaChon(Of Integer) With {.HienThi = kv.Value, .GiaTri = kv.Key})
@@ -143,12 +144,12 @@ Public Class frmTinhLuong
         Try
             _danhSachKyLuong = _duLieu.TaiDanhSachKyLuong()
         Catch ex As Exception
-            MessageBox.Show("Không thể tải danh sách kỳ lương: " & ex.Message, "L?i", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            MessageBox.Show("Không thể tải danh sách kỳ lương: " & ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             _danhSachKyLuong = New List(Of Pay_Period)()
         End Try
 
         Dim kyLuongItems As New List(Of LuaChon(Of Integer)) From {
-            New LuaChon(Of Integer) With {.HienThi = "T?t c?", .GiaTri = -999}
+            New LuaChon(Of Integer) With {.HienThi = "Tất cả", .GiaTri = -999}
         }
         For Each ky In _danhSachKyLuong
             kyLuongItems.Add(New LuaChon(Of Integer) With {.HienThi = ky.pay_period_UI, .GiaTri = ky.id})
@@ -160,12 +161,12 @@ Public Class frmTinhLuong
         Try
             _danhSachViTri = _duLieu.TaiDanhSachViTri()
         Catch ex As Exception
-            MessageBox.Show("Kh?ng th? t?i danh s?ch v? tr?: " & ex.Message, "L?i", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            MessageBox.Show("Không thể tải danh sách vị trí: " & ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             _danhSachViTri = New List(Of Position)()
         End Try
 
         Dim viTriItems As New List(Of LuaChon(Of Integer)) From {
-            New LuaChon(Of Integer) With {.HienThi = "T?t c?", .GiaTri = -999}
+            New LuaChon(Of Integer) With {.HienThi = "Tất cả", .GiaTri = -999}
         }
         For Each vt In _danhSachViTri
             viTriItems.Add(New LuaChon(Of Integer) With {.HienThi = vt.employee_UI, .GiaTri = vt.id})
@@ -175,23 +176,29 @@ Public Class frmTinhLuong
         cbbViTri.ValueMember = "GiaTri"
 
         cbbThoiGian.Items.Clear()
-        cbbThoiGian.Items.AddRange(New Object() {"T?t c?", "Theo kho?ng"})
+        cbbThoiGian.Items.AddRange(New Object() {"Tất cả", "Theo khoảng thời gian"})
         cbbThoiGian.SelectedIndex = 0
 
         cbbThoiGianNhanh.Items.Clear()
         cbbThoiGianNhanh.Items.AddRange(New Object() {"Không áp dụng", "Tháng này", "Tháng trước", "Quý này", "Quý trước", "Năm nay"})
         cbbThoiGianNhanh.SelectedIndex = 0
 
+        UiDinhDang.ApDungDinhDangNgayPicker(dtTuNgay)
+        UiDinhDang.ApDungDinhDangNgayPicker(dtDenNgay)
         dtTuNgay.Value = DateTime.Today.AddMonths(-1)
         dtDenNgay.Value = DateTime.Today
     End Sub
 
     Private Sub TaiDuLieu()
+        Dim danhSachKhoa As Control() = {btnTaoBangLuong, btnDongBangLuong, btnBaoCao, btnTimKiem, btnLamMoi, dgvBangLuong}
+        UiTrangThai.BatLoading(Me, danhSachKhoa)
         Try
             _danhSachBangLuong = _duLieu.TaiDanhSachBangLuong()
         Catch ex As Exception
-            MessageBox.Show("Không thể tải danh sách bảng lương: " & ex.Message, "L?i", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show("Không thể tải danh sách bảng lương: " & ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error)
             _danhSachBangLuong = New List(Of Payroll)()
+        Finally
+            UiTrangThai.TatLoading(Me, danhSachKhoa)
         End Try
 
         CapNhatLuoi()
@@ -224,7 +231,7 @@ Public Class frmTinhLuong
             query = query.Where(Function(x) x.status = trangThai)
         End If
 
-        If cbbThoiGian.SelectedItem IsNot Nothing AndAlso cbbThoiGian.SelectedItem.ToString() = "Theo kho?ng" Then
+        If cbbThoiGian.SelectedItem IsNot Nothing AndAlso cbbThoiGian.SelectedItem.ToString() = "Theo khoảng thời gian" Then
             Dim tuNgay = dtTuNgay.Value.Date
             Dim denNgay = dtDenNgay.Value.Date
             If tuNgay > denNgay Then
@@ -330,20 +337,25 @@ Public Class frmTinhLuong
     End Sub
 
     Private Sub mnuBaoCaoLoc_Click(sender As Object, e As EventArgs) Handles mnuBaoCaoLoc.Click
-        MessageBox.Show("Chức năng xuất theo bộ lọc đang được phát triển.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        Dim dsLoc = ApDungLoc(_danhSachBangLuong)
+        Dim bang = TaoBangTinhLuong(dsLoc)
+        BaoCaoXuat.XuatTuDataTable(bang, "tinh_luong_loc")
     End Sub
 
     Private Sub mnuBaoCaoChon_Click(sender As Object, e As EventArgs) Handles mnuBaoCaoChon.Click
         Dim dsChon = LayDanhSachChon()
         If dsChon.Count = 0 Then
-            MessageBox.Show("Vui lòng chọn ít nhất một dòng để xuất.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            UiThongBao.HienThiCanhBao("Vui lòng chọn ít nhất một dòng để xuất.")
             Return
         End If
-        MessageBox.Show("Chức năng xuất theo lựa chọn đang được phát triển.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        Dim bang = TaoBangTinhLuong(dsChon)
+        BaoCaoXuat.XuatTuDataTable(bang, "tinh_luong_chon")
     End Sub
 
     Private Sub mnuBaoCaoTongHop_Click(sender As Object, e As EventArgs) Handles mnuBaoCaoTongHop.Click
-        MessageBox.Show("Chức năng tổng hợp tháng/quý đang được phát triển.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        Dim dsLoc = ApDungLoc(_danhSachBangLuong)
+        Dim bang = TaoBangTinhLuong(dsLoc)
+        BaoCaoXuat.XuatTuDataTable(bang, "tinh_luong_tong_hop")
     End Sub
 
     Private Sub cbbThoiGianNhanh_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbbThoiGianNhanh.SelectedIndexChanged
@@ -414,7 +426,7 @@ Public Class frmTinhLuong
                 cboKy.SelectedItem = kyItems.FirstOrDefault(Function(x) x.GiaTri.id = data.Pay_Period.id)
             End If
 
-            Dim lblViTri As New Label() With {.Text = "V? tr?", .Location = New Point(20, 100), .AutoSize = True}
+            Dim lblViTri As New Label() With {.Text = "Vị trí", .Location = New Point(20, 100), .AutoSize = True}
             Dim cboViTri As New ComboBox() With {.Location = New Point(190, 98), .Width = 300, .DropDownStyle = ComboBoxStyle.DropDownList}
             Dim vtItems = _danhSachViTri.Select(Function(v) New LuaChon(Of Position) With {.HienThi = v.employee_UI, .GiaTri = v}).ToList()
             cboViTri.DataSource = vtItems
@@ -424,18 +436,18 @@ Public Class frmTinhLuong
                 cboViTri.SelectedItem = vtItems.FirstOrDefault(Function(x) x.GiaTri.id = data.Position.id)
             End If
 
-            Dim lblTrangThai As New Label() With {.Text = "Tr?ng th?i", .Location = New Point(20, 140), .AutoSize = True}
+            Dim lblTrangThai As New Label() With {.Text = "Trạng thái", .Location = New Point(20, 140), .AutoSize = True}
             Dim cboTrangThai As New ComboBox() With {.Location = New Point(190, 138), .Width = 300, .DropDownStyle = ComboBoxStyle.DropDownList}
             cboTrangThai.DataSource = New BindingSource(Payroll.status_Dict, Nothing)
             cboTrangThai.DisplayMember = "Value"
             cboTrangThai.ValueMember = "Key"
             cboTrangThai.SelectedValue = data.status
 
-            Dim lblGhiChu As New Label() With {.Text = "Ghi ch?", .Location = New Point(20, 180), .AutoSize = True}
+            Dim lblGhiChu As New Label() With {.Text = "Ghi chú", .Location = New Point(20, 180), .AutoSize = True}
             Dim txtGhiChu As New TextBox() With {.Location = New Point(190, 178), .Width = 300, .Text = data.note}
 
-            Dim btnOk As New Button() With {.Text = "L?u", .Location = New Point(330, 300), .Width = 75, .DialogResult = DialogResult.OK}
-            Dim btnHuy As New Button() With {.Text = "H?y", .Location = New Point(415, 300), .Width = 75, .DialogResult = DialogResult.Cancel}
+            Dim btnOk As New Button() With {.Text = "Lưu", .Location = New Point(330, 300), .Width = 75, .DialogResult = DialogResult.OK}
+            Dim btnHuy As New Button() With {.Text = "Hủy", .Location = New Point(415, 300), .Width = 75, .DialogResult = DialogResult.Cancel}
 
             frm.Controls.AddRange(New Control() {lblCode, txtCode, lblKy, cboKy, lblViTri, cboViTri, lblTrangThai, cboTrangThai, lblGhiChu, txtGhiChu, btnOk, btnHuy})
             frm.AcceptButton = btnOk
@@ -456,7 +468,7 @@ Public Class frmTinhLuong
 
             Dim chonViTri = TryCast(cboViTri.SelectedItem, LuaChon(Of Position))
             If chonViTri Is Nothing Then
-                MessageBox.Show("Vui l?ng ch?n v? tr?.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                MessageBox.Show("Vui lòng chọn Vị trí.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning)
                 Return False
             End If
 
@@ -527,6 +539,33 @@ Public Class frmTinhLuong
         CapNhatLuoi()
     End Sub
 
+    Private Function TaoBangTinhLuong(ds As IEnumerable(Of Payroll)) As DataTable
+        Dim bang As New DataTable()
+        bang.Columns.Add("Mã bảng lương")
+        bang.Columns.Add("Kỳ lương")
+        bang.Columns.Add("Nhân viên")
+        bang.Columns.Add("Công việc")
+        bang.Columns.Add("Trình độ")
+        bang.Columns.Add("Trạng thái")
+        bang.Columns.Add("Ghi chú")
+
+        If ds Is Nothing Then Return bang
+        For Each bl In ds
+            bang.Rows.Add(
+                bl.code,
+                bl.pay_period_UI,
+                bl.employee_UI,
+                bl.job_UI,
+                bl.level_UI,
+                bl.status_UI,
+                bl.note
+            )
+        Next
+
+        Return bang
+    End Function
+
 End Class
+
 
 

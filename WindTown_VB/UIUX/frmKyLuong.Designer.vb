@@ -23,6 +23,7 @@ Partial Class frmKyLuong
         Me.btnThemKyLuong = New System.Windows.Forms.Button()
         Me.btnSuaKyLuong = New System.Windows.Forms.Button()
         Me.btnXoaKyLuong = New System.Windows.Forms.Button()
+        Me.btnXuatBaoCao = New System.Windows.Forms.Button()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.pnlFilters = New System.Windows.Forms.Panel()
         Me.btnLamMoi = New System.Windows.Forms.Button()
@@ -60,9 +61,10 @@ Partial Class frmKyLuong
         Me.pnlHanhDong.Controls.Add(Me.btnThemKyLuong)
         Me.pnlHanhDong.Controls.Add(Me.btnSuaKyLuong)
         Me.pnlHanhDong.Controls.Add(Me.btnXoaKyLuong)
-        Me.pnlHanhDong.Location = New System.Drawing.Point(640, 20)
+        Me.pnlHanhDong.Controls.Add(Me.btnXuatBaoCao)
+        Me.pnlHanhDong.Location = New System.Drawing.Point(520, 20)
         Me.pnlHanhDong.Name = "pnlHanhDong"
-        Me.pnlHanhDong.Size = New System.Drawing.Size(380, 40)
+        Me.pnlHanhDong.Size = New System.Drawing.Size(500, 40)
         Me.pnlHanhDong.TabIndex = 1
         '
         'btnThemKyLuong
@@ -72,9 +74,9 @@ Partial Class frmKyLuong
         Me.btnThemKyLuong.ForeColor = System.Drawing.Color.White
         Me.btnThemKyLuong.Location = New System.Drawing.Point(0, 6)
         Me.btnThemKyLuong.Name = "btnThemKyLuong"
-        Me.btnThemKyLuong.Size = New System.Drawing.Size(110, 27)
+        Me.btnThemKyLuong.Size = New System.Drawing.Size(110, 30)
         Me.btnThemKyLuong.TabIndex = 0
-        Me.btnThemKyLuong.Text = "Th?m"
+        Me.btnThemKyLuong.Text = "Thêm"
         Me.btnThemKyLuong.UseVisualStyleBackColor = False
         '
         'btnSuaKyLuong
@@ -84,9 +86,9 @@ Partial Class frmKyLuong
         Me.btnSuaKyLuong.ForeColor = System.Drawing.Color.Black
         Me.btnSuaKyLuong.Location = New System.Drawing.Point(125, 6)
         Me.btnSuaKyLuong.Name = "btnSuaKyLuong"
-        Me.btnSuaKyLuong.Size = New System.Drawing.Size(110, 27)
+        Me.btnSuaKyLuong.Size = New System.Drawing.Size(110, 30)
         Me.btnSuaKyLuong.TabIndex = 1
-        Me.btnSuaKyLuong.Text = "S?a"
+        Me.btnSuaKyLuong.Text = "Sửa"
         Me.btnSuaKyLuong.UseVisualStyleBackColor = False
         '
         'btnXoaKyLuong
@@ -96,10 +98,22 @@ Partial Class frmKyLuong
         Me.btnXoaKyLuong.ForeColor = System.Drawing.Color.White
         Me.btnXoaKyLuong.Location = New System.Drawing.Point(250, 6)
         Me.btnXoaKyLuong.Name = "btnXoaKyLuong"
-        Me.btnXoaKyLuong.Size = New System.Drawing.Size(110, 27)
+        Me.btnXoaKyLuong.Size = New System.Drawing.Size(110, 30)
         Me.btnXoaKyLuong.TabIndex = 2
-        Me.btnXoaKyLuong.Text = "X?a"
+        Me.btnXoaKyLuong.Text = "Xóa"
         Me.btnXoaKyLuong.UseVisualStyleBackColor = False
+        '
+        'btnXuatBaoCao
+        '
+        Me.btnXuatBaoCao.BackColor = System.Drawing.Color.DodgerBlue
+        Me.btnXuatBaoCao.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnXuatBaoCao.ForeColor = System.Drawing.Color.White
+        Me.btnXuatBaoCao.Location = New System.Drawing.Point(375, 6)
+        Me.btnXuatBaoCao.Name = "btnXuatBaoCao"
+        Me.btnXuatBaoCao.Size = New System.Drawing.Size(110, 30)
+        Me.btnXuatBaoCao.TabIndex = 3
+        Me.btnXuatBaoCao.Text = "Xuất báo cáo"
+        Me.btnXuatBaoCao.UseVisualStyleBackColor = False
         '
         'Label6
         '
@@ -107,7 +121,7 @@ Partial Class frmKyLuong
         Me.Label6.Font = New System.Drawing.Font("Microsoft YaHei UI", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label6.Location = New System.Drawing.Point(12, 24)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(122, 31)
+        Me.Label6.Size = New System.Drawing.Size(116, 31)
         Me.Label6.TabIndex = 0
         Me.Label6.Text = "Kỳ lương"
         '
@@ -137,9 +151,9 @@ Partial Class frmKyLuong
         Me.btnLamMoi.ForeColor = System.Drawing.Color.White
         Me.btnLamMoi.Location = New System.Drawing.Point(880, 50)
         Me.btnLamMoi.Name = "btnLamMoi"
-        Me.btnLamMoi.Size = New System.Drawing.Size(120, 27)
+        Me.btnLamMoi.Size = New System.Drawing.Size(120, 30)
         Me.btnLamMoi.TabIndex = 9
-        Me.btnLamMoi.Text = "L?m m?i"
+        Me.btnLamMoi.Text = "Làm mới"
         Me.btnLamMoi.UseVisualStyleBackColor = False
         '
         'btnTimKiem
@@ -149,9 +163,9 @@ Partial Class frmKyLuong
         Me.btnTimKiem.ForeColor = System.Drawing.Color.White
         Me.btnTimKiem.Location = New System.Drawing.Point(880, 14)
         Me.btnTimKiem.Name = "btnTimKiem"
-        Me.btnTimKiem.Size = New System.Drawing.Size(120, 27)
+        Me.btnTimKiem.Size = New System.Drawing.Size(120, 30)
         Me.btnTimKiem.TabIndex = 8
-        Me.btnTimKiem.Text = "T?m ki?m"
+        Me.btnTimKiem.Text = "Tìm kiếm"
         Me.btnTimKiem.UseVisualStyleBackColor = False
         '
         'txtTuKhoa
@@ -181,16 +195,16 @@ Partial Class frmKyLuong
         '
         'dtTuNgay
         '
-        Me.dtTuNgay.Location = New System.Drawing.Point(330, 50)
+        Me.dtTuNgay.Location = New System.Drawing.Point(330, 51)
         Me.dtTuNgay.Name = "dtTuNgay"
-        Me.dtTuNgay.Size = New System.Drawing.Size(190, 29)
+        Me.dtTuNgay.Size = New System.Drawing.Size(205, 29)
         Me.dtTuNgay.TabIndex = 4
         '
         'dtDenNgay
         '
-        Me.dtDenNgay.Location = New System.Drawing.Point(530, 50)
+        Me.dtDenNgay.Location = New System.Drawing.Point(584, 51)
         Me.dtDenNgay.Name = "dtDenNgay"
-        Me.dtDenNgay.Size = New System.Drawing.Size(190, 29)
+        Me.dtDenNgay.Size = New System.Drawing.Size(205, 29)
         Me.dtDenNgay.TabIndex = 5
         '
         'lblTrangThai
@@ -198,9 +212,9 @@ Partial Class frmKyLuong
         Me.lblTrangThai.AutoSize = True
         Me.lblTrangThai.Location = New System.Drawing.Point(460, 18)
         Me.lblTrangThai.Name = "lblTrangThai"
-        Me.lblTrangThai.Size = New System.Drawing.Size(84, 23)
+        Me.lblTrangThai.Size = New System.Drawing.Size(91, 23)
         Me.lblTrangThai.TabIndex = 7
-        Me.lblTrangThai.Text = "Tr?ng th?i"
+        Me.lblTrangThai.Text = "Trạng thái"
         '
         'lblThoiGian
         '
@@ -209,16 +223,16 @@ Partial Class frmKyLuong
         Me.lblThoiGian.Name = "lblThoiGian"
         Me.lblThoiGian.Size = New System.Drawing.Size(84, 23)
         Me.lblThoiGian.TabIndex = 6
-        Me.lblThoiGian.Text = "Th?i gian"
+        Me.lblThoiGian.Text = "Thời gian"
         '
         'lblTuKhoa
         '
         Me.lblTuKhoa.AutoSize = True
         Me.lblTuKhoa.Location = New System.Drawing.Point(12, 18)
         Me.lblTuKhoa.Name = "lblTuKhoa"
-        Me.lblTuKhoa.Size = New System.Drawing.Size(65, 23)
+        Me.lblTuKhoa.Size = New System.Drawing.Size(73, 23)
         Me.lblTuKhoa.TabIndex = 5
-        Me.lblTuKhoa.Text = "T? kh?a"
+        Me.lblTuKhoa.Text = "Từ khóa"
         '
         'dgvKyLuong
         '
@@ -260,6 +274,7 @@ Partial Class frmKyLuong
     Friend WithEvents btnThemKyLuong As Button
     Friend WithEvents btnSuaKyLuong As Button
     Friend WithEvents btnXoaKyLuong As Button
+    Friend WithEvents btnXuatBaoCao As Button
     Friend WithEvents Label6 As Label
     Friend WithEvents pnlFilters As Panel
     Friend WithEvents btnLamMoi As Button

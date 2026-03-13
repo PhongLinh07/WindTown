@@ -370,10 +370,10 @@ Partial Class frmDashboard
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.dtpkThongKe.CalendarFont = New System.Drawing.Font("Arial Narrow", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.dtpkThongKe.Location = New System.Drawing.Point(291, 9)
+        Me.dtpkThongKe.Location = New System.Drawing.Point(270, 9)
         Me.dtpkThongKe.Margin = New System.Windows.Forms.Padding(2, 3, 2, 3)
         Me.dtpkThongKe.Name = "dtpkThongKe"
-        Me.dtpkThongKe.Size = New System.Drawing.Size(140, 27)
+        Me.dtpkThongKe.Size = New System.Drawing.Size(161, 27)
         Me.dtpkThongKe.TabIndex = 1
         '
         'tlpNhanVien

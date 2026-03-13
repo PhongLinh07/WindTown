@@ -1,4 +1,5 @@
-﻿Imports System.Linq
+﻿Imports System.Data
+Imports System.Linq
 
 Public Class frmKyLuong
 
@@ -19,7 +20,7 @@ Public Class frmKyLuong
 
         Dim bootstrap = DatabaseBootstrapService.EnsureReady()
         If Not bootstrap.IsSuccess Then
-            MessageBox.Show("Kh?ng th? k?t n?i database: " & bootstrap.Message, "Lỗi k?t n?i DB", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show("Lỗi kế nối CSDL: " & bootstrap.Message, "Lỗi kết nối", MessageBoxButtons.OK, MessageBoxIcon.Error)
             KhoaUI()
             Return
         End If
@@ -41,6 +42,7 @@ Public Class frmKyLuong
         btnThemKyLuong.Enabled = False
         btnSuaKyLuong.Enabled = False
         btnXoaKyLuong.Enabled = False
+        btnXuatBaoCao.Enabled = False
         dgvKyLuong.Enabled = False
     End Sub
 
@@ -122,11 +124,15 @@ Public Class frmKyLuong
         colGhiChu.HeaderText = "Ghi chú"
         colGhiChu.Width = 220
         dgvKyLuong.Columns.Add(colGhiChu)
+
+        UiDinhDang.ApDungDinhDangCotNgay(colTuNgay)
+        UiDinhDang.ApDungDinhDangCotNgay(colDenNgay)
+        UiDinhDang.ApDungDinhDangCotSo(colGioChuan, "N2")
     End Sub
 
     Private Sub TaiBoLoc()
         Dim trangThaiItems As New List(Of LuaChon(Of Integer)) From {
-            New LuaChon(Of Integer) With {.HienThi = "T?t c?", .GiaTri = -999}
+            New LuaChon(Of Integer) With {.HienThi = "Tất cả", .GiaTri = -999}
         }
         For Each kv In Pay_Period.status_Dict
             trangThaiItems.Add(New LuaChon(Of Integer) With {.HienThi = kv.Value, .GiaTri = kv.Key})
@@ -136,19 +142,25 @@ Public Class frmKyLuong
         cbbTrangThai.ValueMember = "GiaTri"
 
         cbbThoiGian.Items.Clear()
-        cbbThoiGian.Items.AddRange(New Object() {"T?t c?", "Theo kho?ng"})
+        cbbThoiGian.Items.AddRange(New Object() {"Tất cả", "Theo khoảng"})
         cbbThoiGian.SelectedIndex = 0
 
+        UiDinhDang.ApDungDinhDangNgayPicker(dtTuNgay)
+        UiDinhDang.ApDungDinhDangNgayPicker(dtDenNgay)
         dtTuNgay.Value = DateTime.Today.AddMonths(-1)
         dtDenNgay.Value = DateTime.Today
     End Sub
 
     Private Sub TaiDuLieu()
+        Dim danhSachKhoa As Control() = {btnThemKyLuong, btnSuaKyLuong, btnXoaKyLuong, btnXuatBaoCao, btnTimKiem, btnLamMoi, dgvKyLuong}
+        UiTrangThai.BatLoading(Me, danhSachKhoa)
         Try
             _danhSachKyLuong = _duLieu.TaiDanhSachKyLuong()
         Catch ex As Exception
             MessageBox.Show("Không thể tải danh sách kỳ lương: " & ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error)
             _danhSachKyLuong = New List(Of Pay_Period)()
+        Finally
+            UiTrangThai.TatLoading(Me, danhSachKhoa)
         End Try
 
         CapNhatLuoi()
@@ -171,7 +183,7 @@ Public Class frmKyLuong
             query = query.Where(Function(x) x.status = trangThai)
         End If
 
-        If cbbThoiGian.SelectedItem IsNot Nothing AndAlso cbbThoiGian.SelectedItem.ToString() = "Theo kho?ng" Then
+        If cbbThoiGian.SelectedItem IsNot Nothing AndAlso cbbThoiGian.SelectedItem.ToString() = "Theo khoảng" Then
             Dim tuNgay = dtTuNgay.Value.Date
             Dim denNgay = dtDenNgay.Value.Date
             If tuNgay > denNgay Then
@@ -248,11 +260,48 @@ Public Class frmKyLuong
         CapNhatLuoi()
     End Sub
 
+    Private Sub btnXuatBaoCao_Click(sender As Object, e As EventArgs) Handles btnXuatBaoCao.Click
+        Dim dsLoc = ApDungLoc(_danhSachKyLuong)
+        If dsLoc Is Nothing OrElse dsLoc.Count = 0 Then
+            UiThongBao.HienThiCanhBao("Không có dữ liệu để xuất.")
+            Return
+        End If
+
+        Dim bang = TaoBangKyLuong(dsLoc)
+        BaoCaoXuat.XuatTuDataTable(bang, "ky_luong")
+    End Sub
+
     Private Sub dgvKyLuong_CurrentCellDirtyStateChanged(sender As Object, e As EventArgs) Handles dgvKyLuong.CurrentCellDirtyStateChanged
         If dgvKyLuong.IsCurrentCellDirty Then
             dgvKyLuong.CommitEdit(DataGridViewDataErrorContexts.Commit)
         End If
     End Sub
+
+    Private Function TaoBangKyLuong(ds As IEnumerable(Of Pay_Period)) As DataTable
+        Dim bang As New DataTable()
+        bang.Columns.Add("Mã kỳ lương")
+        bang.Columns.Add("Tên kỳ lương")
+        bang.Columns.Add("Ngày bắt đầu")
+        bang.Columns.Add("Ngày kết thúc")
+        bang.Columns.Add("Giờ chuẩn")
+        bang.Columns.Add("Trạng thái")
+        bang.Columns.Add("Ghi chú")
+
+        If ds Is Nothing Then Return bang
+        For Each ky In ds
+            bang.Rows.Add(
+                ky.code,
+                ky.name,
+                If(ky.start_date, DateTime.MinValue).ToString(UiDinhDang.DinhDangNgayMacDinh),
+                If(ky.end_date, DateTime.MinValue).ToString(UiDinhDang.DinhDangNgayMacDinh),
+                If(ky.std_hours, 0D).ToString("N2"),
+                ky.status_UI,
+                ky.note
+            )
+        Next
+
+        Return bang
+    End Function
 
     Private Function LayDanhSachChon() As List(Of Pay_Period)
         Dim ketQua As New List(Of Pay_Period)()
@@ -275,7 +324,7 @@ Public Class frmKyLuong
 
         Dim result = _duLieu.TaoKyLuong(data)
         If result.IsSuccess Then
-            MessageBox.Show("Thêm kỳ lương th?nh c?ng.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            MessageBox.Show("Thêm kỳ lương thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information)
             TaiDuLieu()
         Else
             MessageBox.Show(result.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning)
@@ -345,26 +394,26 @@ Public Class frmKyLuong
             Dim dtBatDau As New DateTimePicker() With {.Location = New Point(190, 98), .Width = 300}
             dtBatDau.Value = If(data.start_date, DateTime.Today)
 
-            Dim lblDenNgay As New Label() With {.Text = "Ng?y k?t th?c", .Location = New Point(20, 140), .AutoSize = True}
+            Dim lblDenNgay As New Label() With {.Text = "Ngày kết thúc", .Location = New Point(20, 140), .AutoSize = True}
             Dim dtKetThuc As New DateTimePicker() With {.Location = New Point(190, 138), .Width = 300}
             dtKetThuc.Value = If(data.end_date, DateTime.Today)
 
-            Dim lblGioChuan As New Label() With {.Text = "Gi? chu?n", .Location = New Point(20, 180), .AutoSize = True}
+            Dim lblGioChuan As New Label() With {.Text = "Giờ chuẩn", .Location = New Point(20, 180), .AutoSize = True}
             Dim numGioChuan As New NumericUpDown() With {.Location = New Point(190, 178), .Width = 300, .Maximum = Decimal.MaxValue, .DecimalPlaces = 2}
             numGioChuan.Value = If(data.std_hours, 0D)
 
-            Dim lblTrangThai As New Label() With {.Text = "Tr?ng th?i", .Location = New Point(20, 220), .AutoSize = True}
+            Dim lblTrangThai As New Label() With {.Text = "Trạng thái", .Location = New Point(20, 220), .AutoSize = True}
             Dim cboTrangThai As New ComboBox() With {.Location = New Point(190, 218), .Width = 300, .DropDownStyle = ComboBoxStyle.DropDownList}
             cboTrangThai.DataSource = New BindingSource(Pay_Period.status_Dict, Nothing)
             cboTrangThai.DisplayMember = "Value"
             cboTrangThai.ValueMember = "Key"
             cboTrangThai.SelectedValue = data.status
 
-            Dim lblGhiChu As New Label() With {.Text = "Ghi ch?", .Location = New Point(20, 260), .AutoSize = True}
+            Dim lblGhiChu As New Label() With {.Text = "Ghi chú", .Location = New Point(20, 260), .AutoSize = True}
             Dim txtGhiChu As New TextBox() With {.Location = New Point(190, 258), .Width = 300, .Text = data.note}
 
-            Dim btnOk As New Button() With {.Text = "L?u", .Location = New Point(330, 300), .Width = 75, .DialogResult = DialogResult.OK}
-            Dim btnHuy As New Button() With {.Text = "H?y", .Location = New Point(415, 300), .Width = 75, .DialogResult = DialogResult.Cancel}
+            Dim btnOk As New Button() With {.Text = "Lưu", .Location = New Point(330, 300), .Width = 75, .DialogResult = DialogResult.OK}
+            Dim btnHuy As New Button() With {.Text = "Hủy", .Location = New Point(415, 300), .Width = 75, .DialogResult = DialogResult.Cancel}
 
             frm.Controls.AddRange(New Control() {lblCode, txtCode, lblTen, txtTen, lblTuNgay, dtBatDau, lblDenNgay, dtKetThuc, lblGioChuan, numGioChuan, lblTrangThai, cboTrangThai, lblGhiChu, txtGhiChu, btnOk, btnHuy})
             frm.AcceptButton = btnOk
@@ -415,5 +464,6 @@ Public Class frmKyLuong
     End Function
 
 End Class
+
 
 

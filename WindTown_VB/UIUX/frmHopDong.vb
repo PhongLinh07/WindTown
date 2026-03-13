@@ -1,4 +1,5 @@
-﻿Imports System.Linq
+﻿Imports System.Data
+Imports System.Linq
 
 Public Class frmHopDong
 
@@ -70,6 +71,9 @@ Public Class frmHopDong
         cbbxThoiGianHD.Items.Clear()
         cbbxThoiGianHD.Items.AddRange(New Object() {"Tất cả", "Theo khoảng"})
         cbbxThoiGianHD.SelectedIndex = 0
+
+        UiDinhDang.ApDungDinhDangNgayPicker(dtpkTuNgay)
+        UiDinhDang.ApDungDinhDangNgayPicker(dtpkDenNgay)
 
         cbbxBoPhan.Enabled = True
         cbbxLoaiHopDong.Enabled = False
@@ -165,6 +169,10 @@ Public Class frmHopDong
         colGhiChu.HeaderText = "Ghi chú"
         colGhiChu.Width = 200
         dtgvDSHopDong.Columns.Add(colGhiChu)
+
+        UiDinhDang.ApDungDinhDangCotNgay(colNgayBatDau)
+        UiDinhDang.ApDungDinhDangCotNgay(colNgayKetThuc)
+        UiDinhDang.ApDungDinhDangCotSo(colLuongCoBan, "N0")
     End Sub
 
     Private Sub LoadLookups()
@@ -200,11 +208,15 @@ Public Class frmHopDong
     End Sub
 
     Private Sub LoadData()
+        Dim danhSachKhoa As Control() = {btnThemHD, btnXuatHD, btnSuaHD, btnXoaHD, btnSuaHangLoat, btnSearch, dtgvDSHopDong}
+        UiTrangThai.BatLoading(Me, danhSachKhoa)
         Try
             _contracts = _model.LoadContracts()
         Catch ex As Exception
             MessageBox.Show("Không thể tải danh sách hợp đồng: " & ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error)
             _contracts = New List(Of Contract)()
+        Finally
+            UiTrangThai.TatLoading(Me, danhSachKhoa)
         End Try
 
         RenderRows(ApplyFilters(_contracts))
@@ -323,12 +335,14 @@ Public Class frmHopDong
 
     Private Sub btnXuatHD_Click(sender As Object, e As EventArgs) Handles btnXuatHD.Click
         Dim selected = GetCheckedContracts()
-        If selected.Count = 0 Then
-            MessageBox.Show("Vui lòng chọn hợp đồng cần xuất.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        Dim dsXuat = If(selected.Count > 0, selected, ApplyFilters(_contracts))
+        If dsXuat Is Nothing OrElse dsXuat.Count = 0 Then
+            UiThongBao.HienThiCanhBao("Không có dữ liệu để xuất.")
             Return
         End If
 
-        MessageBox.Show("Chức năng xuất hợp đồng đang được phát triển.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        Dim bang = TaoBangHopDong(dsXuat)
+        BaoCaoXuat.XuatTuDataTable(bang, "hop_dong")
     End Sub
 
     Private Sub btnSuaHangLoat_Click(sender As Object, e As EventArgs) Handles btnSuaHangLoat.Click
@@ -528,4 +542,31 @@ Public Class frmHopDong
         End Using
     End Function
 
+    Private Function TaoBangHopDong(ds As IEnumerable(Of Contract)) As DataTable
+        Dim bang As New DataTable()
+        bang.Columns.Add("Mã hợp đồng")
+        bang.Columns.Add("Nhân viên")
+        bang.Columns.Add("Ngày bắt đầu")
+        bang.Columns.Add("Ngày kết thúc")
+        bang.Columns.Add("Lương cơ bản")
+        bang.Columns.Add("Trạng thái")
+        bang.Columns.Add("Ghi chú")
+
+        If ds Is Nothing Then Return bang
+        For Each hd In ds
+            bang.Rows.Add(
+                hd.code,
+                hd.employee_UI,
+                If(hd.start_date, DateTime.MinValue).ToString(UiDinhDang.DinhDangNgayMacDinh),
+                If(hd.end_date, DateTime.MinValue).ToString(UiDinhDang.DinhDangNgayMacDinh),
+                If(hd.base_salary, 0D).ToString("N0"),
+                hd.status_UI,
+                hd.note
+            )
+        Next
+
+        Return bang
+    End Function
+
 End Class
+
