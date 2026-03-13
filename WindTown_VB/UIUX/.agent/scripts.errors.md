@@ -1,0 +1,16 @@
+## Lỗi
+- 2026-03-13: Script quét UI không kết nối được WinAppDriver.
+  - Repro: `PowerShell -ExecutionPolicy Bypass -File "WindTown_VB\UIUX\.agent\scripts\run-ui-scan.ps1"`
+  - Thông báo: `Khong the ket noi WinAppDriver.`
+- 2026-03-13: Script quét UI không tạo được session.
+  - Repro: `PowerShell -ExecutionPolicy Bypass -File "WindTown_VB\UIUX\.agent\scripts\run-ui-scan.ps1"`
+  - Thông báo: `Bad capabilities. Specify either app or appTopLevelWindow to create a session`
+- 2026-03-13: Script quét UI báo lỗi `Command not implemented` khi gọi `/rect`.
+  - Repro: `PowerShell -ExecutionPolicy Bypass -File "WindTown_VB\UIUX\.agent\scripts\run-ui-scan.ps1"`
+  - Thông báo: `Command not implemented: GET ... /rect`
+- 2026-03-13: Script quét UI báo lỗi `no such window` sau khi chuyển chế độ.
+  - Repro: `PowerShell -ExecutionPolicy Bypass -File "WindTown_VB\UIUX\.agent\scripts\run-ui-scan.ps1"`
+  - Thông báo: `Currently selected window has been closed`
+- 2026-03-13: Script quét UI lỗi parse do ký tự không tương thích trong regex.
+  - Repro: `PowerShell -ExecutionPolicy Bypass -File "WindTown_VB\UIUX\.agent\scripts\run-ui-scan.ps1"`
+  - Thông báo: `The string is missing the terminator: '`

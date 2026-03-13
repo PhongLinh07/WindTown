@@ -1,0 +1,13 @@
+## Tiến trình
+- 2026-03-13: Tạo script `run-winappdriver.ps1` để khởi chạy WinAppDriver và mở app kiểm tra UI.
+- 2026-03-13: Tạo script `run-ui-scan.ps1` để quét UI và xuất báo cáo chồng lấn.
+- 2026-03-13: Chạy script quét UI nhưng không kết nối được WinAppDriver.
+- 2026-03-13: Sửa payload tạo session theo chuẩn `desiredCapabilities`.
+- 2026-03-13: Điều chỉnh lấy kích thước bằng `location` và `size`, hỗ trợ id W3C.
+- 2026-03-13: Bổ sung bước bấm "Fontend" và lọc bỏ window/system buttons khi quét.
+- 2026-03-13: Bổ sung cơ chế tạo lại session khi cửa sổ bị đóng.
+- 2026-03-13: Bổ sung mẫu control trong báo cáo để dễ xác định phạm vi quét.
+- 2026-03-13: Bổ sung cơ chế thử lại khi chuyển chế độ làm đóng cửa sổ.
+- 2026-03-13: Bổ sung cơ chế gắn `appTopLevelWindow` theo handle khi cửa sổ đổi.
+- 2026-03-13: Bổ sung hàm chuẩn hóa chuỗi để hiển thị tiếng Việt đúng trong báo cáo.
+- 2026-03-13: Chạy quét UI thành công, xuất báo cáo `scan-report.md`.
