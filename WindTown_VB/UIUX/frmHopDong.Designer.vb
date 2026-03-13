@@ -116,7 +116,7 @@ Partial Class frmHopDong
         Me.dtpkDenNgay.Dock = System.Windows.Forms.DockStyle.Fill
         Me.dtpkDenNgay.Location = New System.Drawing.Point(0, 0)
         Me.dtpkDenNgay.Name = "dtpkDenNgay"
-        Me.dtpkDenNgay.Size = New System.Drawing.Size(202, 27)
+        Me.dtpkDenNgay.Size = New System.Drawing.Size(202, 29)
         Me.dtpkDenNgay.TabIndex = 3
         '
         'Panel5
@@ -135,16 +135,16 @@ Partial Class frmHopDong
         Me.dtpkTuNgay.Dock = System.Windows.Forms.DockStyle.Fill
         Me.dtpkTuNgay.Location = New System.Drawing.Point(0, 0)
         Me.dtpkTuNgay.Name = "dtpkTuNgay"
-        Me.dtpkTuNgay.Size = New System.Drawing.Size(201, 27)
+        Me.dtpkTuNgay.Size = New System.Drawing.Size(201, 29)
         Me.dtpkTuNgay.TabIndex = 2
         '
         'cbbxCongTy
         '
         Me.cbbxCongTy.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.cbbxCongTy.FormattingEnabled = True
-        Me.cbbxCongTy.Location = New System.Drawing.Point(0, 41)
+        Me.cbbxCongTy.Location = New System.Drawing.Point(0, 40)
         Me.cbbxCongTy.Name = "cbbxCongTy"
-        Me.cbbxCongTy.Size = New System.Drawing.Size(201, 30)
+        Me.cbbxCongTy.Size = New System.Drawing.Size(201, 31)
         Me.cbbxCongTy.TabIndex = 1
         '
         'Panel4
@@ -189,7 +189,7 @@ Partial Class frmHopDong
         Me.cbbxThoiGianHD.FormattingEnabled = True
         Me.cbbxThoiGianHD.Location = New System.Drawing.Point(0, 0)
         Me.cbbxThoiGianHD.Name = "cbbxThoiGianHD"
-        Me.cbbxThoiGianHD.Size = New System.Drawing.Size(201, 30)
+        Me.cbbxThoiGianHD.Size = New System.Drawing.Size(201, 31)
         Me.cbbxThoiGianHD.TabIndex = 0
         '
         'Panel3
@@ -207,9 +207,9 @@ Partial Class frmHopDong
         '
         Me.cbbxHopDong.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.cbbxHopDong.FormattingEnabled = True
-        Me.cbbxHopDong.Location = New System.Drawing.Point(0, 41)
+        Me.cbbxHopDong.Location = New System.Drawing.Point(0, 40)
         Me.cbbxHopDong.Name = "cbbxHopDong"
-        Me.cbbxHopDong.Size = New System.Drawing.Size(201, 30)
+        Me.cbbxHopDong.Size = New System.Drawing.Size(201, 31)
         Me.cbbxHopDong.TabIndex = 1
         '
         'cbbxTrangThai
@@ -218,7 +218,7 @@ Partial Class frmHopDong
         Me.cbbxTrangThai.FormattingEnabled = True
         Me.cbbxTrangThai.Location = New System.Drawing.Point(0, 0)
         Me.cbbxTrangThai.Name = "cbbxTrangThai"
-        Me.cbbxTrangThai.Size = New System.Drawing.Size(201, 30)
+        Me.cbbxTrangThai.Size = New System.Drawing.Size(201, 31)
         Me.cbbxTrangThai.TabIndex = 0
         '
         'pnlHeader
@@ -287,7 +287,7 @@ Partial Class frmHopDong
         Me.btnXuatHD.Name = "btnXuatHD"
         Me.btnXuatHD.Size = New System.Drawing.Size(110, 31)
         Me.btnXuatHD.TabIndex = 2
-        Me.btnXuatHD.Text = "Xuất file"
+        Me.btnXuatHD.Text = "Xuất"
         Me.btnXuatHD.UseVisualStyleBackColor = False
         '
         'btnThemHD
@@ -329,9 +329,9 @@ Partial Class frmHopDong
         '
         Me.cbbxLoaiHopDong.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.cbbxLoaiHopDong.FormattingEnabled = True
-        Me.cbbxLoaiHopDong.Location = New System.Drawing.Point(0, 41)
+        Me.cbbxLoaiHopDong.Location = New System.Drawing.Point(0, 40)
         Me.cbbxLoaiHopDong.Name = "cbbxLoaiHopDong"
-        Me.cbbxLoaiHopDong.Size = New System.Drawing.Size(201, 30)
+        Me.cbbxLoaiHopDong.Size = New System.Drawing.Size(201, 31)
         Me.cbbxLoaiHopDong.TabIndex = 1
         '
         'cbbxBoPhan
@@ -340,7 +340,7 @@ Partial Class frmHopDong
         Me.cbbxBoPhan.FormattingEnabled = True
         Me.cbbxBoPhan.Location = New System.Drawing.Point(0, 0)
         Me.cbbxBoPhan.Name = "cbbxBoPhan"
-        Me.cbbxBoPhan.Size = New System.Drawing.Size(201, 30)
+        Me.cbbxBoPhan.Size = New System.Drawing.Size(201, 31)
         Me.cbbxBoPhan.TabIndex = 0
         '
         'dtgvDSHopDong
@@ -363,17 +363,17 @@ Partial Class frmHopDong
         '
         'frmHopDong
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 22.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(10.0!, 23.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.LightGray
         Me.ClientSize = New System.Drawing.Size(1040, 665)
         Me.Controls.Add(Me.tlpnlMain)
-        Me.Font = New System.Drawing.Font("Arial Narrow", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Font = New System.Drawing.Font("Microsoft YaHei UI", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Margin = New System.Windows.Forms.Padding(2, 3, 2, 3)
         Me.Name = "frmHopDong"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "Hop dong"
+        Me.Text = "Hợp đồng"
         Me.tlpnlMain.ResumeLayout(False)
         Me.tlpDashboard.ResumeLayout(False)
         Me.Panel6.ResumeLayout(False)

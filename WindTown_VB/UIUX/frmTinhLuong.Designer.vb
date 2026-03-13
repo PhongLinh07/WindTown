@@ -2,7 +2,6 @@
 Partial Class frmTinhLuong
     Inherits System.Windows.Forms.Form
 
-    'Form overrides dispose to clean up the component list.
     <System.Diagnostics.DebuggerNonUserCode()> _
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
@@ -14,197 +13,377 @@ Partial Class frmTinhLuong
         End Try
     End Sub
 
-    'Required by the Windows Form Designer
     Private components As System.ComponentModel.IContainer
 
-    'NOTE: The following procedure is required by the Windows Form Designer
-    'It can be modified using the Windows Form Designer.  
-    'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmTinhLuong))
-        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.components = New System.ComponentModel.Container()
+        Me.pnlHeader = New System.Windows.Forms.Panel()
+        Me.pnlHanhDong = New System.Windows.Forms.Panel()
+        Me.btnTaoBangLuong = New System.Windows.Forms.Button()
+        Me.btnDongBangLuong = New System.Windows.Forms.Button()
+        Me.btnBaoCao = New System.Windows.Forms.Button()
         Me.Label6 = New System.Windows.Forms.Label()
-        Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
-        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
-        Me.ComboBox2 = New System.Windows.Forms.ComboBox()
-        Me.ComboBox3 = New System.Windows.Forms.ComboBox()
-        Me.ComboBox4 = New System.Windows.Forms.ComboBox()
-        Me.Panel2 = New System.Windows.Forms.Panel()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
-        Me.Button1 = New System.Windows.Forms.Button()
-        Me.Button2 = New System.Windows.Forms.Button()
-        Me.Panel3 = New System.Windows.Forms.Panel()
-        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
-        Me.Panel1.SuspendLayout()
-        Me.TableLayoutPanel1.SuspendLayout()
-        Me.Panel2.SuspendLayout()
-        Me.Panel3.SuspendLayout()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.pnlFilters = New System.Windows.Forms.Panel()
+        Me.btnLamMoi = New System.Windows.Forms.Button()
+        Me.btnTimKiem = New System.Windows.Forms.Button()
+        Me.txtTuKhoa = New System.Windows.Forms.TextBox()
+        Me.cbbKyLuong = New System.Windows.Forms.ComboBox()
+        Me.cbbTrangThai = New System.Windows.Forms.ComboBox()
+        Me.cbbViTri = New System.Windows.Forms.ComboBox()
+        Me.cbbThoiGian = New System.Windows.Forms.ComboBox()
+        Me.dtTuNgay = New System.Windows.Forms.DateTimePicker()
+        Me.dtDenNgay = New System.Windows.Forms.DateTimePicker()
+        Me.cbbThoiGianNhanh = New System.Windows.Forms.ComboBox()
+        Me.lblKyLuong = New System.Windows.Forms.Label()
+        Me.lblTrangThai = New System.Windows.Forms.Label()
+        Me.lblViTri = New System.Windows.Forms.Label()
+        Me.lblTuKhoa = New System.Windows.Forms.Label()
+        Me.lblThoiGian = New System.Windows.Forms.Label()
+        Me.lblLocNhanh = New System.Windows.Forms.Label()
+        Me.dgvBangLuong = New System.Windows.Forms.DataGridView()
+        Me.cmsBaoCao = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.mnuBaoCaoLoc = New System.Windows.Forms.ToolStripMenuItem()
+        Me.mnuBaoCaoChon = New System.Windows.Forms.ToolStripMenuItem()
+        Me.mnuBaoCaoTongHop = New System.Windows.Forms.ToolStripMenuItem()
+        Me.pnlHeader.SuspendLayout()
+        Me.pnlHanhDong.SuspendLayout()
+        Me.pnlFilters.SuspendLayout()
+        CType(Me.dgvBangLuong, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.cmsBaoCao.SuspendLayout()
         Me.SuspendLayout()
         '
-        'Panel1
+        'pnlHeader
         '
-        Me.Panel1.Controls.Add(Me.Label6)
-        Me.Panel1.Location = New System.Drawing.Point(1, 0)
-        Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(1039, 77)
-        Me.Panel1.TabIndex = 0
+        Me.pnlHeader.BackColor = System.Drawing.Color.White
+        Me.pnlHeader.Controls.Add(Me.pnlHanhDong)
+        Me.pnlHeader.Controls.Add(Me.Label6)
+        Me.pnlHeader.Dock = System.Windows.Forms.DockStyle.Top
+        Me.pnlHeader.Location = New System.Drawing.Point(0, 0)
+        Me.pnlHeader.Name = "pnlHeader"
+        Me.pnlHeader.Size = New System.Drawing.Size(1040, 80)
+        Me.pnlHeader.TabIndex = 0
+        '
+        'pnlHanhDong
+        '
+        Me.pnlHanhDong.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.pnlHanhDong.BackColor = System.Drawing.Color.Transparent
+        Me.pnlHanhDong.Controls.Add(Me.btnTaoBangLuong)
+        Me.pnlHanhDong.Controls.Add(Me.btnDongBangLuong)
+        Me.pnlHanhDong.Controls.Add(Me.btnBaoCao)
+        Me.pnlHanhDong.Location = New System.Drawing.Point(590, 20)
+        Me.pnlHanhDong.Name = "pnlHanhDong"
+        Me.pnlHanhDong.Size = New System.Drawing.Size(430, 40)
+        Me.pnlHanhDong.TabIndex = 1
+        '
+        'btnTaoBangLuong
+        '
+        Me.btnTaoBangLuong.BackColor = System.Drawing.Color.FromArgb(CType(CType(76, Byte), Integer), CType(CType(175, Byte), Integer), CType(CType(80, Byte), Integer))
+        Me.btnTaoBangLuong.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnTaoBangLuong.ForeColor = System.Drawing.Color.White
+        Me.btnTaoBangLuong.Location = New System.Drawing.Point(0, 6)
+        Me.btnTaoBangLuong.Name = "btnTaoBangLuong"
+        Me.btnTaoBangLuong.Size = New System.Drawing.Size(130, 27)
+        Me.btnTaoBangLuong.TabIndex = 0
+        Me.btnTaoBangLuong.Text = "Tạo bảng lương"
+        Me.btnTaoBangLuong.UseVisualStyleBackColor = False
+        '
+        'btnDongBangLuong
+        '
+        Me.btnDongBangLuong.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(152, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.btnDongBangLuong.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnDongBangLuong.ForeColor = System.Drawing.Color.White
+        Me.btnDongBangLuong.Location = New System.Drawing.Point(140, 6)
+        Me.btnDongBangLuong.Name = "btnDongBangLuong"
+        Me.btnDongBangLuong.Size = New System.Drawing.Size(130, 27)
+        Me.btnDongBangLuong.TabIndex = 1
+        Me.btnDongBangLuong.Text = "Đóng bảng lương"
+        Me.btnDongBangLuong.UseVisualStyleBackColor = False
+        '
+        'btnBaoCao
+        '
+        Me.btnBaoCao.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(150, Byte), Integer), CType(CType(136, Byte), Integer))
+        Me.btnBaoCao.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnBaoCao.ForeColor = System.Drawing.Color.White
+        Me.btnBaoCao.Location = New System.Drawing.Point(280, 6)
+        Me.btnBaoCao.Name = "btnBaoCao"
+        Me.btnBaoCao.Size = New System.Drawing.Size(130, 27)
+        Me.btnBaoCao.TabIndex = 2
+        Me.btnBaoCao.Text = "Báo cáo"
+        Me.btnBaoCao.UseVisualStyleBackColor = False
         '
         'Label6
         '
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Microsoft YaHei UI", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.Location = New System.Drawing.Point(10, 28)
-        Me.Label6.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label6.Location = New System.Drawing.Point(12, 24)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(138, 31)
-        Me.Label6.TabIndex = 2
+        Me.Label6.TabIndex = 0
         Me.Label6.Text = "Tính lương"
         '
-        'TableLayoutPanel1
+        'pnlFilters
         '
-        Me.TableLayoutPanel1.Anchor = System.Windows.Forms.AnchorStyles.None
-        Me.TableLayoutPanel1.ColumnCount = 3
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 52.96736!))
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 47.03264!))
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 364.0!))
-        Me.TableLayoutPanel1.Controls.Add(Me.ComboBox4, 0, 1)
-        Me.TableLayoutPanel1.Controls.Add(Me.ComboBox3, 2, 0)
-        Me.TableLayoutPanel1.Controls.Add(Me.ComboBox2, 1, 0)
-        Me.TableLayoutPanel1.Controls.Add(Me.ComboBox1, 0, 0)
-        Me.TableLayoutPanel1.Controls.Add(Me.Panel2, 1, 1)
-        Me.TableLayoutPanel1.Controls.Add(Me.Button2, 2, 1)
-        Me.TableLayoutPanel1.Location = New System.Drawing.Point(1, 83)
-        Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
-        Me.TableLayoutPanel1.RowCount = 2
-        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 48.68421!))
-        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 51.31579!))
-        Me.TableLayoutPanel1.Size = New System.Drawing.Size(1039, 76)
-        Me.TableLayoutPanel1.TabIndex = 1
+        Me.pnlFilters.BackColor = System.Drawing.Color.White
+        Me.pnlFilters.Controls.Add(Me.btnLamMoi)
+        Me.pnlFilters.Controls.Add(Me.btnTimKiem)
+        Me.pnlFilters.Controls.Add(Me.txtTuKhoa)
+        Me.pnlFilters.Controls.Add(Me.cbbKyLuong)
+        Me.pnlFilters.Controls.Add(Me.cbbTrangThai)
+        Me.pnlFilters.Controls.Add(Me.cbbViTri)
+        Me.pnlFilters.Controls.Add(Me.cbbThoiGian)
+        Me.pnlFilters.Controls.Add(Me.dtTuNgay)
+        Me.pnlFilters.Controls.Add(Me.dtDenNgay)
+        Me.pnlFilters.Controls.Add(Me.cbbThoiGianNhanh)
+        Me.pnlFilters.Controls.Add(Me.lblKyLuong)
+        Me.pnlFilters.Controls.Add(Me.lblTrangThai)
+        Me.pnlFilters.Controls.Add(Me.lblViTri)
+        Me.pnlFilters.Controls.Add(Me.lblTuKhoa)
+        Me.pnlFilters.Controls.Add(Me.lblThoiGian)
+        Me.pnlFilters.Controls.Add(Me.lblLocNhanh)
+        Me.pnlFilters.Dock = System.Windows.Forms.DockStyle.Top
+        Me.pnlFilters.Location = New System.Drawing.Point(0, 80)
+        Me.pnlFilters.Name = "pnlFilters"
+        Me.pnlFilters.Size = New System.Drawing.Size(1040, 120)
+        Me.pnlFilters.TabIndex = 1
         '
-        'ComboBox1
+        'btnLamMoi
         '
-        Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Location = New System.Drawing.Point(3, 3)
-        Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(351, 27)
-        Me.ComboBox1.TabIndex = 0
+        Me.btnLamMoi.BackColor = System.Drawing.Color.FromArgb(CType(CType(96, Byte), Integer), CType(CType(125, Byte), Integer), CType(CType(139, Byte), Integer))
+        Me.btnLamMoi.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnLamMoi.ForeColor = System.Drawing.Color.White
+        Me.btnLamMoi.Location = New System.Drawing.Point(880, 62)
+        Me.btnLamMoi.Name = "btnLamMoi"
+        Me.btnLamMoi.Size = New System.Drawing.Size(120, 27)
+        Me.btnLamMoi.TabIndex = 15
+        Me.btnLamMoi.Text = "Làm mới"
+        Me.btnLamMoi.UseVisualStyleBackColor = False
         '
-        'ComboBox2
+        'btnTimKiem
         '
-        Me.ComboBox2.FormattingEnabled = True
-        Me.ComboBox2.Location = New System.Drawing.Point(360, 3)
-        Me.ComboBox2.Name = "ComboBox2"
-        Me.ComboBox2.Size = New System.Drawing.Size(311, 27)
-        Me.ComboBox2.TabIndex = 1
+        Me.btnTimKiem.BackColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(150, Byte), Integer), CType(CType(243, Byte), Integer))
+        Me.btnTimKiem.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnTimKiem.ForeColor = System.Drawing.Color.White
+        Me.btnTimKiem.Location = New System.Drawing.Point(880, 18)
+        Me.btnTimKiem.Name = "btnTimKiem"
+        Me.btnTimKiem.Size = New System.Drawing.Size(120, 27)
+        Me.btnTimKiem.TabIndex = 14
+        Me.btnTimKiem.Text = "Tìm kiếm"
+        Me.btnTimKiem.UseVisualStyleBackColor = False
         '
-        'ComboBox3
+        'txtTuKhoa
         '
-        Me.ComboBox3.FormattingEnabled = True
-        Me.ComboBox3.Location = New System.Drawing.Point(677, 3)
-        Me.ComboBox3.Name = "ComboBox3"
-        Me.ComboBox3.Size = New System.Drawing.Size(359, 27)
-        Me.ComboBox3.TabIndex = 2
+        Me.txtTuKhoa.Location = New System.Drawing.Point(120, 18)
+        Me.txtTuKhoa.Name = "txtTuKhoa"
+        Me.txtTuKhoa.Size = New System.Drawing.Size(240, 29)
+        Me.txtTuKhoa.TabIndex = 0
         '
-        'ComboBox4
+        'cbbKyLuong
         '
-        Me.ComboBox4.FormattingEnabled = True
-        Me.ComboBox4.Location = New System.Drawing.Point(3, 40)
-        Me.ComboBox4.Name = "ComboBox4"
-        Me.ComboBox4.Size = New System.Drawing.Size(351, 27)
-        Me.ComboBox4.TabIndex = 3
+        Me.cbbKyLuong.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cbbKyLuong.FormattingEnabled = True
+        Me.cbbKyLuong.Location = New System.Drawing.Point(520, 18)
+        Me.cbbKyLuong.Name = "cbbKyLuong"
+        Me.cbbKyLuong.Size = New System.Drawing.Size(200, 31)
+        Me.cbbKyLuong.TabIndex = 2
         '
-        'Panel2
+        'cbbTrangThai
         '
-        Me.Panel2.Controls.Add(Me.Button1)
-        Me.Panel2.Controls.Add(Me.TextBox1)
-        Me.Panel2.Location = New System.Drawing.Point(360, 40)
-        Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(311, 33)
-        Me.Panel2.TabIndex = 4
+        Me.cbbTrangThai.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cbbTrangThai.FormattingEnabled = True
+        Me.cbbTrangThai.Location = New System.Drawing.Point(520, 92)
+        Me.cbbTrangThai.Name = "cbbTrangThai"
+        Me.cbbTrangThai.Size = New System.Drawing.Size(200, 31)
+        Me.cbbTrangThai.TabIndex = 3
+        
         '
-        'TextBox1
+        'cbbViTri
         '
-        Me.TextBox1.Location = New System.Drawing.Point(0, -1)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(228, 27)
-        Me.TextBox1.TabIndex = 0
+        Me.cbbViTri.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cbbViTri.FormattingEnabled = True
+        Me.cbbViTri.Location = New System.Drawing.Point(520, 62)
+        Me.cbbViTri.Name = "cbbViTri"
+        Me.cbbViTri.Size = New System.Drawing.Size(200, 31)
+        Me.cbbViTri.TabIndex = 6
         '
-        'Button1
+        'cbbThoiGian
         '
-        Me.Button1.Location = New System.Drawing.Point(228, -1)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(83, 27)
-        Me.Button1.TabIndex = 1
-        Me.Button1.Text = "Tìm kiếm"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.cbbThoiGian.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cbbThoiGian.FormattingEnabled = True
+        Me.cbbThoiGian.Location = New System.Drawing.Point(120, 62)
+        Me.cbbThoiGian.Name = "cbbThoiGian"
+        Me.cbbThoiGian.Size = New System.Drawing.Size(200, 31)
+        Me.cbbThoiGian.TabIndex = 4
         '
-        'Button2
+        'dtTuNgay
         '
-        Me.Button2.BackColor = System.Drawing.Color.Lime
-        Me.Button2.Location = New System.Drawing.Point(677, 40)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(359, 29)
-        Me.Button2.TabIndex = 5
-        Me.Button2.Text = " Thêm bảng lương"
-        Me.Button2.UseVisualStyleBackColor = False
+        Me.dtTuNgay.Location = New System.Drawing.Point(330, 62)
+        Me.dtTuNgay.Name = "dtTuNgay"
+        Me.dtTuNgay.Size = New System.Drawing.Size(180, 29)
+        Me.dtTuNgay.TabIndex = 5
         '
-        'Panel3
+        'dtDenNgay
         '
-        Me.Panel3.Controls.Add(Me.DataGridView1)
-        Me.Panel3.Location = New System.Drawing.Point(1, 156)
-        Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(1039, 508)
-        Me.Panel3.TabIndex = 2
+        Me.dtDenNgay.Location = New System.Drawing.Point(330, 92)
+        Me.dtDenNgay.Name = "dtDenNgay"
+        Me.dtDenNgay.Size = New System.Drawing.Size(180, 29)
+        Me.dtDenNgay.TabIndex = 6
+        
         '
-        'DataGridView1
+        'cbbThoiGianNhanh
         '
-        Me.DataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonFace
-        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Location = New System.Drawing.Point(3, 3)
-        Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.RowHeadersWidth = 51
-        Me.DataGridView1.RowTemplate.Height = 24
-        Me.DataGridView1.Size = New System.Drawing.Size(1033, 502)
-        Me.DataGridView1.TabIndex = 0
+        Me.cbbThoiGianNhanh.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cbbThoiGianNhanh.FormattingEnabled = True
+        Me.cbbThoiGianNhanh.Location = New System.Drawing.Point(120, 92)
+        Me.cbbThoiGianNhanh.Name = "cbbThoiGianNhanh"
+        Me.cbbThoiGianNhanh.Size = New System.Drawing.Size(200, 31)
+        Me.cbbThoiGianNhanh.TabIndex = 7
+        '
+        'lblKyLuong
+        '
+        Me.lblKyLuong.AutoSize = True
+        Me.lblKyLuong.Location = New System.Drawing.Point(400, 22)
+        Me.lblKyLuong.Name = "lblKyLuong"
+        Me.lblKyLuong.Size = New System.Drawing.Size(66, 23)
+        Me.lblKyLuong.TabIndex = 9
+        Me.lblKyLuong.Text = "Kỳ lương"
+        '
+        'lblTrangThai
+        '
+        Me.lblTrangThai.AutoSize = True
+        Me.lblTrangThai.Location = New System.Drawing.Point(400, 96)
+        Me.lblTrangThai.Name = "lblTrangThai"
+        Me.lblTrangThai.Size = New System.Drawing.Size(84, 23)
+        Me.lblTrangThai.TabIndex = 10
+        Me.lblTrangThai.Text = "Tr?ng th?i"
+        
+        '
+        'lblViTri
+        '
+        Me.lblViTri.AutoSize = True
+        Me.lblViTri.Location = New System.Drawing.Point(400, 66)
+        Me.lblViTri.Name = "lblViTri"
+        Me.lblViTri.Size = New System.Drawing.Size(45, 23)
+        Me.lblViTri.TabIndex = 11
+        Me.lblViTri.Text = "V? tr?"
+        '
+        'lblTuKhoa
+        '
+        Me.lblTuKhoa.AutoSize = True
+        Me.lblTuKhoa.Location = New System.Drawing.Point(12, 22)
+        Me.lblTuKhoa.Name = "lblTuKhoa"
+        Me.lblTuKhoa.Size = New System.Drawing.Size(65, 23)
+        Me.lblTuKhoa.TabIndex = 12
+        Me.lblTuKhoa.Text = "T? kh?a"
+        '
+        'lblThoiGian
+        '
+        Me.lblThoiGian.AutoSize = True
+        Me.lblThoiGian.Location = New System.Drawing.Point(12, 66)
+        Me.lblThoiGian.Name = "lblThoiGian"
+        Me.lblThoiGian.Size = New System.Drawing.Size(84, 23)
+        Me.lblThoiGian.TabIndex = 13
+        Me.lblThoiGian.Text = "Th?i gian"
+        '
+        'lblLocNhanh
+        '
+        Me.lblLocNhanh.AutoSize = True
+        Me.lblLocNhanh.Location = New System.Drawing.Point(12, 96)
+        Me.lblLocNhanh.Name = "lblLocNhanh"
+        Me.lblLocNhanh.Size = New System.Drawing.Size(78, 23)
+        Me.lblLocNhanh.TabIndex = 16
+        Me.lblLocNhanh.Text = "L?c nhanh"
+        '
+        'dgvBangLuong
+        '
+        Me.dgvBangLuong.BackgroundColor = System.Drawing.Color.White
+        Me.dgvBangLuong.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgvBangLuong.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.dgvBangLuong.Location = New System.Drawing.Point(0, 200)
+        Me.dgvBangLuong.Name = "dgvBangLuong"
+        Me.dgvBangLuong.RowHeadersWidth = 51
+        Me.dgvBangLuong.RowTemplate.Height = 24
+        Me.dgvBangLuong.Size = New System.Drawing.Size(1040, 465)
+        Me.dgvBangLuong.TabIndex = 2
+        '
+        'cmsBaoCao
+        '
+        Me.cmsBaoCao.ImageScalingSize = New System.Drawing.Size(20, 20)
+        Me.cmsBaoCao.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuBaoCaoLoc, Me.mnuBaoCaoChon, Me.mnuBaoCaoTongHop})
+        Me.cmsBaoCao.Name = "cmsBaoCao"
+        Me.cmsBaoCao.Size = New System.Drawing.Size(261, 76)
+        '
+        'mnuBaoCaoLoc
+        '
+        Me.mnuBaoCaoLoc.Name = "mnuBaoCaoLoc"
+        Me.mnuBaoCaoLoc.Size = New System.Drawing.Size(260, 24)
+        Me.mnuBaoCaoLoc.Text = "Xu?t theo b? l?c hi?n t?i"
+        '
+        'mnuBaoCaoChon
+        '
+        Me.mnuBaoCaoChon.Name = "mnuBaoCaoChon"
+        Me.mnuBaoCaoChon.Size = New System.Drawing.Size(260, 24)
+        Me.mnuBaoCaoChon.Text = "Xu?t theo l?a ch?n"
+        '
+        'mnuBaoCaoTongHop
+        '
+        Me.mnuBaoCaoTongHop.Name = "mnuBaoCaoTongHop"
+        Me.mnuBaoCaoTongHop.Size = New System.Drawing.Size(260, 24)
+        Me.mnuBaoCaoTongHop.Text = "T?ng h?p th?ng/qu?"
         '
         'frmTinhLuong
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 19.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(10.0!, 23.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1040, 665)
-        Me.Controls.Add(Me.Panel3)
-        Me.Controls.Add(Me.TableLayoutPanel1)
-        Me.Controls.Add(Me.Panel1)
-        Me.Font = New System.Drawing.Font("Arial", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Controls.Add(Me.dgvBangLuong)
+        Me.Controls.Add(Me.pnlFilters)
+        Me.Controls.Add(Me.pnlHeader)
+        Me.Font = New System.Drawing.Font("Microsoft YaHei UI", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
-        Me.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.Name = "frmTinhLuong"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Tính lương"
-        Me.Panel1.ResumeLayout(False)
-        Me.Panel1.PerformLayout()
-        Me.TableLayoutPanel1.ResumeLayout(False)
-        Me.Panel2.ResumeLayout(False)
-        Me.Panel2.PerformLayout()
-        Me.Panel3.ResumeLayout(False)
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.pnlHeader.ResumeLayout(False)
+        Me.pnlHeader.PerformLayout()
+        Me.pnlHanhDong.ResumeLayout(False)
+        Me.pnlFilters.ResumeLayout(False)
+        Me.pnlFilters.PerformLayout()
+        CType(Me.dgvBangLuong, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.cmsBaoCao.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
 
-    Friend WithEvents Panel1 As Panel
+    Friend WithEvents pnlHeader As Panel
+    Friend WithEvents pnlHanhDong As Panel
+    Friend WithEvents btnTaoBangLuong As Button
+    Friend WithEvents btnDongBangLuong As Button
+    Friend WithEvents btnBaoCao As Button
     Friend WithEvents Label6 As Label
-    Friend WithEvents TableLayoutPanel1 As TableLayoutPanel
-    Friend WithEvents ComboBox1 As ComboBox
-    Friend WithEvents ComboBox4 As ComboBox
-    Friend WithEvents ComboBox3 As ComboBox
-    Friend WithEvents ComboBox2 As ComboBox
-    Friend WithEvents Panel2 As Panel
-    Friend WithEvents Button1 As Button
-    Friend WithEvents TextBox1 As TextBox
-    Friend WithEvents Button2 As Button
-    Friend WithEvents Panel3 As Panel
-    Friend WithEvents DataGridView1 As DataGridView
+    Friend WithEvents pnlFilters As Panel
+    Friend WithEvents btnLamMoi As Button
+    Friend WithEvents btnTimKiem As Button
+    Friend WithEvents txtTuKhoa As TextBox
+    Friend WithEvents cbbKyLuong As ComboBox
+    Friend WithEvents cbbTrangThai As ComboBox
+    Friend WithEvents cbbViTri As ComboBox
+    Friend WithEvents cbbThoiGian As ComboBox
+    Friend WithEvents dtTuNgay As DateTimePicker
+    Friend WithEvents dtDenNgay As DateTimePicker
+    Friend WithEvents cbbThoiGianNhanh As ComboBox
+    Friend WithEvents lblKyLuong As Label
+    Friend WithEvents lblTrangThai As Label
+    Friend WithEvents lblViTri As Label
+    Friend WithEvents lblTuKhoa As Label
+    Friend WithEvents lblThoiGian As Label
+    Friend WithEvents lblLocNhanh As Label
+    Friend WithEvents dgvBangLuong As DataGridView
+    Friend WithEvents cmsBaoCao As ContextMenuStrip
+    Friend WithEvents mnuBaoCaoLoc As ToolStripMenuItem
+    Friend WithEvents mnuBaoCaoChon As ToolStripMenuItem
+    Friend WithEvents mnuBaoCaoTongHop As ToolStripMenuItem
 End Class
+
+

@@ -18,13 +18,6 @@ Public Class frmHopDong
 
     Private Sub loadForm(sender As Object, e As EventArgs) Handles MyBase.Load
         HoTroPhongChu.ApDungPhongChu(Me)
-        Label6.Text = "Quản lý hợp đồng"
-        Text = "Hợp đồng"
-        btnThemHD.Text = "Thêm hợp đồng"
-        btnXuatHD.Text = "Xuất"
-        btnSuaHD.Text = "Sửa"
-        btnXoaHD.Text = "Xóa"
-        btnSuaHangLoat.Text = "Sửa hàng loạt"
 
         Dim bootstrap = DatabaseBootstrapService.EnsureReady()
         If Not bootstrap.IsSuccess Then

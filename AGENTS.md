@@ -1,9 +1,9 @@
 ﻿## Language
-- Always communicate with the user in Vietnamese.
+- Always communicate with users in Vietnamese.
 - When explaining code changes, write in Vietnamese.
-- Keep code identifiers (function/class/variable names) in English unless user asks otherwise.
-- Comments in code should be Vietnamese when adding new comments.
-- Commit messages and PR summaries should be Vietnamese.
+- Keep code identifiers (function/class/variable names) in Vietnamese, without accents.
+- Comments in code must be written in Vietnamese with accents when adding new comments.
+- Commit messages and pull request (PR) summaries must be written in Vietnamese.
 ## Quy ước dự án
 - Chỉ chỉnh sửa ở bên trong UIUX/
 - Chỉ tham chiếu tới các thư mục, file khác không trực tiếp thay đổi nội dung của chúng.

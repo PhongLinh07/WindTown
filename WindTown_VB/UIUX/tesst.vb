@@ -9,8 +9,7 @@
         TextBox.Location = New Point(50, 100)
         TextBox.Text = "Nhập gì đó vào đây"
         Me.Controls.Add(TextBox)
-
-
+        
         Lab.Text = TextBox.Text
     End Sub
 
