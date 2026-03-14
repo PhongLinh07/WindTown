@@ -7,7 +7,7 @@ Public Class Payroll
     Inherits BaseEntity
 
     Public Sub New()
-        code = ""
+        code = $"PAY{GenerateRandomNumbers.Generate}"
         note = ""
         status = 0
     End Sub

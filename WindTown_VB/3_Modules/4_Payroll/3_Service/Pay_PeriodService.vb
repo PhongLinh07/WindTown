@@ -1,8 +1,8 @@
 
+Imports Azure
+
 Public Class Pay_PeriodService
     Inherits BaseService(Of Pay_Period)
-
-    Private _repoPeriod As Pay_PeriodRepository = New Pay_PeriodRepository()
     Public Sub New()
 
         _repo = New Pay_PeriodRepository()
@@ -17,7 +17,6 @@ Public Class Pay_PeriodService
 
                     Dim stdHours = Std_Hours_Calculator(period.start_date, period.end_date)
                     Return ServiceResponse(Of Object).Success(stdHours)
-
 
                 Case Else
                     Return MyBase.Execute(intent, data)
@@ -64,6 +63,7 @@ Public Class Pay_PeriodService
         Return stdHours
 
     End Function
+
 
 
 

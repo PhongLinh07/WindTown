@@ -125,7 +125,7 @@ Public Class frmNhanSu
                 Function(g) Convert.ToInt32(g.Key),
                 Function(g) g.
                     OrderByDescending(Function(p) If(p.status = 1, 1, 0)).
-                    ThenByDescending(Function(p) If(p.start_date, DateTime.MinValue)).
+                    ThenByDescending(Function(p) p.start_date).
                     First())
 
         allNhanVienView = nhanVien.Select(
@@ -158,9 +158,9 @@ Public Class frmNhanSu
                     End If
 
                     Dim startDate As DateTime? = Nothing
-                    If pos IsNot Nothing AndAlso pos.start_date.HasValue Then
+                    If pos IsNot Nothing Then
                         startDate = pos.start_date
-                    ElseIf pos IsNot Nothing AndAlso pos.Contract IsNot Nothing AndAlso pos.Contract.start_date.HasValue Then
+                    ElseIf pos IsNot Nothing AndAlso pos.Contract IsNot Nothing Then
                         startDate = pos.Contract.start_date
                     End If
 

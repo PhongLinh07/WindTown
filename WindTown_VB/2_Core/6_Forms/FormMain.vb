@@ -207,7 +207,7 @@ Partial Public Class FormMain
     End Sub
 
     Private Sub menu_account_Click(sender As Object, e As EventArgs) Handles menu_account.Click
-        OpenMultTabMode(Of Pay_Period_List_UC)(tabControl_A)
+        OpenMultTabMode(Of Account_List_UC)(tabControl_A)
     End Sub
 
     Private Sub menu_holiday_Click(sender As Object, e As EventArgs) Handles menu_holiday.Click

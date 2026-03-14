@@ -33,7 +33,7 @@ Public Class NhanSuTransferService
                                   p.Contract.Employee IsNot Nothing AndAlso
                                   p.Contract.Employee.id = emp.id).
                 OrderByDescending(Function(p) If(p.status = 1, 1, 0)).
-                ThenByDescending(Function(p) If(p.start_date, DateTime.MinValue)).
+                ThenByDescending(Function(p) p.start_date).
                 FirstOrDefault()
 
             If activePosition Is Nothing Then

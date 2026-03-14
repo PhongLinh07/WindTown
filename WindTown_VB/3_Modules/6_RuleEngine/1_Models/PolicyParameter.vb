@@ -44,7 +44,7 @@ Public Class PolicyParameter
     New PolicyParameter With {.code = "MULT_ALLOW_POSITION", .name = "Hệ số PC chức vụ", .category = "ALLOWANCE", .note = "Hệ số phụ cấp chức vụ"},
     New PolicyParameter With {.code = "KPI", .name = "Điểm KPI", .category = "PERFORMANCE", .note = "Điểm hiệu suất (0-100)"}}
 
-
+    'hệ số, số giờ chuẩn, lương tb 1h chuẩn , số giờ thực tế,  lương thực nhận khấu trừ 
     ' 2. Hàm chuyển đổi nhanh sang Dictionary để dùng trong Code tính toán
     Public Shared Function GetAsDictionary() As Dictionary(Of String, PolicyParameter)
         Return PARAMETERs.ToDictionary(Function(v) v.code)
