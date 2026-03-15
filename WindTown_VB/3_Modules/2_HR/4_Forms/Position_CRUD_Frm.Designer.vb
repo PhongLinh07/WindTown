@@ -40,6 +40,9 @@ Partial Class Position_CRUD_Frm
         Me.ui_level = New System.Windows.Forms.ComboBox()
         Me.ui_contract = New System.Windows.Forms.ComboBox()
         Me.Label5 = New System.Windows.Forms.Label()
+        Me.ui_mult = New System.Windows.Forms.NumericUpDown()
+        Me.Label9 = New System.Windows.Forms.Label()
+        CType(Me.ui_mult, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'ui_code
@@ -89,7 +92,7 @@ Partial Class Position_CRUD_Frm
         Me.ui_note.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ui_note.Location = New System.Drawing.Point(413, 359)
         Me.ui_note.Name = "ui_note"
-        Me.ui_note.Size = New System.Drawing.Size(265, 108)
+        Me.ui_note.Size = New System.Drawing.Size(265, 198)
         Me.ui_note.TabIndex = 7
         Me.ui_note.Text = ""
         '
@@ -240,12 +243,36 @@ Partial Class Position_CRUD_Frm
         Me.Label5.TabIndex = 46
         Me.Label5.Text = "Hợp đồng:"
         '
+        'ui_mult
+        '
+        Me.ui_mult.DecimalPlaces = 2
+        Me.ui_mult.Font = New System.Drawing.Font("Arial Narrow", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ui_mult.Increment = New Decimal(New Integer() {1, 0, 0, 65536})
+        Me.ui_mult.Location = New System.Drawing.Point(60, 531)
+        Me.ui_mult.Name = "ui_mult"
+        Me.ui_mult.Size = New System.Drawing.Size(265, 26)
+        Me.ui_mult.TabIndex = 69
+        '
+        'Label9
+        '
+        Me.Label9.AutoSize = True
+        Me.Label9.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label9.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.Label9.Location = New System.Drawing.Point(57, 508)
+        Me.Label9.Margin = New System.Windows.Forms.Padding(0)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(59, 19)
+        Me.Label9.TabIndex = 68
+        Me.Label9.Text = "Hệ số:"
+        '
         'Position_CRUD_Frm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.ClientSize = New System.Drawing.Size(744, 552)
+        Me.ClientSize = New System.Drawing.Size(744, 623)
+        Me.Controls.Add(Me.ui_mult)
+        Me.Controls.Add(Me.Label9)
         Me.Controls.Add(Me.ui_contract)
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.ui_level)
@@ -286,6 +313,9 @@ Partial Class Position_CRUD_Frm
         Me.Controls.SetChildIndex(Me.ui_level, 0)
         Me.Controls.SetChildIndex(Me.Label5, 0)
         Me.Controls.SetChildIndex(Me.ui_contract, 0)
+        Me.Controls.SetChildIndex(Me.Label9, 0)
+        Me.Controls.SetChildIndex(Me.ui_mult, 0)
+        CType(Me.ui_mult, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -309,4 +339,6 @@ Partial Class Position_CRUD_Frm
     Friend WithEvents ui_level As ComboBox
     Friend WithEvents ui_contract As ComboBox
     Friend WithEvents Label5 As Label
+    Friend WithEvents ui_mult As NumericUpDown
+    Friend WithEvents Label9 As Label
 End Class

@@ -144,8 +144,8 @@ Public Class Attendance
         {1, "Đang hoạt động"}
     }
     Public Shared ReadOnly shift_Dic As New Dictionary(Of Integer, String) From {
-        {0, "Ngày"},
-        {1, "Đêm"}
+        {0, "Đêm"},
+        {1, "Ngày"}
     }
 
 #End Region

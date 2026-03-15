@@ -36,4 +36,4 @@ git merge origin/main
 work flow salary
 
 
-tạo kỳ lương -> tính tổng giờ công chuản của chu kỳ
+tạo kỳ lương -> tính tổng giờ công chuẩn của chu kỳ -> khởi tạo tất cả các bảng lương thuộc chu kỳ -> tổng hượp và tính toán lương

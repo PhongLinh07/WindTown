@@ -18,10 +18,7 @@ Public Class Position
     Public Property Contract As Contract = New Contract()
 
     <Write(False)> <Browsable(False)>
-    Public Property Job As Job = New Job()
-
-    <Write(False)> <Browsable(False)>
-    Public Property Level As Level = New Level()
+    Public Property Salary_Mult As Salary_Mult = New Salary_Mult()
 
 #End Region
 
@@ -33,18 +30,11 @@ Public Class Position
         End Get
     End Property
     <Browsable(False)>
-    Public ReadOnly Property job_id As Integer
+    Public ReadOnly Property salary_mult_id As Integer
         Get
-            Return Job?.id
+            Return Salary_Mult?.id
         End Get
     End Property
-    <Browsable(False)>
-    Public ReadOnly Property level_id As Integer
-        Get
-            Return Level?.id
-        End Get
-    End Property
-
 
     <Write(False)> <DisplayName("Mã chức vụ")> <Display(Order:=1)>
     Public Property code As String
@@ -120,14 +110,14 @@ Public Class Position
     Public ReadOnly Property job_UI As String
         Get
             ' Sử dụng String Interpolation giúp code sạch và dễ đọc hơn
-            Return If(Job IsNot Nothing, $"{Job.name} ({Job.code})", "---")
+            Return If(Salary_Mult IsNot Nothing, $"{Salary_Mult?.Job.name}", "---")
         End Get
     End Property
 
     <Write(False)> <DisplayName("Trình độ")> <Display(Order:=4)>
     Public ReadOnly Property level_UI As String
         Get
-            Return If(Level IsNot Nothing, $"{Level.name} ({Level.code})", "---")
+            Return If(Salary_Mult IsNot Nothing, $"{Salary_Mult?.level_UI})", "---")
         End Get
     End Property
 #End Region

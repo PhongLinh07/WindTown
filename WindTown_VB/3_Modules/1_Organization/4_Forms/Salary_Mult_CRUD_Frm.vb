@@ -4,7 +4,6 @@ Public Class Salary_Mult_CRUD_Frm
     Inherits BaseACRUDForm
     Protected _data As Salary_Mult
 
-
     Private _jobs As List(Of Job)
     Private _lvls As List(Of Level)
 
@@ -53,7 +52,7 @@ Public Class Salary_Mult_CRUD_Frm
             ui_level.SelectedIndex = -1
 
         Else
-            ui_level.SelectedValue = _data.level_UI
+            ui_level.Text = _data.level_UI
 
         End If
         ui_job.Text = _data.Job?.job_UI

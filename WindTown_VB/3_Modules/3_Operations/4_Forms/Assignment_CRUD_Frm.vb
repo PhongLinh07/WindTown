@@ -139,7 +139,7 @@ Public Class Assignment_CRUD_Frm
             _data.role = ui_role.SelectedValue
 
             _data.note = If(String.IsNullOrWhiteSpace(ui_note.Text.Trim()),
-            $"{_data.Project?.name} + {_data.Position?.Job?.name} + {_data.Position?.Level?.name}",
+            $"{_data.Project?.name} + {_data.job_UI} + {_data.level_UI}",
             ui_note.Text.Trim())
 
             _data.status = CInt(ui_status.SelectedValue)

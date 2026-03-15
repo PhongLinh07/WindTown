@@ -103,8 +103,7 @@ CREATE TABLE contract (
 CREATE TABLE position (
     id INT IDENTITY(1,1) PRIMARY KEY,
     contract_id INT,
-    job_id INT,
-    level_id INT,
+    salary_mult_id INT,
     datas NVARCHAR(max)
 );
 
@@ -202,8 +201,7 @@ ALTER TABLE salary_mult ADD CONSTRAINT FK_salary_mult_level FOREIGN KEY (level_i
 ALTER TABLE contract ADD CONSTRAINT FK_contract_employee FOREIGN KEY (employee_id) REFERENCES employee(id);
 
 ALTER TABLE position ADD CONSTRAINT FK_position_contract FOREIGN KEY (contract_id) REFERENCES contract(id);
-ALTER TABLE position ADD CONSTRAINT FK_position_job FOREIGN KEY (job_id) REFERENCES job(id);
-ALTER TABLE position ADD CONSTRAINT FK_position_level FOREIGN KEY (level_id) REFERENCES level(id);
+ALTER TABLE position ADD CONSTRAINT FK_position_salary_mult FOREIGN KEY (salary_mult_id) REFERENCES salary_mult(id);
 
 
 -- Module: Vận hành
@@ -302,6 +300,7 @@ INSERT INTO salary_mult (job_id, level_id, datas) VALUES
 (11, 2, N'{"mult": 1.5, "note": "Junior Finance", "status": 1}'),
 (11, 3, N'{"mult": 2.2, "note": "Middle Finance", "status": 1}');
 
+
 -- Chèn dữ liệu cho Employee
 INSERT INTO employee (datas) VALUES
 (N'{"code": "EMP001", "name": "Name of EMP001", "gender": 1, "cccd": "047636216680", "birth_date": "2002-03-02", "address": "Phú Thọ", "email": "emp001@windtown.com", "phone": "0211532090", "bank": "ACB_0211532090", "note": "", "status": 1}'),
@@ -387,48 +386,47 @@ INSERT INTO contract (employee_id, datas) VALUES
 (39, N'{"code": "CTR039", "start_date": "2025-07-19", "end_date": "2028-08-24", "base_salary": 10000000, "note": "Thiết kế game + Junior", "status": 1}'),
 (40, N'{"code": "CTR040", "start_date": "2025-07-10", "end_date": "2028-08-25", "base_salary": 11000000, "note": "Thiết kế game + Junior", "status": 1}');
 
-INSERT INTO position (contract_id, job_id, level_id, datas) VALUES 
-(1, 1, 5,  N'{"code": "POS001", "start_date": "2025-07-06", "end_date": "2028-06-26", "note": "Tổng Giám đốc + Founder/Core", "status": 1}'),
-(2, 2, 5,  N'{"code": "POS002", "start_date": "2025-07-16", "end_date": "2028-06-29", "note": "Giám đốc Kỹ thuật + Founder/Core", "status": 1}'),
-(3, 3, 5,  N'{"code": "POS003", "start_date": "2025-08-04", "end_date": "2028-07-02", "note": "Giám đốc sáng tạo + Founder/Core", "status": 1}'),
-(4, 7, 1,  N'{"code": "POS004", "start_date": "2025-07-25", "end_date": "2028-07-06", "note": "Trải nghiệm và kiểm tra + Intern", "status": 1}'),
-(5, 8, 3,  N'{"code": "POS005", "start_date": "2025-07-25", "end_date": "2028-07-10", "note": "Tiếp thị + Middle", "status": 1}'),
-(6, 4, 4,  N'{"code": "POS006", "start_date": "2025-08-04", "end_date": "2028-07-14", "note": "Thiết kế game + Senior/Lead", "status": 1}'),
-(7, 7, 1,  N'{"code": "POS007", "start_date": "2025-07-09", "end_date": "2028-07-17", "note": "Trải nghiệm và kiểm tra + Intern", "status": 1}'),
-(8, 4, 3,  N'{"code": "POS008", "start_date": "2025-08-11", "end_date": "2028-07-17", "note": "Thiết kế game + Middle", "status": 1}'),
-(9, 9, 2,  N'{"code": "POS009", "start_date": "2025-08-18", "end_date": "2028-07-17", "note": "Chăm sóc khách hàng + Junior", "status": 1}'),
-(10, 5, 4, N'{"code": "POS010", "start_date": "2025-07-23", "end_date": "2028-07-21", "note": "Đồ họa + Senior/Lead", "status": 1}'),
-(11, 7, 2, N'{"code": "POS011", "start_date": "2025-08-03", "end_date": "2028-07-21", "note": "Trải nghiệm và kiểm tra + Junior", "status": 1}'),
-(12, 6, 2, N'{"code": "POS012", "start_date": "2025-08-23", "end_date": "2028-07-24", "note": "Lập trình + Junior", "status": 1}'),
-(13, 4, 2, N'{"code": "POS013", "start_date": "2025-06-30", "end_date": "2028-07-25", "note": "Thiết kế game + Junior", "status": 1}'),
-(14, 5, 4, N'{"code": "POS014", "start_date": "2025-07-24", "end_date": "2028-07-25", "note": "Đồ họa + Senior/Lead", "status": 1}'),
-(15, 6, 2, N'{"code": "POS015", "start_date": "2025-07-17", "end_date": "2028-07-26", "note": "Lập trình + Junior", "status": 1}'),
-(16, 6, 3, N'{"code": "POS016", "start_date": "2025-07-01", "end_date": "2028-07-27", "note": "Lập trình + Middle", "status": 1}'),
-(17, 11, 3, N'{"code": "POS017", "start_date": "2025-08-14", "end_date": "2028-07-27", "note": "Tài chính & Kế toán + Middle", "status": 1}'),
-(18, 9, 3, N'{"code": "POS018", "start_date": "2025-08-09", "end_date": "2028-07-28", "note": "Chăm sóc khách hàng + Middle", "status": 1}'),
-(19, 7, 2, N'{"code": "POS019", "start_date": "2025-07-09", "end_date": "2028-07-30", "note": "Trải nghiệm và kiểm tra + Junior", "status": 1}'),
-(20, 5, 2, N'{"code": "POS020", "start_date": "2025-07-28", "end_date": "2028-07-30", "note": "Đồ họa + Junior", "status": 1}'),
-(21, 4, 3, N'{"code": "POS021", "start_date": "2025-07-13", "end_date": "2028-08-01", "note": "Thiết kế game + Middle", "status": 1}'),
-(22, 11, 2, N'{"code": "POS022", "start_date": "2025-07-24", "end_date": "2028-08-01", "note": "Tài chính & Kế toán + Junior", "status": 1}'),
-(23, 5, 4, N'{"code": "POS023", "start_date": "2025-07-31", "end_date": "2028-08-01", "note": "Đồ họa + Senior/Lead", "status": 1}'),
-(24, 7, 2, N'{"code": "POS024", "start_date": "2025-08-05", "end_date": "2028-08-01", "note": "Trải nghiệm và kiểm tra + Junior", "status": 1}'),
-(25, 7, 2, N'{"code": "POS025", "start_date": "2025-08-25", "end_date": "2028-08-01", "note": "Trải nghiệm và kiểm tra + Junior", "status": 1}'),
-(26, 6, 3, N'{"code": "POS026", "start_date": "2025-06-28", "end_date": "2028-08-02", "note": "Lập trình + Middle", "status": 1}'),
-(27, 8, 3, N'{"code": "POS027", "start_date": "2025-08-01", "end_date": "2028-08-02", "note": "Tiếp thị + Middle", "status": 1}'),
-(28, 6, 3, N'{"code": "POS028", "start_date": "2025-07-06", "end_date": "2028-08-07", "note": "Lập trình + Middle", "status": 1}'),
-(29, 6, 4, N'{"code": "POS029", "start_date": "2025-07-19", "end_date": "2028-08-07", "note": "Lập trình + Senior/Lead", "status": 1}'),
-(30, 4, 2, N'{"code": "POS030", "start_date": "2025-06-28", "end_date": "2028-08-11", "note": "Thiết kế game + Junior", "status": 1}'),
-(31, 10, 2, N'{"code": "POS031", "start_date": "2025-07-16", "end_date": "2028-08-12", "note": "Nhân sự + Junior", "status": 1}'),
-(32, 5, 3, N'{"code": "POS032", "start_date": "2025-08-01", "end_date": "2028-08-15", "note": "Đồ họa + Middle", "status": 1}'),
-(33, 5, 3, N'{"code": "POS033", "start_date": "2025-07-13", "end_date": "2028-08-17", "note": "Đồ họa + Middle", "status": 1}'),
-(34, 5, 3, N'{"code": "POS034", "start_date": "2025-08-07", "end_date": "2028-08-18", "note": "Đồ họa + Middle", "status": 1}'),
-(35, 6, 4, N'{"code": "POS035", "start_date": "2025-07-16", "end_date": "2028-08-19", "note": "Lập trình + Senior/Lead", "status": 1}'),
-(36, 7, 2, N'{"code": "POS036", "start_date": "2025-07-22", "end_date": "2028-08-19", "note": "Trải nghiệm và kiểm tra + Junior", "status": 1}'),
-(37, 8, 3, N'{"code": "POS037", "start_date": "2025-08-07", "end_date": "2028-08-23", "note": "Tiếp thị + Middle", "status": 1}'),
-(38, 10, 3, N'{"code": "POS038", "start_date": "2025-08-25", "end_date": "2028-08-23", "note": "Nhân sự + Middle", "status": 1}'),
-(39, 4, 2, N'{"code": "POS039", "start_date": "2025-07-19", "end_date": "2028-08-24", "note": "Thiết kế game + Junior", "status": 1}'),
-(40, 4, 2, N'{"code": "POS040", "start_date": "2025-07-10", "end_date": "2028-08-25", "note": "Thiết kế game + Junior", "status": 1}');
-GO
+INSERT INTO position (contract_id, salary_mult_id, datas) VALUES  
+(1, 1,  N'{"code": "POS001", "start_date": "2025-07-06", "end_date": "2028-06-26", "note": "Tổng Giám đốc + Founder/Core", "status": 1}'),
+(2, 2,  N'{"code": "POS002", "start_date": "2025-07-16", "end_date": "2028-06-29", "note": "Giám đốc Kỹ thuật + Founder/Core", "status": 1}'),
+(3, 3,  N'{"code": "POS003", "start_date": "2025-08-04", "end_date": "2028-07-02", "note": "Giám đốc sáng tạo + Founder/Core", "status": 1}'),
+(4, 13, N'{"code": "POS004", "start_date": "2025-07-25", "end_date": "2028-07-06", "note": "Trải nghiệm và kiểm tra + Intern", "status": 1}'),
+(5, 16, N'{"code": "POS005", "start_date": "2025-07-25", "end_date": "2028-07-10", "note": "Tiếp thị + Middle", "status": 1}'),
+(6, 6,  N'{"code": "POS006", "start_date": "2025-08-04", "end_date": "2028-07-14", "note": "Thiết kế game + Senior/Lead", "status": 1}'),
+(7, 13, N'{"code": "POS007", "start_date": "2025-07-09", "end_date": "2028-07-17", "note": "Trải nghiệm và kiểm tra + Intern", "status": 1}'),
+(8, 5,  N'{"code": "POS008", "start_date": "2025-08-11", "end_date": "2028-07-17", "note": "Thiết kế game + Middle", "status": 1}'),
+(9, 17, N'{"code": "POS009", "start_date": "2025-08-18", "end_date": "2028-07-17", "note": "Chăm sóc khách hàng + Junior", "status": 1}'),
+(10, 9, N'{"code": "POS010", "start_date": "2025-07-23", "end_date": "2028-07-21", "note": "Đồ họa + Senior/Lead", "status": 1}'),
+(11, 14, N'{"code": "POS011", "start_date": "2025-08-03", "end_date": "2028-07-21", "note": "Trải nghiệm và kiểm tra + Junior", "status": 1}'),
+(12, 10, N'{"code": "POS012", "start_date": "2025-08-23", "end_date": "2028-07-24", "note": "Lập trình + Junior", "status": 1}'),
+(13, 4, N'{"code": "POS013", "start_date": "2025-06-30", "end_date": "2028-07-25", "note": "Thiết kế game + Junior", "status": 1}'),
+(14, 9, N'{"code": "POS014", "start_date": "2025-07-24", "end_date": "2028-07-25", "note": "Đồ họa + Senior/Lead", "status": 1}'),
+(15, 10, N'{"code": "POS015", "start_date": "2025-07-17", "end_date": "2028-07-26", "note": "Lập trình + Junior", "status": 1}'),
+(16, 11, N'{"code": "POS016", "start_date": "2025-07-01", "end_date": "2028-07-27", "note": "Lập trình + Middle", "status": 1}'),
+(17, 22, N'{"code": "POS017", "start_date": "2025-08-14", "end_date": "2028-07-27", "note": "Tài chính & Kế toán + Middle", "status": 1}'),
+(18, 18, N'{"code": "POS018", "start_date": "2025-08-09", "end_date": "2028-07-28", "note": "Chăm sóc khách hàng + Middle", "status": 1}'),
+(19, 14, N'{"code": "POS019", "start_date": "2025-07-09", "end_date": "2028-07-30", "note": "Trải nghiệm và kiểm tra + Junior", "status": 1}'),
+(20, 7,  N'{"code": "POS020", "start_date": "2025-07-28", "end_date": "2028-07-30", "note": "Đồ họa + Junior", "status": 1}'),
+(21, 5,  N'{"code": "POS021", "start_date": "2025-07-13", "end_date": "2028-08-01", "note": "Thiết kế game + Middle", "status": 1}'),
+(22, 21, N'{"code": "POS022", "start_date": "2025-07-24", "end_date": "2028-08-01", "note": "Tài chính & Kế toán + Junior", "status": 1}'),
+(23, 9,  N'{"code": "POS023", "start_date": "2025-07-31", "end_date": "2028-08-01", "note": "Đồ họa + Senior/Lead", "status": 1}'),
+(24, 14, N'{"code": "POS024", "start_date": "2025-08-05", "end_date": "2028-08-01", "note": "Trải nghiệm và kiểm tra + Junior", "status": 1}'),
+(25, 14, N'{"code": "POS025", "start_date": "2025-08-25", "end_date": "2028-08-01", "note": "Trải nghiệm và kiểm tra + Junior", "status": 1}'),
+(26, 11, N'{"code": "POS026", "start_date": "2025-06-28", "end_date": "2028-08-02", "note": "Lập trình + Middle", "status": 1}'),
+(27, 16, N'{"code": "POS027", "start_date": "2025-08-01", "end_date": "2028-08-02", "note": "Tiếp thị + Middle", "status": 1}'),
+(28, 11, N'{"code": "POS028", "start_date": "2025-07-06", "end_date": "2028-08-07", "note": "Lập trình + Middle", "status": 1}'),
+(29, 12, N'{"code": "POS029", "start_date": "2025-07-19", "end_date": "2028-08-07", "note": "Lập trình + Senior/Lead", "status": 1}'),
+(30, 4,  N'{"code": "POS030", "start_date": "2025-06-28", "end_date": "2028-08-11", "note": "Thiết kế game + Junior", "status": 1}'),
+(31, 19, N'{"code": "POS031", "start_date": "2025-07-16", "end_date": "2028-08-12", "note": "Nhân sự + Junior", "status": 1}'),
+(32, 8,  N'{"code": "POS032", "start_date": "2025-08-01", "end_date": "2028-08-15", "note": "Đồ họa + Middle", "status": 1}'),
+(33, 8,  N'{"code": "POS033", "start_date": "2025-07-13", "end_date": "2028-08-17", "note": "Đồ họa + Middle", "status": 1}'),
+(34, 8,  N'{"code": "POS034", "start_date": "2025-08-07", "end_date": "2028-08-18", "note": "Đồ họa + Middle", "status": 1}'),
+(35, 12, N'{"code": "POS035", "start_date": "2025-07-16", "end_date": "2028-08-19", "note": "Lập trình + Senior/Lead", "status": 1}'),
+(36, 14, N'{"code": "POS036", "start_date": "2025-07-22", "end_date": "2028-08-19", "note": "Trải nghiệm và kiểm tra + Junior", "status": 1}'),
+(37, 16, N'{"code": "POS037", "start_date": "2025-08-07", "end_date": "2028-08-23", "note": "Tiếp thị + Middle", "status": 1}'),
+(38, 20, N'{"code": "POS038", "start_date": "2025-08-25", "end_date": "2028-08-23", "note": "Nhân sự + Middle", "status": 1}'),
+(39, 4,  N'{"code": "POS039", "start_date": "2025-07-19", "end_date": "2028-08-24", "note": "Thiết kế game + Junior", "status": 1}'),
+(40, 4,  N'{"code": "POS040", "start_date": "2025-07-10", "end_date": "2028-08-25", "note": "Thiết kế game + Junior", "status": 1}');
 
 INSERT INTO project (datas) VALUES 
 (N'{"code": "PROJ001", "name": "Phàm nhân tu tiên 3D", "start_date": "2026-01-17", "end_date": "2027-01-17", "note": "2 Thiết kế game + 2 Đồ họa + 2 Lập trình + 3 Trải nghiệm và kiểm tra", "status": 1}'),

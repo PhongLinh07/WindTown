@@ -138,21 +138,21 @@ Public Class frmNhanSu
                 Dim ngayBatDau As String = String.Empty
 
                 If positionByEmployeeId.TryGetValue(emp.id, pos) Then
-                    If pos IsNot Nothing AndAlso pos.Job IsNot Nothing Then
-                        jobId = pos.Job.id
+                    If pos IsNot Nothing AndAlso pos.Salary_Mult.Job IsNot Nothing Then
+                        jobId = pos.Salary_Mult.Job.id
 
                         Dim resolvedJob As Job = Nothing
-                        If jobById.TryGetValue(pos.Job.id, resolvedJob) Then
+                        If jobById.TryGetValue(pos.Salary_Mult.Job.id, resolvedJob) Then
                             jobName = If(resolvedJob.name, "---")
                             If resolvedJob.Department IsNot Nothing Then
                                 deptId = resolvedJob.Department.id
                                 deptName = If(resolvedJob.Department.name, "---")
                             End If
                         Else
-                            jobName = If(pos.Job.name, "---")
-                            If pos.Job.Department IsNot Nothing Then
-                                deptId = pos.Job.Department.id
-                                deptName = If(pos.Job.Department.name, "---")
+                            jobName = If(pos.Salary_Mult.Job.name, "---")
+                            If pos.Salary_Mult.Job.Department IsNot Nothing Then
+                                deptId = pos.Salary_Mult.Job.Department.id
+                                deptName = If(pos.Salary_Mult.Job.Department.name, "---")
                             End If
                         End If
                     End If
@@ -231,10 +231,10 @@ Public Class frmNhanSu
         For Each nv In allNhanVienView
             Dim pos As Position = Nothing
             If Not positionMap.TryGetValue(nv.Id, pos) Then Continue For
-            If pos Is Nothing OrElse pos.Job Is Nothing Then Continue For
+            If pos Is Nothing OrElse pos.Salary_Mult.Job Is Nothing Then Continue For
 
             Dim targetJob As CongViec = Nothing
-            If jobUiMap.TryGetValue(pos.Job.id, targetJob) Then
+            If jobUiMap.TryGetValue(pos.Salary_Mult.Job.id, targetJob) Then
                 targetJob.NhanVien.Add(nv)
             End If
         Next
@@ -990,7 +990,7 @@ Public Class frmNhanSu
             Return
         End If
 
-        Dim hasPosition = positions.Any(Function(p) p IsNot Nothing AndAlso p.Job IsNot Nothing AndAlso p.Job.id = selectedJob.id AndAlso p.status <> -1)
+        Dim hasPosition = positions.Any(Function(p) p IsNot Nothing AndAlso p.Salary_Mult.Job IsNot Nothing AndAlso p.Salary_Mult.Job.id = selectedJob.id AndAlso p.status <> -1)
         If hasPosition Then
             MessageBox.Show("Không thể xóa công việc vì đang có vị trí sử dụng job này.")
             Return

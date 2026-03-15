@@ -29,12 +29,17 @@ Public Enum DataIntent
 #Region "'Pay_Period Custom Intent"
     StandardHoursCalculator 'Tính số giờ hành chính của chu kỳ
 #End Region
-#Region "'Pay_Period Custom Intent"
-    Init_Payrolls 'Khởi tạo các bảng lương theo hợp đòng đang hạot động
+#Region "'Payroll Custom Intent"
+    Init_Payrolls 'Khởi tạo các bảng lương theo hợp đòng đang hoạt động
+    GetPayrollByPeriod ' Lấy bảng lưuong theo chu kỳ
 #End Region
 
 #Region "'Salary_Mult Custom Intent"
     GetSalaryMultItemByJob 'lấy dải hệ số theo công việc
+#End Region
+
+#Region "'Attendance Custom Intent"
+    GetAttendanceByPeriod 'lấy chấm công theo chu kỳ
 #End Region
 
 

@@ -1,26 +1,42 @@
 Public Class AttendanceService
     Inherits BaseService(Of Attendance)
 
-    ' Constructor: Ép Service sử dụng AttendanceRepository chuyên biệt thay vì GenericRepository
+    Private _repoAtt As AttendanceRepository = New AttendanceRepository
     Public Sub New()
-        ' Vì AttendanceRepository kế thừa từ GenericRepository(Of Attendance), 
-        ' nên việc gán này là hoàn toàn hợp lệ (Tính đa hình).
         _repo = New AttendanceRepository()
     End Sub
 
-    ''' <summary>
-    ''' Ghi đè (Override) lại hàm Execute nếu bạn muốn thêm logic kiểm tra (Validation)
-    ''' trước khi gọi các lệnh gốc ở BaseService.
-    ''' </summary>
+
     Public Overrides Function Execute(intent As DataIntent, Optional data As Object = Nothing) As ServiceResponse(Of Object)
+        Try
+            Select Case intent
+                Case DataIntent.GetAttendanceByPeriod
+                    Dim period = TryCast(data, Pay_Period)
 
-        ' 1. Bổ sung logic Kiểm tra (Validation) riêng cho Attendance
+                    ' 1. Kiểm tra đối tượng có tồn tại không
+                    If period Is Nothing Then
+                        Return ServiceResponse(Of Object).Fail("Lỗi lấy chấm công: Dữ liệu kỳ lương không hợp lệ.")
+                    End If
 
+                    ' 2. Kiểm tra ngày tháng (Sửa lỗi Is Nothing cho kiểu Date)
+                    ' Nếu start_date là DateTime?, dùng IsNothing. Nếu là DateTime, so sánh với DateTime.MinValue
+                    If period.start_date = DateTime.MinValue OrElse period.end_date = DateTime.MinValue Then
+                        Return ServiceResponse(Of Object).Fail("Lỗi lấy chấm công:: Vui lòng nhập đầy đủ ngày bắt đầu và kết thúc.")
+                    End If
 
-        ' 2. Sau khi kiểm tra xong, gọi MyBase.Execute để thực hiện các lệnh gốc.
-        ' LƯU Ý: Tại đây, khi MyBase gọi _repo.GetAll(), 
-        ' nó sẽ TỰ ĐỘNG gọi hàm GetAll() có JOIN (Snap) mà bạn đã viết ở JobRepository.
-        Return MyBase.Execute(intent, data)
+                    ' 3. Kiểm tra logic ngày (Ngày bắt đầu phải trước ngày kết thúc)
+                    If period.start_date > period.end_date Then
+                        Return ServiceResponse(Of Object).Fail("Lỗi lấy chấm công:: Ngày bắt đầu không được lớn hơn ngày kết thúc.")
+                    End If
 
+                    ' 4. Gọi hàm thực thi logic
+                    Return _repoAtt.GetAttendanceByPeriod(period)
+                Case Else
+                    Return MyBase.Execute(intent, data)
+            End Select
+        Catch ex As Exception
+            ' Bạn có thể ghi log lỗi vào file ở đây
+            Return ServiceResponse(Of Object).Fail("Lỗi hệ thống: " & ex.Message, ex)
+        End Try
     End Function
 End Class

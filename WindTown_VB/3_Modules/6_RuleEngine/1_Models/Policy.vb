@@ -34,6 +34,15 @@ Public Class Policy
             SetV("name", value)
         End Set
     End Property
+    <Write(False)> <DisplayName("Tần Xuất áp dụng")> <Display(Order:=3)>
+    Public Property frequency As Integer
+        Get
+            Return GetV(Of Integer)("frequency")
+        End Get
+        Set(value As Integer)
+            SetV("frequency", value)
+        End Set
+    End Property
     <Write(False)> <DisplayName("Danh mục")> <Display(Order:=3)>
     Public Property category As Integer
         Get
@@ -109,6 +118,10 @@ Public Class Policy
         {3, "Khấu trừ"},
         {4, "Thuế"},
         {5, "Thưởng"}
+    }
+    Public Shared ReadOnly frequency_Dict As New Dictionary(Of Integer, String) From {
+        {1, "Theo ngày"},
+        {2, "Theo chuy kỳ"}
     }
 
     Public Shared ReadOnly status_Dict As New Dictionary(Of Integer, String) From {
