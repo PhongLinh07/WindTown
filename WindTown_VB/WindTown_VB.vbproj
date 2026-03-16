@@ -12,6 +12,7 @@
     <FileAlignment>512</FileAlignment>
     <MyType>WindowsForms</MyType>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <GenerateResourceUsePreserializedResources>true</GenerateResourceUsePreserializedResources>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
     <NuGetPackageImportStamp>
@@ -135,6 +136,7 @@
     <Reference Include="System">
       <HintPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.8\System.dll</HintPath>
     </Reference>
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Buffers, Version=4.0.5.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Buffers.4.6.1\lib\net462\System.Buffers.dll</HintPath>
     </Reference>
@@ -178,6 +180,10 @@
     <Reference Include="System.Numerics" />
     <Reference Include="System.Numerics.Vectors, Version=4.1.6.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Numerics.Vectors.4.6.1\lib\net462\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Resources.Extensions, Version=4.0.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>$(MSBuildProjectDirectory)\..\packages\System.Resources.Extensions.4.7.1\lib\net461\System.Resources.Extensions.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.6.1.2\lib\net462\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
@@ -538,17 +544,38 @@
     <Compile Include="UIUX\frmChamCong.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="UIUX\frmChucVu.Designer.vb">
+      <DependentUpon>frmChucVu.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UIUX\frmChucVu.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UIUX\frmChinhSach.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="UIUX\frmDashboard.Designer.vb">
       <DependentUpon>frmDashboard.vb</DependentUpon>
     </Compile>
     <Compile Include="UIUX\frmDashboard.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="UIUX\frmDuAn.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UIUX\frmDuAn.Designer.vb">
+      <DependentUpon>frmDuAn.vb</DependentUpon>
+    </Compile>
     <Compile Include="UIUX\frmHopDong.Designer.vb">
       <DependentUpon>frmHopDong.vb</DependentUpon>
     </Compile>
     <Compile Include="UIUX\frmHopDong.vb">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UIUX\frmNgayLe.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UIUX\frmNgayLe.Designer.vb">
+      <DependentUpon>frmNgayLe.vb</DependentUpon>
     </Compile>
     <Compile Include="UIUX\frmKyLuong.Designer.vb">
       <DependentUpon>frmKyLuong.vb</DependentUpon>
@@ -579,6 +606,18 @@
     </Compile>
     <Compile Include="UIUX\frmNhanSu.vb">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UIUX\frmNghiPhep.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UIUX\frmNghiPhep.Designer.vb">
+      <DependentUpon>frmNghiPhep.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UIUX\frmPhanCong.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UIUX\frmPhanCong.Designer.vb">
+      <DependentUpon>frmPhanCong.vb</DependentUpon>
     </Compile>
     <Compile Include="UIUX\frmPhongBan.Designer.vb">
       <DependentUpon>frmPhongBan.vb</DependentUpon>
@@ -611,19 +650,27 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UIUX\Helpers\ImageExtensions.vb" />
-    <Compile Include="UIUX\Modules\HopDong.vb" />
-    <Compile Include="UIUX\Modules\HopDongDataModel.vb" />
-    <Compile Include="UIUX\Modules\KyLuongDataModel.vb" />
-    <Compile Include="UIUX\Modules\TinhLuongDataModel.vb" />
-    <Compile Include="UIUX\Modules\MenuItemModel.vb" />
-    <Compile Include="UIUX\Modules\NavigationService.vb" />
-    <Compile Include="UIUX\Modules\DashboardService.vb" />
-    <Compile Include="UIUX\Modules\DashboardSummaryDto.vb" />
     <Compile Include="UIUX\Modules\BoPhan.vb" />
     <Compile Include="UIUX\Modules\CongViec.vb" />
-    <Compile Include="UIUX\Modules\NhanSuTransferService.vb" />
+    <Compile Include="UIUX\Modules\DashboardService.vb" />
+    <Compile Include="UIUX\Modules\DashboardSummaryDto.vb" />
     <Compile Include="UIUX\Modules\DatabaseBootstrapService.vb" />
+    <Compile Include="UIUX\Modules\DuAnRepository.vb" />
+    <Compile Include="UIUX\Modules\HeThongCauHinhService.vb" />
+    <Compile Include="UIUX\Modules\HopDong.vb" />
+    <Compile Include="UIUX\Modules\HopDongDataModel.vb" />
+    <Compile Include="UIUX\Modules\JsonDuLieuHelper.vb" />
+    <Compile Include="UIUX\Modules\KyLuongDataModel.vb" />
+    <Compile Include="UIUX\Modules\MenuItemModel.vb" />
+    <Compile Include="UIUX\Modules\NgayLeRepository.vb" />
+    <Compile Include="UIUX\Modules\NghiPhepRepository.vb" />
+    <Compile Include="UIUX\Modules\NavigationService.vb" />
+    <Compile Include="UIUX\Modules\NguoiDungHienTaiService.vb" />
+    <Compile Include="UIUX\Modules\NhanSuTransferService.vb" />
     <Compile Include="UIUX\Modules\NhanVien.vb" />
+    <Compile Include="UIUX\Modules\PhanCongRepository.vb" />
+    <Compile Include="UIUX\Modules\ThongTinHeThongService.vb" />
+    <Compile Include="UIUX\Modules\TinhLuongDataModel.vb" />
     <Compile Include="UIUX\tesst.Designer.vb">
       <DependentUpon>tesst.vb</DependentUpon>
     </Compile>
@@ -722,11 +769,26 @@
     <EmbeddedResource Include="UIUX\frmChamCong.resx">
       <DependentUpon>frmChamCong.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UIUX\frmChucVu.resx">
+      <DependentUpon>frmChucVu.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UIUX\frmDashboard.resx">
       <DependentUpon>frmDashboard.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UIUX\frmHopDong.resx">
       <DependentUpon>frmHopDong.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UIUX\frmDuAn.resx">
+      <DependentUpon>frmDuAn.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UIUX\frmPhanCong.resx">
+      <DependentUpon>frmPhanCong.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UIUX\frmNghiPhep.resx">
+      <DependentUpon>frmNghiPhep.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UIUX\frmNgayLe.resx">
+      <DependentUpon>frmNgayLe.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UIUX\frmKyLuong.resx">
       <DependentUpon>frmKyLuong.vb</DependentUpon>

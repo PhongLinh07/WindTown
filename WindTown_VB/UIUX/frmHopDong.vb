@@ -44,11 +44,8 @@ Public Class frmHopDong
         tbxSearch.Enabled = False
         dtgvDSHopDong.Enabled = False
         cbbxBoPhan.Enabled = False
-        cbbxLoaiHopDong.Enabled = False
         cbbxTrangThai.Enabled = False
-        cbbxHopDong.Enabled = False
         cbbxThoiGianHD.Enabled = False
-        cbbxCongTy.Enabled = False
         dtpkTuNgay.Enabled = False
         dtpkDenNgay.Enabled = False
     End Sub
@@ -76,9 +73,6 @@ Public Class frmHopDong
         UiDinhDang.ApDungDinhDangNgayPicker(dtpkDenNgay)
 
         cbbxBoPhan.Enabled = True
-        cbbxLoaiHopDong.Enabled = False
-        cbbxHopDong.Enabled = False
-        cbbxCongTy.Enabled = False
     End Sub
 
     Private Function ResizeImage(img As Image, newWidth As Integer, newHeight As Integer) As Image
@@ -568,5 +562,8 @@ Public Class frmHopDong
         Return bang
     End Function
 
+    Private Sub Label2_Click(sender As Object, e As EventArgs) Handles Label2.Click
+
+    End Sub
 End Class
 

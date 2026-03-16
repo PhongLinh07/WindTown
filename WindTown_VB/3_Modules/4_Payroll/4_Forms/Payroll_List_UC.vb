@@ -1,6 +1,9 @@
 Public Class Payroll_List_UC
     Inherits BaseList_UC
 
+    Public Delegate Sub PayrollDaChonHandler(sender As Object, payroll As Payroll)
+    Public Event PayrollDaChon As PayrollDaChonHandler
+
     Public Sub New()
         MyBase.New(New PayrollService(), "Payroll_List_UC", "Bảng lương")
         InitializeComponent()
@@ -77,5 +80,20 @@ Public Class Payroll_List_UC
         End If
         LoadData()
 
+    End Sub
+
+    Protected Overrides Sub Dgv_SelectionChanged(sender As Object, e As EventArgs)
+        MyBase.Dgv_SelectionChanged(sender, e)
+
+        Dim payroll As Payroll = Nothing
+        If _dgv IsNot Nothing AndAlso _dgv.SelectedRows.Count > 0 Then
+            payroll = TryCast(_dgv.SelectedRows(0).DataBoundItem, Payroll)
+        ElseIf _dgv IsNot Nothing AndAlso _dgv.CurrentRow IsNot Nothing Then
+            payroll = TryCast(_dgv.CurrentRow.DataBoundItem, Payroll)
+        End If
+
+        If payroll IsNot Nothing Then
+            RaiseEvent PayrollDaChon(Me, payroll)
+        End If
     End Sub
 End Class
