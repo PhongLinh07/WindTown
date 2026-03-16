@@ -18,6 +18,9 @@ Public Class Payroll
 
     <Write(False)> <Browsable(False)>
     Public Property Pay_Period As Pay_Period = New Pay_Period()
+
+    <Write(False)> <Browsable(False)>
+    Public Property Pay_Item_List As List(Of Pay_Item) = New List(Of Pay_Item)
 #End Region
 
 #Region "Field Json"

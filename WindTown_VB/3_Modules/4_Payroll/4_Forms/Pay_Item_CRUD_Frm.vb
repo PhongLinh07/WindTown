@@ -1,3 +1,6 @@
+
+Imports WindTown_VB.PolicyParameter
+
 Public Class Pay_Item_CRUD_Frm
     Inherits BaseACRUDForm
 
@@ -24,10 +27,9 @@ Public Class Pay_Item_CRUD_Frm
         ui_status.DisplayMember = "Value"
         ui_status.ValueMember = "Key"
 
-        If isCreate = False Then
-            Return
-        End If
-
+        ui_category.DataSource = Category_Amount.ToList()
+        ui_category.DisplayMember = "name"
+        ui_category.ValueMember = "id"
 
     End Sub
 
@@ -39,7 +41,9 @@ Public Class Pay_Item_CRUD_Frm
         ui_code.Text = _data.code
         ui_name.Text = _data.name
         ui_payroll.Text = _data.Payroll?.code
-        ui_value.Value = _data.value
+        ui_value.Text = _data.value
+        ui_priority.Value = _data.priority
+        ui_category.SelectedValue = _data.category
         ui_note.Text = _data.note
         ui_status.SelectedValue = _data.status
 
@@ -69,7 +73,10 @@ Public Class Pay_Item_CRUD_Frm
             ' 2. Gán dữ liệu từ UI vào Model (_data)
             _data.code = ui_code.Text.Trim()
             _data.name = ui_name.Text.Trim()
-            If Not Decimal.TryParse(ui_value.Value, _data.value) Then
+            _data.priority = ui_priority.Value
+            _data.category = ui_category.SelectedValue
+
+            If Not Decimal.TryParse(ui_value.Text, _data.value) Then
                 MessageBox.Show("Overtime Hours must be a valid number")
                 ui_value.Focus()
                 Return False
@@ -91,11 +98,32 @@ Public Class Pay_Item_CRUD_Frm
     ' =============================
     Protected Overrides Sub DataChanged() _
         Handles ui_code.TextChanged,
-                ui_value.ValueChanged,
+                ui_value.TextChanged,
+                ui_priority.ValueChanged,
+                ui_category.SelectedValueChanged,
                 ui_note.TextChanged,
                 ui_status.SelectedIndexChanged
 
         tool_save.Enabled = True
     End Sub
+
+
+    Private Sub SnapValue(sender As Object, e As EventArgs) Handles ui_value.TextChanged
+        ' Bỏ qua nếu chưa chọn category
+        If ui_category.SelectedValue Is Nothing Then Return
+
+
+
+        ' Bỏ qua nếu value không phải số hợp lệ
+        If Not String.IsNullOrWhiteSpace(ui_value.Text) Then Return
+
+        If Not Decimal.TryParse(ui_value.Text, _data.value) Then Return
+
+        ' Format theo category
+        ui_value.Text = Category_Amount.FomatByCat(
+        _data.value,
+        CInt(ui_category.SelectedValue))
+    End Sub
+
 
 End Class

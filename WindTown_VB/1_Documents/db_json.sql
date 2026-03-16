@@ -2270,12 +2270,12 @@ INSERT INTO attendance (employee_id, datas) VALUES
 
 
 INSERT INTO holiday (datas) VALUES 
-(N'{"code": "NEW_YEAR_2026", "of_date": "2026-01-01", "name": "Tết Dương lịch", "day_mult": 3.0, "night_mult": 3.0, "ot_mult": 3.0, "note": "Nghỉ lễ theo luật", "status": 1}'),
-(N'{"code": "LUNAR_NEW_YEAR_2026_D1", "of_date": "2026-02-16", "name": "Tết Nguyên Đán - 30 Tết", "day_mult": 3.0, "night_mult": 3.0, "ot_mult": 3.0, "note": "Nghỉ Tết Âm lịch", "status": 1}'),
-(N'{"code": "LUNAR_NEW_YEAR_2026_D2", "of_date": "2026-02-17", "name": "Tết Nguyên Đán - Mùng 1", "day_mult": 3.0, "night_mult": 3.0, "ot_mult": 3.0, "note": "Nghỉ Tết Âm lịch", "status": 1}'),
-(N'{"code": "LUNAR_NEW_YEAR_2026_D3", "of_date": "2026-02-18", "name": "Tết Nguyên Đán - Mùng 2", "day_mult": 3.0, "night_mult": 3.0, "ot_mult": 3.0, "note": "Nghỉ Tết Âm lịch", "status": 1}'),
-(N'{"code": "LUNAR_NEW_YEAR_2026_D4", "of_date": "2026-02-19", "name": "Tết Nguyên Đán - Mùng 3", "day_mult": 3.0, "night_mult": 3.0, "ot_mult": 3.0, "note": "Nghỉ Tết Âm lịch", "status": 1}'),
-(N'{"code": "LUNAR_NEW_YEAR_2026_D5", "of_date": "2026-02-20", "name": "Tết Nguyên Đán - Mùng 4", "day_mult": 3.0, "night_mult": 3.0, "ot_mult": 3.0, "note": "Nghỉ Tết Âm lịch", "status": 1}');
+(N'{"code": "NEW_YEAR_2026",          "of_date": "2026-01-01", "name": "Tết Dương lịch",          "mult": 3.0, "note": "Nghỉ lễ theo luật", "status": 1}'),
+(N'{"code": "LUNAR_NEW_YEAR_2026_D1", "of_date": "2026-02-16", "name": "Tết Nguyên Đán - 30 Tết", "mult": 3.0, "note": "Nghỉ Tết Âm lịch", "status": 1}'),
+(N'{"code": "LUNAR_NEW_YEAR_2026_D2", "of_date": "2026-02-17", "name": "Tết Nguyên Đán - Mùng 1", "mult": 3.0, "note": "Nghỉ Tết Âm lịch", "status": 1}'),
+(N'{"code": "LUNAR_NEW_YEAR_2026_D3", "of_date": "2026-02-18", "name": "Tết Nguyên Đán - Mùng 2", "mult": 3.0, "note": "Nghỉ Tết Âm lịch", "status": 1}'),
+(N'{"code": "LUNAR_NEW_YEAR_2026_D4", "of_date": "2026-02-19", "name": "Tết Nguyên Đán - Mùng 3", "mult": 3.0, "note": "Nghỉ Tết Âm lịch", "status": 1}'),
+(N'{"code": "LUNAR_NEW_YEAR_2026_D5", "of_date": "2026-02-20", "name": "Tết Nguyên Đán - Mùng 4", "mult": 3.0, "note": "Nghỉ Tết Âm lịch", "status": 1}');
 GO
 
 INSERT INTO leave_cat (datas)
@@ -2365,3 +2365,280 @@ INSERT INTO account (employee_id, datas) VALUES
 (39, N'{"user": "EMP039", "password": "PW_EMP039", "role": 2, "status": 0}'),
 (40, N'{"user": "EMP040", "password": "PW_EMP040", "role": 2, "status": 0}');
 GO
+
+
+
+-- =========================================================
+-- INSERT DATA FOR POLICY (Relational IDs + JSON Datas)
+-- =========================================================
+
+
+-- Giả định bảng: PayrollPolicies (id int identity, datas nvarchar(max))
+
+INSERT INTO policy (datas)
+VALUES 
+-- 1. Đơn vị lương
+(N'{
+    "code": "HOURLY_RATE",
+    "name": "Đơn vị lương 1h",
+    "rule": "SYS_BASE_SALARY * SYS_SALARY_MULT / SYS_STD_HOURS",
+    "priority": 1,
+    "data_source": 1,
+    "aggregate": 1,
+    "category": 1,
+    "gen_item": 1,
+    "note": "Xác định đơn giá lương mỗi giờ làm việc dựa trên lương cơ bản và định mức giờ công.",
+    "status": 1
+}'),
+
+-- 2. Hệ số ca làm
+(N'{
+    "code": "MULT_SHIFT",
+    "name": "Hệ số giờ hành chính của ca làm",
+    "rule": "IF(SYS_SHIFT = 1, 1.0, 1.3) * IF(SYS_IS_HOLIDAY = 1, SYS_MULT_HOLIDAY, 1.0)",
+    "priority": 2,
+    "data_source": 2,
+    "aggregate": 1,
+    "category": 1,
+    "gen_item": 2,
+    "note": "Tính toán hệ số nhân lương tùy theo ca ngày/đêm và điều kiện ngày lễ/tết.",
+    "status": 1
+}'),
+
+-- 3. Hệ số tăng ca
+(N'{
+    "code": "MULT_OVERTIME",
+    "name": "Hệ số tăng ca của ca làm",
+    "rule": "1.2 * MULT_SHIFT",
+    "priority": 3,
+    "data_source": 2,
+    "aggregate": 1,
+    "category": 1,
+    "gen_item": 2,
+    "note": "Hệ số nhân dành riêng cho các giờ làm thêm, phụ thuộc vào hệ số ca gốc.",
+    "status": 1
+}'),
+
+-- 4. Tổng giờ hành chính
+(N'{
+    "code": "SUM_OFFICE_HOURS",
+    "name": "Tổng giờ hành chính cả kỳ",
+    "rule": "SYS_OFFICE_HOURS * MULT_SHIFT",
+    "priority": 4,
+    "data_source": 2,
+    "aggregate": 2,
+    "category": 2,
+    "gen_item": 1,
+    "note": "Tổng thời gian làm việc chính thức trong kỳ lương sau khi quy đổi hệ số.",
+    "status": 1
+}'),
+
+-- 5. Tổng giờ tăng ca
+(N'{
+    "code": "SUM_OVERTIME_HOURS",
+    "name": "Tổng giờ tăng ca cả kỳ",
+    "rule": "SYS_OVERTIME_HOURS * MULT_OVERTIME",
+    "priority": 5,
+    "data_source": 2,
+    "aggregate": 2,
+    "category": 2,
+    "gen_item": 1,
+    "note": "Tổng số giờ làm thêm đã được nhân hệ số tăng ca tương ứng.",
+    "status": 1
+}'),
+
+-- 6. Tổng giờ đi muộn
+(N'{
+    "code": "SUM_LATE_HOURS",
+    "name": "Tổng giờ đi muộn cả kỳ",
+    "rule": "SYS_LATE_HOURS * MULT_SHIFT",
+    "priority": 6,
+    "data_source": 2,
+    "aggregate": 2,
+    "category": 2,
+    "gen_item": 1,
+    "note": "Tổng thời gian vi phạm đi trễ theo dữ liệu máy chấm công.",
+    "status": 1
+}'),
+
+-- 7. Tổng giờ về sớm
+(N'{
+    "code": "SUM_EARLY_HOURS",
+    "name": "Tổng giờ về sớm cả kỳ",
+    "rule": "SYS_EARLY_LEAVE_HOURS * MULT_SHIFT",
+    "priority": 7,
+    "data_source": 2,
+    "aggregate": 2,
+    "category": 2,
+    "gen_item": 1,
+    "note": "Tổng thời gian vi phạm về sớm theo dữ liệu máy chấm công.",
+    "status": 1
+}'),
+
+-- 8. Tổng giờ chuẩn
+(N'{
+    "code": "SUM_OFFICE_HOURS_RAW",
+    "name": "Tổng giờ hành chính chuẩn cả kỳ",
+    "rule": "SYS_OFFICE_HOURS",
+    "priority": 8,
+    "data_source": 2,
+    "aggregate": 2,
+    "category": 2,
+    "gen_item": 1,
+    "note": "Giờ hành chính thực tế chưa nhân hệ số, dùng làm căn cứ xét phụ cấp.",
+    "status": 1
+}'),
+
+-- 9. Lương hành chính
+(N'{
+    "code": "SALARY_OFFICE",
+    "name": "Tổng thu nhập giờ hành chính cả kỳ",
+    "rule": "SUM_OFFICE_HOURS * HOURLY_RATE",
+    "priority": 9,
+    "data_source": 1,
+    "aggregate": 1,
+    "category": 3,
+    "gen_item": 1,
+    "note": "Tiền lương tính theo giờ làm việc hành chính trong kỳ.",
+    "status": 1
+}'),
+
+-- 10. Lương tăng ca
+(N'{
+    "code": "SALARY_OVERTIME",
+    "name": "Tổng thu nhập tăng ca cả kỳ",
+    "rule": "SUM_OVERTIME_HOURS * HOURLY_RATE",
+    "priority": 10,
+    "data_source": 1,
+    "aggregate": 1,
+    "category": 3,
+    "gen_item": 1,
+    "note": "Tiền lương tính cho các giờ làm thêm ngoài giờ hành chính.",
+    "status": 1
+}'),
+
+-- 11. Khấu trừ đi muộn
+(N'{
+    "code": "DEDUCT_LATE",
+    "name": "Tổng khấu trừ đi muộn cả kỳ",
+    "rule": "SUM_LATE_HOURS * HOURLY_RATE",
+    "priority": 11,
+    "data_source": 1,
+    "aggregate": 1,
+    "category": 4,
+    "gen_item": 1,
+    "note": "Khoản tiền bị trừ tương ứng với thời gian đi muộn.",
+    "status": 1
+}'),
+
+-- 12. Khấu trừ về sớm
+(N'{
+    "code": "DEDUCT_EARLY",
+    "name": "Tổng khấu trừ về sớm cả kỳ",
+    "rule": "SUM_EARLY_HOURS * HOURLY_RATE",
+    "priority": 12,
+    "data_source": 1,
+    "aggregate": 1,
+    "category": 4,
+    "gen_item": 1,
+    "note": "Khoản tiền bị trừ tương ứng với thời gian về sớm.",
+    "status": 1
+}'),
+
+-- 13. Phụ cấp công ty
+(N'{
+    "code": "ALLOW_COMPANY",
+    "name": "Phụ cấp chung của công ty",
+    "rule": "IF(SUM_OFFICE_HOURS_RAW >= SYS_STD_HOURS, 700000, 0.0)",
+    "priority": 13,
+    "data_source": 1,
+    "aggregate": 1,
+    "category": 5,
+    "gen_item": 1,
+    "note": "Phụ cấp chuyên cần dành cho nhân viên đạt đủ số giờ công chuẩn.",
+    "status": 1
+}'),
+
+-- 14. BHXH
+(N'{
+    "code": "INS_SOCIAL",
+    "name": "Khấu trừ bảo hiểm xã hội",
+    "rule": "SYS_BASE_SALARY * 0.08",
+    "priority": 14,
+    "data_source": 1,
+    "aggregate": 1,
+    "category": 7,
+    "gen_item": 1,
+    "note": "Trích đóng bảo hiểm xã hội (8%) tính trên mức lương cơ bản.",
+    "status": 1
+}'),
+
+-- 15. BHYT
+(N'{
+    "code": "INS_HEALTH",
+    "name": "Khấu trừ bảo hiểm sức khỏe",
+    "rule": "SYS_BASE_SALARY * 0.015",
+    "priority": 15,
+    "data_source": 1,
+    "aggregate": 1,
+    "category": 7,
+    "gen_item": 1,
+    "note": "Trích đóng bảo hiểm y tế (1.5%) tính trên mức lương cơ bản.",
+    "status": 1
+}'),
+
+-- 16. BHTN
+(N'{
+    "code": "INS_UNEMP",
+    "name": "Khấu trừ bảo hiểm thất nghiệp",
+    "rule": "SYS_BASE_SALARY * 0.01",
+    "priority": 16,
+    "data_source": 1,
+    "aggregate": 1,
+    "category": 7,
+    "gen_item": 1,
+    "note": "Trích đóng bảo hiểm thất nghiệp (1%) tính trên mức lương cơ bản.",
+    "status": 1
+}'),
+
+-- 17. Tổng thu nhập
+(N'{
+    "code": "TOTAL_INCOME",
+    "name": "Tổng thu nhập",
+    "rule": "SALARY_OFFICE + SALARY_OVERTIME + ALLOW_COMPANY",
+    "priority": 17,
+    "data_source": 1,
+    "aggregate": 1,
+    "category": 3,
+    "gen_item": 1,
+    "note": "Tổng các khoản lương và phụ cấp trước khi tính thuế và bảo hiểm.",
+    "status": 0
+}'),
+
+-- 18. Thuế TNCN
+(N'{
+    "code": "TAX_AMOUNT",
+    "name": "Thuế thu nhập các nhân",
+    "rule": "TOTAL_INCOME * 0.10",
+    "priority": 18,
+    "data_source": 1,
+    "aggregate": 1,
+    "category": 8,
+    "gen_item": 1,
+    "note": "Tạm tính thuế thu nhập cá nhân phải nộp theo tỷ lệ quy định.",
+    "status": 0
+}'),
+
+-- 19. Thực lĩnh
+(N'{
+    "code": "NET_SALARY",
+    "name": "Thực lĩnh",
+    "rule": "TOTAL_INCOME - TAX_AMOUNT - INS_SOCIAL - INS_HEALTH - INS_UNEMP - DEDUCT_LATE - DEDUCT_EARLY",
+    "priority": 19,
+    "data_source": 1,
+    "aggregate": 1,
+    "category": 3,
+    "gen_item": 1,
+    "note": "Số tiền cuối cùng chuyển khoản cho nhân viên sau khi hoàn tất các khoản trừ.",
+    "status": 0
+}');

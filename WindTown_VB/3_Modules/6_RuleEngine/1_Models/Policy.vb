@@ -2,6 +2,7 @@ Imports System.ComponentModel
 Imports System.ComponentModel.DataAnnotations
 Imports Dapper.Contrib.Extensions
 
+
 <Table("policy")>
 Public Class Policy
     Inherits BaseEntity
@@ -9,14 +10,18 @@ Public Class Policy
     Public Sub New()
         code = ""
         name = ""
+        rule = ""
+        data_source = 1
+        aggregate = 1
         category = 1
+        gen_item = 1
         priority = 1
         note = ""
         status = 0
     End Sub
 
 #Region "Field Json"
-    <Write(False)> <DisplayName("Mã chính sách")> <Display(Order:=2)>
+    <Write(False)> <DisplayName("Mã chính sách")> <Display(Order:=1)>
     Public Property code As String
         Get
             Return GetV(Of String)("code")
@@ -34,24 +39,6 @@ Public Class Policy
             SetV("name", value)
         End Set
     End Property
-    <Write(False)> <DisplayName("Tần Xuất áp dụng")> <Display(Order:=3)>
-    Public Property frequency As Integer
-        Get
-            Return GetV(Of Integer)("frequency")
-        End Get
-        Set(value As Integer)
-            SetV("frequency", value)
-        End Set
-    End Property
-    <Write(False)> <DisplayName("Danh mục")> <Display(Order:=3)>
-    Public Property category As Integer
-        Get
-            Return GetV(Of Integer)("category")
-        End Get
-        Set(value As Integer)
-            SetV("category", value)
-        End Set
-    End Property
     <Write(False)> <DisplayName("Quy tắc")> <Display(Order:=3)>
     Public Property rule As String
         Get
@@ -61,14 +48,49 @@ Public Class Policy
             SetV("rule", value)
         End Set
     End Property
-
-    <Write(False)> <DisplayName("Độ ưu tiên")> <Display(Order:=3)>
+    <Write(False)> <DisplayName("Độ ưu tiên")> <Display(Order:=4)>
     Public Property priority As Integer
         Get
             Return GetV(Of Integer)("priority")
         End Get
         Set(value As Integer)
             SetV("priority", value)
+        End Set
+    End Property
+    <Write(False)> <Browsable(False)>
+    Public Property data_source As Integer
+        Get
+            Return GetV(Of Integer)("data_source")
+        End Get
+        Set(value As Integer)
+            SetV("data_source", value)
+        End Set
+    End Property
+    <Write(False)> <Browsable(False)>
+    Public Property aggregate As Integer
+        Get
+            Return GetV(Of Integer)("aggregate")
+        End Get
+        Set(value As Integer)
+            SetV("aggregate", value)
+        End Set
+    End Property
+    <Write(False)> <Browsable(False)>
+    Public Property category As Integer
+        Get
+            Return GetV(Of Integer)("category")
+        End Get
+        Set(value As Integer)
+            SetV("category", value)
+        End Set
+    End Property
+    <Write(False)> <Browsable(False)>
+    Public Property gen_item As Integer
+        Get
+            Return GetV(Of Integer)("gen_item")
+        End Get
+        Set(value As Integer)
+            SetV("gen_item", value)
         End Set
     End Property
 
@@ -81,7 +103,7 @@ Public Class Policy
             SetV("status", value)
         End Set
     End Property
-    <Write(False)> <DisplayName("Ghi chú")> <Display(Order:=7)>
+    <Write(False)> <DisplayName("Ghi chú")> <Display(Order:=10)>
     Public Property note As String
         Get
             Return GetV(Of String)("note")
@@ -95,14 +117,35 @@ Public Class Policy
 
 #Region "Field Display"
 
-    <Write(False)> <DisplayName("Danh mục")> <Display(Order:=4)>
-    Public ReadOnly Property category_UI As String
+    <Write(False)> <DisplayName("Nguồn dữ liệu")> <Display(Order:=5)>
+    Public ReadOnly Property data_source_UI As String
         Get
-            Return If(category_Dict.ContainsKey(Me.category), category_Dict(Me.category), "---")
+            Return If(PolicyParameter.Data_Source.GetParameter(Me.data_source)?.name, "---")
 
         End Get
     End Property
-    <Write(False)> <DisplayName("Trạng thái")> <Display(Order:=6)>
+    <Write(False)> <DisplayName("Kiểu tổng hợp")> <Display(Order:=6)>
+    Public ReadOnly Property aggregate_UI As String
+        Get
+            Return If(PolicyParameter.Aggregate_Func.GetParameter(Me.aggregate)?.code, "---")
+
+        End Get
+    End Property
+    <Write(False)> <DisplayName("Danh mục")> <Display(Order:=7)>
+    Public ReadOnly Property category_UI As String
+        Get
+            Return If(PolicyParameter.Category_Amount.GetParameter(Me.category)?.name, "---")
+
+        End Get
+    End Property
+    <Write(False)> <DisplayName("Thêm vào bảng lương")> <Display(Order:=8)>
+    Public ReadOnly Property gen_item_UI As String
+        Get
+            Return If(gen_item_Dict.ContainsKey(Me.gen_item), gen_item_Dict(Me.gen_item), "---")
+
+        End Get
+    End Property
+    <Write(False)> <DisplayName("Trạng thái")> <Display(Order:=9)>
     Public ReadOnly Property status_UI As String
         Get
             Return If(status_Dict.ContainsKey(Me.status), status_Dict(Me.status), "---")
@@ -111,23 +154,18 @@ Public Class Policy
     End Property
 
 #End Region
-#Region "Dictionary Display" 'chứa các dictionary dùng chung trong toàn bộ module Operations, tránh việc phải tạo nhiều dictionary giống nhau ở nhiều form khác
-    Public Shared ReadOnly category_Dict As New Dictionary(Of Integer, String) From {
-        {1, "Thu nhập"},
-        {2, "Phụ cấp"},
-        {3, "Khấu trừ"},
-        {4, "Thuế"},
-        {5, "Thưởng"}
-    }
-    Public Shared ReadOnly frequency_Dict As New Dictionary(Of Integer, String) From {
-        {1, "Theo ngày"},
-        {2, "Theo chuy kỳ"}
-    }
 
+#Region "Dict"
+
+    Public Shared ReadOnly gen_item_Dict As New Dictionary(Of Integer, String) From {
+        {1, "YES"},
+        {2, "NO"}
+    }
     Public Shared ReadOnly status_Dict As New Dictionary(Of Integer, String) From {
         {0, "Ngừng áp dụng"},
         {1, "Đang áp dụng"}
     }
 #End Region
+
 
 End Class

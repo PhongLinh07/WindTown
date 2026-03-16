@@ -36,6 +36,12 @@ Partial Class Policy_CRUD_Frm
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.ui_rule = New System.Windows.Forms.TextBox()
+        Me.ui_data_source = New System.Windows.Forms.ComboBox()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.ui_aggregate = New System.Windows.Forms.ComboBox()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.ui_gen_item = New System.Windows.Forms.ComboBox()
+        Me.Label10 = New System.Windows.Forms.Label()
         CType(Me.ui_priority, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -56,7 +62,7 @@ Partial Class Policy_CRUD_Frm
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Label3.Location = New System.Drawing.Point(786, 71)
+        Me.Label3.Location = New System.Drawing.Point(424, 326)
         Me.Label3.Margin = New System.Windows.Forms.Padding(0)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(85, 19)
@@ -68,17 +74,17 @@ Partial Class Policy_CRUD_Frm
         Me.ui_status.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ui_status.FormattingEnabled = True
         Me.ui_status.Items.AddRange(New Object() {"ACTIVE", "INACTIVE"})
-        Me.ui_status.Location = New System.Drawing.Point(790, 93)
+        Me.ui_status.Location = New System.Drawing.Point(428, 346)
         Me.ui_status.Name = "ui_status"
-        Me.ui_status.Size = New System.Drawing.Size(311, 28)
+        Me.ui_status.Size = New System.Drawing.Size(318, 28)
         Me.ui_status.TabIndex = 6
         '
         'ui_note
         '
         Me.ui_note.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ui_note.Location = New System.Drawing.Point(790, 177)
+        Me.ui_note.Location = New System.Drawing.Point(807, 95)
         Me.ui_note.Name = "ui_note"
-        Me.ui_note.Size = New System.Drawing.Size(311, 147)
+        Me.ui_note.Size = New System.Drawing.Size(311, 279)
         Me.ui_note.TabIndex = 7
         Me.ui_note.Text = ""
         '
@@ -87,7 +93,7 @@ Partial Class Policy_CRUD_Frm
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Label4.Location = New System.Drawing.Point(786, 155)
+        Me.Label4.Location = New System.Drawing.Point(803, 73)
         Me.Label4.Margin = New System.Windows.Forms.Padding(0)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(74, 19)
@@ -99,9 +105,9 @@ Partial Class Policy_CRUD_Frm
         Me.ui_category.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ui_category.FormattingEnabled = True
         Me.ui_category.Items.AddRange(New Object() {"ACTIVE", "INACTIVE"})
-        Me.ui_category.Location = New System.Drawing.Point(418, 93)
+        Me.ui_category.Location = New System.Drawing.Point(63, 346)
         Me.ui_category.Name = "ui_category"
-        Me.ui_category.Size = New System.Drawing.Size(315, 28)
+        Me.ui_category.Size = New System.Drawing.Size(304, 28)
         Me.ui_category.TabIndex = 11
         '
         'Label5
@@ -109,7 +115,7 @@ Partial Class Policy_CRUD_Frm
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Label5.Location = New System.Drawing.Point(417, 71)
+        Me.Label5.Location = New System.Drawing.Point(62, 324)
         Me.Label5.Margin = New System.Windows.Forms.Padding(0)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(93, 19)
@@ -121,7 +127,7 @@ Partial Class Policy_CRUD_Frm
         Me.Label8.AutoSize = True
         Me.Label8.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label8.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Label8.Location = New System.Drawing.Point(59, 155)
+        Me.Label8.Location = New System.Drawing.Point(59, 152)
         Me.Label8.Margin = New System.Windows.Forms.Padding(0)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(132, 19)
@@ -131,7 +137,7 @@ Partial Class Policy_CRUD_Frm
         'ui_name
         '
         Me.ui_name.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ui_name.Location = New System.Drawing.Point(63, 178)
+        Me.ui_name.Location = New System.Drawing.Point(63, 175)
         Me.ui_name.Name = "ui_name"
         Me.ui_name.Size = New System.Drawing.Size(304, 26)
         Me.ui_name.TabIndex = 16
@@ -147,11 +153,11 @@ Partial Class Policy_CRUD_Frm
         'ui_priority
         '
         Me.ui_priority.Font = New System.Drawing.Font("Arial Narrow", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ui_priority.Location = New System.Drawing.Point(418, 178)
+        Me.ui_priority.Location = New System.Drawing.Point(63, 257)
         Me.ui_priority.Maximum = New Decimal(New Integer() {999, 0, 0, 0})
         Me.ui_priority.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
         Me.ui_priority.Name = "ui_priority"
-        Me.ui_priority.Size = New System.Drawing.Size(315, 26)
+        Me.ui_priority.Size = New System.Drawing.Size(304, 26)
         Me.ui_priority.TabIndex = 67
         Me.ui_priority.Value = New Decimal(New Integer() {1, 0, 0, 0})
         '
@@ -160,7 +166,7 @@ Partial Class Policy_CRUD_Frm
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Label2.Location = New System.Drawing.Point(415, 155)
+        Me.Label2.Location = New System.Drawing.Point(60, 234)
         Me.Label2.Margin = New System.Windows.Forms.Padding(0)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(95, 19)
@@ -172,7 +178,7 @@ Partial Class Policy_CRUD_Frm
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Label6.Location = New System.Drawing.Point(59, 275)
+        Me.Label6.Location = New System.Drawing.Point(59, 421)
         Me.Label6.Margin = New System.Windows.Forms.Padding(0)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(73, 19)
@@ -182,17 +188,89 @@ Partial Class Policy_CRUD_Frm
         'ui_rule
         '
         Me.ui_rule.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ui_rule.Location = New System.Drawing.Point(63, 298)
+        Me.ui_rule.Location = New System.Drawing.Point(63, 444)
         Me.ui_rule.Name = "ui_rule"
-        Me.ui_rule.Size = New System.Drawing.Size(670, 26)
+        Me.ui_rule.Size = New System.Drawing.Size(1055, 26)
         Me.ui_rule.TabIndex = 68
+        '
+        'ui_data_source
+        '
+        Me.ui_data_source.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ui_data_source.FormattingEnabled = True
+        Me.ui_data_source.Items.AddRange(New Object() {"ACTIVE", "INACTIVE"})
+        Me.ui_data_source.Location = New System.Drawing.Point(428, 95)
+        Me.ui_data_source.Name = "ui_data_source"
+        Me.ui_data_source.Size = New System.Drawing.Size(315, 28)
+        Me.ui_data_source.TabIndex = 71
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label7.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.Label7.Location = New System.Drawing.Point(427, 73)
+        Me.Label7.Margin = New System.Windows.Forms.Padding(0)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(124, 19)
+        Me.Label7.TabIndex = 70
+        Me.Label7.Text = "Nguồn dữ liệu:"
+        '
+        'ui_aggregate
+        '
+        Me.ui_aggregate.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ui_aggregate.FormattingEnabled = True
+        Me.ui_aggregate.Items.AddRange(New Object() {"ACTIVE", "INACTIVE"})
+        Me.ui_aggregate.Location = New System.Drawing.Point(428, 175)
+        Me.ui_aggregate.Name = "ui_aggregate"
+        Me.ui_aggregate.Size = New System.Drawing.Size(315, 28)
+        Me.ui_aggregate.TabIndex = 73
+        '
+        'Label9
+        '
+        Me.Label9.AutoSize = True
+        Me.Label9.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label9.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.Label9.Location = New System.Drawing.Point(427, 153)
+        Me.Label9.Margin = New System.Windows.Forms.Padding(0)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(124, 19)
+        Me.Label9.TabIndex = 72
+        Me.Label9.Text = "Hàm tổng hợp:"
+        '
+        'ui_gen_item
+        '
+        Me.ui_gen_item.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ui_gen_item.FormattingEnabled = True
+        Me.ui_gen_item.Items.AddRange(New Object() {"ACTIVE", "INACTIVE"})
+        Me.ui_gen_item.Location = New System.Drawing.Point(431, 257)
+        Me.ui_gen_item.Name = "ui_gen_item"
+        Me.ui_gen_item.Size = New System.Drawing.Size(315, 28)
+        Me.ui_gen_item.TabIndex = 75
+        '
+        'Label10
+        '
+        Me.Label10.AutoSize = True
+        Me.Label10.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label10.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.Label10.Location = New System.Drawing.Point(430, 235)
+        Me.Label10.Margin = New System.Windows.Forms.Padding(0)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(167, 19)
+        Me.Label10.TabIndex = 74
+        Me.Label10.Text = "Ghi vào bảng lương:"
         '
         'Policy_CRUD_Frm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.ClientSize = New System.Drawing.Size(1185, 376)
+        Me.ClientSize = New System.Drawing.Size(1185, 537)
+        Me.Controls.Add(Me.ui_gen_item)
+        Me.Controls.Add(Me.Label10)
+        Me.Controls.Add(Me.ui_aggregate)
+        Me.Controls.Add(Me.Label9)
+        Me.Controls.Add(Me.ui_data_source)
+        Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.ui_rule)
         Me.Controls.Add(Me.ui_priority)
@@ -225,6 +303,12 @@ Partial Class Policy_CRUD_Frm
         Me.Controls.SetChildIndex(Me.ui_priority, 0)
         Me.Controls.SetChildIndex(Me.ui_rule, 0)
         Me.Controls.SetChildIndex(Me.Label6, 0)
+        Me.Controls.SetChildIndex(Me.Label7, 0)
+        Me.Controls.SetChildIndex(Me.ui_data_source, 0)
+        Me.Controls.SetChildIndex(Me.Label9, 0)
+        Me.Controls.SetChildIndex(Me.ui_aggregate, 0)
+        Me.Controls.SetChildIndex(Me.Label10, 0)
+        Me.Controls.SetChildIndex(Me.ui_gen_item, 0)
         CType(Me.ui_priority, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
@@ -244,4 +328,10 @@ Partial Class Policy_CRUD_Frm
     Friend WithEvents Label2 As Label
     Friend WithEvents Label6 As Label
     Friend WithEvents ui_rule As TextBox
+    Friend WithEvents ui_data_source As ComboBox
+    Friend WithEvents Label7 As Label
+    Friend WithEvents ui_aggregate As ComboBox
+    Friend WithEvents Label9 As Label
+    Friend WithEvents ui_gen_item As ComboBox
+    Friend WithEvents Label10 As Label
 End Class

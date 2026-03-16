@@ -13,7 +13,7 @@ Public Class Pay_ItemService
             Select Case intent
                 Case DataIntent.GetPayItemByPayroll
                     Dim payroll As Payroll = TryCast(data, Payroll)
-                    Dim list = _repoPayItem.GetPayItemByPayroll(data)
+                    Dim list = _repoPayItem.GetPayItemByPayroll(payroll)
                     Return ServiceResponse(Of Object).Success(list)
 
                 Case Else

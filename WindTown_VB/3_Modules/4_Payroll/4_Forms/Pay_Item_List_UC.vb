@@ -30,7 +30,7 @@ Public Class Pay_Item_List_UC
         Dim response = _service.Execute(DataIntent.GetPayItemByPayroll, _payroll)
         If response.IsSuccess Then
             ' Gán danh sách vào BindingSource để hỗ trợ lọc (Search)
-            _bindingSource.DataSource = response.Data
+            _bindingSource.DataSource = CType(response.Data, IEnumerable(Of Pay_Item)).OrderBy(Function(x) x.priority)
             _dgv.DataSource = _bindingSource
 
         Else

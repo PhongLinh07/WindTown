@@ -27,6 +27,9 @@ Public Class BaseList_UC
     Private Sub ConfigDGV()
 
     End Sub
+    Public Sub Refreash()
+        LoadData()
+    End Sub
 
     ' load data từ service và gán vào DataGridView thông qua BindingSource để hỗ trợ tính năng lọc (Search)
     Protected Overridable Sub LoadData()

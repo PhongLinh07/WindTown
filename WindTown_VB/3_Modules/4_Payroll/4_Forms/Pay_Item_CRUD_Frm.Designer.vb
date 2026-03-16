@@ -31,10 +31,14 @@ Partial Class Pay_Item_CRUD_Frm
         Me.Label10 = New System.Windows.Forms.Label()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.ui_name = New System.Windows.Forms.TextBox()
-        Me.ui_value = New System.Windows.Forms.NumericUpDown()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.ui_payroll = New System.Windows.Forms.TextBox()
-        CType(Me.ui_value, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.ui_priority = New System.Windows.Forms.NumericUpDown()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.ui_category = New System.Windows.Forms.ComboBox()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.ui_value = New System.Windows.Forms.TextBox()
+        CType(Me.ui_priority, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'ui_code
@@ -62,7 +66,7 @@ Partial Class Pay_Item_CRUD_Frm
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Label3.Location = New System.Drawing.Point(426, 82)
+        Me.Label3.Location = New System.Drawing.Point(788, 82)
         Me.Label3.Margin = New System.Windows.Forms.Padding(0)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(91, 19)
@@ -73,7 +77,7 @@ Partial Class Pay_Item_CRUD_Frm
         '
         Me.ui_status.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ui_status.FormattingEnabled = True
-        Me.ui_status.Location = New System.Drawing.Point(430, 103)
+        Me.ui_status.Location = New System.Drawing.Point(792, 103)
         Me.ui_status.Name = "ui_status"
         Me.ui_status.Size = New System.Drawing.Size(284, 28)
         Me.ui_status.TabIndex = 6
@@ -81,9 +85,9 @@ Partial Class Pay_Item_CRUD_Frm
         'ui_note
         '
         Me.ui_note.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ui_note.Location = New System.Drawing.Point(430, 193)
+        Me.ui_note.Location = New System.Drawing.Point(792, 193)
         Me.ui_note.Name = "ui_note"
-        Me.ui_note.Size = New System.Drawing.Size(284, 204)
+        Me.ui_note.Size = New System.Drawing.Size(284, 111)
         Me.ui_note.TabIndex = 7
         Me.ui_note.Text = ""
         '
@@ -92,7 +96,7 @@ Partial Class Pay_Item_CRUD_Frm
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Label4.Location = New System.Drawing.Point(426, 170)
+        Me.Label4.Location = New System.Drawing.Point(788, 170)
         Me.Label4.Margin = New System.Windows.Forms.Padding(0)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(74, 19)
@@ -132,28 +136,17 @@ Partial Class Pay_Item_CRUD_Frm
         Me.ui_name.Size = New System.Drawing.Size(291, 26)
         Me.ui_name.TabIndex = 62
         '
-        'ui_value
-        '
-        Me.ui_value.Font = New System.Drawing.Font("Arial Narrow", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ui_value.Increment = New Decimal(New Integer() {100000, 0, 0, 0})
-        Me.ui_value.Location = New System.Drawing.Point(60, 368)
-        Me.ui_value.Maximum = New Decimal(New Integer() {-1486618624, 232830643, 0, 0})
-        Me.ui_value.Name = "ui_value"
-        Me.ui_value.Size = New System.Drawing.Size(291, 26)
-        Me.ui_value.TabIndex = 65
-        Me.ui_value.ThousandsSeparator = True
-        '
         'Label2
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Label2.Location = New System.Drawing.Point(57, 345)
+        Me.Label2.Location = New System.Drawing.Point(420, 256)
         Me.Label2.Margin = New System.Windows.Forms.Padding(0)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(81, 19)
+        Me.Label2.Size = New System.Drawing.Size(59, 19)
         Me.Label2.TabIndex = 64
-        Me.Label2.Text = "Tiền VND"
+        Me.Label2.Text = "Giá trị:"
         '
         'ui_payroll
         '
@@ -163,14 +156,70 @@ Partial Class Pay_Item_CRUD_Frm
         Me.ui_payroll.Size = New System.Drawing.Size(291, 26)
         Me.ui_payroll.TabIndex = 66
         '
+        'ui_priority
+        '
+        Me.ui_priority.Font = New System.Drawing.Font("Arial Narrow", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ui_priority.Location = New System.Drawing.Point(423, 194)
+        Me.ui_priority.Maximum = New Decimal(New Integer() {276447231, 23283, 0, 0})
+        Me.ui_priority.Name = "ui_priority"
+        Me.ui_priority.Size = New System.Drawing.Size(291, 26)
+        Me.ui_priority.TabIndex = 71
+        Me.ui_priority.Value = New Decimal(New Integer() {1, 0, 0, 0})
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.Label5.Location = New System.Drawing.Point(420, 171)
+        Me.Label5.Margin = New System.Windows.Forms.Padding(0)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(95, 19)
+        Me.Label5.TabIndex = 70
+        Me.Label5.Text = "Độ ưu tiên:"
+        '
+        'ui_category
+        '
+        Me.ui_category.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ui_category.FormattingEnabled = True
+        Me.ui_category.Items.AddRange(New Object() {"ACTIVE", "INACTIVE"})
+        Me.ui_category.Location = New System.Drawing.Point(423, 103)
+        Me.ui_category.Name = "ui_category"
+        Me.ui_category.Size = New System.Drawing.Size(291, 28)
+        Me.ui_category.TabIndex = 69
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.Label6.Location = New System.Drawing.Point(422, 81)
+        Me.Label6.Margin = New System.Windows.Forms.Padding(0)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(93, 19)
+        Me.Label6.TabIndex = 68
+        Me.Label6.Text = "Danh mục:"
+        '
+        'ui_value
+        '
+        Me.ui_value.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ui_value.Location = New System.Drawing.Point(423, 278)
+        Me.ui_value.Name = "ui_value"
+        Me.ui_value.Size = New System.Drawing.Size(291, 26)
+        Me.ui_value.TabIndex = 72
+        '
         'Pay_Item_CRUD_Frm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.ClientSize = New System.Drawing.Size(768, 451)
-        Me.Controls.Add(Me.ui_payroll)
+        Me.ClientSize = New System.Drawing.Size(1145, 399)
         Me.Controls.Add(Me.ui_value)
+        Me.Controls.Add(Me.ui_priority)
+        Me.Controls.Add(Me.Label5)
+        Me.Controls.Add(Me.ui_category)
+        Me.Controls.Add(Me.Label6)
+        Me.Controls.Add(Me.ui_payroll)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label9)
         Me.Controls.Add(Me.ui_name)
@@ -195,9 +244,13 @@ Partial Class Pay_Item_CRUD_Frm
         Me.Controls.SetChildIndex(Me.ui_name, 0)
         Me.Controls.SetChildIndex(Me.Label9, 0)
         Me.Controls.SetChildIndex(Me.Label2, 0)
-        Me.Controls.SetChildIndex(Me.ui_value, 0)
         Me.Controls.SetChildIndex(Me.ui_payroll, 0)
-        CType(Me.ui_value, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Controls.SetChildIndex(Me.Label6, 0)
+        Me.Controls.SetChildIndex(Me.ui_category, 0)
+        Me.Controls.SetChildIndex(Me.Label5, 0)
+        Me.Controls.SetChildIndex(Me.ui_priority, 0)
+        Me.Controls.SetChildIndex(Me.ui_value, 0)
+        CType(Me.ui_priority, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -212,7 +265,11 @@ Partial Class Pay_Item_CRUD_Frm
     Friend WithEvents Label10 As Label
     Friend WithEvents Label9 As Label
     Friend WithEvents ui_name As TextBox
-    Friend WithEvents ui_value As NumericUpDown
     Friend WithEvents Label2 As Label
     Friend WithEvents ui_payroll As TextBox
+    Friend WithEvents ui_priority As NumericUpDown
+    Friend WithEvents Label5 As Label
+    Friend WithEvents ui_category As ComboBox
+    Friend WithEvents Label6 As Label
+    Friend WithEvents ui_value As TextBox
 End Class

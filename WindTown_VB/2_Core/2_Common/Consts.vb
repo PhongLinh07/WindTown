@@ -32,6 +32,8 @@ Public Enum DataIntent
 #Region "'Payroll Custom Intent"
     Init_Payrolls 'Khởi tạo các bảng lương theo hợp đòng đang hoạt động
     GetPayrollByPeriod ' Lấy bảng lưuong theo chu kỳ
+    Cal_Net_Salary_One_Payroll ' Tính lương cho 1 bảng lương theo kỳ lương
+    Calculate_for_All_Payroll_By_Period ' Tính lương cho tất cả bảng lương theo kỳ lương
 #End Region
 
 #Region "'Salary_Mult Custom Intent"
@@ -45,7 +47,7 @@ Public Enum DataIntent
 
 End Enum
 
-Public Class Display_Field
+Public NotInheritable Class Display_Field
     Public Enum Status
         Active = 1
         Inactive = 0

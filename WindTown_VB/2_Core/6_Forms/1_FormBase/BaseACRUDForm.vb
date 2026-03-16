@@ -12,7 +12,7 @@ Partial Public Class BaseACRUDForm
         ' Các toolbar mặc định ẩn, lớp con có thể bật
         ' tool_reassignment.Visible = False
         tool_init_payroll.Visible = False
-        ' tool_calSalary.Visible = False
+        tool_net_salary.Visible = False
         ' tool_netSalary.Visible = False
     End Sub
 
@@ -63,13 +63,13 @@ Partial Public Class BaseACRUDForm
     End Sub
 
     '' ===== tool_calSalary Click =====
-    'Protected Overridable Sub tool_calSalary_Click(sender As Object, e As EventArgs) Handles tool_calSalary.Click
+    'Protected Overridable Sub tool_cal_salary_Click(sender As Object, e As EventArgs) Handles tool_net_salary.Click
     '    ' Lớp con override
     'End Sub
 
     '' ===== tool_netSalary Click =====
-    'Protected Overridable Sub tool_netSalary_Click(sender As Object, e As EventArgs) Handles tool_netSalary.Click
-    '    ' Lớp con override
-    'End Sub
+    Protected Overridable Sub tool_net_salary_Click(sender As Object, e As EventArgs) Handles tool_net_salary.Click
+        ' Lớp con override
+    End Sub
 
 End Class

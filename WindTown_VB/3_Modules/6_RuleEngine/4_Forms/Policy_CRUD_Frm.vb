@@ -22,7 +22,19 @@ Public Class Policy_CRUD_Frm
         ui_status.DisplayMember = "Value"
         ui_status.ValueMember = "Key"
 
-        ui_category.DataSource = New BindingSource(Policy.category_Dict, Nothing)
+        ui_data_source.DataSource = New BindingSource(PolicyParameter.Data_Source.Dict_UI, Nothing)
+        ui_data_source.DisplayMember = "Value"
+        ui_data_source.ValueMember = "Key"
+
+        ui_aggregate.DataSource = New BindingSource(PolicyParameter.Aggregate_Func.Dict_UI, Nothing)
+        ui_aggregate.DisplayMember = "Value"
+        ui_aggregate.ValueMember = "Key"
+
+        ui_gen_item.DataSource = New BindingSource(Policy.gen_item_Dict, Nothing)
+        ui_gen_item.DisplayMember = "Value"
+        ui_gen_item.ValueMember = "Key"
+
+        ' ui_category.DataSource = New BindingSource(PolicyParameter.Category_Amount.Dict_UI, Nothing)
         ui_category.DisplayMember = "Value"
         ui_category.ValueMember = "Key"
 
@@ -32,6 +44,9 @@ Public Class Policy_CRUD_Frm
 
         ui_code.Text = _data.code
         ui_name.Text = _data.name
+        ui_data_source.SelectedValue = _data.data_source
+        ui_aggregate.SelectedValue = _data.aggregate
+        ui_gen_item.SelectedValue = _data.gen_item
         ui_category.SelectedValue = _data.category
 
         ui_rule.Text = _data.rule
@@ -57,9 +72,18 @@ Public Class Policy_CRUD_Frm
             Return False
         End If
 
+        If String.IsNullOrWhiteSpace(ui_rule.Text) Then
+            MessageBox.Show("Quy tắc/Công thức không hợp lệ")
+            ui_rule.Focus()
+            Return False
+        End If
+
         _data.code = ui_code.Text.Trim()
         _data.name = ui_name.Text.Trim()
+        _data.data_source = ui_data_source.SelectedValue
+        _data.aggregate = ui_aggregate.SelectedValue
         _data.category = ui_category.SelectedValue
+        _data.gen_item = ui_gen_item.SelectedValue
 
         _data.rule = ui_rule.Text.Trim()
 
@@ -78,6 +102,9 @@ Public Class Policy_CRUD_Frm
 
     Protected Overrides Sub DataChanged() Handles ui_code.TextChanged,
                                         ui_name.TextChanged,
+                                        ui_data_source.SelectedValueChanged,
+                                        ui_aggregate.SelectedValueChanged,
+                                        ui_gen_item.SelectedValueChanged,
                                         ui_category.SelectedValueChanged,
                                         ui_rule.TextChanged,
                                         ui_priority.ValueChanged,
@@ -88,4 +115,7 @@ Public Class Policy_CRUD_Frm
 
     End Sub
 
+    Private Sub ui_category_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ui_category.SelectedIndexChanged
+
+    End Sub
 End Class

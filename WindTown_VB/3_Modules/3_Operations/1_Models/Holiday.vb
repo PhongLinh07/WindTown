@@ -10,9 +10,7 @@ Public Class Holiday
         code = ""
         name = ""
         of_date = DateTime.Now
-        day_mult = 0
-        night_mult = 0
-        ot_mult = 0
+        mult = 3.0
         note = ""
         status = 3
     End Sub
@@ -46,31 +44,13 @@ Public Class Holiday
             SetV("of_date", value)
         End Set
     End Property
-    <Write(False)> <DisplayName("Hệ số ca ngày")> <Display(Order:=2)>
-    Public Property day_mult As Decimal
+    <Write(False)> <DisplayName("Hệ số")> <Display(Order:=2)>
+    Public Property mult As Decimal
         Get
-            Return GetV(Of Decimal)("day_mult")
+            Return GetV(Of Decimal)("mult")
         End Get
         Set(value As Decimal)
-            SetV("day_mult", value)
-        End Set
-    End Property
-    <Write(False)> <DisplayName("Hệ số ca đêm")> <Display(Order:=2)>
-    Public Property night_mult As Decimal
-        Get
-            Return GetV(Of Decimal)("night_mult")
-        End Get
-        Set(value As Decimal)
-            SetV("night_mult", value)
-        End Set
-    End Property
-    <Write(False)> <DisplayName("Hệ số tăng ca")> <Display(Order:=2)>
-    Public Property ot_mult As Decimal
-        Get
-            Return GetV(Of Decimal)("ot_mult")
-        End Get
-        Set(value As Decimal)
-            SetV("ot_mult", value)
+            SetV("mult", value)
         End Set
     End Property
     <Write(False)> <Browsable(False)>
@@ -107,8 +87,8 @@ Public Class Holiday
 
 #Region "Dictionary Display" 'chứa các dictionary dùng chung trong toàn bộ module Operations, tránh việc phải tạo nhiều dictionary giống nhau ở nhiều form khác
     Public Shared ReadOnly status_Dict As New Dictionary(Of Integer, String) From {
-        {0, "Ngừng hoạt động"},
-        {1, "Đang hoạt động"}
+        {0, "Ngừng áp dụng"},
+        {1, "Đang áp dụng"}
     }
 #End Region
 

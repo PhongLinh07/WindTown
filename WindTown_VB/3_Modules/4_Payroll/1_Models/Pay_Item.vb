@@ -1,6 +1,7 @@
 Imports System.ComponentModel
 Imports System.ComponentModel.DataAnnotations
 Imports Dapper.Contrib.Extensions
+Imports WindTown_VB.PolicyParameter
 
 <Table("pay_item")>
 Public Class Pay_Item
@@ -10,6 +11,7 @@ Public Class Pay_Item
         code = ""
         name = ""
         value = 0
+        category = 1
         note = ""
         status = 0
     End Sub
@@ -27,7 +29,7 @@ Public Class Pay_Item
         End Get
     End Property
 
-    <Write(False)> <DisplayName("Mã khoản tiền")> <Display(Order:=1)>
+    <Write(False)> <DisplayName("Mã thành phần")> <Display(Order:=1)>
     Public Property code As String
         Get
             Return GetV(Of String)("code")
@@ -36,7 +38,7 @@ Public Class Pay_Item
             SetV("code", value)
         End Set
     End Property
-    <Write(False)> <DisplayName("Tên khoản tiền")> <Display(Order:=1)>
+    <Write(False)> <DisplayName("Tên thành phần")> <Display(Order:=2)>
     Public Property name As String
         Get
             Return GetV(Of String)("name")
@@ -45,13 +47,31 @@ Public Class Pay_Item
             SetV("name", value)
         End Set
     End Property
-    <Write(False)> <DisplayName("Tiền VND")> <Display(Order:=1)>
-    Public Property value As String
+    <Write(False)> <Browsable(False)>
+    Public Property value As Decimal
         Get
-            Return GetV(Of String)("value")
+            Return GetV(Of Decimal)("value")
         End Get
-        Set(value As String)
+        Set(value As Decimal)
             SetV("value", value)
+        End Set
+    End Property
+    <Write(False)> <Browsable(False)>
+    Public Property category As Integer
+        Get
+            Return GetV(Of Integer)("category")
+        End Get
+        Set(value As Integer)
+            SetV("category", value)
+        End Set
+    End Property
+    <Write(False)> <DisplayName("Độ ưu tiên")> <Display(Order:=5)>
+    Public Property priority As Integer
+        Get
+            Return GetV(Of Integer)("priority")
+        End Get
+        Set(value As Integer)
+            SetV("priority", value)
         End Set
     End Property
 
@@ -64,7 +84,7 @@ Public Class Pay_Item
             SetV("status", value)
         End Set
     End Property
-    <Write(False)> <DisplayName("Ghi chú")> <Display(Order:=10)>
+    <Write(False)> <DisplayName("Ghi chú")> <Display(Order:=7)>
     Public Property note As String
         Get
             Return GetV(Of String)("note")
@@ -77,14 +97,27 @@ Public Class Pay_Item
 
 #Region "Field Display"
 
-    <Write(False)> <DisplayName("Trạng thái")> <Display(Order:=9)>
+    <Write(False)> <DisplayName("Giá trị")> <Display(Order:=3)>
+    Public ReadOnly Property value_UI As String
+        Get
+            Return Category_Amount.FomatByCat(value, CInt(category))
+
+        End Get
+    End Property
+    <Write(False)> <DisplayName("Trạng thái")> <Display(Order:=6)>
     Public ReadOnly Property status_UI As String
         Get
             Return If(status_Dict.ContainsKey(Me.status), status_Dict(Me.status), "---")
 
         End Get
     End Property
+    <Write(False)> <DisplayName("Danh mục")> <Display(Order:=4)>
+    Public ReadOnly Property category_UI As String
+        Get
+            Return If(PolicyParameter.Category_Amount.GetParameter(Me.category)?.name, "---")
 
+        End Get
+    End Property
 #End Region
 
 #Region "Dictionary Display" 'chứa các dictionary dùng chung trong toàn bộ module Operations, tránh việc phải tạo nhiều dictionary giống nhau ở nhiều form khác
