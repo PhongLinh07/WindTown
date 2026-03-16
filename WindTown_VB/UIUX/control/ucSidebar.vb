@@ -210,12 +210,23 @@
         Dim qlns As New MenuItemModel("Quản lý nhân sự", Nothing, ResizeImage(My.Resources.saff, 38, 38)) ' icon nhân sự
 
         qlns.Children.Add(New MenuItemModel("Nhân sự", GetType(frmNhanSu))) ' icon người dùng
-        qlns.Children.Add(New MenuItemModel("Chức vụ", GetType(frmPhongBan))) ' icon chức vụ
+        qlns.Children.Add(New MenuItemModel("Phòng ban", GetType(frmPhongBan)))
+        qlns.Children.Add(New MenuItemModel("Chức vụ", GetType(frmChucVu))) ' icon chức vụ
 
         menuData.Add(qlns)
 
         menuData.Add(New MenuItemModel("Hợp đồng", GetType(frmHopDong), ResizeImage(My.Resources.contract, 38, 38))) ' icon hợp đồng
         menuData.Add(New MenuItemModel("Chấm công", GetType(frmChamCong), ResizeImage(My.Resources.checkin, 38, 38))) ' icon chấm công
+
+        Dim duan As New MenuItemModel("Dự án")
+        duan.Children.Add(New MenuItemModel("Dự án", GetType(frmDuAn)))
+        duan.Children.Add(New MenuItemModel("Phân công", GetType(frmPhanCong)))
+        menuData.Add(duan)
+
+        Dim nghiphep As New MenuItemModel("Nghỉ phép")
+        nghiphep.Children.Add(New MenuItemModel("Nghỉ phép", GetType(frmNghiPhep)))
+        nghiphep.Children.Add(New MenuItemModel("Ngày lễ", GetType(frmNgayLe)))
+        menuData.Add(nghiphep)
 
         Dim luong As New MenuItemModel("Lương", Nothing, ResizeImage(My.Resources.salary, 38, 38)) ' icon lương
 
@@ -224,6 +235,7 @@
 
         menuData.Add(luong)
 
+        menuData.Add(New MenuItemModel("Chính sách", GetType(frmChinhSach)))
         menuData.Add(New MenuItemModel("Cài đặt", GetType(frmSystem), ResizeImage(My.Resources.gear, 38, 38))) ' icon cài đặt
 
     End Sub
@@ -435,7 +447,7 @@
 
 
     '============================
-    ' M? form
+    ' Mở form
     '============================
     Private Sub OpenForm(type As Type)
 
@@ -465,5 +477,3 @@
     End Sub
 
 End Class
-
-

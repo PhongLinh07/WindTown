@@ -1,24 +1,27 @@
 ﻿## Language
+
 - Always communicate with users in Vietnamese.
 - When explaining code changes, write in Vietnamese.
 - Keep code identifiers (function/class/variable names) in Vietnamese, without accents.
 - Comments in code must be written in Vietnamese with accents when adding new comments.
 - Commit messages and pull request (PR) summaries must be written in Vietnamese.
+
+---
+
 ## Quy ước dự án
-- Chỉ chỉnh sửa ở bên trong UIUX/
-- Chỉ tham chiếu tới các thư mục, file khác không trực tiếp thay đổi nội dung của chúng.
-- Luôn lưu lại thiết kế cập nhật thiết kế.
-- Luôn lưu lại chỉnh sửa.
-- Luôn lưu lại tiến trình.
-- Luôn lưu lại lỗi để lần sau không còn mắc phải.
-- Luôn thử các trường hợp fail trước khi thử pass test.
-- Luôn chạy thử và sửa đến khi pass.
-- Trước khi sửa: ghi rõ mục tiêu thay đổi và phạm vi file.
-- Sau khi sửa: ghi tóm tắt “đã làm gì” + “vì sao làm”.
-- Luôn chạy tối thiểu 1 test nhanh hoặc build trước khi kết luận hoàn tất.
-- Ghi lại bước tái hiện lỗi (repro steps) khi phát hiện bug.
-- Không thay đổi API công khai nếu chưa thống nhất.
-- Ưu tiên sửa nhỏ, ít rủi ro hơn là “refactor lớn”.
-- Lưu lại các thay đổi thiết kế, logic, lỗi, changes.md, error.md, progress.md, design.md bên trong thư mục .agent/.
-- Sử dụng tiếng việt có không dấu cho các biến, hàm, class 
-- Sử dụng tiếng việt có dấu cho các comment, commit message, PR summary, documentation.
+
+- Luôn đọc file AGENTS.md trước khi bắt đầu làm gì đó.
+- Phản hồi người dùng bằng tiếng việt có dấu.
+- Viết nội dung cho các file .md bằng tiếng việt có dấu trừ các từ chuyên sâu.
+- Ghi lại lỗi đã gặp phải tại error_log.md.
+- Ghi lại lịch sử, tiến trình tại hitstory_log.md.
+- Tạo TEST_CASE cho các nghiệm vụ.
+- Luôn chạy test case trước khi dừng lại.
+
+---
+
+## Giới hạn
+
+- Quy tắc 1: Các thư mục và file bên trong không được phép chỉnh sửa khi chưa có sự đồng ý.
+- Quy tắc 2: chia cấu trúc form thành 3 phần: form.Designer.vb (Nơi khởi tạo toàn bộ các control của form), form.vb(Nơi để viết các logic, sự kiện, hàm,...), form.resx.  
+- Áp dụng Quy tắc 1 cho: 1_Documents, 2_Core, 3_Modules.

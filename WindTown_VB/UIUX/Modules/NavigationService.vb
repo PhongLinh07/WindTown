@@ -1,5 +1,6 @@
 ﻿Imports System.IO
 Imports System.Text
+Imports System.Drawing
 Module NavigationService
 
     Private _mainPanel As Panel
@@ -141,7 +142,7 @@ End Module
 
 Module HoTroPhongChu
 
-    Private ReadOnly _phongChuUngDung As New Font("Microsoft YaHei UI", 10.0!, FontStyle.Regular, GraphicsUnit.Point)
+    Private ReadOnly _phongChuUngDung As New Font("Segoe UI", 10.0!, FontStyle.Regular, GraphicsUnit.Point)
 
     Public Sub ApDungPhongChu(root As Control)
         If root Is Nothing Then Return
@@ -240,6 +241,21 @@ Module UiDinhDang
         dtp.CustomFormat = dinhDangSuDung
     End Sub
 
+    Public Sub ApDungDinhDangLuoiChamCong(dgv As DataGridView)
+        If dgv Is Nothing Then Return
+        dgv.AllowUserToAddRows = False
+        dgv.AllowUserToDeleteRows = False
+        dgv.AllowUserToResizeRows = False
+        dgv.RowHeadersVisible = False
+        dgv.SelectionMode = DataGridViewSelectionMode.FullRowSelect
+        dgv.MultiSelect = False
+        dgv.BackgroundColor = Color.White
+        dgv.BorderStyle = BorderStyle.None
+        dgv.ColumnHeadersHeight = 40
+        dgv.RowTemplate.Height = 56
+        dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None
+    End Sub
+
 End Module
 
 Module BaoCaoXuat
@@ -305,4 +321,3 @@ Module BaoCaoXuat
     End Function
 
 End Module
-

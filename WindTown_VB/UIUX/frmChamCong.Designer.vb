@@ -59,6 +59,7 @@ Partial Class frmChamCong
         Me.mnuBaoCaoLoc = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuBaoCaoChon = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuBaoCaoTongHop = New System.Windows.Forms.ToolStripMenuItem()
+        Me.Label3 = New System.Windows.Forms.Label()
         Me.TableLayoutPanel1.SuspendLayout()
         Me.pnlHeader.SuspendLayout()
         Me.pnlHanhDong.SuspendLayout()
@@ -214,9 +215,9 @@ Partial Class frmChamCong
         Me.TableLayoutPanel2.BackColor = System.Drawing.Color.White
         Me.TableLayoutPanel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
         Me.TableLayoutPanel2.ColumnCount = 6
-        Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 110.0!))
-        Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 127.0!))
-        Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 188.0!))
+        Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 98.0!))
+        Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 139.0!))
+        Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 178.0!))
         Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
         Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 230.0!))
         Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 112.0!))
@@ -239,9 +240,10 @@ Partial Class frmChamCong
         '
         Me.PanelNhanh.Controls.Add(Me.lblLocNhanh)
         Me.PanelNhanh.Controls.Add(Me.cbbxThoiGianNhanh)
-        Me.PanelNhanh.Location = New System.Drawing.Point(113, 3)
+        Me.PanelNhanh.Dock = System.Windows.Forms.DockStyle.Top
+        Me.PanelNhanh.Location = New System.Drawing.Point(101, 3)
         Me.PanelNhanh.Name = "PanelNhanh"
-        Me.PanelNhanh.Size = New System.Drawing.Size(121, 58)
+        Me.PanelNhanh.Size = New System.Drawing.Size(133, 58)
         Me.PanelNhanh.TabIndex = 9
         '
         'lblLocNhanh
@@ -256,11 +258,12 @@ Partial Class frmChamCong
         'cbbxThoiGianNhanh
         '
         Me.cbbxThoiGianNhanh.BackColor = System.Drawing.Color.White
+        Me.cbbxThoiGianNhanh.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.cbbxThoiGianNhanh.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cbbxThoiGianNhanh.FormattingEnabled = True
         Me.cbbxThoiGianNhanh.Location = New System.Drawing.Point(0, 27)
         Me.cbbxThoiGianNhanh.Name = "cbbxThoiGianNhanh"
-        Me.cbbxThoiGianNhanh.Size = New System.Drawing.Size(118, 31)
+        Me.cbbxThoiGianNhanh.Size = New System.Drawing.Size(133, 31)
         Me.cbbxThoiGianNhanh.TabIndex = 1
         '
         'Panel2
@@ -320,39 +323,43 @@ Partial Class frmChamCong
         'ComboBox1
         '
         Me.ComboBox1.BackColor = System.Drawing.Color.White
+        Me.ComboBox1.Dock = System.Windows.Forms.DockStyle.Top
         Me.ComboBox1.FormattingEnabled = True
         Me.ComboBox1.Location = New System.Drawing.Point(3, 3)
         Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(95, 31)
+        Me.ComboBox1.Size = New System.Drawing.Size(92, 31)
         Me.ComboBox1.TabIndex = 0
         '
         'Panel1
         '
+        Me.Panel1.Controls.Add(Me.Label3)
         Me.Panel1.Controls.Add(Me.ComboBox2)
         Me.Panel1.Controls.Add(Me.cbbxThoiGian)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel1.Location = New System.Drawing.Point(240, 3)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(182, 108)
+        Me.Panel1.Size = New System.Drawing.Size(172, 108)
         Me.Panel1.TabIndex = 10
         '
         'ComboBox2
         '
         Me.ComboBox2.BackColor = System.Drawing.Color.White
-        Me.ComboBox2.Dock = System.Windows.Forms.DockStyle.Top
         Me.ComboBox2.FormattingEnabled = True
-        Me.ComboBox2.Location = New System.Drawing.Point(0, 0)
+        Me.ComboBox2.Location = New System.Drawing.Point(0, 27)
         Me.ComboBox2.Name = "ComboBox2"
-        Me.ComboBox2.Size = New System.Drawing.Size(182, 31)
+        Me.ComboBox2.Size = New System.Drawing.Size(169, 31)
         Me.ComboBox2.TabIndex = 1
         '
         'cbbxThoiGian
         '
+        Me.cbbxThoiGian.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.cbbxThoiGian.BackColor = System.Drawing.Color.White
         Me.cbbxThoiGian.FormattingEnabled = True
-        Me.cbbxThoiGian.Location = New System.Drawing.Point(0, 47)
+        Me.cbbxThoiGian.Location = New System.Drawing.Point(0, 73)
         Me.cbbxThoiGian.Name = "cbbxThoiGian"
-        Me.cbbxThoiGian.Size = New System.Drawing.Size(179, 31)
+        Me.cbbxThoiGian.Size = New System.Drawing.Size(169, 31)
         Me.cbbxThoiGian.TabIndex = 7
         '
         'Panel3
@@ -363,15 +370,15 @@ Partial Class frmChamCong
         Me.Panel3.Controls.Add(Me.ComboBox3)
         Me.Panel3.Controls.Add(Me.dtpkToday)
         Me.Panel3.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Panel3.Location = New System.Drawing.Point(428, 3)
+        Me.Panel3.Location = New System.Drawing.Point(418, 3)
         Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(261, 108)
+        Me.Panel3.Size = New System.Drawing.Size(271, 108)
         Me.Panel3.TabIndex = 11
         '
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(16, 76)
+        Me.Label2.Location = New System.Drawing.Point(8, 76)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(42, 23)
         Me.Label2.TabIndex = 9
@@ -380,7 +387,7 @@ Partial Class frmChamCong
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(16, 45)
+        Me.Label1.Location = New System.Drawing.Point(8, 45)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(29, 23)
         Me.Label1.TabIndex = 8
@@ -389,9 +396,9 @@ Partial Class frmChamCong
         'dtpkInday
         '
         Me.dtpkInday.CalendarMonthBackground = System.Drawing.Color.White
-        Me.dtpkInday.Location = New System.Drawing.Point(62, 76)
+        Me.dtpkInday.Location = New System.Drawing.Point(51, 76)
         Me.dtpkInday.Name = "dtpkInday"
-        Me.dtpkInday.Size = New System.Drawing.Size(196, 29)
+        Me.dtpkInday.Size = New System.Drawing.Size(217, 29)
         Me.dtpkInday.TabIndex = 8
         '
         'ComboBox3
@@ -401,15 +408,15 @@ Partial Class frmChamCong
         Me.ComboBox3.FormattingEnabled = True
         Me.ComboBox3.Location = New System.Drawing.Point(0, 0)
         Me.ComboBox3.Name = "ComboBox3"
-        Me.ComboBox3.Size = New System.Drawing.Size(261, 31)
+        Me.ComboBox3.Size = New System.Drawing.Size(271, 31)
         Me.ComboBox3.TabIndex = 4
         '
         'dtpkToday
         '
         Me.dtpkToday.CalendarMonthBackground = System.Drawing.Color.White
-        Me.dtpkToday.Location = New System.Drawing.Point(62, 42)
+        Me.dtpkToday.Location = New System.Drawing.Point(51, 42)
         Me.dtpkToday.Name = "dtpkToday"
-        Me.dtpkToday.Size = New System.Drawing.Size(196, 29)
+        Me.dtpkToday.Size = New System.Drawing.Size(217, 29)
         Me.dtpkToday.TabIndex = 2
         '
         'DataGridView1
@@ -450,6 +457,15 @@ Partial Class frmChamCong
         Me.mnuBaoCaoTongHop.Size = New System.Drawing.Size(241, 24)
         Me.mnuBaoCaoTongHop.Text = "Tổng hợp tháng/quý"
         '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(3, 1)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(109, 23)
+        Me.Label3.TabIndex = 2
+        Me.Label3.Text = "Theo ca làm"
+        '
         'frmChamCong
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(10.0!, 23.0!)
@@ -475,6 +491,7 @@ Partial Class frmChamCong
         Me.Panel2.ResumeLayout(False)
         Me.Panel2.PerformLayout()
         Me.Panel1.ResumeLayout(False)
+        Me.Panel1.PerformLayout()
         Me.Panel3.ResumeLayout(False)
         Me.Panel3.PerformLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
@@ -518,4 +535,5 @@ Partial Class frmChamCong
     Friend WithEvents dtpkInday As DateTimePicker
     Friend WithEvents Label2 As Label
     Friend WithEvents Label1 As Label
+    Friend WithEvents Label3 As Label
 End Class
