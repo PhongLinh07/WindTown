@@ -18,10 +18,7 @@ Public NotInheritable Class FormulaHelper
     ''' Tính toán giá trị từ công thức
     ''' VD: EvalFormula("BASE_SALARY * 0.08", maps) → 720000.0
     ''' </summary>
-    Public Shared Function EvalFormula(
-        formula As String,
-        vars As Dictionary(Of String, Double),
-        Optional allowedFunctions As HashSet(Of String) = Nothing) As Double
+    Public Shared Function EvalFormula(formula As String, vars As Dictionary(Of String, Double), Optional allowedFunctions As HashSet(Of String) = Nothing) As Double
 
         Try
             formula = Sanitize(formula, vars, allowedFunctions)
@@ -129,10 +126,7 @@ Public NotInheritable Class FormulaHelper
     ' SANITIZE & VALIDATION
     ' ============================
 
-    Private Shared Function Sanitize(
-        formula As String,
-        vars As Dictionary(Of String, Double),
-        allowed As HashSet(Of String)) As String
+    Private Shared Function Sanitize(formula As String, vars As Dictionary(Of String, Double), allowed As HashSet(Of String)) As String
 
         If String.IsNullOrWhiteSpace(formula) Then Return "0"
 

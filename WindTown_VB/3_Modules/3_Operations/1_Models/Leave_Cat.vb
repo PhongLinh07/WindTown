@@ -7,7 +7,7 @@ Public Class Leave_Cat
     Inherits BaseEntity
 
     Public Sub New()
-        code = ""
+        code = $"LEA_CAT{GenerateRandomNumbers.Generate()}"
         name = ""
         benefit = 0
         note = ""

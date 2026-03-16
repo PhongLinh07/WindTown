@@ -7,7 +7,7 @@ Public Class Employee
     Inherits BaseEntity
 
     Public Sub New()
-        code = ""
+        code = "EMP" + GenerateRandomNumbers.Generate()
         name = ""
         note = ""
         status = 0

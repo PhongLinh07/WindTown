@@ -2,6 +2,7 @@ Imports System.Linq
 Imports System.Runtime.ConstrainedExecution
 Imports System.Runtime.InteropServices.ComTypes
 Imports Azure
+Imports Microsoft.Identity.Client.Cache
 Imports WindTown_VB.PolicyParameter
 
 
@@ -17,36 +18,44 @@ Public Class PayrollService
 
     Public Overrides Function Execute(intent As DataIntent, Optional data As Object = Nothing) As ServiceResponse(Of Object)
 
-
         Try
             Select Case intent
                 Case DataIntent.Insert
 
                     Dim payroll = TryCast(data, Payroll)
                     payroll.id = MyBase.Execute(intent, payroll).Data
+                    Return Gen_Default_Pay_Item(payroll)
 
-                    Dim pItemSV As Pay_ItemService = New Pay_ItemService()
-
-                    Dim total_income = PolicyParameter.System_Parameter.GetParameter(PolicyParameter.System_Parameter.ID.SYS_TOTAL_INCOME)
-                    Dim net_deduction = PolicyParameter.System_Parameter.GetParameter(PolicyParameter.System_Parameter.ID.SYS_DEDUCTION)
-                    Dim net_salary = PolicyParameter.System_Parameter.GetParameter(PolicyParameter.System_Parameter.ID.SYS_NET_SALARY)
-
-                    Dim itemDefault As List(Of Pay_Item) = New List(Of Pay_Item) From {
-                        New Pay_Item With {.Payroll = payroll, .code = total_income.code, .name = total_income.name, .value = 0, .category = CInt(PolicyParameter.Category_Amount.ID.INCOME), .priority = 70},
-                        New Pay_Item With {.Payroll = payroll, .code = net_deduction.code, .name = net_deduction.name, .value = 0, .category = CInt(PolicyParameter.Category_Amount.ID.DEDUCTION), .priority = 90},
-                        New Pay_Item With {.Payroll = payroll, .code = net_salary.code, .name = net_salary.name, .value = 0, .category = CInt(PolicyParameter.Category_Amount.ID.INCOME), .priority = 100}
-                    }
-
-                    For Each item In itemDefault
-                        pItemSV.Execute(DataIntent.Insert, item)
-                    Next
-                    Return ServiceResponse(Of Object).Success("")
                 Case DataIntent.Cal_Net_Salary_One_Payroll
                     Dim payroll = TryCast(data, Payroll)
                     If payroll Is Nothing Then
                         Return ServiceResponse(Of Object).Fail("Lỗi tính lương: Dữ liệu bảng lương không hợp lệ.")
                     End If
                     Return Cal_Net_Salary_One_Payroll(payroll)
+
+                Case DataIntent.Cal_Net_Salary_One_Period
+                    Dim period = TryCast(data, Pay_Period)
+
+                    If period Is Nothing Then
+                        Return ServiceResponse(Of Object).Fail("Lỗi tính lương: Dữ liệu kỳ lương không hợp lệ.")
+                    End If
+                    Return Cal_Net_Salary_One_Period(period)
+
+                Case DataIntent.Aggregation_Data_One_Payroll
+                    Dim payroll = TryCast(data, Payroll)
+                    If payroll Is Nothing Then
+                        Return ServiceResponse(Of Object).Fail("Lỗi tổng hợp dữ liệu : Dữ liệu bảng lương không hợp lệ.")
+                    End If
+                    Return Aggregation_Data_One_Payroll(payroll)
+
+                Case DataIntent.Aggregation_Data_One_Period
+                    Dim period = TryCast(data, Pay_Period)
+
+                    If period Is Nothing Then
+                        Return ServiceResponse(Of Object).Fail("Lỗi tính lương: Dữ liệu kỳ lương không hợp lệ.")
+                    End If
+                    Return Aggregation_Data_One_Period(period)
+
                 Case DataIntent.Init_Payrolls
                     Dim period = TryCast(data, Pay_Period)
 
@@ -57,23 +66,7 @@ Public Class PayrollService
                     If period.start_date > period.end_date Then
                         Return ServiceResponse(Of Object).Fail("Lỗi khởi tạo bảng lương: Ngày bắt đầu không được lớn hơn ngày kết thúc.")
                     End If
-
-                    ' 4. Gọi hàm thực thi logic
                     Return Init_Payrolls(period)
-
-                Case DataIntent.Calculate_for_All_Payroll_By_Period
-                    Dim period = TryCast(data, Pay_Period)
-
-                    If period Is Nothing Then
-                        Return ServiceResponse(Of Object).Fail("Lỗi tính lương: Dữ liệu kỳ lương không hợp lệ.")
-                    End If
-
-                    If period.start_date > period.end_date Then
-                        Return ServiceResponse(Of Object).Fail("Lỗi tính lương: Ngày bắt đầu không được lớn hơn ngày kết thúc.")
-                    End If
-
-                    ' 4. Gọi hàm thực thi logic
-                    Return Calculate_for_All_Payroll_By_Period(period)
 
                 Case DataIntent.GetPayrollByPeriod
                     Dim period = TryCast(data, Pay_Period)
@@ -83,82 +76,43 @@ Public Class PayrollService
                         Return ServiceResponse(Of Object).Fail("Lỗi lấy bảng lương: Dữ liệu kỳ lương không hợp lệ.")
                     End If
 
-                    ' 2. Gọi hàm thực thi logic
-                    Return _repoPayroll.GetPayrollByPeriod(period)
+                    Dim result = _repoPayroll.GetPayrollByPeriod(period)
+                    Return ServiceResponse(Of Object).Success(result)
 
                 Case Else
                     Return MyBase.Execute(intent, data)
             End Select
         Catch ex As Exception
             ' Bạn có thể ghi log lỗi vào file ở đây
-            Return ServiceResponse(Of Object).Fail("Lỗi hệ thống: " & ex.Message, ex)
+            Return ServiceResponse(Of Object).Fail($"Lỗi hệ thống: {101}" & ex.Message, ex)
         End Try
 
     End Function
 
+    Private Function Gen_Default_Pay_Item(payroll As Payroll) As ServiceResponse(Of Object)
 
-    Private Function Cal_Net_Salary_One_Payroll(payrol As Payroll) As ServiceResponse(Of Object)
-        Logger.Instance.Logging($"____Tính lương: {payrol.code}_____", Logger.Information)
         Try
-            Dim pItemSV As New Pay_ItemService()
-            Dim response = pItemSV.Execute(DataIntent.GetPayItemByPayroll, payrol)
-            If Not response.IsSuccess Then
-                Return ServiceResponse(Of Object).Fail($"Lỗi lấy thành phần: {response.Message}")
-            End If
+            Dim payItemService As Pay_ItemService = New Pay_ItemService()
 
-            Dim items = CType(response.Data, IEnumerable(Of Pay_Item)).ToList()
+            Dim total_income = System_Parameter.GetParameter(System_Parameter.ID.SYS_TOTAL_INCOME)
+            Dim net_deduction = System_Parameter.GetParameter(System_Parameter.ID.SYS_DEDUCTION)
+            Dim net_salary = System_Parameter.GetParameter(System_Parameter.ID.SYS_NET_SALARY)
 
-            ' ── Hàm tìm hoặc tạo item hệ thống ──────────────
-            Dim GetOrCreate = Function(sysId As System_Parameter.ID) As Pay_Item
-                                  Dim param = System_Parameter.GetParameter(sysId)
-                                  Dim item = items.FirstOrDefault(Function(x) x.code = param.code)
-                                  If item Is Nothing Then
-                                      item = New Pay_Item With {
-                                        .Payroll = payrol,
-                                        .code = param.code,
-                                        .name = param.name,
-                                        .value = 0,
-                                        .category = CInt(Category_Amount.ID.INFORMATION),
-                                        .priority = CInt(sysId)
-                                    }
-                                      pItemSV.Execute(DataIntent.Insert, item)
-                                      items.Add(item)
-                                      Logger.Instance.Logging(
-                    $"Tạo Pay_Item hệ thống: {param.code}", Logger.Warning)
-                                  End If
-                                  Return item
-                              End Function
+            Dim itemDefault As List(Of Pay_Item) = New List(Of Pay_Item) From {
+                New Pay_Item With {.Payroll = payroll, .code = total_income.code, .name = total_income.name, .value = 0, .category = total_income.category, .unit = total_income.unit, .priority = total_income.unit},
+                New Pay_Item With {.Payroll = payroll, .code = net_deduction.code, .name = net_deduction.name, .value = 0, .category = total_income.category, .unit = total_income.unit, .priority = .unit},
+                New Pay_Item With {.Payroll = payroll, .code = net_salary.code, .name = net_salary.name, .value = 0, .category = total_income.category, .unit = total_income.unit, .priority = .unit}
+            }
 
-            ' ── Tìm hoặc tạo 3 item ──────────────────────────
-            Dim itemTotalIncome = GetOrCreate(System_Parameter.ID.SYS_TOTAL_INCOME)
-            Dim itemTotalDeduct = GetOrCreate(System_Parameter.ID.SYS_DEDUCTION)
-            Dim itemNetSalary = GetOrCreate(System_Parameter.ID.SYS_NET_SALARY)
-
-            ' ── Tính theo sign ───────────────────────────────
-            itemTotalIncome.value = items _
-            .Where(Function(x) Category_Amount.GetSign(x.category) = 1) _
-            .Sum(Function(x) x.value)
-
-            itemTotalDeduct.value = items _
-            .Where(Function(x) Category_Amount.GetSign(x.category) = -1) _
-            .Sum(Function(x) x.value)
-
-            itemNetSalary.value = itemTotalIncome.value - itemTotalDeduct.value
-
-            ' ── Update 3 item ────────────────────────────────
-            pItemSV.Execute(DataIntent.Update, itemTotalIncome)
-            pItemSV.Execute(DataIntent.Update, itemTotalDeduct)
-            pItemSV.Execute(DataIntent.Update, itemNetSalary)
-
-            '' ── Snap vào payroll ─────────────────────────────
-            'payrol.total_income = itemTotalIncome.value
-            'payrol.net_salary = itemNetSalary.value
-
-            Return ServiceResponse(Of Object).Success(payrol)
+            For Each item In itemDefault
+                payItemService.Execute(DataIntent.Insert, item)
+            Next
 
         Catch ex As Exception
-            Return ServiceResponse(Of Object).Fail($"Lỗi hệ thống: {ex.Message}")
+            ' Bạn có thể ghi log lỗi vào file ở đây
+            Return ServiceResponse(Of Object).Fail($"Lỗi hệ thống: {101}" & ex.Message, ex)
         End Try
+        Return ServiceResponse(Of Object).Success("")
     End Function
 
     ' Khởi tạo tất cả bảng lương của chu kỳ lương cho các nhân viên đang hoạt động | lấy theo hợp đồng   
@@ -215,11 +169,167 @@ Public Class PayrollService
             Return ServiceResponse(Of Object).Success(msg)
 
         Catch ex As Exception
-            Return ServiceResponse(Of Object).Fail($"Lỗi hệ thống: {ex.Message}")
+            Return ServiceResponse(Of Object).Fail($"Lỗi hệ thống: {ex.Message} {225}")
         End Try
     End Function
 
+#Region "Net salary"
+    Private Function Cal_Net_Salary_One_Payroll(payroll As Payroll) As ServiceResponse(Of Object)
+        Logger.Instance.Logging($"____Tính lương: {payroll.code}_____", Logger.Information)
+        Try
+            Dim pItemSV As New Pay_ItemService()
+            Dim response = pItemSV.Execute(DataIntent.GetPayItemByPayroll, payroll)
+            If Not response.IsSuccess Then
+                Return ServiceResponse(Of Object).Fail($"Lỗi lấy thành phần: {response.Message}")
+            End If
 
+            Dim items = CType(response.Data, IEnumerable(Of Pay_Item)).ToList()
+
+            ' ── Hàm tìm hoặc tạo item hệ thống ──────────────
+            Dim GetOrCreate = Function(sysId As System_Parameter.ID) As Pay_Item
+                                  Dim param = System_Parameter.GetParameter(sysId)
+                                  Dim item = items.FirstOrDefault(Function(x) x.code = param.code)
+                                  If item Is Nothing Then
+                                      item = New Pay_Item With {
+                                        .Payroll = payroll,
+                                        .code = param.code,
+                                        .name = param.name,
+                                        .value = 0,
+                                        .category = param.category,
+                                        .unit = param.unit,
+                                        .priority = param.priority
+                                      }
+                                      pItemSV.Execute(DataIntent.Insert, item)
+                                      items.Add(item)
+                                      Logger.Instance.Logging($"Tạo Pay_Item hệ thống: {param.code}", Logger.Warning)
+                                  End If
+                                  Return item
+                              End Function
+
+
+            ' ── Tìm hoặc tạo 3 item ──────────────────────────
+            Dim itemTotalIncome = GetOrCreate(System_Parameter.ID.SYS_TOTAL_INCOME)
+            Dim itemTotalDeduct = GetOrCreate(System_Parameter.ID.SYS_DEDUCTION)
+            Dim itemNetSalary = GetOrCreate(System_Parameter.ID.SYS_NET_SALARY)
+
+            ' ── Tính theo sign ───────────────────────────────
+            itemTotalIncome.value = items _
+            .Where(Function(x) Category_PayItem.GetSign(x.category) = 1) _
+            .Sum(Function(x) x.value)
+
+            itemTotalDeduct.value = items _
+            .Where(Function(x) Category_PayItem.GetSign(x.category) = -1) _
+            .Sum(Function(x) x.value)
+
+            itemNetSalary.value = itemTotalIncome.value - itemTotalDeduct.value
+
+            ' ── Update 3 item ────────────────────────────────
+            pItemSV.Execute(DataIntent.Update, itemTotalIncome)
+            pItemSV.Execute(DataIntent.Update, itemTotalDeduct)
+            pItemSV.Execute(DataIntent.Update, itemNetSalary)
+
+            '' ── Snap vào payroll ─────────────────────────────
+            'payrol.total_income = itemTotalIncome.value
+            'payrol.net_salary = itemNetSalary.value
+
+            Return ServiceResponse(Of Object).Success(payroll)
+
+        Catch ex As Exception
+            Return ServiceResponse(Of Object).Fail($"Lỗi hệ thống: {ex.Message} {167}")
+        End Try
+    End Function
+
+    Private Function Cal_Net_Salary_One_Period(period As Pay_Period) As ServiceResponse(Of Object)
+        Logger.Instance.Logging($"____Tính lương: {period.name}_____", Logger.Information)
+        Dim payrollList As List(Of Payroll)
+        Dim succ = 0
+        Try
+
+
+            Dim response = Me.Execute(DataIntent.GetPayrollByPeriod, period)
+            payrollList = If(response.IsSuccess, response.Data, New List(Of Payroll))
+
+            Logger.Instance.Logging($"Đã tìm thấy {payrollList.Count()} bảng lương của kỳ: {response.Message}")
+
+            If payrollList.Count = 0 Then
+                Return ServiceResponse(Of Object).Success("")
+            End If
+
+
+
+            Dim pItemSV As New Pay_ItemService()
+
+            For Each payroll In payrollList
+
+                Logger.Instance.Logging($"Tính lương cho bảng lương: {payroll.code}", Logger.Warning)
+                response = pItemSV.Execute(DataIntent.GetPayItemByPayroll, payroll)
+
+                If Not response.IsSuccess Then
+                    Logger.Instance.Logging($"Lỗi lấy thành phần của bảng lương {payroll.code}: {response.Message}")
+                    Continue For
+                End If
+
+                Dim items = CType(response.Data, IEnumerable(Of Pay_Item)).ToList()
+
+                ' ── Hàm tìm hoặc tạo item hệ thống ──────────────
+                Dim GetOrCreate = Function(sysId As System_Parameter.ID) As Pay_Item
+                                      Dim param = System_Parameter.GetParameter(sysId)
+                                      Dim item = items.FirstOrDefault(Function(x) x.code = param.code)
+                                      If item Is Nothing Then
+                                          item = New Pay_Item With {
+                                        .Payroll = payroll,
+                                        .code = param.code,
+                                        .name = param.name,
+                                        .value = 0,
+                                        .category = param.category,
+                                        .unit = param.unit,
+                                        .priority = param.priority
+                                    }
+                                          pItemSV.Execute(DataIntent.Insert, item)
+                                          items.Add(item)
+                                          Logger.Instance.Logging($"Tạo Pay_Item hệ thống: {param.code} cho bảng lương {payroll.code}", Logger.Warning)
+                                      End If
+                                      Return item
+                                  End Function
+
+                ' ── Tìm hoặc tạo 3 item ──────────────────────────
+                Dim itemTotalIncome = GetOrCreate(System_Parameter.ID.SYS_TOTAL_INCOME)
+                Dim itemTotalDeduct = GetOrCreate(System_Parameter.ID.SYS_DEDUCTION)
+                Dim itemNetSalary = GetOrCreate(System_Parameter.ID.SYS_NET_SALARY)
+
+                ' ── Tính theo sign ───────────────────────────────
+                itemTotalIncome.value = items _
+                .Where(Function(x) Category_PayItem.GetSign(x.category) = 1) _
+                .Sum(Function(x) x.value)
+
+                itemTotalDeduct.value = items _
+                .Where(Function(x) Category_PayItem.GetSign(x.category) = -1) _
+                .Sum(Function(x) x.value)
+
+                itemNetSalary.value = itemTotalIncome.value - itemTotalDeduct.value
+
+                ' ── Update 3 item ────────────────────────────────
+                pItemSV.Execute(DataIntent.Update, itemTotalIncome)
+                pItemSV.Execute(DataIntent.Update, itemTotalDeduct)
+                pItemSV.Execute(DataIntent.Update, itemNetSalary)
+
+                '' ── Snap vào payroll ─────────────────────────────
+                'payrol.total_income = itemTotalIncome.value
+                'payrol.net_salary = itemNetSalary.value
+
+                Logger.Instance.Logging($"Tính lương thành công cho bảng lương: {payroll.code}", Logger.Success)
+                succ += 1
+
+            Next
+
+        Catch ex As Exception
+            Return ServiceResponse(Of Object).Fail($"Lỗi hệ thống: {ex.Message} {167}")
+        End Try
+        Logger.Instance.Logging($"Tính lương thành công cho {succ}/{payrollList.Count()} bảng lương:", Logger.Success)
+        Return ServiceResponse(Of Object).Success($"Tính lương thành công cho {succ}/{payrollList.Count()} bảng lương:")
+    End Function
+
+#End Region
 
 #Region "LOAD HELPERS — gọi service/repo tương ứng"
     Private Function LoadPayrolls(period As Pay_Period) As List(Of Payroll)
@@ -237,6 +347,9 @@ Public Class PayrollService
     Private Function LoadAttendance(period As Pay_Period) As List(Of Attendance)
         Dim sv As New AttendanceService()
         Dim res = sv.Execute(DataIntent.GetAttendanceByPeriod, period)
+        Dim che As List(Of Attendance) = res.Data
+
+        Logger.Instance.Logging($"Load : { che.Count() } {res.Message}", Logger.Warning)
         Return If(res.IsSuccess, res.Data, New List(Of Attendance)())
     End Function
 
@@ -252,33 +365,31 @@ Public Class PayrollService
     End Function
 #End Region
 
-
 #Region " LOAD ALL DATA"
     ' Load và chuẩn hóa tất cả nguồn dữ liệu thành Dictionary
     ' Key bắt đầu "_" là metadata (không đưa vào công thức)
     ' Muốn thêm nguồn dữ liệu mới (VD: sales, production)
     ' → thêm block ở đây, không đụng gì engine bên trên"
     ' ════════════════════════════════════════════════════════════════
-    Private Function LoadAllData(period As Pay_Period) As Dictionary(Of String, List(Of Dictionary(Of String, Double)))
+    Private Function LoadAllData(period As Pay_Period) As Dictionary(Of Integer, List(Of Dictionary(Of String, Double)))
 
         Dim holidays = LoadHoliday(period)  ' load 1 lần
-
-        Dim result As New Dictionary(Of String, List(Of Dictionary(Of String, Double)))(StringComparer.OrdinalIgnoreCase)
+        Dim result As New Dictionary(Of Integer, List(Of Dictionary(Of String, Double)))
 
         ' ── Attendance ───────────────────────────────────────────
-        result(PolicyParameter.Data_Source.ID.ATTENDANCE) = LoadAttendance(period) _
+        result(CInt(Data_Source.ID.ATTENDANCE)) = LoadAttendance(period) _
             .Select(Function(r)
                         ' Tìm xem ngày chấm công có trùng ngày lễ không
                         Dim hol = holidays.FirstOrDefault(Function(h) h.of_date = r.of_date)
                         Return New Dictionary(Of String, Double)(StringComparer.OrdinalIgnoreCase) From {
                             {"_employee_id", CDbl(r.employee_id)},
-                            {PolicyParameter.System_Parameter.ID.SYS_OFFICE_HOURS, CDbl(r.office_hours)},
-                            {PolicyParameter.System_Parameter.ID.SYS_OVERTIME_HOURS, CDbl(r.overtime_hours)},
-                            {PolicyParameter.System_Parameter.ID.SYS_LATE_HOURS, CDbl(r.late_hours)},
-                            {PolicyParameter.System_Parameter.ID.SYS_EARLY_LEAVE_HOURS, CDbl(r.early_hours)},
-                            {PolicyParameter.System_Parameter.ID.SYS_SHIFT, CDbl(r.shift)},
-                            {PolicyParameter.System_Parameter.ID.SYS_IS_HOLIDAY, If(hol IsNot Nothing, 1.0, 0.0)},
-                            {PolicyParameter.System_Parameter.ID.SYS_MULT_HOLIDAY, If(hol IsNot Nothing, CDbl(hol.mult), 1.0)}
+                            {System_Parameter.ID.SYS_OFFICE_HOURS.ToString(), CDbl(r.office_hours)},
+                            {System_Parameter.ID.SYS_OVERTIME_HOURS.ToString(), CDbl(r.overtime_hours)},
+                            {System_Parameter.ID.SYS_LATE_HOURS.ToString(), CDbl(r.late_hours)},
+                            {System_Parameter.ID.SYS_EARLY_LEAVE_HOURS.ToString(), CDbl(r.early_hours)},
+                            {System_Parameter.ID.SYS_SHIFT.ToString(), CDbl(r.shift)},
+                            {System_Parameter.ID.SYS_IS_HOLIDAY.ToString(), If(hol IsNot Nothing, 1.0, 0.0)},
+                            {System_Parameter.ID.SYS_MULT_HOLIDAY.ToString(), If(hol IsNot Nothing, CDbl(hol.mult), 1.0)}
                         }
                     End Function).ToList()
 
@@ -300,26 +411,18 @@ Public Class PayrollService
 
     Private Function SeedSystemVars(payroll As Payroll, period As Pay_Period) As Dictionary(Of String, Double)
         Return New Dictionary(Of String, Double)(StringComparer.OrdinalIgnoreCase) From {
-            {PolicyParameter.System_Parameter.ID.SYS_BASE_SALARY, CDbl(payroll.Position.Contract.base_salary)},
-            {PolicyParameter.System_Parameter.ID.SYS_SALARY_MULT, CDbl(payroll.Position.Salary_Mult.mult)},
-            {PolicyParameter.System_Parameter.ID.SYS_STD_HOURS, CDbl(period.std_hours)}
+            {System_Parameter.ID.SYS_BASE_SALARY.ToString(), CDbl(payroll.Position.Contract.base_salary)},
+            {System_Parameter.ID.SYS_SALARY_MULT.ToString(), CDbl(payroll.Position.Salary_Mult.mult)},
+            {System_Parameter.ID.SYS_STD_HOURS.ToString(), CDbl(period.std_hours)}
         }
     End Function
 #End Region
 
 
-    ' ════════════════════════════════════════════════════════════════
-    ' HÀM CHÍNH
-    ' ════════════════════════════════════════════════════════════════
-    Public Function Calculate_for_All_Payroll_By_Period(period As Pay_Period) As ServiceResponse(Of Object)
-        Logger.Instance.Logging($"Bắt đầu tính lương kỳ: {period.name}", Logger.Information)
+    Public Function Aggregation_Data_One_Payroll(payroll As Payroll) As ServiceResponse(Of Object)
+        Logger.Instance.Logging($"Bắt đầu tổng hợp dữ liệu cho bảng lương: {payroll.code}", Logger.Information)
         Try
 
-            ' ── BƯỚC 1: LOAD DATA 1 LẦN ──────────────────────────
-            Dim payrolls = LoadPayrolls(period)
-            If payrolls Is Nothing OrElse payrolls.Count = 0 Then
-                Return ServiceResponse(Of Object).Fail("Không có bảng lương nào.")
-            End If
 
             ' Load và sort policy 1 lần — quan trọng: ASC theo priority
             Dim policies = LoadPolicies().Where(Function(p) p.status = 1) _
@@ -330,20 +433,129 @@ Public Class PayrollService
             End If
 
             ' Load tất cả data nguồn vào RAM, chuẩn hóa thành Dictionary
-            Dim allData = LoadAllData(period)
+            Dim allData = LoadAllData(payroll.Pay_Period)
 
-            Dim allItems As New List(Of Pay_Item)()
-            Logger.Instance.Logging($"Tìm thấy {payrolls.Count} bảng lương, {policies.Count} policy.", Logger.Information)
+            Dim itemsOfPayroll As New Dictionary(Of Payroll, List(Of Pay_Item))
+            Logger.Instance.Logging($"Tìm thấy {policies.Count} policy.", Logger.Information)
 
 
             ' ── BƯỚC 2: LOOP TỪNG NHÂN VIÊN ─────────────────────
-            For Each payroll In payrolls
+            Logger.Instance.Logging($"Đang tính: {payroll.Position.Contract.employee_id}", Logger.Information)
+
+            ' maps = bộ nhớ biến của nhân viên này
+            ' Tích lũy dần: HOURLY_RATE → SUM_* → SALARY_*
+            Dim maps = SeedSystemVars(payroll, payroll.Pay_Period)
+
+
+            ' ── BƯỚC 3: LOOP TỪNG POLICY (đã sort theo priority)
+            For Each p In policies
+
+                ' 3A. Lấy các dòng dữ liệu cần tính
+                '     data_source = null       → [{maps}]  (1 lần)
+                '     data_source = "attendance"→ [row1, row2, ...]
+                Dim rows = GetRows(p, payroll, maps, allData)
+                If rows.Count = 0 Then
+                    maps(p.code) = 0.0
+                    Continue For
+                End If
+
+
+                ' 3B. Eval công thức cho từng dòng
+                Dim values As New List(Of Double)()
+                For Each row In rows
+                    Dim v = FormulaHelper.EvalFormula(p.rule, row)
+                    values.Add(v)
+                Next
+
+                ' 3C. Tổng hợp: sum / max / min / set / count
+                Dim result = Aggregate(values, p.aggregate)
+
+                ' 3D. Lưu vào maps để policy sau dùng được
+                '     VD: SUM_OFFICE_HOURS = 168.5
+                '         → SALARY_MAIN = SUM_OFFICE_HOURS * HOURLY_RATE dùng được
+                maps(p.code) = result
+
+                ' 3E. Tạo Pay_Item nếu là khoản tiền thực
+                If p.gen_item = 1 Then
+
+                    If Not itemsOfPayroll.ContainsKey(payroll) Then
+                        itemsOfPayroll(payroll) = New List(Of Pay_Item)
+                    End If
+
+                    itemsOfPayroll(payroll).Add(New Pay_Item With {
+                    .Payroll = payroll,
+                    .code = p.code,
+                    .name = p.name,
+                    .category = p.category,
+                    .priority = p.priority,
+                    .unit = p.unit,
+                    .value = result,
+                    .note = p.note,
+                    .status = 0})
+                End If
+
+
+            Next ' policy
+
+
+            ' ── BƯỚC 4: BATCH INSERT 1 LẦN ──────────────────────
+            ' Không insert từng cái trong vòng lặp → rất chậm
+            If itemsOfPayroll(payroll).Count > 0 Then
+                Dim reponse = BatchInsert(itemsOfPayroll)
+                If Not reponse.IsSuccess Then
+                    Logger.Instance.Logging(reponse.Message, Logger.Error)
+                    Return ServiceResponse(Of Object).Fail(reponse.Message)
+                End If
+            End If
+
+            Logger.Instance.Logging($"Hoàn tất. Đã tạo {itemsOfPayroll(payroll).Count} Pay_Items.", Logger.Success)
+            Return ServiceResponse(Of Object).Success("Tổng hợp lương hoàn tất")
+
+        Catch ex As Exception
+            Logger.Instance.Logging($"Lỗi engine: {ex.Message}", Logger.Error)
+            Return ServiceResponse(Of Object).Fail($"Lỗi: {ex.Message}")
+        End Try
+    End Function
+
+    Public Function Aggregation_Data_One_Period(period As Pay_Period) As ServiceResponse(Of Object)
+        Logger.Instance.Logging($"Bắt đầu tổng hợp dữ liệu cho các bảng lưuong của kỳ: {period.name}", Logger.Information)
+        Dim payrollList As List(Of Payroll)
+        Dim succ = 0
+        Try
+
+            ' Load và sort policy 1 lần — quan trọng: ASC theo priority
+            Dim policies = LoadPolicies().Where(Function(p) p.status = 1) _
+                                         .OrderBy(Function(p) p.priority) _
+                                         .ToList()
+            If policies.Count = 0 Then
+                Return ServiceResponse(Of Object).Fail("Không có policy nào active.")
+            End If
+            ' Load tất cả data nguồn vào RAM, chuẩn hóa thành Dictionary
+            Dim allData = LoadAllData(period)
+
+            Dim itemsOfPayroll As New Dictionary(Of Payroll, List(Of Pay_Item))
+            Logger.Instance.Logging($"Tìm thấy {policies.Count} policy.", Logger.Information)
+            Dim pItemSV As New Pay_ItemService()
+
+            Dim response = Me.Execute(DataIntent.GetPayrollByPeriod, period)
+            payrollList = If(response.IsSuccess, response.Data, New List(Of Payroll))
+
+            Logger.Instance.Logging($"Đã tìm thấy {payrollList.Count()} bảng lương của kỳ: {response.Message}")
+
+            If payrollList.Count = 0 Then
+                Return ServiceResponse(Of Object).Success("")
+            End If
+
+
+            For Each payroll In payrollList
+
+
+                ' ── BƯỚC 2: LOOP TỪNG NHÂN VIÊN ─────────────────────
                 Logger.Instance.Logging($"Đang tính: {payroll.Position.Contract.employee_id}", Logger.Information)
 
                 ' maps = bộ nhớ biến của nhân viên này
                 ' Tích lũy dần: HOURLY_RATE → SUM_* → SALARY_*
-                Dim maps = SeedSystemVars(payroll, period)
-
+                Dim maps = SeedSystemVars(payroll, payroll.Pay_Period)
 
                 ' ── BƯỚC 3: LOOP TỪNG POLICY (đã sort theo priority)
                 For Each p In policies
@@ -351,9 +563,12 @@ Public Class PayrollService
                     ' 3A. Lấy các dòng dữ liệu cần tính
                     '     data_source = null       → [{maps}]  (1 lần)
                     '     data_source = "attendance"→ [row1, row2, ...]
-                    Dim rows = GetRows(p.data_source, payroll, maps, allData)
+                    Dim rows = GetRows(p, payroll, maps, allData)
+                    If rows.Count = 0 Then
+                        maps(p.code) = 0.0
+                        Continue For
+                    End If
 
-                    If rows.Count = 0 Then Continue For
 
                     ' 3B. Eval công thức cho từng dòng
                     Dim values As New List(Of Double)()
@@ -372,30 +587,42 @@ Public Class PayrollService
 
                     ' 3E. Tạo Pay_Item nếu là khoản tiền thực
                     If p.gen_item = 1 Then
-                        allItems.Add(New Pay_Item With {
-                            .Payroll = payroll,
-                            .code = p.code,
-                            .name = p.name,
-                            .value = CDec(ApplySign(result, p.category)),
-                            .note = p.note,
-                            .status = 1
-                        })
+
+                        If Not itemsOfPayroll.ContainsKey(payroll) Then
+                            itemsOfPayroll(payroll) = New List(Of Pay_Item)
+                        End If
+
+                        itemsOfPayroll(payroll).Add(New Pay_Item With {
+                        .Payroll = payroll,
+                        .code = p.code,
+                        .name = p.name,
+                        .category = p.category,
+                        .priority = p.priority,
+                        .unit = p.unit,
+                        .value = result,
+                        .note = p.note,
+                        .status = 0})
                     End If
+
 
                 Next ' policy
 
 
-            Next ' payroll
-
+                succ += 1
+            Next
 
             ' ── BƯỚC 4: BATCH INSERT 1 LẦN ──────────────────────
             ' Không insert từng cái trong vòng lặp → rất chậm
-            If allItems.Count > 0 Then
-                BatchInsert(allItems)
+            If itemsOfPayroll.Count() > 0 Then
+                Dim reponse = BatchInsert(itemsOfPayroll)
+                If Not reponse.IsSuccess Then
+                    Logger.Instance.Logging(reponse.Message, Logger.Error)
+                    Return ServiceResponse(Of Object).Fail(reponse.Message)
+                End If
             End If
 
-            Logger.Instance.Logging($"Hoàn tất. Đã tạo {allItems.Count} Pay_Items.", Logger.Success)
-            Return ServiceResponse(Of Object).Success("Tính lương hoàn tất")
+            Logger.Instance.Logging($"Tổng hợp hoàn tất: {succ}/{payrollList.Count()} bảng lương.", Logger.Success)
+            Return ServiceResponse(Of Object).Success($"Tổng hợp hoàn tất: {succ}/{payrollList.Count()} bảng lương.")
 
         Catch ex As Exception
             Logger.Instance.Logging($"Lỗi engine: {ex.Message}", Logger.Error)
@@ -404,38 +631,22 @@ Public Class PayrollService
     End Function
 
 
-
-
-
 #Region "GET ROWS"
-    ' Trả về list dòng dữ liệu cần tính cho policy này
-    ' Mỗi dòng là Dictionary(tên_biến → số) — sẵn sàng để Eval
-    '
-    ' data_source = null        → [{maps}]         tính 1 lần
-    ' data_source = "attendance"→ các dòng chấm công của nhân viên
-    ' data_source = "leave"     → các đơn nghỉ phép của nhân viên
-    ' data_source = "holiday"   → ngày lễ (áp dụng chung, không filter emp)
-    ' ════════════════════════════════════════════════════════════════
-    Private Function GetRows(source As String, payroll As Payroll,
-                             maps As Dictionary(Of String, Double),
-                             allData As Dictionary(Of String, List(Of Dictionary(Of String, Double)))
-                             ) As List(Of Dictionary(Of String, Double))
+    Private Function GetRows(policy As Policy, payroll As Payroll, maps As Dictionary(Of String, Double), allData As Dictionary(Of Integer, List(Of Dictionary(Of String, Double)))) As List(Of Dictionary(Of String, Double))
 
         ' Null → không loop, tính 1 lần với maps hiện tại
-        If String.IsNullOrEmpty(source) Then
-            Return New List(Of Dictionary(Of String, Double)) From {
-                New Dictionary(Of String, Double)(maps)
-            }
+        If policy.data_source = 1 Then
+            Return New List(Of Dictionary(Of String, Double)) From {maps}
         End If
 
-        If Not allData.ContainsKey(source) Then
-            Logger.Instance.Logging($"Không tìm thấy data_source: '{source}'", Logger.Warning)
-            Return New List(Of Dictionary(Of String, Double))()
+        If Not allData.ContainsKey(policy.data_source) Then
+            Logger.Instance.Logging($"Không tìm thấy data_source: '{policy.data_source}' của policy {policy.code}", Logger.Warning)
+            Return New List(Of Dictionary(Of String, Double))
         End If
 
         Dim empId = CDbl(payroll.Position.Contract.employee_id)
 
-        Return allData(source) _
+        Return allData(policy.data_source) _
             .Where(Function(r)
                        ' Holiday không có _emp_id → áp dụng cho tất cả
                        If Not r.ContainsKey("_employee_id") Then Return True
@@ -458,54 +669,67 @@ Public Class PayrollService
 
 
 #Region "AGGREGATE TYPE"
-    ' Làm gì với list kết quả Eval của tất cả dòng
-    '
-    ' 1_"set"   → giá trị đầu tiên  (dùng khi data_source = null)
-    ' 2_"sum"   → tổng              (cộng dồn qua các ngày)
-    ' 3_"max"   → lớn nhất          (VD: ngày đi muộn nhất)
-    ' 4_"min"   → nhỏ nhất
-    ' 5_"count" → đếm số dòng       (VD: số ngày đi làm)
-
-    ' ════════════════════════════════════════════════════════════════
-    Private Function Aggregate(values As List(Of Double),
-                               aggregate_func As Integer) As Double
+    Private Function Aggregate(values As List(Of Double), func As Integer) As Double
         If values Is Nothing OrElse values.Count = 0 Then Return 0
 
-        Select Case aggregate_func
-            Case PolicyParameter.Aggregate_Func.ID.SET_DATA : Return values.First()
-            Case PolicyParameter.Aggregate_Func.ID.SUM : Return values.Sum()
-            Case PolicyParameter.Aggregate_Func.ID.MAX : Return values.Max()
-            Case PolicyParameter.Aggregate_Func.ID.MIN : Return values.Min()
-            Case PolicyParameter.Aggregate_Func.ID.COUNT : Return CDbl(values.Count)
+        Select Case CType(func, Aggregate_Func.ID)
+            Case Aggregate_Func.ID.SET_DATA : Return values.First()
+            Case Aggregate_Func.ID.SUM : Return values.Sum()
+            Case Aggregate_Func.ID.MAX : Return values.Max()
+            Case Aggregate_Func.ID.MIN : Return values.Min()
+            Case Aggregate_Func.ID.COUNT : Return CDbl(values.Count)
             Case Else
-                Logger.Instance.Logging($"Kiêu tính toán không hợp lệ: '{PolicyParameter.Aggregate_Func.GetParameter(aggregate_func)}", Logger.Warning)
+                Logger.Instance.Logging($"Hàm tính toán không hợp lệ!: '{Aggregate_Func.GetParameter(func)}", Logger.Warning)
                 Return values.First()
         End Select
     End Function
 #End Region
 
 
-    ' ════════════════════════════════════════════════════════════════
-    ' APPLY SIGN
-    ' "negative" → giá trị âm (khấu trừ, bảo hiểm)
-    ' "positive" → giá trị dương (thu nhập, phụ cấp)
-    ' ════════════════════════════════════════════════════════════════
-    Private Function ApplySign(value As Double, category As Integer) As Double
-        Return PolicyParameter.Category_Amount.GetParameter(category).sign * Math.Abs(value)
-    End Function
-
 
     ' ════════════════════════════════════════════════════════════════
     ' BATCH INSERT
     ' Insert tất cả Pay_Items 1 lần thay vì từng cái trong vòng lặp
     ' ════════════════════════════════════════════════════════════════
-    Private Sub BatchInsert(items As List(Of Pay_Item))
-        Dim sv As New Pay_ItemService()
-        For Each item In items
-            sv.Execute(DataIntent.Insert, item)
-        Next
-    End Sub
+    Private Function BatchInsert(itemsOfPayroll As Dictionary(Of Payroll, List(Of Pay_Item))) As ServiceResponse(Of Object)
+        Try
+            Dim pItemSV As New Pay_ItemService()
 
+            For Each payroll In itemsOfPayroll.Keys
+                Dim response = pItemSV.Execute(DataIntent.GetPayItemByPayroll, payroll)
+                If Not response.IsSuccess Then
+                    Return ServiceResponse(Of Object).Fail($"Lỗi lấy thành phần: {response.Message}")
+                End If
+
+                Dim existingItems = CType(response.Data, IEnumerable(Of Pay_Item)) _
+                    .ToDictionary(Function(x) x.code, StringComparer.OrdinalIgnoreCase)
+
+                For Each item In itemsOfPayroll(payroll)
+                    If existingItems.ContainsKey(item.code) Then
+                        Dim existing = existingItems(item.code)
+
+                        ' Bảo vệ custom item
+                        If existing.source = Pay_Item.source_custum Then
+                            Logger.Instance.Logging($"Bỏ qua [{item.code}] — source: {existing.source_UI}", Logger.Warning)
+                            Continue For
+                        End If
+                        item.id = existing.id
+                        pItemSV.Execute(DataIntent.Update, item)
+                    Else
+                        pItemSV.Execute(DataIntent.Insert, item)
+                    End If
+                Next
+            Next
+
+            Logger.Instance.Logging(
+                $"BatchInsert thành công: {itemsOfPayroll.Count} bảng lương", Logger.Success)
+            Return ServiceResponse(Of Object).Success("")
+
+        Catch ex As Exception
+            Logger.Instance.Logging($"Lỗi BatchInsert: {ex.Message}", Logger.Error)
+            Return ServiceResponse(Of Object).Fail($"Lỗi BatchInsert: {ex.Message}")
+        End Try
+    End Function
 
 
 End Class

@@ -1,17 +1,18 @@
 Imports System.ComponentModel
 Imports System.ComponentModel.DataAnnotations
 Imports Dapper.Contrib.Extensions
-Imports WindTown_VB.PolicyParameter
 
 <Table("pay_item")>
 Public Class Pay_Item
     Inherits BaseEntity
 
     Public Sub New()
-        code = ""
+        code = $"PAY_ITEM{GenerateRandomNumbers.Generate()}"
         name = ""
         value = 0
-        category = 1
+        category = CInt(Category_PayItem.ID.INFORMATION)
+        unit = CInt(UnitSuffix.ID.NONE)
+        source = source_system
         note = ""
         status = 0
     End Sub
@@ -48,6 +49,15 @@ Public Class Pay_Item
         End Set
     End Property
     <Write(False)> <Browsable(False)>
+    Public Property category As Integer
+        Get
+            Return GetV(Of Integer)("category")
+        End Get
+        Set(value As Integer)
+            SetV("category", value)
+        End Set
+    End Property
+    <Write(False)> <Browsable(False)>
     Public Property value As Decimal
         Get
             Return GetV(Of Decimal)("value")
@@ -57,15 +67,15 @@ Public Class Pay_Item
         End Set
     End Property
     <Write(False)> <Browsable(False)>
-    Public Property category As Integer
+    Public Property unit As Integer
         Get
-            Return GetV(Of Integer)("category")
+            Return GetV(Of Integer)("unit")
         End Get
         Set(value As Integer)
-            SetV("category", value)
+            SetV("unit", value)
         End Set
     End Property
-    <Write(False)> <DisplayName("Độ ưu tiên")> <Display(Order:=5)>
+    <Write(False)> <DisplayName("Độ ưu tiên")> <Display(Order:=7)>
     Public Property priority As Integer
         Get
             Return GetV(Of Integer)("priority")
@@ -84,7 +94,16 @@ Public Class Pay_Item
             SetV("status", value)
         End Set
     End Property
-    <Write(False)> <DisplayName("Ghi chú")> <Display(Order:=7)>
+    <Write(False)> <Browsable(False)>
+    Public Property source As Integer
+        Get
+            Return GetV(Of Integer)("source")
+        End Get
+        Set(value As Integer)
+            SetV("source", value)
+        End Set
+    End Property
+    <Write(False)> <DisplayName("Ghi chú")> <Display(Order:=9)>
     Public Property note As String
         Get
             Return GetV(Of String)("note")
@@ -100,21 +119,36 @@ Public Class Pay_Item
     <Write(False)> <DisplayName("Giá trị")> <Display(Order:=3)>
     Public ReadOnly Property value_UI As String
         Get
-            Return Category_Amount.FomatByCat(value, CInt(category))
+            Return UnitSuffix.FomatNumber(Me.value, Me.unit)
 
         End Get
     End Property
-    <Write(False)> <DisplayName("Trạng thái")> <Display(Order:=6)>
+    <Write(False)> <DisplayName("Đơn vị giá trị")> <Display(Order:=4)>
+    Public ReadOnly Property unit_UI As String
+        Get
+            Return If(UnitSuffix.GetSuffix(Me.unit), "---")
+
+        End Get
+    End Property
+    <Write(False)> <DisplayName("Danh mục")> <Display(Order:=5)>
+    Public ReadOnly Property category_UI As String
+        Get
+            Return If(Category_PayItem.GetParameter(Me.category)?.name, "---")
+
+        End Get
+    End Property
+
+    <Write(False)> <DisplayName("Nguồn")> <Display(Order:=6)>
+    Public ReadOnly Property source_UI As String
+        Get
+            Return If(source_Dict.ContainsKey(Me.source), source_Dict(Me.source), "---")
+
+        End Get
+    End Property
+    <Write(False)> <DisplayName("Trạng thái")> <Display(Order:=8)>
     Public ReadOnly Property status_UI As String
         Get
             Return If(status_Dict.ContainsKey(Me.status), status_Dict(Me.status), "---")
-
-        End Get
-    End Property
-    <Write(False)> <DisplayName("Danh mục")> <Display(Order:=4)>
-    Public ReadOnly Property category_UI As String
-        Get
-            Return If(PolicyParameter.Category_Amount.GetParameter(Me.category)?.name, "---")
 
         End Get
     End Property
@@ -125,5 +159,16 @@ Public Class Pay_Item
         {0, "Chưa xác nhận"},
         {1, "đã xác nhận"}
     }
+#End Region
+    <Browsable(False)>
+    Public Const source_custum As Integer = 0
+    <Browsable(False)>
+    Public Const source_system As Integer = 1
+#Region "Dictionary Display" 'chứa các dictionary dùng chung trong toàn bộ module Operations, tránh việc phải tạo nhiều dictionary giống nhau ở nhiều form khác
+    Public Shared ReadOnly source_Dict As New Dictionary(Of Integer, String) From {
+        {source_custum, "Thủ công"},
+        {source_system, "Hệ thống"}
+    }
+
 #End Region
 End Class

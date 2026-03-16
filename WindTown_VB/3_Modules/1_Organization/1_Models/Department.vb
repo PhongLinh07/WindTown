@@ -7,7 +7,7 @@ Public Class Department
     Inherits BaseEntity
 
     Public Sub New()
-        code = ""
+        code = "DEP" + GenerateRandomNumbers.Generate()
         name = ""
         note = ""
         status = 0

@@ -12,13 +12,14 @@ Partial Public Class BaseACRUDForm
         ' Các toolbar mặc định ẩn, lớp con có thể bật
         ' tool_reassignment.Visible = False
         tool_init_payroll.Visible = False
+        tool_aggregate_payroll_data.Visible = False
         tool_net_salary.Visible = False
-        ' tool_netSalary.Visible = False
+
     End Sub
 
     ' ===== FormClosing Event =====
     Protected Overridable Sub ACRUDForm_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
-        If isConfirm Then Return ' Xác nhận bằng nút tool_save
+        If isConfirm OrElse tool_save.Enabled = False Then Return ' Xác nhận bằng nút tool_save hoặc không có ô input nào thay đổi
 
         Dim result As DialogResult = MessageBox.Show("Đóng và không lưu những gì thay đổi ?", "Xác nhận đóng", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
 
@@ -63,13 +64,14 @@ Partial Public Class BaseACRUDForm
     End Sub
 
     '' ===== tool_calSalary Click =====
-    'Protected Overridable Sub tool_cal_salary_Click(sender As Object, e As EventArgs) Handles tool_net_salary.Click
-    '    ' Lớp con override
-    'End Sub
+    Protected Overridable Sub tool_aggregate_payroll_data_Click(sender As Object, e As EventArgs) Handles tool_aggregate_payroll_data.Click
+
+    End Sub
 
     '' ===== tool_netSalary Click =====
     Protected Overridable Sub tool_net_salary_Click(sender As Object, e As EventArgs) Handles tool_net_salary.Click
         ' Lớp con override
     End Sub
+
 
 End Class

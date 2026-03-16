@@ -22,37 +22,34 @@ Public Class Policy_CRUD_Frm
         ui_status.DisplayMember = "Value"
         ui_status.ValueMember = "Key"
 
-        ui_data_source.DataSource = New BindingSource(PolicyParameter.Data_Source.Dict_UI, Nothing)
-        ui_data_source.DisplayMember = "Value"
-        ui_data_source.ValueMember = "Key"
-
-        ui_aggregate.DataSource = New BindingSource(PolicyParameter.Aggregate_Func.Dict_UI, Nothing)
+        ui_aggregate.DataSource = New BindingSource(Aggregate_Func.Dict_UI, Nothing)
         ui_aggregate.DisplayMember = "Value"
         ui_aggregate.ValueMember = "Key"
+
+        ui_category.DataSource = New BindingSource(Category_PayItem.Dict_UI, Nothing)
+        ui_category.DisplayMember = "Value"
+        ui_category.ValueMember = "Key"
 
         ui_gen_item.DataSource = New BindingSource(Policy.gen_item_Dict, Nothing)
         ui_gen_item.DisplayMember = "Value"
         ui_gen_item.ValueMember = "Key"
 
-        ' ui_category.DataSource = New BindingSource(PolicyParameter.Category_Amount.Dict_UI, Nothing)
-        ui_category.DisplayMember = "Value"
-        ui_category.ValueMember = "Key"
-
+        ui_unit.DataSource = New BindingSource(UnitSuffix.Dict_UI, Nothing)
+        ui_unit.DisplayMember = "Value"
+        ui_unit.ValueMember = "Key"
     End Sub
 
     Protected Overrides Sub BindDataToUI()
 
-        ui_code.Text = _data.code
+        ui_code.Text = _data.code.Trim().ToUpper()
         ui_name.Text = _data.name
-        ui_data_source.SelectedValue = _data.data_source
+        ui_data_source.Text = Data_Source.GetParameter(_data.data_source).name
         ui_aggregate.SelectedValue = _data.aggregate
         ui_gen_item.SelectedValue = _data.gen_item
         ui_category.SelectedValue = _data.category
-
         ui_rule.Text = _data.rule
-
         ui_priority.Value = _data.priority
-
+        ui_unit.SelectedValue = _data.unit
         ui_note.Text = _data.note
         ui_status.SelectedValue = _data.status
 
@@ -60,6 +57,11 @@ Public Class Policy_CRUD_Frm
 
     Protected Overrides Function SyncUIToData() As Boolean
 
+        If isCreate Then
+            If System_Parameter.IsSystemParameter(ui_code.Text.Trim().ToUpper()) Then
+                MessageBox.Show("Mã không thể trùng với mã hệ thống và không bắt đầu bằng 'SYS_'")
+            End If
+        End If
         If String.IsNullOrWhiteSpace(ui_code.Text) Then
             MessageBox.Show("Mã chính sách không hợp lệ")
             ui_code.Focus()
@@ -78,13 +80,12 @@ Public Class Policy_CRUD_Frm
             Return False
         End If
 
-        _data.code = ui_code.Text.Trim()
+        _data.code = ui_code.Text.Trim().ToUpper()
         _data.name = ui_name.Text.Trim()
-        _data.data_source = ui_data_source.SelectedValue
         _data.aggregate = ui_aggregate.SelectedValue
         _data.category = ui_category.SelectedValue
         _data.gen_item = ui_gen_item.SelectedValue
-
+        _data.unit = ui_unit.SelectedValue
         _data.rule = ui_rule.Text.Trim()
 
         If Not Integer.TryParse(ui_priority.Value, _data.priority) Then
@@ -102,10 +103,10 @@ Public Class Policy_CRUD_Frm
 
     Protected Overrides Sub DataChanged() Handles ui_code.TextChanged,
                                         ui_name.TextChanged,
-                                        ui_data_source.SelectedValueChanged,
                                         ui_aggregate.SelectedValueChanged,
                                         ui_gen_item.SelectedValueChanged,
                                         ui_category.SelectedValueChanged,
+                                        ui_unit.SelectedIndexChanged,
                                         ui_rule.TextChanged,
                                         ui_priority.ValueChanged,
                                         ui_note.TextChanged,
@@ -115,7 +116,15 @@ Public Class Policy_CRUD_Frm
 
     End Sub
 
-    Private Sub ui_category_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ui_category.SelectedIndexChanged
+    Private Sub ui_data_source_TextChanged(sender As Object, e As EventArgs) Handles ui_rule.TextChanged
 
+        _data.data_source = Data_Source.GetDataSourceByRule(ui_rule.Text)
+        ui_data_source.Text = Data_Source.GetParameter(_data.data_source).name
+    End Sub
+
+    Private Sub ui_code_TextChanged(sender As Object, e As EventArgs) Handles ui_code.TextChanged
+        If System_Parameter.IsSystemParameter(ui_code.Text.Trim().ToUpper()) Then
+            MessageBox.Show("Mã không thể trùng với mã hệ thống và không bắt đầu bằng 'SYS_'")
+        End If
     End Sub
 End Class

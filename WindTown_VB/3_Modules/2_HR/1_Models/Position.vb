@@ -6,7 +6,7 @@ Imports Dapper.Contrib.Extensions
 Public Class Position
     Inherits BaseEntity
     Public Sub New()
-        code = ""
+        code = $"POS{GenerateRandomNumbers.Generate()}"
         start_date = DateTime.Now
         end_date = DateTime.Now
         note = ""
@@ -117,7 +117,7 @@ Public Class Position
     <Write(False)> <DisplayName("Trình độ")> <Display(Order:=4)>
     Public ReadOnly Property level_UI As String
         Get
-            Return If(Salary_Mult IsNot Nothing, $"{Salary_Mult?.level_UI})", "---")
+            Return If(Salary_Mult IsNot Nothing, $"{Salary_Mult?.level_UI}", "---")
         End Get
     End Property
 #End Region

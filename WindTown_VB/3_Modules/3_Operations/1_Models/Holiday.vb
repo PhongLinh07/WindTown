@@ -7,7 +7,7 @@ Public Class Holiday
     Inherits BaseEntity
 
     Public Sub New()
-        code = ""
+        code = $"HOLD{GenerateRandomNumbers.Generate()}"
         name = ""
         of_date = DateTime.Now
         mult = 3.0

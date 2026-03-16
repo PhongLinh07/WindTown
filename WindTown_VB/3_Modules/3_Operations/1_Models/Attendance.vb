@@ -7,7 +7,7 @@ Public Class Attendance
     Inherits BaseEntity
 
     Public Sub New()
-        code = ""
+        code = $"ATTD{GenerateRandomNumbers.Generate()}"
         of_date = DateTime.Now
         office_hours = 0
         overtime_hours = 0

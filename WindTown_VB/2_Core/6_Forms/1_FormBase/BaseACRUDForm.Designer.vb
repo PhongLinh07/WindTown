@@ -26,6 +26,7 @@ Partial Class BaseACRUDForm
         Me.tool_save = New System.Windows.Forms.ToolStripButton()
         Me.tool_init_payroll = New System.Windows.Forms.ToolStripButton()
         Me.tool_net_salary = New System.Windows.Forms.ToolStripButton()
+        Me.tool_aggregate_payroll_data = New System.Windows.Forms.ToolStripButton()
         Me.toolStrip.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -34,7 +35,7 @@ Partial Class BaseACRUDForm
         Me.toolStrip.BackColor = System.Drawing.Color.MediumTurquoise
         Me.toolStrip.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden
         Me.toolStrip.ImageScalingSize = New System.Drawing.Size(24, 24)
-        Me.toolStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tool_save, Me.tool_init_payroll, Me.tool_net_salary})
+        Me.toolStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tool_save, Me.tool_init_payroll, Me.tool_aggregate_payroll_data, Me.tool_net_salary})
         Me.toolStrip.Location = New System.Drawing.Point(0, 0)
         Me.toolStrip.Name = "toolStrip"
         Me.toolStrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.System
@@ -77,6 +78,18 @@ Partial Class BaseACRUDForm
         Me.tool_net_salary.Text = "Tính lương"
         Me.tool_net_salary.TextImageRelation = System.Windows.Forms.TextImageRelation.Overlay
         '
+        'tool_aggregate_payroll_data
+        '
+        Me.tool_aggregate_payroll_data.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.tool_aggregate_payroll_data.Font = New System.Drawing.Font("Segoe UI", 12.0!)
+        Me.tool_aggregate_payroll_data.Image = Global.WindTown_VB.My.Resources.Resources.budget
+        Me.tool_aggregate_payroll_data.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.tool_aggregate_payroll_data.Margin = New System.Windows.Forms.Padding(3, 3, 20, 3)
+        Me.tool_aggregate_payroll_data.Name = "tool_aggregate_payroll_data"
+        Me.tool_aggregate_payroll_data.Size = New System.Drawing.Size(28, 28)
+        Me.tool_aggregate_payroll_data.Text = "Tổng hợp dữ liệu"
+        Me.tool_aggregate_payroll_data.TextImageRelation = System.Windows.Forms.TextImageRelation.Overlay
+        '
         'BaseACRUDForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -99,4 +112,5 @@ Partial Class BaseACRUDForm
     Protected WithEvents toolStrip As ToolStrip
     Protected WithEvents tool_init_payroll As ToolStripButton
     Protected WithEvents tool_net_salary As ToolStripButton
+    Protected WithEvents tool_aggregate_payroll_data As ToolStripButton
 End Class

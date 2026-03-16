@@ -2387,6 +2387,7 @@ VALUES
     "aggregate": 1,
     "category": 1,
     "gen_item": 1,
+    "unit": 2,
     "note": "Xác định đơn giá lương mỗi giờ làm việc dựa trên lương cơ bản và định mức giờ công.",
     "status": 1
 }'),
@@ -2401,6 +2402,7 @@ VALUES
     "aggregate": 1,
     "category": 1,
     "gen_item": 2,
+    "unit": 5,
     "note": "Tính toán hệ số nhân lương tùy theo ca ngày/đêm và điều kiện ngày lễ/tết.",
     "status": 1
 }'),
@@ -2415,6 +2417,7 @@ VALUES
     "aggregate": 1,
     "category": 1,
     "gen_item": 2,
+    "unit": 5,
     "note": "Hệ số nhân dành riêng cho các giờ làm thêm, phụ thuộc vào hệ số ca gốc.",
     "status": 1
 }'),
@@ -2429,6 +2432,7 @@ VALUES
     "aggregate": 2,
     "category": 2,
     "gen_item": 1,
+    "unit": 3,
     "note": "Tổng thời gian làm việc chính thức trong kỳ lương sau khi quy đổi hệ số.",
     "status": 1
 }'),
@@ -2443,6 +2447,7 @@ VALUES
     "aggregate": 2,
     "category": 2,
     "gen_item": 1,
+    "unit": 3,
     "note": "Tổng số giờ làm thêm đã được nhân hệ số tăng ca tương ứng.",
     "status": 1
 }'),
@@ -2457,6 +2462,7 @@ VALUES
     "aggregate": 2,
     "category": 2,
     "gen_item": 1,
+    "unit": 3,
     "note": "Tổng thời gian vi phạm đi trễ theo dữ liệu máy chấm công.",
     "status": 1
 }'),
@@ -2471,6 +2477,7 @@ VALUES
     "aggregate": 2,
     "category": 2,
     "gen_item": 1,
+    "unit": 3,
     "note": "Tổng thời gian vi phạm về sớm theo dữ liệu máy chấm công.",
     "status": 1
 }'),
@@ -2485,6 +2492,7 @@ VALUES
     "aggregate": 2,
     "category": 2,
     "gen_item": 1,
+    "unit": 3,
     "note": "Giờ hành chính thực tế chưa nhân hệ số, dùng làm căn cứ xét phụ cấp.",
     "status": 1
 }'),
@@ -2499,6 +2507,7 @@ VALUES
     "aggregate": 1,
     "category": 3,
     "gen_item": 1,
+    "unit": 2,
     "note": "Tiền lương tính theo giờ làm việc hành chính trong kỳ.",
     "status": 1
 }'),
@@ -2513,6 +2522,7 @@ VALUES
     "aggregate": 1,
     "category": 3,
     "gen_item": 1,
+    "unit": 2,
     "note": "Tiền lương tính cho các giờ làm thêm ngoài giờ hành chính.",
     "status": 1
 }'),
@@ -2527,6 +2537,7 @@ VALUES
     "aggregate": 1,
     "category": 4,
     "gen_item": 1,
+    "unit": 2,
     "note": "Khoản tiền bị trừ tương ứng với thời gian đi muộn.",
     "status": 1
 }'),
@@ -2541,6 +2552,7 @@ VALUES
     "aggregate": 1,
     "category": 4,
     "gen_item": 1,
+    "unit": 2,
     "note": "Khoản tiền bị trừ tương ứng với thời gian về sớm.",
     "status": 1
 }'),
@@ -2555,6 +2567,7 @@ VALUES
     "aggregate": 1,
     "category": 5,
     "gen_item": 1,
+    "unit": 2,
     "note": "Phụ cấp chuyên cần dành cho nhân viên đạt đủ số giờ công chuẩn.",
     "status": 1
 }'),
@@ -2569,6 +2582,7 @@ VALUES
     "aggregate": 1,
     "category": 7,
     "gen_item": 1,
+    "unit": 2,
     "note": "Trích đóng bảo hiểm xã hội (8%) tính trên mức lương cơ bản.",
     "status": 1
 }'),
@@ -2583,6 +2597,7 @@ VALUES
     "aggregate": 1,
     "category": 7,
     "gen_item": 1,
+    "unit": 2,
     "note": "Trích đóng bảo hiểm y tế (1.5%) tính trên mức lương cơ bản.",
     "status": 1
 }'),
@@ -2597,25 +2612,12 @@ VALUES
     "aggregate": 1,
     "category": 7,
     "gen_item": 1,
+    "unit": 2,
     "note": "Trích đóng bảo hiểm thất nghiệp (1%) tính trên mức lương cơ bản.",
     "status": 1
 }'),
 
--- 17. Tổng thu nhập
-(N'{
-    "code": "TOTAL_INCOME",
-    "name": "Tổng thu nhập",
-    "rule": "SALARY_OFFICE + SALARY_OVERTIME + ALLOW_COMPANY",
-    "priority": 17,
-    "data_source": 1,
-    "aggregate": 1,
-    "category": 3,
-    "gen_item": 1,
-    "note": "Tổng các khoản lương và phụ cấp trước khi tính thuế và bảo hiểm.",
-    "status": 0
-}'),
-
--- 18. Thuế TNCN
+-- 17. Thuế TNCN 
 (N'{
     "code": "TAX_AMOUNT",
     "name": "Thuế thu nhập các nhân",
@@ -2625,20 +2627,7 @@ VALUES
     "aggregate": 1,
     "category": 8,
     "gen_item": 1,
+    "unit": 2,
     "note": "Tạm tính thuế thu nhập cá nhân phải nộp theo tỷ lệ quy định.",
-    "status": 0
-}'),
-
--- 19. Thực lĩnh
-(N'{
-    "code": "NET_SALARY",
-    "name": "Thực lĩnh",
-    "rule": "TOTAL_INCOME - TAX_AMOUNT - INS_SOCIAL - INS_HEALTH - INS_UNEMP - DEDUCT_LATE - DEDUCT_EARLY",
-    "priority": 19,
-    "data_source": 1,
-    "aggregate": 1,
-    "category": 3,
-    "gen_item": 1,
-    "note": "Số tiền cuối cùng chuyển khoản cho nhân viên sau khi hoàn tất các khoản trừ.",
     "status": 0
 }');

@@ -15,7 +15,14 @@ Public Class Pay_Period_CRUD_Frm
         BindDataToUI()
 
         tool_save.Enabled = False
-        tool_init_payroll.Visible = (Not isCreate) AndAlso (_data.status = 1)
+
+        If isCreate Then
+            Return 'chỉ mở khi ko phải tạo
+        End If
+        tool_init_payroll.Visible = True
+        tool_net_salary.Visible = True
+        tool_aggregate_payroll_data.Visible = True
+
     End Sub
     Private Sub InitComboBox()
 
@@ -124,6 +131,47 @@ Public Class Pay_Period_CRUD_Frm
 
         If response.IsSuccess Then
             MessageBox.Show("Khởi tạo bảng lương của chu kỳ thành công", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        Else
+            MessageBox.Show(response.Message)
+        End If
+    End Sub
+
+    Protected Overrides Sub tool_aggregate_payroll_data_Click(sender As Object, e As EventArgs)
+        If _data Is Nothing Then
+            Return
+        End If
+
+        If (_data.status = Pay_Period.status_closed) Then
+
+            MessageBox.Show("Kỳ lương này đã đóng", "Không thể sửa đổi", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Return
+        End If
+
+        Dim payrollService As PayrollService = New PayrollService()
+        Dim response = payrollService.Execute(DataIntent.Aggregation_Data_One_Period, _data)
+
+        If response.IsSuccess Then
+            MessageBox.Show("Tổng hợp lương cho kỳ lương thành công", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        Else
+            MessageBox.Show(response.Message)
+        End If
+    End Sub
+    Protected Overrides Sub tool_net_salary_Click(sender As Object, e As EventArgs)
+        If _data Is Nothing Then
+            Return
+        End If
+
+        If (_data.status = Pay_Period.status_closed) Then
+
+            MessageBox.Show("Kỳ lương này đã đóng", "Không thể sửa đổi", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Return
+        End If
+
+        Dim payrollService As PayrollService = New PayrollService()
+        Dim response = payrollService.Execute(DataIntent.Cal_Net_Salary_One_Period, _data)
+
+        If response.IsSuccess Then
+            MessageBox.Show("Tính lương cho Kỳ lương thành công", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information)
         Else
             MessageBox.Show(response.Message)
         End If

@@ -8,13 +8,14 @@ Public Class Policy
     Inherits BaseEntity
 
     Public Sub New()
-        code = ""
+        code = $"POL{GenerateRandomNumbers.Generate()}"
         name = ""
         rule = ""
-        data_source = 1
         aggregate = 1
         category = 1
         gen_item = 1
+        data_source = 1
+        unit = CInt(UnitSuffix.ID.NONE)
         priority = 1
         note = ""
         status = 0
@@ -85,6 +86,15 @@ Public Class Policy
         End Set
     End Property
     <Write(False)> <Browsable(False)>
+    Public Property unit As Integer
+        Get
+            Return GetV(Of Integer)("unit")
+        End Get
+        Set(value As Integer)
+            SetV("unit", value)
+        End Set
+    End Property
+    <Write(False)> <Browsable(False)>
     Public Property gen_item As Integer
         Get
             Return GetV(Of Integer)("gen_item")
@@ -120,21 +130,28 @@ Public Class Policy
     <Write(False)> <DisplayName("Nguồn dữ liệu")> <Display(Order:=5)>
     Public ReadOnly Property data_source_UI As String
         Get
-            Return If(PolicyParameter.Data_Source.GetParameter(Me.data_source)?.name, "---")
+            Return If(Category_PayItem.GetParameter(Me.data_source)?.name, "---")
 
         End Get
     End Property
     <Write(False)> <DisplayName("Kiểu tổng hợp")> <Display(Order:=6)>
     Public ReadOnly Property aggregate_UI As String
         Get
-            Return If(PolicyParameter.Aggregate_Func.GetParameter(Me.aggregate)?.code, "---")
+            Return If(Category_PayItem.GetParameter(Me.aggregate)?.code, "---")
 
         End Get
     End Property
     <Write(False)> <DisplayName("Danh mục")> <Display(Order:=7)>
     Public ReadOnly Property category_UI As String
         Get
-            Return If(PolicyParameter.Category_Amount.GetParameter(Me.category)?.name, "---")
+            Return If(Category_PayItem.GetParameter(Me.category)?.name, "---")
+
+        End Get
+    End Property
+    <Write(False)> <DisplayName("Đơn vị giá trị")> <Display(Order:=7)>
+    Public ReadOnly Property unit_UI As String
+        Get
+            Return If(UnitSuffix.GetSuffix(Me.unit), "---")
 
         End Get
     End Property

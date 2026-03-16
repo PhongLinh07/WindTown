@@ -253,6 +253,7 @@
     <Compile Include="2_Core\4_Database\GenericRepository.vb" />
     <Compile Include="2_Core\4_Database\ServiceResponse.vb" />
     <Compile Include="2_Core\5_Base\BaseEntity.vb" />
+    <Compile Include="2_Core\5_Base\BaseParameter.vb" />
     <Compile Include="2_Core\5_Base\BaseService.vb" />
     <Compile Include="2_Core\6_Forms\1_FormBase\BaseList_UC.Designer.vb">
       <DependentUpon>BaseList_UC.vb</DependentUpon>
@@ -539,7 +540,6 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="3_Modules\6_RuleEngine\1_Models\Policy.vb" />
-    <Compile Include="3_Modules\6_RuleEngine\1_Models\PolicyParameter.vb" />
     <Compile Include="3_Modules\6_RuleEngine\4_Forms\Policy_CRUD_Frm.Designer.vb">
       <DependentUpon>Policy_CRUD_Frm.vb</DependentUpon>
     </Compile>

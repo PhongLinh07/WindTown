@@ -27,6 +27,7 @@ Public Class Payroll_CRUD_Frm
             Return 'chỉ mở khi ko phải tạo
         End If
         tool_net_salary.Visible = True
+        tool_aggregate_payroll_data.Visible = True
 
         grb_pay_item.Controls.Clear()
         _pay_item_list_uc = New Pay_Item_List_UC(_data)
@@ -196,12 +197,33 @@ Public Class Payroll_CRUD_Frm
     End Sub
 
 
+    Protected Overrides Sub tool_aggregate_payroll_data_Click(sender As Object, e As EventArgs)
+        If _data Is Nothing Then
+            Return
+        End If
+
+        If (_data.status = Payroll.status_closed) Then
+
+            MessageBox.Show("Bảng lương này đã đóng", "Không thể sửa đổi", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Return
+        End If
+
+        Dim payrollService As PayrollService = New PayrollService()
+        Dim response = payrollService.Execute(DataIntent.Aggregation_Data_One_Payroll, _data)
+
+        If response.IsSuccess Then
+            MessageBox.Show("Tổng hợp lương cho bảng lương thành công", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            _pay_item_list_uc.Refreash()
+        Else
+            MessageBox.Show(response.Message)
+        End If
+    End Sub
     Protected Overrides Sub tool_net_salary_Click(sender As Object, e As EventArgs)
         If _data Is Nothing Then
             Return
         End If
 
-        If (_data.status = Pay_Period.status_closed) Then
+        If (_data.status = Payroll.status_closed) Then
 
             MessageBox.Show("Bảng lương này đã đóng", "Không thể sửa đổi", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             Return

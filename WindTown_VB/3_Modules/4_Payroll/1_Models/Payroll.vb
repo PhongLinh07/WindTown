@@ -117,4 +117,13 @@ Public Class Payroll
         {1, "Đang mở"}
     }
 #End Region
+
+#Region "Const" 'chứa các dictionary dùng chung trong toàn bộ module Operations, tránh việc phải tạo nhiều dictionary giống nhau ở nhiều form khác
+    <Write(False)> <Browsable(False)>
+    Public Shared ReadOnly Property status_closed = 0
+    <Write(False)> <Browsable(False)>
+    Public Shared ReadOnly Property status_opening = 1
+
+
+#End Region
 End Class

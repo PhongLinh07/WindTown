@@ -78,4 +78,10 @@ Public Class BaseList_UC
         ' Hiển thị Form theo dạng Dialog (cửa sổ con hiện lên đè lên form chính)
         frm.ShowDialog()
     End Sub
+
+    Private Sub tool_refresh_Click(sender As Object, e As EventArgs) Handles tool_refresh.Click
+        Refreash()
+    End Sub
+
+
 End Class

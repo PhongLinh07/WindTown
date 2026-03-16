@@ -7,7 +7,7 @@ Public Class Contract
     Inherits BaseEntity
 
     Public Sub New()
-        code = ""
+        code = "CTR" + GenerateRandomNumbers.Generate()
         start_date = DateTime.Now
         end_date = DateTime.Now
         base_salary = 0.0

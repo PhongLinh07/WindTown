@@ -7,7 +7,7 @@ Public Class Pay_Period
     Inherits BaseEntity
 
     Public Sub New()
-        code = ""
+        code = $"PERIOD{GenerateRandomNumbers.Generate()}"
         name = ""
         month = DateTime.Now
         start_date = DateTime.Now

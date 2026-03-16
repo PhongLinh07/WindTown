@@ -1,6 +1,4 @@
 
-Imports WindTown_VB.PolicyParameter
-
 Public Class Pay_Item_CRUD_Frm
     Inherits BaseACRUDForm
 
@@ -17,7 +15,6 @@ Public Class Pay_Item_CRUD_Frm
         InitComboBox()
 
         BindDataToUI()
-
         tool_save.Enabled = False
     End Sub
 
@@ -27,9 +24,17 @@ Public Class Pay_Item_CRUD_Frm
         ui_status.DisplayMember = "Value"
         ui_status.ValueMember = "Key"
 
-        ui_category.DataSource = Category_Amount.ToList()
-        ui_category.DisplayMember = "name"
-        ui_category.ValueMember = "id"
+        ui_category.DataSource = New BindingSource(Category_PayItem.Dict_UI, Nothing)
+        ui_category.DisplayMember = "Value"
+        ui_category.ValueMember = "Key"
+
+        ui_unit.DataSource = New BindingSource(UnitSuffix.Dict_UI, Nothing)
+        ui_unit.DisplayMember = "Value"
+        ui_unit.ValueMember = "Key"
+
+        ui_source.DataSource = New BindingSource(Pay_Item.source_Dict, Nothing)
+        ui_source.DisplayMember = "Value"
+        ui_source.ValueMember = "Key"
 
     End Sub
 
@@ -38,12 +43,14 @@ Public Class Pay_Item_CRUD_Frm
     ' =============================
     Protected Overrides Sub BindDataToUI()
 
-        ui_code.Text = _data.code
+        ui_code.Text = _data.code.ToUpper()
         ui_name.Text = _data.name
         ui_payroll.Text = _data.Payroll?.code
-        ui_value.Text = _data.value
+        ui_value.Text = _data.value_UI
         ui_priority.Value = _data.priority
         ui_category.SelectedValue = _data.category
+        ui_unit.SelectedValue = _data.unit
+        ui_source.SelectedValue = _data.source
         ui_note.Text = _data.note
         ui_status.SelectedValue = _data.status
 
@@ -56,6 +63,11 @@ Public Class Pay_Item_CRUD_Frm
     ' =============================
     Protected Overrides Function SyncUIToData() As Boolean
         Try
+            If isCreate Then
+                If System_Parameter.IsSystemParameter(ui_code.Text.Trim().ToUpper()) Then
+                    MessageBox.Show("Mã không thể trùng với mã hệ thống và không bắt đầu bằng 'SYS_'")
+                End If
+            End If
             ' 1. Validation cơ bản
             If String.IsNullOrWhiteSpace(ui_code.Text) Then
                 MessageBox.Show("Mã khoản tiền không hợp lệ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning)
@@ -68,19 +80,20 @@ Public Class Pay_Item_CRUD_Frm
                 Return False
             End If
 
+            If Not Decimal.TryParse(ui_value.Text, _data.value) Then
+                MessageBox.Show("Giá trị Item không hợp lệ")
+                ui_value.Focus()
+                Return False
 
-
+            End If
             ' 2. Gán dữ liệu từ UI vào Model (_data)
-            _data.code = ui_code.Text.Trim()
+            _data.code = ui_code.Text.Trim().ToUpper()
             _data.name = ui_name.Text.Trim()
             _data.priority = ui_priority.Value
             _data.category = ui_category.SelectedValue
+            _data.unit = ui_unit.SelectedValue
+            _data.source = ui_source.SelectedValue
 
-            If Not Decimal.TryParse(ui_value.Text, _data.value) Then
-                MessageBox.Show("Overtime Hours must be a valid number")
-                ui_value.Focus()
-                Return False
-            End If
             _data.note = ui_note.Text.Trim()
             _data.status = CInt(ui_status.SelectedValue)
 
@@ -101,28 +114,19 @@ Public Class Pay_Item_CRUD_Frm
                 ui_value.TextChanged,
                 ui_priority.ValueChanged,
                 ui_category.SelectedValueChanged,
+                ui_unit.SelectedIndexChanged,
+                ui_source.SelectedValueChanged,
                 ui_note.TextChanged,
                 ui_status.SelectedIndexChanged
 
         tool_save.Enabled = True
     End Sub
 
-
     Private Sub SnapValue(sender As Object, e As EventArgs) Handles ui_value.TextChanged
-        ' Bỏ qua nếu chưa chọn category
-        If ui_category.SelectedValue Is Nothing Then Return
-
-
-
-        ' Bỏ qua nếu value không phải số hợp lệ
+        If ui_unit.SelectedValue Is Nothing Then Return
         If Not String.IsNullOrWhiteSpace(ui_value.Text) Then Return
-
         If Not Decimal.TryParse(ui_value.Text, _data.value) Then Return
-
-        ' Format theo category
-        ui_value.Text = Category_Amount.FomatByCat(
-        _data.value,
-        CInt(ui_category.SelectedValue))
+        ui_value.Text = UnitSuffix.FomatNumber(_data.value, CInt(ui_unit.SelectedValue))
     End Sub
 
 
