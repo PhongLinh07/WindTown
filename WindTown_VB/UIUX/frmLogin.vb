@@ -1,4 +1,10 @@
 Public Class frmLogin
+    Public Sub New()
+
+        ' This call is required by the designer.
+        InitializeComponent()
+
+    End Sub
 
     Private Sub frmLogin_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         HoTroPhongChu.ApDungPhongChu(Me)
