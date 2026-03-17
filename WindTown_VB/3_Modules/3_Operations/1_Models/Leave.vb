@@ -7,7 +7,7 @@ Public Class Leave 'Leave: bị trùng tên với keyword của VB " Control.Lea
     Inherits BaseEntity
 
     Public Sub New()
-        code = ""
+        code = $"LEAVE{GenerateRandomNumbers.Generate()}"
         start_date = DateTime.Now
         total_days = 0
         reason = ""

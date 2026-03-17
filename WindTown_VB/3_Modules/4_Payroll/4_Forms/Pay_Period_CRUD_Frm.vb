@@ -1,5 +1,3 @@
-Imports Microsoft.IdentityModel.Tokens
-
 Public Class Pay_Period_CRUD_Frm
     Inherits BaseACRUDForm
     Protected _data As Pay_Period
@@ -17,6 +15,14 @@ Public Class Pay_Period_CRUD_Frm
         BindDataToUI()
 
         tool_save.Enabled = False
+
+        If isCreate Then
+            Return 'chỉ mở khi ko phải tạo
+        End If
+        tool_init_payroll.Visible = True
+        tool_net_salary.Visible = True
+        tool_aggregate_payroll_data.Visible = True
+
     End Sub
     Private Sub InitComboBox()
 
@@ -30,6 +36,8 @@ Public Class Pay_Period_CRUD_Frm
 
         ui_code.Text = _data.code
         ui_name.Text = _data.name
+
+        ui_month.Value = If(_data.month, DateTime.Today)
 
         ui_start_date.Value = _data.start_date
         ui_end_date.Value = _data.end_date
@@ -59,6 +67,8 @@ Public Class Pay_Period_CRUD_Frm
         _data.code = ui_code.Text.Trim()
         _data.name = ui_name.Text.Trim()
 
+        _data.month = ui_month.Value
+
         _data.start_date = ui_start_date.Value
         _data.end_date = ui_end_date.Value
 
@@ -76,6 +86,7 @@ Public Class Pay_Period_CRUD_Frm
 
     Protected Overrides Sub DataChanged() Handles ui_code.TextChanged,
                                         ui_name.TextChanged,
+                                        ui_month.ValueChanged,
                                         ui_start_date.ValueChanged,
                                         ui_end_date.ValueChanged,
                                         ui_std_hours.TextChanged,
@@ -86,10 +97,83 @@ Public Class Pay_Period_CRUD_Frm
 
     End Sub
 
-    Private Sub Calculator() Handles ui_start_date.ValueChanged,
-                                     ui_end_date.ValueChanged
 
-        'call...
+    ' Tính số giờ công chuẩn của chu kỳ
+    Private Sub CalculatorHoursStd() Handles btn_std_hours_cal.Click
+
+        _data.start_date = ui_start_date.Value
+        _data.end_date = ui_end_date.Value
+        Dim periodSV As Pay_PeriodService = New Pay_PeriodService()
+        Dim response = periodSV.Execute(DataIntent.StandardHoursCalculator, _data)
+
+        If response.IsSuccess Then
+            ui_std_hours.Value = response.Data
+
+        Else
+            MessageBox.Show(response.Message)
+        End If
     End Sub
 
+    ' Tool khởi tạo bảng lương của chu kỳ
+    Protected Overrides Sub tool_init_payroll_Click(sender As Object, e As EventArgs)
+        If _data Is Nothing Then
+            Return
+        End If
+
+        If (_data.status = Pay_Period.status_closed) Then
+
+            MessageBox.Show("Chu kỳ lương này đã đóng", "Không thể khởi tạo bảng lương", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Return
+        End If
+
+        Dim payrollService As PayrollService = New PayrollService()
+        Dim response = payrollService.Execute(DataIntent.Init_Payrolls, _data)
+
+        If response.IsSuccess Then
+            MessageBox.Show("Khởi tạo bảng lương của chu kỳ thành công", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        Else
+            MessageBox.Show(response.Message)
+        End If
+    End Sub
+
+    Protected Overrides Sub tool_aggregate_payroll_data_Click(sender As Object, e As EventArgs)
+        If _data Is Nothing Then
+            Return
+        End If
+
+        If (_data.status = Pay_Period.status_closed) Then
+
+            MessageBox.Show("Kỳ lương này đã đóng", "Không thể sửa đổi", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Return
+        End If
+
+        Dim payrollService As PayrollService = New PayrollService()
+        Dim response = payrollService.Execute(DataIntent.Aggregation_Data_One_Period, _data)
+
+        If response.IsSuccess Then
+            MessageBox.Show("Tổng hợp lương cho kỳ lương thành công", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        Else
+            MessageBox.Show(response.Message)
+        End If
+    End Sub
+    Protected Overrides Sub tool_net_salary_Click(sender As Object, e As EventArgs)
+        If _data Is Nothing Then
+            Return
+        End If
+
+        If (_data.status = Pay_Period.status_closed) Then
+
+            MessageBox.Show("Kỳ lương này đã đóng", "Không thể sửa đổi", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Return
+        End If
+
+        Dim payrollService As PayrollService = New PayrollService()
+        Dim response = payrollService.Execute(DataIntent.Cal_Net_Salary_One_Period, _data)
+
+        If response.IsSuccess Then
+            MessageBox.Show("Tính lương cho Kỳ lương thành công", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        Else
+            MessageBox.Show(response.Message)
+        End If
+    End Sub
 End Class

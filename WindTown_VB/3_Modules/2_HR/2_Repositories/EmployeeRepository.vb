@@ -14,8 +14,11 @@ Public Class EmployeeRepository
             Dim sql As String = $"
             SELECT e.*
             FROM [{tableEmp}] e
-            LEFT JOIN [{tableAcc}] a ON e.id = a.employee_id AND CAST(JSON_VALUE(a.datas, '$.status') AS INT) <> -1
-            WHERE a.id IS NULL"
+            LEFT JOIN [{tableAcc}] a 
+                ON e.id = a.employee_id
+                AND CAST(JSON_VALUE(a.datas, '$.status') AS INT) <> -1
+            WHERE a.id IS NULL
+            AND CAST(JSON_VALUE(e.datas, '$.status') AS INT) NOT IN (-1, 0)"
 
             ' Vì chỉ lấy thông tin Employee, không cần Multi-Mapping phức tạp
             Return db.Query(Of Employee)(sql)
@@ -30,9 +33,15 @@ Public Class EmployeeRepository
             Dim tableCtr As String = GetType(Contract).Name.ToLower()
             Dim sql As String = $"
             SELECT e.*
-            FROM [{tableEmp}] e
-            LEFT JOIN [{tableCtr}] c ON e.id = c.employee_id AND CAST(JSON_VALUE(c.datas, '$.status') AS INT) = 1
-            WHERE c.id IS NULL"
+            FROM employee e
+            WHERE 
+                CAST(JSON_VALUE(e.datas, '$.status') AS INT) <> -1
+                AND NOT EXISTS (
+                    SELECT 1
+                    FROM contract c
+                    WHERE c.employee_id = e.id
+                    AND CAST(JSON_VALUE(c.datas, '$.status') AS INT) = 1
+                )"
 
             ' Vì chỉ lấy thông tin Employee, không cần Multi-Mapping phức tạp
             Return db.Query(Of Employee)(sql)

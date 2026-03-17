@@ -7,7 +7,7 @@ Public Class Assignment
     Inherits BaseEntity
 
     Public Sub New()
-        code = ""
+        code = $"ASSM{GenerateRandomNumbers.Generate}"
         start_date = DateTime.Now
         end_date = DateTime.Now
         note = ""
@@ -16,7 +16,7 @@ Public Class Assignment
 
 #Region "Join"
     <Write(False)> <Browsable(False)>
-    Public Property Position = New Position()
+    Public Property Position As Position = New Position()
 
     <Write(False)> <Browsable(False)>
     Public Property Project = New Project()

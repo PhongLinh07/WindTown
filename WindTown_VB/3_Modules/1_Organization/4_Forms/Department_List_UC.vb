@@ -1,6 +1,3 @@
-Imports System.ComponentModel
-
-
 Public Class Department_List_UC
     Inherits BaseList_UC
 

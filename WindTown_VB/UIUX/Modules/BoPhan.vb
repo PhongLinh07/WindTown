@@ -1,4 +1,4 @@
-﻿Public Class BoPhan
+Public Class BoPhan
     Public Property Id As Integer
     Public Property Code As String
     Public Property Name As String

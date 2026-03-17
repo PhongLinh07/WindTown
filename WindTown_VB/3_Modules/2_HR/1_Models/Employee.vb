@@ -7,7 +7,7 @@ Public Class Employee
     Inherits BaseEntity
 
     Public Sub New()
-        code = ""
+        code = "EMP" + GenerateRandomNumbers.Generate()
         name = ""
         note = ""
         status = 0
@@ -138,7 +138,7 @@ Public Class Employee
             Return If(status_Dict.ContainsKey(Me.status), status_Dict(Me.status), "---")
         End Get
     End Property
-    
+
 #End Region
 
 #Region "Dictionary Display" 'chứa các dictionary dùng chung trong toàn bộ module Operations, tránh việc phải tạo nhiều dictionary giống nhau ở nhiều form khác

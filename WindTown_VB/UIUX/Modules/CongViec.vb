@@ -1,4 +1,4 @@
-﻿Public Class CongViec
+Public Class CongViec
     Public Property Id As Integer
     Public Property DepartmentId As Integer
     Public Property Code As String

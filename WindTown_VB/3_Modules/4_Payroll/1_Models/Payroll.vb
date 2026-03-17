@@ -7,7 +7,7 @@ Public Class Payroll
     Inherits BaseEntity
 
     Public Sub New()
-        code = ""
+        code = $"PAY{GenerateRandomNumbers.Generate}"
         note = ""
         status = 0
     End Sub
@@ -18,6 +18,9 @@ Public Class Payroll
 
     <Write(False)> <Browsable(False)>
     Public Property Pay_Period As Pay_Period = New Pay_Period()
+
+    <Write(False)> <Browsable(False)>
+    Public Property Pay_Item_List As List(Of Pay_Item) = New List(Of Pay_Item)
 #End Region
 
 #Region "Field Json"
@@ -113,5 +116,14 @@ Public Class Payroll
         {0, "Đã đóng"},
         {1, "Đang mở"}
     }
+#End Region
+
+#Region "Const" 'chứa các dictionary dùng chung trong toàn bộ module Operations, tránh việc phải tạo nhiều dictionary giống nhau ở nhiều form khác
+    <Write(False)> <Browsable(False)>
+    Public Shared ReadOnly Property status_closed = 0
+    <Write(False)> <Browsable(False)>
+    Public Shared ReadOnly Property status_opening = 1
+
+
 #End Region
 End Class

@@ -1,57 +1,79 @@
 Imports Dapper
+Imports System.Data
 Imports WindTown_VB.DatabaseConfig
 
 Public Class AssignmentRepository
     Inherits GenericRepository(Of Assignment)
-
     Public Overrides Function GetAll() As IEnumerable(Of Assignment)
-
         Using db As IDbConnection = Database.GetConnection()
-
             Dim sql As String = "
             SELECT
                 ass.*,
-                pos.*,
-                ctr.*,
-                emp.*,
-                job.*,
-                lvl.*,
-                pr.*
+                pr.*,
+                p.*,
+                c.*,
+                e.*,
+                sm.*,
+                j.*,
+                l.*
             FROM assignment ass
-            LEFT JOIN position pos ON ass.position_id = pos.id
-            LEFT JOIN contract ctr ON pos.contract_id = ctr.id
-            LEFT JOIN employee emp ON ctr.employee_id = emp.id
-            LEFT JOIN job      job ON pos.job_id      = job.id
-            LEFT JOIN level    lvl ON pos.level_id      = lvl.id
-            LEFT JOIN project  pr  ON ass.project_id  = pr.id
-            WHERE CAST(JSON_VALUE(ass.datas, '$.status') AS INT) <> @Status
-            "
+            LEFT JOIN project pr ON ass.project_id = pr.id
+            LEFT JOIN position p ON ass.position_id = p.id
+            LEFT JOIN contract c ON p.contract_id = c.id
+            LEFT JOIN employee e ON c.employee_id = e.id
+            LEFT JOIN salary_mult sm ON p.salary_mult_id = sm.id
+            LEFT JOIN job j ON sm.job_id = j.id
+            LEFT JOIN level l ON sm.level_id = l.id
+            WHERE CAST(JSON_VALUE(ass.datas, '$.status') AS INT) <> @Status"
 
-            Return db.Query(Of Assignment, Position, Contract, Employee, Job, Level, Project, Assignment)(
-            sql,
-            Function(a, p, c, e, j, l, pr)
+            ' 1. Định nghĩa mảng các kiểu dữ liệu
+            Dim types() As Type = {
+            GetType(Assignment), GetType(Project), GetType(Position),
+            GetType(Contract), GetType(Employee), GetType(Salary_Mult),
+            GetType(Job), GetType(Level)
+        }
 
-                a.Position = p
-                a.Project = pr
+            ' 2. Gọi hàm Query với đầy đủ tham số đặt tên (Named Arguments) để tránh nhầm lẫn overload
+            Return db.Query(Of Assignment)(
+            sql:=sql,
+            types:=types,
+            map:=Function(obj As Object()) ' Chỉ định rõ obj là mảng Object
+                     Dim ass = DirectCast(obj(0), Assignment)
+                     Dim pr = TryCast(obj(1), Project)
+                     Dim pos = TryCast(obj(2), Position)
+                     Dim ctr = TryCast(obj(3), Contract)
+                     Dim emp = TryCast(obj(4), Employee)
+                     Dim sm = TryCast(obj(5), Salary_Mult)
+                     Dim job = TryCast(obj(6), Job)
+                     Dim lvl = TryCast(obj(7), Level)
 
-                If p IsNot Nothing Then
-                    p.Contract = c
-                    p.Job = j
-                    p.Level = l
-                End If
+                     ' Gán Dự án
+                     ass.Project = pr
 
-                If c IsNot Nothing Then
-                    c.Employee = e
-                End If
+                     ' Gán Vị trí
+                     ass.Position = pos
+                     If pos IsNot Nothing Then
+                         pos.Contract = ctr
+                         pos.Salary_Mult = sm
 
-                Return a
+                         ' LƯU Ý: Đã xóa pos.Job và pos.Level vì class Position không có 2 trường này
+                         ' Bạn chỉ có thể gán vào Salary_Mult (sm)
+                         If sm IsNot Nothing Then
+                             sm.Job = job
+                             sm.Level = lvl
+                         End If
+                     End If
 
-            End Function,
+                     ' Gán Nhân viên vào Hợp đồng
+                     If ctr IsNot Nothing Then
+                         ctr.Employee = emp
+                     End If
+
+                     Return ass
+                 End Function,
             param:=New With {.Status = -1},
-            splitOn:="id,id,id,id,id,id"
+            splitOn:="id,id,id,id,id,id,id"
         )
-
         End Using
-
     End Function
 End Class

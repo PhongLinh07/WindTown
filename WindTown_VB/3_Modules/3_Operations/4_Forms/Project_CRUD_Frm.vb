@@ -1,6 +1,3 @@
-Imports Azure
-Imports Microsoft.IdentityModel.Tokens
-
 Public Class Project_CRUD_Frm
     Inherits BaseACRUDForm
     Protected _data As Project

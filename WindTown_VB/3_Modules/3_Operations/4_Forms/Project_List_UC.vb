@@ -1,6 +1,3 @@
-Imports System.ComponentModel
-
-
 Public Class Project_List_UC
     Inherits BaseList_UC
 

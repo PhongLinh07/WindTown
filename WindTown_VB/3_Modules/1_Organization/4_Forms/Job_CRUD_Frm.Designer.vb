@@ -32,6 +32,7 @@ Partial Class Job_CRUD_Frm
         Me.ui_code = New System.Windows.Forms.TextBox()
         Me.ui_department = New System.Windows.Forms.ComboBox()
         Me.Label5 = New System.Windows.Forms.Label()
+        Me.grb_salary_mult = New System.Windows.Forms.GroupBox()
         Me.SuspendLayout()
         '
         'Label4
@@ -39,7 +40,7 @@ Partial Class Job_CRUD_Frm
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Label4.Location = New System.Drawing.Point(392, 165)
+        Me.Label4.Location = New System.Drawing.Point(42, 433)
         Me.Label4.Margin = New System.Windows.Forms.Padding(0)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(74, 19)
@@ -49,9 +50,9 @@ Partial Class Job_CRUD_Frm
         'ui_note
         '
         Me.ui_note.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ui_note.Location = New System.Drawing.Point(396, 188)
+        Me.ui_note.Location = New System.Drawing.Point(46, 456)
         Me.ui_note.Name = "ui_note"
-        Me.ui_note.Size = New System.Drawing.Size(313, 117)
+        Me.ui_note.Size = New System.Drawing.Size(288, 117)
         Me.ui_note.TabIndex = 15
         Me.ui_note.Text = ""
         '
@@ -60,9 +61,9 @@ Partial Class Job_CRUD_Frm
         Me.ui_status.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ui_status.FormattingEnabled = True
         Me.ui_status.Items.AddRange(New Object() {"ACTIVE", "INACTIVE"})
-        Me.ui_status.Location = New System.Drawing.Point(396, 100)
+        Me.ui_status.Location = New System.Drawing.Point(46, 368)
         Me.ui_status.Name = "ui_status"
-        Me.ui_status.Size = New System.Drawing.Size(313, 28)
+        Me.ui_status.Size = New System.Drawing.Size(288, 28)
         Me.ui_status.TabIndex = 14
         '
         'Label3
@@ -70,7 +71,7 @@ Partial Class Job_CRUD_Frm
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Label3.Location = New System.Drawing.Point(392, 77)
+        Me.Label3.Location = New System.Drawing.Point(42, 345)
         Me.Label3.Margin = New System.Windows.Forms.Padding(0)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(91, 19)
@@ -139,11 +140,22 @@ Partial Class Job_CRUD_Frm
         Me.Label5.TabIndex = 17
         Me.Label5.Text = "Phòng ban thuộc về:"
         '
+        'grb_salary_mult
+        '
+        Me.grb_salary_mult.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.grb_salary_mult.Location = New System.Drawing.Point(444, 79)
+        Me.grb_salary_mult.Name = "grb_salary_mult"
+        Me.grb_salary_mult.Size = New System.Drawing.Size(567, 494)
+        Me.grb_salary_mult.TabIndex = 19
+        Me.grb_salary_mult.TabStop = False
+        Me.grb_salary_mult.Text = "Giải hệ số lương theo cấp bậc"
+        '
         'Job_CRUD_Frm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(759, 351)
+        Me.ClientSize = New System.Drawing.Size(1062, 633)
+        Me.Controls.Add(Me.grb_salary_mult)
         Me.Controls.Add(Me.ui_department)
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.Label4)
@@ -166,6 +178,7 @@ Partial Class Job_CRUD_Frm
         Me.Controls.SetChildIndex(Me.Label4, 0)
         Me.Controls.SetChildIndex(Me.Label5, 0)
         Me.Controls.SetChildIndex(Me.ui_department, 0)
+        Me.Controls.SetChildIndex(Me.grb_salary_mult, 0)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -181,4 +194,5 @@ Partial Class Job_CRUD_Frm
     Friend WithEvents ui_code As TextBox
     Friend WithEvents ui_department As ComboBox
     Friend WithEvents Label5 As Label
+    Friend WithEvents grb_salary_mult As GroupBox
 End Class

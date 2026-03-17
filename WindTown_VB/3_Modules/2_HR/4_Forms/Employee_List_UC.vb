@@ -1,6 +1,3 @@
-Imports System.ComponentModel
-
-
 Public Class Employee_List_UC
     Inherits BaseList_UC
 

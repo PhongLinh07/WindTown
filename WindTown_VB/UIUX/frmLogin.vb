@@ -1,4 +1,3 @@
-﻿Imports System.Data.SqlClient
 Public Class frmLogin
 
     Private Sub frmLogin_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -35,7 +34,7 @@ Public Class frmLogin
     Private Sub btnRegister_Click(sender As Object, e As EventArgs) Handles btnRegister.Click
         NavigationService.SwitchTopLevel(Of frmRegister)(Me)
     End Sub
-    
+
     Private Function CheckLogin(username As String, password As String) As Boolean
 
         Dim accService As AccountService = New AccountService()

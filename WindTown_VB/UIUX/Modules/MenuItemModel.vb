@@ -1,4 +1,4 @@
-﻿Public Class MenuItemModel
+Public Class MenuItemModel
 
     Public Property Title As String
     Public Property FormType As Type

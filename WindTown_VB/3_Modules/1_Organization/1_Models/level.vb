@@ -62,6 +62,12 @@ Public Class Level
 #End Region
 
 #Region "Field Display"
+    <Write(False)> <Browsable(False)>
+    Public ReadOnly Property level_UI As String
+        Get
+            Return $"{name} ({code})"
+        End Get
+    End Property
     <Write(False)> <DisplayName("Trạng thái")> <Display(Order:=3)>
     Public ReadOnly Property status_UI As String
         Get

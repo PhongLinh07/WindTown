@@ -1,4 +1,4 @@
-﻿Public Class ucSidebar
+Public Class ucSidebar
 
     Private menuData As List(Of MenuItemModel)
 

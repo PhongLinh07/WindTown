@@ -28,4 +28,38 @@ Public Class AttendanceRepository
             )
         End Using
     End Function
+
+    Public Function GetAttendanceByPeriod(ByVal period As Pay_Period) As IEnumerable(Of Attendance)
+
+        Using db As IDbConnection = Database.GetConnection()
+
+            Dim sql As String = "
+                SELECT 
+                    a.*, 
+                    e.*
+                FROM attendance a
+                LEFT JOIN employee e ON a.employee_id = e.id
+                WHERE ISNULL(CAST(JSON_VALUE(a.datas, '$.status') AS INT),0) <> @Status
+                AND CAST(JSON_VALUE(a.datas, '$.of_date') AS DATE)
+                    BETWEEN @StartDate AND @EndDate"
+
+            Return db.Query(Of Attendance, Employee, Attendance)(
+            sql,
+            Function(attObj, empObj)
+                attObj.Employee = empObj
+                Return attObj
+            End Function,
+            param:=New With {
+                .Status = -1,
+                .StartDate = period.start_date.Date,
+                .EndDate = period.end_date.Date
+            },
+            splitOn:="id"
+        )
+
+        End Using
+
+    End Function
+
 End Class
+

@@ -1,5 +1,3 @@
-Imports Microsoft.IdentityModel.Tokens
-
 Public Class Account_CRUD_Frm
     Inherits BaseACRUDForm
     Protected _data As Account
@@ -51,7 +49,7 @@ Public Class Account_CRUD_Frm
         If isCreate Then
             ui_employee.SelectedIndex = -1
         Else
-            ui_employee.Text = _data.Employee_UI
+            ui_employee.Text = _data.employee_UI
             ui_employee.Enabled = False
         End If
 

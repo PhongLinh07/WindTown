@@ -103,8 +103,7 @@ CREATE TABLE contract (
 CREATE TABLE position (
     id INT IDENTITY(1,1) PRIMARY KEY,
     contract_id INT,
-    job_id INT,
-    level_id INT,
+    salary_mult_id INT,
     datas NVARCHAR(max)
 );
 
@@ -202,8 +201,7 @@ ALTER TABLE salary_mult ADD CONSTRAINT FK_salary_mult_level FOREIGN KEY (level_i
 ALTER TABLE contract ADD CONSTRAINT FK_contract_employee FOREIGN KEY (employee_id) REFERENCES employee(id);
 
 ALTER TABLE position ADD CONSTRAINT FK_position_contract FOREIGN KEY (contract_id) REFERENCES contract(id);
-ALTER TABLE position ADD CONSTRAINT FK_position_job FOREIGN KEY (job_id) REFERENCES job(id);
-ALTER TABLE position ADD CONSTRAINT FK_position_level FOREIGN KEY (level_id) REFERENCES level(id);
+ALTER TABLE position ADD CONSTRAINT FK_position_salary_mult FOREIGN KEY (salary_mult_id) REFERENCES salary_mult(id);
 
 
 -- Module: Vận hành
@@ -302,6 +300,7 @@ INSERT INTO salary_mult (job_id, level_id, datas) VALUES
 (11, 2, N'{"mult": 1.5, "note": "Junior Finance", "status": 1}'),
 (11, 3, N'{"mult": 2.2, "note": "Middle Finance", "status": 1}');
 
+
 -- Chèn dữ liệu cho Employee
 INSERT INTO employee (datas) VALUES
 (N'{"code": "EMP001", "name": "Nguyễn Văn An", "gender": 1, "cccd": "047636216680", "birth_date": "2002-03-02", "address": "Phú Thọ", "email": "emp001@windtown.com", "phone": "0211532090", "bank": "ACB_0211532090", "note": "", "status": 1}'),
@@ -389,48 +388,47 @@ INSERT INTO contract (employee_id, datas) VALUES
 (39, N'{"code": "CTR039", "start_date": "2025-07-19", "end_date": "2028-08-24", "base_salary": 10000000, "note": "Thiết kế game + Junior", "status": 1}'),
 (40, N'{"code": "CTR040", "start_date": "2025-07-10", "end_date": "2028-08-25", "base_salary": 11000000, "note": "Thiết kế game + Junior", "status": 1}');
 
-INSERT INTO position (contract_id, job_id, level_id, datas) VALUES 
-(1, 1, 5,  N'{"code": "POS001", "start_date": "2025-07-06", "end_date": "2028-06-26", "note": "Tổng Giám đốc + Founder/Core", "status": 1}'),
-(2, 2, 5,  N'{"code": "POS002", "start_date": "2025-07-16", "end_date": "2028-06-29", "note": "Giám đốc Kỹ thuật + Founder/Core", "status": 1}'),
-(3, 3, 5,  N'{"code": "POS003", "start_date": "2025-08-04", "end_date": "2028-07-02", "note": "Giám đốc sáng tạo + Founder/Core", "status": 1}'),
-(4, 7, 1,  N'{"code": "POS004", "start_date": "2025-07-25", "end_date": "2028-07-06", "note": "Trải nghiệm và kiểm tra + Intern", "status": 1}'),
-(5, 8, 3,  N'{"code": "POS005", "start_date": "2025-07-25", "end_date": "2028-07-10", "note": "Tiếp thị + Middle", "status": 1}'),
-(6, 4, 4,  N'{"code": "POS006", "start_date": "2025-08-04", "end_date": "2028-07-14", "note": "Thiết kế game + Senior/Lead", "status": 1}'),
-(7, 7, 1,  N'{"code": "POS007", "start_date": "2025-07-09", "end_date": "2028-07-17", "note": "Trải nghiệm và kiểm tra + Intern", "status": 1}'),
-(8, 4, 3,  N'{"code": "POS008", "start_date": "2025-08-11", "end_date": "2028-07-17", "note": "Thiết kế game + Middle", "status": 1}'),
-(9, 9, 2,  N'{"code": "POS009", "start_date": "2025-08-18", "end_date": "2028-07-17", "note": "Chăm sóc khách hàng + Junior", "status": 1}'),
-(10, 5, 4, N'{"code": "POS010", "start_date": "2025-07-23", "end_date": "2028-07-21", "note": "Đồ họa + Senior/Lead", "status": 1}'),
-(11, 7, 2, N'{"code": "POS011", "start_date": "2025-08-03", "end_date": "2028-07-21", "note": "Trải nghiệm và kiểm tra + Junior", "status": 1}'),
-(12, 6, 2, N'{"code": "POS012", "start_date": "2025-08-23", "end_date": "2028-07-24", "note": "Lập trình + Junior", "status": 1}'),
-(13, 4, 2, N'{"code": "POS013", "start_date": "2025-06-30", "end_date": "2028-07-25", "note": "Thiết kế game + Junior", "status": 1}'),
-(14, 5, 4, N'{"code": "POS014", "start_date": "2025-07-24", "end_date": "2028-07-25", "note": "Đồ họa + Senior/Lead", "status": 1}'),
-(15, 6, 2, N'{"code": "POS015", "start_date": "2025-07-17", "end_date": "2028-07-26", "note": "Lập trình + Junior", "status": 1}'),
-(16, 6, 3, N'{"code": "POS016", "start_date": "2025-07-01", "end_date": "2028-07-27", "note": "Lập trình + Middle", "status": 1}'),
-(17, 11, 3, N'{"code": "POS017", "start_date": "2025-08-14", "end_date": "2028-07-27", "note": "Tài chính & Kế toán + Middle", "status": 1}'),
-(18, 9, 3, N'{"code": "POS018", "start_date": "2025-08-09", "end_date": "2028-07-28", "note": "Chăm sóc khách hàng + Middle", "status": 1}'),
-(19, 7, 2, N'{"code": "POS019", "start_date": "2025-07-09", "end_date": "2028-07-30", "note": "Trải nghiệm và kiểm tra + Junior", "status": 1}'),
-(20, 5, 2, N'{"code": "POS020", "start_date": "2025-07-28", "end_date": "2028-07-30", "note": "Đồ họa + Junior", "status": 1}'),
-(21, 4, 3, N'{"code": "POS021", "start_date": "2025-07-13", "end_date": "2028-08-01", "note": "Thiết kế game + Middle", "status": 1}'),
-(22, 11, 2, N'{"code": "POS022", "start_date": "2025-07-24", "end_date": "2028-08-01", "note": "Tài chính & Kế toán + Junior", "status": 1}'),
-(23, 5, 4, N'{"code": "POS023", "start_date": "2025-07-31", "end_date": "2028-08-01", "note": "Đồ họa + Senior/Lead", "status": 1}'),
-(24, 7, 2, N'{"code": "POS024", "start_date": "2025-08-05", "end_date": "2028-08-01", "note": "Trải nghiệm và kiểm tra + Junior", "status": 1}'),
-(25, 7, 2, N'{"code": "POS025", "start_date": "2025-08-25", "end_date": "2028-08-01", "note": "Trải nghiệm và kiểm tra + Junior", "status": 1}'),
-(26, 6, 3, N'{"code": "POS026", "start_date": "2025-06-28", "end_date": "2028-08-02", "note": "Lập trình + Middle", "status": 1}'),
-(27, 8, 3, N'{"code": "POS027", "start_date": "2025-08-01", "end_date": "2028-08-02", "note": "Tiếp thị + Middle", "status": 1}'),
-(28, 6, 3, N'{"code": "POS028", "start_date": "2025-07-06", "end_date": "2028-08-07", "note": "Lập trình + Middle", "status": 1}'),
-(29, 6, 4, N'{"code": "POS029", "start_date": "2025-07-19", "end_date": "2028-08-07", "note": "Lập trình + Senior/Lead", "status": 1}'),
-(30, 4, 2, N'{"code": "POS030", "start_date": "2025-06-28", "end_date": "2028-08-11", "note": "Thiết kế game + Junior", "status": 1}'),
-(31, 10, 2, N'{"code": "POS031", "start_date": "2025-07-16", "end_date": "2028-08-12", "note": "Nhân sự + Junior", "status": 1}'),
-(32, 5, 3, N'{"code": "POS032", "start_date": "2025-08-01", "end_date": "2028-08-15", "note": "Đồ họa + Middle", "status": 1}'),
-(33, 5, 3, N'{"code": "POS033", "start_date": "2025-07-13", "end_date": "2028-08-17", "note": "Đồ họa + Middle", "status": 1}'),
-(34, 5, 3, N'{"code": "POS034", "start_date": "2025-08-07", "end_date": "2028-08-18", "note": "Đồ họa + Middle", "status": 1}'),
-(35, 6, 4, N'{"code": "POS035", "start_date": "2025-07-16", "end_date": "2028-08-19", "note": "Lập trình + Senior/Lead", "status": 1}'),
-(36, 7, 2, N'{"code": "POS036", "start_date": "2025-07-22", "end_date": "2028-08-19", "note": "Trải nghiệm và kiểm tra + Junior", "status": 1}'),
-(37, 8, 3, N'{"code": "POS037", "start_date": "2025-08-07", "end_date": "2028-08-23", "note": "Tiếp thị + Middle", "status": 1}'),
-(38, 10, 3, N'{"code": "POS038", "start_date": "2025-08-25", "end_date": "2028-08-23", "note": "Nhân sự + Middle", "status": 1}'),
-(39, 4, 2, N'{"code": "POS039", "start_date": "2025-07-19", "end_date": "2028-08-24", "note": "Thiết kế game + Junior", "status": 1}'),
-(40, 4, 2, N'{"code": "POS040", "start_date": "2025-07-10", "end_date": "2028-08-25", "note": "Thiết kế game + Junior", "status": 1}');
-GO
+INSERT INTO position (contract_id, salary_mult_id, datas) VALUES  
+(1, 1,  N'{"code": "POS001", "start_date": "2025-07-06", "end_date": "2028-06-26", "note": "Tổng Giám đốc + Founder/Core", "status": 1}'),
+(2, 2,  N'{"code": "POS002", "start_date": "2025-07-16", "end_date": "2028-06-29", "note": "Giám đốc Kỹ thuật + Founder/Core", "status": 1}'),
+(3, 3,  N'{"code": "POS003", "start_date": "2025-08-04", "end_date": "2028-07-02", "note": "Giám đốc sáng tạo + Founder/Core", "status": 1}'),
+(4, 13, N'{"code": "POS004", "start_date": "2025-07-25", "end_date": "2028-07-06", "note": "Trải nghiệm và kiểm tra + Intern", "status": 1}'),
+(5, 16, N'{"code": "POS005", "start_date": "2025-07-25", "end_date": "2028-07-10", "note": "Tiếp thị + Middle", "status": 1}'),
+(6, 6,  N'{"code": "POS006", "start_date": "2025-08-04", "end_date": "2028-07-14", "note": "Thiết kế game + Senior/Lead", "status": 1}'),
+(7, 13, N'{"code": "POS007", "start_date": "2025-07-09", "end_date": "2028-07-17", "note": "Trải nghiệm và kiểm tra + Intern", "status": 1}'),
+(8, 5,  N'{"code": "POS008", "start_date": "2025-08-11", "end_date": "2028-07-17", "note": "Thiết kế game + Middle", "status": 1}'),
+(9, 17, N'{"code": "POS009", "start_date": "2025-08-18", "end_date": "2028-07-17", "note": "Chăm sóc khách hàng + Junior", "status": 1}'),
+(10, 9, N'{"code": "POS010", "start_date": "2025-07-23", "end_date": "2028-07-21", "note": "Đồ họa + Senior/Lead", "status": 1}'),
+(11, 14, N'{"code": "POS011", "start_date": "2025-08-03", "end_date": "2028-07-21", "note": "Trải nghiệm và kiểm tra + Junior", "status": 1}'),
+(12, 10, N'{"code": "POS012", "start_date": "2025-08-23", "end_date": "2028-07-24", "note": "Lập trình + Junior", "status": 1}'),
+(13, 4, N'{"code": "POS013", "start_date": "2025-06-30", "end_date": "2028-07-25", "note": "Thiết kế game + Junior", "status": 1}'),
+(14, 9, N'{"code": "POS014", "start_date": "2025-07-24", "end_date": "2028-07-25", "note": "Đồ họa + Senior/Lead", "status": 1}'),
+(15, 10, N'{"code": "POS015", "start_date": "2025-07-17", "end_date": "2028-07-26", "note": "Lập trình + Junior", "status": 1}'),
+(16, 11, N'{"code": "POS016", "start_date": "2025-07-01", "end_date": "2028-07-27", "note": "Lập trình + Middle", "status": 1}'),
+(17, 22, N'{"code": "POS017", "start_date": "2025-08-14", "end_date": "2028-07-27", "note": "Tài chính & Kế toán + Middle", "status": 1}'),
+(18, 18, N'{"code": "POS018", "start_date": "2025-08-09", "end_date": "2028-07-28", "note": "Chăm sóc khách hàng + Middle", "status": 1}'),
+(19, 14, N'{"code": "POS019", "start_date": "2025-07-09", "end_date": "2028-07-30", "note": "Trải nghiệm và kiểm tra + Junior", "status": 1}'),
+(20, 7,  N'{"code": "POS020", "start_date": "2025-07-28", "end_date": "2028-07-30", "note": "Đồ họa + Junior", "status": 1}'),
+(21, 5,  N'{"code": "POS021", "start_date": "2025-07-13", "end_date": "2028-08-01", "note": "Thiết kế game + Middle", "status": 1}'),
+(22, 21, N'{"code": "POS022", "start_date": "2025-07-24", "end_date": "2028-08-01", "note": "Tài chính & Kế toán + Junior", "status": 1}'),
+(23, 9,  N'{"code": "POS023", "start_date": "2025-07-31", "end_date": "2028-08-01", "note": "Đồ họa + Senior/Lead", "status": 1}'),
+(24, 14, N'{"code": "POS024", "start_date": "2025-08-05", "end_date": "2028-08-01", "note": "Trải nghiệm và kiểm tra + Junior", "status": 1}'),
+(25, 14, N'{"code": "POS025", "start_date": "2025-08-25", "end_date": "2028-08-01", "note": "Trải nghiệm và kiểm tra + Junior", "status": 1}'),
+(26, 11, N'{"code": "POS026", "start_date": "2025-06-28", "end_date": "2028-08-02", "note": "Lập trình + Middle", "status": 1}'),
+(27, 16, N'{"code": "POS027", "start_date": "2025-08-01", "end_date": "2028-08-02", "note": "Tiếp thị + Middle", "status": 1}'),
+(28, 11, N'{"code": "POS028", "start_date": "2025-07-06", "end_date": "2028-08-07", "note": "Lập trình + Middle", "status": 1}'),
+(29, 12, N'{"code": "POS029", "start_date": "2025-07-19", "end_date": "2028-08-07", "note": "Lập trình + Senior/Lead", "status": 1}'),
+(30, 4,  N'{"code": "POS030", "start_date": "2025-06-28", "end_date": "2028-08-11", "note": "Thiết kế game + Junior", "status": 1}'),
+(31, 19, N'{"code": "POS031", "start_date": "2025-07-16", "end_date": "2028-08-12", "note": "Nhân sự + Junior", "status": 1}'),
+(32, 8,  N'{"code": "POS032", "start_date": "2025-08-01", "end_date": "2028-08-15", "note": "Đồ họa + Middle", "status": 1}'),
+(33, 8,  N'{"code": "POS033", "start_date": "2025-07-13", "end_date": "2028-08-17", "note": "Đồ họa + Middle", "status": 1}'),
+(34, 8,  N'{"code": "POS034", "start_date": "2025-08-07", "end_date": "2028-08-18", "note": "Đồ họa + Middle", "status": 1}'),
+(35, 12, N'{"code": "POS035", "start_date": "2025-07-16", "end_date": "2028-08-19", "note": "Lập trình + Senior/Lead", "status": 1}'),
+(36, 14, N'{"code": "POS036", "start_date": "2025-07-22", "end_date": "2028-08-19", "note": "Trải nghiệm và kiểm tra + Junior", "status": 1}'),
+(37, 16, N'{"code": "POS037", "start_date": "2025-08-07", "end_date": "2028-08-23", "note": "Tiếp thị + Middle", "status": 1}'),
+(38, 20, N'{"code": "POS038", "start_date": "2025-08-25", "end_date": "2028-08-23", "note": "Nhân sự + Middle", "status": 1}'),
+(39, 4,  N'{"code": "POS039", "start_date": "2025-07-19", "end_date": "2028-08-24", "note": "Thiết kế game + Junior", "status": 1}'),
+(40, 4,  N'{"code": "POS040", "start_date": "2025-07-10", "end_date": "2028-08-25", "note": "Thiết kế game + Junior", "status": 1}');
 
 INSERT INTO project (datas) VALUES 
 (N'{"code": "PROJ001", "name": "Phàm nhân tu tiên 3D", "start_date": "2026-01-17", "end_date": "2027-01-17", "note": "2 Thiết kế game + 2 Đồ họa + 2 Lập trình + 3 Trải nghiệm và kiểm tra", "status": 1}'),
@@ -2274,12 +2272,12 @@ INSERT INTO attendance (employee_id, datas) VALUES
 
 
 INSERT INTO holiday (datas) VALUES 
-(N'{"code": "NEW_YEAR_2026", "of_date": "2026-01-01", "name": "Tết Dương lịch", "day_mult": 3.0, "night_mult": 3.0, "ot_mult": 3.0, "note": "Nghỉ lễ theo luật", "status": 1}'),
-(N'{"code": "LUNAR_NEW_YEAR_2026_D1", "of_date": "2026-02-16", "name": "Tết Nguyên Đán - 30 Tết", "day_mult": 3.0, "night_mult": 3.0, "ot_mult": 3.0, "note": "Nghỉ Tết Âm lịch", "status": 1}'),
-(N'{"code": "LUNAR_NEW_YEAR_2026_D2", "of_date": "2026-02-17", "name": "Tết Nguyên Đán - Mùng 1", "day_mult": 3.0, "night_mult": 3.0, "ot_mult": 3.0, "note": "Nghỉ Tết Âm lịch", "status": 1}'),
-(N'{"code": "LUNAR_NEW_YEAR_2026_D3", "of_date": "2026-02-18", "name": "Tết Nguyên Đán - Mùng 2", "day_mult": 3.0, "night_mult": 3.0, "ot_mult": 3.0, "note": "Nghỉ Tết Âm lịch", "status": 1}'),
-(N'{"code": "LUNAR_NEW_YEAR_2026_D4", "of_date": "2026-02-19", "name": "Tết Nguyên Đán - Mùng 3", "day_mult": 3.0, "night_mult": 3.0, "ot_mult": 3.0, "note": "Nghỉ Tết Âm lịch", "status": 1}'),
-(N'{"code": "LUNAR_NEW_YEAR_2026_D5", "of_date": "2026-02-20", "name": "Tết Nguyên Đán - Mùng 4", "day_mult": 3.0, "night_mult": 3.0, "ot_mult": 3.0, "note": "Nghỉ Tết Âm lịch", "status": 1}');
+(N'{"code": "NEW_YEAR_2026",          "of_date": "2026-01-01", "name": "Tết Dương lịch",          "mult": 3.0, "note": "Nghỉ lễ theo luật", "status": 1}'),
+(N'{"code": "LUNAR_NEW_YEAR_2026_D1", "of_date": "2026-02-16", "name": "Tết Nguyên Đán - 30 Tết", "mult": 3.0, "note": "Nghỉ Tết Âm lịch", "status": 1}'),
+(N'{"code": "LUNAR_NEW_YEAR_2026_D2", "of_date": "2026-02-17", "name": "Tết Nguyên Đán - Mùng 1", "mult": 3.0, "note": "Nghỉ Tết Âm lịch", "status": 1}'),
+(N'{"code": "LUNAR_NEW_YEAR_2026_D3", "of_date": "2026-02-18", "name": "Tết Nguyên Đán - Mùng 2", "mult": 3.0, "note": "Nghỉ Tết Âm lịch", "status": 1}'),
+(N'{"code": "LUNAR_NEW_YEAR_2026_D4", "of_date": "2026-02-19", "name": "Tết Nguyên Đán - Mùng 3", "mult": 3.0, "note": "Nghỉ Tết Âm lịch", "status": 1}'),
+(N'{"code": "LUNAR_NEW_YEAR_2026_D5", "of_date": "2026-02-20", "name": "Tết Nguyên Đán - Mùng 4", "mult": 3.0, "note": "Nghỉ Tết Âm lịch", "status": 1}');
 GO
 
 INSERT INTO leave_cat (datas)
@@ -2369,3 +2367,269 @@ INSERT INTO account (employee_id, datas) VALUES
 (39, N'{"user": "EMP039", "password": "PW_EMP039", "role": 2, "status": 0}'),
 (40, N'{"user": "EMP040", "password": "PW_EMP040", "role": 2, "status": 0}');
 GO
+
+
+
+-- =========================================================
+-- INSERT DATA FOR POLICY (Relational IDs + JSON Datas)
+-- =========================================================
+
+
+-- Giả định bảng: PayrollPolicies (id int identity, datas nvarchar(max))
+
+INSERT INTO policy (datas)
+VALUES 
+-- 1. Đơn vị lương
+(N'{
+    "code": "HOURLY_RATE",
+    "name": "Đơn vị lương 1h",
+    "rule": "SYS_BASE_SALARY * SYS_SALARY_MULT / SYS_STD_HOURS",
+    "priority": 1,
+    "data_source": 1,
+    "aggregate": 1,
+    "category": 1,
+    "gen_item": 1,
+    "unit": 2,
+    "note": "Xác định đơn giá lương mỗi giờ làm việc dựa trên lương cơ bản và định mức giờ công.",
+    "status": 1
+}'),
+
+-- 2. Hệ số ca làm
+(N'{
+    "code": "MULT_SHIFT",
+    "name": "Hệ số giờ hành chính của ca làm",
+    "rule": "IF(SYS_SHIFT = 1, 1.0, 1.3) * IF(SYS_IS_HOLIDAY = 1, SYS_MULT_HOLIDAY, 1.0)",
+    "priority": 2,
+    "data_source": 2,
+    "aggregate": 1,
+    "category": 1,
+    "gen_item": 2,
+    "unit": 5,
+    "note": "Tính toán hệ số nhân lương tùy theo ca ngày/đêm và điều kiện ngày lễ/tết.",
+    "status": 1
+}'),
+
+-- 3. Hệ số tăng ca
+(N'{
+    "code": "MULT_OVERTIME",
+    "name": "Hệ số tăng ca của ca làm",
+    "rule": "1.2 * MULT_SHIFT",
+    "priority": 3,
+    "data_source": 2,
+    "aggregate": 1,
+    "category": 1,
+    "gen_item": 2,
+    "unit": 5,
+    "note": "Hệ số nhân dành riêng cho các giờ làm thêm, phụ thuộc vào hệ số ca gốc.",
+    "status": 1
+}'),
+
+-- 4. Tổng giờ hành chính
+(N'{
+    "code": "SUM_OFFICE_HOURS",
+    "name": "Tổng giờ hành chính cả kỳ",
+    "rule": "SYS_OFFICE_HOURS * MULT_SHIFT",
+    "priority": 4,
+    "data_source": 2,
+    "aggregate": 2,
+    "category": 2,
+    "gen_item": 1,
+    "unit": 3,
+    "note": "Tổng thời gian làm việc chính thức trong kỳ lương sau khi quy đổi hệ số.",
+    "status": 1
+}'),
+
+-- 5. Tổng giờ tăng ca
+(N'{
+    "code": "SUM_OVERTIME_HOURS",
+    "name": "Tổng giờ tăng ca cả kỳ",
+    "rule": "SYS_OVERTIME_HOURS * MULT_OVERTIME",
+    "priority": 5,
+    "data_source": 2,
+    "aggregate": 2,
+    "category": 2,
+    "gen_item": 1,
+    "unit": 3,
+    "note": "Tổng số giờ làm thêm đã được nhân hệ số tăng ca tương ứng.",
+    "status": 1
+}'),
+
+-- 6. Tổng giờ đi muộn
+(N'{
+    "code": "SUM_LATE_HOURS",
+    "name": "Tổng giờ đi muộn cả kỳ",
+    "rule": "SYS_LATE_HOURS * MULT_SHIFT",
+    "priority": 6,
+    "data_source": 2,
+    "aggregate": 2,
+    "category": 2,
+    "gen_item": 1,
+    "unit": 3,
+    "note": "Tổng thời gian vi phạm đi trễ theo dữ liệu máy chấm công.",
+    "status": 1
+}'),
+
+-- 7. Tổng giờ về sớm
+(N'{
+    "code": "SUM_EARLY_HOURS",
+    "name": "Tổng giờ về sớm cả kỳ",
+    "rule": "SYS_EARLY_LEAVE_HOURS * MULT_SHIFT",
+    "priority": 7,
+    "data_source": 2,
+    "aggregate": 2,
+    "category": 2,
+    "gen_item": 1,
+    "unit": 3,
+    "note": "Tổng thời gian vi phạm về sớm theo dữ liệu máy chấm công.",
+    "status": 1
+}'),
+
+-- 8. Tổng giờ chuẩn
+(N'{
+    "code": "SUM_OFFICE_HOURS_RAW",
+    "name": "Tổng giờ hành chính chuẩn cả kỳ",
+    "rule": "SYS_OFFICE_HOURS",
+    "priority": 8,
+    "data_source": 2,
+    "aggregate": 2,
+    "category": 2,
+    "gen_item": 1,
+    "unit": 3,
+    "note": "Giờ hành chính thực tế chưa nhân hệ số, dùng làm căn cứ xét phụ cấp.",
+    "status": 1
+}'),
+
+-- 9. Lương hành chính
+(N'{
+    "code": "SALARY_OFFICE",
+    "name": "Tổng thu nhập giờ hành chính cả kỳ",
+    "rule": "SUM_OFFICE_HOURS * HOURLY_RATE",
+    "priority": 9,
+    "data_source": 1,
+    "aggregate": 1,
+    "category": 3,
+    "gen_item": 1,
+    "unit": 2,
+    "note": "Tiền lương tính theo giờ làm việc hành chính trong kỳ.",
+    "status": 1
+}'),
+
+-- 10. Lương tăng ca
+(N'{
+    "code": "SALARY_OVERTIME",
+    "name": "Tổng thu nhập tăng ca cả kỳ",
+    "rule": "SUM_OVERTIME_HOURS * HOURLY_RATE",
+    "priority": 10,
+    "data_source": 1,
+    "aggregate": 1,
+    "category": 3,
+    "gen_item": 1,
+    "unit": 2,
+    "note": "Tiền lương tính cho các giờ làm thêm ngoài giờ hành chính.",
+    "status": 1
+}'),
+
+-- 11. Khấu trừ đi muộn
+(N'{
+    "code": "DEDUCT_LATE",
+    "name": "Tổng khấu trừ đi muộn cả kỳ",
+    "rule": "SUM_LATE_HOURS * HOURLY_RATE",
+    "priority": 11,
+    "data_source": 1,
+    "aggregate": 1,
+    "category": 4,
+    "gen_item": 1,
+    "unit": 2,
+    "note": "Khoản tiền bị trừ tương ứng với thời gian đi muộn.",
+    "status": 1
+}'),
+
+-- 12. Khấu trừ về sớm
+(N'{
+    "code": "DEDUCT_EARLY",
+    "name": "Tổng khấu trừ về sớm cả kỳ",
+    "rule": "SUM_EARLY_HOURS * HOURLY_RATE",
+    "priority": 12,
+    "data_source": 1,
+    "aggregate": 1,
+    "category": 4,
+    "gen_item": 1,
+    "unit": 2,
+    "note": "Khoản tiền bị trừ tương ứng với thời gian về sớm.",
+    "status": 1
+}'),
+
+-- 13. Phụ cấp công ty
+(N'{
+    "code": "ALLOW_COMPANY",
+    "name": "Phụ cấp chung của công ty",
+    "rule": "IF(SUM_OFFICE_HOURS_RAW >= SYS_STD_HOURS, 700000, 0.0)",
+    "priority": 13,
+    "data_source": 1,
+    "aggregate": 1,
+    "category": 5,
+    "gen_item": 1,
+    "unit": 2,
+    "note": "Phụ cấp chuyên cần dành cho nhân viên đạt đủ số giờ công chuẩn.",
+    "status": 1
+}'),
+
+-- 14. BHXH
+(N'{
+    "code": "INS_SOCIAL",
+    "name": "Khấu trừ bảo hiểm xã hội",
+    "rule": "SYS_BASE_SALARY * 0.08",
+    "priority": 14,
+    "data_source": 1,
+    "aggregate": 1,
+    "category": 7,
+    "gen_item": 1,
+    "unit": 2,
+    "note": "Trích đóng bảo hiểm xã hội (8%) tính trên mức lương cơ bản.",
+    "status": 1
+}'),
+
+-- 15. BHYT
+(N'{
+    "code": "INS_HEALTH",
+    "name": "Khấu trừ bảo hiểm sức khỏe",
+    "rule": "SYS_BASE_SALARY * 0.015",
+    "priority": 15,
+    "data_source": 1,
+    "aggregate": 1,
+    "category": 7,
+    "gen_item": 1,
+    "unit": 2,
+    "note": "Trích đóng bảo hiểm y tế (1.5%) tính trên mức lương cơ bản.",
+    "status": 1
+}'),
+
+-- 16. BHTN
+(N'{
+    "code": "INS_UNEMP",
+    "name": "Khấu trừ bảo hiểm thất nghiệp",
+    "rule": "SYS_BASE_SALARY * 0.01",
+    "priority": 16,
+    "data_source": 1,
+    "aggregate": 1,
+    "category": 7,
+    "gen_item": 1,
+    "unit": 2,
+    "note": "Trích đóng bảo hiểm thất nghiệp (1%) tính trên mức lương cơ bản.",
+    "status": 1
+}'),
+
+-- 17. Thuế TNCN 
+(N'{
+    "code": "TAX_AMOUNT",
+    "name": "Thuế thu nhập các nhân",
+    "rule": "TOTAL_INCOME * 0.10",
+    "priority": 18,
+    "data_source": 1,
+    "aggregate": 1,
+    "category": 8,
+    "gen_item": 1,
+    "unit": 2,
+    "note": "Tạm tính thuế thu nhập cá nhân phải nộp theo tỷ lệ quy định.",
+    "status": 0
+}');
