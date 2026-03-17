@@ -15,7 +15,7 @@ Public Class UserProfileForm
 
         _parent = form
 
-        ui_selectUI.Visible = UserProfile.User.role = Account.ROLE_ADM
+        ui_selectUI.Visible = (UserProfile.User.role = Account.ROLE_ADM)
     End Sub
 
     Private Sub btn_logout_Click(sender As Object, e As EventArgs) Handles btn_logout.Click
@@ -34,6 +34,9 @@ Public Class UserProfileForm
     End Sub
 
     Private Sub btn_ui_user_Click(sender As Object, e As EventArgs) Handles btn_ui_user.Click
+        If UserProfile.Is_User Then
+            Return
+        End If
         UserProfile.SwitchUser()
         frmMain.Instance?.Show()
         _parent.Close()
@@ -41,6 +44,9 @@ Public Class UserProfileForm
     End Sub
 
     Private Sub btn_ui_dev_Click(sender As Object, e As EventArgs) Handles btn_ui_dev.Click
+        If UserProfile.Is_Dev Then
+            Return
+        End If
         UserProfile.SwitchDev()
         Dim frm = New FormMain()
         frm.Show()

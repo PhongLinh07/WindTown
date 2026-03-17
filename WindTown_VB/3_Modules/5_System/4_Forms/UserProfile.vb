@@ -15,7 +15,7 @@ Public NotInheritable Class UserProfile
         End Set
     End Property
 
-    Public Shared ReadOnly Property IsDev As Boolean
+    Public Shared ReadOnly Property Is_Dev As Boolean
         Get
             Return _isDEV
         End Get

@@ -285,12 +285,6 @@
     <Compile Include="2_Core\6_Forms\1_FormBase\BaseList_UC.vb">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="2_Core\6_Forms\Developer_Mode.Designer.vb">
-      <DependentUpon>Developer_Mode.vb</DependentUpon>
-    </Compile>
-    <Compile Include="2_Core\6_Forms\Developer_Mode.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="2_Core\6_Forms\DgvDisplay_frm.Designer.vb">
       <DependentUpon>DgvDisplay_frm.vb</DependentUpon>
     </Compile>
@@ -747,9 +741,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="2_Core\6_Forms\1_FormBase\BaseList_UC.resx">
       <DependentUpon>BaseList_UC.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="2_Core\6_Forms\Developer_Mode.resx">
-      <DependentUpon>Developer_Mode.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="2_Core\6_Forms\DgvDisplay_frm.resx">
       <DependentUpon>DgvDisplay_frm.vb</DependentUpon>

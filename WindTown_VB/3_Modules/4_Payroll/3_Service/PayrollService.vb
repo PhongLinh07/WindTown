@@ -108,7 +108,6 @@ Public Class PayrollService
             Next
 
         Catch ex As Exception
-        Catch ex As Exception
             ' Bạn có thể ghi log lỗi vào file ở đây
             Return ServiceResponse(Of Object).Fail($"Lỗi hệ thống: {101}" & ex.Message, ex)
         End Try
