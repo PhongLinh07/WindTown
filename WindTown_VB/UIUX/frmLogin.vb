@@ -1,4 +1,5 @@
-Public Class frmLogin
+﻿Public Class frmLogin
+
     Public Sub New()
 
         ' This call is required by the designer.
@@ -25,40 +26,46 @@ Public Class frmLogin
             Return
         End If
 
-        If CheckLogin(username, password) Then
-            Dim repo As New AccountRepository()
-            Dim acc = repo.GetAccountByUsername(New Account With {.user = username})
-
-            NguoiDungHienTaiService.GanTaiKhoanDangNhap(acc)
-
-            MessageBox.Show("Đăng nhập thành công!", "Thành công")
-
-            ' 🔐 Phân quyền theo role
-            Select Case acc.role
-                Case 1 ' Admin / Developer
-                    NavigationService.SwitchTopLevel(Of Developer_Mode)(Me)
-                    Return
-
-                Case 2 ' User thường
-                    NavigationService.SwitchTopLevel(Of frmMain)(Me)
-                    Return
-                Case Else
-                    MessageBox.Show("Tài khoản không có quyền truy cập!", "Lỗi")
-            End Select
-        Else
-            MessageBox.Show("Sai tài khoản hoặc mật khẩu!", "Nhập lại")
+        Dim ketQuaDangNhap = CheckLogin(username, password)
+        If Not ketQuaDangNhap.IsSuccess Then
+            Dim thongBao = If(String.IsNullOrWhiteSpace(ketQuaDangNhap.Message), "Sai tài khoản hoặc mật khẩu!", ketQuaDangNhap.Message)
+            MessageBox.Show(thongBao, "Nhập lại")
+            Return
         End If
+
+        Dim acc = TryCast(ketQuaDangNhap.Data, Account)
+        If acc Is Nothing Then
+            MessageBox.Show("Không tìm thấy thông tin tài khoản sau đăng nhập.", "Lỗi")
+            Return
+        End If
+
+        NguoiDungHienTaiService.GanTaiKhoanDangNhap(acc)
+
+        ' Đăng nhập thành công và chuyển form theo quyền.
+        Select Case acc.role
+            Case 1 ' Admin / Developer
+                MessageBox.Show("Đăng nhập thành công!", "Thành công")
+                NavigationService.SwitchTopLevel(Of Developer_Mode)(Me)
+                Return
+
+            Case 2 ' User thường
+                MessageBox.Show("Đăng nhập thành công!", "Thành công")
+                NavigationService.SwitchTopLevel(Of frmMain)(Me)
+                Return
+            Case Else
+                MessageBox.Show("Tài khoản không có quyền truy cập!", "Lỗi")
+        End Select
     End Sub
 
     Private Sub btnRegister_Click(sender As Object, e As EventArgs) Handles btnRegister.Click
         'NavigationService.SwitchTopLevel(Of frmRegister)(Me)
     End Sub
 
-    Private Function CheckLogin(username As String, password As String) As Boolean
+    Private Function CheckLogin(username As String, password As String) As ServiceResponse(Of Object)
 
         Dim accService As AccountService = New AccountService()
         Dim result = accService.Execute(DataIntent.Login, New Account With {.user = username, .password = password})
-        Return result.IsSuccess
+        Return result
     End Function
 
     Private Function KiemTraDuLieuDangNhap(username As String, password As String) As Boolean

@@ -69,7 +69,7 @@ Partial Class frmChucVu
         Me.Label2.AutoSize = True
         Me.Label2.Location = New System.Drawing.Point(15, 20)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(151, 27)
+        Me.Label2.Size = New System.Drawing.Size(153, 27)
         Me.Label2.TabIndex = 2
         Me.Label2.Text = "Mo ta chuc vu:"
         '
@@ -102,7 +102,7 @@ Partial Class frmChucVu
         '
         Me.tvChucVu.Location = New System.Drawing.Point(10, 57)
         Me.tvChucVu.Name = "tvChucVu"
-        Me.tvChucVu.Size = New System.Drawing.Size(457, 503)
+        Me.tvChucVu.Size = New System.Drawing.Size(501, 503)
         Me.tvChucVu.TabIndex = 4
         '
         'Button3
@@ -168,7 +168,7 @@ Partial Class frmChucVu
         Me.Label1.Font = New System.Drawing.Font("Microsoft YaHei UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.Location = New System.Drawing.Point(20, 20)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(90, 27)
+        Me.Label1.Size = New System.Drawing.Size(92, 27)
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "Chuc vu"
         '

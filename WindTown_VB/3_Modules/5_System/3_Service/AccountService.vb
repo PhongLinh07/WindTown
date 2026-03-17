@@ -1,10 +1,10 @@
-Public Class AccountService
+﻿Public Class AccountService
     Inherits BaseService(Of Account)
 
     Private _repoAcc As AccountRepository = New AccountRepository()
     Public Sub New()
-        ' Vì JobRepository kế thừa từ GenericRepository(Of Job), 
-        ' nên việc gán này là hoàn toàn hợp lệ (Tính đa hình).
+        ' Vì JobRepository kế thừa từ GenericRepository(Of Job),
+        ' nên việc gán này là hoàn toàn hợp lệ (tính đa hình).
         _repo = New AccountRepository()
     End Sub
 
@@ -32,11 +32,11 @@ Public Class AccountService
                     End If
 
                     If acc.user = accInput.user AndAlso acc.password = accInput.password Then
-                        Return ServiceResponse(Of Object).Success(Nothing) ' ko trả về
+                        ' Trả về tài khoản để UI tái sử dụng, tránh truy vấn lại.
+                        Return ServiceResponse(Of Object).Success(acc)
                     Else
                         Return ServiceResponse(Of Object).Fail("Đăng nhập thất bại: Sai mật khẩu")
                     End If
-
 
                 Case Else
                     Return MyBase.Execute(intent, data)

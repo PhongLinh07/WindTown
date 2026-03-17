@@ -1,4 +1,4 @@
-Public Class ServiceResponse(Of T)
+﻿Public Class ServiceResponse(Of T)
 
     Public Property IsSuccess As Boolean
     Public Property Message As String
