@@ -1,4 +1,12 @@
 Public Class frmMain
+    Public Shared Instance As frmMain = Nothing
+
+    Public Sub New()
+
+        InitializeComponent()
+
+        frmMain.Instance = Me
+    End Sub
     ' Ghi chu: cap nhat nho theo yeu cau, khong thay doi logic (frmHopDong update).
 
     Private Sub frmMain_Load(sender As Object, e As EventArgs) Handles MyBase.Load

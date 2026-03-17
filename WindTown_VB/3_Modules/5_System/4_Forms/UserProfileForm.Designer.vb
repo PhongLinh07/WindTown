@@ -32,6 +32,9 @@ Partial Class UserProfileForm
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.ui_selectUI = New System.Windows.Forms.GroupBox()
+        Me.btn_ui_dev = New System.Windows.Forms.Button()
+        Me.btn_ui_user = New System.Windows.Forms.Button()
         Me.btn_logout = New System.Windows.Forms.Button()
         Me.BackgroundWorker1 = New System.ComponentModel.BackgroundWorker()
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -41,6 +44,7 @@ Partial Class UserProfileForm
         Me.Panel1.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel2.SuspendLayout()
+        Me.ui_selectUI.SuspendLayout()
         Me.SuspendLayout()
         '
         'SplitContainer1
@@ -79,7 +83,7 @@ Partial Class UserProfileForm
         'ui_role
         '
         Me.ui_role.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ui_role.Location = New System.Drawing.Point(27, 494)
+        Me.ui_role.Location = New System.Drawing.Point(27, 502)
         Me.ui_role.Name = "ui_role"
         Me.ui_role.ReadOnly = True
         Me.ui_role.Size = New System.Drawing.Size(336, 26)
@@ -88,7 +92,7 @@ Partial Class UserProfileForm
         'ui_employee
         '
         Me.ui_employee.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ui_employee.Location = New System.Drawing.Point(27, 303)
+        Me.ui_employee.Location = New System.Drawing.Point(27, 311)
         Me.ui_employee.Name = "ui_employee"
         Me.ui_employee.ReadOnly = True
         Me.ui_employee.Size = New System.Drawing.Size(336, 26)
@@ -99,7 +103,7 @@ Partial Class UserProfileForm
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Label4.Location = New System.Drawing.Point(23, 378)
+        Me.Label4.Location = New System.Drawing.Point(23, 386)
         Me.Label4.Margin = New System.Windows.Forms.Padding(0)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(118, 19)
@@ -110,7 +114,7 @@ Partial Class UserProfileForm
         '
         Me.PictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.PictureBox1.Image = Global.WindTown_VB.My.Resources.Resources.Avatar
-        Me.PictureBox1.Location = New System.Drawing.Point(108, 12)
+        Me.PictureBox1.Location = New System.Drawing.Point(108, 34)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(166, 216)
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
@@ -120,7 +124,7 @@ Partial Class UserProfileForm
         'ui_user
         '
         Me.ui_user.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ui_user.Location = New System.Drawing.Point(27, 400)
+        Me.ui_user.Location = New System.Drawing.Point(27, 408)
         Me.ui_user.Name = "ui_user"
         Me.ui_user.ReadOnly = True
         Me.ui_user.Size = New System.Drawing.Size(336, 26)
@@ -131,7 +135,7 @@ Partial Class UserProfileForm
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Label1.Location = New System.Drawing.Point(23, 281)
+        Me.Label1.Location = New System.Drawing.Point(23, 289)
         Me.Label1.Margin = New System.Windows.Forms.Padding(0)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(92, 19)
@@ -143,7 +147,7 @@ Partial Class UserProfileForm
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Label3.Location = New System.Drawing.Point(23, 472)
+        Me.Label3.Location = New System.Drawing.Point(23, 480)
         Me.Label3.Margin = New System.Windows.Forms.Padding(0)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(170, 19)
@@ -153,6 +157,7 @@ Partial Class UserProfileForm
         'Panel2
         '
         Me.Panel2.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.Panel2.Controls.Add(Me.ui_selectUI)
         Me.Panel2.Controls.Add(Me.btn_logout)
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel2.Font = New System.Drawing.Font("Arial Narrow", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -161,10 +166,46 @@ Partial Class UserProfileForm
         Me.Panel2.Size = New System.Drawing.Size(365, 581)
         Me.Panel2.TabIndex = 0
         '
+        'ui_selectUI
+        '
+        Me.ui_selectUI.Controls.Add(Me.btn_ui_dev)
+        Me.ui_selectUI.Controls.Add(Me.btn_ui_user)
+        Me.ui_selectUI.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ui_selectUI.Location = New System.Drawing.Point(19, 73)
+        Me.ui_selectUI.Name = "ui_selectUI"
+        Me.ui_selectUI.Size = New System.Drawing.Size(334, 192)
+        Me.ui_selectUI.TabIndex = 24
+        Me.ui_selectUI.TabStop = False
+        Me.ui_selectUI.Text = "Chế độ giao diện:"
+        '
+        'btn_ui_dev
+        '
+        Me.btn_ui_dev.BackColor = System.Drawing.Color.Transparent
+        Me.btn_ui_dev.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btn_ui_dev.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_ui_dev.Location = New System.Drawing.Point(185, 76)
+        Me.btn_ui_dev.Name = "btn_ui_dev"
+        Me.btn_ui_dev.Size = New System.Drawing.Size(128, 41)
+        Me.btn_ui_dev.TabIndex = 26
+        Me.btn_ui_dev.Text = "Nhà phát triển"
+        Me.btn_ui_dev.UseVisualStyleBackColor = False
+        '
+        'btn_ui_user
+        '
+        Me.btn_ui_user.BackColor = System.Drawing.Color.Transparent
+        Me.btn_ui_user.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btn_ui_user.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_ui_user.Location = New System.Drawing.Point(26, 76)
+        Me.btn_ui_user.Name = "btn_ui_user"
+        Me.btn_ui_user.Size = New System.Drawing.Size(130, 41)
+        Me.btn_ui_user.TabIndex = 25
+        Me.btn_ui_user.Text = "Người dùng"
+        Me.btn_ui_user.UseVisualStyleBackColor = False
+        '
         'btn_logout
         '
         Me.btn_logout.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_logout.Location = New System.Drawing.Point(130, 288)
+        Me.btn_logout.Location = New System.Drawing.Point(128, 296)
         Me.btn_logout.Name = "btn_logout"
         Me.btn_logout.Size = New System.Drawing.Size(112, 41)
         Me.btn_logout.TabIndex = 23
@@ -177,6 +218,7 @@ Partial Class UserProfileForm
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(762, 581)
         Me.Controls.Add(Me.SplitContainer1)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D
         Me.Name = "UserProfileForm"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "UserProfileForm"
@@ -188,6 +230,7 @@ Partial Class UserProfileForm
         Me.Panel1.PerformLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel2.ResumeLayout(False)
+        Me.ui_selectUI.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
@@ -204,4 +247,7 @@ Partial Class UserProfileForm
     Friend WithEvents btn_logout As Button
     Protected WithEvents ui_employee As TextBox
     Protected WithEvents ui_user As TextBox
+    Friend WithEvents ui_selectUI As GroupBox
+    Friend WithEvents btn_ui_dev As Button
+    Friend WithEvents btn_ui_user As Button
 End Class

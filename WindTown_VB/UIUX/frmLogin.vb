@@ -1,4 +1,4 @@
-﻿Public Class frmLogin
+Public Class frmLogin
 
     Public Sub New()
 
@@ -40,21 +40,9 @@
         End If
 
         NguoiDungHienTaiService.GanTaiKhoanDangNhap(acc)
+        NavigationService.SwitchTopLevel(Of frmMain)(Me)
+        UserProfile.User = acc
 
-        ' Đăng nhập thành công và chuyển form theo quyền.
-        Select Case acc.role
-            Case 1 ' Admin / Developer
-                MessageBox.Show("Đăng nhập thành công!", "Thành công")
-                NavigationService.SwitchTopLevel(Of Developer_Mode)(Me)
-                Return
-
-            Case 2 ' User thường
-                MessageBox.Show("Đăng nhập thành công!", "Thành công")
-                NavigationService.SwitchTopLevel(Of frmMain)(Me)
-                Return
-            Case Else
-                MessageBox.Show("Tài khoản không có quyền truy cập!", "Lỗi")
-        End Select
     End Sub
 
     Private Sub btnRegister_Click(sender As Object, e As EventArgs) Handles btnRegister.Click

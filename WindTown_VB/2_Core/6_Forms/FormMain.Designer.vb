@@ -34,7 +34,7 @@ Partial Class FormMain
         Me.TabPage5 = New System.Windows.Forms.TabPage()
         Me.TabPage6 = New System.Windows.Forms.TabPage()
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
-        Me.tool_uer_profile = New System.Windows.Forms.ToolStripMenuItem()
+        Me.tool_user_profile = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
         Me.SdvsdToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.menu_department = New System.Windows.Forms.ToolStripMenuItem()
@@ -87,7 +87,7 @@ Partial Class FormMain
         Me.pnl_main.Dock = System.Windows.Forms.DockStyle.Fill
         Me.pnl_main.Location = New System.Drawing.Point(0, 0)
         Me.pnl_main.Name = "pnl_main"
-        Me.pnl_main.Size = New System.Drawing.Size(1279, 781)
+        Me.pnl_main.Size = New System.Drawing.Size(1264, 649)
         Me.pnl_main.TabIndex = 3
         '
         'split_main
@@ -103,8 +103,8 @@ Partial Class FormMain
         'split_main.Panel2
         '
         Me.split_main.Panel2.Controls.Add(Me.tabControl_B)
-        Me.split_main.Size = New System.Drawing.Size(1279, 752)
-        Me.split_main.SplitterDistance = 760
+        Me.split_main.Size = New System.Drawing.Size(1264, 620)
+        Me.split_main.SplitterDistance = 605
         Me.split_main.TabIndex = 4
         '
         'tabControl_A
@@ -117,7 +117,7 @@ Partial Class FormMain
         Me.tabControl_A.Location = New System.Drawing.Point(0, 0)
         Me.tabControl_A.Name = "tabControl_A"
         Me.tabControl_A.SelectedIndex = 0
-        Me.tabControl_A.Size = New System.Drawing.Size(760, 752)
+        Me.tabControl_A.Size = New System.Drawing.Size(605, 620)
         Me.tabControl_A.TabIndex = 2
         '
         'TabPage1
@@ -125,7 +125,7 @@ Partial Class FormMain
         Me.TabPage1.Location = New System.Drawing.Point(4, 25)
         Me.TabPage1.Name = "TabPage1"
         Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage1.Size = New System.Drawing.Size(752, 723)
+        Me.TabPage1.Size = New System.Drawing.Size(597, 591)
         Me.TabPage1.TabIndex = 0
         Me.TabPage1.Text = "TabPage1"
         Me.TabPage1.UseVisualStyleBackColor = True
@@ -160,7 +160,7 @@ Partial Class FormMain
         Me.tabControl_B.Location = New System.Drawing.Point(0, 0)
         Me.tabControl_B.Name = "tabControl_B"
         Me.tabControl_B.SelectedIndex = 0
-        Me.tabControl_B.Size = New System.Drawing.Size(515, 752)
+        Me.tabControl_B.Size = New System.Drawing.Size(655, 620)
         Me.tabControl_B.TabIndex = 3
         '
         'TabPage4
@@ -168,7 +168,7 @@ Partial Class FormMain
         Me.TabPage4.Location = New System.Drawing.Point(4, 25)
         Me.TabPage4.Name = "TabPage4"
         Me.TabPage4.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage4.Size = New System.Drawing.Size(507, 723)
+        Me.TabPage4.Size = New System.Drawing.Size(647, 591)
         Me.TabPage4.TabIndex = 0
         Me.TabPage4.Text = "TabPage4"
         Me.TabPage4.UseVisualStyleBackColor = True
@@ -196,20 +196,20 @@ Partial Class FormMain
         'ToolStrip1
         '
         Me.ToolStrip1.Font = New System.Drawing.Font("Segoe UI", 10.0!)
-        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tool_uer_profile, Me.ToolStripSeparator1, Me.SdvsdToolStripMenuItem, Me.DvsdvToolStripMenuItem, Me.SdvfToolStripMenuItem, Me.menu_policy, Me.TàiChínhToolStripMenuItem, Me.HệThốngToolStripMenuItem, Me.tool_logger, Me.ToolStripSeparator2})
+        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tool_user_profile, Me.ToolStripSeparator1, Me.SdvsdToolStripMenuItem, Me.DvsdvToolStripMenuItem, Me.SdvfToolStripMenuItem, Me.menu_policy, Me.TàiChínhToolStripMenuItem, Me.HệThốngToolStripMenuItem, Me.tool_logger, Me.ToolStripSeparator2})
         Me.ToolStrip1.Location = New System.Drawing.Point(0, 0)
         Me.ToolStrip1.Name = "ToolStrip1"
-        Me.ToolStrip1.Size = New System.Drawing.Size(1279, 29)
+        Me.ToolStrip1.Size = New System.Drawing.Size(1264, 29)
         Me.ToolStrip1.TabIndex = 1
         Me.ToolStrip1.Text = "ToolStrip1"
         '
-        'tool_uer_profile
+        'tool_user_profile
         '
-        Me.tool_uer_profile.Font = New System.Drawing.Font("Segoe UI", 14.0!, System.Drawing.FontStyle.Bold)
-        Me.tool_uer_profile.Image = Global.WindTown_VB.My.Resources.Resources.gear
-        Me.tool_uer_profile.Name = "tool_uer_profile"
-        Me.tool_uer_profile.Size = New System.Drawing.Size(141, 29)
-        Me.tool_uer_profile.Text = "Wind Town"
+        Me.tool_user_profile.Font = New System.Drawing.Font("Segoe UI", 14.0!, System.Drawing.FontStyle.Bold)
+        Me.tool_user_profile.Image = Global.WindTown_VB.My.Resources.Resources.gear
+        Me.tool_user_profile.Name = "tool_user_profile"
+        Me.tool_user_profile.Size = New System.Drawing.Size(141, 29)
+        Me.tool_user_profile.Text = "Wind Town"
         '
         'ToolStripSeparator1
         '
@@ -357,7 +357,7 @@ Partial Class FormMain
         'menu_account
         '
         Me.menu_account.Name = "menu_account"
-        Me.menu_account.Size = New System.Drawing.Size(180, 24)
+        Me.menu_account.Size = New System.Drawing.Size(135, 24)
         Me.menu_account.Text = "Tài khoản"
         '
         'tool_logger
@@ -419,9 +419,8 @@ Partial Class FormMain
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.ClientSize = New System.Drawing.Size(1279, 781)
+        Me.ClientSize = New System.Drawing.Size(1264, 649)
         Me.Controls.Add(Me.pnl_main)
-        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D
         Me.ImeMode = System.Windows.Forms.ImeMode.[On]
         Me.Name = "FormMain"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
@@ -485,5 +484,5 @@ Partial Class FormMain
     Friend WithEvents DfToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents menu_salary_mult As ToolStripMenuItem
     Friend WithEvents tool_logger As ToolStripMenuItem
-    Public WithEvents tool_uer_profile As ToolStripMenuItem
+    Public WithEvents tool_user_profile As ToolStripMenuItem
 End Class
