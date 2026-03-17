@@ -1,14 +1,13 @@
 Imports System.ComponentModel
 Imports System.ComponentModel.DataAnnotations
 Imports Dapper.Contrib.Extensions
-Imports Microsoft.Identity.Client
 
 <Table("leave_cat")>
 Public Class Leave_Cat
     Inherits BaseEntity
 
     Public Sub New()
-        code = ""
+        code = $"LEA_CAT{GenerateRandomNumbers.Generate()}"
         name = ""
         benefit = 0
         note = ""

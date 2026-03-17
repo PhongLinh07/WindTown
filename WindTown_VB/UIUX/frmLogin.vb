@@ -1,5 +1,10 @@
-﻿Imports System.Data.SqlClient
 Public Class frmLogin
+    Public Sub New()
+
+        ' This call is required by the designer.
+        InitializeComponent()
+
+    End Sub
 
     Private Sub frmLogin_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         HoTroPhongChu.ApDungPhongChu(Me)
@@ -23,19 +28,32 @@ Public Class frmLogin
         If CheckLogin(username, password) Then
             Dim repo As New AccountRepository()
             Dim acc = repo.GetAccountByUsername(New Account With {.user = username})
+
             NguoiDungHienTaiService.GanTaiKhoanDangNhap(acc)
+
             MessageBox.Show("Đăng nhập thành công!", "Thành công")
 
-            NavigationService.SwitchTopLevel(Of frmMain)(Me)
+            ' 🔐 Phân quyền theo role
+            Select Case acc.role
+                Case 1 ' Admin / Developer
+                    NavigationService.SwitchTopLevel(Of Developer_Mode)(Me)
+                    Return
+
+                Case 2 ' User thường
+                    NavigationService.SwitchTopLevel(Of frmMain)(Me)
+                    Return
+                Case Else
+                    MessageBox.Show("Tài khoản không có quyền truy cập!", "Lỗi")
+            End Select
         Else
             MessageBox.Show("Sai tài khoản hoặc mật khẩu!", "Nhập lại")
         End If
     End Sub
 
     Private Sub btnRegister_Click(sender As Object, e As EventArgs) Handles btnRegister.Click
-        NavigationService.SwitchTopLevel(Of frmRegister)(Me)
+        'NavigationService.SwitchTopLevel(Of frmRegister)(Me)
     End Sub
-    
+
     Private Function CheckLogin(username As String, password As String) As Boolean
 
         Dim accService As AccountService = New AccountService()

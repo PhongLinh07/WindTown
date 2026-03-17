@@ -21,11 +21,11 @@ Partial Class BaseList_UC
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim tool_refresh As System.Windows.Forms.ToolStripButton
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Me.tool_refresh = New System.Windows.Forms.ToolStripButton()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
         Me.toolStrip = New System.Windows.Forms.ToolStrip()
         Me.tool_new = New System.Windows.Forms.ToolStripButton()
@@ -39,7 +39,6 @@ Partial Class BaseList_UC
         Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        tool_refresh = New System.Windows.Forms.ToolStripButton()
         Me.TableLayoutPanel1.SuspendLayout()
         Me.toolStrip.SuspendLayout()
         CType(Me._dgv, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -47,15 +46,15 @@ Partial Class BaseList_UC
         '
         'tool_refresh
         '
-        tool_refresh.BackColor = System.Drawing.Color.Transparent
-        tool_refresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        tool_refresh.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        tool_refresh.Image = Global.WindTown_VB.My.Resources.Resources.cloud_sync
-        tool_refresh.ImageTransparentColor = System.Drawing.Color.Magenta
-        tool_refresh.Margin = New System.Windows.Forms.Padding(3, 3, 20, 3)
-        tool_refresh.Name = "tool_refresh"
-        tool_refresh.Size = New System.Drawing.Size(28, 28)
-        tool_refresh.Text = "ToolStripButton1"
+        Me.tool_refresh.BackColor = System.Drawing.Color.Transparent
+        Me.tool_refresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.tool_refresh.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.tool_refresh.Image = Global.WindTown_VB.My.Resources.Resources.cloud_sync
+        Me.tool_refresh.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.tool_refresh.Margin = New System.Windows.Forms.Padding(3, 3, 20, 3)
+        Me.tool_refresh.Name = "tool_refresh"
+        Me.tool_refresh.Size = New System.Drawing.Size(28, 28)
+        Me.tool_refresh.Text = "Tải lại dữ liệu"
         '
         'TableLayoutPanel1
         '
@@ -80,7 +79,7 @@ Partial Class BaseList_UC
         Me.toolStrip.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
         Me.toolStrip.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden
         Me.toolStrip.ImageScalingSize = New System.Drawing.Size(24, 24)
-        Me.toolStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tool_new, tool_refresh, Me.tool_delete, Me.tool_hide_column})
+        Me.toolStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tool_new, Me.tool_refresh, Me.tool_delete, Me.tool_hide_column})
         Me.toolStrip.Location = New System.Drawing.Point(0, 0)
         Me.toolStrip.Name = "toolStrip"
         Me.toolStrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.System
@@ -139,20 +138,20 @@ Partial Class BaseList_UC
         '
         Me._dgv.AllowUserToAddRows = False
         Me._dgv.AllowUserToDeleteRows = False
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me._dgv.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle5.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me._dgv.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle5
         Me._dgv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me._dgv.BackgroundColor = System.Drawing.SystemColors.InactiveCaption
         Me._dgv.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me._dgv.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.ButtonHighlight
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me._dgv.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.ButtonHighlight
+        DataGridViewCellStyle6.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me._dgv.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle6
         Me._dgv.ColumnHeadersHeight = 50
         Me._dgv.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column2, Me.Column3, Me.Column4, Me.Column5, Me.Column6})
         Me._dgv.Dock = System.Windows.Forms.DockStyle.Fill
@@ -160,18 +159,18 @@ Partial Class BaseList_UC
         Me._dgv.Location = New System.Drawing.Point(3, 246)
         Me._dgv.Name = "_dgv"
         Me._dgv.ReadOnly = True
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.ButtonHighlight
-        DataGridViewCellStyle3.Font = New System.Drawing.Font("Arial", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me._dgv.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
-        DataGridViewCellStyle4.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
-        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black
-        Me._dgv.RowsDefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.ButtonHighlight
+        DataGridViewCellStyle7.Font = New System.Drawing.Font("Arial", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me._dgv.RowHeadersDefaultCellStyle = DataGridViewCellStyle7
+        DataGridViewCellStyle8.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
+        DataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Black
+        Me._dgv.RowsDefaultCellStyle = DataGridViewCellStyle8
         Me._dgv.RowTemplate.DefaultCellStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me._dgv.RowTemplate.DefaultCellStyle.NullValue = Nothing
         Me._dgv.RowTemplate.Height = 40
@@ -247,4 +246,5 @@ Partial Class BaseList_UC
     Friend WithEvents Column6 As DataGridViewTextBoxColumn
     Protected WithEvents _dgv As DataGridView
     Friend WithEvents tool_hide_column As ToolStripButton
+    Protected WithEvents tool_refresh As ToolStripButton
 End Class

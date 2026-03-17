@@ -6,7 +6,7 @@ Imports Dapper.Contrib.Extensions
 Public Class Position
     Inherits BaseEntity
     Public Sub New()
-        code = ""
+        code = $"POS{GenerateRandomNumbers.Generate()}"
         start_date = DateTime.Now
         end_date = DateTime.Now
         note = ""
@@ -18,10 +18,7 @@ Public Class Position
     Public Property Contract As Contract = New Contract()
 
     <Write(False)> <Browsable(False)>
-    Public Property Job As Job = New Job()
-
-    <Write(False)> <Browsable(False)>
-    Public Property Level As Level = New Level()
+    Public Property Salary_Mult As Salary_Mult = New Salary_Mult()
 
 #End Region
 
@@ -33,18 +30,11 @@ Public Class Position
         End Get
     End Property
     <Browsable(False)>
-    Public ReadOnly Property job_id As Integer
+    Public ReadOnly Property salary_mult_id As Integer
         Get
-            Return Job?.id
+            Return Salary_Mult?.id
         End Get
     End Property
-    <Browsable(False)>
-    Public ReadOnly Property level_id As Integer
-        Get
-            Return Level?.id
-        End Get
-    End Property
-
 
     <Write(False)> <DisplayName("Mã chức vụ")> <Display(Order:=1)>
     Public Property code As String
@@ -56,11 +46,11 @@ Public Class Position
         End Set
     End Property
     <Write(False)> <DisplayName("Ngày bắt đầu")> <DisplayFormat(DataFormatString:="{0:dd-MM-yyyy}")> <Display(Order:=5)>
-    Public Property start_date As DateTime? ' Thêm dấu ? để cho phép Null
+    Public Property start_date As DateTime ' Thêm dấu ? để cho phép Null
         Get
-            Return GetV(Of DateTime?)("start_date") ' Trả về giá trị mặc định nếu Null
+            Return GetV(Of DateTime)("start_date") ' Trả về giá trị mặc định nếu Null
         End Get
-        Set(value As DateTime?)
+        Set(value As DateTime)
             ' Bắt buộc dùng SetV(Of T) để đồng bộ kiểu dữ liệu
             SetV("start_date", value)
         End Set
@@ -120,14 +110,14 @@ Public Class Position
     Public ReadOnly Property job_UI As String
         Get
             ' Sử dụng String Interpolation giúp code sạch và dễ đọc hơn
-            Return If(Job IsNot Nothing, $"{Job.name} ({Job.code})", "---")
+            Return If(Salary_Mult IsNot Nothing, $"{Salary_Mult?.Job.name}", "---")
         End Get
     End Property
 
     <Write(False)> <DisplayName("Trình độ")> <Display(Order:=4)>
     Public ReadOnly Property level_UI As String
         Get
-            Return If(Level IsNot Nothing, $"{Level.name} ({Level.code})", "---")
+            Return If(Salary_Mult IsNot Nothing, $"{Salary_Mult?.level_UI}", "---")
         End Get
     End Property
 #End Region

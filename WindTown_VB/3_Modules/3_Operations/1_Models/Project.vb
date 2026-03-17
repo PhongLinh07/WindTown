@@ -7,7 +7,7 @@ Public Class Project
     Inherits BaseEntity
 
     Public Sub New()
-        code = ""
+        code = $"PROJ{GenerateRandomNumbers.Generate()}"
         name = ""
         start_date = DateTime.Now
         end_date = DateTime.Now

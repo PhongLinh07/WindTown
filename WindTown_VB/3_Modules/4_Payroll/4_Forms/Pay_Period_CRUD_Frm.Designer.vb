@@ -36,6 +36,9 @@ Partial Class Pay_Period_CRUD_Frm
         Me.ui_name = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.ui_std_hours = New System.Windows.Forms.NumericUpDown()
+        Me.btn_std_hours_cal = New System.Windows.Forms.Button()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.ui_month = New System.Windows.Forms.DateTimePicker()
         CType(Me.ui_std_hours, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -44,7 +47,7 @@ Partial Class Pay_Period_CRUD_Frm
         Me.Label8.AutoSize = True
         Me.Label8.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label8.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Label8.Location = New System.Drawing.Point(69, 80)
+        Me.Label8.Location = New System.Drawing.Point(48, 94)
         Me.Label8.Margin = New System.Windows.Forms.Padding(0)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(110, 19)
@@ -54,7 +57,7 @@ Partial Class Pay_Period_CRUD_Frm
         'ui_code
         '
         Me.ui_code.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ui_code.Location = New System.Drawing.Point(73, 103)
+        Me.ui_code.Location = New System.Drawing.Point(52, 117)
         Me.ui_code.Name = "ui_code"
         Me.ui_code.Size = New System.Drawing.Size(265, 26)
         Me.ui_code.TabIndex = 30
@@ -64,7 +67,7 @@ Partial Class Pay_Period_CRUD_Frm
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label7.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Label7.Location = New System.Drawing.Point(69, 324)
+        Me.Label7.Location = New System.Drawing.Point(50, 431)
         Me.Label7.Margin = New System.Windows.Forms.Padding(0)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(120, 19)
@@ -76,7 +79,7 @@ Partial Class Pay_Period_CRUD_Frm
         Me.ui_end_date.CustomFormat = "dd-MM-yyyy"
         Me.ui_end_date.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ui_end_date.Format = System.Windows.Forms.DateTimePickerFormat.Custom
-        Me.ui_end_date.Location = New System.Drawing.Point(73, 347)
+        Me.ui_end_date.Location = New System.Drawing.Point(54, 454)
         Me.ui_end_date.Name = "ui_end_date"
         Me.ui_end_date.Size = New System.Drawing.Size(265, 26)
         Me.ui_end_date.TabIndex = 28
@@ -86,7 +89,7 @@ Partial Class Pay_Period_CRUD_Frm
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Label6.Location = New System.Drawing.Point(69, 245)
+        Me.Label6.Location = New System.Drawing.Point(50, 340)
         Me.Label6.Margin = New System.Windows.Forms.Padding(0)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(116, 19)
@@ -98,7 +101,7 @@ Partial Class Pay_Period_CRUD_Frm
         Me.ui_start_date.CustomFormat = "dd-MM-yyyy"
         Me.ui_start_date.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ui_start_date.Format = System.Windows.Forms.DateTimePickerFormat.Custom
-        Me.ui_start_date.Location = New System.Drawing.Point(73, 268)
+        Me.ui_start_date.Location = New System.Drawing.Point(54, 363)
         Me.ui_start_date.Name = "ui_start_date"
         Me.ui_start_date.Size = New System.Drawing.Size(265, 26)
         Me.ui_start_date.TabIndex = 26
@@ -108,7 +111,7 @@ Partial Class Pay_Period_CRUD_Frm
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Label4.Location = New System.Drawing.Point(415, 161)
+        Me.Label4.Location = New System.Drawing.Point(407, 176)
         Me.Label4.Margin = New System.Windows.Forms.Padding(0)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(74, 19)
@@ -118,9 +121,9 @@ Partial Class Pay_Period_CRUD_Frm
         'ui_note
         '
         Me.ui_note.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ui_note.Location = New System.Drawing.Point(419, 184)
+        Me.ui_note.Location = New System.Drawing.Point(413, 198)
         Me.ui_note.Name = "ui_note"
-        Me.ui_note.Size = New System.Drawing.Size(264, 274)
+        Me.ui_note.Size = New System.Drawing.Size(265, 367)
         Me.ui_note.TabIndex = 23
         Me.ui_note.Text = ""
         '
@@ -129,7 +132,7 @@ Partial Class Pay_Period_CRUD_Frm
         Me.ui_status.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ui_status.FormattingEnabled = True
         Me.ui_status.Items.AddRange(New Object() {"ACTIVE", "INACTIVE"})
-        Me.ui_status.Location = New System.Drawing.Point(419, 105)
+        Me.ui_status.Location = New System.Drawing.Point(413, 115)
         Me.ui_status.Name = "ui_status"
         Me.ui_status.Size = New System.Drawing.Size(265, 28)
         Me.ui_status.TabIndex = 22
@@ -139,7 +142,7 @@ Partial Class Pay_Period_CRUD_Frm
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Label3.Location = New System.Drawing.Point(415, 82)
+        Me.Label3.Location = New System.Drawing.Point(421, 91)
         Me.Label3.Margin = New System.Windows.Forms.Padding(0)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(91, 19)
@@ -151,7 +154,7 @@ Partial Class Pay_Period_CRUD_Frm
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Label1.Location = New System.Drawing.Point(71, 161)
+        Me.Label1.Location = New System.Drawing.Point(50, 175)
         Me.Label1.Margin = New System.Windows.Forms.Padding(0)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(117, 19)
@@ -161,7 +164,7 @@ Partial Class Pay_Period_CRUD_Frm
         'ui_name
         '
         Me.ui_name.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ui_name.Location = New System.Drawing.Point(75, 184)
+        Me.ui_name.Location = New System.Drawing.Point(54, 198)
         Me.ui_name.Name = "ui_name"
         Me.ui_name.Size = New System.Drawing.Size(265, 26)
         Me.ui_name.TabIndex = 32
@@ -171,29 +174,65 @@ Partial Class Pay_Period_CRUD_Frm
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Label2.Location = New System.Drawing.Point(70, 409)
+        Me.Label2.Location = New System.Drawing.Point(50, 517)
         Me.Label2.Margin = New System.Windows.Forms.Padding(0)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(179, 19)
         Me.Label2.TabIndex = 35
         Me.Label2.Text = "Tổng giờ công chuẩn:"
+        Me.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'ui_std_hours
         '
         Me.ui_std_hours.DecimalPlaces = 2
         Me.ui_std_hours.Font = New System.Drawing.Font("Arial Narrow", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ui_std_hours.Location = New System.Drawing.Point(73, 432)
+        Me.ui_std_hours.Location = New System.Drawing.Point(54, 539)
         Me.ui_std_hours.Maximum = New Decimal(New Integer() {9999, 0, 0, 0})
         Me.ui_std_hours.Name = "ui_std_hours"
-        Me.ui_std_hours.Size = New System.Drawing.Size(265, 26)
+        Me.ui_std_hours.Size = New System.Drawing.Size(193, 26)
         Me.ui_std_hours.TabIndex = 36
+        '
+        'btn_std_hours_cal
+        '
+        Me.btn_std_hours_cal.Font = New System.Drawing.Font("Arial Narrow", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_std_hours_cal.Location = New System.Drawing.Point(253, 539)
+        Me.btn_std_hours_cal.Name = "btn_std_hours_cal"
+        Me.btn_std_hours_cal.Size = New System.Drawing.Size(68, 26)
+        Me.btn_std_hours_cal.TabIndex = 37
+        Me.btn_std_hours_cal.Text = "Tính"
+        Me.btn_std_hours_cal.UseVisualStyleBackColor = True
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.Label5.Location = New System.Drawing.Point(48, 255)
+        Me.Label5.Margin = New System.Windows.Forms.Padding(0)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(115, 19)
+        Me.Label5.TabIndex = 39
+        Me.Label5.Text = "Tháng lương:"
+        '
+        'ui_month
+        '
+        Me.ui_month.CustomFormat = "MM-yyyy"
+        Me.ui_month.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ui_month.Format = System.Windows.Forms.DateTimePickerFormat.Custom
+        Me.ui_month.Location = New System.Drawing.Point(52, 277)
+        Me.ui_month.Name = "ui_month"
+        Me.ui_month.Size = New System.Drawing.Size(265, 26)
+        Me.ui_month.TabIndex = 38
         '
         'Pay_Period_CRUD_Frm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.ClientSize = New System.Drawing.Size(749, 520)
+        Me.ClientSize = New System.Drawing.Size(734, 613)
+        Me.Controls.Add(Me.Label5)
+        Me.Controls.Add(Me.ui_month)
+        Me.Controls.Add(Me.btn_std_hours_cal)
         Me.Controls.Add(Me.ui_std_hours)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
@@ -226,6 +265,9 @@ Partial Class Pay_Period_CRUD_Frm
         Me.Controls.SetChildIndex(Me.Label1, 0)
         Me.Controls.SetChildIndex(Me.Label2, 0)
         Me.Controls.SetChildIndex(Me.ui_std_hours, 0)
+        Me.Controls.SetChildIndex(Me.btn_std_hours_cal, 0)
+        Me.Controls.SetChildIndex(Me.ui_month, 0)
+        Me.Controls.SetChildIndex(Me.Label5, 0)
         CType(Me.ui_std_hours, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
@@ -246,4 +288,7 @@ Partial Class Pay_Period_CRUD_Frm
     Private WithEvents ui_name As TextBox
     Friend WithEvents Label2 As Label
     Friend WithEvents ui_std_hours As NumericUpDown
+    Friend WithEvents btn_std_hours_cal As Button
+    Friend WithEvents Label5 As Label
+    Friend WithEvents ui_month As DateTimePicker
 End Class

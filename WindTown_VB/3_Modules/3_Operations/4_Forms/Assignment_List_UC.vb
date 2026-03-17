@@ -74,7 +74,7 @@ Public Class Assignment_List_UC
         Else
             MessageBox.Show(result.Message, "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information)
         End If
-        LoadData()
+        'LoadData()
 
     End Sub
 End Class

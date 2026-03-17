@@ -1,4 +1,4 @@
-﻿Imports System.Data
+Imports System.Data
 Imports System.Linq
 
 Public Class frmKyLuong
@@ -192,8 +192,8 @@ Public Class frmKyLuong
                 denNgay = tmp
             End If
             query = query.Where(Function(x)
-                                    Dim batDau = If(x.start_date, DateTime.MinValue).Date
-                                    Dim ketThuc = If(x.end_date, DateTime.MinValue).Date
+                                    Dim batDau = x.start_date
+                                    Dim ketThuc = x.end_date
                                     Return batDau >= tuNgay AndAlso ketThuc <= denNgay
                                 End Function)
         End If
@@ -231,8 +231,8 @@ Public Class frmKyLuong
                 False,
                 item.code,
                 item.name,
-                If(item.start_date, DateTime.MinValue).ToString("dd/MM/yyyy"),
-                If(item.end_date, DateTime.MinValue).ToString("dd/MM/yyyy"),
+                item.start_date.ToString("dd/MM/yyyy"),
+                item.end_date.ToString("dd/MM/yyyy"),
                 If(item.std_hours, 0D).ToString("N2"),
                 item.status_UI,
                 item.note
@@ -292,8 +292,8 @@ Public Class frmKyLuong
             bang.Rows.Add(
                 ky.code,
                 ky.name,
-                If(ky.start_date, DateTime.MinValue).ToString(UiDinhDang.DinhDangNgayMacDinh),
-                If(ky.end_date, DateTime.MinValue).ToString(UiDinhDang.DinhDangNgayMacDinh),
+                ky.start_date.ToString(UiDinhDang.DinhDangNgayMacDinh),
+                ky.end_date.ToString(UiDinhDang.DinhDangNgayMacDinh),
                 If(ky.std_hours, 0D).ToString("N2"),
                 ky.status_UI,
                 ky.note
@@ -392,11 +392,11 @@ Public Class frmKyLuong
 
             Dim lblTuNgay As New Label() With {.Text = "Ngày bắt đầu", .Location = New Point(20, 100), .AutoSize = True}
             Dim dtBatDau As New DateTimePicker() With {.Location = New Point(190, 98), .Width = 300}
-            dtBatDau.Value = If(data.start_date, DateTime.Today)
+            dtBatDau.Value = data.start_date
 
             Dim lblDenNgay As New Label() With {.Text = "Ngày kết thúc", .Location = New Point(20, 140), .AutoSize = True}
             Dim dtKetThuc As New DateTimePicker() With {.Location = New Point(190, 138), .Width = 300}
-            dtKetThuc.Value = If(data.end_date, DateTime.Today)
+            dtKetThuc.Value = data.end_date
 
             Dim lblGioChuan As New Label() With {.Text = "Giờ chuẩn", .Location = New Point(20, 180), .AutoSize = True}
             Dim numGioChuan As New NumericUpDown() With {.Location = New Point(190, 178), .Width = 300, .Maximum = Decimal.MaxValue, .DecimalPlaces = 2}

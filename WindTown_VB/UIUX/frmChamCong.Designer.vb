@@ -46,6 +46,7 @@ Partial Class frmChamCong
         Me.btnBaoCao = New System.Windows.Forms.Button()
         Me.ComboBox1 = New System.Windows.Forms.ComboBox()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.Label3 = New System.Windows.Forms.Label()
         Me.ComboBox2 = New System.Windows.Forms.ComboBox()
         Me.cbbxThoiGian = New System.Windows.Forms.ComboBox()
         Me.Panel3 = New System.Windows.Forms.Panel()
@@ -59,7 +60,6 @@ Partial Class frmChamCong
         Me.mnuBaoCaoLoc = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuBaoCaoChon = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuBaoCaoTongHop = New System.Windows.Forms.ToolStripMenuItem()
-        Me.Label3 = New System.Windows.Forms.Label()
         Me.TableLayoutPanel1.SuspendLayout()
         Me.pnlHeader.SuspendLayout()
         Me.pnlHanhDong.SuspendLayout()
@@ -161,7 +161,7 @@ Partial Class frmChamCong
         Me.Panel5.Controls.Add(Me.btnTrangSau)
         Me.Panel5.Location = New System.Drawing.Point(714, 18)
         Me.Panel5.Name = "Panel5"
-        Me.Panel5.Size = New System.Drawing.Size(300, 40)
+        Me.Panel5.Size = New System.Drawing.Size(300, 42)
         Me.Panel5.TabIndex = 9
         '
         'btnTrangTruoc
@@ -341,6 +341,15 @@ Partial Class frmChamCong
         Me.Panel1.Size = New System.Drawing.Size(172, 108)
         Me.Panel1.TabIndex = 10
         '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(3, 1)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(109, 23)
+        Me.Label3.TabIndex = 2
+        Me.Label3.Text = "Theo ca làm"
+        '
         'ComboBox2
         '
         Me.ComboBox2.BackColor = System.Drawing.Color.White
@@ -456,15 +465,6 @@ Partial Class frmChamCong
         Me.mnuBaoCaoTongHop.Name = "mnuBaoCaoTongHop"
         Me.mnuBaoCaoTongHop.Size = New System.Drawing.Size(241, 24)
         Me.mnuBaoCaoTongHop.Text = "Tổng hợp tháng/quý"
-        '
-        'Label3
-        '
-        Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(3, 1)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(109, 23)
-        Me.Label3.TabIndex = 2
-        Me.Label3.Text = "Theo ca làm"
         '
         'frmChamCong
         '

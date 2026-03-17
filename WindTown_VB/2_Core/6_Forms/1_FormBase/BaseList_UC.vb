@@ -1,5 +1,3 @@
-Imports System.Windows.Forms
-
 Public Class BaseList_UC
     Inherits UserControl
 
@@ -21,7 +19,7 @@ Public Class BaseList_UC
     End Sub
 
     Protected Sub Init(modelType As Type)
-       GridHelper.SetupGrid(_dgv, modelType)
+        GridHelper.SetupGrid(_dgv, modelType)
 
         LoadData()
     End Sub
@@ -29,9 +27,13 @@ Public Class BaseList_UC
     Private Sub ConfigDGV()
 
     End Sub
+    Public Sub Refreash()
+        LoadData()
+    End Sub
 
     ' load data từ service và gán vào DataGridView thông qua BindingSource để hỗ trợ tính năng lọc (Search)
     Protected Overridable Sub LoadData()
+        _dgv.ClearSelection()
         Dim response = _service.Execute(DataIntent.GetList)
         If response.IsSuccess Then
             ' Gán danh sách vào BindingSource để hỗ trợ lọc (Search)
@@ -76,4 +78,10 @@ Public Class BaseList_UC
         ' Hiển thị Form theo dạng Dialog (cửa sổ con hiện lên đè lên form chính)
         frm.ShowDialog()
     End Sub
+
+    Private Sub tool_refresh_Click(sender As Object, e As EventArgs) Handles tool_refresh.Click
+        Refreash()
+    End Sub
+
+
 End Class

@@ -1,4 +1,4 @@
-﻿Public Class NhanSuTransferRequest
+Public Class NhanSuTransferRequest
     Public Property SelectedEmployees As List(Of Employee)
     Public Property Positions As List(Of Position)
     Public Property Jobs As List(Of Job)
@@ -33,7 +33,7 @@ Public Class NhanSuTransferService
                                   p.Contract.Employee IsNot Nothing AndAlso
                                   p.Contract.Employee.id = emp.id).
                 OrderByDescending(Function(p) If(p.status = 1, 1, 0)).
-                ThenByDescending(Function(p) If(p.start_date, DateTime.MinValue)).
+                ThenByDescending(Function(p) p.start_date).
                 FirstOrDefault()
 
             If activePosition Is Nothing Then
@@ -42,7 +42,7 @@ Public Class NhanSuTransferService
             End If
 
             If request.UseJob Then
-                activePosition.Job = request.TargetJob
+                activePosition.Salary_Mult.Job = request.TargetJob
                 Dim response = _positionService.Execute(DataIntent.Update, activePosition)
                 If response Is Nothing OrElse Not response.IsSuccess Then
                     result.FailCount += 1
@@ -53,7 +53,7 @@ Public Class NhanSuTransferService
                 Dim handled As Boolean = False
 
                 If request.PreferNullJob Then
-                    activePosition.Job = Nothing
+                    activePosition.Salary_Mult.Job = Nothing
                     Dim nullResponse = _positionService.Execute(DataIntent.Update, activePosition)
                     If nullResponse IsNot Nothing AndAlso nullResponse.IsSuccess Then
                         result.UpdatedCount += 1
@@ -68,7 +68,7 @@ Public Class NhanSuTransferService
                         Continue For
                     End If
 
-                    activePosition.Job = fallbackJob
+                    activePosition.Salary_Mult.Job = fallbackJob
                     Dim fallbackResponse = _positionService.Execute(DataIntent.Update, activePosition)
                     If fallbackResponse Is Nothing OrElse Not fallbackResponse.IsSuccess Then
                         result.FailCount += 1

@@ -7,7 +7,7 @@ Public Class Account
     Inherits BaseEntity
 
     Public Sub New()
-        user = ""
+        user = $"ACC{GenerateRandomNumbers.Generate()}"
         password = ""
         role = 1
         last_active = DateTime.Now

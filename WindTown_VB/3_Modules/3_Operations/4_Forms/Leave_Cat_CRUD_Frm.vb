@@ -1,5 +1,3 @@
-Imports Microsoft.IdentityModel.Tokens
-
 Public Class Leave_Cat_CRUD_Frm
     Inherits BaseACRUDForm
     Protected _data As Leave_Cat

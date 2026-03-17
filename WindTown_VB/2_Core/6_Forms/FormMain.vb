@@ -1,5 +1,3 @@
-Imports Microsoft.Data.Common
-
 Partial Public Class FormMain
     Inherits Form
 
@@ -11,6 +9,10 @@ Partial Public Class FormMain
         ResetTabControl(tabControl_A)
         ResetTabControl(tabControl_B)
         UpdateLayout()
+    End Sub
+
+    Private Sub FormMain_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
+        Developer_Mode.Instance.Close()
     End Sub
 
 #Region "Helper Methods"
@@ -205,7 +207,7 @@ Partial Public Class FormMain
     End Sub
 
     Private Sub menu_account_Click(sender As Object, e As EventArgs) Handles menu_account.Click
-        OpenMultTabMode(Of Pay_Period_List_UC)(tabControl_A)
+        OpenMultTabMode(Of Account_List_UC)(tabControl_A)
     End Sub
 
     Private Sub menu_holiday_Click(sender As Object, e As EventArgs) Handles menu_holiday.Click
@@ -231,6 +233,19 @@ Partial Public Class FormMain
     Private Sub DfToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DfToolStripMenuItem.Click
         OpenMultTabMode(Of Pay_Item_List_UC)(tabControl_A)
     End Sub
+
+    Private Sub menu_salary_mult_Click(sender As Object, e As EventArgs) Handles menu_salary_mult.Click
+        OpenMultTabMode(Of Salary_Mult_List_UC)(tabControl_A)
+    End Sub
+
+    Private Sub menu_policy_Click(sender As Object, e As EventArgs) Handles menu_policy.Click
+        OpenMultTabMode(Of Policy_List_UC)(tabControl_A)
+    End Sub
+
+    Private Sub tool_logger_Click(sender As Object, e As EventArgs) Handles tool_logger.Click
+        Logger.Instance.Show()
+    End Sub
+
 
 #End Region
 

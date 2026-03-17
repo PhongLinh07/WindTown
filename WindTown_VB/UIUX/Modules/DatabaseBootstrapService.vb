@@ -1,4 +1,4 @@
-﻿Imports System.Data.SqlClient
+Imports System.Data.SqlClient
 Imports System.IO
 Imports System.Text
 Imports System.Text.RegularExpressions
@@ -36,7 +36,7 @@ Public NotInheritable Class DatabaseBootstrapService
             If String.IsNullOrWhiteSpace(scriptPath) OrElse Not File.Exists(scriptPath) Then
                 _lastResult = New DatabaseBootstrapResult With {
                     .IsSuccess = False,
-                    .Message = "Khong tim thay file khoi tao DB: 1_Documents/db_json.sql"
+                    .Message = "Khong tim thay file khoi tao DB: 1_Documents/create_db.sql"
                 }
                 Return _lastResult
             End If
@@ -226,10 +226,10 @@ Public NotInheritable Class DatabaseBootstrapService
         Dim baseDir = AppDomain.CurrentDomain.BaseDirectory
 
         Dim candidates As String() = {
-            Path.Combine(baseDir, "1_Documents", "db_json.sql"),
-            Path.GetFullPath(Path.Combine(baseDir, "..", "..", "1_Documents", "db_json.sql")),
-            Path.GetFullPath(Path.Combine(baseDir, "..", "..", "..", "1_Documents", "db_json.sql")),
-            Path.GetFullPath(Path.Combine(baseDir, "..", "..", "..", "..", "1_Documents", "db_json.sql"))
+            Path.Combine(baseDir, "1_Documents", "create_db.sql"),
+            Path.GetFullPath(Path.Combine(baseDir, "..", "..", "1_Documents", "create_db.sql")),
+            Path.GetFullPath(Path.Combine(baseDir, "..", "..", "..", "1_Documents", "create_db.sql")),
+            Path.GetFullPath(Path.Combine(baseDir, "..", "..", "..", "..", "1_Documents", "create_db.sql"))
         }
 
         Return candidates.FirstOrDefault(Function(path) File.Exists(path))

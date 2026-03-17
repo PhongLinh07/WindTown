@@ -1,6 +1,5 @@
 Imports Dapper
 Imports WindTown_VB.DatabaseConfig
-Imports System.Data
 
 Public Class ContractRepository
     Inherits GenericRepository(Of Contract)

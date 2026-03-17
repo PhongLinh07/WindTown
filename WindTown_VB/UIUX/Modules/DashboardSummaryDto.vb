@@ -1,4 +1,4 @@
-﻿Public Class DashboardSummaryDto
+Public Class DashboardSummaryDto
     Public Property TotalEmployees As Integer
     Public Property ActiveEmployees As Integer
     Public Property InactiveEmployees As Integer

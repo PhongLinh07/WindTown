@@ -7,8 +7,9 @@ Public Class Pay_Period
     Inherits BaseEntity
 
     Public Sub New()
-        code = ""
+        code = $"PERIOD{GenerateRandomNumbers.Generate()}"
         name = ""
+        month = DateTime.Now
         start_date = DateTime.Now
         end_date = DateTime.Now
         std_hours = 0
@@ -36,22 +37,32 @@ Public Class Pay_Period
         End Set
     End Property
 
-    <Write(False)> <DisplayName("Ngày bắt đầu")> <DisplayFormat(DataFormatString:="{0:dd-MM-yyyy}")> <Display(Order:=3)>
-    Public Property start_date As DateTime? ' Thêm dấu ? để cho phép Null
+    <Write(False)> <DisplayName("Tháng lương")> <DisplayFormat(DataFormatString:="{0:MM-yyyy}")> <Display(Order:=3)>
+    Public Property month As DateTime? ' Thêm dấu ? để cho phép Null
         Get
-            Return GetV(Of DateTime?)("start_date") ' Trả về giá trị mặc định nếu Null
+            Return GetV(Of DateTime?)("month") ' Trả về giá trị mặc định nếu Null
         End Get
         Set(value As DateTime?)
+            ' Bắt buộc dùng SetV(Of T) để đồng bộ kiểu dữ liệu
+            SetV("month", value)
+        End Set
+    End Property
+    <Write(False)> <DisplayName("Ngày bắt đầu")> <DisplayFormat(DataFormatString:="{0:dd-MM-yyyy}")> <Display(Order:=3)>
+    Public Property start_date As DateTime ' Thêm dấu ? để cho phép Null
+        Get
+            Return GetV(Of DateTime)("start_date") ' Trả về giá trị mặc định nếu Null
+        End Get
+        Set(value As DateTime)
             ' Bắt buộc dùng SetV(Of T) để đồng bộ kiểu dữ liệu
             SetV("start_date", value)
         End Set
     End Property
     <Write(False)> <DisplayName("Ngày kết thúc")> <DisplayFormat(DataFormatString:="{0:dd-MM-yyyy}")> <Display(Order:=4)>
-    Public Property end_date As DateTime? ' Thêm dấu ? để cho phép Null
+    Public Property end_date As DateTime ' Thêm dấu ? để cho phép Null
         Get
-            Return GetV(Of DateTime?)("end_date")
+            Return GetV(Of DateTime)("end_date")
         End Get
-        Set(value As DateTime?)
+        Set(value As DateTime)
             ' Bắt buộc dùng SetV(Of T) để đồng bộ kiểu dữ liệu
             SetV("end_date", value)
         End Set
@@ -106,10 +117,19 @@ Public Class Pay_Period
 #End Region
 
 #Region "Dictionary Display" 'chứa các dictionary dùng chung trong toàn bộ module Operations, tránh việc phải tạo nhiều dictionary giống nhau ở nhiều form khác
+    <Browsable(False)>
     Public Shared ReadOnly status_Dict As New Dictionary(Of Integer, String) From {
         {0, "Đã đóng"},
         {1, "Đang mở"}
     }
+
+#End Region
+#Region "Const" 'chứa các dictionary dùng chung trong toàn bộ module Operations, tránh việc phải tạo nhiều dictionary giống nhau ở nhiều form khác
+    <Write(False)> <Browsable(False)>
+    Public Shared ReadOnly Property status_closed = 0
+    <Write(False)> <Browsable(False)>
+    Public Shared ReadOnly Property status_opening = 1
+
 
 #End Region
 End Class

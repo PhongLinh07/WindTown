@@ -1,4 +1,4 @@
-﻿Public Class frmLuong
+Public Class frmLuong
 
     Private Sub frmLuong_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         HoTroPhongChu.ApDungPhongChu(Me)

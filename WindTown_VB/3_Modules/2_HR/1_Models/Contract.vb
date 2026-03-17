@@ -7,7 +7,7 @@ Public Class Contract
     Inherits BaseEntity
 
     Public Sub New()
-        code = ""
+        code = "CTR" + GenerateRandomNumbers.Generate()
         start_date = DateTime.Now
         end_date = DateTime.Now
         base_salary = 0.0
@@ -38,11 +38,11 @@ Public Class Contract
         End Set
     End Property
     <Write(False)> <DisplayName("Ngày bắt đầu")> <DisplayFormat(DataFormatString:="{0:dd-MM-yyyy}")> <Display(Order:=3)>
-    Public Property start_date As DateTime? ' Thêm dấu ? để cho phép Null
+    Public Property start_date As DateTime ' Thêm dấu ? để cho phép Null
         Get
-            Return GetV(Of DateTime?)("start_date") ' Trả về giá trị mặc định nếu Null
+            Return GetV(Of DateTime)("start_date") ' Trả về giá trị mặc định nếu Null
         End Get
-        Set(value As DateTime?)
+        Set(value As DateTime)
             ' Bắt buộc dùng SetV(Of T) để đồng bộ kiểu dữ liệu
             SetV("start_date", value)
         End Set
