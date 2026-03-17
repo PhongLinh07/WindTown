@@ -37,6 +37,7 @@ Partial Class FormMain
         Me.ToolStripMenuItem2 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
         Me.SdvsdToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.menu_department = New System.Windows.Forms.ToolStripMenuItem()
         Me.menu_job = New System.Windows.Forms.ToolStripMenuItem()
         Me.menu_level = New System.Windows.Forms.ToolStripMenuItem()
         Me.menu_salary_mult = New System.Windows.Forms.ToolStripMenuItem()
@@ -58,8 +59,8 @@ Partial Class FormMain
         Me.DfToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.HệThốngToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.menu_account = New System.Windows.Forms.ToolStripMenuItem()
+        Me.tool_logger = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
-        Me._title = New System.Windows.Forms.ToolStripLabel()
         Me.ColorDialog1 = New System.Windows.Forms.ColorDialog()
         Me.contextMenu_tab = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.menu_close = New System.Windows.Forms.ToolStripMenuItem()
@@ -68,8 +69,6 @@ Partial Class FormMain
         Me.menu_move_all_to_splitA = New System.Windows.Forms.ToolStripMenuItem()
         Me.menu_move_to_splitB = New System.Windows.Forms.ToolStripMenuItem()
         Me.menu_move_all_to_splitB = New System.Windows.Forms.ToolStripMenuItem()
-        Me.menu_department = New System.Windows.Forms.ToolStripMenuItem()
-        Me.tool_logger = New System.Windows.Forms.ToolStripMenuItem()
         Me.pnl_main.SuspendLayout()
         CType(Me.split_main, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.split_main.Panel1.SuspendLayout()
@@ -197,7 +196,7 @@ Partial Class FormMain
         'ToolStrip1
         '
         Me.ToolStrip1.Font = New System.Drawing.Font("Segoe UI", 10.0!)
-        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem2, Me.ToolStripSeparator1, Me.SdvsdToolStripMenuItem, Me.DvsdvToolStripMenuItem, Me.SdvfToolStripMenuItem, Me.menu_policy, Me.TàiChínhToolStripMenuItem, Me.HệThốngToolStripMenuItem, Me.tool_logger, Me.ToolStripSeparator2, Me._title})
+        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem2, Me.ToolStripSeparator1, Me.SdvsdToolStripMenuItem, Me.DvsdvToolStripMenuItem, Me.SdvfToolStripMenuItem, Me.menu_policy, Me.TàiChínhToolStripMenuItem, Me.HệThốngToolStripMenuItem, Me.tool_logger, Me.ToolStripSeparator2})
         Me.ToolStrip1.Location = New System.Drawing.Point(0, 0)
         Me.ToolStrip1.Name = "ToolStrip1"
         Me.ToolStrip1.Size = New System.Drawing.Size(1279, 29)
@@ -222,6 +221,13 @@ Partial Class FormMain
         Me.SdvsdToolStripMenuItem.Name = "SdvsdToolStripMenuItem"
         Me.SdvsdToolStripMenuItem.Size = New System.Drawing.Size(68, 29)
         Me.SdvsdToolStripMenuItem.Text = "Tổ chức"
+        '
+        'menu_department
+        '
+        Me.menu_department.Image = Global.WindTown_VB.My.Resources.Resources.home
+        Me.menu_department.Name = "menu_department"
+        Me.menu_department.Size = New System.Drawing.Size(192, 24)
+        Me.menu_department.Text = "Phòng ban"
         '
         'menu_job
         '
@@ -350,21 +356,20 @@ Partial Class FormMain
         'menu_account
         '
         Me.menu_account.Name = "menu_account"
-        Me.menu_account.Size = New System.Drawing.Size(180, 24)
+        Me.menu_account.Size = New System.Drawing.Size(135, 24)
         Me.menu_account.Text = "Tài khoản"
+        '
+        'tool_logger
+        '
+        Me.tool_logger.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tool_logger.Name = "tool_logger"
+        Me.tool_logger.Size = New System.Drawing.Size(51, 29)
+        Me.tool_logger.Text = "Log"
         '
         'ToolStripSeparator2
         '
         Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
         Me.ToolStripSeparator2.Size = New System.Drawing.Size(6, 29)
-        '
-        '_title
-        '
-        Me._title.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me._title.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Bold)
-        Me._title.Name = "_title"
-        Me._title.Size = New System.Drawing.Size(38, 26)
-        Me._title.Text = "Title"
         '
         'contextMenu_tab
         '
@@ -407,20 +412,6 @@ Partial Class FormMain
         Me.menu_move_all_to_splitB.Name = "menu_move_all_to_splitB"
         Me.menu_move_all_to_splitB.Size = New System.Drawing.Size(186, 22)
         Me.menu_move_all_to_splitB.Text = "Chuyển tất cả sang B"
-        '
-        'menu_department
-        '
-        Me.menu_department.Image = Global.WindTown_VB.My.Resources.Resources.home
-        Me.menu_department.Name = "menu_department"
-        Me.menu_department.Size = New System.Drawing.Size(192, 24)
-        Me.menu_department.Text = "Phòng ban"
-        '
-        'tool_logger
-        '
-        Me.tool_logger.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tool_logger.Name = "tool_logger"
-        Me.tool_logger.Size = New System.Drawing.Size(51, 29)
-        Me.tool_logger.Text = "Log"
         '
         'FormMain
         '
@@ -475,7 +466,6 @@ Partial Class FormMain
     Friend WithEvents HệThốngToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents menu_account As ToolStripMenuItem
     Friend WithEvents ToolStripSeparator2 As ToolStripSeparator
-    Friend WithEvents _title As ToolStripLabel
     Friend WithEvents ColorDialog1 As ColorDialog
     Friend WithEvents contextMenu_tab As ContextMenuStrip
     Friend WithEvents menu_close As ToolStripMenuItem

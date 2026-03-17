@@ -116,8 +116,9 @@ Public Class Account
         {1, "Đang hoạt động"}
     }
     Public Shared ReadOnly role_Dict As New Dictionary(Of Integer, String) From {
-        {1, "ADMIN"},
-        {2, "STAFF "}
+        {1, "Developer"},
+        {2, "Admin"},
+        {3, "Staff"}
     }
 
 #End Region

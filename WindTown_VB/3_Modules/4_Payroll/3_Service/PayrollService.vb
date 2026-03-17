@@ -98,15 +98,16 @@ Public Class PayrollService
             Dim net_salary = System_Parameter.GetParameter(System_Parameter.ID.SYS_NET_SALARY)
 
             Dim itemDefault As List(Of Pay_Item) = New List(Of Pay_Item) From {
-                New Pay_Item With {.Payroll = payroll, .code = total_income.code, .name = total_income.name, .value = 0, .category = total_income.category, .unit = total_income.unit, .priority = total_income.unit},
-                New Pay_Item With {.Payroll = payroll, .code = net_deduction.code, .name = net_deduction.name, .value = 0, .category = total_income.category, .unit = total_income.unit, .priority = .unit},
-                New Pay_Item With {.Payroll = payroll, .code = net_salary.code, .name = net_salary.name, .value = 0, .category = total_income.category, .unit = total_income.unit, .priority = .unit}
+                New Pay_Item With {.Payroll = payroll, .code = total_income.code, .name = total_income.name, .value = 0, .category = total_income.category, .unit = total_income.unit, .priority = total_income.priority},
+                New Pay_Item With {.Payroll = payroll, .code = net_deduction.code, .name = net_deduction.name, .value = 0, .category = total_income.category, .unit = total_income.unit, .priority = net_deduction.priority},
+                New Pay_Item With {.Payroll = payroll, .code = net_salary.code, .name = net_salary.name, .value = 0, .category = total_income.category, .unit = total_income.unit, .priority = net_salary.priority}
             }
 
             For Each item In itemDefault
                 payItemService.Execute(DataIntent.Insert, item)
             Next
 
+        Catch ex As Exception
         Catch ex As Exception
             ' Bạn có thể ghi log lỗi vào file ở đây
             Return ServiceResponse(Of Object).Fail($"Lỗi hệ thống: {101}" & ex.Message, ex)
