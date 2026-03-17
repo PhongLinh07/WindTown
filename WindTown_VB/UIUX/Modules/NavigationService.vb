@@ -1,4 +1,4 @@
-Imports System.IO
+﻿Imports System.IO
 Imports System.Text
 Imports System.Drawing
 Module NavigationService
@@ -73,12 +73,31 @@ Module NavigationService
 
         If nextForm Is Nothing Then Return
 
-        HoTroPhongChu.ApDungPhongChu(nextForm)
-        nextForm.Show()
-
-        If currentForm IsNot Nothing AndAlso Not currentForm.IsDisposed Then
-            currentForm.Close()
+        If currentForm IsNot Nothing AndAlso currentForm.InvokeRequired Then
+            currentForm.BeginInvoke(New Action(Of Form, Form)(AddressOf SwitchTopLevel), currentForm, nextForm)
+            Return
         End If
+
+        Dim formHienTai = currentForm
+        Dim formDich = nextForm
+
+        Try
+            HoTroPhongChu.ApDungPhongChu(formDich)
+            My.Application.DatMainFormMoi(formDich)
+            formDich.Show()
+
+            If formHienTai IsNot Nothing AndAlso Not formHienTai.IsDisposed AndAlso Not formHienTai.Equals(formDich) Then
+                formHienTai.Close()
+            End If
+        Catch ex As Exception
+            MessageBox.Show("Không thể chuyển form. Vui lòng thử lại. Chi tiết: " & ex.Message, "Lỗi chuyển form", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Try
+                If formDich IsNot Nothing AndAlso Not formDich.IsDisposed Then
+                    formDich.Close()
+                End If
+            Catch
+            End Try
+        End Try
 
     End Sub
 
@@ -159,6 +178,7 @@ Module HoTroPhongChu
 End Module
 Module UiThongBao
 
+    ' Chuỗi hiển thị đã được chuẩn hóa UTF-8.
     Public Sub HienThiThanhCong(thongBao As String, Optional tieuDe As String = "Thông báo", Optional nhanTrangThai As Label = Nothing)
         If nhanTrangThai IsNot Nothing Then
             nhanTrangThai.Text = thongBao
