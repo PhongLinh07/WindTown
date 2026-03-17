@@ -6,7 +6,7 @@
     Private activeButton As Button
 
     Private expandedWidth As Integer
-    Private collapsedWidth As Integer = 64
+    Private collapsedWidth As Integer = 61.99
     Private isCollapsed As Boolean = False
 
     Private parentTable As TableLayoutPanel
@@ -209,33 +209,33 @@
 
         Dim qlns As New MenuItemModel("Quản lý nhân sự", Nothing, ResizeImage(My.Resources.saff, 38, 38)) ' icon nhân sự
 
-        qlns.Children.Add(New MenuItemModel("Nhân sự", GetType(frmNhanSu))) ' icon người dùng
-        qlns.Children.Add(New MenuItemModel("Phòng ban", GetType(frmPhongBan)))
-        qlns.Children.Add(New MenuItemModel("Chức vụ", GetType(frmChucVu))) ' icon chức vụ
+        qlns.Children.Add(New MenuItemModel("Nhân sự", GetType(frmNhanSu), ResizeImage(My.Resources.employee, 38, 38))) ' icon người dùng
+        qlns.Children.Add(New MenuItemModel("Phòng ban", GetType(frmPhongBan), ResizeImage(My.Resources.department, 38, 38)))
+        qlns.Children.Add(New MenuItemModel("Chức vụ", GetType(frmChucVu), ResizeImage(My.Resources.phongban, 38, 38))) ' icon chức vụ
 
         menuData.Add(qlns)
 
         menuData.Add(New MenuItemModel("Hợp đồng", GetType(frmHopDong), ResizeImage(My.Resources.contract, 38, 38))) ' icon hợp đồng
         menuData.Add(New MenuItemModel("Chấm công", GetType(frmChamCong), ResizeImage(My.Resources.checkin, 38, 38))) ' icon chấm công
 
-        Dim duan As New MenuItemModel("Dự án")
-        duan.Children.Add(New MenuItemModel("Dự án", GetType(frmDuAn)))
-        duan.Children.Add(New MenuItemModel("Phân công", GetType(frmPhanCong)))
+        Dim duan As New MenuItemModel("Dự án", Nothing, ResizeImage(My.Resources.project, 38, 38))
+        duan.Children.Add(New MenuItemModel("Dự án", GetType(frmDuAn), ResizeImage(My.Resources.project, 38, 38)))
+        duan.Children.Add(New MenuItemModel("Phân công", GetType(frmPhanCong), ResizeImage(My.Resources.delegation, 38, 38)))
         menuData.Add(duan)
 
-        Dim nghiphep As New MenuItemModel("Nghỉ phép")
-        nghiphep.Children.Add(New MenuItemModel("Nghỉ phép", GetType(frmNghiPhep)))
-        nghiphep.Children.Add(New MenuItemModel("Ngày lễ", GetType(frmNgayLe)))
+        Dim nghiphep As New MenuItemModel("Nghỉ phép", Nothing, ResizeImage(My.Resources.dismissal, 38, 38))
+        nghiphep.Children.Add(New MenuItemModel("Nghỉ phép", GetType(frmNghiPhep), ResizeImage(My.Resources.dismissal, 38, 38)))
+        nghiphep.Children.Add(New MenuItemModel("Ngày lễ", GetType(frmNgayLe), ResizeImage(My.Resources.holidays, 38, 38)))
         menuData.Add(nghiphep)
 
         Dim luong As New MenuItemModel("Lương", Nothing, ResizeImage(My.Resources.salary, 38, 38)) ' icon lương
 
-        luong.Children.Add(New MenuItemModel("Kỳ lương", GetType(frmKyLuong))) ' icon kỳ lương
-        luong.Children.Add(New MenuItemModel("Tính lương", GetType(frmTinhLuong)))
+        luong.Children.Add(New MenuItemModel("Kỳ lương", GetType(frmKyLuong), ResizeImage(My.Resources.salary, 38, 38))) ' icon kỳ lương
+        luong.Children.Add(New MenuItemModel("Tính lương", GetType(frmTinhLuong), ResizeImage(My.Resources.accounting, 38, 38)))
 
         menuData.Add(luong)
 
-        menuData.Add(New MenuItemModel("Chính sách", GetType(frmChinhSach)))
+        menuData.Add(New MenuItemModel("Chính sách", GetType(frmChinhSach), ResizeImage(My.Resources.government, 38, 38)))
         menuData.Add(New MenuItemModel("Cài đặt", GetType(frmSystem), ResizeImage(My.Resources.gear, 38, 38))) ' icon cài đặt
 
     End Sub

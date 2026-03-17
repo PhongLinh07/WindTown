@@ -62,4 +62,21 @@
 - Tạo test case `remove_frmbangluong_refs.md` để kiểm tra không còn trỏ tới `frmBangLuong`.
 ## 2026-03-16
 
+- Khóa `dtTuNgay` và `dtDenNgay` trong form Tính lương khi chưa chọn lọc theo khoảng thời gian.
+- Tạo test case `tinhluong_khoa_chon_thoi_gian.md`.
+## 2026-03-16
+
+- Sync specs và archive change `uiux-bangluong-dgv-permission`.
+## 2026-03-17
+
+- Rà soát danh sách form UIUX, xác định tiêu chí kiểm tra và ghi nhận các form còn thiếu chức năng trong change uiux-form-review-completion.
+## 2026-03-17
+
+- Hoàn thiện frmChinhSach với CRUD bảng policy và bổ sung repository trong UIUX/Modules.
+- Loại bỏ tham chiếu frmTest khỏi project file.
+## 2026-03-17
+
+- Sync specs và archive change `uiux-form-review-completion`.
+## 2026-03-16
+
 - Bổ sung clamp `SplitterDistance` khi resize và khi form hiển thị cho frmDuAn, frmPhanCong, frmNghiPhep, frmNgayLe để tránh lỗi runtime.

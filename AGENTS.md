@@ -14,7 +14,9 @@
 - Phản hồi người dùng bằng tiếng việt có dấu.
 - Viết nội dung cho các file .md bằng tiếng việt có dấu trừ các từ chuyên sâu.
 - Ghi lại lỗi đã gặp phải tại error_log.md.
+- Sắp xếp nội dung error_log.md theo thời gian (Có trước ở trên, có sau ở dưới).
 - Ghi lại lịch sử, tiến trình tại hitstory_log.md.
+- Sắp xếp nội dung hitstory_log theo thời gian (Có trước ở trên, có sau ở dưới).
 - Tạo TEST_CASE cho các nghiệm vụ.
 - Luôn chạy test case trước khi dừng lại.
 

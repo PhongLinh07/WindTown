@@ -241,4 +241,34 @@
   <data name="hidden_32px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\2_Core\Assets\hidden_32px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="employee" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\2_Core\Assets\employee.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="phongban" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\2_Core\Assets\phongban.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="project" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\2_Core\Assets\project.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="market" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\2_Core\Assets\market.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="delegation" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\2_Core\Assets\delegation.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="dismissal" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\2_Core\Assets\dismissal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="holidays" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\2_Core\Assets\holidays.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="accounting" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\2_Core\Assets\accounting.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="government" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\2_Core\Assets\government.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="department" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\2_Core\Assets\department.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>
