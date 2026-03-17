@@ -34,7 +34,7 @@ Partial Class FormMain
         Me.TabPage5 = New System.Windows.Forms.TabPage()
         Me.TabPage6 = New System.Windows.Forms.TabPage()
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
-        Me.ToolStripMenuItem2 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.tool_uer_profile = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
         Me.SdvsdToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.menu_department = New System.Windows.Forms.ToolStripMenuItem()
@@ -196,19 +196,20 @@ Partial Class FormMain
         'ToolStrip1
         '
         Me.ToolStrip1.Font = New System.Drawing.Font("Segoe UI", 10.0!)
-        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem2, Me.ToolStripSeparator1, Me.SdvsdToolStripMenuItem, Me.DvsdvToolStripMenuItem, Me.SdvfToolStripMenuItem, Me.menu_policy, Me.TàiChínhToolStripMenuItem, Me.HệThốngToolStripMenuItem, Me.tool_logger, Me.ToolStripSeparator2})
+        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tool_uer_profile, Me.ToolStripSeparator1, Me.SdvsdToolStripMenuItem, Me.DvsdvToolStripMenuItem, Me.SdvfToolStripMenuItem, Me.menu_policy, Me.TàiChínhToolStripMenuItem, Me.HệThốngToolStripMenuItem, Me.tool_logger, Me.ToolStripSeparator2})
         Me.ToolStrip1.Location = New System.Drawing.Point(0, 0)
         Me.ToolStrip1.Name = "ToolStrip1"
         Me.ToolStrip1.Size = New System.Drawing.Size(1279, 29)
         Me.ToolStrip1.TabIndex = 1
         Me.ToolStrip1.Text = "ToolStrip1"
         '
-        'ToolStripMenuItem2
+        'tool_uer_profile
         '
-        Me.ToolStripMenuItem2.Font = New System.Drawing.Font("Segoe UI", 14.0!, System.Drawing.FontStyle.Bold)
-        Me.ToolStripMenuItem2.Name = "ToolStripMenuItem2"
-        Me.ToolStripMenuItem2.Size = New System.Drawing.Size(125, 29)
-        Me.ToolStripMenuItem2.Text = "Wind Town"
+        Me.tool_uer_profile.Font = New System.Drawing.Font("Segoe UI", 14.0!, System.Drawing.FontStyle.Bold)
+        Me.tool_uer_profile.Image = Global.WindTown_VB.My.Resources.Resources.gear
+        Me.tool_uer_profile.Name = "tool_uer_profile"
+        Me.tool_uer_profile.Size = New System.Drawing.Size(141, 29)
+        Me.tool_uer_profile.Text = "Wind Town"
         '
         'ToolStripSeparator1
         '
@@ -356,7 +357,7 @@ Partial Class FormMain
         'menu_account
         '
         Me.menu_account.Name = "menu_account"
-        Me.menu_account.Size = New System.Drawing.Size(135, 24)
+        Me.menu_account.Size = New System.Drawing.Size(180, 24)
         Me.menu_account.Text = "Tài khoản"
         '
         'tool_logger
@@ -445,7 +446,6 @@ Partial Class FormMain
     Friend WithEvents TabPage2 As TabPage
     Friend WithEvents TabPage3 As TabPage
     Friend WithEvents ToolStrip1 As ToolStrip
-    Friend WithEvents ToolStripMenuItem2 As ToolStripMenuItem
     Friend WithEvents ToolStripSeparator1 As ToolStripSeparator
     Friend WithEvents SdvsdToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents menu_department As ToolStripMenuItem
@@ -485,4 +485,5 @@ Partial Class FormMain
     Friend WithEvents DfToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents menu_salary_mult As ToolStripMenuItem
     Friend WithEvents tool_logger As ToolStripMenuItem
+    Public WithEvents tool_uer_profile As ToolStripMenuItem
 End Class

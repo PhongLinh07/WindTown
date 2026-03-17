@@ -246,6 +246,16 @@ Partial Public Class FormMain
         Logger.Instance.Show()
     End Sub
 
+    Private Sub tool_uer_profile_Click(sender As Object, e As EventArgs) Handles tool_uer_profile.Click
+        Dim userFrm = New UserProfileForm()
+        userFrm.ShowDialog()
+
+        If userFrm.ShowDialog() = DialogResult.OK Then
+            Me.Close()
+
+        End If
+    End Sub
+
 
 #End Region
 

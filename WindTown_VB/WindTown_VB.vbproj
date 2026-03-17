@@ -12,7 +12,7 @@
     <FileAlignment>512</FileAlignment>
     <MyType>WindowsForms</MyType>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
-    <GenerateResourceUsePreserializedResources>true</GenerateResourceUsePreserializedResources>
+    <GenerateResourceUsePreserializedResources>false</GenerateResourceUsePreserializedResources>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
     <NuGetPackageImportStamp>
@@ -42,7 +42,7 @@
     <OutputPath>bin\Debug\</OutputPath>
     <DocumentationFile>WindTown_VB.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
-    <UseWinFormsOutOfProcDesigner>True</UseWinFormsOutOfProcDesigner>
+    <UseWinFormsOutOfProcDesigner>false</UseWinFormsOutOfProcDesigner>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -563,6 +563,7 @@
     <Compile Include="3_Modules\2_HR\4_Forms\Contract_List_UC.vb">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="3_Modules\5_System\4_Forms\UserProfile.vb" />
     <Compile Include="3_Modules\5_System\4_Forms\UserProfileForm.Designer.vb">
       <DependentUpon>UserProfileForm.vb</DependentUpon>
     </Compile>

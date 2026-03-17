@@ -8,7 +8,7 @@ Public Class Account
 
     Public Sub New()
         user = $"ACC{GenerateRandomNumbers.Generate()}"
-        password = ""
+        password = "123456"
         role = 1
         last_active = DateTime.Now
         note = ""
@@ -115,12 +115,18 @@ Public Class Account
         {0, "Ngừng hoạt động"},
         {1, "Đang hoạt động"}
     }
+
+    <Browsable(False)>
+    Public Const ROLE_ADM As Integer = 1
+    <Browsable(False)>
+    Public Const ROLE_STAFF As Integer = 2
+
     Public Shared ReadOnly role_Dict As New Dictionary(Of Integer, String) From {
-        {1, "Developer"},
-        {2, "Admin"},
-        {3, "Staff"}
+        {ROLE_ADM, "Admin"},
+        {ROLE_STAFF, "Staff"}
     }
 
 #End Region
+
 
 End Class

@@ -22,53 +22,21 @@ Partial Class Account_CRUD_Frm
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.ui_password = New System.Windows.Forms.TextBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.ui_status = New System.Windows.Forms.ComboBox()
         Me.ui_note = New System.Windows.Forms.RichTextBox()
         Me.Label4 = New System.Windows.Forms.Label()
-        Me.ui_employee = New System.Windows.Forms.ComboBox()
-        Me.ui_role = New System.Windows.Forms.ComboBox()
-        Me.Label5 = New System.Windows.Forms.Label()
         Me.ui_last_active = New System.Windows.Forms.DateTimePicker()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.ui_user = New System.Windows.Forms.TextBox()
+        Me.ui_role = New System.Windows.Forms.ComboBox()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.ui_employee = New System.Windows.Forms.ComboBox()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.ui_password = New System.Windows.Forms.TextBox()
         Me.SuspendLayout()
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Label1.Location = New System.Drawing.Point(59, 73)
-        Me.Label1.Margin = New System.Windows.Forms.Padding(0)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(92, 19)
-        Me.Label1.TabIndex = 1
-        Me.Label1.Text = "Nhân viên:"
-        '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Label2.Location = New System.Drawing.Point(59, 242)
-        Me.Label2.Margin = New System.Windows.Forms.Padding(0)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(84, 19)
-        Me.Label2.TabIndex = 3
-        Me.Label2.Text = "Mật khẩu:"
-        '
-        'ui_password
-        '
-        Me.ui_password.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ui_password.Location = New System.Drawing.Point(63, 265)
-        Me.ui_password.Name = "ui_password"
-        Me.ui_password.Size = New System.Drawing.Size(258, 26)
-        Me.ui_password.TabIndex = 2
         '
         'Label3
         '
@@ -113,38 +81,6 @@ Partial Class Account_CRUD_Frm
         Me.Label4.TabIndex = 8
         Me.Label4.Text = "Ghi chú:"
         '
-        'ui_employee
-        '
-        Me.ui_employee.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ui_employee.FormattingEnabled = True
-        Me.ui_employee.Items.AddRange(New Object() {"ACTIVE", "INACTIVE"})
-        Me.ui_employee.Location = New System.Drawing.Point(63, 96)
-        Me.ui_employee.Name = "ui_employee"
-        Me.ui_employee.Size = New System.Drawing.Size(258, 28)
-        Me.ui_employee.TabIndex = 9
-        '
-        'ui_role
-        '
-        Me.ui_role.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ui_role.FormattingEnabled = True
-        Me.ui_role.Items.AddRange(New Object() {"ACTIVE", "INACTIVE"})
-        Me.ui_role.Location = New System.Drawing.Point(63, 356)
-        Me.ui_role.Name = "ui_role"
-        Me.ui_role.Size = New System.Drawing.Size(258, 28)
-        Me.ui_role.TabIndex = 11
-        '
-        'Label5
-        '
-        Me.Label5.AutoSize = True
-        Me.Label5.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Label5.Location = New System.Drawing.Point(59, 333)
-        Me.Label5.Margin = New System.Windows.Forms.Padding(0)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(170, 19)
-        Me.Label5.TabIndex = 10
-        Me.Label5.Text = "Quyền hạn hệ thống:"
-        '
         'ui_last_active
         '
         Me.ui_last_active.CustomFormat = "dd-MM-yyyy HH:mm:ss"
@@ -188,6 +124,70 @@ Partial Class Account_CRUD_Frm
         Me.ui_user.Size = New System.Drawing.Size(258, 26)
         Me.ui_user.TabIndex = 16
         '
+        'ui_role
+        '
+        Me.ui_role.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ui_role.FormattingEnabled = True
+        Me.ui_role.Items.AddRange(New Object() {"ACTIVE", "INACTIVE"})
+        Me.ui_role.Location = New System.Drawing.Point(63, 356)
+        Me.ui_role.Name = "ui_role"
+        Me.ui_role.Size = New System.Drawing.Size(258, 28)
+        Me.ui_role.TabIndex = 11
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.Label5.Location = New System.Drawing.Point(59, 333)
+        Me.Label5.Margin = New System.Windows.Forms.Padding(0)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(170, 19)
+        Me.Label5.TabIndex = 10
+        Me.Label5.Text = "Quyền hạn hệ thống:"
+        '
+        'ui_employee
+        '
+        Me.ui_employee.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ui_employee.FormattingEnabled = True
+        Me.ui_employee.Items.AddRange(New Object() {"ACTIVE", "INACTIVE"})
+        Me.ui_employee.Location = New System.Drawing.Point(63, 96)
+        Me.ui_employee.Name = "ui_employee"
+        Me.ui_employee.Size = New System.Drawing.Size(258, 28)
+        Me.ui_employee.TabIndex = 9
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.Label2.Location = New System.Drawing.Point(59, 242)
+        Me.Label2.Margin = New System.Windows.Forms.Padding(0)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(84, 19)
+        Me.Label2.TabIndex = 3
+        Me.Label2.Text = "Mật khẩu:"
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.Label1.Location = New System.Drawing.Point(59, 73)
+        Me.Label1.Margin = New System.Windows.Forms.Padding(0)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(92, 19)
+        Me.Label1.TabIndex = 1
+        Me.Label1.Text = "Nhân viên:"
+        '
+        'ui_password
+        '
+        Me.ui_password.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ui_password.Location = New System.Drawing.Point(63, 265)
+        Me.ui_password.Name = "ui_password"
+        Me.ui_password.Size = New System.Drawing.Size(258, 26)
+        Me.ui_password.TabIndex = 2
+        '
         'Account_CRUD_Frm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -230,18 +230,18 @@ Partial Class Account_CRUD_Frm
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents Label1 As Label
-    Friend WithEvents Label2 As Label
-    Friend WithEvents ui_password As TextBox
     Friend WithEvents Label3 As Label
     Friend WithEvents ui_status As ComboBox
     Friend WithEvents ui_note As RichTextBox
     Friend WithEvents Label4 As Label
-    Friend WithEvents ui_employee As ComboBox
-    Friend WithEvents ui_role As ComboBox
-    Friend WithEvents Label5 As Label
     Friend WithEvents ui_last_active As DateTimePicker
     Friend WithEvents Label6 As Label
     Friend WithEvents Label8 As Label
     Friend WithEvents ui_user As TextBox
+    Friend WithEvents ui_role As ComboBox
+    Friend WithEvents Label5 As Label
+    Friend WithEvents ui_employee As ComboBox
+    Friend WithEvents Label2 As Label
+    Friend WithEvents Label1 As Label
+    Friend WithEvents ui_password As TextBox
 End Class
