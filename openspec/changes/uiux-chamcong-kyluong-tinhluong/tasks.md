@@ -26,4 +26,5 @@
 
 - [ ] 5.1 Ch?y fail-case tru?c (tr�ng m�, ng�y kh�ng h?p l?, thi?u k? luong)
 - [x] 5.2 Ch?y build nhanh v� ghi k?t qu?
-- [x] 5.3 C?p nh?t changes.md/progress.md/error.md cu?i phi�n
+- [x] 5.3 C?p nh?t changes.md/progress.md/error.md cu?i phi�n
+

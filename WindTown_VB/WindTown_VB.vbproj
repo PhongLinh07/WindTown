@@ -687,12 +687,6 @@
     <Compile Include="UIUX\Modules\PhanCongRepository.vb" />
     <Compile Include="UIUX\Modules\ThongTinHeThongService.vb" />
     <Compile Include="UIUX\Modules\TinhLuongDataModel.vb" />
-    <Compile Include="UIUX\tesst.Designer.vb">
-      <DependentUpon>tesst.vb</DependentUpon>
-    </Compile>
-    <Compile Include="UIUX\tesst.vb">
-      <SubType>Form</SubType>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="2_Core\6_Forms\1_FormBase\BaseACRUDForm.resx">
@@ -835,9 +829,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UIUX\frmTinhLuong.resx">
       <DependentUpon>frmTinhLuong.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UIUX\tesst.resx">
-      <DependentUpon>tesst.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
