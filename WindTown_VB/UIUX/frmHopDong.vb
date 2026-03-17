@@ -1,4 +1,4 @@
-﻿Imports System.Data
+Imports System.Data
 Imports System.Linq
 
 Public Class frmHopDong
@@ -248,7 +248,7 @@ Public Class frmHopDong
             Dim fromDate = dtpkTuNgay.Value.Date
             Dim toDate = dtpkDenNgay.Value.Date
             query = query.Where(Function(x)
-                                    Dim startDate = If(x.start_date, DateTime.MinValue)
+                                    Dim startDate = x.start_date
                                     Dim endDate = If(x.end_date, DateTime.MaxValue)
                                     Return startDate.Date >= fromDate AndAlso endDate.Date <= toDate
                                 End Function)
@@ -265,7 +265,7 @@ Public Class frmHopDong
                 False,
                 hd.code,
                 hd.employee_UI,
-                If(hd.start_date, DateTime.MinValue).ToString("dd/MM/yyyy"),
+                hd.start_date,
                 If(hd.end_date, DateTime.MinValue).ToString("dd/MM/yyyy"),
                 If(hd.base_salary, 0D).ToString("N0"),
                 hd.status_UI,
@@ -437,7 +437,7 @@ Public Class frmHopDong
                 If chkSalary.Checked Then data.base_salary = numSalary.Value
                 If chkNote.Checked Then data.note = txtNote.Text.Trim()
 
-                If data.start_date.HasValue AndAlso data.end_date.HasValue AndAlso data.start_date.Value.Date > data.end_date.Value.Date Then
+                If data.end_date.HasValue AndAlso data.start_date.Date > data.end_date.Value.Date Then
                     MessageBox.Show($"Hợp đồng {data.code}: ngày bắt đầu lớn hơn ngày kết thúc.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning)
                     Return
                 End If
@@ -480,7 +480,7 @@ Public Class frmHopDong
 
             Dim lblStart As New Label() With {.Text = "Ngày bắt đầu", .Location = New Point(20, 100), .AutoSize = True}
             Dim dtStart As New DateTimePicker() With {.Location = New Point(180, 98), .Width = 240}
-            dtStart.Value = If(data.start_date, DateTime.Now)
+            dtStart.Value = data.start_date
 
             Dim lblEnd As New Label() With {.Text = "Ngày kết thúc", .Location = New Point(20, 140), .AutoSize = True}
             Dim dtEnd As New DateTimePicker() With {.Location = New Point(180, 138), .Width = 240}
@@ -551,7 +551,7 @@ Public Class frmHopDong
             bang.Rows.Add(
                 hd.code,
                 hd.employee_UI,
-                If(hd.start_date, DateTime.MinValue).ToString(UiDinhDang.DinhDangNgayMacDinh),
+                hd.start_date.ToString(UiDinhDang.DinhDangNgayMacDinh),
                 If(hd.end_date, DateTime.MinValue).ToString(UiDinhDang.DinhDangNgayMacDinh),
                 If(hd.base_salary, 0D).ToString("N0"),
                 hd.status_UI,
