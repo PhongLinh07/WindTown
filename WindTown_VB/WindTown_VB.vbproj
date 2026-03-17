@@ -12,10 +12,26 @@
     <FileAlignment>512</FileAlignment>
     <MyType>WindowsForms</MyType>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <GenerateResourceUsePreserializedResources>true</GenerateResourceUsePreserializedResources>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -26,6 +42,7 @@
     <OutputPath>bin\Debug\</OutputPath>
     <DocumentationFile>WindTown_VB.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <UseWinFormsOutOfProcDesigner>True</UseWinFormsOutOfProcDesigner>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -36,6 +53,7 @@
     <OutputPath>bin\Release\</OutputPath>
     <DocumentationFile>WindTown_VB.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <UseWinFormsOutOfProcDesigner>True</UseWinFormsOutOfProcDesigner>
   </PropertyGroup>
   <PropertyGroup>
     <OptionExplicit>On</OptionExplicit>
@@ -138,6 +156,7 @@
     <Reference Include="System">
       <HintPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.8\System.dll</HintPath>
     </Reference>
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Buffers, Version=4.0.5.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Buffers.4.6.1\lib\net462\System.Buffers.dll</HintPath>
     </Reference>
@@ -182,6 +201,10 @@
     <Reference Include="System.Numerics.Vectors, Version=4.1.6.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Numerics.Vectors.4.6.1\lib\net462\System.Numerics.Vectors.dll</HintPath>
     </Reference>
+    <Reference Include="System.Resources.Extensions, Version=4.0.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>$(MSBuildProjectDirectory)\..\packages\System.Resources.Extensions.4.7.1\lib\net461\System.Resources.Extensions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.6.1.2\lib\net462\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
@@ -215,6 +238,7 @@
     <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
     </Reference>
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
@@ -586,17 +610,35 @@
     <Compile Include="UIUX\frmChucVu.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="UIUX\frmChinhSach.Designer.vb">
+      <DependentUpon>frmChinhSach.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UIUX\frmChinhSach.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="UIUX\frmDashboard.Designer.vb">
       <DependentUpon>frmDashboard.vb</DependentUpon>
     </Compile>
     <Compile Include="UIUX\frmDashboard.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="UIUX\frmDuAn.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UIUX\frmDuAn.Designer.vb">
+      <DependentUpon>frmDuAn.vb</DependentUpon>
+    </Compile>
     <Compile Include="UIUX\frmHopDong.Designer.vb">
       <DependentUpon>frmHopDong.vb</DependentUpon>
     </Compile>
     <Compile Include="UIUX\frmHopDong.vb">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UIUX\frmNgayLe.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UIUX\frmNgayLe.Designer.vb">
+      <DependentUpon>frmNgayLe.vb</DependentUpon>
     </Compile>
     <Compile Include="UIUX\frmKyLuong.Designer.vb">
       <DependentUpon>frmKyLuong.vb</DependentUpon>
@@ -628,6 +670,24 @@
     <Compile Include="UIUX\frmNhanSu.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="UIUX\frmNghiPhep.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UIUX\frmNghiPhep.Designer.vb">
+      <DependentUpon>frmNghiPhep.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UIUX\frmPhanCong.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UIUX\frmPhanCong.Designer.vb">
+      <DependentUpon>frmPhanCong.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UIUX\frmPhongBan.Designer.vb">
+      <DependentUpon>frmPhongBan.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UIUX\frmPhongBan.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="UIUX\frmRegister.Designer.vb">
       <DependentUpon>frmRegister.vb</DependentUpon>
     </Compile>
@@ -640,12 +700,6 @@
     <Compile Include="UIUX\frmSystem.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UIUX\frmTest.Designer.vb">
-      <DependentUpon>frmTest.vb</DependentUpon>
-    </Compile>
-    <Compile Include="UIUX\frmTest.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="UIUX\frmTinhLuong.Designer.vb">
       <DependentUpon>frmTinhLuong.vb</DependentUpon>
     </Compile>
@@ -653,16 +707,28 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UIUX\Helpers\ImageExtensions.vb" />
-    <Compile Include="UIUX\Modules\HopDong.vb" />
-    <Compile Include="UIUX\Modules\MenuItemModel.vb" />
-    <Compile Include="UIUX\Modules\NavigationService.vb" />
-    <Compile Include="UIUX\Modules\DashboardService.vb" />
-    <Compile Include="UIUX\Modules\DashboardSummaryDto.vb" />
+    <Compile Include="UIUX\Modules\ChinhSachRepository.vb" />
     <Compile Include="UIUX\Modules\BoPhan.vb" />
     <Compile Include="UIUX\Modules\CongViec.vb" />
-    <Compile Include="UIUX\Modules\NhanSuTransferService.vb" />
+    <Compile Include="UIUX\Modules\DashboardService.vb" />
+    <Compile Include="UIUX\Modules\DashboardSummaryDto.vb" />
     <Compile Include="UIUX\Modules\DatabaseBootstrapService.vb" />
+    <Compile Include="UIUX\Modules\DuAnRepository.vb" />
+    <Compile Include="UIUX\Modules\HeThongCauHinhService.vb" />
+    <Compile Include="UIUX\Modules\HopDong.vb" />
+    <Compile Include="UIUX\Modules\HopDongDataModel.vb" />
+    <Compile Include="UIUX\Modules\JsonDuLieuHelper.vb" />
+    <Compile Include="UIUX\Modules\KyLuongDataModel.vb" />
+    <Compile Include="UIUX\Modules\MenuItemModel.vb" />
+    <Compile Include="UIUX\Modules\NgayLeRepository.vb" />
+    <Compile Include="UIUX\Modules\NghiPhepRepository.vb" />
+    <Compile Include="UIUX\Modules\NavigationService.vb" />
+    <Compile Include="UIUX\Modules\NguoiDungHienTaiService.vb" />
+    <Compile Include="UIUX\Modules\NhanSuTransferService.vb" />
     <Compile Include="UIUX\Modules\NhanVien.vb" />
+    <Compile Include="UIUX\Modules\PhanCongRepository.vb" />
+    <Compile Include="UIUX\Modules\ThongTinHeThongService.vb" />
+    <Compile Include="UIUX\Modules\TinhLuongDataModel.vb" />
     <Compile Include="UIUX\tesst.Designer.vb">
       <DependentUpon>tesst.vb</DependentUpon>
     </Compile>
@@ -770,6 +836,9 @@
     <EmbeddedResource Include="UIUX\frmChamCong.resx">
       <DependentUpon>frmChamCong.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UIUX\frmChinhSach.resx">
+      <DependentUpon>frmChinhSach.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UIUX\frmChucVu.resx">
       <DependentUpon>frmChucVu.vb</DependentUpon>
     </EmbeddedResource>
@@ -778,6 +847,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UIUX\frmHopDong.resx">
       <DependentUpon>frmHopDong.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UIUX\frmDuAn.resx">
+      <DependentUpon>frmDuAn.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UIUX\frmPhanCong.resx">
+      <DependentUpon>frmPhanCong.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UIUX\frmNghiPhep.resx">
+      <DependentUpon>frmNghiPhep.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UIUX\frmNgayLe.resx">
+      <DependentUpon>frmNgayLe.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UIUX\frmKyLuong.resx">
       <DependentUpon>frmKyLuong.vb</DependentUpon>
@@ -794,14 +875,14 @@
     <EmbeddedResource Include="UIUX\frmNhanSu.resx">
       <DependentUpon>frmNhanSu.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UIUX\frmPhongBan.resx">
+      <DependentUpon>frmPhongBan.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UIUX\frmRegister.resx">
       <DependentUpon>frmRegister.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UIUX\frmSystem.resx">
       <DependentUpon>frmSystem.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UIUX\frmTest.resx">
-      <DependentUpon>frmTest.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UIUX\frmTinhLuong.resx">
       <DependentUpon>frmTinhLuong.vb</DependentUpon>
@@ -874,11 +955,25 @@
     <None Include="2_Core\Assets\contract.ico" />
     <None Include="2_Core\Assets\home.ico" />
     <None Include="2_Core\Assets\hidden_32px.png" />
+    <Content Include="2_Core\Assets\department.png" />
     <Content Include="2_Core\Assets\LogoHR.png" />
     <None Include="2_Core\Assets\salary.ico" />
     <None Include="2_Core\Assets\saff.ico" />
+    <Content Include="2_Core\Assets\phongban.png" />
     <Content Include="2_Core\Assets\search.png" />
     <Content Include="2_Core\Assets\word.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.8">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.8 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <Import Project="..\packages\Microsoft.Data.SqlClient.SNI.6.0.2\build\net462\Microsoft.Data.SqlClient.SNI.targets" Condition="Exists('..\packages\Microsoft.Data.SqlClient.SNI.6.0.2\build\net462\Microsoft.Data.SqlClient.SNI.targets')" />

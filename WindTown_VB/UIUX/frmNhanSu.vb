@@ -38,6 +38,8 @@ Public Class frmNhanSu
 
     ' ================= LOAD FORM =================
     Private Sub frmNhanSu_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        HoTroPhongChu.ApDungPhongChu(Me)
+
         ConfigDataGridView()
         loadControls()
         loadData()
@@ -312,6 +314,8 @@ Public Class frmNhanSu
                 .Text = "Xem",
                 .UseColumnTextForButtonValue = True
             })
+
+            UiDinhDang.ApDungDinhDangCotNgay(.Columns("colNgayBatDau"))
 
             For Each col As DataGridViewColumn In .Columns
                 col.ReadOnly = True
@@ -881,20 +885,6 @@ Public Class frmNhanSu
 
     End Sub
 
-    'Private Sub AddDepartment()
-    '    Dim data As New Department()
-    '    Dim crud As New Department_CRUD_Frm(data, True)
-    '    If crud.ShowDialog() <> DialogResult.OK Then Return
-    '
-    '    Dim response = _departmentService.Execute(DataIntent.Insert, data)
-    '    If response Is Nothing OrElse Not response.IsSuccess Then
-    '        MessageBox.Show("Thêm bộ phận không thành công: " & If(response?.Message, "Lỗi không xác định."))
-    '        Return
-    '    End If
-    '
-    '    ReloadDataAndView()
-    'End Sub
-
     Private Sub AddJob(departmentId As Integer)
         Dim dept = phongBan.FirstOrDefault(Function(d) d.id = departmentId)
         If dept Is Nothing Then
@@ -1095,6 +1085,11 @@ Public Class frmNhanSu
     End Sub
 
     Private Sub btnNhapXuatNV_Click(sender As Object, e As EventArgs) Handles btnNhapXuatNV.Click
+        If dtgvDSNhanVien Is Nothing OrElse dtgvDSNhanVien.Rows.Count = 0 Then
+            UiThongBao.HienThiCanhBao("Không có dữ liệu để xuất.")
+            Return
+        End If
 
+        BaoCaoXuat.XuatTuDataGridView(dtgvDSNhanVien, "nhan_su")
     End Sub
 End Class

@@ -32,7 +32,7 @@ Partial Class frmMain
         'tlpMain
         '
         Me.tlpMain.ColumnCount = 2
-        Me.tlpMain.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 222.0!))
+        Me.tlpMain.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 241.0!))
         Me.tlpMain.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
         Me.tlpMain.Controls.Add(Me.pnlMain, 1, 0)
         Me.tlpMain.Controls.Add(Me.UcSidebar1, 0, 0)
@@ -49,10 +49,10 @@ Partial Class frmMain
         '
         Me.pnlMain.Dock = System.Windows.Forms.DockStyle.Fill
         Me.pnlMain.Font = New System.Drawing.Font("Arial", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.pnlMain.Location = New System.Drawing.Point(225, 4)
+        Me.pnlMain.Location = New System.Drawing.Point(244, 4)
         Me.pnlMain.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.pnlMain.Name = "pnlMain"
-        Me.pnlMain.Size = New System.Drawing.Size(1034, 665)
+        Me.pnlMain.Size = New System.Drawing.Size(1015, 665)
         Me.pnlMain.TabIndex = 1
         '
         'UcSidebar1
@@ -61,7 +61,7 @@ Partial Class frmMain
         Me.UcSidebar1.Location = New System.Drawing.Point(3, 4)
         Me.UcSidebar1.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.UcSidebar1.Name = "UcSidebar1"
-        Me.UcSidebar1.Size = New System.Drawing.Size(216, 665)
+        Me.UcSidebar1.Size = New System.Drawing.Size(235, 665)
         Me.UcSidebar1.TabIndex = 2
         '
         'frmMain

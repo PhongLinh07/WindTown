@@ -1,8 +1,10 @@
-Public Class frmRegister
+﻿Public Class frmRegister
     Private account As New List(Of Account)
     Private employee As New List(Of Employee)
 
     Private Sub frmLogin_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        HoTroPhongChu.ApDungPhongChu(Me)
+
         loadAccount()
         loadEmployeeWithoutAccount()
     End Sub
@@ -45,27 +47,27 @@ Public Class frmRegister
         Dim isValid As Boolean = True
 
         If username = "" Then
-            ErrorProvider1.SetError(tbxUsername, "Vui long nhap ten dang nhap")
+            ErrorProvider1.SetError(tbxUsername, "Vui lòng nhập tên đăng nhập")
             isValid = False
         End If
 
         If id < 1 Then
-            ErrorProvider1.SetError(cbxEmployeeId, "Vui long chon nhan vien")
+            ErrorProvider1.SetError(cbxEmployeeId, "Vui lòng chọn nhân viên")
             isValid = False
         End If
 
         If password = "" Then
-            ErrorProvider1.SetError(tbxPassword, "Vui long nhap mat khau")
+            ErrorProvider1.SetError(tbxPassword, "Vui lòng nhập mật khẩu")
             isValid = False
         End If
 
         If confirmPassword = "" Then
-            ErrorProvider1.SetError(tbxAcceptPassword, "Vui long xac nhan mat khau")
+            ErrorProvider1.SetError(tbxAcceptPassword, "Vui lòng xác nhận mật khẩu")
             isValid = False
         End If
 
         If password <> "" AndAlso confirmPassword <> "" AndAlso password <> confirmPassword Then
-            ErrorProvider1.SetError(tbxAcceptPassword, "Mat khau xac nhan khong khop")
+            ErrorProvider1.SetError(tbxAcceptPassword, "mật khẩu xác nhận khong khop")
             isValid = False
         End If
 
@@ -83,13 +85,13 @@ Public Class frmRegister
             Dim result = accountSV.Execute(DataIntent.Insert, newAccount)
 
             If result.IsSuccess Then
-                MessageBox.Show("Dang ky thanh cong!")
+                MessageBox.Show("Đăng ký thành công!")
                 NavigationService.SwitchTopLevel(Of frmLogin)(Me)
             Else
-                MessageBox.Show(result.Message, "Loi")
+                MessageBox.Show(result.Message, "Lỗi")
             End If
         Else
-            ErrorProvider1.SetError(tbxUsername, "Ten dang nhap da ton tai")
+            ErrorProvider1.SetError(tbxUsername, "Tên đăng nhập hoặc mật khẩu đã tồn tại")
         End If
     End Sub
 

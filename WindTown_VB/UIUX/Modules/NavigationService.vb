@@ -1,3 +1,6 @@
+Imports System.IO
+Imports System.Text
+Imports System.Drawing
 Module NavigationService
 
     Private _mainPanel As Panel
@@ -70,6 +73,7 @@ Module NavigationService
 
         If nextForm Is Nothing Then Return
 
+        HoTroPhongChu.ApDungPhongChu(nextForm)
         nextForm.Show()
 
         If currentForm IsNot Nothing AndAlso Not currentForm.IsDisposed Then
@@ -88,6 +92,7 @@ Module NavigationService
     Public Sub LogoutToLogin()
 
         Dim login As New frmLogin()
+        HoTroPhongChu.ApDungPhongChu(login)
         login.Show()
 
         If _mainHostForm IsNot Nothing AndAlso Not _mainHostForm.IsDisposed Then
@@ -124,6 +129,7 @@ Module NavigationService
         frm.TopLevel = False
         frm.FormBorderStyle = FormBorderStyle.None
         frm.Dock = DockStyle.Fill
+        HoTroPhongChu.ApDungPhongChu(frm)
 
         _mainPanel.Controls.Add(frm)
         frm.Show()
@@ -134,3 +140,184 @@ Module NavigationService
 
 End Module
 
+Module HoTroPhongChu
+
+    Private ReadOnly _phongChuUngDung As New Font("Segoe UI", 10.0!, FontStyle.Regular, GraphicsUnit.Point)
+
+    Public Sub ApDungPhongChu(root As Control)
+        If root Is Nothing Then Return
+        ApDungPhongChuDeQuy(root, _phongChuUngDung)
+    End Sub
+
+    Private Sub ApDungPhongChuDeQuy(ctrl As Control, phongChu As Font)
+        ctrl.Font = phongChu
+        For Each child As Control In ctrl.Controls
+            ApDungPhongChuDeQuy(child, phongChu)
+        Next
+    End Sub
+
+End Module
+Module UiThongBao
+
+    Public Sub HienThiThanhCong(thongBao As String, Optional tieuDe As String = "Thông báo", Optional nhanTrangThai As Label = Nothing)
+        If nhanTrangThai IsNot Nothing Then
+            nhanTrangThai.Text = thongBao
+        End If
+        MessageBox.Show(thongBao, tieuDe, MessageBoxButtons.OK, MessageBoxIcon.Information)
+    End Sub
+
+    Public Sub HienThiLoi(thongBao As String, Optional tieuDe As String = "Lỗi", Optional nhanTrangThai As Label = Nothing)
+        If nhanTrangThai IsNot Nothing Then
+            nhanTrangThai.Text = thongBao
+        End If
+        MessageBox.Show(thongBao, tieuDe, MessageBoxButtons.OK, MessageBoxIcon.Error)
+    End Sub
+
+    Public Sub HienThiCanhBao(thongBao As String, Optional tieuDe As String = "Cảnh báo", Optional nhanTrangThai As Label = Nothing)
+        If nhanTrangThai IsNot Nothing Then
+            nhanTrangThai.Text = thongBao
+        End If
+        MessageBox.Show(thongBao, tieuDe, MessageBoxButtons.OK, MessageBoxIcon.Warning)
+    End Sub
+
+End Module
+
+Module UiTrangThai
+
+    Public Sub BatLoading(formHienTai As Form, Optional danhSachKhoa As IEnumerable(Of Control) = Nothing, Optional nhanTrangThai As Label = Nothing, Optional thongBao As String = "Đang xử lý...")
+        If formHienTai Is Nothing Then Return
+
+        formHienTai.UseWaitCursor = True
+        If nhanTrangThai IsNot Nothing Then
+            nhanTrangThai.Text = thongBao
+        End If
+
+        If danhSachKhoa Is Nothing Then Return
+        For Each ctrl In danhSachKhoa
+            If ctrl Is Nothing Then Continue For
+            ctrl.Enabled = False
+        Next
+    End Sub
+
+    Public Sub TatLoading(formHienTai As Form, Optional danhSachMo As IEnumerable(Of Control) = Nothing, Optional nhanTrangThai As Label = Nothing, Optional thongBao As String = "")
+        If formHienTai Is Nothing Then Return
+
+        formHienTai.UseWaitCursor = False
+        If nhanTrangThai IsNot Nothing Then
+            nhanTrangThai.Text = thongBao
+        End If
+
+        If danhSachMo Is Nothing Then Return
+        For Each ctrl In danhSachMo
+            If ctrl Is Nothing Then Continue For
+            ctrl.Enabled = True
+        Next
+    End Sub
+
+End Module
+
+Module UiDinhDang
+
+    Public Const DinhDangNgayMacDinh As String = "dd/MM/yyyy"
+    Public Const DinhDangSoMacDinh As String = "N0"
+
+    Public Sub ApDungDinhDangCotNgay(cot As DataGridViewColumn, Optional dinhDang As String = Nothing)
+        If cot Is Nothing Then Return
+        Dim dinhDangSuDung = If(String.IsNullOrWhiteSpace(dinhDang), DinhDangNgayMacDinh, dinhDang)
+        cot.DefaultCellStyle.Format = dinhDangSuDung
+    End Sub
+
+    Public Sub ApDungDinhDangCotSo(cot As DataGridViewColumn, Optional dinhDang As String = Nothing)
+        If cot Is Nothing Then Return
+        Dim dinhDangSuDung = If(String.IsNullOrWhiteSpace(dinhDang), DinhDangSoMacDinh, dinhDang)
+        cot.DefaultCellStyle.Format = dinhDangSuDung
+        cot.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
+    End Sub
+
+    Public Sub ApDungDinhDangNgayPicker(dtp As DateTimePicker, Optional dinhDang As String = Nothing)
+        If dtp Is Nothing Then Return
+        Dim dinhDangSuDung = If(String.IsNullOrWhiteSpace(dinhDang), DinhDangNgayMacDinh, dinhDang)
+        dtp.Format = DateTimePickerFormat.Custom
+        dtp.CustomFormat = dinhDangSuDung
+    End Sub
+
+    Public Sub ApDungDinhDangLuoiChamCong(dgv As DataGridView)
+        If dgv Is Nothing Then Return
+        dgv.AllowUserToAddRows = False
+        dgv.AllowUserToDeleteRows = False
+        dgv.AllowUserToResizeRows = False
+        dgv.RowHeadersVisible = False
+        dgv.SelectionMode = DataGridViewSelectionMode.FullRowSelect
+        dgv.MultiSelect = False
+        dgv.BackgroundColor = Color.White
+        dgv.BorderStyle = BorderStyle.None
+        dgv.ColumnHeadersHeight = 40
+        dgv.RowTemplate.Height = 56
+        dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None
+    End Sub
+
+End Module
+
+Module BaoCaoXuat
+
+    Public Function XuatTuDataGridView(dgv As DataGridView, Optional tieuDe As String = "bao_cao") As Boolean
+        If dgv Is Nothing OrElse dgv.Rows.Count = 0 Then
+            UiThongBao.HienThiCanhBao("Không có dữ liệu để xuất.")
+            Return False
+        End If
+
+        Dim dt As New DataTable()
+        For Each col As DataGridViewColumn In dgv.Columns
+            dt.Columns.Add(col.HeaderText)
+        Next
+
+        For Each row As DataGridViewRow In dgv.Rows
+            If row.IsNewRow Then Continue For
+            Dim dr = dt.NewRow()
+            For i As Integer = 0 To dgv.Columns.Count - 1
+                dr(i) = If(row.Cells(i).Value, String.Empty)
+            Next
+            dt.Rows.Add(dr)
+        Next
+
+        Return XuatTuDataTable(dt, tieuDe)
+    End Function
+
+    Public Function XuatTuDataTable(dt As DataTable, Optional tieuDe As String = "bao_cao") As Boolean
+        If dt Is Nothing OrElse dt.Rows.Count = 0 Then
+            UiThongBao.HienThiCanhBao("Không có dữ liệu để xuất.")
+            Return False
+        End If
+
+        Using dlg As New SaveFileDialog()
+            dlg.Filter = "CSV (*.csv)|*.csv"
+            dlg.FileName = String.Concat(tieuDe, "_", DateTime.Now.ToString("yyyyMMdd_HHmmss"), ".csv")
+            If dlg.ShowDialog() <> DialogResult.OK Then Return False
+
+            Dim sb As New StringBuilder()
+            Dim cotTieuDe As String() = dt.Columns.Cast(Of DataColumn)().Select(Function(c) BaoCsv(c.ColumnName)).ToArray()
+            sb.AppendLine(String.Join(",", cotTieuDe))
+
+            For Each row As DataRow In dt.Rows
+                Dim giaTri As String() = dt.Columns.Cast(Of DataColumn)().Select(Function(c) BaoCsv(Convert.ToString(row(c)))).ToArray()
+                sb.AppendLine(String.Join(",", giaTri))
+            Next
+
+            File.WriteAllText(dlg.FileName, sb.ToString(), Encoding.UTF8)
+        End Using
+
+        UiThongBao.HienThiThanhCong("Đã xuất báo cáo thành công.")
+        Return True
+    End Function
+
+    Private Function BaoCsv(giaTri As String) As String
+        If giaTri Is Nothing Then Return ""
+        Dim canBao = giaTri.Contains(",") OrElse giaTri.Contains("""") OrElse giaTri.Contains(vbCr) OrElse giaTri.Contains(vbLf)
+        Dim ketQua = giaTri.Replace("""", """""")
+        If canBao Then
+            Return """" & ketQua & """"
+        End If
+        Return ketQua
+    End Function
+
+End Module

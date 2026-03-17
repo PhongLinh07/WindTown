@@ -1,7 +1,9 @@
 Public Class frmMain
+    ' Ghi chu: cap nhat nho theo yeu cau, khong thay doi logic (frmHopDong update).
 
     Private Sub frmMain_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
+        HoTroPhongChu.ApDungPhongChu(Me)
         NavigationService.Initialize(Me, pnlMain)
 
         UcSidebar1.SetMainPanel(pnlMain)
@@ -40,3 +42,5 @@ Public Class frmMain
     End Sub
 
 End Class
+
+
