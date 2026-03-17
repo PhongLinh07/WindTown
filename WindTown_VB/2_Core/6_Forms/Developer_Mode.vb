@@ -28,8 +28,6 @@ Public Class Developer_Mode
     End Sub
 
     Private Sub btn_fontend_Click(sender As Object, e As EventArgs) Handles btn_fontend.Click
-        Dim f As New frmLogin()
-        f.Show()
-        Me.Hide() ' ÄÃ³ng háº³n Form chá»n, giáº£i phÃ³ng bá»™ nhá»› ngay láº­p tá»©c
+        NavigationService.SwitchTopLevel(Of frmMain)(Me)
     End Sub
 End Class
