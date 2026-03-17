@@ -178,6 +178,7 @@ Public Class frmTinhLuong
         cbbThoiGian.Items.Clear()
         cbbThoiGian.Items.AddRange(New Object() {"Tất cả", "Theo khoảng thời gian"})
         cbbThoiGian.SelectedIndex = 0
+        CapNhatTrangThaiThoiGian()
 
         cbbThoiGianNhanh.Items.Clear()
         cbbThoiGianNhanh.Items.AddRange(New Object() {"Không áp dụng", "Tháng này", "Tháng trước", "Quý này", "Quý trước", "Năm nay"})
@@ -295,6 +296,9 @@ Public Class frmTinhLuong
     End Sub
 
     Private Sub SuKienLoc(sender As Object, e As EventArgs) Handles btnTimKiem.Click, txtTuKhoa.TextChanged, cbbKyLuong.SelectedIndexChanged, cbbViTri.SelectedIndexChanged, cbbTrangThai.SelectedIndexChanged, cbbThoiGian.SelectedIndexChanged, dtTuNgay.ValueChanged, dtDenNgay.ValueChanged
+        If sender Is cbbThoiGian Then
+            CapNhatTrangThaiThoiGian()
+        End If
         If Not _daTai Then Return
         CapNhatLuoi()
     End Sub
@@ -308,6 +312,7 @@ Public Class frmTinhLuong
         cbbThoiGianNhanh.SelectedIndex = 0
         dtTuNgay.Value = DateTime.Today.AddMonths(-1)
         dtDenNgay.Value = DateTime.Today
+        CapNhatTrangThaiThoiGian()
         CapNhatLuoi()
     End Sub
 
@@ -536,7 +541,14 @@ Public Class frmTinhLuong
         dtTuNgay.Value = tuNgay
         dtDenNgay.Value = denNgay
         cbbThoiGian.SelectedIndex = 1
+        CapNhatTrangThaiThoiGian()
         CapNhatLuoi()
+    End Sub
+
+    Private Sub CapNhatTrangThaiThoiGian()
+        Dim bat = (cbbThoiGian.SelectedItem IsNot Nothing AndAlso cbbThoiGian.SelectedItem.ToString() = "Theo khoảng thời gian")
+        dtTuNgay.Enabled = bat
+        dtDenNgay.Enabled = bat
     End Sub
 
     Private Function TaoBangTinhLuong(ds As IEnumerable(Of Payroll)) As DataTable
@@ -566,6 +578,5 @@ Public Class frmTinhLuong
     End Function
 
 End Class
-
 
 
