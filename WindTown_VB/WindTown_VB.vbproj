@@ -589,6 +589,7 @@
       <DependentUpon>Application.myapp</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="My Project\MyApplicationExtensions.vb" />
     <Compile Include="My Project\Resources.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -948,19 +949,31 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="1_Documents\db_json.sql" />
+    <Content Include="2_Core\Assets\accounting.png" />
+    <Content Include="2_Core\Assets\AppIcon.ico" />
     <Content Include="2_Core\Assets\bin.png" />
     <None Include="2_Core\Assets\checkin.ico" />
+    <Content Include="2_Core\Assets\checkin.png" />
     <Content Include="2_Core\Assets\compose.png" />
     <None Include="2_Core\Assets\ErrorImage.png" />
     <None Include="2_Core\Assets\gear.png" />
     <None Include="2_Core\Assets\contract.ico" />
     <None Include="2_Core\Assets\home.ico" />
     <None Include="2_Core\Assets\hidden_32px.png" />
+    <Content Include="2_Core\Assets\contract.png" />
+    <Content Include="2_Core\Assets\delegation.png" />
     <Content Include="2_Core\Assets\department.png" />
+    <Content Include="2_Core\Assets\dismissal.png" />
+    <Content Include="2_Core\Assets\employee.png" />
+    <Content Include="2_Core\Assets\government.png" />
+    <Content Include="2_Core\Assets\holidays.png" />
     <Content Include="2_Core\Assets\LogoHR.png" />
     <None Include="2_Core\Assets\salary.ico" />
     <None Include="2_Core\Assets\saff.ico" />
+    <Content Include="2_Core\Assets\market.png" />
     <Content Include="2_Core\Assets\phongban.png" />
+    <Content Include="2_Core\Assets\project.png" />
+    <Content Include="2_Core\Assets\saff.png" />
     <Content Include="2_Core\Assets\search.png" />
     <Content Include="2_Core\Assets\word.png" />
   </ItemGroup>
