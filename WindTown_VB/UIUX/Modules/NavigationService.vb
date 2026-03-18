@@ -1,4 +1,4 @@
-﻿Imports System.IO
+Imports System.IO
 Imports System.Text
 Imports System.Drawing
 Module NavigationService
@@ -110,14 +110,17 @@ Module NavigationService
     ' Đăng xuất về form đăng nhập, đồng thời đóng form chính nếu đang ở trong đó
     Public Sub LogoutToLogin()
 
-        Dim login As New frmLogin()
-        HoTroPhongChu.ApDungPhongChu(login)
-        login.Show()
+        'Dim login As New frmLogin()
+        'HoTroPhongChu.ApDungPhongChu(login)
+        'login.Show()
 
-        If _mainHostForm IsNot Nothing AndAlso Not _mainHostForm.IsDisposed Then
-            _isSwitchingFromMain = True
-            _mainHostForm.Close()
-        End If
+        'If _mainHostForm IsNot Nothing AndAlso Not _mainHostForm.IsDisposed Then
+        _isSwitchingFromMain = True
+        '    _mainHostForm.Close()
+        'End If
+
+
+        NavigationService.SwitchTopLevel(Of frmLogin)(_mainHostForm)
 
     End Sub
 

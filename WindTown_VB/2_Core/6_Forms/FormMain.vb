@@ -11,10 +11,6 @@ Partial Public Class FormMain
         UpdateLayout()
     End Sub
 
-    Private Sub FormMain_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
-        Developer_Mode.Instance.Close()
-    End Sub
-
 #Region "Helper Methods"
 
     Private Sub ResetTabControl(tc As TabControl)
@@ -244,6 +240,12 @@ Partial Public Class FormMain
 
     Private Sub tool_logger_Click(sender As Object, e As EventArgs) Handles tool_logger.Click
         Logger.Instance.Show()
+    End Sub
+
+    Private Sub tool_user_profile_Click(sender As Object, e As EventArgs) Handles tool_user_profile.Click
+        Dim userFrm = New UserProfileForm(Me)
+        userFrm.ShowDialog()
+
     End Sub
 
 

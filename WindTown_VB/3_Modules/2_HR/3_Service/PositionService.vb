@@ -1,7 +1,7 @@
 Public Class PositionService
     Inherits BaseService(Of Position)
 
-    Private _repoPos = New PositionRepository()
+    Private _repoPos As PositionRepository = New PositionRepository()
     ' Constructor: Ép Service sử dụng AttendanceRepository chuyên biệt thay vì GenericRepository
     Public Sub New()
         ' Vì AttendanceRepository kế thừa từ GenericRepository(Of Attendance), 

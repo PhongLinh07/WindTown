@@ -101,7 +101,7 @@ Partial Class frmNghiPhep
         Me.lblMoTa.ForeColor = System.Drawing.Color.DimGray
         Me.lblMoTa.Location = New System.Drawing.Point(26, 44)
         Me.lblMoTa.Name = "lblMoTa"
-        Me.lblMoTa.Size = New System.Drawing.Size(341, 23)
+        Me.lblMoTa.Size = New System.Drawing.Size(273, 19)
         Me.lblMoTa.TabIndex = 1
         Me.lblMoTa.Text = "Theo dõi đơn nghỉ phép và trạng thái xử lý."
         '
@@ -111,7 +111,7 @@ Partial Class frmNghiPhep
         Me.lblTieuDe.Font = New System.Drawing.Font("Segoe UI", 16.0!, System.Drawing.FontStyle.Bold)
         Me.lblTieuDe.Location = New System.Drawing.Point(24, 10)
         Me.lblTieuDe.Name = "lblTieuDe"
-        Me.lblTieuDe.Size = New System.Drawing.Size(250, 37)
+        Me.lblTieuDe.Size = New System.Drawing.Size(203, 30)
         Me.lblTieuDe.TabIndex = 0
         Me.lblTieuDe.Text = "Quản lý nghỉ phép"
         '
@@ -151,7 +151,7 @@ Partial Class frmNghiPhep
         '
         Me.txtTuKhoa.Location = New System.Drawing.Point(120, 25)
         Me.txtTuKhoa.Name = "txtTuKhoa"
-        Me.txtTuKhoa.Size = New System.Drawing.Size(270, 30)
+        Me.txtTuKhoa.Size = New System.Drawing.Size(270, 25)
         Me.txtTuKhoa.TabIndex = 1
         '
         'lblTuKhoa
@@ -159,7 +159,7 @@ Partial Class frmNghiPhep
         Me.lblTuKhoa.AutoSize = True
         Me.lblTuKhoa.Location = New System.Drawing.Point(26, 28)
         Me.lblTuKhoa.Name = "lblTuKhoa"
-        Me.lblTuKhoa.Size = New System.Drawing.Size(71, 23)
+        Me.lblTuKhoa.Size = New System.Drawing.Size(58, 19)
         Me.lblTuKhoa.TabIndex = 0
         Me.lblTuKhoa.Text = "Từ khóa"
         '
@@ -303,7 +303,7 @@ Partial Class frmNghiPhep
         Me.lblMaNghiPhep.AutoSize = True
         Me.lblMaNghiPhep.Location = New System.Drawing.Point(3, 0)
         Me.lblMaNghiPhep.Name = "lblMaNghiPhep"
-        Me.lblMaNghiPhep.Size = New System.Drawing.Size(78, 30)
+        Me.lblMaNghiPhep.Size = New System.Drawing.Size(95, 19)
         Me.lblMaNghiPhep.TabIndex = 0
         Me.lblMaNghiPhep.Text = "Mã nghỉ phép"
         '
@@ -312,7 +312,7 @@ Partial Class frmNghiPhep
         Me.txtMaNghiPhep.Dock = System.Windows.Forms.DockStyle.Fill
         Me.txtMaNghiPhep.Location = New System.Drawing.Point(123, 3)
         Me.txtMaNghiPhep.Name = "txtMaNghiPhep"
-        Me.txtMaNghiPhep.Size = New System.Drawing.Size(240, 30)
+        Me.txtMaNghiPhep.Size = New System.Drawing.Size(240, 25)
         Me.txtMaNghiPhep.TabIndex = 1
         '
         'lblEmployeeId
@@ -320,7 +320,7 @@ Partial Class frmNghiPhep
         Me.lblEmployeeId.AutoSize = True
         Me.lblEmployeeId.Location = New System.Drawing.Point(3, 30)
         Me.lblEmployeeId.Name = "lblEmployeeId"
-        Me.lblEmployeeId.Size = New System.Drawing.Size(104, 23)
+        Me.lblEmployeeId.Size = New System.Drawing.Size(84, 19)
         Me.lblEmployeeId.TabIndex = 2
         Me.lblEmployeeId.Text = "Employee Id"
         '
@@ -329,7 +329,7 @@ Partial Class frmNghiPhep
         Me.txtEmployeeId.Dock = System.Windows.Forms.DockStyle.Fill
         Me.txtEmployeeId.Location = New System.Drawing.Point(123, 33)
         Me.txtEmployeeId.Name = "txtEmployeeId"
-        Me.txtEmployeeId.Size = New System.Drawing.Size(240, 30)
+        Me.txtEmployeeId.Size = New System.Drawing.Size(240, 25)
         Me.txtEmployeeId.TabIndex = 3
         '
         'lblApprovedId
@@ -337,7 +337,7 @@ Partial Class frmNghiPhep
         Me.lblApprovedId.AutoSize = True
         Me.lblApprovedId.Location = New System.Drawing.Point(3, 60)
         Me.lblApprovedId.Name = "lblApprovedId"
-        Me.lblApprovedId.Size = New System.Drawing.Size(104, 23)
+        Me.lblApprovedId.Size = New System.Drawing.Size(85, 19)
         Me.lblApprovedId.TabIndex = 4
         Me.lblApprovedId.Text = "Approved Id"
         '
@@ -346,7 +346,7 @@ Partial Class frmNghiPhep
         Me.txtApprovedId.Dock = System.Windows.Forms.DockStyle.Fill
         Me.txtApprovedId.Location = New System.Drawing.Point(123, 63)
         Me.txtApprovedId.Name = "txtApprovedId"
-        Me.txtApprovedId.Size = New System.Drawing.Size(240, 30)
+        Me.txtApprovedId.Size = New System.Drawing.Size(240, 25)
         Me.txtApprovedId.TabIndex = 5
         '
         'lblLeaveCatId
@@ -354,7 +354,7 @@ Partial Class frmNghiPhep
         Me.lblLeaveCatId.AutoSize = True
         Me.lblLeaveCatId.Location = New System.Drawing.Point(3, 90)
         Me.lblLeaveCatId.Name = "lblLeaveCatId"
-        Me.lblLeaveCatId.Size = New System.Drawing.Size(99, 23)
+        Me.lblLeaveCatId.Size = New System.Drawing.Size(81, 19)
         Me.lblLeaveCatId.TabIndex = 6
         Me.lblLeaveCatId.Text = "LeaveCat Id"
         '
@@ -363,7 +363,7 @@ Partial Class frmNghiPhep
         Me.txtLeaveCatId.Dock = System.Windows.Forms.DockStyle.Fill
         Me.txtLeaveCatId.Location = New System.Drawing.Point(123, 93)
         Me.txtLeaveCatId.Name = "txtLeaveCatId"
-        Me.txtLeaveCatId.Size = New System.Drawing.Size(240, 30)
+        Me.txtLeaveCatId.Size = New System.Drawing.Size(240, 25)
         Me.txtLeaveCatId.TabIndex = 7
         '
         'lblTuNgay
@@ -371,7 +371,7 @@ Partial Class frmNghiPhep
         Me.lblTuNgay.AutoSize = True
         Me.lblTuNgay.Location = New System.Drawing.Point(3, 120)
         Me.lblTuNgay.Name = "lblTuNgay"
-        Me.lblTuNgay.Size = New System.Drawing.Size(71, 23)
+        Me.lblTuNgay.Size = New System.Drawing.Size(58, 19)
         Me.lblTuNgay.TabIndex = 8
         Me.lblTuNgay.Text = "Từ ngày"
         '
@@ -381,7 +381,7 @@ Partial Class frmNghiPhep
         Me.dtpTuNgay.Format = System.Windows.Forms.DateTimePickerFormat.Custom
         Me.dtpTuNgay.Location = New System.Drawing.Point(123, 123)
         Me.dtpTuNgay.Name = "dtpTuNgay"
-        Me.dtpTuNgay.Size = New System.Drawing.Size(240, 30)
+        Me.dtpTuNgay.Size = New System.Drawing.Size(240, 25)
         Me.dtpTuNgay.TabIndex = 9
         '
         'lblDenNgay
@@ -389,7 +389,7 @@ Partial Class frmNghiPhep
         Me.lblDenNgay.AutoSize = True
         Me.lblDenNgay.Location = New System.Drawing.Point(3, 150)
         Me.lblDenNgay.Name = "lblDenNgay"
-        Me.lblDenNgay.Size = New System.Drawing.Size(83, 23)
+        Me.lblDenNgay.Size = New System.Drawing.Size(68, 19)
         Me.lblDenNgay.TabIndex = 10
         Me.lblDenNgay.Text = "Đến ngày"
         '
@@ -399,7 +399,7 @@ Partial Class frmNghiPhep
         Me.dtpDenNgay.Format = System.Windows.Forms.DateTimePickerFormat.Custom
         Me.dtpDenNgay.Location = New System.Drawing.Point(123, 153)
         Me.dtpDenNgay.Name = "dtpDenNgay"
-        Me.dtpDenNgay.Size = New System.Drawing.Size(240, 30)
+        Me.dtpDenNgay.Size = New System.Drawing.Size(240, 25)
         Me.dtpDenNgay.TabIndex = 11
         '
         'lblTrangThai
@@ -407,7 +407,7 @@ Partial Class frmNghiPhep
         Me.lblTrangThai.AutoSize = True
         Me.lblTrangThai.Location = New System.Drawing.Point(3, 180)
         Me.lblTrangThai.Name = "lblTrangThai"
-        Me.lblTrangThai.Size = New System.Drawing.Size(87, 23)
+        Me.lblTrangThai.Size = New System.Drawing.Size(70, 19)
         Me.lblTrangThai.TabIndex = 12
         Me.lblTrangThai.Text = "Trạng thái"
         '
@@ -416,7 +416,7 @@ Partial Class frmNghiPhep
         Me.txtTrangThai.Dock = System.Windows.Forms.DockStyle.Fill
         Me.txtTrangThai.Location = New System.Drawing.Point(123, 183)
         Me.txtTrangThai.Name = "txtTrangThai"
-        Me.txtTrangThai.Size = New System.Drawing.Size(240, 30)
+        Me.txtTrangThai.Size = New System.Drawing.Size(240, 25)
         Me.txtTrangThai.TabIndex = 13
         '
         'lblGhiChu
@@ -424,7 +424,7 @@ Partial Class frmNghiPhep
         Me.lblGhiChu.AutoSize = True
         Me.lblGhiChu.Location = New System.Drawing.Point(3, 210)
         Me.lblGhiChu.Name = "lblGhiChu"
-        Me.lblGhiChu.Size = New System.Drawing.Size(69, 23)
+        Me.lblGhiChu.Size = New System.Drawing.Size(56, 19)
         Me.lblGhiChu.TabIndex = 14
         Me.lblGhiChu.Text = "Ghi chú"
         '
@@ -443,13 +443,13 @@ Partial Class frmNghiPhep
         Me.lblChiTiet.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold)
         Me.lblChiTiet.Location = New System.Drawing.Point(12, 12)
         Me.lblChiTiet.Name = "lblChiTiet"
-        Me.lblChiTiet.Size = New System.Drawing.Size(182, 28)
+        Me.lblChiTiet.Size = New System.Drawing.Size(147, 21)
         Me.lblChiTiet.TabIndex = 0
         Me.lblChiTiet.Text = "Chi tiết nghỉ phép"
         '
         'frmNghiPhep
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 23.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 17.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1100, 700)
         Me.Controls.Add(Me.tlpChinh)

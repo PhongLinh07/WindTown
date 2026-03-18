@@ -27,6 +27,7 @@ Partial Class DgvDisplay_frm
         '
         'clbColumns
         '
+        Me.clbColumns.BackColor = System.Drawing.SystemColors.GradientActiveCaption
         Me.clbColumns.ColumnWidth = 10000
         Me.clbColumns.Dock = System.Windows.Forms.DockStyle.Fill
         Me.clbColumns.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
