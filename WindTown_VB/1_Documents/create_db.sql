@@ -225,11 +225,9 @@ ALTER TABLE account ADD CONSTRAINT FK_account_employee FOREIGN KEY (employee_id)
 GO
 
 INSERT INTO employee (datas) VALUES
-(N'{"code": "admin1", "name": "ADMIN", "gender": 1, "cccd": "000000000", "birth_date": "2002-03-02", "address": "Phú Thọ", "email": "admin@windtown.com", "phone": "0000000000", "bank": "ACB_000000000", "note": "", "status": 1}'),
-(N'{"code": "nvbt", "name": "Nguyên Văn An", "gender": 1, "cccd": "000000001", "birth_date": "2002-03-02", "address": "Ha Noi", "email": "nva@windtown.com", "phone": "0000000001", "bank": "MB_000000000", "note": "", "status": 1}')
+(N'{"code": "EMP001", "name": "Nguyễn Văn An", "gender": 1, "cccd": "047636216680", "birth_date": "2002-03-02", "address": "Phú Thọ", "email": "emp001@windtown.com", "phone": "0211532090", "bank": "ACB_0211532090", "note": "", "status": 1}')
 GO
 
-INSERT INTO account (employee_id ,datas) VALUES 
-(1,  N'{"user": "admin", "password": "123", "role": 1, "status": 0}'),
-(2,  N'{"user": "nvbt", "password": "123", "role": 2, "status": 0}')
+INSERT INTO account (employee_id, datas) VALUES 
+(1,  N'{"user": "admin", "password": "123", "role": 1, "status": 0}')
 GO

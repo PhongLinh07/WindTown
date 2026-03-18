@@ -1,6 +1,7 @@
-Imports System.IO
+﻿Imports System.IO
 Imports System.Text
 Imports System.Drawing
+
 Module NavigationService
 
     Private _mainPanel As Panel
@@ -109,19 +110,8 @@ Module NavigationService
 
     ' Đăng xuất về form đăng nhập, đồng thời đóng form chính nếu đang ở trong đó
     Public Sub LogoutToLogin(currentForm As Form)
-
-        'Dim login As New frmLogin()
-        'HoTroPhongChu.ApDungPhongChu(login)
-        'login.Show()
-
-        'If _mainHostForm IsNot Nothing AndAlso Not _mainHostForm.IsDisposed Then
         _isSwitchingFromMain = True
-        '    _mainHostForm.Close()
-        'End If
-
-
         NavigationService.SwitchTopLevel(Of frmLogin)(_mainHostForm)
-
     End Sub
 
     ' Khi form chính bị đóng, nếu đang chuyển từ form chính sang form khác thì không thoát ứng dụng
@@ -169,6 +159,8 @@ Module HoTroPhongChu
     Public Sub ApDungPhongChu(root As Control)
         If root Is Nothing Then Return
         ApDungPhongChuDeQuy(root, _phongChuUngDung)
+        ' Chuẩn hóa tiếng Việt cho tiêu đề/nhãn hiển thị trên form.
+        UiVietHoa.ApDungVietHoa(root)
     End Sub
 
     Private Sub ApDungPhongChuDeQuy(ctrl As Control, phongChu As Font)
@@ -179,6 +171,296 @@ Module HoTroPhongChu
     End Sub
 
 End Module
+
+Module UiVietHoa
+
+    'Danh sách mapping tiêu đề/nhãn không dấu sang có dấu để Việt hóa UI.
+    Private ReadOnly _bangThayThe As New Dictionary(Of String, String)(StringComparer.OrdinalIgnoreCase) From {
+        {"Tim", "Tìm"},
+        {"Tim kiem", "Tìm kiếm"},
+        {"Tim kiem...", "Tìm kiếm..."},
+        {"Dashboard", "Bảng điều khiển"},
+        {"Refresh", "Làm mới"},
+        {"Checkin", "Chấm công"},
+        {"Approved Id", "Người duyệt"},
+        {"Mo ta chuc vu:", "Mô tả chức vụ:"},
+        {"Chuc vu", "Chức vụ"},
+        {"Them chuc vu", "Thêm chức vụ"},
+        {"+ Them chuc vu", "+ Thêm chức vụ"},
+        {"Sua chuc vu", "Sửa chức vụ"},
+        {"Xoa", "Xóa"},
+        {"Sua", "Sửa"},
+        {"Them", "Thêm"},
+        {"Cap nhat", "Cập nhật"},
+        {"Dang xuat", "Đăng xuất"},
+        {"Dang nhap", "Đăng nhập"},
+        {"Ket noi", "Kết nối"},
+        {"Cau hinh", "Cấu hình"},
+        {"Thong bao", "Thông báo"},
+        {"Loi", "Lỗi"},
+        {"Nhap lai", "Nhập lại"},
+        {"Chi tiet:", "Chi tiết:"},
+        {"Mo ta", "Mô tả"},
+        {"Ma", "Mã"},
+        {"Ten", "Tên"},
+        {"Ngay", "Ngày"},
+        {"Trang thai", "Trạng thái"},
+        {"Ghi chu", "Ghi chú"},
+        {"Code", "Mã"},
+        {"Name", "Tên"},
+        {"Gender", "Giới tính"},
+        {"Phone", "Số điện thoại"},
+        {"Status", "Trạng thái"},
+        {"StartDate", "Ngày bắt đầu"},
+        {"DepartmentName", "Phòng ban"},
+        {"Position Id", "Chức vụ"},
+        {"Project Id", "Dự án"},
+        {"Employee Id", "Nhân viên"},
+        {"LeaveCat Id", "Loại nghỉ"},
+        {"LoaiChinhSach", "Loại chính sách"},
+        {"Luu", "Lưu"},
+        {"MaChinhSach", "Mã chính sách"},
+        {"MaDuAn", "Mã dự án"},
+        {"MaCapBac", "Mã cấp bậc"},
+        {"MaNgay", "Mã ngày"},
+        {"MaPhanCong", "Mã phân công"},
+        {"TenChinhSach", "Tên chính sách"},
+        {"TenCapBac", "Tên cấp bậc"},
+        {"TenDuAn", "Tên dự án"},
+        {"TenNgay", "Tên ngày"},
+        {"Di muon (7 ngay)", "Đi muộn (7 ngày)"},
+        {"Di muon 7 ngay gan nhat", "Đi muộn 7 ngày gần nhất"},
+        {"Top dung gio trong thang", "Top đúng giờ trong tháng"},
+        {"VaiTro", "Vai trò"},
+        {"frmLogin", "Đăng nhập"},
+        {"frmChucVu", "Chức vụ"},
+        {"frmCapBac", "Cấp bậc"},
+        {"Nhan vien", "Nhân viên"},
+        {"Nhan su", "Nhân sự"},
+        {"BoPhan", "Bộ phận"},
+        {"CaLam", "Ca làm"},
+        {"CongViec", "Công việc"},
+        {"ChucNang", "Chức năng"},
+        {"ChiTiet", "Chi tiết"},
+        {"GioChuan", "Giờ chuẩn"},
+        {"GioDiMuon", "Giờ đi muộn"},
+        {"GioHanhChinh", "Giờ hành chính"},
+        {"GioTangCa", "Giờ tăng ca"},
+        {"GioVeSom", "Giờ về sớm"},
+        {"HoTen", "Họ tên"},
+        {"KyLuong", "Kỳ lương"},
+        {"LuongCoBan", "Lương cơ bản"},
+        {"GioiTinh", "Giới tính"},
+        {"NhanVien", "Nhân viên"},
+        {"DepartmentId", "Bộ phận"},
+        {"JobId", "Công việc"},
+        {"JobName", "Công việc"},
+        {"PositionId", "Chức vụ"},
+        {"ProjectId", "Dự án"},
+        {"EmployeeCode", "Mã nhân viên"},
+        {"EmployeeName", "Tên nhân viên"},
+        {"TenNhanVien", "Tên nhân viên"},
+        {"MaHopDong", "Mã hợp đồng"},
+        {"TenHopDong", "Tên hợp đồng"},
+        {"LoaiHopDong", "Loại hợp đồng"},
+        {"NgayBatDau", "Ngày bắt đầu"},
+        {"NgayKetThuc", "Ngày kết thúc"},
+        {"NgayHieuLuc", "Ngày hiệu lực"},
+        {"NgayHetHan", "Ngày hết hạn"},
+        {"MaBangLuong", "Mã bảng lương"},
+        {"MaChamCong", "Mã chấm công"},
+        {"MaKyLuong", "Mã kỳ lương"},
+        {"TenKyLuong", "Tên kỳ lương"},
+        {"TrinhDo", "Trình độ"},
+        {"SDT", "SĐT"},
+        {"Title", "Tiêu đề"},
+        {"DayMult", "Hệ số ngày"},
+        {"NightMult", "Hệ số đêm"},
+        {"OtMult", "Hệ số tăng ca"},
+        {"ActiveEmployees", "Đang làm việc"},
+        {"InactiveEmployees", "Đã nghỉ việc"},
+        {"TotalEmployees", "Tổng nhân viên"},
+        {"TotalDepartments", "Tổng bộ phận"},
+        {"LateInWeekCount", "Số lần đi muộn tuần"},
+        {"OnTimeTodayCount", "Đúng giờ hôm nay"},
+        {"MissingCheckInTodayCount", "Thiếu checkin hôm nay"},
+        {"TopLateInWeek", "Top đi muộn trong tuần"},
+        {"TopOnTimeInMonth", "Top đúng giờ trong tháng"},
+        {"CheDoLuong", "Chế độ lương"},
+        {"HinhThucLuong", "Hình thức lương"},
+        {"PhanTramLuong", "Phần trăm lương"},
+        {"TaiKhoan", "Tài khoản"},
+        {"MatKhau", "Mật khẩu"},
+        {"NgonNgu", "Ngôn ngữ"},
+        {"MayChu", "Máy chủ"},
+        {"TenCSDL", "Tên CSDL"},
+        {"MaNghiPhep", "Mã nghỉ phép"},
+        {"EmployeeId", "Nhân viên"},
+        {"ApprovedId", "Người duyệt"},
+        {"LeaveCatId", "Loại nghỉ"},
+        {"TuNgay", "Từ ngày"},
+        {"DenNgay", "Đến ngày"},
+        {"TrangThai", "Trạng thái"},
+        {"GhiChu", "Ghi chú"},
+        {"ThuHang", "Thứ hạng"}
+    }
+
+    Private ReadOnly _tuDienTu As New Dictionary(Of String, String)(StringComparer.OrdinalIgnoreCase) From {
+        {"them", "thêm"},
+        {"sua", "sửa"},
+        {"xoa", "xóa"},
+        {"cap", "cập"},
+        {"nhat", "nhật"},
+        {"tim", "tìm"},
+        {"kiem", "kiếm"},
+        {"mo", "mô"},
+        {"ta", "tả"},
+        {"chuc", "chức"},
+        {"vu", "vụ"},
+        {"chi", "chi"},
+        {"tiet", "tiết"},
+        {"trang", "trạng"},
+        {"thai", "thái"},
+        {"ghi", "ghi"},
+        {"chu", "chú"},
+        {"tu", "từ"},
+        {"den", "đến"},
+        {"ngay", "ngày"},
+        {"vien", "viên"},
+        {"du", "dự"},
+        {"an", "án"},
+        {"hop", "hợp"},
+        {"dong", "đồng"},
+        {"luong", "lương"},
+        {"co", "cơ"},
+        {"ban", "bản"},
+        {"dang", "đang"},
+        {"hoat", "hoạt"},
+        {"ngung", "ngưng"},
+        {"he", "hệ"},
+        {"thong", "thống"},
+        {"cau", "cấu"},
+        {"hinh", "hình"},
+        {"bao", "báo"},
+        {"cao", "cáo"},
+        {"quan", "quản"},
+        {"ly", "lý"},
+        {"lam", "làm"},
+        {"moi", "mới"},
+        {"xac", "xác"},
+        {"nhap", "nhập"},
+        {"xuat", "xuất"},
+        {"truoc", "trước"},
+        {"sau", "sau"},
+        {"tong", "tổng"},
+        {"bo", "bộ"},
+        {"phan", "phận"},
+        {"nguoi", "người"},
+        {"duyet", "duyệt"},
+        {"loai", "loại"},
+        {"nghi", "nghỉ"},
+        {"phep", "phép"}
+    }
+
+    Public Sub ApDungVietHoa(root As Control)
+        If root Is Nothing Then Return
+        DuyetVaVietHoa(root)
+    End Sub
+
+    Private Sub DuyetVaVietHoa(ctrl As Control)
+        If ctrl Is Nothing Then Return
+
+        If Not String.IsNullOrWhiteSpace(ctrl.Text) Then
+            Dim daChuanHoa = ChuanHoaText(ctrl.Text)
+            If daChuanHoa <> ctrl.Text Then
+                ctrl.Text = daChuanHoa
+            End If
+        End If
+
+        Dim dgv = TryCast(ctrl, DataGridView)
+        If dgv IsNot Nothing Then
+            VietHoaCot(dgv)
+        End If
+
+        For Each child As Control In ctrl.Controls
+            DuyetVaVietHoa(child)
+        Next
+    End Sub
+
+    Private Sub VietHoaCot(dgv As DataGridView)
+        If dgv Is Nothing Then Return
+        For Each cot As DataGridViewColumn In dgv.Columns
+            If cot Is Nothing OrElse String.IsNullOrWhiteSpace(cot.HeaderText) Then Continue For
+            Dim daChuanHoa = ChuanHoaText(cot.HeaderText)
+            If daChuanHoa <> cot.HeaderText Then
+                cot.HeaderText = daChuanHoa
+            End If
+        Next
+    End Sub
+
+    Private Function ChuanHoaText(text As String) As String
+        Dim giaTri = text.Trim()
+        If _bangThayThe.ContainsKey(giaTri) Then
+            Return _bangThayThe(giaTri)
+        End If
+        Dim theoTu = VietHoaTheoTu(giaTri)
+        If String.IsNullOrWhiteSpace(theoTu) Then
+            Return text
+        End If
+        Return theoTu
+    End Function
+
+    Private Function VietHoaTheoTu(text As String) As String
+        If String.IsNullOrWhiteSpace(text) Then Return text
+
+        Dim sb As New StringBuilder()
+        Dim token As New StringBuilder()
+
+        For Each ch As Char In text
+            If Char.IsLetter(ch) Then
+                token.Append(ch)
+            Else
+                AppendToken(sb, token)
+                sb.Append(ch)
+            End If
+        Next
+
+        AppendToken(sb, token)
+        Return sb.ToString()
+    End Function
+
+    Private Sub AppendToken(sb As StringBuilder, token As StringBuilder)
+        If token.Length = 0 Then Return
+
+        Dim goc = token.ToString()
+        Dim key = goc.ToLowerInvariant()
+        Dim thay = goc
+
+        If _tuDienTu.ContainsKey(key) Then
+            thay = _tuDienTu(key)
+            thay = GiuKieuChu(goc, thay)
+        End If
+
+        sb.Append(thay)
+        token.Clear()
+    End Sub
+
+    Private Function GiuKieuChu(goc As String, thay As String) As String
+        If String.IsNullOrEmpty(goc) OrElse String.IsNullOrEmpty(thay) Then Return thay
+
+        If goc.ToUpperInvariant() = goc Then
+            Return thay.ToUpperInvariant()
+        End If
+
+        If Char.IsUpper(goc(0)) Then
+            Return Char.ToUpperInvariant(thay(0)) & thay.Substring(1)
+        End If
+
+        Return thay
+    End Function
+
+End Module
+
 Module UiThongBao
 
     ' Chuỗi hiển thị đã được chuẩn hóa UTF-8.

@@ -1,18 +1,14 @@
-Imports System.Globalization
-
-Public Class frmChinhSach
-    Private ReadOnly chinhSachRepo As New ChinhSachRepository()
+Partial Public Class frmCapBac
+    Private ReadOnly capBacRepo As New LevelRepository()
     Private bangDuLieu As DataTable
     Private cheDo As String = ""
     Private moTaGoc As String = ""
     Private ReadOnly splitterMacDinh As Integer = 700
 
-    Private Sub frmChinhSach_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Private Sub frmCapBac_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         HoTroPhongChu.ApDungPhongChu(Me)
         CapNhatThongTinHeThong()
         CaiDatBang()
-        UiDinhDang.ApDungDinhDangNgayPicker(dtpTuNgay)
-        UiDinhDang.ApDungDinhDangNgayPicker(dtpDenNgay)
         TaiDuLieu()
         CapNhatTrangThaiNut()
         AddHandler splitNoiDung.SizeChanged, AddressOf CapNhatSplitter
@@ -21,40 +17,32 @@ Public Class frmChinhSach
     End Sub
 
     Private Sub CaiDatBang()
-        dgvChinhSach.ReadOnly = False
-        dgvChinhSach.AllowUserToAddRows = False
-        dgvChinhSach.AllowUserToDeleteRows = False
-        dgvChinhSach.MultiSelect = False
-        dgvChinhSach.SelectionMode = DataGridViewSelectionMode.FullRowSelect
-        UiDinhDang.ApDungDinhDangLuoiChamCong(dgvChinhSach)
-        ThemCotChon(dgvChinhSach)
-        AddHandler dgvChinhSach.DataBindingComplete, AddressOf DatCotChiDoc
+        dgvCapBac.ReadOnly = False
+        dgvCapBac.AllowUserToAddRows = False
+        dgvCapBac.AllowUserToDeleteRows = False
+        dgvCapBac.MultiSelect = False
+        dgvCapBac.SelectionMode = DataGridViewSelectionMode.FullRowSelect
+        UiDinhDang.ApDungDinhDangLuoiChamCong(dgvCapBac)
+        ThemCotChon(dgvCapBac)
+        AddHandler dgvCapBac.DataBindingComplete, AddressOf DatCotChiDoc
     End Sub
 
     Private Sub TaiDuLieu()
-        Try
-            bangDuLieu = chinhSachRepo.LayDanhSach()
-        Catch ex As Exception
-            MessageBox.Show("Không thể tải chính sách: " & ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-            bangDuLieu = chinhSachRepo.TaoBangRong()
-        End Try
-        dgvChinhSach.DataSource = bangDuLieu
+        bangDuLieu = capBacRepo.LayDanhSach()
+        dgvCapBac.DataSource = bangDuLieu
         CapNhatChiTietTheoDong()
     End Sub
 
-    Private Sub CapNhatChiTietTheoDong() Handles dgvChinhSach.SelectionChanged
-        If dgvChinhSach.CurrentRow Is Nothing OrElse dgvChinhSach.CurrentRow.DataBoundItem Is Nothing Then Return
+    Private Sub CapNhatChiTietTheoDong() Handles dgvCapBac.SelectionChanged
+        If dgvCapBac.CurrentRow Is Nothing OrElse dgvCapBac.CurrentRow.DataBoundItem Is Nothing Then Return
         If cheDo = "Them" Then Return
 
-        Dim row = CType(dgvChinhSach.CurrentRow.DataBoundItem, DataRowView).Row
-        txtMaChinhSach.Text = row.Field(Of String)("MaChinhSach")
-        txtTenChinhSach.Text = row.Field(Of String)("TenChinhSach")
-        txtLoaiChinhSach.Text = row.Field(Of String)("LoaiChinhSach")
+        Dim row = CType(dgvCapBac.CurrentRow.DataBoundItem, DataRowView).Row
+        txtMaCapBac.Text = row.Field(Of String)("MaCapBac")
+        txtTenCapBac.Text = row.Field(Of String)("TenCapBac")
+        txtThuHang.Text = row.Field(Of Integer)("ThuHang").ToString()
         txtTrangThai.Text = row.Field(Of Integer)("TrangThai").ToString()
         txtGhiChu.Text = row.Field(Of String)("GhiChu")
-
-        GanNgay(dtpTuNgay, row.Field(Of String)("NgayHieuLuc"))
-        GanNgay(dtpDenNgay, row.Field(Of String)("NgayHetHan"))
     End Sub
 
     Private Sub btnTimKiem_Click(sender As Object, e As EventArgs) Handles btnTimKiem.Click
@@ -64,9 +52,9 @@ Public Class frmChinhSach
         If String.IsNullOrWhiteSpace(tuKhoa) Then
             view.RowFilter = ""
         Else
-            view.RowFilter = $"MaChinhSach LIKE '%{tuKhoa}%' OR TenChinhSach LIKE '%{tuKhoa}%'"
+            view.RowFilter = $"MaCapBac LIKE '%{tuKhoa}%' OR TenCapBac LIKE '%{tuKhoa}%'"
         End If
-        dgvChinhSach.DataSource = view
+        dgvCapBac.DataSource = view
     End Sub
 
     Private Sub btnLamMoi_Click(sender As Object, e As EventArgs) Handles btnLamMoi.Click
@@ -81,17 +69,17 @@ Public Class frmChinhSach
     End Sub
 
     Private Sub btnSua_Click(sender As Object, e As EventArgs) Handles btnSua.Click
-        If dgvChinhSach.CurrentRow Is Nothing Then Return
+        If dgvCapBac.CurrentRow Is Nothing Then Return
         cheDo = "Sua"
         CapNhatTrangThaiNut()
     End Sub
 
     Private Sub btnXoa_Click(sender As Object, e As EventArgs) Handles btnXoa.Click
-        If dgvChinhSach.CurrentRow Is Nothing Then Return
-        Dim row = CType(dgvChinhSach.CurrentRow.DataBoundItem, DataRowView).Row
+        If dgvCapBac.CurrentRow Is Nothing Then Return
+        Dim row = CType(dgvCapBac.CurrentRow.DataBoundItem, DataRowView).Row
         Dim id = row.Field(Of Integer)("Id")
-        If MessageBox.Show("Xóa chính sách đã chọn?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
-            chinhSachRepo.Xoa(id)
+        If MessageBox.Show("Xóa cấp bậc đã chọn?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
+            capBacRepo.Xoa(id)
             TaiDuLieu()
         End If
     End Sub
@@ -99,45 +87,39 @@ Public Class frmChinhSach
     Private Sub btnLuu_Click(sender As Object, e As EventArgs) Handles btnLuu.Click
         If cheDo = "" Then Return
 
-        If String.IsNullOrWhiteSpace(txtMaChinhSach.Text) Then
-            MessageBox.Show("Vui lòng nhập mã chính sách.", "Thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-            txtMaChinhSach.Focus()
+        'Bổ sung kiểm tra dữ liệu bắt buộc trước khi lưu cấp bậc.
+        If String.IsNullOrWhiteSpace(txtMaCapBac.Text) Then
+            MessageBox.Show("Vui lòng nhập mã cấp bậc.", "Thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            txtMaCapBac.Focus()
             Return
         End If
 
-        If String.IsNullOrWhiteSpace(txtTenChinhSach.Text) Then
-            MessageBox.Show("Vui lòng nhập tên chính sách.", "Thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-            txtTenChinhSach.Focus()
+        If String.IsNullOrWhiteSpace(txtTenCapBac.Text) Then
+            MessageBox.Show("Vui lòng nhập tên cấp bậc.", "Thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            txtTenCapBac.Focus()
             Return
         End If
 
-        If String.IsNullOrWhiteSpace(txtLoaiChinhSach.Text) Then
-            MessageBox.Show("Vui lòng nhập loại chính sách.", "Thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-            txtLoaiChinhSach.Focus()
+        Dim thuHang As Integer
+        If Not Integer.TryParse(txtThuHang.Text, thuHang) Then
+            MessageBox.Show("Vui lòng nhập thứ hạng hợp lệ.", "Thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            txtThuHang.Focus()
             Return
         End If
 
-        If dtpTuNgay.Value.Date > dtpDenNgay.Value.Date Then
-            MessageBox.Show("Ngày hiệu lực không được lớn hơn ngày hết hạn.", "Dữ liệu không hợp lệ", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-            dtpTuNgay.Focus()
-            Return
-        End If
-
-        Dim model As New ChinhSachModel()
-        model.MaChinhSach = txtMaChinhSach.Text.Trim()
-        model.TenChinhSach = txtTenChinhSach.Text.Trim()
-        model.LoaiChinhSach = txtLoaiChinhSach.Text.Trim()
-        model.NgayHieuLuc = dtpTuNgay.Value.ToString("yyyy-MM-dd")
-        model.NgayHetHan = dtpDenNgay.Value.ToString("yyyy-MM-dd")
+        Dim model As New LevelModel()
+        model.MaCapBac = txtMaCapBac.Text.Trim()
+        model.TenCapBac = txtTenCapBac.Text.Trim()
+        model.ThuHang = thuHang
         model.TrangThai = LaySo(txtTrangThai.Text)
         model.GhiChu = txtGhiChu.Text.Trim()
 
         If cheDo = "Them" Then
-            chinhSachRepo.Them(model)
+            capBacRepo.Them(model)
         Else
-            Dim row = CType(dgvChinhSach.CurrentRow.DataBoundItem, DataRowView).Row
+            Dim row = CType(dgvCapBac.CurrentRow.DataBoundItem, DataRowView).Row
             model.Id = row.Field(Of Integer)("Id")
-            chinhSachRepo.CapNhat(model)
+            capBacRepo.CapNhat(model)
         End If
 
         cheDo = ""
@@ -162,13 +144,11 @@ Public Class frmChinhSach
     End Sub
 
     Private Sub XoaNhap()
-        txtMaChinhSach.Text = ""
-        txtTenChinhSach.Text = ""
-        txtLoaiChinhSach.Text = ""
+        txtMaCapBac.Text = ""
+        txtTenCapBac.Text = ""
+        txtThuHang.Text = "1"
         txtTrangThai.Text = "1"
         txtGhiChu.Text = ""
-        dtpTuNgay.Value = DateTime.Today
-        dtpDenNgay.Value = DateTime.Today
     End Sub
 
     Private Function LaySo(raw As String) As Integer
@@ -178,13 +158,6 @@ Public Class frmChinhSach
         End If
         Return 0
     End Function
-
-    Private Sub GanNgay(dtp As DateTimePicker, raw As String)
-        Dim ngay As DateTime
-        If DateTime.TryParse(raw, CultureInfo.InvariantCulture, DateTimeStyles.None, ngay) Then
-            dtp.Value = ngay
-        End If
-    End Sub
 
     Private Sub ThemCotChon(dgv As DataGridView)
         If dgv.Columns.Contains("colChon") Then Return
@@ -198,14 +171,14 @@ Public Class frmChinhSach
     End Sub
 
     Private Sub DatCotChiDoc(sender As Object, e As DataGridViewBindingCompleteEventArgs)
-        For Each cot As DataGridViewColumn In dgvChinhSach.Columns
+        For Each cot As DataGridViewColumn In dgvCapBac.Columns
             cot.ReadOnly = True
         Next
-        If dgvChinhSach.Columns.Contains("colChon") Then
-            dgvChinhSach.Columns("colChon").ReadOnly = False
+        If dgvCapBac.Columns.Contains("colChon") Then
+            dgvCapBac.Columns("colChon").ReadOnly = False
         End If
         'Việt hóa tiêu đề cột sau khi bind dữ liệu.
-        UiVietHoa.ApDungVietHoa(dgvChinhSach)
+        UiVietHoa.ApDungVietHoa(dgvCapBac)
     End Sub
 
     Private Sub CapNhatSplitter()

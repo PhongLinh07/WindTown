@@ -92,13 +92,46 @@ Public Class frmNgayLe
     Private Sub btnLuu_Click(sender As Object, e As EventArgs) Handles btnLuu.Click
         If cheDo = "" Then Return
 
+        If String.IsNullOrWhiteSpace(txtMaNgay.Text) Then
+            MessageBox.Show("Vui lòng nhập mã ngày.", "Thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            txtMaNgay.Focus()
+            Return
+        End If
+
+        If String.IsNullOrWhiteSpace(txtTenNgay.Text) Then
+            MessageBox.Show("Vui lòng nhập tên ngày.", "Thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            txtTenNgay.Focus()
+            Return
+        End If
+
+        Dim dayMult As Decimal
+        If Not Decimal.TryParse(txtDayMult.Text, dayMult) Then
+            MessageBox.Show("Vui lòng nhập hệ số ngày hợp lệ.", "Thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            txtDayMult.Focus()
+            Return
+        End If
+
+        Dim nightMult As Decimal
+        If Not Decimal.TryParse(txtNightMult.Text, nightMult) Then
+            MessageBox.Show("Vui lòng nhập hệ số đêm hợp lệ.", "Thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            txtNightMult.Focus()
+            Return
+        End If
+
+        Dim otMult As Decimal
+        If Not Decimal.TryParse(txtOtMult.Text, otMult) Then
+            MessageBox.Show("Vui lòng nhập hệ số tăng ca hợp lệ.", "Thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            txtOtMult.Focus()
+            Return
+        End If
+
         Dim model As New NgayLeModel()
         model.MaNgay = txtMaNgay.Text.Trim()
         model.TenNgay = txtTenNgay.Text.Trim()
         model.Ngay = dtpNgay.Value.ToString("yyyy-MM-dd")
-        model.DayMult = LaySoThapPhan(txtDayMult.Text)
-        model.NightMult = LaySoThapPhan(txtNightMult.Text)
-        model.OtMult = LaySoThapPhan(txtOtMult.Text)
+        model.DayMult = dayMult
+        model.NightMult = nightMult
+        model.OtMult = otMult
         model.TrangThai = LaySo(txtTrangThai.Text)
         model.GhiChu = txtGhiChu.Text.Trim()
 
@@ -183,6 +216,8 @@ Public Class frmNgayLe
         If dgvNgayLe.Columns.Contains("colChon") Then
             dgvNgayLe.Columns("colChon").ReadOnly = False
         End If
+        'Việt hóa tiêu đề cột sau khi bind dữ liệu.
+        UiVietHoa.ApDungVietHoa(dgvNgayLe)
     End Sub
 
     Private Sub CapNhatSplitter()

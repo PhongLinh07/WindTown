@@ -212,6 +212,7 @@ Public Class ucSidebar
         qlns.Children.Add(New MenuItemModel("Nhân sự", GetType(frmNhanSu), ResizeImage(My.Resources.employee, 38, 38))) ' icon người dùng
         qlns.Children.Add(New MenuItemModel("Phòng ban", GetType(frmPhongBan), ResizeImage(My.Resources.department, 38, 38)))
         qlns.Children.Add(New MenuItemModel("Chức vụ", GetType(frmChucVu), ResizeImage(My.Resources.phongban, 38, 38))) ' icon chức vụ
+        qlns.Children.Add(New MenuItemModel("Cấp bậc", GetType(frmCapBac), ResizeImage(My.Resources.phongban, 38, 38)))
 
         menuData.Add(qlns)
 
@@ -231,7 +232,7 @@ Public Class ucSidebar
         Dim luong As New MenuItemModel("Lương", Nothing, ResizeImage(My.Resources.salary, 38, 38)) ' icon lương
 
         luong.Children.Add(New MenuItemModel("Kỳ lương", GetType(frmKyLuong), ResizeImage(My.Resources.salary, 38, 38))) ' icon kỳ lương
-        luong.Children.Add(New MenuItemModel("Tính lương", GetType(frmTinhLuong), ResizeImage(My.Resources.accounting, 38, 38)))
+        luong.Children.Add(New MenuItemModel("Bảng lương", GetType(frmTinhLuong), ResizeImage(My.Resources.accounting, 38, 38)))
 
         menuData.Add(luong)
 

@@ -1,4 +1,4 @@
-Imports System.Globalization
+﻿Imports System.Globalization
 
 Public Class frmNghiPhep
     Private ReadOnly nghiPhepRepo As New NghiPhepRepository()
@@ -6,11 +6,13 @@ Public Class frmNghiPhep
     Private cheDo As String = ""
     Private moTaGoc As String = ""
     Private ReadOnly splitterMacDinh As Integer = 700
+    Private danhSachNhanVien As List(Of LuaChonNhanVien) = New List(Of LuaChonNhanVien)()
 
     Private Sub frmNghiPhep_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         HoTroPhongChu.ApDungPhongChu(Me)
         CapNhatThongTinHeThong()
         CaiDatBang()
+        TaiDanhSachNhanVien()
         TaiDuLieu()
         CapNhatTrangThaiNut()
         AddHandler splitNoiDung.SizeChanged, AddressOf CapNhatSplitter
@@ -41,8 +43,8 @@ Public Class frmNghiPhep
 
         Dim row = CType(dgvNghiPhep.CurrentRow.DataBoundItem, DataRowView).Row
         txtMaNghiPhep.Text = row.Field(Of String)("MaNghiPhep")
-        txtEmployeeId.Text = row.Field(Of Integer)("EmployeeId").ToString()
-        txtApprovedId.Text = row.Field(Of Integer)("ApprovedId").ToString()
+        ChonGiaTriCombobox(cbbNhanVien, row.Field(Of Integer)("EmployeeId"))
+        ChonGiaTriCombobox(cbbNguoiDuyet, row.Field(Of Integer)("ApprovedId"))
         txtLeaveCatId.Text = row.Field(Of Integer)("LeaveCatId").ToString()
         txtTrangThai.Text = row.Field(Of Integer)("TrangThai").ToString()
         txtGhiChu.Text = row.Field(Of String)("GhiChu")
@@ -93,11 +95,50 @@ Public Class frmNghiPhep
     Private Sub btnLuu_Click(sender As Object, e As EventArgs) Handles btnLuu.Click
         If cheDo = "" Then Return
 
+        If String.IsNullOrWhiteSpace(txtMaNghiPhep.Text) Then
+            MessageBox.Show("Vui lòng nhập mã nghỉ phép.", "Thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            txtMaNghiPhep.Focus()
+            Return
+        End If
+
+        Dim employeeId = LayGiaTriCombobox(cbbNhanVien)
+        If employeeId <= 0 Then
+            MessageBox.Show("Vui lòng chọn nhân viên.", "Thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            cbbNhanVien.Focus()
+            Return
+        End If
+
+        Dim approvedId = LayGiaTriCombobox(cbbNguoiDuyet)
+        If approvedId <= 0 Then
+            MessageBox.Show("Vui lòng chọn người duyệt.", "Thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            cbbNguoiDuyet.Focus()
+            Return
+        End If
+
+        Dim leaveCatId = LaySo(txtLeaveCatId.Text)
+        If leaveCatId <= 0 Then
+            MessageBox.Show("Vui lòng nhập loại nghỉ hợp lệ.", "Thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            txtLeaveCatId.Focus()
+            Return
+        End If
+
+        If dtpTuNgay.Value.Date > dtpDenNgay.Value.Date Then
+            MessageBox.Show("Từ ngày không được lớn hơn đến ngày.", "Dữ liệu không hợp lệ", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            dtpTuNgay.Focus()
+            Return
+        End If
+
         Dim model As New NghiPhepModel()
         model.MaNghiPhep = txtMaNghiPhep.Text.Trim()
-        model.EmployeeId = LaySo(txtEmployeeId.Text)
-        model.ApprovedId = LaySo(txtApprovedId.Text)
-        model.LeaveCatId = LaySo(txtLeaveCatId.Text)
+        model.EmployeeId = employeeId
+        ' Kiểm tra nhân viên hợp lệ trước khi lưu để tránh lỗi khóa ngoại.
+        If Not nghiPhepRepo.KiemTraNhanVienTonTai(model.EmployeeId) Then
+            MessageBox.Show("Vui lòng chọn nhân viên hợp lệ trước khi lưu.", "Thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            cbbNhanVien.Focus()
+            Return
+        End If
+        model.ApprovedId = approvedId
+        model.LeaveCatId = leaveCatId
         model.TuNgay = dtpTuNgay.Value.ToString("yyyy-MM-dd")
         model.DenNgay = dtpDenNgay.Value.ToString("yyyy-MM-dd")
         model.TrangThai = LaySo(txtTrangThai.Text)
@@ -134,14 +175,46 @@ Public Class frmNghiPhep
 
     Private Sub XoaNhap()
         txtMaNghiPhep.Text = ""
-        txtEmployeeId.Text = ""
-        txtApprovedId.Text = ""
+        cbbNhanVien.SelectedIndex = -1
+        cbbNguoiDuyet.SelectedIndex = -1
         txtLeaveCatId.Text = ""
         txtTrangThai.Text = "1"
         txtGhiChu.Text = ""
         dtpTuNgay.Value = DateTime.Today
         dtpDenNgay.Value = DateTime.Today
     End Sub
+
+    Private Sub TaiDanhSachNhanVien()
+        danhSachNhanVien = nghiPhepRepo.TaiDanhSachNhanVien()
+        CaiDatComboboxNhanVien(cbbNhanVien, danhSachNhanVien)
+        CaiDatComboboxNhanVien(cbbNguoiDuyet, danhSachNhanVien)
+    End Sub
+
+    Private Sub CaiDatComboboxNhanVien(cbb As ComboBox, ds As List(Of LuaChonNhanVien))
+        If cbb Is Nothing Then Return
+        cbb.DisplayMember = "HienThi"
+        cbb.ValueMember = "Id"
+        cbb.DataSource = New List(Of LuaChonNhanVien)(ds)
+        cbb.SelectedIndex = -1
+    End Sub
+
+    Private Sub ChonGiaTriCombobox(cbb As ComboBox, giaTri As Integer)
+        If cbb Is Nothing Then Return
+        If giaTri <= 0 Then
+            cbb.SelectedIndex = -1
+            Return
+        End If
+        cbb.SelectedValue = giaTri
+    End Sub
+
+    Private Function LayGiaTriCombobox(cbb As ComboBox) As Integer
+        If cbb Is Nothing OrElse cbb.SelectedValue Is Nothing Then Return 0
+        Dim giaTri As Integer
+        If Integer.TryParse(cbb.SelectedValue.ToString(), giaTri) Then
+            Return giaTri
+        End If
+        Return 0
+    End Function
 
     Private Function LaySo(raw As String) As Integer
         Dim giaTri As Integer
@@ -176,6 +249,8 @@ Public Class frmNghiPhep
         If dgvNghiPhep.Columns.Contains("colChon") Then
             dgvNghiPhep.Columns("colChon").ReadOnly = False
         End If
+        'Việt hóa tiêu đề cột sau khi bind dữ liệu.
+        UiVietHoa.ApDungVietHoa(dgvNghiPhep)
     End Sub
 
     Private Sub CapNhatSplitter() Handles splitNoiDung.SizeChanged

@@ -65,6 +65,7 @@ Partial Class frmDashboard
         Me.Label10 = New System.Windows.Forms.Label()
         Me.lvTopCheckinSom = New System.Windows.Forms.ListView()
         Me.ctmsSetting = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.btnSetting = New System.Windows.Forms.Button()
         Me.tlpDasboard.SuspendLayout()
         Me.pnlMain.SuspendLayout()
         Me.tlpDashboard.SuspendLayout()
@@ -559,6 +560,7 @@ Partial Class frmDashboard
         '
         Me.Panel1.BackColor = System.Drawing.Color.White
         Me.tlpDashboard.SetColumnSpan(Me.Panel1, 2)
+        Me.Panel1.Controls.Add(Me.btnSetting)
         Me.Panel1.Controls.Add(Me.Label6)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel1.Location = New System.Drawing.Point(2, 3)
@@ -628,6 +630,19 @@ Partial Class frmDashboard
         Me.ctmsSetting.ImageScalingSize = New System.Drawing.Size(20, 20)
         Me.ctmsSetting.Name = "ctmsSetting"
         Me.ctmsSetting.Size = New System.Drawing.Size(61, 4)
+        '
+        'btnSetting
+        '
+        Me.btnSetting.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnSetting.Location = New System.Drawing.Point(872, 20)
+        Me.btnSetting.MaximumSize = New System.Drawing.Size(113, 31)
+        Me.btnSetting.MinimumSize = New System.Drawing.Size(113, 31)
+        Me.btnSetting.Name = "btnSetting"
+        Me.btnSetting.Size = New System.Drawing.Size(113, 31)
+        Me.btnSetting.TabIndex = 1
+        Me.btnSetting.Text = "Cài đặt"
+        Me.btnSetting.UseVisualStyleBackColor = True
         '
         'frmDashboard
         '
@@ -706,4 +721,5 @@ Partial Class frmDashboard
     Friend WithEvents Label10 As Label
     Friend WithEvents lvTopCheckinSom As ListView
     Friend WithEvents ctmsSetting As ContextMenuStrip
+    Friend WithEvents btnSetting As Button
 End Class

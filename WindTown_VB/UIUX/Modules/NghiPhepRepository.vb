@@ -14,7 +14,25 @@ Public Class NghiPhepModel
     Public Property GhiChu As String
 End Class
 
+Public Class LuaChonNhanVien
+    Public Property Id As Integer
+    Public Property HienThi As String
+End Class
+
 Public Class NghiPhepRepository
+    Public Function KiemTraNhanVienTonTai(employeeId As Integer) As Boolean
+        If employeeId <= 0 Then Return False
+        Using conn = DatabaseConfig.Database.GetConnection()
+            conn.Open()
+            Using cmd = conn.CreateCommand()
+                cmd.CommandText = "SELECT COUNT(1) FROM employee WHERE id = @id"
+                cmd.Parameters.Add(New SqlParameter("@id", employeeId))
+                Dim soLuong = Convert.ToInt32(cmd.ExecuteScalar())
+                Return soLuong > 0
+            End Using
+        End Using
+    End Function
+
     Public Function LayDanhSach() As DataTable
         Dim dt As New DataTable()
         dt.Columns.Add("Id", GetType(Integer))
@@ -56,6 +74,31 @@ Public Class NghiPhepRepository
         End Using
 
         Return dt
+    End Function
+
+    Public Function TaiDanhSachNhanVien() As List(Of LuaChonNhanVien)
+        Dim danhSach As New List(Of LuaChonNhanVien)()
+        Using conn = DatabaseConfig.Database.GetConnection()
+            conn.Open()
+            Using cmd = conn.CreateCommand()
+                cmd.CommandText = "SELECT id, datas FROM employee"
+                Using reader = cmd.ExecuteReader()
+                    While reader.Read()
+                        Dim id = Convert.ToInt32(reader("id"))
+                        Dim json = If(reader("datas") Is DBNull.Value, "", reader("datas").ToString())
+                        Dim obj = JsonDuLieuHelper.TaiJson(json)
+                        Dim ma = JsonDuLieuHelper.LayChuoi(obj, "code")
+                        Dim ten = JsonDuLieuHelper.LayChuoi(obj, "name")
+                        Dim hienThi = If(String.IsNullOrWhiteSpace(ma), ten, $"{ma} - {ten}")
+                        If String.IsNullOrWhiteSpace(hienThi) Then
+                            hienThi = $"NV #{id}"
+                        End If
+                        danhSach.Add(New LuaChonNhanVien With {.Id = id, .HienThi = hienThi})
+                    End While
+                End Using
+            End Using
+        End Using
+        Return danhSach
     End Function
 
     Public Sub Them(model As NghiPhepModel)
