@@ -23,7 +23,7 @@ Public Class UserProfileForm
         If result = DialogResult.Yes Then
 
             If UserProfile.Is_User Then
-                NavigationService.LogoutToLogin()
+                NavigationService.LogoutToLogin(Me)
                 Return
             End If
             _parent.Close()

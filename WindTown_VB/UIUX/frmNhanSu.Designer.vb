@@ -84,11 +84,13 @@ Partial Class frmNhanSu
         Me.btnXuLyNhanh.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnXuLyNhanh.Font = New System.Drawing.Font("Microsoft YaHei UI", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnXuLyNhanh.ForeColor = System.Drawing.Color.White
-        Me.btnXuLyNhanh.Location = New System.Drawing.Point(386, 55)
+        Me.btnXuLyNhanh.Location = New System.Drawing.Point(351, 55)
+        Me.btnXuLyNhanh.MaximumSize = New System.Drawing.Size(128, 31)
+        Me.btnXuLyNhanh.MinimumSize = New System.Drawing.Size(128, 31)
         Me.btnXuLyNhanh.Name = "btnXuLyNhanh"
         Me.btnXuLyNhanh.Size = New System.Drawing.Size(128, 31)
         Me.btnXuLyNhanh.TabIndex = 8
-        Me.btnXuLyNhanh.Text = "Xử lý nhanh"
+        Me.btnXuLyNhanh.Text = "Cập nhật"
         Me.btnXuLyNhanh.UseVisualStyleBackColor = False
         Me.btnXuLyNhanh.Visible = False
         '
@@ -100,7 +102,9 @@ Partial Class frmNhanSu
         Me.btnThemNV.FlatAppearance.BorderSize = 0
         Me.btnThemNV.Font = New System.Drawing.Font("Microsoft YaHei UI", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnThemNV.ForeColor = System.Drawing.Color.White
-        Me.btnThemNV.Location = New System.Drawing.Point(555, 17)
+        Me.btnThemNV.Location = New System.Drawing.Point(520, 17)
+        Me.btnThemNV.MaximumSize = New System.Drawing.Size(156, 32)
+        Me.btnThemNV.MinimumSize = New System.Drawing.Size(156, 32)
         Me.btnThemNV.Name = "btnThemNV"
         Me.btnThemNV.Size = New System.Drawing.Size(156, 32)
         Me.btnThemNV.TabIndex = 7
@@ -115,7 +119,9 @@ Partial Class frmNhanSu
         Me.btnNhapXuatNV.FlatAppearance.BorderSize = 0
         Me.btnNhapXuatNV.Font = New System.Drawing.Font("Microsoft YaHei UI", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnNhapXuatNV.ForeColor = System.Drawing.SystemColors.WindowFrame
-        Me.btnNhapXuatNV.Location = New System.Drawing.Point(520, 55)
+        Me.btnNhapXuatNV.Location = New System.Drawing.Point(485, 55)
+        Me.btnNhapXuatNV.MaximumSize = New System.Drawing.Size(194, 32)
+        Me.btnNhapXuatNV.MinimumSize = New System.Drawing.Size(194, 32)
         Me.btnNhapXuatNV.Name = "btnNhapXuatNV"
         Me.btnNhapXuatNV.Size = New System.Drawing.Size(194, 32)
         Me.btnNhapXuatNV.TabIndex = 6
@@ -173,7 +179,9 @@ Partial Class frmNhanSu
         Me.btnMoiNV.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnMoiNV.Font = New System.Drawing.Font("Microsoft YaHei UI", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnMoiNV.ForeColor = System.Drawing.Color.White
-        Me.btnMoiNV.Location = New System.Drawing.Point(840, 26)
+        Me.btnMoiNV.Location = New System.Drawing.Point(819, 26)
+        Me.btnMoiNV.MaximumSize = New System.Drawing.Size(177, 31)
+        Me.btnMoiNV.MinimumSize = New System.Drawing.Size(177, 31)
         Me.btnMoiNV.Name = "btnMoiNV"
         Me.btnMoiNV.Size = New System.Drawing.Size(177, 31)
         Me.btnMoiNV.TabIndex = 1
@@ -233,7 +241,7 @@ Partial Class frmNhanSu
         Me.TextBox1.MaximumSize = New System.Drawing.Size(215, 30)
         Me.TextBox1.MinimumSize = New System.Drawing.Size(215, 30)
         Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(215, 30)
+        Me.TextBox1.Size = New System.Drawing.Size(215, 29)
         Me.TextBox1.TabIndex = 6
         '
         'btnSuaBoPhan

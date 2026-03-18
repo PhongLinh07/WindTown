@@ -146,7 +146,7 @@ Public Class frmDashboard
         Dim rs = MessageBox.Show("Bạn có chắc muốn đăng xuất?", "Xác nhận", MessageBoxButtons.YesNo)
 
         If rs = DialogResult.Yes Then
-            NavigationService.LogoutToLogin()
+            NavigationService.LogoutToLogin(Me)
         End If
 
     End Sub

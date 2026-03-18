@@ -639,8 +639,14 @@
     <Compile Include="UIUX\frmNgayLe.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="UIUX\frmCapBac.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="UIUX\frmNgayLe.Designer.vb">
       <DependentUpon>frmNgayLe.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UIUX\frmCapBac.Designer.vb">
+      <DependentUpon>frmCapBac.vb</DependentUpon>
     </Compile>
     <Compile Include="UIUX\frmKyLuong.Designer.vb">
       <DependentUpon>frmKyLuong.vb</DependentUpon>
@@ -652,12 +658,6 @@
       <DependentUpon>frmLogin.vb</DependentUpon>
     </Compile>
     <Compile Include="UIUX\frmLogin.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UIUX\frmLuong.Designer.vb">
-      <DependentUpon>frmLuong.vb</DependentUpon>
-    </Compile>
-    <Compile Include="UIUX\frmLuong.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UIUX\frmMain.Designer.vb">
@@ -721,6 +721,7 @@
     <Compile Include="UIUX\Modules\HopDongDataModel.vb" />
     <Compile Include="UIUX\Modules\JsonDuLieuHelper.vb" />
     <Compile Include="UIUX\Modules\KyLuongDataModel.vb" />
+    <Compile Include="UIUX\Modules\LevelRepository.vb" />
     <Compile Include="UIUX\Modules\MenuItemModel.vb" />
     <Compile Include="UIUX\Modules\NgayLeRepository.vb" />
     <Compile Include="UIUX\Modules\NghiPhepRepository.vb" />
@@ -856,14 +857,14 @@
     <EmbeddedResource Include="UIUX\frmNgayLe.resx">
       <DependentUpon>frmNgayLe.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UIUX\frmCapBac.resx">
+      <DependentUpon>frmCapBac.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UIUX\frmKyLuong.resx">
       <DependentUpon>frmKyLuong.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UIUX\frmLogin.resx">
       <DependentUpon>frmLogin.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UIUX\frmLuong.resx">
-      <DependentUpon>frmLuong.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UIUX\frmMain.resx">
       <DependentUpon>frmMain.vb</DependentUpon>

@@ -75,7 +75,7 @@ Partial Class frmChinhSach
         Me.tlpChinh.Location = New System.Drawing.Point(0, 0)
         Me.tlpChinh.Name = "tlpChinh"
         Me.tlpChinh.RowCount = 3
-        Me.tlpChinh.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 80.0!))
+        Me.tlpChinh.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 120.0!))
         Me.tlpChinh.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 70.0!))
         Me.tlpChinh.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
         Me.tlpChinh.Size = New System.Drawing.Size(1100, 700)
@@ -90,7 +90,7 @@ Partial Class frmChinhSach
         Me.pnlTieuDe.Location = New System.Drawing.Point(3, 3)
         Me.pnlTieuDe.Name = "pnlTieuDe"
         Me.pnlTieuDe.Padding = New System.Windows.Forms.Padding(24, 14, 24, 10)
-        Me.pnlTieuDe.Size = New System.Drawing.Size(1094, 74)
+        Me.pnlTieuDe.Size = New System.Drawing.Size(1094, 114)
         Me.pnlTieuDe.TabIndex = 0
         '
         'lblMoTa
@@ -121,7 +121,7 @@ Partial Class frmChinhSach
         Me.pnlLoc.Controls.Add(Me.txtTuKhoa)
         Me.pnlLoc.Controls.Add(Me.lblTuKhoa)
         Me.pnlLoc.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.pnlLoc.Location = New System.Drawing.Point(3, 83)
+        Me.pnlLoc.Location = New System.Drawing.Point(3, 123)
         Me.pnlLoc.Name = "pnlLoc"
         Me.pnlLoc.Padding = New System.Windows.Forms.Padding(24, 10, 24, 10)
         Me.pnlLoc.Size = New System.Drawing.Size(1094, 64)
@@ -165,7 +165,7 @@ Partial Class frmChinhSach
         '
         Me.splitNoiDung.Dock = System.Windows.Forms.DockStyle.Fill
         Me.splitNoiDung.FixedPanel = System.Windows.Forms.FixedPanel.Panel2
-        Me.splitNoiDung.Location = New System.Drawing.Point(3, 153)
+        Me.splitNoiDung.Location = New System.Drawing.Point(3, 193)
         Me.splitNoiDung.Name = "splitNoiDung"
         '
         'splitNoiDung.Panel1
@@ -176,7 +176,7 @@ Partial Class frmChinhSach
         '
         Me.splitNoiDung.Panel2.Controls.Add(Me.pnlChiTiet)
         Me.splitNoiDung.Panel2MinSize = 320
-        Me.splitNoiDung.Size = New System.Drawing.Size(1094, 544)
+        Me.splitNoiDung.Size = New System.Drawing.Size(1094, 504)
         Me.splitNoiDung.SplitterDistance = 700
         Me.splitNoiDung.TabIndex = 2
         '
@@ -187,7 +187,7 @@ Partial Class frmChinhSach
         Me.dgvChinhSach.Location = New System.Drawing.Point(0, 0)
         Me.dgvChinhSach.Name = "dgvChinhSach"
         Me.dgvChinhSach.RowHeadersWidth = 51
-        Me.dgvChinhSach.Size = New System.Drawing.Size(700, 544)
+        Me.dgvChinhSach.Size = New System.Drawing.Size(700, 504)
         Me.dgvChinhSach.TabIndex = 0
         '
         'pnlChiTiet
@@ -199,7 +199,7 @@ Partial Class frmChinhSach
         Me.pnlChiTiet.Location = New System.Drawing.Point(0, 0)
         Me.pnlChiTiet.Name = "pnlChiTiet"
         Me.pnlChiTiet.Padding = New System.Windows.Forms.Padding(12)
-        Me.pnlChiTiet.Size = New System.Drawing.Size(390, 544)
+        Me.pnlChiTiet.Size = New System.Drawing.Size(390, 504)
         Me.pnlChiTiet.TabIndex = 0
         '
         'pnlNut
@@ -210,7 +210,7 @@ Partial Class frmChinhSach
         Me.pnlNut.Controls.Add(Me.btnSua)
         Me.pnlNut.Controls.Add(Me.btnThem)
         Me.pnlNut.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.pnlNut.Location = New System.Drawing.Point(12, 496)
+        Me.pnlNut.Location = New System.Drawing.Point(12, 456)
         Me.pnlNut.Name = "pnlNut"
         Me.pnlNut.Size = New System.Drawing.Size(366, 36)
         Me.pnlNut.TabIndex = 2

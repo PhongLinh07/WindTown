@@ -1,5 +1,5 @@
 <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-Partial Class frmDuAn
+Partial Class frmCapBac
     Inherits System.Windows.Forms.Form
 
     <System.Diagnostics.DebuggerNonUserCode()>
@@ -27,7 +27,7 @@ Partial Class frmDuAn
         Me.txtTuKhoa = New System.Windows.Forms.TextBox()
         Me.lblTuKhoa = New System.Windows.Forms.Label()
         Me.splitNoiDung = New System.Windows.Forms.SplitContainer()
-        Me.dgvDuAn = New System.Windows.Forms.DataGridView()
+        Me.dgvCapBac = New System.Windows.Forms.DataGridView()
         Me.pnlChiTiet = New System.Windows.Forms.Panel()
         Me.pnlNut = New System.Windows.Forms.Panel()
         Me.btnHuy = New System.Windows.Forms.Button()
@@ -36,14 +36,12 @@ Partial Class frmDuAn
         Me.btnSua = New System.Windows.Forms.Button()
         Me.btnThem = New System.Windows.Forms.Button()
         Me.tlpChiTiet = New System.Windows.Forms.TableLayoutPanel()
-        Me.lblMaDuAn = New System.Windows.Forms.Label()
-        Me.txtMaDuAn = New System.Windows.Forms.TextBox()
-        Me.lblTenDuAn = New System.Windows.Forms.Label()
-        Me.txtTenDuAn = New System.Windows.Forms.TextBox()
-        Me.lblNgayBatDau = New System.Windows.Forms.Label()
-        Me.dtpNgayBatDau = New System.Windows.Forms.DateTimePicker()
-        Me.lblNgayKetThuc = New System.Windows.Forms.Label()
-        Me.dtpNgayKetThuc = New System.Windows.Forms.DateTimePicker()
+        Me.lblMaCapBac = New System.Windows.Forms.Label()
+        Me.txtMaCapBac = New System.Windows.Forms.TextBox()
+        Me.lblTenCapBac = New System.Windows.Forms.Label()
+        Me.txtTenCapBac = New System.Windows.Forms.TextBox()
+        Me.lblThuHang = New System.Windows.Forms.Label()
+        Me.txtThuHang = New System.Windows.Forms.TextBox()
         Me.lblTrangThai = New System.Windows.Forms.Label()
         Me.txtTrangThai = New System.Windows.Forms.TextBox()
         Me.lblGhiChu = New System.Windows.Forms.Label()
@@ -56,7 +54,7 @@ Partial Class frmDuAn
         Me.splitNoiDung.Panel1.SuspendLayout()
         Me.splitNoiDung.Panel2.SuspendLayout()
         Me.splitNoiDung.SuspendLayout()
-        CType(Me.dgvDuAn, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.dgvCapBac, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlChiTiet.SuspendLayout()
         Me.pnlNut.SuspendLayout()
         Me.tlpChiTiet.SuspendLayout()
@@ -73,7 +71,7 @@ Partial Class frmDuAn
         Me.tlpChinh.Location = New System.Drawing.Point(0, 0)
         Me.tlpChinh.Name = "tlpChinh"
         Me.tlpChinh.RowCount = 3
-        Me.tlpChinh.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 100.0!))
+        Me.tlpChinh.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 120.0!))
         Me.tlpChinh.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 70.0!))
         Me.tlpChinh.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
         Me.tlpChinh.Size = New System.Drawing.Size(1100, 700)
@@ -88,7 +86,7 @@ Partial Class frmDuAn
         Me.pnlTieuDe.Location = New System.Drawing.Point(3, 3)
         Me.pnlTieuDe.Name = "pnlTieuDe"
         Me.pnlTieuDe.Padding = New System.Windows.Forms.Padding(24, 14, 24, 10)
-        Me.pnlTieuDe.Size = New System.Drawing.Size(1094, 94)
+        Me.pnlTieuDe.Size = New System.Drawing.Size(1094, 114)
         Me.pnlTieuDe.TabIndex = 0
         '
         'lblMoTa
@@ -97,9 +95,9 @@ Partial Class frmDuAn
         Me.lblMoTa.ForeColor = System.Drawing.Color.DimGray
         Me.lblMoTa.Location = New System.Drawing.Point(26, 44)
         Me.lblMoTa.Name = "lblMoTa"
-        Me.lblMoTa.Size = New System.Drawing.Size(379, 23)
+        Me.lblMoTa.Size = New System.Drawing.Size(329, 23)
         Me.lblMoTa.TabIndex = 1
-        Me.lblMoTa.Text = "Theo dõi tiến độ, ngân sách và tình trạng dự án."
+        Me.lblMoTa.Text = "Quản lý danh sách cấp bậc trong tổ chức."
         '
         'lblTieuDe
         '
@@ -107,9 +105,9 @@ Partial Class frmDuAn
         Me.lblTieuDe.Font = New System.Drawing.Font("Segoe UI", 16.0!, System.Drawing.FontStyle.Bold)
         Me.lblTieuDe.Location = New System.Drawing.Point(24, 10)
         Me.lblTieuDe.Name = "lblTieuDe"
-        Me.lblTieuDe.Size = New System.Drawing.Size(194, 37)
+        Me.lblTieuDe.Size = New System.Drawing.Size(251, 37)
         Me.lblTieuDe.TabIndex = 0
-        Me.lblTieuDe.Text = "Quản lý dự án"
+        Me.lblTieuDe.Text = "Danh sách cấp bậc"
         '
         'pnlLoc
         '
@@ -119,7 +117,7 @@ Partial Class frmDuAn
         Me.pnlLoc.Controls.Add(Me.txtTuKhoa)
         Me.pnlLoc.Controls.Add(Me.lblTuKhoa)
         Me.pnlLoc.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.pnlLoc.Location = New System.Drawing.Point(3, 103)
+        Me.pnlLoc.Location = New System.Drawing.Point(3, 123)
         Me.pnlLoc.Name = "pnlLoc"
         Me.pnlLoc.Padding = New System.Windows.Forms.Padding(24, 10, 24, 10)
         Me.pnlLoc.Size = New System.Drawing.Size(1094, 64)
@@ -163,30 +161,30 @@ Partial Class frmDuAn
         '
         Me.splitNoiDung.Dock = System.Windows.Forms.DockStyle.Fill
         Me.splitNoiDung.FixedPanel = System.Windows.Forms.FixedPanel.Panel2
-        Me.splitNoiDung.Location = New System.Drawing.Point(3, 173)
+        Me.splitNoiDung.Location = New System.Drawing.Point(3, 193)
         Me.splitNoiDung.Name = "splitNoiDung"
         '
         'splitNoiDung.Panel1
         '
-        Me.splitNoiDung.Panel1.Controls.Add(Me.dgvDuAn)
+        Me.splitNoiDung.Panel1.Controls.Add(Me.dgvCapBac)
         '
         'splitNoiDung.Panel2
         '
         Me.splitNoiDung.Panel2.Controls.Add(Me.pnlChiTiet)
         Me.splitNoiDung.Panel2MinSize = 320
-        Me.splitNoiDung.Size = New System.Drawing.Size(1094, 524)
+        Me.splitNoiDung.Size = New System.Drawing.Size(1094, 504)
         Me.splitNoiDung.SplitterDistance = 700
         Me.splitNoiDung.TabIndex = 2
         '
-        'dgvDuAn
+        'dgvCapBac
         '
-        Me.dgvDuAn.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvDuAn.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.dgvDuAn.Location = New System.Drawing.Point(0, 0)
-        Me.dgvDuAn.Name = "dgvDuAn"
-        Me.dgvDuAn.RowHeadersWidth = 51
-        Me.dgvDuAn.Size = New System.Drawing.Size(700, 524)
-        Me.dgvDuAn.TabIndex = 0
+        Me.dgvCapBac.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgvCapBac.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.dgvCapBac.Location = New System.Drawing.Point(0, 0)
+        Me.dgvCapBac.Name = "dgvCapBac"
+        Me.dgvCapBac.RowHeadersWidth = 51
+        Me.dgvCapBac.Size = New System.Drawing.Size(700, 504)
+        Me.dgvCapBac.TabIndex = 0
         '
         'pnlChiTiet
         '
@@ -197,7 +195,7 @@ Partial Class frmDuAn
         Me.pnlChiTiet.Location = New System.Drawing.Point(0, 0)
         Me.pnlChiTiet.Name = "pnlChiTiet"
         Me.pnlChiTiet.Padding = New System.Windows.Forms.Padding(12)
-        Me.pnlChiTiet.Size = New System.Drawing.Size(390, 524)
+        Me.pnlChiTiet.Size = New System.Drawing.Size(390, 504)
         Me.pnlChiTiet.TabIndex = 0
         '
         'pnlNut
@@ -208,7 +206,7 @@ Partial Class frmDuAn
         Me.pnlNut.Controls.Add(Me.btnSua)
         Me.pnlNut.Controls.Add(Me.btnThem)
         Me.pnlNut.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.pnlNut.Location = New System.Drawing.Point(12, 476)
+        Me.pnlNut.Location = New System.Drawing.Point(12, 456)
         Me.pnlNut.Name = "pnlNut"
         Me.pnlNut.Size = New System.Drawing.Size(366, 36)
         Me.pnlNut.TabIndex = 2
@@ -263,135 +261,113 @@ Partial Class frmDuAn
         Me.tlpChiTiet.ColumnCount = 2
         Me.tlpChiTiet.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120.0!))
         Me.tlpChiTiet.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.tlpChiTiet.Controls.Add(Me.lblMaDuAn, 0, 0)
-        Me.tlpChiTiet.Controls.Add(Me.txtMaDuAn, 1, 0)
-        Me.tlpChiTiet.Controls.Add(Me.lblTenDuAn, 0, 1)
-        Me.tlpChiTiet.Controls.Add(Me.txtTenDuAn, 1, 1)
-        Me.tlpChiTiet.Controls.Add(Me.lblNgayBatDau, 0, 2)
-        Me.tlpChiTiet.Controls.Add(Me.dtpNgayBatDau, 1, 2)
-        Me.tlpChiTiet.Controls.Add(Me.lblNgayKetThuc, 0, 3)
-        Me.tlpChiTiet.Controls.Add(Me.dtpNgayKetThuc, 1, 3)
-        Me.tlpChiTiet.Controls.Add(Me.lblTrangThai, 0, 4)
-        Me.tlpChiTiet.Controls.Add(Me.txtTrangThai, 1, 4)
-        Me.tlpChiTiet.Controls.Add(Me.lblGhiChu, 0, 5)
-        Me.tlpChiTiet.Controls.Add(Me.txtGhiChu, 1, 5)
+        Me.tlpChiTiet.Controls.Add(Me.lblMaCapBac, 0, 0)
+        Me.tlpChiTiet.Controls.Add(Me.txtMaCapBac, 1, 0)
+        Me.tlpChiTiet.Controls.Add(Me.lblTenCapBac, 0, 1)
+        Me.tlpChiTiet.Controls.Add(Me.txtTenCapBac, 1, 1)
+        Me.tlpChiTiet.Controls.Add(Me.lblThuHang, 0, 2)
+        Me.tlpChiTiet.Controls.Add(Me.txtThuHang, 1, 2)
+        Me.tlpChiTiet.Controls.Add(Me.lblTrangThai, 0, 3)
+        Me.tlpChiTiet.Controls.Add(Me.txtTrangThai, 1, 3)
+        Me.tlpChiTiet.Controls.Add(Me.lblGhiChu, 0, 4)
+        Me.tlpChiTiet.Controls.Add(Me.txtGhiChu, 1, 4)
         Me.tlpChiTiet.Dock = System.Windows.Forms.DockStyle.Top
         Me.tlpChiTiet.Location = New System.Drawing.Point(12, 12)
         Me.tlpChiTiet.Name = "tlpChiTiet"
-        Me.tlpChiTiet.RowCount = 6
-        Me.tlpChiTiet.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30.0!))
+        Me.tlpChiTiet.RowCount = 5
         Me.tlpChiTiet.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30.0!))
         Me.tlpChiTiet.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30.0!))
         Me.tlpChiTiet.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30.0!))
         Me.tlpChiTiet.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30.0!))
         Me.tlpChiTiet.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.tlpChiTiet.Size = New System.Drawing.Size(366, 232)
+        Me.tlpChiTiet.Size = New System.Drawing.Size(366, 220)
         Me.tlpChiTiet.TabIndex = 1
         '
-        'lblMaDuAn
+        'lblMaCapBac
         '
-        Me.lblMaDuAn.AutoSize = True
-        Me.lblMaDuAn.Location = New System.Drawing.Point(3, 0)
-        Me.lblMaDuAn.Name = "lblMaDuAn"
-        Me.lblMaDuAn.Size = New System.Drawing.Size(83, 23)
-        Me.lblMaDuAn.TabIndex = 0
-        Me.lblMaDuAn.Text = "Mã dự án"
+        Me.lblMaCapBac.AutoSize = True
+        Me.lblMaCapBac.Location = New System.Drawing.Point(3, 0)
+        Me.lblMaCapBac.Name = "lblMaCapBac"
+        Me.lblMaCapBac.Size = New System.Drawing.Size(98, 23)
+        Me.lblMaCapBac.TabIndex = 0
+        Me.lblMaCapBac.Text = "Mã cấp bậc"
         '
-        'txtMaDuAn
+        'txtMaCapBac
         '
-        Me.txtMaDuAn.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.txtMaDuAn.Location = New System.Drawing.Point(123, 3)
-        Me.txtMaDuAn.Name = "txtMaDuAn"
-        Me.txtMaDuAn.Size = New System.Drawing.Size(240, 30)
-        Me.txtMaDuAn.TabIndex = 1
+        Me.txtMaCapBac.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.txtMaCapBac.Location = New System.Drawing.Point(123, 3)
+        Me.txtMaCapBac.Name = "txtMaCapBac"
+        Me.txtMaCapBac.Size = New System.Drawing.Size(240, 30)
+        Me.txtMaCapBac.TabIndex = 1
         '
-        'lblTenDuAn
+        'lblTenCapBac
         '
-        Me.lblTenDuAn.AutoSize = True
-        Me.lblTenDuAn.Location = New System.Drawing.Point(3, 30)
-        Me.lblTenDuAn.Name = "lblTenDuAn"
-        Me.lblTenDuAn.Size = New System.Drawing.Size(85, 23)
-        Me.lblTenDuAn.TabIndex = 2
-        Me.lblTenDuAn.Text = "Tên dự án"
+        Me.lblTenCapBac.AutoSize = True
+        Me.lblTenCapBac.Location = New System.Drawing.Point(3, 30)
+        Me.lblTenCapBac.Name = "lblTenCapBac"
+        Me.lblTenCapBac.Size = New System.Drawing.Size(100, 23)
+        Me.lblTenCapBac.TabIndex = 2
+        Me.lblTenCapBac.Text = "Tên cấp bậc"
         '
-        'txtTenDuAn
+        'txtTenCapBac
         '
-        Me.txtTenDuAn.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.txtTenDuAn.Location = New System.Drawing.Point(123, 33)
-        Me.txtTenDuAn.Name = "txtTenDuAn"
-        Me.txtTenDuAn.Size = New System.Drawing.Size(240, 30)
-        Me.txtTenDuAn.TabIndex = 3
+        Me.txtTenCapBac.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.txtTenCapBac.Location = New System.Drawing.Point(123, 33)
+        Me.txtTenCapBac.Name = "txtTenCapBac"
+        Me.txtTenCapBac.Size = New System.Drawing.Size(240, 30)
+        Me.txtTenCapBac.TabIndex = 3
         '
-        'lblNgayBatDau
+        'lblThuHang
         '
-        Me.lblNgayBatDau.AutoSize = True
-        Me.lblNgayBatDau.Location = New System.Drawing.Point(3, 60)
-        Me.lblNgayBatDau.Name = "lblNgayBatDau"
-        Me.lblNgayBatDau.Size = New System.Drawing.Size(114, 23)
-        Me.lblNgayBatDau.TabIndex = 4
-        Me.lblNgayBatDau.Text = "Ngày bắt đầu"
+        Me.lblThuHang.AutoSize = True
+        Me.lblThuHang.Location = New System.Drawing.Point(3, 60)
+        Me.lblThuHang.Name = "lblThuHang"
+        Me.lblThuHang.Size = New System.Drawing.Size(83, 23)
+        Me.lblThuHang.TabIndex = 4
+        Me.lblThuHang.Text = "Thứ hạng"
         '
-        'dtpNgayBatDau
+        'txtThuHang
         '
-        Me.dtpNgayBatDau.CustomFormat = "dd/MM/yyyy"
-        Me.dtpNgayBatDau.Format = System.Windows.Forms.DateTimePickerFormat.Custom
-        Me.dtpNgayBatDau.Location = New System.Drawing.Point(123, 63)
-        Me.dtpNgayBatDau.Name = "dtpNgayBatDau"
-        Me.dtpNgayBatDau.Size = New System.Drawing.Size(240, 30)
-        Me.dtpNgayBatDau.TabIndex = 5
-        '
-        'lblNgayKetThuc
-        '
-        Me.lblNgayKetThuc.AutoSize = True
-        Me.lblNgayKetThuc.Location = New System.Drawing.Point(3, 90)
-        Me.lblNgayKetThuc.Name = "lblNgayKetThuc"
-        Me.lblNgayKetThuc.Size = New System.Drawing.Size(83, 30)
-        Me.lblNgayKetThuc.TabIndex = 6
-        Me.lblNgayKetThuc.Text = "Ngày kết thúc"
-        '
-        'dtpNgayKetThuc
-        '
-        Me.dtpNgayKetThuc.CustomFormat = "dd/MM/yyyy"
-        Me.dtpNgayKetThuc.Format = System.Windows.Forms.DateTimePickerFormat.Custom
-        Me.dtpNgayKetThuc.Location = New System.Drawing.Point(123, 93)
-        Me.dtpNgayKetThuc.Name = "dtpNgayKetThuc"
-        Me.dtpNgayKetThuc.Size = New System.Drawing.Size(240, 30)
-        Me.dtpNgayKetThuc.TabIndex = 7
+        Me.txtThuHang.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.txtThuHang.Location = New System.Drawing.Point(123, 63)
+        Me.txtThuHang.Name = "txtThuHang"
+        Me.txtThuHang.Size = New System.Drawing.Size(240, 30)
+        Me.txtThuHang.TabIndex = 5
         '
         'lblTrangThai
         '
         Me.lblTrangThai.AutoSize = True
-        Me.lblTrangThai.Location = New System.Drawing.Point(3, 120)
+        Me.lblTrangThai.Location = New System.Drawing.Point(3, 90)
         Me.lblTrangThai.Name = "lblTrangThai"
         Me.lblTrangThai.Size = New System.Drawing.Size(87, 23)
-        Me.lblTrangThai.TabIndex = 8
+        Me.lblTrangThai.TabIndex = 6
         Me.lblTrangThai.Text = "Trạng thái"
         '
         'txtTrangThai
         '
         Me.txtTrangThai.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.txtTrangThai.Location = New System.Drawing.Point(123, 123)
+        Me.txtTrangThai.Location = New System.Drawing.Point(123, 93)
         Me.txtTrangThai.Name = "txtTrangThai"
         Me.txtTrangThai.Size = New System.Drawing.Size(240, 30)
-        Me.txtTrangThai.TabIndex = 9
+        Me.txtTrangThai.TabIndex = 7
         '
         'lblGhiChu
         '
         Me.lblGhiChu.AutoSize = True
-        Me.lblGhiChu.Location = New System.Drawing.Point(3, 150)
+        Me.lblGhiChu.Location = New System.Drawing.Point(3, 120)
         Me.lblGhiChu.Name = "lblGhiChu"
         Me.lblGhiChu.Size = New System.Drawing.Size(69, 23)
-        Me.lblGhiChu.TabIndex = 10
+        Me.lblGhiChu.TabIndex = 8
         Me.lblGhiChu.Text = "Ghi chú"
         '
         'txtGhiChu
         '
         Me.txtGhiChu.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.txtGhiChu.Location = New System.Drawing.Point(123, 153)
+        Me.txtGhiChu.Location = New System.Drawing.Point(123, 123)
         Me.txtGhiChu.Multiline = True
         Me.txtGhiChu.Name = "txtGhiChu"
-        Me.txtGhiChu.Size = New System.Drawing.Size(240, 76)
-        Me.txtGhiChu.TabIndex = 11
+        Me.txtGhiChu.Size = New System.Drawing.Size(240, 94)
+        Me.txtGhiChu.TabIndex = 9
         '
         'lblChiTiet
         '
@@ -399,11 +375,11 @@ Partial Class frmDuAn
         Me.lblChiTiet.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold)
         Me.lblChiTiet.Location = New System.Drawing.Point(12, 12)
         Me.lblChiTiet.Name = "lblChiTiet"
-        Me.lblChiTiet.Size = New System.Drawing.Size(141, 28)
+        Me.lblChiTiet.Size = New System.Drawing.Size(159, 28)
         Me.lblChiTiet.TabIndex = 0
-        Me.lblChiTiet.Text = "Chi tiết dự án"
+        Me.lblChiTiet.Text = "Chi tiết cấp bậc"
         '
-        'frmDuAn
+        'frmCapBac
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 23.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -411,8 +387,8 @@ Partial Class frmDuAn
         Me.Controls.Add(Me.tlpChinh)
         Me.Font = New System.Drawing.Font("Segoe UI", 10.0!)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
-        Me.Name = "frmDuAn"
-        Me.Text = "Dự án"
+        Me.Name = "frmCapBac"
+        Me.Text = "Cấp bậc"
         Me.tlpChinh.ResumeLayout(False)
         Me.pnlTieuDe.ResumeLayout(False)
         Me.pnlTieuDe.PerformLayout()
@@ -422,7 +398,7 @@ Partial Class frmDuAn
         Me.splitNoiDung.Panel2.ResumeLayout(False)
         CType(Me.splitNoiDung, System.ComponentModel.ISupportInitialize).EndInit()
         Me.splitNoiDung.ResumeLayout(False)
-        CType(Me.dgvDuAn, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.dgvCapBac, System.ComponentModel.ISupportInitialize).EndInit()
         Me.pnlChiTiet.ResumeLayout(False)
         Me.pnlChiTiet.PerformLayout()
         Me.pnlNut.ResumeLayout(False)
@@ -442,7 +418,7 @@ Partial Class frmDuAn
     Friend WithEvents txtTuKhoa As TextBox
     Friend WithEvents lblTuKhoa As Label
     Friend WithEvents splitNoiDung As SplitContainer
-    Friend WithEvents dgvDuAn As DataGridView
+    Friend WithEvents dgvCapBac As DataGridView
     Friend WithEvents pnlChiTiet As Panel
     Friend WithEvents pnlNut As Panel
     Friend WithEvents btnHuy As Button
@@ -451,14 +427,12 @@ Partial Class frmDuAn
     Friend WithEvents btnSua As Button
     Friend WithEvents btnThem As Button
     Friend WithEvents tlpChiTiet As TableLayoutPanel
-    Friend WithEvents lblMaDuAn As Label
-    Friend WithEvents txtMaDuAn As TextBox
-    Friend WithEvents lblTenDuAn As Label
-    Friend WithEvents txtTenDuAn As TextBox
-    Friend WithEvents lblNgayBatDau As Label
-    Friend WithEvents dtpNgayBatDau As DateTimePicker
-    Friend WithEvents lblNgayKetThuc As Label
-    Friend WithEvents dtpNgayKetThuc As DateTimePicker
+    Friend WithEvents lblMaCapBac As Label
+    Friend WithEvents txtMaCapBac As TextBox
+    Friend WithEvents lblTenCapBac As Label
+    Friend WithEvents txtTenCapBac As TextBox
+    Friend WithEvents lblThuHang As Label
+    Friend WithEvents txtThuHang As TextBox
     Friend WithEvents lblTrangThai As Label
     Friend WithEvents txtTrangThai As TextBox
     Friend WithEvents lblGhiChu As Label

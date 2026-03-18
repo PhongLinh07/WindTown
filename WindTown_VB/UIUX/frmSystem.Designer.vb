@@ -24,6 +24,7 @@ Partial Class frmSystem
     Private Sub InitializeComponent()
         Me.tlpMain = New System.Windows.Forms.TableLayoutPanel()
         Me.pnlTieuDe = New System.Windows.Forms.Panel()
+        Me.btnLogout = New System.Windows.Forms.Button()
         Me.lblMoTa = New System.Windows.Forms.Label()
         Me.lblTieuDe = New System.Windows.Forms.Label()
         Me.tlpNoiDung = New System.Windows.Forms.TableLayoutPanel()
@@ -129,6 +130,7 @@ Partial Class frmSystem
         'pnlTieuDe
         '
         Me.pnlTieuDe.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.pnlTieuDe.Controls.Add(Me.btnLogout)
         Me.pnlTieuDe.Controls.Add(Me.lblMoTa)
         Me.pnlTieuDe.Controls.Add(Me.lblTieuDe)
         Me.pnlTieuDe.Dock = System.Windows.Forms.DockStyle.Fill
@@ -137,6 +139,17 @@ Partial Class frmSystem
         Me.pnlTieuDe.Padding = New System.Windows.Forms.Padding(24, 14, 24, 10)
         Me.pnlTieuDe.Size = New System.Drawing.Size(1094, 74)
         Me.pnlTieuDe.TabIndex = 0
+        '
+        'btnLogout
+        '
+        Me.btnLogout.BackColor = System.Drawing.Color.LimeGreen
+        Me.btnLogout.ForeColor = System.Drawing.Color.White
+        Me.btnLogout.Location = New System.Drawing.Point(960, 20)
+        Me.btnLogout.Name = "btnLogout"
+        Me.btnLogout.Size = New System.Drawing.Size(101, 35)
+        Me.btnLogout.TabIndex = 2
+        Me.btnLogout.Text = "Đăng xuất"
+        Me.btnLogout.UseVisualStyleBackColor = False
         '
         'lblMoTa
         '
@@ -922,4 +935,5 @@ Partial Class frmSystem
     Friend WithEvents btnDong As Button
     Friend WithEvents btnLuu As Button
     Friend WithEvents lblTrangThai As Label
+    Friend WithEvents btnLogout As Button
 End Class

@@ -37,13 +37,13 @@ Public Class frmPhanCong
 
     Private Sub CapNhatChiTietTheoDong() Handles dgvPhanCong.SelectionChanged
         If dgvPhanCong.CurrentRow Is Nothing OrElse dgvPhanCong.CurrentRow.DataBoundItem Is Nothing Then Return
-        If cheDo = "Them" Then Return
+        If cheDo = "Thêm" Then Return
 
         Dim row = CType(dgvPhanCong.CurrentRow.DataBoundItem, DataRowView).Row
         txtMaPhanCong.Text = row.Field(Of String)("MaPhanCong")
         txtProjectId.Text = row.Field(Of Integer)("ProjectId").ToString()
         txtPositionId.Text = row.Field(Of Integer)("PositionId").ToString()
-        txtVaiTro.Text = row.Field(Of String)("VaiTro")
+        txtVaiTro.Text = row.Field(Of String)("Vaitro")
         txtTrangThai.Text = row.Field(Of Integer)("TrangThai").ToString()
         txtGhiChu.Text = row.Field(Of String)("GhiChu")
 
@@ -69,14 +69,14 @@ Public Class frmPhanCong
     End Sub
 
     Private Sub btnThem_Click(sender As Object, e As EventArgs) Handles btnThem.Click
-        cheDo = "Them"
+        cheDo = "Thêm"
         XoaNhap()
         CapNhatTrangThaiNut()
     End Sub
 
     Private Sub btnSua_Click(sender As Object, e As EventArgs) Handles btnSua.Click
         If dgvPhanCong.CurrentRow Is Nothing Then Return
-        cheDo = "Sua"
+        cheDo = "Sửa"
         CapNhatTrangThaiNut()
     End Sub
 
@@ -93,17 +93,43 @@ Public Class frmPhanCong
     Private Sub btnLuu_Click(sender As Object, e As EventArgs) Handles btnLuu.Click
         If cheDo = "" Then Return
 
+        If String.IsNullOrWhiteSpace(txtMaPhanCong.Text) Then
+            MessageBox.Show("Vui lòng nhập mã phân công.", "Thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            txtMaPhanCong.Focus()
+            Return
+        End If
+
+        Dim projectId = LaySo(txtProjectId.Text)
+        If projectId <= 0 Then
+            MessageBox.Show("Vui lòng nhập dự án hợp lệ.", "Thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            txtProjectId.Focus()
+            Return
+        End If
+
+        Dim positionId = LaySo(txtPositionId.Text)
+        If positionId <= 0 Then
+            MessageBox.Show("Vui lòng nhập chức vụ hợp lệ.", "Thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            txtPositionId.Focus()
+            Return
+        End If
+
+        If dtpNgayBatDau.Value.Date > dtpNgayKetThuc.Value.Date Then
+            MessageBox.Show("Ngày bắt đầu không được lớn hơn ngày kết thúc.", "Dữ liệu không hợp lệ", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            dtpNgayBatDau.Focus()
+            Return
+        End If
+
         Dim model As New PhanCongModel()
         model.MaPhanCong = txtMaPhanCong.Text.Trim()
-        model.ProjectId = LaySo(txtProjectId.Text)
-        model.PositionId = LaySo(txtPositionId.Text)
+        model.ProjectId = projectId
+        model.PositionId = positionId
         model.VaiTro = txtVaiTro.Text.Trim()
         model.NgayBatDau = dtpNgayBatDau.Value.ToString("yyyy-MM-dd")
         model.NgayKetThuc = dtpNgayKetThuc.Value.ToString("yyyy-MM-dd")
         model.TrangThai = LaySo(txtTrangThai.Text)
         model.GhiChu = txtGhiChu.Text.Trim()
 
-        If cheDo = "Them" Then
+        If cheDo = "Thêm" Then
             phanCongRepo.Them(model)
         Else
             Dim row = CType(dgvPhanCong.CurrentRow.DataBoundItem, DataRowView).Row
@@ -176,6 +202,8 @@ Public Class frmPhanCong
         If dgvPhanCong.Columns.Contains("colChon") Then
             dgvPhanCong.Columns("colChon").ReadOnly = False
         End If
+        'Việt hóa tiêu đề cột sau khi bind dữ liệu.
+        UiVietHoa.ApDungVietHoa(dgvPhanCong)
     End Sub
 
     Private Sub CapNhatSplitter()

@@ -40,16 +40,17 @@ Partial Class frmChucVu
         Me.tlpnlMainChucVu.ColumnCount = 2
         Me.tlpnlMainChucVu.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
         Me.tlpnlMainChucVu.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
-        Me.tlpnlMainChucVu.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
+        Me.tlpnlMainChucVu.Controls.Add(Me.tvChucVu, 0, 2)
         Me.tlpnlMainChucVu.Controls.Add(Me.Panel1, 1, 1)
         Me.tlpnlMainChucVu.Controls.Add(Me.pnlBody, 0, 1)
         Me.tlpnlMainChucVu.Controls.Add(Me.pnlHeader, 0, 0)
         Me.tlpnlMainChucVu.Dock = System.Windows.Forms.DockStyle.Fill
         Me.tlpnlMainChucVu.Location = New System.Drawing.Point(0, 0)
         Me.tlpnlMainChucVu.Name = "tlpnlMainChucVu"
-        Me.tlpnlMainChucVu.RowCount = 2
+        Me.tlpnlMainChucVu.RowCount = 3
         Me.tlpnlMainChucVu.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 80.0!))
-        Me.tlpnlMainChucVu.RowStyles.Add(New System.Windows.Forms.RowStyle())
+        Me.tlpnlMainChucVu.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60.0!))
+        Me.tlpnlMainChucVu.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
         Me.tlpnlMainChucVu.Size = New System.Drawing.Size(1040, 665)
         Me.tlpnlMainChucVu.TabIndex = 0
         '
@@ -61,6 +62,7 @@ Partial Class frmChucVu
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel1.Location = New System.Drawing.Point(523, 83)
         Me.Panel1.Name = "Panel1"
+        Me.tlpnlMainChucVu.SetRowSpan(Me.Panel1, 2)
         Me.Panel1.Size = New System.Drawing.Size(514, 579)
         Me.Panel1.TabIndex = 3
         '
@@ -69,46 +71,51 @@ Partial Class frmChucVu
         Me.Label2.AutoSize = True
         Me.Label2.Location = New System.Drawing.Point(15, 20)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(153, 27)
+        Me.Label2.Size = New System.Drawing.Size(151, 27)
         Me.Label2.TabIndex = 2
-        Me.Label2.Text = "Mo ta chuc vu:"
+        Me.Label2.Text = "Mô tả chức vụ:"
         '
         'Button5
         '
+        Me.Button5.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Button5.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer))
         Me.Button5.Font = New System.Drawing.Font("Microsoft YaHei UI", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button5.ForeColor = System.Drawing.Color.White
-        Me.Button5.Location = New System.Drawing.Point(743, 20)
+        Me.Button5.Location = New System.Drawing.Point(314, 20)
         Me.Button5.Name = "Button5"
         Me.Button5.Size = New System.Drawing.Size(180, 31)
         Me.Button5.TabIndex = 1
-        Me.Button5.Text = "+ Them chuc vu"
+        Me.Button5.Text = "Sửa chức vụ"
         Me.Button5.UseVisualStyleBackColor = False
         '
         'pnlBody
         '
         Me.pnlBody.BackColor = System.Drawing.Color.White
-        Me.pnlBody.Controls.Add(Me.tvChucVu)
         Me.pnlBody.Controls.Add(Me.Button3)
         Me.pnlBody.Controls.Add(Me.tbxSearch)
         Me.pnlBody.Controls.Add(Me.Button2)
         Me.pnlBody.Dock = System.Windows.Forms.DockStyle.Fill
         Me.pnlBody.Location = New System.Drawing.Point(3, 83)
         Me.pnlBody.Name = "pnlBody"
-        Me.pnlBody.Size = New System.Drawing.Size(514, 579)
+        Me.pnlBody.Size = New System.Drawing.Size(514, 54)
         Me.pnlBody.TabIndex = 2
         '
         'tvChucVu
         '
-        Me.tvChucVu.Location = New System.Drawing.Point(10, 57)
+        Me.tvChucVu.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.tvChucVu.Location = New System.Drawing.Point(3, 143)
         Me.tvChucVu.Name = "tvChucVu"
-        Me.tvChucVu.Size = New System.Drawing.Size(501, 503)
+        Me.tvChucVu.Size = New System.Drawing.Size(514, 519)
         Me.tvChucVu.TabIndex = 4
         '
         'Button3
         '
+        Me.Button3.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.Button3.Font = New System.Drawing.Font("Microsoft YaHei UI", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button3.Location = New System.Drawing.Point(316, 20)
+        Me.Button3.Location = New System.Drawing.Point(315, 17)
+        Me.Button3.MaximumSize = New System.Drawing.Size(75, 31)
+        Me.Button3.MinimumSize = New System.Drawing.Size(75, 31)
         Me.Button3.Name = "Button3"
         Me.Button3.Size = New System.Drawing.Size(75, 31)
         Me.Button3.TabIndex = 3
@@ -117,8 +124,12 @@ Partial Class frmChucVu
         '
         'tbxSearch
         '
+        Me.tbxSearch.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.tbxSearch.Font = New System.Drawing.Font("Microsoft YaHei UI", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbxSearch.Location = New System.Drawing.Point(10, 20)
+        Me.tbxSearch.Location = New System.Drawing.Point(9, 18)
+        Me.tbxSearch.MaximumSize = New System.Drawing.Size(300, 29)
+        Me.tbxSearch.MinimumSize = New System.Drawing.Size(300, 29)
         Me.tbxSearch.Name = "tbxSearch"
         Me.tbxSearch.Size = New System.Drawing.Size(300, 29)
         Me.tbxSearch.TabIndex = 2
@@ -126,14 +137,15 @@ Partial Class frmChucVu
         '
         'Button2
         '
+        Me.Button2.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Button2.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer))
         Me.Button2.Font = New System.Drawing.Font("Microsoft YaHei UI", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button2.ForeColor = System.Drawing.Color.White
-        Me.Button2.Location = New System.Drawing.Point(743, 20)
+        Me.Button2.Location = New System.Drawing.Point(396, 17)
         Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(180, 31)
+        Me.Button2.Size = New System.Drawing.Size(110, 31)
         Me.Button2.TabIndex = 1
-        Me.Button2.Text = "+ Them chuc vu"
+        Me.Button2.Text = "Xóa chức vụ"
         Me.Button2.UseVisualStyleBackColor = False
         '
         'pnlHeader
@@ -159,7 +171,7 @@ Partial Class frmChucVu
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(180, 31)
         Me.Button1.TabIndex = 1
-        Me.Button1.Text = "+ Them chuc vu"
+        Me.Button1.Text = "Thêm chức vụ"
         Me.Button1.UseVisualStyleBackColor = False
         '
         'Label1
@@ -168,9 +180,9 @@ Partial Class frmChucVu
         Me.Label1.Font = New System.Drawing.Font("Microsoft YaHei UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.Location = New System.Drawing.Point(20, 20)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(92, 27)
+        Me.Label1.Size = New System.Drawing.Size(90, 27)
         Me.Label1.TabIndex = 0
-        Me.Label1.Text = "Chuc vu"
+        Me.Label1.Text = "Chức vụ"
         '
         'frmChucVu
         '
@@ -183,7 +195,7 @@ Partial Class frmChucVu
         Me.Margin = New System.Windows.Forms.Padding(5)
         Me.Name = "frmChucVu"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "frmChucVu"
+        Me.Text = "Chức vụ"
         Me.tlpnlMainChucVu.ResumeLayout(False)
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
