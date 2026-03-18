@@ -159,7 +159,7 @@ Partial Class frmChucVu
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(180, 31)
         Me.Button1.TabIndex = 1
-        Me.Button1.Text = "+ Them chuc vu"
+        Me.Button1.Text = "Thêm chức vụ"
         Me.Button1.UseVisualStyleBackColor = False
         '
         'Label1
@@ -168,9 +168,9 @@ Partial Class frmChucVu
         Me.Label1.Font = New System.Drawing.Font("Microsoft YaHei UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.Location = New System.Drawing.Point(20, 20)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(92, 27)
+        Me.Label1.Size = New System.Drawing.Size(90, 27)
         Me.Label1.TabIndex = 0
-        Me.Label1.Text = "Chuc vu"
+        Me.Label1.Text = "Chức vụ"
         '
         'frmChucVu
         '

@@ -60,7 +60,6 @@ Partial Class frmDashboard
         Me.Label2 = New System.Windows.Forms.Label()
         Me.btnThemNV = New System.Windows.Forms.Button()
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.btnSetting = New System.Windows.Forms.Button()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.tlpTopCheckin = New System.Windows.Forms.TableLayoutPanel()
         Me.Label10 = New System.Windows.Forms.Label()
@@ -149,13 +148,13 @@ Partial Class frmDashboard
         Me.tlpTopCheckinMuon.Controls.Add(Me.lvTopCheckinMuon, 0, 1)
         Me.tlpTopCheckinMuon.Controls.Add(Me.Label12, 0, 0)
         Me.tlpTopCheckinMuon.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.tlpTopCheckinMuon.Location = New System.Drawing.Point(460, 308)
+        Me.tlpTopCheckinMuon.Location = New System.Drawing.Point(459, 308)
         Me.tlpTopCheckinMuon.Margin = New System.Windows.Forms.Padding(2, 3, 2, 3)
         Me.tlpTopCheckinMuon.Name = "tlpTopCheckinMuon"
         Me.tlpTopCheckinMuon.RowCount = 2
         Me.tlpTopCheckinMuon.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25.0!))
         Me.tlpTopCheckinMuon.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 75.0!))
-        Me.tlpTopCheckinMuon.Size = New System.Drawing.Size(572, 348)
+        Me.tlpTopCheckinMuon.Size = New System.Drawing.Size(573, 348)
         Me.tlpTopCheckinMuon.TabIndex = 4
         '
         'lvTopCheckinMuon
@@ -166,7 +165,7 @@ Partial Class frmDashboard
         Me.lvTopCheckinMuon.Location = New System.Drawing.Point(2, 90)
         Me.lvTopCheckinMuon.Margin = New System.Windows.Forms.Padding(2, 3, 2, 3)
         Me.lvTopCheckinMuon.Name = "lvTopCheckinMuon"
-        Me.lvTopCheckinMuon.Size = New System.Drawing.Size(568, 255)
+        Me.lvTopCheckinMuon.Size = New System.Drawing.Size(569, 255)
         Me.lvTopCheckinMuon.TabIndex = 3
         Me.lvTopCheckinMuon.UseCompatibleStateImageBehavior = False
         '
@@ -180,7 +179,7 @@ Partial Class frmDashboard
         Me.Label12.Location = New System.Drawing.Point(2, 0)
         Me.Label12.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(568, 87)
+        Me.Label12.Size = New System.Drawing.Size(569, 87)
         Me.Label12.TabIndex = 1
         Me.Label12.Text = "Đi muộn trong tuần"
         Me.Label12.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -197,7 +196,7 @@ Partial Class frmDashboard
         Me.tlpThongKe.Controls.Add(Me.Panel2, 0, 1)
         Me.tlpThongKe.Controls.Add(Me.Panel6, 0, 0)
         Me.tlpThongKe.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.tlpThongKe.Location = New System.Drawing.Point(460, 80)
+        Me.tlpThongKe.Location = New System.Drawing.Point(459, 80)
         Me.tlpThongKe.Margin = New System.Windows.Forms.Padding(2, 3, 2, 3)
         Me.tlpThongKe.Name = "tlpThongKe"
         Me.tlpThongKe.RowCount = 2
@@ -205,7 +204,7 @@ Partial Class frmDashboard
         Me.tlpThongKe.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
         Me.tlpThongKe.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 19.0!))
         Me.tlpThongKe.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 19.0!))
-        Me.tlpThongKe.Size = New System.Drawing.Size(572, 222)
+        Me.tlpThongKe.Size = New System.Drawing.Size(573, 222)
         Me.tlpThongKe.TabIndex = 2
         '
         'Panel5
@@ -213,10 +212,10 @@ Partial Class frmDashboard
         Me.Panel5.Controls.Add(Me.Label15)
         Me.Panel5.Controls.Add(Me.txDenMuon)
         Me.Panel5.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Panel5.Location = New System.Drawing.Point(382, 54)
+        Me.Panel5.Location = New System.Drawing.Point(384, 54)
         Me.Panel5.Margin = New System.Windows.Forms.Padding(2, 3, 2, 3)
         Me.Panel5.Name = "Panel5"
-        Me.Panel5.Size = New System.Drawing.Size(188, 165)
+        Me.Panel5.Size = New System.Drawing.Size(187, 165)
         Me.Panel5.TabIndex = 4
         '
         'Label15
@@ -246,10 +245,10 @@ Partial Class frmDashboard
         Me.Panel4.Controls.Add(Me.txtChuaCheckin)
         Me.Panel4.Controls.Add(Me.Label13)
         Me.Panel4.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Panel4.Location = New System.Drawing.Point(192, 54)
+        Me.Panel4.Location = New System.Drawing.Point(193, 54)
         Me.Panel4.Margin = New System.Windows.Forms.Padding(2, 3, 2, 3)
         Me.Panel4.Name = "Panel4"
-        Me.Panel4.Size = New System.Drawing.Size(186, 165)
+        Me.Panel4.Size = New System.Drawing.Size(187, 165)
         Me.Panel4.TabIndex = 3
         '
         'txtChuaCheckin
@@ -283,7 +282,7 @@ Partial Class frmDashboard
         Me.Panel2.Location = New System.Drawing.Point(2, 54)
         Me.Panel2.Margin = New System.Windows.Forms.Padding(2, 3, 2, 3)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(186, 165)
+        Me.Panel2.Size = New System.Drawing.Size(187, 165)
         Me.Panel2.TabIndex = 2
         '
         'Panel3
@@ -294,7 +293,7 @@ Partial Class frmDashboard
         Me.Panel3.Location = New System.Drawing.Point(0, 0)
         Me.Panel3.Margin = New System.Windows.Forms.Padding(2, 3, 2, 3)
         Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(186, 165)
+        Me.Panel3.Size = New System.Drawing.Size(187, 165)
         Me.Panel3.TabIndex = 3
         '
         'txtDungGio
@@ -349,7 +348,7 @@ Partial Class frmDashboard
         Me.Panel6.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel6.Location = New System.Drawing.Point(3, 3)
         Me.Panel6.Name = "Panel6"
-        Me.Panel6.Size = New System.Drawing.Size(566, 45)
+        Me.Panel6.Size = New System.Drawing.Size(567, 45)
         Me.Panel6.TabIndex = 5
         '
         'Label14
@@ -372,7 +371,7 @@ Partial Class frmDashboard
         Me.dtpkThongKe.Location = New System.Drawing.Point(379, 9)
         Me.dtpkThongKe.Margin = New System.Windows.Forms.Padding(2, 3, 2, 3)
         Me.dtpkThongKe.Name = "dtpkThongKe"
-        Me.dtpkThongKe.Size = New System.Drawing.Size(184, 27)
+        Me.dtpkThongKe.Size = New System.Drawing.Size(185, 27)
         Me.dtpkThongKe.TabIndex = 1
         '
         'tlpNhanVien
@@ -404,7 +403,7 @@ Partial Class frmDashboard
         Me.tlpNhanVien.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 67.0!))
         Me.tlpNhanVien.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 47.0!))
         Me.tlpNhanVien.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 19.0!))
-        Me.tlpNhanVien.Size = New System.Drawing.Size(454, 222)
+        Me.tlpNhanVien.Size = New System.Drawing.Size(453, 222)
         Me.tlpNhanVien.TabIndex = 0
         '
         'btnMoiNV
@@ -415,7 +414,7 @@ Partial Class frmDashboard
         Me.btnMoiNV.Location = New System.Drawing.Point(228, 178)
         Me.btnMoiNV.Margin = New System.Windows.Forms.Padding(2, 3, 2, 3)
         Me.btnMoiNV.Name = "btnMoiNV"
-        Me.btnMoiNV.Size = New System.Drawing.Size(224, 41)
+        Me.btnMoiNV.Size = New System.Drawing.Size(223, 41)
         Me.btnMoiNV.TabIndex = 10
         Me.btnMoiNV.Text = "Mời nhân viên"
         Me.btnMoiNV.UseVisualStyleBackColor = False
@@ -429,7 +428,7 @@ Partial Class frmDashboard
         Me.txtSoBoPhan.Location = New System.Drawing.Point(341, 108)
         Me.txtSoBoPhan.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.txtSoBoPhan.Name = "txtSoBoPhan"
-        Me.txtSoBoPhan.Size = New System.Drawing.Size(111, 67)
+        Me.txtSoBoPhan.Size = New System.Drawing.Size(110, 67)
         Me.txtSoBoPhan.TabIndex = 8
         Me.txtSoBoPhan.Text = "0"
         Me.txtSoBoPhan.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -484,7 +483,7 @@ Partial Class frmDashboard
         Me.Label5.Location = New System.Drawing.Point(341, 29)
         Me.Label5.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(111, 79)
+        Me.Label5.Size = New System.Drawing.Size(110, 79)
         Me.Label5.TabIndex = 4
         Me.Label5.Text = "Số bộ phận"
         Me.Label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -524,7 +523,7 @@ Partial Class frmDashboard
         Me.Label1.Location = New System.Drawing.Point(2, 0)
         Me.Label1.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(450, 29)
+        Me.Label1.Size = New System.Drawing.Size(449, 29)
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "Số nhân viên"
         Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -560,7 +559,6 @@ Partial Class frmDashboard
         '
         Me.Panel1.BackColor = System.Drawing.Color.White
         Me.tlpDashboard.SetColumnSpan(Me.Panel1, 2)
-        Me.Panel1.Controls.Add(Me.btnSetting)
         Me.Panel1.Controls.Add(Me.Label6)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel1.Location = New System.Drawing.Point(2, 3)
@@ -568,19 +566,6 @@ Partial Class frmDashboard
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(1030, 71)
         Me.Panel1.TabIndex = 1
-        '
-        'btnSetting
-        '
-        Me.btnSetting.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnSetting.Font = New System.Drawing.Font("Microsoft YaHei UI", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnSetting.Location = New System.Drawing.Point(912, 23)
-        Me.btnSetting.Margin = New System.Windows.Forms.Padding(2, 3, 2, 3)
-        Me.btnSetting.Name = "btnSetting"
-        Me.btnSetting.Size = New System.Drawing.Size(101, 33)
-        Me.btnSetting.TabIndex = 1
-        Me.btnSetting.Text = "Cài đặt"
-        Me.btnSetting.UseVisualStyleBackColor = True
         '
         'Label6
         '
@@ -608,7 +593,7 @@ Partial Class frmDashboard
         Me.tlpTopCheckin.RowCount = 2
         Me.tlpTopCheckin.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25.0!))
         Me.tlpTopCheckin.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 75.0!))
-        Me.tlpTopCheckin.Size = New System.Drawing.Size(454, 348)
+        Me.tlpTopCheckin.Size = New System.Drawing.Size(453, 348)
         Me.tlpTopCheckin.TabIndex = 3
         '
         'Label10
@@ -621,7 +606,7 @@ Partial Class frmDashboard
         Me.Label10.Location = New System.Drawing.Point(2, 0)
         Me.Label10.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(450, 87)
+        Me.Label10.Size = New System.Drawing.Size(449, 87)
         Me.Label10.TabIndex = 1
         Me.Label10.Text = "Top checkin sớm"
         Me.Label10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -634,7 +619,7 @@ Partial Class frmDashboard
         Me.lvTopCheckinSom.Location = New System.Drawing.Point(2, 90)
         Me.lvTopCheckinSom.Margin = New System.Windows.Forms.Padding(2, 3, 2, 3)
         Me.lvTopCheckinSom.Name = "lvTopCheckinSom"
-        Me.lvTopCheckinSom.Size = New System.Drawing.Size(450, 255)
+        Me.lvTopCheckinSom.Size = New System.Drawing.Size(449, 255)
         Me.lvTopCheckinSom.TabIndex = 2
         Me.lvTopCheckinSom.UseCompatibleStateImageBehavior = False
         '
@@ -716,7 +701,6 @@ Partial Class frmDashboard
     Friend WithEvents Label2 As Label
     Friend WithEvents btnThemNV As Button
     Friend WithEvents Panel1 As Panel
-    Friend WithEvents btnSetting As Button
     Friend WithEvents Label6 As Label
     Friend WithEvents tlpTopCheckin As TableLayoutPanel
     Friend WithEvents Label10 As Label

@@ -108,16 +108,14 @@ Module NavigationService
     End Sub
 
     ' Đăng xuất về form đăng nhập, đồng thời đóng form chính nếu đang ở trong đó
-    Public Sub LogoutToLogin()
+    Public Sub LogoutToLogin(currentForm As Form)
 
         Dim login As New frmLogin()
         HoTroPhongChu.ApDungPhongChu(login)
+
         login.Show()
 
-        If _mainHostForm IsNot Nothing AndAlso Not _mainHostForm.IsDisposed Then
-            _isSwitchingFromMain = True
-            _mainHostForm.Close()
-        End If
+        currentForm.Close() ' hoặc Close()
 
     End Sub
 
