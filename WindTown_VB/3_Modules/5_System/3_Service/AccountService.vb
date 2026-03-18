@@ -1,4 +1,4 @@
-﻿Public Class AccountService
+Public Class AccountService
     Inherits BaseService(Of Account)
 
     Private _repoAcc As AccountRepository = New AccountRepository()
@@ -33,6 +33,8 @@
 
                     If acc.user = accInput.user AndAlso acc.password = accInput.password Then
                         ' Trả về tài khoản để UI tái sử dụng, tránh truy vấn lại.
+                        acc.last_active = DateTime.Now
+                        Me.Execute(DataIntent.Update, acc)
                         Return ServiceResponse(Of Object).Success(acc)
                     Else
                         Return ServiceResponse(Of Object).Fail("Đăng nhập thất bại: Sai mật khẩu")

@@ -285,12 +285,6 @@
     <Compile Include="2_Core\6_Forms\1_FormBase\BaseList_UC.vb">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="2_Core\6_Forms\Developer_Mode.Designer.vb">
-      <DependentUpon>Developer_Mode.vb</DependentUpon>
-    </Compile>
-    <Compile Include="2_Core\6_Forms\Developer_Mode.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="2_Core\6_Forms\DgvDisplay_frm.Designer.vb">
       <DependentUpon>DgvDisplay_frm.vb</DependentUpon>
     </Compile>
@@ -563,6 +557,13 @@
     <Compile Include="3_Modules\2_HR\4_Forms\Contract_List_UC.vb">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="3_Modules\5_System\4_Forms\UserProfile.vb" />
+    <Compile Include="3_Modules\5_System\4_Forms\UserProfileForm.Designer.vb">
+      <DependentUpon>UserProfileForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="3_Modules\5_System\4_Forms\UserProfileForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="3_Modules\6_RuleEngine\1_Models\Policy.vb" />
     <Compile Include="3_Modules\6_RuleEngine\4_Forms\Policy_CRUD_Frm.Designer.vb">
       <DependentUpon>Policy_CRUD_Frm.vb</DependentUpon>
@@ -741,9 +742,6 @@
     <EmbeddedResource Include="2_Core\6_Forms\1_FormBase\BaseList_UC.resx">
       <DependentUpon>BaseList_UC.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="2_Core\6_Forms\Developer_Mode.resx">
-      <DependentUpon>Developer_Mode.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="2_Core\6_Forms\DgvDisplay_frm.resx">
       <DependentUpon>DgvDisplay_frm.vb</DependentUpon>
     </EmbeddedResource>
@@ -815,6 +813,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="3_Modules\5_System\4_Forms\Account_CRUD_Frm.resx">
       <DependentUpon>Account_CRUD_Frm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="3_Modules\5_System\4_Forms\UserProfileForm.resx">
+      <DependentUpon>UserProfileForm.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="3_Modules\6_RuleEngine\4_Forms\Policy_CRUD_Frm.resx">
       <DependentUpon>Policy_CRUD_Frm.vb</DependentUpon>

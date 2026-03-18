@@ -173,6 +173,12 @@ Public Class frmDashboard
         AdjustColumnWidth()
     End Sub
 
+    Private Sub btnSetting_Click(sender As Object, e As EventArgs) Handles btnSetting.Click
+        ' menuCaiDat.Show(btnSetting, 0, btnSetting.Height)
+        Dim userFrm = New UserProfileForm(frmMain.Instance)
+        userFrm.ShowDialog()
+    End Sub
+
     Private Async Sub dtpkThongKe_ValueChanged(sender As Object, e As EventArgs) Handles dtpkThongKe.ValueChanged
         Await LoadDashboardDataAsync()
     End Sub

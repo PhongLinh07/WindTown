@@ -99,7 +99,7 @@ Partial Class frmChinhSach
         Me.lblMoTa.ForeColor = System.Drawing.Color.DimGray
         Me.lblMoTa.Location = New System.Drawing.Point(26, 44)
         Me.lblMoTa.Name = "lblMoTa"
-        Me.lblMoTa.Size = New System.Drawing.Size(319, 23)
+        Me.lblMoTa.Size = New System.Drawing.Size(255, 19)
         Me.lblMoTa.TabIndex = 1
         Me.lblMoTa.Text = "Theo dõi quy tắc và chính sách áp dụng."
         '
@@ -109,7 +109,7 @@ Partial Class frmChinhSach
         Me.lblTieuDe.Font = New System.Drawing.Font("Segoe UI", 16.0!, System.Drawing.FontStyle.Bold)
         Me.lblTieuDe.Location = New System.Drawing.Point(24, 10)
         Me.lblTieuDe.Name = "lblTieuDe"
-        Me.lblTieuDe.Size = New System.Drawing.Size(153, 37)
+        Me.lblTieuDe.Size = New System.Drawing.Size(124, 30)
         Me.lblTieuDe.TabIndex = 0
         Me.lblTieuDe.Text = "Chính sách"
         '
@@ -149,7 +149,7 @@ Partial Class frmChinhSach
         '
         Me.txtTuKhoa.Location = New System.Drawing.Point(120, 25)
         Me.txtTuKhoa.Name = "txtTuKhoa"
-        Me.txtTuKhoa.Size = New System.Drawing.Size(270, 30)
+        Me.txtTuKhoa.Size = New System.Drawing.Size(270, 25)
         Me.txtTuKhoa.TabIndex = 1
         '
         'lblTuKhoa
@@ -157,7 +157,7 @@ Partial Class frmChinhSach
         Me.lblTuKhoa.AutoSize = True
         Me.lblTuKhoa.Location = New System.Drawing.Point(26, 28)
         Me.lblTuKhoa.Name = "lblTuKhoa"
-        Me.lblTuKhoa.Size = New System.Drawing.Size(71, 23)
+        Me.lblTuKhoa.Size = New System.Drawing.Size(58, 19)
         Me.lblTuKhoa.TabIndex = 0
         Me.lblTuKhoa.Text = "Từ khóa"
         '
@@ -298,7 +298,7 @@ Partial Class frmChinhSach
         Me.lblMaChinhSach.AutoSize = True
         Me.lblMaChinhSach.Location = New System.Drawing.Point(3, 0)
         Me.lblMaChinhSach.Name = "lblMaChinhSach"
-        Me.lblMaChinhSach.Size = New System.Drawing.Size(86, 30)
+        Me.lblMaChinhSach.Size = New System.Drawing.Size(97, 19)
         Me.lblMaChinhSach.TabIndex = 0
         Me.lblMaChinhSach.Text = "Mã chính sách"
         '
@@ -307,7 +307,7 @@ Partial Class frmChinhSach
         Me.txtMaChinhSach.Dock = System.Windows.Forms.DockStyle.Fill
         Me.txtMaChinhSach.Location = New System.Drawing.Point(123, 3)
         Me.txtMaChinhSach.Name = "txtMaChinhSach"
-        Me.txtMaChinhSach.Size = New System.Drawing.Size(240, 30)
+        Me.txtMaChinhSach.Size = New System.Drawing.Size(240, 25)
         Me.txtMaChinhSach.TabIndex = 1
         '
         'lblTenChinhSach
@@ -315,7 +315,7 @@ Partial Class frmChinhSach
         Me.lblTenChinhSach.AutoSize = True
         Me.lblTenChinhSach.Location = New System.Drawing.Point(3, 30)
         Me.lblTenChinhSach.Name = "lblTenChinhSach"
-        Me.lblTenChinhSach.Size = New System.Drawing.Size(88, 30)
+        Me.lblTenChinhSach.Size = New System.Drawing.Size(98, 19)
         Me.lblTenChinhSach.TabIndex = 2
         Me.lblTenChinhSach.Text = "Tên chính sách"
         '
@@ -324,7 +324,7 @@ Partial Class frmChinhSach
         Me.txtTenChinhSach.Dock = System.Windows.Forms.DockStyle.Fill
         Me.txtTenChinhSach.Location = New System.Drawing.Point(123, 33)
         Me.txtTenChinhSach.Name = "txtTenChinhSach"
-        Me.txtTenChinhSach.Size = New System.Drawing.Size(240, 30)
+        Me.txtTenChinhSach.Size = New System.Drawing.Size(240, 25)
         Me.txtTenChinhSach.TabIndex = 3
         '
         'lblLoaiChinhSach
@@ -332,7 +332,7 @@ Partial Class frmChinhSach
         Me.lblLoaiChinhSach.AutoSize = True
         Me.lblLoaiChinhSach.Location = New System.Drawing.Point(3, 60)
         Me.lblLoaiChinhSach.Name = "lblLoaiChinhSach"
-        Me.lblLoaiChinhSach.Size = New System.Drawing.Size(93, 30)
+        Me.lblLoaiChinhSach.Size = New System.Drawing.Size(102, 19)
         Me.lblLoaiChinhSach.TabIndex = 4
         Me.lblLoaiChinhSach.Text = "Loại chính sách"
         '
@@ -341,7 +341,7 @@ Partial Class frmChinhSach
         Me.txtLoaiChinhSach.Dock = System.Windows.Forms.DockStyle.Fill
         Me.txtLoaiChinhSach.Location = New System.Drawing.Point(123, 63)
         Me.txtLoaiChinhSach.Name = "txtLoaiChinhSach"
-        Me.txtLoaiChinhSach.Size = New System.Drawing.Size(240, 30)
+        Me.txtLoaiChinhSach.Size = New System.Drawing.Size(240, 25)
         Me.txtLoaiChinhSach.TabIndex = 5
         '
         'lblTuNgay
@@ -349,7 +349,7 @@ Partial Class frmChinhSach
         Me.lblTuNgay.AutoSize = True
         Me.lblTuNgay.Location = New System.Drawing.Point(3, 90)
         Me.lblTuNgay.Name = "lblTuNgay"
-        Me.lblTuNgay.Size = New System.Drawing.Size(71, 23)
+        Me.lblTuNgay.Size = New System.Drawing.Size(58, 19)
         Me.lblTuNgay.TabIndex = 6
         Me.lblTuNgay.Text = "Từ ngày"
         '
@@ -359,7 +359,7 @@ Partial Class frmChinhSach
         Me.dtpTuNgay.Format = System.Windows.Forms.DateTimePickerFormat.Custom
         Me.dtpTuNgay.Location = New System.Drawing.Point(123, 93)
         Me.dtpTuNgay.Name = "dtpTuNgay"
-        Me.dtpTuNgay.Size = New System.Drawing.Size(240, 30)
+        Me.dtpTuNgay.Size = New System.Drawing.Size(240, 25)
         Me.dtpTuNgay.TabIndex = 7
         '
         'lblDenNgay
@@ -367,7 +367,7 @@ Partial Class frmChinhSach
         Me.lblDenNgay.AutoSize = True
         Me.lblDenNgay.Location = New System.Drawing.Point(3, 120)
         Me.lblDenNgay.Name = "lblDenNgay"
-        Me.lblDenNgay.Size = New System.Drawing.Size(83, 23)
+        Me.lblDenNgay.Size = New System.Drawing.Size(68, 19)
         Me.lblDenNgay.TabIndex = 8
         Me.lblDenNgay.Text = "Đến ngày"
         '
@@ -377,7 +377,7 @@ Partial Class frmChinhSach
         Me.dtpDenNgay.Format = System.Windows.Forms.DateTimePickerFormat.Custom
         Me.dtpDenNgay.Location = New System.Drawing.Point(123, 123)
         Me.dtpDenNgay.Name = "dtpDenNgay"
-        Me.dtpDenNgay.Size = New System.Drawing.Size(240, 30)
+        Me.dtpDenNgay.Size = New System.Drawing.Size(240, 25)
         Me.dtpDenNgay.TabIndex = 9
         '
         'lblTrangThai
@@ -385,7 +385,7 @@ Partial Class frmChinhSach
         Me.lblTrangThai.AutoSize = True
         Me.lblTrangThai.Location = New System.Drawing.Point(3, 150)
         Me.lblTrangThai.Name = "lblTrangThai"
-        Me.lblTrangThai.Size = New System.Drawing.Size(87, 23)
+        Me.lblTrangThai.Size = New System.Drawing.Size(70, 19)
         Me.lblTrangThai.TabIndex = 10
         Me.lblTrangThai.Text = "Trạng thái"
         '
@@ -394,7 +394,7 @@ Partial Class frmChinhSach
         Me.txtTrangThai.Dock = System.Windows.Forms.DockStyle.Fill
         Me.txtTrangThai.Location = New System.Drawing.Point(123, 153)
         Me.txtTrangThai.Name = "txtTrangThai"
-        Me.txtTrangThai.Size = New System.Drawing.Size(240, 30)
+        Me.txtTrangThai.Size = New System.Drawing.Size(240, 25)
         Me.txtTrangThai.TabIndex = 11
         '
         'lblGhiChu
@@ -402,7 +402,7 @@ Partial Class frmChinhSach
         Me.lblGhiChu.AutoSize = True
         Me.lblGhiChu.Location = New System.Drawing.Point(3, 180)
         Me.lblGhiChu.Name = "lblGhiChu"
-        Me.lblGhiChu.Size = New System.Drawing.Size(69, 23)
+        Me.lblGhiChu.Size = New System.Drawing.Size(56, 19)
         Me.lblGhiChu.TabIndex = 12
         Me.lblGhiChu.Text = "Ghi chú"
         '
@@ -421,13 +421,13 @@ Partial Class frmChinhSach
         Me.lblChiTiet.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold)
         Me.lblChiTiet.Location = New System.Drawing.Point(12, 12)
         Me.lblChiTiet.Name = "lblChiTiet"
-        Me.lblChiTiet.Size = New System.Drawing.Size(187, 28)
+        Me.lblChiTiet.Size = New System.Drawing.Size(150, 21)
         Me.lblChiTiet.TabIndex = 0
         Me.lblChiTiet.Text = "Chi tiết chính sách"
         '
         'frmChinhSach
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 23.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 17.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1100, 700)
         Me.Controls.Add(Me.tlpChinh)
