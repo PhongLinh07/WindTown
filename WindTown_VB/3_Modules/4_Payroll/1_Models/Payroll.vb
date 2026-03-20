@@ -23,7 +23,7 @@ Public Class Payroll
     Public Property Pay_Item_List As List(Of Pay_Item) = New List(Of Pay_Item)
 #End Region
 
-#Region "Field Json"
+#Region "Field"
     <Browsable(False)>
     Public ReadOnly Property position_id As Integer
         Get
@@ -37,34 +37,12 @@ Public Class Payroll
         End Get
     End Property
 
-    <Write(False)> <DisplayName("Mã bảng lương")> <Display(Order:=1)>
+    <DisplayName("Mã bảng lương")> <Display(Order:=1)>
     Public Property code As String
-        Get
-            Return GetV(Of String)("code")
-        End Get
-        Set(value As String)
-            SetV("code", value)
-        End Set
-    End Property
-
-    <Write(False)> <Browsable(False)>
+    <Browsable(False)>
     Public Property status As Integer
-        Get
-            Return GetV(Of Integer)("status")
-        End Get
-        Set(value As Integer)
-            SetV("status", value)
-        End Set
-    End Property
-    <Write(False)> <DisplayName("Ghi chú")> <Display(Order:=10)>
+    <DisplayName("Ghi chú")> <Display(Order:=10)>
     Public Property note As String
-        Get
-            Return GetV(Of String)("note")
-        End Get
-        Set(value As String)
-            SetV("note", value)
-        End Set
-    End Property
 #End Region
 
 #Region "Field Display"

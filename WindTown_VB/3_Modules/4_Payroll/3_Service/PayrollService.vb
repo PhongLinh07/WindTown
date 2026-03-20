@@ -634,18 +634,18 @@ Public Class PayrollService
     Private Function GetRows(policy As Policy, payroll As Payroll, maps As Dictionary(Of String, Double), allData As Dictionary(Of Integer, List(Of Dictionary(Of String, Double)))) As List(Of Dictionary(Of String, Double))
 
         ' Null → không loop, tính 1 lần với maps hiện tại
-        If policy.data_source = 1 Then
+        If policy.source = 1 Then
             Return New List(Of Dictionary(Of String, Double)) From {maps}
         End If
 
-        If Not allData.ContainsKey(policy.data_source) Then
-            Logger.Instance.Logging($"Không tìm thấy data_source: '{policy.data_source}' của policy {policy.code}", Logger.Warning)
+        If Not allData.ContainsKey(policy.source) Then
+            Logger.Instance.Logging($"Không tìm thấy data_source: '{policy.source}' của policy {policy.code}", Logger.Warning)
             Return New List(Of Dictionary(Of String, Double))
         End If
 
         Dim empId = CDbl(payroll.Position.Contract.employee_id)
 
-        Return allData(policy.data_source) _
+        Return allData(policy.source) _
             .Where(Function(r)
                        ' Holiday không có _emp_id → áp dụng cho tất cả
                        If Not r.ContainsKey("_employee_id") Then Return True

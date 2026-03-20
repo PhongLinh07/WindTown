@@ -107,7 +107,7 @@ Public Class Employee_CRUD_Frm
                 ui_status.SelectedIndexChanged,
                 ui_gender.SelectedIndexChanged,
                 ui_birth_date.ValueChanged,
-                ui_address.TextChanged,
+                ui_address.SelectedIndexChanged,
                 ui_email.TextChanged,
                 ui_cccd.TextChanged,
                 ui_phone.TextChanged,

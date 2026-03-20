@@ -24,7 +24,7 @@ Public Class AssignmentRepository
             LEFT JOIN salary_mult sm ON p.salary_mult_id = sm.id
             LEFT JOIN job j ON sm.job_id = j.id
             LEFT JOIN level l ON sm.level_id = l.id
-            WHERE CAST(JSON_VALUE(ass.datas, '$.status') AS INT) <> @Status"
+            WHERE ass.status <> @Status"
 
             ' 1. Định nghĩa mảng các kiểu dữ liệu
             Dim types() As Type = {

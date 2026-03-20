@@ -12,7 +12,7 @@ Public Class AttendanceRepository
                 SELECT a.*, e.* 
                 FROM attendance a
                 LEFT JOIN employee e ON a.employee_id = e.id
-                WHERE CAST(JSON_VALUE(a.datas, '$.status') AS INT) <> @Status"
+                WHERE a.status <> @Status"
 
             ' 3. Thực thi Multi-Mapping
             ' Of Attendance, Empployee, Attendance -> Đọc Empolyee, đọc Employee, trả về Attendance
@@ -39,9 +39,8 @@ Public Class AttendanceRepository
                     e.*
                 FROM attendance a
                 LEFT JOIN employee e ON a.employee_id = e.id
-                WHERE ISNULL(CAST(JSON_VALUE(a.datas, '$.status') AS INT),0) <> @Status
-                AND CAST(JSON_VALUE(a.datas, '$.of_date') AS DATE)
-                    BETWEEN @StartDate AND @EndDate"
+                WHERE a.status <> @Status
+                AND a.of_date BETWEEN @StartDate AND @EndDate"
 
             Return db.Query(Of Attendance, Employee, Attendance)(
             sql,

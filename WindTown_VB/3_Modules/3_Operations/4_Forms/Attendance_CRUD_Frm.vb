@@ -55,7 +55,7 @@ Public Class Attendance_CRUD_Frm
 
         ui_code.Text = _data.code
 
-        ui_of_date.Value = If(_data.of_date, DateTime.Now)
+        ui_of_date.Value = _data.of_date
 
         ui_office_hours.Text = _data.office_hours
 

@@ -16,9 +16,8 @@ Public Class GenericRepository(Of T As {BaseEntity, New})
 
             Return db.Query(Of T)(
             $"SELECT * FROM [{tableName}] 
-              WHERE CAST(JSON_VALUE(datas, '$.status') AS INT) <> @Status",
-            New With {.Status = -1}
-        )
+              WHERE status <> -1",
+)
         End Using
     End Function
 
@@ -45,7 +44,7 @@ Public Class GenericRepository(Of T As {BaseEntity, New})
 
             Dim sql = $"
             UPDATE [{tableName}]
-            SET datas = JSON_MODIFY(datas,'$.status',-1)
+            SET datas = -1)
             WHERE id IN @Ids
             "
 

@@ -98,7 +98,7 @@ Public Class Assignment_CRUD_Frm
 
         ui_code.Text = _data.code
         ui_role.SelectedValue = _data.role
-        ui_start_date.Value = If(_data.start_date, DateTime.Now)
+        ui_start_date.Value = _data.start_date
         ui_end_date.Value = If(_data.end_date, DateTime.Now)
 
         ui_note.Text = _data.note

@@ -24,7 +24,7 @@ Public Class PositionRepository
                 LEFT JOIN salary_mult sm ON p.salary_mult_id = sm.id
                 LEFT JOIN job j ON sm.job_id = j.id
                 LEFT JOIN level l ON sm.level_id = l.id
-               WHERE CAST(JSON_VALUE(p.datas, '$.status') AS INT) <> @Status"
+               WHERE p.status <> @Status"
 
             Return db.Query(Of Position, Contract, Employee, Salary_Mult, Job, Level, Position)(
                 sql,
@@ -67,12 +67,12 @@ Public Class PositionRepository
                 LEFT JOIN salary_mult sm ON p.salary_mult_id = sm.id
                 LEFT JOIN job j ON sm.job_id = j.id
                 LEFT JOIN level l ON sm.level_id = l.id
-                WHERE CAST(JSON_VALUE(p.datas, '$.status') AS INT) <> -1
+                WHERE p.status <> -1
                 AND NOT EXISTS (
                     SELECT 1 
                     FROM assignment a
                     WHERE a.position_id = p.id
-                    AND CAST(JSON_VALUE(a.datas, '$.status') AS INT) = 1
+                    AND a.status = 1
                 )"
 
             Return db.Query(Of Position, Contract, Employee, Salary_Mult, Job, Level, Position)(

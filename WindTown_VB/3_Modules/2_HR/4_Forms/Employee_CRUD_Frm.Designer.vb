@@ -34,7 +34,6 @@ Partial Class Employee_CRUD_Frm
         Me.ui_gender = New System.Windows.Forms.ComboBox()
         Me.d = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
-        Me.ui_address = New System.Windows.Forms.TextBox()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.Label10 = New System.Windows.Forms.Label()
         Me.ui_email = New System.Windows.Forms.TextBox()
@@ -44,6 +43,7 @@ Partial Class Employee_CRUD_Frm
         Me.ui_phone = New System.Windows.Forms.TextBox()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.ui_bank = New System.Windows.Forms.TextBox()
+        Me.ui_address = New System.Windows.Forms.ComboBox()
         Me.SuspendLayout()
         '
         'ui_code
@@ -173,14 +173,6 @@ Partial Class Employee_CRUD_Frm
         Me.Label5.TabIndex = 19
         Me.Label5.Text = "Địa chỉ:"
         '
-        'ui_address
-        '
-        Me.ui_address.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ui_address.Location = New System.Drawing.Point(60, 419)
-        Me.ui_address.Name = "ui_address"
-        Me.ui_address.Size = New System.Drawing.Size(265, 26)
-        Me.ui_address.TabIndex = 18
-        '
         'Label6
         '
         Me.Label6.AutoSize = True
@@ -273,12 +265,23 @@ Partial Class Employee_CRUD_Frm
         Me.ui_bank.Size = New System.Drawing.Size(265, 26)
         Me.ui_bank.TabIndex = 32
         '
+        'ui_address
+        '
+        Me.ui_address.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ui_address.FormattingEnabled = True
+        Me.ui_address.Items.AddRange(New Object() {"Hà Giang  ", "Cao Bằng  ", "Tuyên Quang  ", "Lào Cai  ", "Lai Châu  ", "Điện Biên  ", "Sơn La  ", "Lạng Sơn  ", "Bắc Ninh  ", "Thái Nguyên  ", "Phú Thọ  ", "Quảng Ninh  ", "Hà Nội  ", "Hưng Yên  ", "Hải Phòng  ", "Ninh Bình  ", "Thanh Hóa  ", "Nghệ An  ", "Hà Tĩnh  ", "Quảng Trị  ", "Huế  ", "Đà Nẵng  ", "Quảng Ngãi  ", "Gia Lai  ", "Khánh Hòa  ", "Đắk Lắk  ", "Lâm Đồng  ", "Đồng Nai  ", "TP. Hồ Chí Minh  ", "Tây Ninh  ", "Đồng Tháp  ", "Cần Thơ  ", "An Giang  ", "Cà Mau"})
+        Me.ui_address.Location = New System.Drawing.Point(60, 417)
+        Me.ui_address.Name = "ui_address"
+        Me.ui_address.Size = New System.Drawing.Size(265, 28)
+        Me.ui_address.TabIndex = 34
+        '
         'Employee_CRUD_Frm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.ClientSize = New System.Drawing.Size(1080, 496)
+        Me.Controls.Add(Me.ui_address)
         Me.Controls.Add(Me.Label9)
         Me.Controls.Add(Me.ui_bank)
         Me.Controls.Add(Me.Label7)
@@ -289,7 +292,6 @@ Partial Class Employee_CRUD_Frm
         Me.Controls.Add(Me.ui_cccd)
         Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.Label5)
-        Me.Controls.Add(Me.ui_address)
         Me.Controls.Add(Me.ui_gender)
         Me.Controls.Add(Me.d)
         Me.Controls.Add(Me.ui_birth_date)
@@ -316,7 +318,6 @@ Partial Class Employee_CRUD_Frm
         Me.Controls.SetChildIndex(Me.ui_birth_date, 0)
         Me.Controls.SetChildIndex(Me.d, 0)
         Me.Controls.SetChildIndex(Me.ui_gender, 0)
-        Me.Controls.SetChildIndex(Me.ui_address, 0)
         Me.Controls.SetChildIndex(Me.Label5, 0)
         Me.Controls.SetChildIndex(Me.Label6, 0)
         Me.Controls.SetChildIndex(Me.ui_cccd, 0)
@@ -327,6 +328,7 @@ Partial Class Employee_CRUD_Frm
         Me.Controls.SetChildIndex(Me.Label7, 0)
         Me.Controls.SetChildIndex(Me.ui_bank, 0)
         Me.Controls.SetChildIndex(Me.Label9, 0)
+        Me.Controls.SetChildIndex(Me.ui_address, 0)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -344,7 +346,6 @@ Partial Class Employee_CRUD_Frm
     Friend WithEvents ui_gender As ComboBox
     Friend WithEvents d As Label
     Friend WithEvents Label5 As Label
-    Friend WithEvents ui_address As TextBox
     Friend WithEvents Label6 As Label
     Friend WithEvents Label10 As Label
     Friend WithEvents ui_email As TextBox
@@ -354,4 +355,5 @@ Partial Class Employee_CRUD_Frm
     Friend WithEvents ui_phone As TextBox
     Friend WithEvents Label9 As Label
     Friend WithEvents ui_bank As TextBox
+    Friend WithEvents ui_address As ComboBox
 End Class

@@ -1,5 +1,5 @@
 Imports System.Data.SqlClient
-
+Imports Microsoft.EntityFrameworkCore
 Public Class DatabaseConfig
 
     'Public Enum EIntent

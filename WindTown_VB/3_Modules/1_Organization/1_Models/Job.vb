@@ -25,47 +25,18 @@ Public Class Job
             Return Department?.id
         End Get
     End Property
-#End Region
 
-#Region "Field Json"
-    <Write(False)> <DisplayName("Mã công việc")> <Display(Order:=1)>
+    <DisplayName("Mã công việc")> <Display(Order:=1)>
     Public Property code As String
-        Get
-            Return GetV(Of String)("code")
-        End Get
-        Set(value As String)
-            SetV("code", value)
-        End Set
-    End Property
 
-    <Write(False)> <DisplayName("Tên công việc")> <Display(Order:=2)>
+    <DisplayName("Tên công việc")> <Display(Order:=2)>
     Public Property name As String
-        Get
-            Return GetV(Of String)("name")
-        End Get
-        Set(value As String)
-            SetV("name", value)
-        End Set
-    End Property
 
-    <Write(False)> <Browsable(False)>
+    <Browsable(False)>
     Public Property status As Integer
-        Get
-            Return GetV(Of Integer)("status")
-        End Get
-        Set(value As Integer)
-            SetV("status", value)
-        End Set
-    End Property
-    <Write(False)> <DisplayName("Ghi chú")> <Display(Order:=5)>
+
+    <DisplayName("Ghi chú")> <Display(Order:=5)>
     Public Property note As String
-        Get
-            Return GetV(Of String)("note")
-        End Get
-        Set(value As String)
-            SetV("note", value)
-        End Set
-    End Property
 
 #End Region
 

@@ -12,7 +12,7 @@ Public Class Salary_MultRepository
                 FROM salary_mult sm
                 LEFT JOIN job j ON sm.job_id = j.id
                 LEFT JOIN level l ON sm.level_id = l.id
-                WHERE CAST(JSON_VALUE(sm.datas, '$.status') AS INT) <> -1"
+                WHERE sm.status <> -1"
 
             Return db.Query(Of Salary_Mult, Job, Level, Salary_Mult)(
                 sql,
@@ -36,7 +36,7 @@ Public Class Salary_MultRepository
                 LEFT JOIN job j ON sm.job_id = j.id
                 LEFT JOIN level l ON sm.level_id = l.id
             WHERE sm.job_id = @JobId
-                AND ISNULL(CAST(JSON_VALUE(sm.datas, '$.status') AS INT), 0) <> -1"
+                AND sm.status <> -1"
 
             Return db.Query(Of Salary_Mult, Job, Level, Salary_Mult)(
                 sql,

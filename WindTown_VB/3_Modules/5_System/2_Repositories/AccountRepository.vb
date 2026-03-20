@@ -1,4 +1,4 @@
-﻿Imports Dapper
+Imports Dapper
 Imports WindTown_VB.DatabaseConfig
 
 Public Class AccountRepository
@@ -12,7 +12,7 @@ Public Class AccountRepository
                 SELECT a.*, e.* 
                 FROM account a
                 LEFT JOIN employee e ON a.employee_id = e.id
-                WHERE CAST(JSON_VALUE(a.datas, '$.status') AS INT) <> @Status"
+                WHERE a.status <> @Status"
 
             ' 3. Thực thi Multi-Mapping
             ' Of Account, Empployee, Account -> Đọc Empolyee, đọc Employee, trả về Account
@@ -36,9 +36,8 @@ Public Class AccountRepository
             SELECT a.*, e.*
             FROM account a
             LEFT JOIN employee e ON a.employee_id = e.id
-            WHERE JSON_VALUE(a.datas, '$.status') <> '-1'
-            AND JSON_VALUE(a.datas, '$.user') = @User 
-            "
+            WHERE a.status <> -1
+            AND a.[user] = @User"
 
             Return db.Query(Of Account, Employee, Account)(
                 sql,

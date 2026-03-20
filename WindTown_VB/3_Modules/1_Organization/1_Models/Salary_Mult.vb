@@ -21,7 +21,7 @@ Public Class Salary_Mult
     Public Property Level As Level = New Level()
 #End Region
 
-#Region "Field json"
+#Region "Field"
     <Browsable(False)>
     Public ReadOnly Property job_id As Integer
         Get
@@ -36,33 +36,14 @@ Public Class Salary_Mult
         End Get
     End Property
 
-    <Write(False)> <DisplayName("Hệ số")> <Display(Order:=2)>
+    <DisplayName("Hệ số")> <Display(Order:=2)>
     Public Property mult As Decimal
-        Get
-            Return GetV(Of Decimal)("mult")
-        End Get
-        Set(value As Decimal)
-            SetV("mult", value)
-        End Set
-    End Property
-    <Write(False)> <Browsable(False)>
+
+    <Browsable(False)>
     Public Property status As Integer
-        Get
-            Return GetV(Of Integer)("status")
-        End Get
-        Set(value As Integer)
-            SetV("status", value)
-        End Set
-    End Property
-    <Write(False)> <DisplayName("Ghi chú")> <Display(Order:=4)>
+
+    <DisplayName("Ghi chú")> <Display(Order:=4)>
     Public Property note As String
-        Get
-            Return GetV(Of String)("note")
-        End Get
-        Set(value As String)
-            SetV("note", value)
-        End Set
-    End Property
 #End Region
 
 

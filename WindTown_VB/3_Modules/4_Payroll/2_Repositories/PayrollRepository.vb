@@ -26,7 +26,7 @@ Public Class PayrollRepository
             LEFT JOIN job         job ON sm.job_id = job.id
             LEFT JOIN level       lvl ON sm.level_id = lvl.id
             LEFT JOIN pay_period  pp  ON pay.period_id = pp.id
-            WHERE CAST(JSON_VALUE(pay.datas, '$.status') AS INT) <> @Status"
+            WHERE pay.status <> @Status"
 
             ' 2. Danh sách 8 Class tương ứng (9 tham số Generic là quá giới hạn nên dùng mảng Type)
             Dim types() As Type = {
@@ -68,7 +68,7 @@ Public Class PayrollRepository
             LEFT JOIN level       lvl ON sm.level_id = lvl.id
             LEFT JOIN pay_period  pp  ON pay.period_id = pp.id
             WHERE pay.period_id = @PeriodId 
-            AND CAST(JSON_VALUE(pay.datas, '$.status') AS INT) <> @Status"
+            AND pay.status <> @Status"
 
             Dim types() As Type = {
                 GetType(Payroll), GetType(Position), GetType(Contract),

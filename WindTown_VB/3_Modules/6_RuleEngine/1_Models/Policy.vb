@@ -14,130 +14,62 @@ Public Class Policy
         aggregate = 1
         category = 1
         gen_item = 1
-        data_source = 1
+        source = 1
         unit = CInt(UnitSuffix.ID.NONE)
         priority = 1
         note = ""
         status = 0
     End Sub
 
-#Region "Field Json"
-    <Write(False)> <DisplayName("Mã chính sách")> <Display(Order:=1)>
+#Region "Field"
+    <DisplayName("Mã chính sách")> <Display(Order:=1)>
     Public Property code As String
-        Get
-            Return GetV(Of String)("code")
-        End Get
-        Set(value As String)
-            SetV("code", value)
-        End Set
-    End Property
-    <Write(False)> <DisplayName("Tên chính sách")> <Display(Order:=2)>
-    Public Property name As String
-        Get
-            Return GetV(Of String)("name")
-        End Get
-        Set(value As String)
-            SetV("name", value)
-        End Set
-    End Property
-    <Write(False)> <DisplayName("Quy tắc")> <Display(Order:=3)>
-    Public Property rule As String
-        Get
-            Return GetV(Of String)("rule")
-        End Get
-        Set(value As String)
-            SetV("rule", value)
-        End Set
-    End Property
-    <Write(False)> <DisplayName("Độ ưu tiên")> <Display(Order:=4)>
-    Public Property priority As Integer
-        Get
-            Return GetV(Of Integer)("priority")
-        End Get
-        Set(value As Integer)
-            SetV("priority", value)
-        End Set
-    End Property
-    <Write(False)> <Browsable(False)>
-    Public Property data_source As Integer
-        Get
-            Return GetV(Of Integer)("data_source")
-        End Get
-        Set(value As Integer)
-            SetV("data_source", value)
-        End Set
-    End Property
-    <Write(False)> <Browsable(False)>
-    Public Property aggregate As Integer
-        Get
-            Return GetV(Of Integer)("aggregate")
-        End Get
-        Set(value As Integer)
-            SetV("aggregate", value)
-        End Set
-    End Property
-    <Write(False)> <Browsable(False)>
-    Public Property category As Integer
-        Get
-            Return GetV(Of Integer)("category")
-        End Get
-        Set(value As Integer)
-            SetV("category", value)
-        End Set
-    End Property
-    <Write(False)> <Browsable(False)>
-    Public Property unit As Integer
-        Get
-            Return GetV(Of Integer)("unit")
-        End Get
-        Set(value As Integer)
-            SetV("unit", value)
-        End Set
-    End Property
-    <Write(False)> <Browsable(False)>
-    Public Property gen_item As Integer
-        Get
-            Return GetV(Of Integer)("gen_item")
-        End Get
-        Set(value As Integer)
-            SetV("gen_item", value)
-        End Set
-    End Property
 
-    <Write(False)> <Browsable(False)>
+    <DisplayName("Tên chính sách")> <Display(Order:=2)>
+    Public Property name As String
+
+    <DisplayName("Quy tắc")> <Display(Order:=3)>
+    Public Property rule As String
+
+    <DisplayName("Độ ưu tiên")> <Display(Order:=4)>
+    Public Property priority As Integer
+
+    <Browsable(False)>
+    Public Property source As Integer
+
+    <Browsable(False)>
+    Public Property aggregate As Integer
+
+    <Browsable(False)>
+    Public Property category As Integer
+
+    <Browsable(False)>
+    Public Property unit As Integer
+
+    <Browsable(False)>
+    Public Property gen_item As Integer
+
+    <Browsable(False)>
     Public Property status As Integer
-        Get
-            Return GetV(Of Integer)("status")
-        End Get
-        Set(value As Integer)
-            SetV("status", value)
-        End Set
-    End Property
-    <Write(False)> <DisplayName("Ghi chú")> <Display(Order:=10)>
+
+    <DisplayName("Ghi chú")> <Display(Order:=10)>
     Public Property note As String
-        Get
-            Return GetV(Of String)("note")
-        End Get
-        Set(value As String)
-            SetV("note", value)
-        End Set
-    End Property
 
 #End Region
 
 #Region "Field Display"
 
     <Write(False)> <DisplayName("Nguồn dữ liệu")> <Display(Order:=5)>
-    Public ReadOnly Property data_source_UI As String
+    Public ReadOnly Property source_UI As String
         Get
-            Return If(Category_PayItem.GetParameter(Me.data_source)?.name, "---")
+            Return If(Data_Source.GetParameter(Me.source)?.name, "---")
 
         End Get
     End Property
     <Write(False)> <DisplayName("Kiểu tổng hợp")> <Display(Order:=6)>
     Public ReadOnly Property aggregate_UI As String
         Get
-            Return If(Category_PayItem.GetParameter(Me.aggregate)?.code, "---")
+            Return If(Aggregate_Func.GetParameter(Me.aggregate)?.code, "---")
 
         End Get
     End Property

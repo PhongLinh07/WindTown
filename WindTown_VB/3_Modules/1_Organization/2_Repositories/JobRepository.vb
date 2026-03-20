@@ -12,7 +12,8 @@ Public Class JobRepository
                 SELECT j.*, d.* 
                 FROM job j
                 LEFT JOIN department d ON j.department_id = d.id
-                WHERE CAST(JSON_VALUE(j.datas, '$.status') AS INT) <> @Status"
+                WHERE d.status <> @Status 
+                AND j.status <> @Status"
 
             ' 3. Thực thi Multi-Mapping
             ' Of Job, Department, Job -> Đọc Job, đọc Department, trả về Job

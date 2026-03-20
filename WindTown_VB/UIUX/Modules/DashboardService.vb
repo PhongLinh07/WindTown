@@ -39,7 +39,7 @@ Public Class DashboardService
 
         ' ATTENDANCE TODAY
         Dim dayAttendances = attendances.
-            Where(Function(x) x.of_date.HasValue AndAlso x.of_date.Value.Date = day).
+            Where(Function(x) x.of_date.Date = day).
             ToList()
 
         summary.OnTimeTodayCount = dayAttendances.
@@ -56,8 +56,7 @@ Public Class DashboardService
         ' LATE IN WEEK
         Dim weekLateAttendances = attendances.
             Where(Function(x)
-                      If Not x.of_date.HasValue Then Return False
-                      Dim d = x.of_date.Value.Date
+                      Dim d = x.of_date.Date
                       Return d >= weekStart AndAlso d <= day AndAlso x.late_hours > 0D
                   End Function).
             ToList()
@@ -71,8 +70,7 @@ Public Class DashboardService
         summary.TopOnTimeInMonth =
             attendances.
             Where(Function(x)
-                      If Not x.of_date.HasValue Then Return False
-                      Dim d = x.of_date.Value.Date
+                      Dim d = x.of_date.Date
                       Return d >= monthStart AndAlso
                              d < monthEndExclusive AndAlso
                              x.office_hours > 0D AndAlso

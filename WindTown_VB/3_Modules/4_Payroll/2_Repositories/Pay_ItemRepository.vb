@@ -14,8 +14,8 @@ Public Class Pay_ItemRepository
                 pr.*
             FROM pay_item p
             JOIN payroll pr ON p.payroll_id = pr.id
-            WHERE ISNULL(CAST(JSON_VALUE(p.datas, '$.status') AS INT), 0) <> -1
-            AND ISNULL(CAST(JSON_VALUE(pr.datas, '$.status') AS INT), 0) <> -1
+            WHERE p.status <> -1
+            AND pr.status <> -1
             "
 
             Return db.Query(Of Pay_Item, Payroll, Pay_Item)(
@@ -42,8 +42,7 @@ Public Class Pay_ItemRepository
             FROM pay_item p
             JOIN payroll pr ON p.payroll_id = pr.id
             WHERE p.payroll_id = @PayrollId
-            AND ISNULL(CAST(JSON_VALUE(pr.datas, '$.status') AS INT), 0) <> -1
-            "
+            AND pr.status <> -1"
 
             Return db.Query(Of Pay_Item, Payroll, Pay_Item)(
             sql,

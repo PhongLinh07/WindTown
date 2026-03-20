@@ -13,9 +13,7 @@ Public Class ContractRepository
                 a.*, e.*
             FROM contract a
             LEFT JOIN employee e ON a.employee_id = e.id
-            WHERE 
-                ISNULL(CAST(JSON_VALUE(a.datas, '$.status') AS INT), 0) <> -1 
-                AND ISNULL(CAST(JSON_VALUE(e.datas, '$.status') AS INT), 0) <> -1"
+            WHERE a.status <> -1 AND e.status <> -1"
 
             Return db.Query(Of Contract, Employee, Contract)(
             sql,
@@ -39,15 +37,11 @@ Public Class ContractRepository
             FROM contract c
             LEFT JOIN employee e ON c.employee_id = e.id
             WHERE 
-                ISNULL(CAST(JSON_VALUE(c.datas, '$.status') AS INT), 0) NOT IN (-1, 0)
-                AND ISNULL(CAST(JSON_VALUE(e.datas, '$.status') AS INT), 0) <> -1
+                c.status NOT IN (-1, 0) AND e.status <> -1
                 AND NOT EXISTS (
                     SELECT 1
                     FROM position p
-                    WHERE p.contract_id = c.id
-                    AND ISNULL(CAST(JSON_VALUE(p.datas, '$.status') AS INT), 0) <> -1
-                )
-            "
+                    WHERE p.contract_id = c.id AND p.datas <> -1)"
 
             Return db.Query(Of Contract, Employee, Contract)(
             sql,

@@ -12,7 +12,7 @@ Public Class ProjectRepository
             Dim sql As String = $"
             SELECT p.*
             FROM [{GetType(Project).Name.ToLower()}] p
-            WHERE CAST(JSON_VALUE(p.datas, '$.status') AS INT) IN (1, 2)"
+            WHERE p.statusp IN (1, 2)"
 
             Return db.Query(Of Project)(sql)
         End Using

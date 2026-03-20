@@ -14,8 +14,7 @@ Public Class LeaveRepository
             LEFT JOIN employee e ON l.employee_id = e.id
             LEFT JOIN employee a ON l.approved_id = a.id
             LEFT JOIN leave_cat l_c ON l.leave_cat_id = l_c.id
-            WHERE CAST(JSON_VALUE(l.datas, '$.status') AS INT) <> @Status
-            "
+            WHERE l.status <> @Status"
 
             Return db.Query(Of Leave, Employee, Employee, Leave_Cat, Leave)(
                 sql,

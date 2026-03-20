@@ -65,7 +65,7 @@ Public Class Leave_CRUD_Frm
 
         ui_code.Text = _data.code
 
-        ui_start_date.Value = If(_data.start_date, DateTime.Now)
+        ui_start_date.Value = _data.start_date
         ui_total_days.Text = _data.total_days
 
         ui_reason.Text = _data.reason

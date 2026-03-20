@@ -43,7 +43,7 @@ Public Class Policy_CRUD_Frm
 
         ui_code.Text = _data.code.Trim().ToUpper()
         ui_name.Text = _data.name
-        ui_data_source.Text = Data_Source.GetParameter(_data.data_source).name
+        ui_data_source.Text = Data_Source.GetParameter(_data.source).name
         ui_aggregate.SelectedValue = _data.aggregate
         ui_gen_item.SelectedValue = _data.gen_item
         ui_category.SelectedValue = _data.category
@@ -118,8 +118,8 @@ Public Class Policy_CRUD_Frm
 
     Private Sub ui_data_source_TextChanged(sender As Object, e As EventArgs) Handles ui_rule.TextChanged
 
-        _data.data_source = Data_Source.GetDataSourceByRule(ui_rule.Text)
-        ui_data_source.Text = Data_Source.GetParameter(_data.data_source).name
+        _data.source = Data_Source.GetDataSourceByRule(ui_rule.Text)
+        ui_data_source.Text = Data_Source.GetParameter(_data.source).name
     End Sub
 
     Private Sub ui_code_TextChanged(sender As Object, e As EventArgs) Handles ui_code.TextChanged

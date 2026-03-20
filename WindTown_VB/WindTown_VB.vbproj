@@ -939,6 +939,7 @@
     <None Include="2_Core\Assets\user.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="1_Documents\db_json - Copy.sql" />
     <Content Include="1_Documents\db_json.sql" />
     <Content Include="2_Core\Assets\accounting.png" />
     <Content Include="2_Core\Assets\AppIcon.ico" />

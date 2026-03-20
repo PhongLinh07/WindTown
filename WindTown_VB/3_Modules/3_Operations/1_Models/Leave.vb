@@ -25,7 +25,7 @@ Public Class Leave 'Leave: bị trùng tên với keyword của VB " Control.Lea
     Public Property Leave_Cat = New Leave_Cat()
 #End Region
 
-#Region "Field Json"
+#Region "Field"
     <Browsable(False)>
     Public ReadOnly Property employee_id As Integer
         Get
@@ -45,61 +45,24 @@ Public Class Leave 'Leave: bị trùng tên với keyword của VB " Control.Lea
         End Get
     End Property
 
-    <Write(False)> <DisplayName("Mã phép")> <Display(Order:=1)>
+    <DisplayName("Mã phép")> <Display(Order:=1)>
     Public Property code As String
-        Get
-            Return GetV(Of String)("code")
-        End Get
-        Set(value As String)
-            SetV("code", value)
-        End Set
-    End Property
-    <Write(False)> <DisplayName("Ngày bắt đầu")> <DisplayFormat(DataFormatString:="{0:dd-MM-yyyy}")> <Display(Order:=3)>
-    Public Property start_date As DateTime? ' Thêm dấu ? để cho phép Null
-        Get
-            Return GetV(Of DateTime?)("start_date") ' Trả về giá trị mặc định nếu Null
-        End Get
-        Set(value As DateTime?)
-            ' Bắt buộc dùng SetV(Of T) để đồng bộ kiểu dữ liệu
-            SetV("start_date", value)
-        End Set
-    End Property
-    <Write(False)> <DisplayName("Tổng ngày nghỉ")> <Display(Order:=4)>
+
+    <DisplayName("Ngày bắt đầu")> <DisplayFormat(DataFormatString:="{0:dd-MM-yyyy}")> <Display(Order:=3)>
+    Public Property start_date As DateTime
+
+    <DisplayName("Tổng ngày nghỉ")> <Display(Order:=4)>
     Public Property total_days As Decimal
-        Get
-            Return GetV(Of Decimal)("total_days")
-        End Get
-        Set(value As Decimal)
-            SetV("total_days", value)
-        End Set
-    End Property
-    <Write(False)> <DisplayName("Lý do nghỉ")> <Display(Order:=5)>
+
+    <DisplayName("Lý do nghỉ")> <Display(Order:=5)>
     Public Property reason As String
-        Get
-            Return GetV(Of String)("reason")
-        End Get
-        Set(value As String)
-            SetV("reason", value)
-        End Set
-    End Property
-    <Write(False)> <Browsable(False)>
+
+    <Browsable(False)>
     Public Property status As Integer
-        Get
-            Return GetV(Of Integer)("status")
-        End Get
-        Set(value As Integer)
-            SetV("status", value)
-        End Set
-    End Property
-    <Write(False)> <DisplayName("Ghi chú")> <Display(Order:=10)>
+
+
+    <DisplayName("Ghi chú")> <Display(Order:=10)>
     Public Property note As String
-        Get
-            Return GetV(Of String)("note")
-        End Get
-        Set(value As String)
-            SetV("note", value)
-        End Set
-    End Property
 #End Region
 
 #Region "Field Display"
