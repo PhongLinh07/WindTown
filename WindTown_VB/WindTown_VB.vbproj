@@ -123,6 +123,7 @@
     <Reference Include="Microsoft.Extensions.Primitives, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Extensions.Primitives.8.0.0\lib\net462\Microsoft.Extensions.Primitives.dll</HintPath>
     </Reference>
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="Microsoft.Identity.Client, Version=4.80.0.0, Culture=neutral, PublicKeyToken=0a613f4dd989e8ae, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Identity.Client.4.80.0\lib\net472\Microsoft.Identity.Client.dll</HintPath>
     </Reference>
@@ -594,11 +595,57 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="UIUXv2\DfrmEmployee.Designer.vb">
+      <DependentUpon>DfrmEmployee.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UIUXv2\DfrmEmployee.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UIUXv2\formContract.Designer.vb">
+      <DependentUpon>formContract.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UIUXv2\formContract.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UIUXv2\formPayPeriod.Designer.vb">
+      <DependentUpon>formPayPeriod.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UIUXv2\formPayPeriod.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UIUXv2\formPayroll.Designer.vb">
+      <DependentUpon>formPayroll.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UIUXv2\formPayroll.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UIUXv2\formPolicy.Designer.vb">
+      <DependentUpon>formPolicy.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UIUXv2\formPolicy.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UIUXv2\Modules\modDB.vb" />
+    <Compile Include="UIUXv2\UIControls\PlaceholderTextBox.vb">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="UIUX\control\ucSidebar.Designer.vb">
       <DependentUpon>ucSidebar.vb</DependentUpon>
     </Compile>
     <Compile Include="UIUX\control\ucSidebar.vb">
       <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UIUXv2\DfrmMain.Designer.vb">
+      <DependentUpon>DfrmMain.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UIUXv2\DfrmMain.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UIUXv2\DfrmDashBoard.Designer.vb">
+      <DependentUpon>DfrmDashBoard.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UIUXv2\DfrmDashBoard.vb">
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="UIUX\frmChamCong.Designer.vb">
       <DependentUpon>frmChamCong.vb</DependentUpon>
@@ -618,10 +665,22 @@
     <Compile Include="UIUX\frmChinhSach.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="UIUX\frmChonCotXuat.Designer.vb">
+      <DependentUpon>frmChonCotXuat.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UIUX\frmChonCotXuat.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="UIUX\frmDashboard.Designer.vb">
       <DependentUpon>frmDashboard.vb</DependentUpon>
     </Compile>
     <Compile Include="UIUX\frmDashboard.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UIUX\frmBaoCaoTongHop.Designer.vb">
+      <DependentUpon>frmBaoCaoTongHop.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UIUX\frmBaoCaoTongHop.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UIUX\frmDuAn.vb">
@@ -709,6 +768,9 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UIUX\Helpers\ImageExtensions.vb" />
+    <Compile Include="UIUX\Helpers\BaoCaoXuatCauHinh.vb" />
+    <Compile Include="UIUX\Modules\BaoCaoTongHopModels.vb" />
+    <Compile Include="UIUX\Modules\BaoCaoTongHopRepository.vb" />
     <Compile Include="UIUX\Modules\ChinhSachRepository.vb" />
     <Compile Include="UIUX\Modules\BoPhan.vb" />
     <Compile Include="UIUX\Modules\CongViec.vb" />
@@ -827,8 +889,26 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="UIUXv2\DfrmEmployee.resx">
+      <DependentUpon>DfrmEmployee.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UIUXv2\formContract.resx">
+      <DependentUpon>formContract.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UIUXv2\formPayPeriod.resx">
+      <DependentUpon>formPayPeriod.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UIUXv2\formPolicy.resx">
+      <DependentUpon>formPolicy.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UIUX\control\ucSidebar.resx">
       <DependentUpon>ucSidebar.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UIUXv2\DfrmMain.resx">
+      <DependentUpon>DfrmMain.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UIUXv2\DfrmDashBoard.resx">
+      <DependentUpon>DfrmDashBoard.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UIUX\frmChamCong.resx">
       <DependentUpon>frmChamCong.vb</DependentUpon>
@@ -841,6 +921,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UIUX\frmDashboard.resx">
       <DependentUpon>frmDashboard.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UIUX\frmBaoCaoTongHop.resx">
+      <DependentUpon>frmBaoCaoTongHop.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UIUX\frmChonCotXuat.resx">
+      <DependentUpon>frmChonCotXuat.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UIUX\frmHopDong.resx">
       <DependentUpon>frmHopDong.vb</DependentUpon>
@@ -902,10 +988,12 @@
     </None>
     <None Include="App.config" />
     <None Include="packages.config" />
+    <None Include="UIUXv2\degsignUI.json" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="3_Modules\6_RuleEngine\2_Repositories\" />
     <Folder Include="3_Modules\6_RuleEngine\3_Service\" />
+    <Folder Include="UIUX\daskUI\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="2_Core\Assets\c959aa2c-d8e5-4cc8-bf55-4d8278dbe91f.png" />
@@ -943,6 +1031,7 @@
     <Content Include="1_Documents\db_json.sql" />
     <Content Include="2_Core\Assets\accounting.png" />
     <Content Include="2_Core\Assets\AppIcon.ico" />
+    <None Include="2_Core\Assets\backgroudFTC.jpg" />
     <Content Include="2_Core\Assets\bin.png" />
     <None Include="2_Core\Assets\checkin.ico" />
     <Content Include="2_Core\Assets\checkin.png" />
@@ -957,6 +1046,8 @@
     <Content Include="2_Core\Assets\department.png" />
     <Content Include="2_Core\Assets\dismissal.png" />
     <Content Include="2_Core\Assets\employee.png" />
+    <Content Include="2_Core\Assets\FTC.jpg" />
+    <None Include="2_Core\Assets\FTC.png" />
     <Content Include="2_Core\Assets\government.png" />
     <Content Include="2_Core\Assets\holidays.png" />
     <Content Include="2_Core\Assets\LogoHR.png" />
@@ -965,6 +1056,7 @@
     <Content Include="2_Core\Assets\market.png" />
     <Content Include="2_Core\Assets\phongban.png" />
     <Content Include="2_Core\Assets\project.png" />
+    <None Include="2_Core\Assets\ranking.png" />
     <Content Include="2_Core\Assets\saff.png" />
     <Content Include="2_Core\Assets\search.png" />
     <Content Include="2_Core\Assets\word.png" />

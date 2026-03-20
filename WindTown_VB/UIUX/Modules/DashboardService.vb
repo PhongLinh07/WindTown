@@ -1,8 +1,14 @@
+Imports System.Linq
+
 Public Class DashboardService
 
     Private ReadOnly _employeeService As New EmployeeService()
     Private ReadOnly _attendanceService As New AttendanceService()
     Private ReadOnly _departmentService As New BaseService(Of Department)()
+    Private ReadOnly _leaveService As New LeaveService()
+    Private ReadOnly _payrollService As New PayrollService()
+    Private ReadOnly _payItemService As New Pay_ItemService()
+    Private ReadOnly _baoCaoRepo As New BaoCaoTongHopRepository()
 
     Public Function BuildSummary(selectedDate As DateTime) As DashboardSummaryDto
 
@@ -183,6 +189,226 @@ Public Class DashboardService
             .name = "Khong xac dinh"
         }
 
+    End Function
+
+    Public Function TaiBaoCaoTongHop(boLoc As BaoCaoBoLoc) As BaoCaoTongHopDto
+        Dim ketQua As New BaoCaoTongHopDto()
+        Dim ngayHienTai = DateTime.Today
+        Dim thang = If(boLoc IsNot Nothing AndAlso boLoc.Thang > 0, boLoc.Thang, ngayHienTai.Month)
+        Dim nam = If(boLoc IsNot Nothing AndAlso boLoc.Nam > 0, boLoc.Nam, ngayHienTai.Year)
+        Dim phongBanId = If(boLoc IsNot Nothing, boLoc.PhongBanId, 0)
+
+        Dim tuNgay = New DateTime(nam, thang, 1)
+        Dim denNgay = tuNgay.AddMonths(1)
+
+        Dim employees = LoadEmployees()
+        Dim attendances = LoadAttendances()
+        Dim leaves = LoadLeaves()
+        Dim payrolls = LoadPayrolls()
+        Dim payItems = LoadPayItems()
+        Dim departments = LoadDepartments()
+
+        Dim mapNhanVienPhongBan = _baoCaoRepo.TaiMapNhanVienPhongBan()
+        Dim employeeIds = New HashSet(Of Integer)(
+            If(phongBanId > 0,
+               employees.Where(Function(x) mapNhanVienPhongBan.ContainsKey(x.id) AndAlso mapNhanVienPhongBan(x.id) = phongBanId).Select(Function(x) x.id),
+               employees.Select(Function(x) x.id))
+        )
+
+        Dim attendancesLoc = attendances.
+            Where(Function(x) x.of_date.HasValue AndAlso x.of_date.Value >= tuNgay AndAlso x.of_date.Value < denNgay).
+            Where(Function(x) employeeIds.Contains(x.employee_id)).
+            ToList()
+
+        Dim leavesLoc = leaves.
+            Where(Function(x) x.start_date.HasValue AndAlso x.start_date.Value >= tuNgay AndAlso x.start_date.Value < denNgay).
+            Where(Function(x) employeeIds.Contains(x.employee_id)).
+            ToList()
+
+        Dim payrollLoc = payrolls.
+            Where(Function(x) KiemTraKyLuong(x, nam, thang)).
+            Where(Function(x) KiemTraNhanVienTheoPhongBan(x, mapNhanVienPhongBan, phongBanId)).
+            ToList()
+
+        Dim payrollIdLoc = New HashSet(Of Integer)(payrollLoc.Select(Function(x) x.id))
+        Dim payItemsLoc = payItems.
+            Where(Function(x) x.Payroll IsNot Nothing AndAlso payrollIdLoc.Contains(x.Payroll.id)).
+            ToList()
+        Dim payrollMap = payrollLoc.ToDictionary(Function(x) x.id, Function(x) x)
+
+        ' Tổng hợp KPI
+        ketQua.TongNhanVien = employeeIds.Count
+        ketQua.TongGioTangCa = attendancesLoc.Sum(Function(x) x.overtime_hours)
+        ketQua.TongNgayNghi = leavesLoc.Sum(Function(x) x.total_days)
+        ketQua.TongChiPhiLuong = TinhTongLuong(payItemsLoc)
+
+        ' Biểu đồ nhân sự theo phòng ban
+        ketQua.NhanSuTheoPhongBan = TaoBieuDoNhanSuPhongBan(employees, departments, mapNhanVienPhongBan, phongBanId)
+
+        ' Biểu đồ lương theo tháng
+        ketQua.LuongTheoThang = TaoBieuDoLuongTheoThang(payrolls, payItems, mapNhanVienPhongBan, phongBanId, nam)
+
+        ' Biểu đồ tổng quan chấm công
+        ketQua.ChamCongTongQuan = New List(Of BaoCaoDuLieuBieuDo) From {
+            New BaoCaoDuLieuBieuDo With {.Nhan = "Đi làm", .GiaTri = attendancesLoc.Sum(Function(x) x.office_hours)},
+            New BaoCaoDuLieuBieuDo With {.Nhan = "Tăng ca", .GiaTri = attendancesLoc.Sum(Function(x) x.overtime_hours)},
+            New BaoCaoDuLieuBieuDo With {.Nhan = "Đi muộn", .GiaTri = attendancesLoc.Sum(Function(x) x.late_hours)}
+        }
+
+        ' Bảng Top 10 theo lương
+        ketQua.TopLuong = TaoTopLuong(payrollMap, payItemsLoc)
+
+        Return ketQua
+    End Function
+
+    Private Function LoadLeaves() As List(Of Leave)
+        Dim response = _leaveService.Execute(DataIntent.GetList)
+        If response Is Nothing OrElse Not response.IsSuccess Then
+            Return New List(Of Leave)()
+        End If
+        Dim list = TryCast(response.Data, IEnumerable(Of Leave))
+        Return If(list IsNot Nothing, list.ToList(), New List(Of Leave)())
+    End Function
+
+    Private Function LoadPayrolls() As List(Of Payroll)
+        Dim response = _payrollService.Execute(DataIntent.GetList)
+        If response Is Nothing OrElse Not response.IsSuccess Then
+            Return New List(Of Payroll)()
+        End If
+        Dim list = TryCast(response.Data, IEnumerable(Of Payroll))
+        Return If(list IsNot Nothing, list.ToList(), New List(Of Payroll)())
+    End Function
+
+    Private Function LoadPayItems() As List(Of Pay_Item)
+        Dim response = _payItemService.Execute(DataIntent.GetList)
+        If response Is Nothing OrElse Not response.IsSuccess Then
+            Return New List(Of Pay_Item)()
+        End If
+        Dim list = TryCast(response.Data, IEnumerable(Of Pay_Item))
+        Return If(list IsNot Nothing, list.ToList(), New List(Of Pay_Item)())
+    End Function
+
+    Private Function KiemTraKyLuong(payroll As Payroll, nam As Integer, thang As Integer) As Boolean
+        Dim pp = payroll?.Pay_Period
+        If pp Is Nothing Then Return False
+        Dim ngay = If(pp.month, pp.start_date)
+        Return ngay.Year = nam AndAlso ngay.Month = thang
+    End Function
+
+    Private Function KiemTraNhanVienTheoPhongBan(payroll As Payroll, mapNhanVienPhongBan As Dictionary(Of Integer, Integer), phongBanId As Integer) As Boolean
+        If phongBanId <= 0 Then Return True
+        Dim empId = payroll?.Position?.Contract?.Employee?.id
+        If empId Is Nothing OrElse empId <= 0 Then Return False
+        Return mapNhanVienPhongBan.ContainsKey(empId) AndAlso mapNhanVienPhongBan(empId) = phongBanId
+    End Function
+
+    Private Function TinhTongLuong(payItems As IEnumerable(Of Pay_Item)) As Decimal
+        If payItems Is Nothing Then Return 0D
+        Dim maNet = System_Parameter.GetParameter(System_Parameter.ID.SYS_NET_SALARY)?.code
+        Dim netItems = If(String.IsNullOrWhiteSpace(maNet),
+                          New List(Of Pay_Item)(),
+                          payItems.Where(Function(x) String.Equals(x.code, maNet, StringComparison.OrdinalIgnoreCase)).ToList())
+        If netItems.Count > 0 Then
+            Return netItems.Sum(Function(x) x.value)
+        End If
+        Dim tongThu = payItems.Where(Function(x) Category_PayItem.GetSign(x.category) = 1).Sum(Function(x) x.value)
+        Dim tongTru = payItems.Where(Function(x) Category_PayItem.GetSign(x.category) = -1).Sum(Function(x) x.value)
+        Return tongThu - tongTru
+    End Function
+
+    Private Function TaoBieuDoNhanSuPhongBan(employees As List(Of Employee),
+                                            departments As List(Of Department),
+                                            mapNhanVienPhongBan As Dictionary(Of Integer, Integer),
+                                            phongBanId As Integer) As List(Of BaoCaoDuLieuBieuDo)
+        Dim ketQua As New List(Of BaoCaoDuLieuBieuDo)()
+        Dim deptMap = departments.ToDictionary(Function(x) x.id, Function(x) If(String.IsNullOrWhiteSpace(x.name), $"PB #{x.id}", x.name))
+
+        Dim nhom = employees.
+            Where(Function(x) mapNhanVienPhongBan.ContainsKey(x.id)).
+            GroupBy(Function(x) mapNhanVienPhongBan(x.id)).
+            Select(Function(g) New With {.PhongBanId = g.Key, .SoLuong = g.Count()}).
+            ToList()
+
+        For Each item In nhom
+            If phongBanId > 0 AndAlso item.PhongBanId <> phongBanId Then Continue For
+            Dim ten = If(deptMap.ContainsKey(item.PhongBanId), deptMap(item.PhongBanId), $"PB #{item.PhongBanId}")
+            ketQua.Add(New BaoCaoDuLieuBieuDo With {.Nhan = ten, .GiaTri = item.SoLuong})
+        Next
+
+        If ketQua.Count = 0 Then
+            ketQua.Add(New BaoCaoDuLieuBieuDo With {.Nhan = "Chưa có dữ liệu", .GiaTri = 0})
+        End If
+
+        Return ketQua
+    End Function
+
+    Private Function TaoBieuDoLuongTheoThang(payrolls As List(Of Payroll),
+                                             payItems As List(Of Pay_Item),
+                                             mapNhanVienPhongBan As Dictionary(Of Integer, Integer),
+                                             phongBanId As Integer,
+                                             nam As Integer) As List(Of BaoCaoDuLieuBieuDo)
+        Dim ketQua As New List(Of BaoCaoDuLieuBieuDo)()
+        For thang As Integer = 1 To 12
+            Dim thangHienTai = thang
+            Dim payrollLoc = payrolls.
+                Where(Function(x) KiemTraKyLuong(x, nam, thangHienTai)).
+                Where(Function(x) KiemTraNhanVienTheoPhongBan(x, mapNhanVienPhongBan, phongBanId)).
+                ToList()
+
+            Dim payrollIdLoc = New HashSet(Of Integer)(payrollLoc.Select(Function(x) x.id))
+            Dim payItemsLoc = payItems.Where(Function(x) x.Payroll IsNot Nothing AndAlso payrollIdLoc.Contains(x.Payroll.id)).ToList()
+            Dim tongLuong = TinhTongLuong(payItemsLoc)
+            ketQua.Add(New BaoCaoDuLieuBieuDo With {.Nhan = thang.ToString("00"), .GiaTri = tongLuong})
+        Next
+        Return ketQua
+    End Function
+
+    Private Function TaoTopLuong(payrollMap As Dictionary(Of Integer, Payroll), payItems As List(Of Pay_Item)) As List(Of BaoCaoTopLuongItem)
+        Dim ketQua As New List(Of BaoCaoTopLuongItem)()
+        Dim empMap As New Dictionary(Of Integer, Employee)()
+        For Each payroll In payrollMap.Values
+            Dim emp = payroll?.Position?.Contract?.Employee
+            If emp Is Nothing Then Continue For
+            If Not empMap.ContainsKey(emp.id) Then
+                empMap(emp.id) = emp
+            End If
+        Next
+
+        Dim tongLuongTheoNhanVien As New Dictionary(Of Integer, Decimal)()
+        For Each item In payItems
+            Dim payrollId = If(item?.Payroll IsNot Nothing, item.Payroll.id, 0)
+            If payrollId <= 0 Then Continue For
+            If Not payrollMap.ContainsKey(payrollId) Then Continue For
+            Dim emp = payrollMap(payrollId)?.Position?.Contract?.Employee
+            If emp Is Nothing Then Continue For
+
+            Dim giaTri = Category_PayItem.GetSign(item.category) * item.value
+            If tongLuongTheoNhanVien.ContainsKey(emp.id) Then
+                tongLuongTheoNhanVien(emp.id) += giaTri
+            Else
+                tongLuongTheoNhanVien(emp.id) = giaTri
+            End If
+        Next
+
+        Dim nhom = tongLuongTheoNhanVien.
+            Select(Function(kv) New With {.EmployeeId = kv.Key, .TongLuong = kv.Value}).
+            OrderByDescending(Function(x) x.TongLuong).
+            Take(10).
+            ToList()
+
+        For Each item In nhom
+            Dim emp As Employee = Nothing
+            empMap.TryGetValue(item.EmployeeId, emp)
+            Dim ma = If(emp?.code, $"EMP-{item.EmployeeId}")
+            Dim ten = If(emp?.name, "Không xác định")
+            ketQua.Add(New BaoCaoTopLuongItem With {
+                .MaNhanVien = ma,
+                .TenNhanVien = ten,
+                .TongLuong = item.TongLuong
+            })
+        Next
+
+        Return ketQua
     End Function
 
 End Class

@@ -6,7 +6,7 @@ Public Class ucSidebar
     Private activeButton As Button
 
     Private expandedWidth As Integer
-    Private collapsedWidth As Integer = 61.99
+    Private collapsedWidth As Integer = 52
     Private isCollapsed As Boolean = False
 
     Private parentTable As TableLayoutPanel
@@ -166,18 +166,18 @@ Public Class ucSidebar
     Private Sub designToggleButton(status As Boolean)
 
         If status = False Then
-            btnToggle.Size = New Size(40, 40)
+            btnToggle.Size = New Size(30, 30)
             btnToggle.Text = "<"
             btnToggle.Dock = DockStyle.Right
             btnToggle.FlatStyle = FlatStyle.Flat
             btnToggle.FlatAppearance.BorderSize = 0
             btnToggle.BackColor = Color.White
             btnToggle.ForeColor = Color.Black
-            btnToggle.MaximumSize = New Size(40, 40)
-            btnToggle.MinimumSize = New Size(40, 40)
+            btnToggle.MaximumSize = New Size(30, 30)
+            btnToggle.MinimumSize = New Size(30, 30)
         ElseIf status = True Then
 
-            btnToggle.Size = New Size(40, 40)
+            btnToggle.Size = New Size(30, 30)
             btnToggle.Text = ">"
             btnToggle.Dock = DockStyle.None
             btnToggle.Anchor = AnchorStyles.None
@@ -187,8 +187,8 @@ Public Class ucSidebar
             btnToggle.BackColor = Color.White
             btnToggle.ForeColor = Color.Black
 
-            btnToggle.MaximumSize = New Size(40, 40)
-            btnToggle.MinimumSize = New Size(40, 40)
+            btnToggle.MaximumSize = New Size(30, 30)
+            btnToggle.MinimumSize = New Size(30, 30)
 
             ' ===== Căn giữa =====
             btnToggle.Left = 4
@@ -205,39 +205,40 @@ Public Class ucSidebar
 
         menuData = New List(Of MenuItemModel)
 
-        menuData.Add(New MenuItemModel("Dashboard", GetType(frmDashboard), ResizeImage(My.Resources.home1, 38, 38))) ' icon dashboard
+        menuData.Add(New MenuItemModel("Dashboard", GetType(frmDashboard), ResizeImage(My.Resources.home1, 30, 30))) ' icon dashboard
 
-        Dim qlns As New MenuItemModel("Quản lý nhân sự", Nothing, ResizeImage(My.Resources.saff, 38, 38)) ' icon nhân sự
+        Dim qlns As New MenuItemModel("Quản lý nhân sự", Nothing, ResizeImage(My.Resources.saff, 30, 30)) ' icon nhân sự
 
-        qlns.Children.Add(New MenuItemModel("Nhân sự", GetType(frmNhanSu), ResizeImage(My.Resources.employee, 38, 38))) ' icon người dùng
-        qlns.Children.Add(New MenuItemModel("Phòng ban", GetType(frmPhongBan), ResizeImage(My.Resources.department, 38, 38)))
-        qlns.Children.Add(New MenuItemModel("Chức vụ", GetType(frmChucVu), ResizeImage(My.Resources.phongban, 38, 38))) ' icon chức vụ
-        qlns.Children.Add(New MenuItemModel("Cấp bậc", GetType(frmCapBac), ResizeImage(My.Resources.phongban, 38, 38)))
+        qlns.Children.Add(New MenuItemModel("Nhân sự", GetType(frmNhanSu), ResizeImage(My.Resources.employee, 30, 30), 10)) ' icon người dùng
+        qlns.Children.Add(New MenuItemModel("Phòng ban", GetType(frmPhongBan), ResizeImage(My.Resources.department, 30, 30), 10))
+        qlns.Children.Add(New MenuItemModel("Chức vụ", GetType(frmChucVu), ResizeImage(My.Resources.phongban, 30, 30), 10)) ' icon chức vụ
+        qlns.Children.Add(New MenuItemModel("Cấp bậc", GetType(frmCapBac), ResizeImage(My.Resources.ranking, 30, 30), 10))
 
         menuData.Add(qlns)
 
-        menuData.Add(New MenuItemModel("Hợp đồng", GetType(frmHopDong), ResizeImage(My.Resources.contract, 38, 38))) ' icon hợp đồng
-        menuData.Add(New MenuItemModel("Chấm công", GetType(frmChamCong), ResizeImage(My.Resources.checkin, 38, 38))) ' icon chấm công
+        menuData.Add(New MenuItemModel("Hợp đồng", GetType(frmHopDong), ResizeImage(My.Resources.contract, 30, 30))) ' icon hợp đồng
+        menuData.Add(New MenuItemModel("Chấm công", GetType(frmChamCong), ResizeImage(My.Resources.checkin, 30, 30))) ' icon chấm công
 
-        Dim duan As New MenuItemModel("Dự án", Nothing, ResizeImage(My.Resources.project, 38, 38))
-        duan.Children.Add(New MenuItemModel("Dự án", GetType(frmDuAn), ResizeImage(My.Resources.project, 38, 38)))
-        duan.Children.Add(New MenuItemModel("Phân công", GetType(frmPhanCong), ResizeImage(My.Resources.delegation, 38, 38)))
+        Dim duan As New MenuItemModel("Dự án", Nothing, ResizeImage(My.Resources.projectManage, 30, 30))
+        duan.Children.Add(New MenuItemModel("Dự án", GetType(frmDuAn), ResizeImage(My.Resources.project1, 30, 30), 10))
+        duan.Children.Add(New MenuItemModel("Phân công", GetType(frmPhanCong), ResizeImage(My.Resources.delegation, 30, 30), 10))
         menuData.Add(duan)
 
-        Dim nghiphep As New MenuItemModel("Nghỉ phép", Nothing, ResizeImage(My.Resources.dismissal, 38, 38))
-        nghiphep.Children.Add(New MenuItemModel("Nghỉ phép", GetType(frmNghiPhep), ResizeImage(My.Resources.dismissal, 38, 38)))
-        nghiphep.Children.Add(New MenuItemModel("Ngày lễ", GetType(frmNgayLe), ResizeImage(My.Resources.holidays, 38, 38)))
+        Dim nghiphep As New MenuItemModel("Nghỉ phép", Nothing, ResizeImage(My.Resources.dismissal, 30, 30))
+        nghiphep.Children.Add(New MenuItemModel("Nghỉ phép", GetType(frmNghiPhep), ResizeImage(My.Resources.dismissal, 30, 30), 10))
+        nghiphep.Children.Add(New MenuItemModel("Ngày lễ", GetType(frmNgayLe), ResizeImage(My.Resources.Holidays, 30, 30), 10))
         menuData.Add(nghiphep)
 
-        Dim luong As New MenuItemModel("Lương", Nothing, ResizeImage(My.Resources.salary, 38, 38)) ' icon lương
+        Dim luong As New MenuItemModel("Lương", Nothing, ResizeImage(My.Resources.salaryManage, 30, 30)) ' icon lương
 
-        luong.Children.Add(New MenuItemModel("Kỳ lương", GetType(frmKyLuong), ResizeImage(My.Resources.salary, 38, 38))) ' icon kỳ lương
-        luong.Children.Add(New MenuItemModel("Bảng lương", GetType(frmTinhLuong), ResizeImage(My.Resources.accounting, 38, 38)))
+        luong.Children.Add(New MenuItemModel("Kỳ lương", GetType(frmKyLuong), ResizeImage(My.Resources.wages, 30, 30), 10)) ' icon kỳ lương
+        luong.Children.Add(New MenuItemModel("Bảng lương", GetType(frmTinhLuong), ResizeImage(My.Resources.accounting, 30, 30), 10))
 
         menuData.Add(luong)
 
-        menuData.Add(New MenuItemModel("Chính sách", GetType(frmChinhSach), ResizeImage(My.Resources.government, 38, 38)))
-        menuData.Add(New MenuItemModel("Cài đặt", GetType(frmSystem), ResizeImage(My.Resources.gear, 38, 38))) ' icon cài đặt
+        menuData.Add(New MenuItemModel("Chính sách", GetType(frmChinhSach), ResizeImage(My.Resources.government, 30, 30)))
+        menuData.Add(New MenuItemModel("Báo cáo tổng hợp", GetType(frmBaoCaoTongHop), ResizeImage(My.Resources.accounting, 30, 30)))
+        menuData.Add(New MenuItemModel("Cài đặt", GetType(frmSystem), ResizeImage(My.Resources.gear, 30, 30))) ' icon cài đặt
 
     End Sub
 
