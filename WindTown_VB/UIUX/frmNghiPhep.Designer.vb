@@ -39,9 +39,9 @@ Partial Class frmNghiPhep
         Me.lblMaNghiPhep = New System.Windows.Forms.Label()
         Me.txtMaNghiPhep = New System.Windows.Forms.TextBox()
         Me.lblEmployeeId = New System.Windows.Forms.Label()
-        Me.txtEmployeeId = New System.Windows.Forms.TextBox()
+        Me.cbbNhanVien = New System.Windows.Forms.ComboBox()
         Me.lblApprovedId = New System.Windows.Forms.Label()
-        Me.txtApprovedId = New System.Windows.Forms.TextBox()
+        Me.cbbNguoiDuyet = New System.Windows.Forms.ComboBox()
         Me.lblLeaveCatId = New System.Windows.Forms.Label()
         Me.txtLeaveCatId = New System.Windows.Forms.TextBox()
         Me.lblTuNgay = New System.Windows.Forms.Label()
@@ -270,9 +270,9 @@ Partial Class frmNghiPhep
         Me.tlpChiTiet.Controls.Add(Me.lblMaNghiPhep, 0, 0)
         Me.tlpChiTiet.Controls.Add(Me.txtMaNghiPhep, 1, 0)
         Me.tlpChiTiet.Controls.Add(Me.lblEmployeeId, 0, 1)
-        Me.tlpChiTiet.Controls.Add(Me.txtEmployeeId, 1, 1)
+        Me.tlpChiTiet.Controls.Add(Me.cbbNhanVien, 1, 1)
         Me.tlpChiTiet.Controls.Add(Me.lblApprovedId, 0, 2)
-        Me.tlpChiTiet.Controls.Add(Me.txtApprovedId, 1, 2)
+        Me.tlpChiTiet.Controls.Add(Me.cbbNguoiDuyet, 1, 2)
         Me.tlpChiTiet.Controls.Add(Me.lblLeaveCatId, 0, 3)
         Me.tlpChiTiet.Controls.Add(Me.txtLeaveCatId, 1, 3)
         Me.tlpChiTiet.Controls.Add(Me.lblTuNgay, 0, 4)
@@ -324,13 +324,15 @@ Partial Class frmNghiPhep
         Me.lblEmployeeId.TabIndex = 2
         Me.lblEmployeeId.Text = "Employee Id"
         '
-        'txtEmployeeId
+        'cbbNhanVien
         '
-        Me.txtEmployeeId.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.txtEmployeeId.Location = New System.Drawing.Point(123, 33)
-        Me.txtEmployeeId.Name = "txtEmployeeId"
-        Me.txtEmployeeId.Size = New System.Drawing.Size(240, 30)
-        Me.txtEmployeeId.TabIndex = 3
+        Me.cbbNhanVien.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.cbbNhanVien.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cbbNhanVien.FormattingEnabled = True
+        Me.cbbNhanVien.Location = New System.Drawing.Point(123, 33)
+        Me.cbbNhanVien.Name = "cbbNhanVien"
+        Me.cbbNhanVien.Size = New System.Drawing.Size(240, 31)
+        Me.cbbNhanVien.TabIndex = 3
         '
         'lblApprovedId
         '
@@ -341,13 +343,15 @@ Partial Class frmNghiPhep
         Me.lblApprovedId.TabIndex = 4
         Me.lblApprovedId.Text = "Approved Id"
         '
-        'txtApprovedId
+        'cbbNguoiDuyet
         '
-        Me.txtApprovedId.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.txtApprovedId.Location = New System.Drawing.Point(123, 63)
-        Me.txtApprovedId.Name = "txtApprovedId"
-        Me.txtApprovedId.Size = New System.Drawing.Size(240, 30)
-        Me.txtApprovedId.TabIndex = 5
+        Me.cbbNguoiDuyet.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.cbbNguoiDuyet.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cbbNguoiDuyet.FormattingEnabled = True
+        Me.cbbNguoiDuyet.Location = New System.Drawing.Point(123, 63)
+        Me.cbbNguoiDuyet.Name = "cbbNguoiDuyet"
+        Me.cbbNguoiDuyet.Size = New System.Drawing.Size(240, 31)
+        Me.cbbNguoiDuyet.TabIndex = 5
         '
         'lblLeaveCatId
         '
@@ -498,9 +502,9 @@ Partial Class frmNghiPhep
     Friend WithEvents lblMaNghiPhep As Label
     Friend WithEvents txtMaNghiPhep As TextBox
     Friend WithEvents lblEmployeeId As Label
-    Friend WithEvents txtEmployeeId As TextBox
+    Friend WithEvents cbbNhanVien As ComboBox
     Friend WithEvents lblApprovedId As Label
-    Friend WithEvents txtApprovedId As TextBox
+    Friend WithEvents cbbNguoiDuyet As ComboBox
     Friend WithEvents lblLeaveCatId As Label
     Friend WithEvents txtLeaveCatId As TextBox
     Friend WithEvents lblTuNgay As Label

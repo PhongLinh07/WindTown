@@ -37,7 +37,7 @@ Public Class frmDuAn
 
     Private Sub CapNhatChiTietTheoDong() Handles dgvDuAn.SelectionChanged
         If dgvDuAn.CurrentRow Is Nothing OrElse dgvDuAn.CurrentRow.DataBoundItem Is Nothing Then Return
-        If cheDo = "Them" Then Return
+        If cheDo = "Thêm" Then Return
 
         Dim row = CType(dgvDuAn.CurrentRow.DataBoundItem, DataRowView).Row
         txtMaDuAn.Text = row.Field(Of String)("MaDuAn")
@@ -67,14 +67,14 @@ Public Class frmDuAn
     End Sub
 
     Private Sub btnThem_Click(sender As Object, e As EventArgs) Handles btnThem.Click
-        cheDo = "Them"
+        cheDo = "Thêm"
         XoaNhap()
         CapNhatTrangThaiNut()
     End Sub
 
     Private Sub btnSua_Click(sender As Object, e As EventArgs) Handles btnSua.Click
         If dgvDuAn.CurrentRow Is Nothing Then Return
-        cheDo = "Sua"
+        cheDo = "Sửa"
         CapNhatTrangThaiNut()
     End Sub
 
@@ -91,6 +91,24 @@ Public Class frmDuAn
     Private Sub btnLuu_Click(sender As Object, e As EventArgs) Handles btnLuu.Click
         If cheDo = "" Then Return
 
+        If String.IsNullOrWhiteSpace(txtMaDuAn.Text) Then
+            MessageBox.Show("Vui lòng nhập mã dự án.", "Thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            txtMaDuAn.Focus()
+            Return
+        End If
+
+        If String.IsNullOrWhiteSpace(txtTenDuAn.Text) Then
+            MessageBox.Show("Vui lòng nhập tên dự án.", "Thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            txtTenDuAn.Focus()
+            Return
+        End If
+
+        If dtpNgayBatDau.Value.Date > dtpNgayKetThuc.Value.Date Then
+            MessageBox.Show("Ngày bắt đầu không được lớn hơn ngày kết thúc.", "Dữ liệu không hợp lệ", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            dtpNgayBatDau.Focus()
+            Return
+        End If
+
         Dim model As New DuAnModel()
         model.MaDuAn = txtMaDuAn.Text.Trim()
         model.TenDuAn = txtTenDuAn.Text.Trim()
@@ -99,7 +117,7 @@ Public Class frmDuAn
         model.GhiChu = txtGhiChu.Text.Trim()
         model.TrangThai = LaySo(txtTrangThai.Text)
 
-        If cheDo = "Them" Then
+        If cheDo = "Thêm" Then
             duAnRepo.Them(model)
         Else
             Dim row = CType(dgvDuAn.CurrentRow.DataBoundItem, DataRowView).Row
@@ -170,6 +188,8 @@ Public Class frmDuAn
         If dgvDuAn.Columns.Contains("colChon") Then
             dgvDuAn.Columns("colChon").ReadOnly = False
         End If
+        'Việt hóa tiêu đề cột sau khi bind dữ liệu.
+        UiVietHoa.ApDungVietHoa(dgvDuAn)
     End Sub
 
     Private Sub CapNhatSplitter()

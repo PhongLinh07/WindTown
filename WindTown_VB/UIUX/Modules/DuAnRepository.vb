@@ -1,5 +1,6 @@
 Imports System.Data
 Imports System.Data.SqlClient
+Imports Microsoft.Data.SqlClient
 Imports Newtonsoft.Json.Linq
 
 Public Class DuAnModel

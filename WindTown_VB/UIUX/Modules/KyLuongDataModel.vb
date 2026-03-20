@@ -1,6 +1,6 @@
 Public Class KyLuongDataModel
 
-    Private ReadOnly _kyLuongService As New Pay_PeriodService()
+    Private ReadOnly _kyLuongService = AppServices.Instance.Pay_PeriodSV
 
     Public Function TaiDanhSachKyLuong() As List(Of Pay_Period)
         Dim response = _kyLuongService.Execute(DataIntent.GetList)

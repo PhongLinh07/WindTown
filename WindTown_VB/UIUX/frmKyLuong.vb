@@ -233,7 +233,7 @@ Public Class frmKyLuong
                 item.name,
                 item.start_date.ToString("dd/MM/yyyy"),
                 item.end_date.ToString("dd/MM/yyyy"),
-                If(item.std_hours, 0D).ToString("N2"),
+                item.std_hours.ToString("N2"),
                 item.status_UI,
                 item.note
             )
@@ -294,7 +294,7 @@ Public Class frmKyLuong
                 ky.name,
                 ky.start_date.ToString(UiDinhDang.DinhDangNgayMacDinh),
                 ky.end_date.ToString(UiDinhDang.DinhDangNgayMacDinh),
-                If(ky.std_hours, 0D).ToString("N2"),
+                ky.std_hours.ToString("N2"),
                 ky.status_UI,
                 ky.note
             )
@@ -400,7 +400,7 @@ Public Class frmKyLuong
 
             Dim lblGioChuan As New Label() With {.Text = "Giờ chuẩn", .Location = New Point(20, 180), .AutoSize = True}
             Dim numGioChuan As New NumericUpDown() With {.Location = New Point(190, 178), .Width = 300, .Maximum = Decimal.MaxValue, .DecimalPlaces = 2}
-            numGioChuan.Value = If(data.std_hours, 0D)
+            numGioChuan.Value = data.std_hours
 
             Dim lblTrangThai As New Label() With {.Text = "Trạng thái", .Location = New Point(20, 220), .AutoSize = True}
             Dim cboTrangThai As New ComboBox() With {.Location = New Point(190, 218), .Width = 300, .DropDownStyle = ComboBoxStyle.DropDownList}

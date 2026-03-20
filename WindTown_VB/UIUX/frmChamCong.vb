@@ -260,7 +260,7 @@ Public Class frmChamCong
                 denNgay = tmp
             End If
             query = query.Where(Function(x)
-                                    Dim ngay = If(x.of_date, DateTime.MinValue).Date
+                                    Dim ngay = x.of_date.Date
                                     Return ngay >= tuNgay AndAlso ngay <= denNgay
                                 End Function)
         End If
@@ -308,7 +308,7 @@ Public Class frmChamCong
                 False,
                 cc.code,
                 cc.employee_UI,
-                If(cc.of_date, DateTime.MinValue).ToString("dd/MM/yyyy"),
+                cc.of_date.ToString("dd/MM/yyyy"),
                 cc.shift_UI,
                 cc.office_hours.ToString("N2"),
                 cc.overtime_hours.ToString("N2"),
@@ -509,7 +509,7 @@ Public Class frmChamCong
 
             Dim lblNgay As New Label() With {.Text = "Ngày chấm công", .Location = New Point(20, 100), .AutoSize = True}
             Dim dtNgay As New DateTimePicker() With {.Location = New Point(190, 98), .Width = 300}
-            dtNgay.Value = If(data.of_date, DateTime.Today)
+            dtNgay.Value = data.of_date
 
             Dim lblCa As New Label() With {.Text = "Ca làm", .Location = New Point(20, 140), .AutoSize = True}
             Dim cboCa As New ComboBox() With {.Location = New Point(190, 138), .Width = 300, .DropDownStyle = ComboBoxStyle.DropDownList}
@@ -655,7 +655,7 @@ Public Class frmChamCong
             bang.Rows.Add(
                 cc.code,
                 cc.employee_UI,
-                If(cc.of_date, DateTime.MinValue).ToString(UiDinhDang.DinhDangNgayMacDinh),
+                cc.of_date.ToString(UiDinhDang.DinhDangNgayMacDinh),
                 cc.shift_UI,
                 cc.office_hours.ToString("N2"),
                 cc.overtime_hours.ToString("N2"),
@@ -673,8 +673,8 @@ End Class
 
 Friend Class ChamCongDataModel
 
-    Private ReadOnly _chamCongService As New AttendanceService()
-    Private ReadOnly _nhanVienService As New EmployeeService()
+    Private ReadOnly _chamCongService = AppServices.Instance.AttendanceSV
+    Private ReadOnly _nhanVienService = AppServices.Instance.EmployeeSV
 
     Public Function TaiDanhSachChamCong() As List(Of Attendance)
         Dim response = _chamCongService.Execute(DataIntent.GetList)

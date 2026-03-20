@@ -1,9 +1,9 @@
-﻿Imports System.Linq
+Imports System.Linq
 
 Public Class frmPhongBan
 
-    Private ReadOnly _deptService As New BaseService(Of Department)()
-    Private ReadOnly _jobService As New JobService()
+    Private ReadOnly _deptService = AppServices.Instance.DepartmentSV
+    Private ReadOnly _jobService = AppServices.Instance.JobSV
 
     Private _departments As List(Of Department) = New List(Of Department)()
     Private _jobs As List(Of Job) = New List(Of Job)()

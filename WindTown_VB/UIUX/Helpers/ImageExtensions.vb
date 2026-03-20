@@ -1,17 +1,22 @@
-Imports System.Drawing.Drawing2D
+﻿Imports System.Drawing.Drawing2D
 Imports System.Runtime.CompilerServices
 
 Module ImageExtensions
     <Extension()>
     Public Function ResizeImage(sourceImage As Image, width As Integer, height As Integer) As Image
+        If sourceImage Is Nothing Then Return Nothing
+        If width <= 0 OrElse height <= 0 Then
+            ' Kích thước không hợp lệ thì giữ nguyên ảnh để tránh lỗi tham số.
+            Return sourceImage
+        End If
 
-        ' Tạo bitmap mới theo kích thước mong muốn
+        ' Tạo bitmap mới theo kích thước mong muốn.
         Dim newBitmap As New Bitmap(width, height)
 
-        ' Vẽ lại ảnh vào bitmap mới
+        ' Vẽ lại ảnh vào bitmap mới.
         Using g As Graphics = Graphics.FromImage(newBitmap)
 
-            ' Tăng chất lượng resize
+            ' Tăng chất lượng resize.
             g.InterpolationMode = InterpolationMode.HighQualityBicubic
             g.SmoothingMode = SmoothingMode.HighQuality
             g.PixelOffsetMode = PixelOffsetMode.HighQuality
@@ -24,6 +29,7 @@ Module ImageExtensions
         Return newBitmap
 
     End Function
+
     <Extension()>
     Public Sub ResizeImageControl(ctrl As Control)
 
@@ -32,6 +38,7 @@ Module ImageExtensions
         Dim img = ctrl.BackgroundImage
         Dim newWidth = ctrl.Width
         Dim newHeight = ctrl.Height
+        If newWidth <= 0 OrElse newHeight <= 0 Then Exit Sub
 
         Dim bmp As New Bitmap(newWidth, newHeight)
 
@@ -43,6 +50,7 @@ Module ImageExtensions
         ctrl.BackgroundImage = bmp
 
     End Sub
+
     <Extension()>
     Public Sub ResizeImageCol(col As DataGridViewImageColumn)
 
@@ -66,7 +74,11 @@ Module ImageExtensions
 
         If btn.Image Is Nothing Then Exit Sub
 
-        Dim bmp As New Bitmap(btn.Width - 6, btn.Height - 6)
+        Dim newWidth = btn.Width - 6
+        Dim newHeight = btn.Height - 6
+        If newWidth <= 0 OrElse newHeight <= 0 Then Exit Sub
+
+        Dim bmp As New Bitmap(newWidth, newHeight)
 
         Using g As Graphics = Graphics.FromImage(bmp)
             g.InterpolationMode = InterpolationMode.HighQualityBicubic

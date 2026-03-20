@@ -1,5 +1,6 @@
 Imports System.Configuration
 Imports System.Data.SqlClient
+Imports Microsoft.Data.SqlClient
 
 Public Class HeThongCauHinhModel
     Public Property MayChu As String

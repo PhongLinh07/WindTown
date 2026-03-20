@@ -1,3 +1,5 @@
+
+
 Imports System.Globalization
 Imports System.Text.RegularExpressions
 Imports NCalc
@@ -58,7 +60,7 @@ Public NotInheritable Class FormulaHelper
     Private Shared Function CreateExpression(
         expr As String,
         vars As Dictionary(Of String, Double),
-        allowedFunctions As HashSet(Of String)) As Expression
+        allowedFunctions As HashSet(Of String)) As NCalc.Expression
 
         Dim exp As New Expression(expr, EvaluateOptions.IgnoreCase)
 

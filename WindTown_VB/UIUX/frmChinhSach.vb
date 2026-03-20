@@ -99,6 +99,30 @@ Public Class frmChinhSach
     Private Sub btnLuu_Click(sender As Object, e As EventArgs) Handles btnLuu.Click
         If cheDo = "" Then Return
 
+        If String.IsNullOrWhiteSpace(txtMaChinhSach.Text) Then
+            MessageBox.Show("Vui lòng nhập mã chính sách.", "Thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            txtMaChinhSach.Focus()
+            Return
+        End If
+
+        If String.IsNullOrWhiteSpace(txtTenChinhSach.Text) Then
+            MessageBox.Show("Vui lòng nhập tên chính sách.", "Thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            txtTenChinhSach.Focus()
+            Return
+        End If
+
+        If String.IsNullOrWhiteSpace(txtLoaiChinhSach.Text) Then
+            MessageBox.Show("Vui lòng nhập loại chính sách.", "Thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            txtLoaiChinhSach.Focus()
+            Return
+        End If
+
+        If dtpTuNgay.Value.Date > dtpDenNgay.Value.Date Then
+            MessageBox.Show("Ngày hiệu lực không được lớn hơn ngày hết hạn.", "Dữ liệu không hợp lệ", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            dtpTuNgay.Focus()
+            Return
+        End If
+
         Dim model As New ChinhSachModel()
         model.MaChinhSach = txtMaChinhSach.Text.Trim()
         model.TenChinhSach = txtTenChinhSach.Text.Trim()
@@ -180,6 +204,8 @@ Public Class frmChinhSach
         If dgvChinhSach.Columns.Contains("colChon") Then
             dgvChinhSach.Columns("colChon").ReadOnly = False
         End If
+        'Việt hóa tiêu đề cột sau khi bind dữ liệu.
+        UiVietHoa.ApDungVietHoa(dgvChinhSach)
     End Sub
 
     Private Sub CapNhatSplitter()

@@ -1,7 +1,7 @@
 Public Class frmDashboard
 
     Private ReadOnly _dashboardService As New DashboardService()
-    Private ReadOnly _employeeService As New EmployeeService()
+    Private ReadOnly _employeeService = AppServices.Instance.EmployeeSV
     Private menuCaiDat As ContextMenuStrip
     Private _btnRefresh As Button
     Private _lblLoading As Label
@@ -146,7 +146,7 @@ Public Class frmDashboard
         Dim rs = MessageBox.Show("Bạn có chắc muốn đăng xuất?", "Xác nhận", MessageBoxButtons.YesNo)
 
         If rs = DialogResult.Yes Then
-            NavigationService.LogoutToLogin()
+            NavigationService.LogoutToLogin(Me)
         End If
 
     End Sub
@@ -174,7 +174,9 @@ Public Class frmDashboard
     End Sub
 
     Private Sub btnSetting_Click(sender As Object, e As EventArgs) Handles btnSetting.Click
-        menuCaiDat.Show(btnSetting, 0, btnSetting.Height)
+        ' menuCaiDat.Show(btnSetting, 0, btnSetting.Height)
+        Dim userFrm = New UserProfileForm(frmMain.Instance)
+        userFrm.ShowDialog()
     End Sub
 
     Private Async Sub dtpkThongKe_ValueChanged(sender As Object, e As EventArgs) Handles dtpkThongKe.ValueChanged

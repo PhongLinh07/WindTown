@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class frmLogin
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class frmLogin
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmLogin))
         Me.tlpLogin = New System.Windows.Forms.TableLayoutPanel()
@@ -34,12 +34,16 @@ Partial Class frmLogin
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.pnLogoApp = New System.Windows.Forms.Panel()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.tlpLogin.SuspendLayout()
         Me.pnLogin.SuspendLayout()
+        Me.pnLogoApp.SuspendLayout()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'tlpLogin
         '
+        Me.tlpLogin.BackColor = System.Drawing.Color.Transparent
         Me.tlpLogin.ColumnCount = 2
         Me.tlpLogin.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
         Me.tlpLogin.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
@@ -50,7 +54,7 @@ Partial Class frmLogin
         Me.tlpLogin.Name = "tlpLogin"
         Me.tlpLogin.RowCount = 1
         Me.tlpLogin.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.tlpLogin.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 673.0!))
+        Me.tlpLogin.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 602.0!))
         Me.tlpLogin.Size = New System.Drawing.Size(887, 602)
         Me.tlpLogin.TabIndex = 0
         '
@@ -112,7 +116,7 @@ Partial Class frmLogin
         Me.tbxPassword.Name = "tbxPassword"
         Me.tbxPassword.Size = New System.Drawing.Size(258, 29)
         Me.tbxPassword.TabIndex = 2
-        Me.tbxPassword.Text = "PW_EMP040"
+        Me.tbxPassword.Text = "123"
         Me.tbxPassword.UseSystemPasswordChar = True
         '
         'Label3
@@ -131,7 +135,7 @@ Partial Class frmLogin
         Me.tbxUsername.Name = "tbxUsername"
         Me.tbxUsername.Size = New System.Drawing.Size(258, 29)
         Me.tbxUsername.TabIndex = 1
-        Me.tbxUsername.Text = "EMP040"
+        Me.tbxUsername.Text = "admin"
         '
         'Label2
         '
@@ -158,11 +162,22 @@ Partial Class frmLogin
         'pnLogoApp
         '
         Me.pnLogoApp.BackColor = System.Drawing.Color.Transparent
+        Me.pnLogoApp.Controls.Add(Me.PictureBox1)
         Me.pnLogoApp.Dock = System.Windows.Forms.DockStyle.Fill
         Me.pnLogoApp.Location = New System.Drawing.Point(3, 3)
         Me.pnLogoApp.Name = "pnLogoApp"
         Me.pnLogoApp.Size = New System.Drawing.Size(437, 596)
         Me.pnLogoApp.TabIndex = 0
+        '
+        'PictureBox1
+        '
+        Me.PictureBox1.Image = Global.WindTown_VB.My.Resources.Resources.backgroudFTC
+        Me.PictureBox1.Location = New System.Drawing.Point(-3, -3)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(1145, 602)
+        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBox1.TabIndex = 0
+        Me.PictureBox1.TabStop = False
         '
         'frmLogin
         '
@@ -179,6 +194,8 @@ Partial Class frmLogin
         Me.tlpLogin.ResumeLayout(False)
         Me.pnLogin.ResumeLayout(False)
         Me.pnLogin.PerformLayout()
+        Me.pnLogoApp.ResumeLayout(False)
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -194,4 +211,5 @@ Partial Class frmLogin
     Friend WithEvents Label1 As Label
     Friend WithEvents lbQuenMK As Label
     Friend WithEvents btnRegister As Button
+    Friend WithEvents PictureBox1 As PictureBox
 End Class

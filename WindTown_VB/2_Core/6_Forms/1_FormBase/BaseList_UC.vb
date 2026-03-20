@@ -1,3 +1,5 @@
+Imports WindTown_VB.AppServices
+
 Public Class BaseList_UC
     Inherits UserControl
 

@@ -14,10 +14,9 @@ Public Class NhanSuTransferResult
 End Class
 
 Public Class NhanSuTransferService
-    Private ReadOnly _positionService As PositionService
+    Private ReadOnly _positionService = AppServices.Instance.PositionSV
 
-    Public Sub New(positionService As PositionService)
-        _positionService = positionService
+    Public Sub New()
     End Sub
 
     Public Function ExecuteTransfer(request As NhanSuTransferRequest) As NhanSuTransferResult

@@ -61,11 +61,11 @@ Partial Class ucSidebar
         'btnToggle
         '
         Me.btnToggle.Dock = System.Windows.Forms.DockStyle.Right
-        Me.btnToggle.Location = New System.Drawing.Point(164, 0)
-        Me.btnToggle.MaximumSize = New System.Drawing.Size(40, 40)
-        Me.btnToggle.MinimumSize = New System.Drawing.Size(40, 40)
+        Me.btnToggle.Location = New System.Drawing.Point(174, 0)
+        Me.btnToggle.MaximumSize = New System.Drawing.Size(30, 30)
+        Me.btnToggle.MinimumSize = New System.Drawing.Size(30, 30)
         Me.btnToggle.Name = "btnToggle"
-        Me.btnToggle.Size = New System.Drawing.Size(40, 40)
+        Me.btnToggle.Size = New System.Drawing.Size(30, 30)
         Me.btnToggle.TabIndex = 1
         Me.btnToggle.Text = "<"
         Me.btnToggle.UseVisualStyleBackColor = True
@@ -74,12 +74,12 @@ Partial Class ucSidebar
         '
         Me.ptbLogo.Dock = System.Windows.Forms.DockStyle.Left
         Me.ptbLogo.ErrorImage = Global.WindTown_VB.My.Resources.Resources.ErrorImage
-        Me.ptbLogo.Image = Global.WindTown_VB.My.Resources.Resources.LogoHR
+        Me.ptbLogo.Image = Global.WindTown_VB.My.Resources.Resources.FTC1
         Me.ptbLogo.InitialImage = Global.WindTown_VB.My.Resources.Resources.LogoHR
         Me.ptbLogo.Location = New System.Drawing.Point(0, 0)
         Me.ptbLogo.Name = "ptbLogo"
-        Me.ptbLogo.Size = New System.Drawing.Size(126, 74)
-        Me.ptbLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.ptbLogo.Size = New System.Drawing.Size(104, 74)
+        Me.ptbLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.ptbLogo.TabIndex = 0
         Me.ptbLogo.TabStop = False
         '

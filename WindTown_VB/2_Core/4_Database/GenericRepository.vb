@@ -1,56 +1,87 @@
-Imports Dapper
-Imports Dapper.Contrib.Extensions
-Imports WindTown_VB.DatabaseConfig
+Imports Microsoft.EntityFrameworkCore
 
-Public Interface IRepository
-    Function Execute(intent As DataIntent, Optional data As Object = Nothing) As ServiceResponse(Of Object)
-End Interface
+Public Class GenericRepository(Of T As Class)
 
-Public Class GenericRepository(Of T As {BaseEntity, New})
+    Protected ReadOnly _ctx As AppDbContext
 
-    ' Lấy tất cả (Active)
-    Public Overridable Function GetAll() As IEnumerable(Of T)
-        Using db As IDbConnection = Database.GetConnection()
-            ' Tự động lấy tên bảng từ Attribute <Table>
-            Dim tableName As String = GetType(T).Name.ToLower()
+    Sub New(ctx As AppDbContext)
+        _ctx = ctx
+    End Sub
 
-            Return db.Query(Of T)(
-            $"SELECT * FROM [{tableName}] 
-              WHERE CAST(JSON_VALUE(datas, '$.status') AS INT) <> @Status",
-            New With {.Status = -1}
-        )
-        End Using
+    Protected Overridable Function BaseQuery() As IQueryable(Of T)
+        Return _ctx.Set(Of T)().AsNoTracking()
     End Function
 
-    'Insert (Dùng Dapper.Contrib)
-    Public Overridable Function Insert(entity As T) As Long
-        Using db As IDbConnection = Database.GetConnection()
-            Return db.Insert(entity)
-        End Using
+    Private Function Execute(filter As SqlFilter(Of T)) As IQueryable(Of T)
+        Return filter.Apply(BaseQuery())
     End Function
 
-    ' Update (Dùng Dapper.Contrib)
-    Public Overridable Function Update(entity As T) As Boolean
-        Using db As IDbConnection = Database.GetConnection()
-
-            Return db.Update(entity)
-        End Using
+    Public Overridable Function GetList() As List(Of T)
+        Dim f = SqlFilter(Of T).Default() _
+            .Add(Function(x) EF.Property(Of Integer)(x, "status") <> -1)
+        Return Execute(f).ToList()
     End Function
 
-    ' SoftDeleteMany (Xóa mềm nhiều bản ghi)
-    Public Function SoftDeleteMany(entities As IEnumerable(Of T)) As Integer
-        Using db As IDbConnection = Database.GetConnection()
-
-            Dim tableName = GetType(T).Name.ToLower()
-
-            Dim sql = $"
-            UPDATE [{tableName}]
-            SET datas = JSON_MODIFY(datas,'$.status',-1)
-            WHERE id IN @Ids
-            "
-
-            Return db.Execute(sql, New With {.Ids = entities.Select(Function(x) x.id)})
-
-        End Using
+    Public Overridable Function GetById(id As Integer) As T
+        Dim f = SqlFilter(Of T).Default() _
+            .Add(Function(x) EF.Property(Of Integer)(x, "status") <> -1) _
+            .Add(Function(x) EF.Property(Of Integer)(x, "id") = id)
+        Return Execute(f).FirstOrDefault()
     End Function
+
+    Public Function Search(filter As SqlFilter(Of T)) As List(Of T)
+        Return Execute(filter).ToList()
+    End Function
+
+    Public Function Insert(entity As T) As Boolean
+        Try
+            Using ctx As New AppDbContext()
+                For Each nav In ctx.Entry(entity).Navigations
+                    nav.CurrentValue = Nothing
+                Next
+                ctx.Set(Of T)().Add(entity)
+                ctx.SaveChanges()
+
+                ' ✅ Copy id mới về entity gốc
+                Dim newId = ctx.Entry(entity).Property("id").CurrentValue
+                entity.GetType().GetProperty("id")?.SetValue(entity, newId)
+            End Using
+            Return True
+        Catch ex As Exception
+            MessageBox.Show($"Lỗi Insert: {ex.Message}{vbCrLf}{ex.InnerException?.Message}")
+            Return False
+        End Try
+    End Function
+
+    Public Function Update(entity As T) As Boolean
+        Try
+            Using ctx As New AppDbContext()
+                For Each nav In ctx.Entry(entity).Navigations
+                    nav.CurrentValue = Nothing
+                Next
+                ctx.Set(Of T)().Attach(entity)
+                ctx.Entry(entity).State = EntityState.Modified
+                ctx.SaveChanges()
+            End Using
+            Return True
+        Catch ex As Exception
+            MessageBox.Show($"Lỗi Update: {ex.Message}{vbCrLf}{ex.InnerException?.Message}")
+            Return False
+        End Try
+    End Function
+
+    Public Function Delete(id As Integer) As Boolean
+        Try
+            Using ctx As New AppDbContext()
+                Dim entity = ctx.Set(Of T)().Find(id)
+                If entity Is Nothing Then Return False
+                ctx.Entry(entity).Property("status").CurrentValue = -1
+                ctx.SaveChanges()
+            End Using
+            Return True
+        Catch ex As Exception
+            Return False
+        End Try
+    End Function
+
 End Class

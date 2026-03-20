@@ -1,17 +1,8 @@
-﻿Imports System.Data
-Imports Dapper
-Imports WindTown_VB.DatabaseConfig
-
 Public Class HopDongDataModel
 
-    Private ReadOnly _contractService As New ContractService()
-    Private ReadOnly _employeeService As New EmployeeService()
-    Private ReadOnly _departmentService As New BaseService(Of Department)()
-
-    Private Class ContractDepartmentMap
-        Public Property contract_id As Integer
-        Public Property department_id As Integer
-    End Class
+    Private ReadOnly _contractService = AppServices.Instance.ContractSV
+    Private ReadOnly _employeeService = AppServices.Instance.EmployeeSV
+    Private ReadOnly _departmentService = AppServices.Instance.DepartmentSV
 
     Public Function LoadContracts() As List(Of Contract)
         Dim response = _contractService.Execute(DataIntent.GetList)
@@ -40,29 +31,26 @@ Public Class HopDongDataModel
         Throw New Exception(response.Message)
     End Function
 
+    ' ✅ Viết lại bằng EF Core — bỏ Dapper + JSON_VALUE(datas) cũ
+    ' Trả về: contract_id → department_id (qua Position → Salary_Mult → Job → Department)
     Public Function LoadContractDepartmentMap() As Dictionary(Of Integer, Integer)
-        Using db As IDbConnection = Database.GetConnection()
-            Dim sql As String = "
-                SELECT 
-                    c.id AS contract_id,
-                    d.id AS department_id
-                FROM contract c
-                LEFT JOIN position p 
-                    ON p.contract_id = c.id 
-                    AND ISNULL(CAST(JSON_VALUE(p.datas, '$.status') AS INT), 0) <> -1
-                LEFT JOIN job j ON p.job_id = j.id
-                LEFT JOIN department d ON j.department_id = d.id
-                WHERE ISNULL(CAST(JSON_VALUE(c.datas, '$.status') AS INT), 0) <> -1
-            "
-
-            Dim rows = db.Query(Of ContractDepartmentMap)(sql).ToList()
-            Dim result As New Dictionary(Of Integer, Integer)()
+        Dim result As New Dictionary(Of Integer, Integer)()
+        Using ctx As New AppDbContext()
+            Dim rows = ctx.Positions _
+                .Where(Function(p) p.status <> -1 AndAlso p.Contract.status <> -1) _
+                .Where(Function(p) p.Salary_Mult.Job.department_id > 0) _
+                .Select(Function(p) New With {
+                    Key .contract_id = p.contract_id,
+                    Key .department_id = p.Salary_Mult.Job.department_id
+                }) _
+                .ToList()
             For Each row In rows
-                If row.contract_id <= 0 OrElse row.department_id <= 0 Then Continue For
-                result(row.contract_id) = row.department_id
+                If row.contract_id > 0 AndAlso row.department_id > 0 Then
+                    result(row.contract_id) = row.department_id
+                End If
             Next
-            Return result
         End Using
+        Return result
     End Function
 
     Public Function CreateContract(data As Contract) As ServiceResponse(Of Object)

@@ -1,5 +1,6 @@
 Imports System.Configuration
 Imports System.Data.SqlClient
+Imports Microsoft.Data.SqlClient
 
 Public Module ThongTinHeThongService
     Public Function LayTenCoSoDuLieu() As String

@@ -1,8 +1,8 @@
 Public Class TinhLuongDataModel
 
-    Private ReadOnly _bangLuongService As New PayrollService()
-    Private ReadOnly _kyLuongService As New Pay_PeriodService()
-    Private ReadOnly _viTriService As New PositionService()
+    Private ReadOnly _bangLuongService = AppServices.Instance.PayrollSV
+    Private ReadOnly _kyLuongService = AppServices.Instance.Pay_PeriodSV
+    Private ReadOnly _viTriService = AppServices.Instance.PositionSV
 
     Public Function TaiDanhSachBangLuong() As List(Of Payroll)
         Dim response = _bangLuongService.Execute(DataIntent.GetList)

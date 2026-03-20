@@ -119,9 +119,9 @@ Partial Class frmTinhLuong
         Me.Label6.Font = New System.Drawing.Font("Microsoft YaHei UI", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label6.Location = New System.Drawing.Point(12, 24)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(138, 31)
+        Me.Label6.Size = New System.Drawing.Size(147, 31)
         Me.Label6.TabIndex = 0
-        Me.Label6.Text = "Tính lương"
+        Me.Label6.Text = "Bảng lương"
         '
         'pnlFilters
         '
@@ -252,7 +252,7 @@ Partial Class frmTinhLuong
         Me.lblTrangThai.AutoSize = True
         Me.lblTrangThai.Location = New System.Drawing.Point(400, 96)
         Me.lblTrangThai.Name = "lblTrangThai"
-        Me.lblTrangThai.Size = New System.Drawing.Size(89, 23)
+        Me.lblTrangThai.Size = New System.Drawing.Size(91, 23)
         Me.lblTrangThai.TabIndex = 10
         Me.lblTrangThai.Text = "Trạng thái"
         '
@@ -309,24 +309,24 @@ Partial Class frmTinhLuong
         Me.cmsBaoCao.ImageScalingSize = New System.Drawing.Size(20, 20)
         Me.cmsBaoCao.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuBaoCaoLoc, Me.mnuBaoCaoChon, Me.mnuBaoCaoTongHop})
         Me.cmsBaoCao.Name = "cmsBaoCao"
-        Me.cmsBaoCao.Size = New System.Drawing.Size(235, 76)
+        Me.cmsBaoCao.Size = New System.Drawing.Size(249, 76)
         '
         'mnuBaoCaoLoc
         '
         Me.mnuBaoCaoLoc.Name = "mnuBaoCaoLoc"
-        Me.mnuBaoCaoLoc.Size = New System.Drawing.Size(234, 24)
+        Me.mnuBaoCaoLoc.Size = New System.Drawing.Size(248, 24)
         Me.mnuBaoCaoLoc.Text = "Xuất theo bản lọc hiện tại"
         '
         'mnuBaoCaoChon
         '
         Me.mnuBaoCaoChon.Name = "mnuBaoCaoChon"
-        Me.mnuBaoCaoChon.Size = New System.Drawing.Size(234, 24)
+        Me.mnuBaoCaoChon.Size = New System.Drawing.Size(248, 24)
         Me.mnuBaoCaoChon.Text = "Xuất theo lựa chọn"
         '
         'mnuBaoCaoTongHop
         '
         Me.mnuBaoCaoTongHop.Name = "mnuBaoCaoTongHop"
-        Me.mnuBaoCaoTongHop.Size = New System.Drawing.Size(234, 24)
+        Me.mnuBaoCaoTongHop.Size = New System.Drawing.Size(248, 24)
         Me.mnuBaoCaoTongHop.Text = "Tổng hợp báo cáo"
         '
         'frmTinhLuong
@@ -341,7 +341,7 @@ Partial Class frmTinhLuong
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "frmTinhLuong"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "Tính lương"
+        Me.Text = "Bảng lương"
         Me.pnlHeader.ResumeLayout(False)
         Me.pnlHeader.PerformLayout()
         Me.pnlHanhDong.ResumeLayout(False)

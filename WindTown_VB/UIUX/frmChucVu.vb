@@ -2,7 +2,7 @@ Imports System.Linq
 
 Public Class frmChucVu
 
-    Private ReadOnly _service As New PositionService()
+    Private ReadOnly _service = AppServices.Instance.PositionSV
     Private _positions As List(Of Position) = New List(Of Position)()
     Private _contextMenu As ContextMenuStrip
 
@@ -26,7 +26,11 @@ Public Class frmChucVu
         Me.Text = "Chức vụ"
 
         Button1.Visible = True
-        Button2.Visible = False
+        Button1.Text = "Thêm chức vụ"
+
+        Button2.Visible = True
+        Button2.Text = "Xóa chức vụ"
+        Button2.Enabled = False
 
         Button5.Visible = True
         Button5.Text = "Sửa chức vụ"
@@ -34,6 +38,11 @@ Public Class frmChucVu
 
         Label2.Text = "Chi tiết:"
         tvChucVu.HideSelection = False
+
+        ' Chuẩn hóa ô tìm kiếm hiển thị tiếng Việt.
+        If String.IsNullOrWhiteSpace(tbxSearch.Text) OrElse tbxSearch.Text.Trim().ToLowerInvariant() = "tim kiem" Then
+            tbxSearch.Text = "Tìm kiếm"
+        End If
     End Sub
 
     Private Sub InitContextMenu()
@@ -62,7 +71,7 @@ Public Class frmChucVu
             _positions = If(data IsNot Nothing, data.ToList(), New List(Of Position)())
         Else
             _positions = New List(Of Position)()
-            MessageBox.Show(response.Message, "Lỗi dữ liệu ", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show(response.Message, "Lỗi dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End If
 
         Dim filtered = ApplySearch(_positions, keyword)
@@ -71,7 +80,7 @@ Public Class frmChucVu
 
     Private Function ApplySearch(source As List(Of Position), keyword As String) As List(Of Position)
         If source Is Nothing Then Return New List(Of Position)()
-        If String.IsNullOrWhiteSpace(keyword) OrElse keyword.Trim().ToLowerInvariant() = "Tìm kiếm" Then
+        If String.IsNullOrWhiteSpace(keyword) OrElse keyword.Trim().ToLowerInvariant() = "tìm kiếm" Then
             Return source
         End If
 
@@ -111,10 +120,12 @@ Public Class frmChucVu
         If pos Is Nothing Then
             Label2.Text = "Chi tiết chức vụ:"
             Button5.Enabled = False
+            Button2.Enabled = False
             Return
         End If
 
         Button5.Enabled = True
+        Button2.Enabled = True
         Dim statusText = If(Position.status_Dict.ContainsKey(pos.status), Position.status_Dict(pos.status), "---")
 
         Label2.Text = "Chi tiết chức vụ:" & vbCrLf &
@@ -163,7 +174,7 @@ Public Class frmChucVu
                 MessageBox.Show("Cập nhật thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information)
                 LoadData(tbxSearch.Text)
             Else
-                MessageBox.Show(result.Message, "Thông báo ", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                MessageBox.Show(result.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             End If
         End If
     End Sub
@@ -193,7 +204,7 @@ Public Class frmChucVu
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
-        OpenCreate()
+        DeleteSelected(GetSelectedPosition())
     End Sub
 
     Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
@@ -228,7 +239,7 @@ Public Class frmChucVu
     End Sub
 
     Private Sub tbxSearch_Enter(sender As Object, e As EventArgs) Handles tbxSearch.Enter
-        If tbxSearch.Text.Trim().ToLowerInvariant() = "Tìm kiếm" Then
+        If tbxSearch.Text.Trim().ToLowerInvariant() = "tìm kiếm" Then
             tbxSearch.Text = ""
         End If
     End Sub

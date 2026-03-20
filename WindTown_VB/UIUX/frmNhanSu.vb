@@ -1,10 +1,10 @@
 Imports System.ComponentModel
 
 Public Class frmNhanSu
-    Private ReadOnly _employeeService As New EmployeeService()
-    Private ReadOnly _departmentService As New BaseService(Of Department)()
-    Private ReadOnly _positionService As New PositionService()
-    Private ReadOnly _jobService As New JobService()
+    Private ReadOnly _employeeService = AppServices.Instance.AttendanceSV
+    Private ReadOnly _departmentService = AppServices.Instance.DepartmentSV
+    Private ReadOnly _positionService = AppServices.Instance.PositionSV
+    Private ReadOnly _jobService = AppServices.Instance.JobSV
 
     Private phongBan As New List(Of Department)
     Private nhanVien As New List(Of Employee)
@@ -698,7 +698,7 @@ Public Class frmNhanSu
         If selectedEmployees Is Nothing OrElse selectedEmployees.Count = 0 Then Return
         If transfer Is Nothing Then Return
 
-        Dim transferService As New NhanSuTransferService(_positionService)
+        Dim transferService As New NhanSuTransferService()
         Dim result = transferService.ExecuteTransfer(New NhanSuTransferRequest With {
             .SelectedEmployees = selectedEmployees,
             .Positions = positions,

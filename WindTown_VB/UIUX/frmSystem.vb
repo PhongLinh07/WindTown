@@ -1,4 +1,4 @@
-Public Class frmSystem
+﻿Public Class frmSystem
 
     Private Sub frmSystem_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         HoTroPhongChu.ApDungPhongChu(Me)
@@ -41,6 +41,7 @@ Public Class frmSystem
     Private Sub btnLuu_Click(sender As Object, e As EventArgs) Handles btnLuu.Click
         Try
             Dim model = LayDuLieuTuForm()
+            If Not KiemTraCauHinhBatBuoc(model) Then Return
             HeThongCauHinhService.LuuCauHinh(model)
             lblTrangThai.Text = "Đã lưu cấu hình hệ thống."
             MessageBox.Show("Lưu cấu hình thành công.", "Cấu hình", MessageBoxButtons.OK, MessageBoxIcon.Information)
@@ -82,6 +83,25 @@ Public Class frmSystem
         Return model
     End Function
 
+    'Kiểm tra thông tin bắt buộc trước khi lưu cấu hình.
+    Private Function KiemTraCauHinhBatBuoc(model As HeThongCauHinhModel) As Boolean
+        If model Is Nothing Then Return False
+
+        If String.IsNullOrWhiteSpace(model.MayChu) Then
+            MessageBox.Show("Vui lòng nhập máy chủ.", "Thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            txtMayChu.Focus()
+            Return False
+        End If
+
+        If String.IsNullOrWhiteSpace(model.TenCSDL) Then
+            MessageBox.Show("Vui lòng nhập tên cơ sở dữ liệu.", "Thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            txtTenCSDL.Focus()
+            Return False
+        End If
+
+        Return True
+    End Function
+
     Private Sub ChonGiaTriCombo(cbo As ComboBox, giaTri As String)
         If cbo Is Nothing Then Return
         If String.IsNullOrWhiteSpace(giaTri) Then Return
@@ -94,4 +114,8 @@ Public Class frmSystem
         End If
     End Sub
 
+    Private Sub btnLogout_Click(sender As Object, e As EventArgs) Handles btnLogout.Click
+        ' Thực hiện đăng xuất và điều hướng về form đăng nhập.
+        NavigationService.LogoutToLogin(Me)
+    End Sub
 End Class
