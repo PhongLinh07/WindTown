@@ -124,7 +124,7 @@ Public Class DashboardService
 
     Private Function LoadEmployees() As List(Of Employee)
 
-        Dim response = _employeeService.Execute(DataIntent.GetList)
+        Dim response = _employeeService.GetList()
 
         If response Is Nothing OrElse Not response.IsSuccess Then
             Return New List(Of Employee)
@@ -142,7 +142,7 @@ Public Class DashboardService
 
     Private Function LoadAttendances() As List(Of Attendance)
 
-        Dim response = _attendanceService.Execute(DataIntent.GetList)
+        Dim response = _attendanceService.GetList()
 
         If response Is Nothing OrElse Not response.IsSuccess Then
             Return New List(Of Attendance)
@@ -160,7 +160,7 @@ Public Class DashboardService
 
     Private Function LoadDepartments() As List(Of Department)
 
-        Dim response = _departmentService.Execute(DataIntent.GetList)
+        Dim response = _departmentService.GetList()
 
         If response Is Nothing OrElse Not response.IsSuccess Then
             Return New List(Of Department)
@@ -260,7 +260,7 @@ Public Class DashboardService
     End Function
 
     Private Function LoadLeaves() As List(Of Leave)
-        Dim response = _leaveService.Execute(DataIntent.GetList)
+        Dim response = _leaveService.GetList()
         If response Is Nothing OrElse Not response.IsSuccess Then
             Return New List(Of Leave)()
         End If
@@ -269,7 +269,7 @@ Public Class DashboardService
     End Function
 
     Private Function LoadPayrolls() As List(Of Payroll)
-        Dim response = _payrollService.Execute(DataIntent.GetList)
+        Dim response = _payrollService.GetList()
         If response Is Nothing OrElse Not response.IsSuccess Then
             Return New List(Of Payroll)()
         End If
@@ -278,7 +278,7 @@ Public Class DashboardService
     End Function
 
     Private Function LoadPayItems() As List(Of Pay_Item)
-        Dim response = _payItemService.Execute(DataIntent.GetList)
+        Dim response = _payItemService.GetList()
         If response Is Nothing OrElse Not response.IsSuccess Then
             Return New List(Of Pay_Item)()
         End If

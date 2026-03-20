@@ -10,7 +10,7 @@ Public Class frmRegister
     End Sub
 
     Private Sub loadAccount()
-        Dim result = AppServices.Instance.AccountSV.Execute(DataIntent.GetList)
+        Dim result = AppServices.Instance.AccountSV.GetList()
 
         If result.IsSuccess Then
             account = CType(result.Data, List(Of Account))
@@ -19,7 +19,7 @@ Public Class frmRegister
 
     Private Sub loadEmployeeWithoutAccount()
 
-        Dim resultEmployee = AppServices.Instance.EmployeeSV.Execute(DataIntent.GetEmployeesWithoutAccount)
+        Dim resultEmployee = AppServices.Instance.EmployeeSV.GetWithoutAccount()
 
         If resultEmployee.IsSuccess Then
             employee = CType(resultEmployee.Data, List(Of Employee))
@@ -80,7 +80,7 @@ Public Class frmRegister
             newAccount.role = 2
             newAccount.status = 1
 
-            Dim result = AppServices.Instance.AccountSV.Execute(DataIntent.Insert, newAccount)
+            Dim result = AppServices.Instance.AccountSV.Insert(newAccount)
 
             If result.IsSuccess Then
                 MessageBox.Show("Đăng ký thành công!")

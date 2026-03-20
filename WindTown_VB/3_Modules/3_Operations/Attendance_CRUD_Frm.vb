@@ -34,7 +34,7 @@ Public Class Attendance_CRUD_Frm
             Return
         End If
 
-        Dim response = AppServices.Instance.EmployeeSV.Execute(DataIntent.GetList)
+        Dim response = AppServices.Instance.EmployeeSV.GetList()
         _employees = If(response.IsSuccess, response.Data, New List(Of Employee))
 
         ui_employee.DataSource = _employees.Select(Function(x) New With {.Display = $"{x.code} - {x.name}", .Value = x.id}).ToList()

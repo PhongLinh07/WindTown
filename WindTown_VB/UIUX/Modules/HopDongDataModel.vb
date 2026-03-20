@@ -5,7 +5,7 @@ Public Class HopDongDataModel
     Private ReadOnly _departmentService = AppServices.Instance.DepartmentSV
 
     Public Function LoadContracts() As List(Of Contract)
-        Dim response = _contractService.Execute(DataIntent.GetList)
+        Dim response = _contractService.GetList()
         If response.IsSuccess Then
             Dim data = TryCast(response.Data, IEnumerable(Of Contract))
             Return If(data IsNot Nothing, data.ToList(), New List(Of Contract)())
@@ -14,7 +14,7 @@ Public Class HopDongDataModel
     End Function
 
     Public Function LoadEmployees() As List(Of Employee)
-        Dim response = _employeeService.Execute(DataIntent.GetList)
+        Dim response = _employeeService.GetList()
         If response.IsSuccess Then
             Dim data = TryCast(response.Data, IEnumerable(Of Employee))
             Return If(data IsNot Nothing, data.ToList(), New List(Of Employee)())
@@ -23,7 +23,7 @@ Public Class HopDongDataModel
     End Function
 
     Public Function LoadDepartments() As List(Of Department)
-        Dim response = _departmentService.Execute(DataIntent.GetList)
+        Dim response = _departmentService.GetList()
         If response.IsSuccess Then
             Dim data = TryCast(response.Data, IEnumerable(Of Department))
             Return If(data IsNot Nothing, data.ToList(), New List(Of Department)())
@@ -54,15 +54,15 @@ Public Class HopDongDataModel
     End Function
 
     Public Function CreateContract(data As Contract) As ServiceResponse(Of Object)
-        Return _contractService.Execute(DataIntent.Insert, data)
+        Return _contractService.Insert(data)
     End Function
 
     Public Function UpdateContract(data As Contract) As ServiceResponse(Of Object)
-        Return _contractService.Execute(DataIntent.Update, data)
+        Return _contractService.Update(data)
     End Function
 
     Public Function DeleteContracts(items As List(Of Contract)) As ServiceResponse(Of Object)
-        Return _contractService.Execute(DataIntent.SoftDeleteMany, items)
+        Return _contractService.Delete(items)
     End Function
 
 End Class

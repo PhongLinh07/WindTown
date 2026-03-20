@@ -65,7 +65,7 @@ Public Class frmChucVu
     End Sub
 
     Private Sub LoadData(Optional keyword As String = Nothing)
-        Dim response = _service.Execute(DataIntent.GetList)
+        Dim response = _service.GetList()
         If response.IsSuccess Then
             Dim data = TryCast(response.Data, IEnumerable(Of Position))
             _positions = If(data IsNot Nothing, data.ToList(), New List(Of Position)())
@@ -150,7 +150,7 @@ Public Class frmChucVu
         Dim data As New Position()
         Dim crud As New Position_CRUD_Frm(data, True)
         If crud.ShowDialog() = DialogResult.OK Then
-            Dim result = _service.Execute(DataIntent.Insert, data)
+            Dim result = _service.Insert(data)
             If result.IsSuccess Then
                 MessageBox.Show("Thêm thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information)
                 LoadData(tbxSearch.Text)
@@ -169,7 +169,7 @@ Public Class frmChucVu
         Dim data = Utils.DeepClone(pos)
         Dim crud As New Position_CRUD_Frm(data)
         If crud.ShowDialog() = DialogResult.OK Then
-            Dim result = _service.Execute(DataIntent.Update, data)
+            Dim result = _service.Update(data)
             If result.IsSuccess Then
                 MessageBox.Show("Cập nhật thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information)
                 LoadData(tbxSearch.Text)
@@ -190,7 +190,7 @@ Public Class frmChucVu
         End If
 
         Dim items As New List(Of Position) From {pos}
-        Dim result = _service.Execute(DataIntent.SoftDeleteMany, items)
+        Dim result = _service.Delete(items)
         If result.IsSuccess Then
             MessageBox.Show("Xóa thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information)
             LoadData(tbxSearch.Text)

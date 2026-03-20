@@ -77,7 +77,7 @@ Public Class frmNhanSu
 
     ' ================= LOAD DATA =================
     Private Sub loadData()
-        Dim employeeResponse = _employeeService.Execute(DataIntent.GetList)
+        Dim employeeResponse = _employeeService.GetList()
         If employeeResponse Is Nothing OrElse Not employeeResponse.IsSuccess Then
             nhanVien = New List(Of Employee)()
             employeeByCode = New Dictionary(Of String, Employee)(StringComparer.OrdinalIgnoreCase)
@@ -98,19 +98,19 @@ Public Class frmNhanSu
             GroupBy(Function(emp) emp.code, StringComparer.OrdinalIgnoreCase).
             ToDictionary(Function(g) g.Key, Function(g) g.First(), StringComparer.OrdinalIgnoreCase)
 
-        Dim departmentResponse = _departmentService.Execute(DataIntent.GetList)
+        Dim departmentResponse = _departmentService.GetList()
         phongBan = TryCast(departmentResponse?.Data, IEnumerable(Of Department))?.ToList()
         If phongBan Is Nothing Then
             phongBan = New List(Of Department)()
         End If
 
-        Dim positionResponse = _positionService.Execute(DataIntent.GetList)
+        Dim positionResponse = _positionService.GetList()
         positions = TryCast(positionResponse?.Data, IEnumerable(Of Position))?.ToList()
         If positions Is Nothing Then
             positions = New List(Of Position)()
         End If
 
-        Dim jobResponse = _jobService.Execute(DataIntent.GetList)
+        Dim jobResponse = _jobService.GetList()
         jobs = TryCast(jobResponse?.Data, IEnumerable(Of Job))?.ToList()
         If jobs Is Nothing Then
             jobs = New List(Of Job)()
@@ -366,7 +366,7 @@ Public Class frmNhanSu
 
         For Each emp In selectedEmployees
             emp.status = 0
-            Dim response = _employeeService.Execute(DataIntent.Update, emp)
+            Dim response = _employeeService.Update(emp)
             If response Is Nothing OrElse Not response.IsSuccess Then
                 failCount += 1
             End If
@@ -383,7 +383,7 @@ Public Class frmNhanSu
         Dim selectedEmployees = GetSelectedEmployees()
         If selectedEmployees.Count = 0 Then Return
 
-        Dim response = _employeeService.Execute(DataIntent.SoftDeleteMany, selectedEmployees)
+        Dim response = _employeeService.Delete(selectedEmployees)
         If response Is Nothing OrElse Not response.IsSuccess Then
             MessageBox.Show("Xóa nhân viên không thành công: " & If(response?.Message, "Lỗi không xác định."))
             Return
@@ -505,7 +505,7 @@ Public Class frmNhanSu
 
         If detailForm.ShowDialog() <> DialogResult.OK Then Return
 
-        Dim response = _employeeService.Execute(DataIntent.Insert, newEmployee)
+        Dim response = _employeeService.Insert(newEmployee)
         If response Is Nothing OrElse Not response.IsSuccess Then
             MessageBox.Show("Thêm nhân viên không thành công: " & If(response?.Message, "Lỗi không xác định."))
             Return
@@ -870,7 +870,7 @@ Public Class frmNhanSu
 
         Try
 
-            Dim response = _departmentService.Execute(DataIntent.Insert, data)
+            Dim response = _departmentService.Insert(data)
 
             If response Is Nothing OrElse Not response.IsSuccess Then
                 MessageBox.Show("Thêm bộ phận không thành công: " & If(response?.Message, "Lỗi không xác định."))
@@ -898,7 +898,7 @@ Public Class frmNhanSu
         Dim crud As New Job_CRUD_Frm(data, True)
         If crud.ShowDialog() <> DialogResult.OK Then Return
 
-        Dim response = _jobService.Execute(DataIntent.Insert, data)
+        Dim response = _jobService.Insert(data)
         If response Is Nothing OrElse Not response.IsSuccess Then
             MessageBox.Show("Thêm công việc không thành công: " & If(response?.Message, "Lỗi không xác định."))
             Return
@@ -918,7 +918,7 @@ Public Class frmNhanSu
         Dim crud As New Department_CRUD_Frm(clone)
         If crud.ShowDialog() <> DialogResult.OK Then Return
 
-        Dim response = _departmentService.Execute(DataIntent.Update, clone)
+        Dim response = _departmentService.Update(clone)
         If response Is Nothing OrElse Not response.IsSuccess Then
             MessageBox.Show("Sửa bộ phận không thành công: " & If(response?.Message, "Lỗi không xác định."))
             Return
@@ -938,7 +938,7 @@ Public Class frmNhanSu
         Dim crud As New Job_CRUD_Frm(clone)
         If crud.ShowDialog() <> DialogResult.OK Then Return
 
-        Dim response = _jobService.Execute(DataIntent.Update, clone)
+        Dim response = _jobService.Update(clone)
         If response Is Nothing OrElse Not response.IsSuccess Then
             MessageBox.Show("Sửa công việc không thành công: " & If(response?.Message, "Lỗi không xác định."))
             Return
@@ -964,7 +964,7 @@ Public Class frmNhanSu
             Return
         End If
 
-        Dim response = _departmentService.Execute(DataIntent.SoftDeleteMany, New List(Of Department) From {selectedDept})
+        Dim response = _departmentService.Delete(New List(Of Department) From {selectedDept})
         If response Is Nothing OrElse Not response.IsSuccess Then
             MessageBox.Show("Xóa bộ phận không thành công: " & If(response?.Message, "Lỗi không xác định."))
             Return
@@ -990,7 +990,7 @@ Public Class frmNhanSu
             Return
         End If
 
-        Dim response = _jobService.Execute(DataIntent.SoftDeleteMany, New List(Of Job) From {selectedJob})
+        Dim response = _jobService.Delete(New List(Of Job) From {selectedJob})
         If response Is Nothing OrElse Not response.IsSuccess Then
             MessageBox.Show("Xóa công việc không thành công: " & If(response?.Message, "Lỗi không xác định."))
             Return
@@ -1030,7 +1030,7 @@ Public Class frmNhanSu
         Dim detailForm As New Employee_CRUD_Frm(clone)
         If detailForm.ShowDialog() <> DialogResult.OK Then Return
 
-        Dim response = _employeeService.Execute(DataIntent.Update, clone)
+        Dim response = _employeeService.Update(clone)
         If response Is Nothing OrElse Not response.IsSuccess Then
             MessageBox.Show("Cập nhật nhân viên không thành công: " & If(response?.Message, "Lỗi không xác định."))
             Return

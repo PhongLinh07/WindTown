@@ -32,13 +32,13 @@ Public Class Leave_CRUD_Frm
             Return
         End If
 
-        Dim response = AppServices.Instance.EmployeeSV.Execute(DataIntent.GetList)
+        Dim response = AppServices.Instance.EmployeeSV.GetList()
         _employees = If(response.IsSuccess, response.Data, New List(Of Employee))
         ui_employee.DataSource = _employees.Select(Function(x) New With {.Display = $"{x.code} - {x.name}", .Value = x}).ToList()
         ui_employee.DisplayMember = "Display"
         ui_employee.ValueMember = "Value"
 
-        response = AppServices.Instance.Leave_CatSV.Execute(DataIntent.GetList)
+        response = AppServices.Instance.Leave_CatSV.GetList()
         _leaveTypes = If(response.IsSuccess, response.Data, New List(Of Leave_Cat))
         ui_leave_type.DataSource = _leaveTypes.Select(Function(x) New With {.Display = $"{x.code} - {x.name}", .Value = x}).ToList()
         ui_leave_type.DisplayMember = "Display"

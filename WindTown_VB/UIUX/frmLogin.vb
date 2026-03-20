@@ -52,7 +52,7 @@ Public Class frmLogin
     Private Function CheckLogin(username As String, password As String) As ServiceResponse(Of Object)
 
 
-        Dim result = AppServices.Instance.AccountSV.Execute(DataIntent.Login, New Account With {.user = username, .password = password})
+        Dim result = AppServices.Instance.AccountSV.Login(New Account With {.user = username, .password = password})
         Return result
     End Function
 

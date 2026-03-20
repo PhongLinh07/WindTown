@@ -61,7 +61,7 @@ Public Class frmPhongBan
     End Sub
 
     Private Sub LoadData(Optional keyword As String = Nothing)
-        Dim deptResp = _deptService.Execute(DataIntent.GetList)
+        Dim deptResp = _deptService.GetList()
         If deptResp.IsSuccess Then
             Dim data = TryCast(deptResp.Data, IEnumerable(Of Department))
             _departments = If(data IsNot Nothing, data.ToList(), New List(Of Department)())
@@ -70,7 +70,7 @@ Public Class frmPhongBan
             MessageBox.Show(deptResp.Message, "Lỗi dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End If
 
-        Dim jobResp = _jobService.Execute(DataIntent.GetList)
+        Dim jobResp = _jobService.GetList()
         If jobResp.IsSuccess Then
             Dim data = TryCast(jobResp.Data, IEnumerable(Of Job))
             _jobs = If(data IsNot Nothing, data.ToList(), New List(Of Job)())
@@ -232,7 +232,7 @@ Public Class frmPhongBan
         Dim data As New Department()
         If Not ShowDepartmentDialog(data, True) Then Return
 
-        Dim result = _deptService.Execute(DataIntent.Insert, data)
+        Dim result = _deptService.Insert(data)
         If result.IsSuccess Then
             MessageBox.Show("Thêm phòng ban thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information)
             LoadData(tbxSearch.Text)
@@ -246,7 +246,7 @@ Public Class frmPhongBan
         Dim data = Utils.DeepClone(dept)
         If Not ShowDepartmentDialog(data, False) Then Return
 
-        Dim result = _deptService.Execute(DataIntent.Update, data)
+        Dim result = _deptService.Update(data)
         If result.IsSuccess Then
             MessageBox.Show("Cập nhật phòng ban thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information)
             LoadData(tbxSearch.Text)
@@ -259,7 +259,7 @@ Public Class frmPhongBan
         If dept Is Nothing Then Return
         If MessageBox.Show($"Xác nhận xóa phòng ban '{dept.name}'?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.No Then Return
 
-        Dim result = _deptService.Execute(DataIntent.SoftDeleteMany, New List(Of Department) From {dept})
+        Dim result = _deptService.Delete(New List(Of Department) From {dept})
         If result.IsSuccess Then
             MessageBox.Show("Xóa phòng ban thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information)
             LoadData(tbxSearch.Text)
@@ -273,7 +273,7 @@ Public Class frmPhongBan
         data.Department = dept
         If Not ShowJobDialog(data, True) Then Return
 
-        Dim result = _jobService.Execute(DataIntent.Insert, data)
+        Dim result = _jobService.Insert(data)
         If result.IsSuccess Then
             MessageBox.Show("Thêm công việc thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information)
             LoadData(tbxSearch.Text)
@@ -287,7 +287,7 @@ Public Class frmPhongBan
         Dim data = Utils.DeepClone(job)
         If Not ShowJobDialog(data, False) Then Return
 
-        Dim result = _jobService.Execute(DataIntent.Update, data)
+        Dim result = _jobService.Update(data)
         If result.IsSuccess Then
             MessageBox.Show("Cập nhật công việc thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information)
             LoadData(tbxSearch.Text)
@@ -300,7 +300,7 @@ Public Class frmPhongBan
         If job Is Nothing Then Return
         If MessageBox.Show($"Xác nhận xóa công việc '{job.name}'?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.No Then Return
 
-        Dim result = _jobService.Execute(DataIntent.SoftDeleteMany, New List(Of Job) From {job})
+        Dim result = _jobService.Delete(New List(Of Job) From {job})
         If result.IsSuccess Then
             MessageBox.Show("Xóa công việc thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information)
             LoadData(tbxSearch.Text)

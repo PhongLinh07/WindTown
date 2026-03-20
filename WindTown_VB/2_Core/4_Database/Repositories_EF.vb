@@ -8,6 +8,12 @@ Public Class DepartmentRepository
     Sub New(ctx As AppDbContext)
         MyBase.New(ctx)
     End Sub
+    ' ✅ Override BaseQuery — load kèm Jobs
+    Protected Overrides Function BaseQuery() As IQueryable(Of Department)
+        Return _ctx.Departments _
+                   .Include(Function(d) d.Jobs) _
+                   .AsNoTracking()
+    End Function
 End Class
 
 Public Class JobRepository

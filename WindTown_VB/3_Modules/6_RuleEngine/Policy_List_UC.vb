@@ -22,7 +22,7 @@ Public Class Policy_List_UC
         Dim crud As New Policy_CRUD_Frm(data)
         If crud.ShowDialog() = DialogResult.OK Then
 
-            Dim result = _service.Execute(DataIntent.Update, data)
+            Dim result = _service.Update(data)
 
             If result.IsSuccess Then
                 MessageBox.Show("Update succeeded", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information)
@@ -40,7 +40,7 @@ Public Class Policy_List_UC
         Dim crud As New Policy_CRUD_Frm(data, True)
         If crud.ShowDialog() = DialogResult.OK Then
 
-            Dim result = _service.Execute(DataIntent.Insert, data)
+            Dim result = _service.Insert(data)
 
             If result.IsSuccess Then
                 MessageBox.Show("Insert succeeded", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information)
@@ -67,7 +67,7 @@ Public Class Policy_List_UC
                                                 Where(Function(x) x IsNot Nothing).
                                                 ToList()
 
-        Dim result = _service.Execute(DataIntent.SoftDeleteMany, items)
+        Dim result = _service.Delete(items)
 
         If result.IsSuccess Then
             MessageBox.Show("Delete succeeded", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information)

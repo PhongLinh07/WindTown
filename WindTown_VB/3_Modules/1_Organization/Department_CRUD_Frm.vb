@@ -1,5 +1,5 @@
 Public Class Department_CRUD_Frm
-    Inherits BaseACRUDForm
+
     Protected _data As Department
 
 
@@ -30,7 +30,7 @@ Public Class Department_CRUD_Frm
     Protected Overrides Function SyncUIToData() As Boolean
 
         If String.IsNullOrWhiteSpace(ui_code.Text) Then
-            MessageBox.Show("Code cannot be empty")
+            MessageBox.Show("Mã phòng ban không hợp lệ!")
             ui_code.Focus()
             Return False
         End If
@@ -41,13 +41,11 @@ Public Class Department_CRUD_Frm
             Return False
         End If
 
+
         _data.code = ui_code.Text.Trim()
         _data.name = ui_name.Text.Trim()
         _data.note = ui_note.Text
-
-        If ui_status.SelectedValue IsNot Nothing Then
-            _data.status = ui_status.SelectedValue.ToString()
-        End If
+        _data.status = CInt(ui_status.SelectedValue)
 
         Return True
     End Function

@@ -32,7 +32,7 @@ Public Class Account_CRUD_Frm
             Return
         End If
 
-        Dim response = AppServices.Instance.EmployeeSV.Execute(DataIntent.GetEmployeesWithoutAccount)
+        Dim response = AppServices.Instance.EmployeeSV.GetWithoutAccount()
         _employeesWithoutAccount = If(response.IsSuccess, response.Data, New List(Of Employee))
 
         ui_employee.DataSource =

@@ -32,7 +32,7 @@ Public Class Position_CRUD_Frm
         If isCreate = False Then Return
 
         ' 2. Load Hợp đồng chưa có vị trí
-        Dim response = AppServices.Instance.ContractSV.Execute(DataIntent.GetContractsWithoutPosition)
+        Dim response = AppServices.Instance.ContractSV.GetWithoutPosition()
         _contracsWithoutPosition = If(response.IsSuccess, response.Data, New List(Of Contract))
 
         If (_contracsWithoutPosition.Count = 0) Then
@@ -51,7 +51,7 @@ Public Class Position_CRUD_Frm
         ui_employee.ValueMember = "Value"
 
         ' 3. Load Job (Công việc)
-        Dim jobResponse = AppServices.Instance.JobSV.Execute(DataIntent.GetList)
+        Dim jobResponse = AppServices.Instance.JobSV.GetList()
         _jobs = If(jobResponse.IsSuccess, jobResponse.Data, New List(Of Job))
 
         ' SỬA LỖI: ValueMember không được để trống
@@ -60,7 +60,7 @@ Public Class Position_CRUD_Frm
         ui_job.ValueMember = "Value"
 
         ' 4. Load toàn bộ Salary Multiplier (Bảng ma trận Job/Level)
-        Dim smResponse = AppServices.Instance.Salary_MultSV.Execute(DataIntent.GetList)
+        Dim smResponse = AppServices.Instance.Salary_MultSV.GetList()
         _salary_mult_list = If(smResponse.IsSuccess, smResponse.Data, New List(Of Salary_Mult))
 
         ' Level sẽ được nạp động dựa vào Job qua sự kiện SelectedIndexChanged

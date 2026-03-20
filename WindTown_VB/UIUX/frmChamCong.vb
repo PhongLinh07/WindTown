@@ -677,7 +677,7 @@ Friend Class ChamCongDataModel
     Private ReadOnly _nhanVienService = AppServices.Instance.EmployeeSV
 
     Public Function TaiDanhSachChamCong() As List(Of Attendance)
-        Dim response = _chamCongService.Execute(DataIntent.GetList)
+        Dim response = _chamCongService.GetList()
         If response.IsSuccess Then
             Dim data = TryCast(response.Data, IEnumerable(Of Attendance))
             Return If(data IsNot Nothing, data.ToList(), New List(Of Attendance)())
@@ -686,7 +686,7 @@ Friend Class ChamCongDataModel
     End Function
 
     Public Function TaiDanhSachNhanVien() As List(Of Employee)
-        Dim response = _nhanVienService.Execute(DataIntent.GetList)
+        Dim response = _nhanVienService.GetList()
         If response.IsSuccess Then
             Dim data = TryCast(response.Data, IEnumerable(Of Employee))
             Return If(data IsNot Nothing, data.ToList(), New List(Of Employee)())
@@ -695,15 +695,15 @@ Friend Class ChamCongDataModel
     End Function
 
     Public Function TaoChamCong(data As Attendance) As ServiceResponse(Of Object)
-        Return _chamCongService.Execute(DataIntent.Insert, data)
+        Return _chamCongService.Insert(data)
     End Function
 
     Public Function CapNhatChamCong(data As Attendance) As ServiceResponse(Of Object)
-        Return _chamCongService.Execute(DataIntent.Update, data)
+        Return _chamCongService.Update(data)
     End Function
 
     Public Function XoaChamCong(items As List(Of Attendance)) As ServiceResponse(Of Object)
-        Return _chamCongService.Execute(DataIntent.SoftDeleteMany, items)
+        Return _chamCongService.Delete(items)
     End Function
 
 End Class

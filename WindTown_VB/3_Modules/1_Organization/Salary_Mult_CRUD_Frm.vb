@@ -29,13 +29,13 @@ Public Class Salary_Mult_CRUD_Frm
         ui_status.DisplayMember = "Value"
         ui_status.ValueMember = "Key"
 
-        Dim response = AppServices.Instance.JobSV.Execute(DataIntent.GetList)
+        Dim response = AppServices.Instance.JobSV.GetList()
         _jobs = If(response.IsSuccess, response.Data, New List(Of Job))
         ui_job.DataSource = _jobs.Select(Function(x) New With {.Display = $"{x.job_UI}", .Value = x}).ToList()
         ui_job.DisplayMember = "Display"
         ui_job.ValueMember = "Value"
 
-        response = AppServices.Instance.LevelSV.Execute(DataIntent.GetList)
+        response = AppServices.Instance.LevelSV.GetList()
         _lvls = If(response.IsSuccess, response.Data, New List(Of Level))
         ui_level.DataSource = _lvls.Select(Function(x) New With {.Display = $"{x.level_UI}", .Value = x}).ToList()
         ui_level.DisplayMember = "Display"

@@ -37,7 +37,7 @@ Public Class Assignment_CRUD_Frm
 
         ' Lấy tất cả Position chưa có Assignment nào (có thể đang có Assignment nhưng không có Active)
 
-        Dim response = AppServices.Instance.PositionSV.Execute(DataIntent.GetPositionsWithoutAssignment)
+        Dim response = AppServices.Instance.PositionSV.GetWithoutAssignment()
 
         _positionsWithoutAssignment = If(response.IsSuccess, response.Data, New List(Of Position))
 
@@ -51,7 +51,7 @@ Public Class Assignment_CRUD_Frm
         ui_employee.DisplayMember = "Display"
         ui_employee.ValueMember = "Value"
 
-        response = AppServices.Instance.ProjectSV.Execute(DataIntent.GetProjectsIsActive)
+        response = AppServices.Instance.ProjectSV.GetActive()
 
         _projectsIsActive = If(response.IsSuccess, response.Data, New List(Of Project))
         If (_projectsIsActive.Count = 0) Then

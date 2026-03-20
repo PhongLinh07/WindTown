@@ -42,7 +42,7 @@ Public Class NhanSuTransferService
 
             If request.UseJob Then
                 activePosition.Salary_Mult.Job = request.TargetJob
-                Dim response = _positionService.Execute(DataIntent.Update, activePosition)
+                Dim response = _positionService.Update(activePosition)
                 If response Is Nothing OrElse Not response.IsSuccess Then
                     result.FailCount += 1
                 Else
@@ -53,7 +53,7 @@ Public Class NhanSuTransferService
 
                 If request.PreferNullJob Then
                     activePosition.Salary_Mult.Job = Nothing
-                    Dim nullResponse = _positionService.Execute(DataIntent.Update, activePosition)
+                    Dim nullResponse = _positionService.Update(activePosition)
                     If nullResponse IsNot Nothing AndAlso nullResponse.IsSuccess Then
                         result.UpdatedCount += 1
                         handled = True
@@ -68,7 +68,7 @@ Public Class NhanSuTransferService
                     End If
 
                     activePosition.Salary_Mult.Job = fallbackJob
-                    Dim fallbackResponse = _positionService.Execute(DataIntent.Update, activePosition)
+                    Dim fallbackResponse = _positionService.Update(activePosition)
                     If fallbackResponse Is Nothing OrElse Not fallbackResponse.IsSuccess Then
                         result.FailCount += 1
                     Else

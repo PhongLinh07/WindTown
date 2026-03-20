@@ -103,7 +103,7 @@ Public Class Pay_Period_CRUD_Frm
 
         _data.start_date = ui_start_date.Value
         _data.end_date = ui_end_date.Value
-        Dim response = AppServices.Instance.Pay_PeriodSV.Execute(DataIntent.StandardHoursCalculator, _data)
+        Dim response = AppServices.Instance.Pay_PeriodSV.CalcStdHours(_data)
 
         If response.IsSuccess Then
             ui_std_hours.Value = response.Data
@@ -125,7 +125,7 @@ Public Class Pay_Period_CRUD_Frm
             Return
         End If
 
-        Dim response = AppServices.Instance.PayrollSV.Execute(DataIntent.Init_Payrolls, _data)
+        Dim response = AppServices.Instance.PayrollSV.Init_Payrolls(_data)
 
         If response.IsSuccess Then
             MessageBox.Show("Khởi tạo bảng lương của chu kỳ thành công", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information)
@@ -145,7 +145,7 @@ Public Class Pay_Period_CRUD_Frm
             Return
         End If
 
-        Dim response = AppServices.Instance.PayrollSV.Execute(DataIntent.Aggregation_Data_One_Period, _data)
+        Dim response = AppServices.Instance.PayrollSV.Aggregation_Data_One_Period(_data)
 
         If response.IsSuccess Then
             MessageBox.Show("Tổng hợp lương cho kỳ lương thành công", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information)
@@ -165,7 +165,7 @@ Public Class Pay_Period_CRUD_Frm
         End If
 
 
-        Dim response = AppServices.Instance.PayrollSV.Execute(DataIntent.Cal_Net_Salary_One_Period, _data)
+        Dim response = AppServices.Instance.PayrollSV.CalcNetSalaryByPeriod(_data)
 
         If response.IsSuccess Then
             MessageBox.Show("Tính lương cho Kỳ lương thành công", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information)

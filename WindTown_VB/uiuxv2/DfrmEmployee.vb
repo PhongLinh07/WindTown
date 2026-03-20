@@ -45,12 +45,12 @@ Public Class formEmployee
     End Sub
 
     Private Sub LoadData()
-        Dim resEmp = _empSv.Execute(DataIntent.GetList)
+        Dim resEmp = _empSv.GetList()
         _allEmps = If(resEmp.IsSuccess,
                       CType(resEmp.Data, IEnumerable(Of Employee)).ToList(),
                       New List(Of Employee)())
 
-        Dim resCtr = _ctrSv.Execute(DataIntent.GetList)
+        Dim resCtr = _ctrSv.GetList()
         _allContracts = If(resCtr.IsSuccess,
                            CType(resCtr.Data, IEnumerable(Of Contract)).ToList(),
                            New List(Of Contract)())
@@ -323,7 +323,7 @@ Public Class formEmployee
                 .note = txtNote.Text.Trim(),
                 .status = 1
             }
-            Dim res = _empSv.Execute(DataIntent.Insert, emp)
+            Dim res = _empSv.Insert(emp)
             MessageBox.Show(res.Message, "Thông báo", MessageBoxButtons.OK,
                             If(res.IsSuccess, MessageBoxIcon.Information, MessageBoxIcon.Error))
         Else
@@ -339,7 +339,7 @@ Public Class formEmployee
             emp.phone = txtPhone.Text.Trim()
             emp.bank = txtBank.Text.Trim()
             emp.note = txtNote.Text.Trim()
-            Dim res = _empSv.Execute(DataIntent.Update, emp)
+            Dim res = _empSv.Update(emp)
             MessageBox.Show(res.Message, "Thông báo", MessageBoxButtons.OK,
                             If(res.IsSuccess, MessageBoxIcon.Information, MessageBoxIcon.Error))
         End If
@@ -353,7 +353,7 @@ Public Class formEmployee
         If emp Is Nothing Then Return
         If MessageBox.Show($"Xóa nhân viên ""{emp.name}""?", "Xác nhận",
                            MessageBoxButtons.YesNo, MessageBoxIcon.Warning) = DialogResult.Yes Then
-            _empSv.Execute(DataIntent.SoftDeleteMany, New List(Of Employee) From {emp})
+            _empSv.Delete(New List(Of Employee) From {emp})
             _selectedId = -1
             ClearForm()
             LoadData()

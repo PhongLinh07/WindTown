@@ -46,7 +46,7 @@ Public Class Payroll_CRUD_Frm
         End If
 
         ' Lấy tất cả Position chưa có Assignment nào (có thể đang có Assignment nhưng không có Active)
-        Dim response = AppServices.Instance.PositionSV.Execute(DataIntent.GetList)
+        Dim response = AppServices.Instance.PositionSV.GetList()
 
         _positions = If(response.IsSuccess, response.Data, New List(Of Position))
 
@@ -60,7 +60,7 @@ Public Class Payroll_CRUD_Frm
         ui_employee.DisplayMember = "Display"
         ui_employee.ValueMember = "Value"
 
-        response = AppServices.Instance.Pay_PeriodSV.Execute(DataIntent.GetList)
+        response = AppServices.Instance.Pay_PeriodSV.GetList()
 
         _payPeriod = If(response.IsSuccess, response.Data, New List(Of Pay_Period))
         If (_payPeriod.Count = 0) Then
@@ -206,7 +206,7 @@ Public Class Payroll_CRUD_Frm
             Return
         End If
 
-        Dim response = AppServices.Instance.PayrollSV.Execute(DataIntent.Aggregation_Data_One_Payroll, _data)
+        Dim response = AppServices.Instance.PayrollSV.Aggregation_Data_One_Payroll(_data)
 
         If response.IsSuccess Then
             MessageBox.Show("Tổng hợp lương cho bảng lương thành công", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information)
@@ -226,7 +226,7 @@ Public Class Payroll_CRUD_Frm
             Return
         End If
 
-        Dim response = AppServices.Instance.PayrollSV.Execute(DataIntent.Cal_Net_Salary_One_Payroll, _data)
+        Dim response = AppServices.Instance.PayrollSV.CalcNetSalary(_data)
 
         If response.IsSuccess Then
             MessageBox.Show("Tính lương cho bảng lương thành công", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information)

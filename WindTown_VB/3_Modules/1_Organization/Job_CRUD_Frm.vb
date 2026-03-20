@@ -37,7 +37,7 @@ Public Class Job_CRUD_Frm
     End Sub
 
     Private Sub InitComboBox()
-        Dim response = AppServices.Instance.DepartmentSV.Execute(DataIntent.GetList)
+        Dim response = AppServices.Instance.DepartmentSV.GetList()
         _deparments = If(response.IsSuccess, response.Data, New List(Of Department))
 
         ui_department.DataSource =

@@ -6,28 +6,25 @@ Public Class BaseList_UC
     Protected _service As IBaseService
     Protected _bindingSource As New BindingSource()
 
-    ' user for mode design, tránh lỗi khi kéo thả control lên Form
     Public Sub New()
         InitializeComponent()
     End Sub
 
     Public Sub New(service As IBaseService, tag As String, title As String)
         InitializeComponent()
-        ' Thiết lập cơ bản cho Form
+
         Me.Tag = tag
-        Me.Text = "Quản lý " & title
+        Me.Text = "Danh mục " & title
         _service = service
 
     End Sub
 
     Protected Sub Init(modelType As Type)
         GridHelper.SetupGrid(_dgv, modelType)
-
         LoadData()
     End Sub
-    ' Cấu hình DataGridView (ẩn cột id, tự động điều chỉnh kích thước cột...)
-    Private Sub ConfigDGV()
 
+    Private Sub ConfigDGV()
     End Sub
     Public Sub Refreash()
         LoadData()
@@ -36,7 +33,7 @@ Public Class BaseList_UC
     ' load data từ service và gán vào DataGridView thông qua BindingSource để hỗ trợ tính năng lọc (Search)
     Protected Overridable Sub LoadData()
         _dgv.ClearSelection()
-        Dim response = _service.Execute(DataIntent.GetList)
+        Dim response = _service.GetList()
         If response.IsSuccess Then
             ' Gán danh sách vào BindingSource để hỗ trợ lọc (Search)
             _bindingSource.DataSource = response.Data

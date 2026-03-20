@@ -16,6 +16,7 @@ Public Class Department
 #Region "Navigation"
     <Browsable(False)>
     Public Property Jobs As ICollection(Of Job)
+
 #End Region
 
 #Region "Field"
@@ -33,6 +34,12 @@ Public Class Department
 #End Region
 
 #Region "Field Display"
+    <NotMapped> <DisplayName("Tổng công việc")> <Display(Order:=3)>
+    Public ReadOnly Property job_UI As Integer
+        Get
+            Return If(Jobs IsNot Nothing, Jobs.Count(), 0)
+        End Get
+    End Property
     <NotMapped> <DisplayName("Trạng thái")> <Display(Order:=3)>
     Public ReadOnly Property status_UI As String
         Get

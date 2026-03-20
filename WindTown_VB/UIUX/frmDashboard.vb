@@ -193,7 +193,7 @@ Public Class frmDashboard
             If detailForm.ShowDialog() <> DialogResult.OK Then Return
         End Using
 
-        Dim response = _employeeService.Execute(DataIntent.Insert, newEmployee)
+        Dim response = _employeeService.Insert(newEmployee)
         If response Is Nothing OrElse Not response.IsSuccess Then
             MessageBox.Show("Thêm nhân viên thành công: " & If(response?.Message, "Lỗi không xác định."), "Lỗi")
             Return

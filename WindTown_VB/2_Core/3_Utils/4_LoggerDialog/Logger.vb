@@ -25,6 +25,7 @@ Public Class Logger
 
             _form = New LoggerForm()
             _form.Show()
+            _form.TopLevel = True
 
         Else
 

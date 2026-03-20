@@ -29,7 +29,7 @@ Public Class Contract_CRUD_Frm
             Return
         End If
 
-        Dim response = AppServices.Instance.EmployeeSV.Execute(DataIntent.GetEmployeesWithoutContract) 'Những nhân viên đang ko có tài hợp đồng or hợp đồng đã hết hạn
+        Dim response = AppServices.Instance.EmployeeSV.GetWithoutContract() 'Những nhân viên đang ko có tài hợp đồng or hợp đồng đã hết hạn
 
         If (response.IsSuccess = False) Then
             MessageBox.Show("Failed to load employees: " & response.Message)

@@ -27,7 +27,7 @@ Public Class Pay_Item_List_UC
             Return
         End If
 
-        Dim response = _service.Execute(DataIntent.GetPayItemByPayroll, _payroll)
+        Dim response = AppServices.Instance.Pay_ItemSV.GetByPayroll(_payroll)
         If response.IsSuccess Then
             ' Gán danh sách vào BindingSource để hỗ trợ lọc (Search)
             _bindingSource.DataSource = CType(response.Data, IEnumerable(Of Pay_Item)).OrderBy(Function(x) x.priority)
@@ -54,7 +54,7 @@ Public Class Pay_Item_List_UC
         Dim crud As New Pay_Item_CRUD_Frm(data)
         If crud.ShowDialog() = DialogResult.OK Then
 
-            Dim result = _service.Execute(DataIntent.Update, data)
+            Dim result = _service.Update(data)
 
             If result.IsSuccess Then
                 MessageBox.Show("Update succeeded", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information)
@@ -72,7 +72,7 @@ Public Class Pay_Item_List_UC
         Dim crud As New Pay_Item_CRUD_Frm(data, True)
         If crud.ShowDialog() = DialogResult.OK Then
 
-            Dim result = _service.Execute(DataIntent.Insert, data)
+            Dim result = _service.Insert(data)
 
             If result.IsSuccess Then
                 MessageBox.Show("Insert succeeded", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information)
@@ -99,7 +99,7 @@ Public Class Pay_Item_List_UC
                                                 Where(Function(x) x IsNot Nothing).
                                                 ToList()
 
-        Dim result = _service.Execute(DataIntent.SoftDeleteMany, items)
+        Dim result = _service.Delete(items)
 
         If result.IsSuccess Then
             MessageBox.Show("Delete succeeded", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information)

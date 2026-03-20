@@ -11,8 +11,8 @@ Public Class Organization_UC
         Dim jobSV = AppServices.Instance.JobSV
 
         ' Sửa lại 2 dòng này:
-        Dim listDept As List(Of Department) = DirectCast(deptSV.Execute(DataIntent.GetList).Data, List(Of Department))
-        Dim listJob As List(Of Job) = DirectCast(jobSV.Execute(DataIntent.GetList).Data, List(Of Job))
+        Dim listDept As List(Of Department) = DirectCast(deptSV.GetList().Data, List(Of Department))
+        Dim listJob As List(Of Job) = DirectCast(jobSV.GetList().Data, List(Of Job))
 
         tree_org.Nodes.Clear()
 
