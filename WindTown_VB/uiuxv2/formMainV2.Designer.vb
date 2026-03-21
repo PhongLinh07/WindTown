@@ -29,6 +29,15 @@ Partial Class formMainV2
         Me.btnSettings = New System.Windows.Forms.Button()
         Me.btnPayPeriod = New System.Windows.Forms.Button()
         Me.btnContract = New System.Windows.Forms.Button()
+        Me.btnPosition = New System.Windows.Forms.Button()
+        Me.btnJob = New System.Windows.Forms.Button()
+        Me.btnLevel = New System.Windows.Forms.Button()
+        Me.btnSalaryMult = New System.Windows.Forms.Button()
+        Me.btnLeave = New System.Windows.Forms.Button()
+        Me.btnLeaveCategory = New System.Windows.Forms.Button()
+        Me.btnHoliday = New System.Windows.Forms.Button()
+        Me.btnAssignment = New System.Windows.Forms.Button()
+        Me.btnPolicy = New System.Windows.Forms.Button()
         Me.pnlSidebar = New System.Windows.Forms.Panel()
         Me.pnlSbNav = New System.Windows.Forms.Panel()
         Me.lblSec2 = New System.Windows.Forms.Label()
@@ -126,7 +135,7 @@ Partial Class formMainV2
         Me.btnAttend.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnAttend.Font = New System.Drawing.Font("Microsoft YaHei UI", 9.5!)
         Me.btnAttend.ForeColor = System.Drawing.Color.FromArgb(CType(CType(123, Byte), Integer), CType(CType(139, Byte), Integer), CType(CType(178, Byte), Integer))
-        Me.btnAttend.Location = New System.Drawing.Point(0, 190)
+        Me.btnAttend.Location = New System.Drawing.Point(0, 232)
         Me.btnAttend.Name = "btnAttend"
         Me.btnAttend.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
         Me.btnAttend.Size = New System.Drawing.Size(200, 42)
@@ -175,10 +184,10 @@ Partial Class formMainV2
         Me.btnProject.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
         Me.btnProject.Size = New System.Drawing.Size(200, 42)
         Me.btnProject.TabIndex = 2
-        Me.btnProject.Tag = "  Chính sách"
-        Me.btnProject.Text = "  Chính sách"
+        Me.btnProject.Tag = "Dự án"
+        Me.btnProject.Text = "  Dự án"
         Me.btnProject.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.tipNav.SetToolTip(Me.btnProject, "Chính sách")
+        Me.tipNav.SetToolTip(Me.btnProject, "Dự án")
         Me.btnProject.UseVisualStyleBackColor = False
         '
         'btnReport
@@ -269,6 +278,204 @@ Partial Class formMainV2
         Me.tipNav.SetToolTip(Me.btnContract, "Hợp đồng")
         Me.btnContract.UseVisualStyleBackColor = False
         '
+        'btnPosition
+        '
+        Me.btnPosition.BackColor = System.Drawing.Color.FromArgb(CType(CType(19, Byte), Integer), CType(CType(22, Byte), Integer), CType(CType(41, Byte), Integer))
+        Me.btnPosition.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnPosition.Dock = System.Windows.Forms.DockStyle.Top
+        Me.btnPosition.FlatAppearance.BorderSize = 0
+        Me.btnPosition.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(50, Byte), Integer), CType(CType(80, Byte), Integer))
+        Me.btnPosition.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(25, Byte), Integer), CType(CType(32, Byte), Integer), CType(CType(55, Byte), Integer))
+        Me.btnPosition.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnPosition.Font = New System.Drawing.Font("Microsoft YaHei UI", 9.5!)
+        Me.btnPosition.ForeColor = System.Drawing.Color.FromArgb(CType(CType(123, Byte), Integer), CType(CType(139, Byte), Integer), CType(CType(178, Byte), Integer))
+        Me.btnPosition.Location = New System.Drawing.Point(0, 148)
+        Me.btnPosition.Name = "btnPosition"
+        Me.btnPosition.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
+        Me.btnPosition.Size = New System.Drawing.Size(200, 42)
+        Me.btnPosition.TabIndex = 12
+        Me.btnPosition.Tag = "Vị trí"
+        Me.btnPosition.Text = "  Vị trí"
+        Me.btnPosition.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.tipNav.SetToolTip(Me.btnPosition, "Vị trí")
+        Me.btnPosition.UseVisualStyleBackColor = False
+        '
+        'btnJob
+        '
+        Me.btnJob.BackColor = System.Drawing.Color.FromArgb(CType(CType(19, Byte), Integer), CType(CType(22, Byte), Integer), CType(CType(41, Byte), Integer))
+        Me.btnJob.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnJob.Dock = System.Windows.Forms.DockStyle.Top
+        Me.btnJob.FlatAppearance.BorderSize = 0
+        Me.btnJob.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(50, Byte), Integer), CType(CType(80, Byte), Integer))
+        Me.btnJob.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(25, Byte), Integer), CType(CType(32, Byte), Integer), CType(CType(55, Byte), Integer))
+        Me.btnJob.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnJob.Font = New System.Drawing.Font("Microsoft YaHei UI", 9.5!)
+        Me.btnJob.ForeColor = System.Drawing.Color.FromArgb(CType(CType(123, Byte), Integer), CType(CType(139, Byte), Integer), CType(CType(178, Byte), Integer))
+        Me.btnJob.Location = New System.Drawing.Point(0, 232)
+        Me.btnJob.Name = "btnJob"
+        Me.btnJob.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
+        Me.btnJob.Size = New System.Drawing.Size(200, 42)
+        Me.btnJob.TabIndex = 13
+        Me.btnJob.Tag = "Chức danh"
+        Me.btnJob.Text = "  Chức danh"
+        Me.btnJob.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.tipNav.SetToolTip(Me.btnJob, "Chức danh")
+        Me.btnJob.UseVisualStyleBackColor = False
+        '
+        'btnLevel
+        '
+        Me.btnLevel.BackColor = System.Drawing.Color.FromArgb(CType(CType(19, Byte), Integer), CType(CType(22, Byte), Integer), CType(CType(41, Byte), Integer))
+        Me.btnLevel.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnLevel.Dock = System.Windows.Forms.DockStyle.Top
+        Me.btnLevel.FlatAppearance.BorderSize = 0
+        Me.btnLevel.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(50, Byte), Integer), CType(CType(80, Byte), Integer))
+        Me.btnLevel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(25, Byte), Integer), CType(CType(32, Byte), Integer), CType(CType(55, Byte), Integer))
+        Me.btnLevel.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnLevel.Font = New System.Drawing.Font("Microsoft YaHei UI", 9.5!)
+        Me.btnLevel.ForeColor = System.Drawing.Color.FromArgb(CType(CType(123, Byte), Integer), CType(CType(139, Byte), Integer), CType(CType(178, Byte), Integer))
+        Me.btnLevel.Location = New System.Drawing.Point(0, 274)
+        Me.btnLevel.Name = "btnLevel"
+        Me.btnLevel.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
+        Me.btnLevel.Size = New System.Drawing.Size(200, 42)
+        Me.btnLevel.TabIndex = 14
+        Me.btnLevel.Tag = "Cấp bậc"
+        Me.btnLevel.Text = "  Cấp bậc"
+        Me.btnLevel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.tipNav.SetToolTip(Me.btnLevel, "Cấp bậc")
+        Me.btnLevel.UseVisualStyleBackColor = False
+        '
+        'btnSalaryMult
+        '
+        Me.btnSalaryMult.BackColor = System.Drawing.Color.FromArgb(CType(CType(19, Byte), Integer), CType(CType(22, Byte), Integer), CType(CType(41, Byte), Integer))
+        Me.btnSalaryMult.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnSalaryMult.Dock = System.Windows.Forms.DockStyle.Top
+        Me.btnSalaryMult.FlatAppearance.BorderSize = 0
+        Me.btnSalaryMult.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(50, Byte), Integer), CType(CType(80, Byte), Integer))
+        Me.btnSalaryMult.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(25, Byte), Integer), CType(CType(32, Byte), Integer), CType(CType(55, Byte), Integer))
+        Me.btnSalaryMult.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnSalaryMult.Font = New System.Drawing.Font("Microsoft YaHei UI", 9.5!)
+        Me.btnSalaryMult.ForeColor = System.Drawing.Color.FromArgb(CType(CType(123, Byte), Integer), CType(CType(139, Byte), Integer), CType(CType(178, Byte), Integer))
+        Me.btnSalaryMult.Location = New System.Drawing.Point(0, 316)
+        Me.btnSalaryMult.Name = "btnSalaryMult"
+        Me.btnSalaryMult.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
+        Me.btnSalaryMult.Size = New System.Drawing.Size(200, 42)
+        Me.btnSalaryMult.TabIndex = 15
+        Me.btnSalaryMult.Tag = "Hệ số lương"
+        Me.btnSalaryMult.Text = "  Hệ số lương"
+        Me.btnSalaryMult.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.tipNav.SetToolTip(Me.btnSalaryMult, "Hệ số lương")
+        Me.btnSalaryMult.UseVisualStyleBackColor = False
+        '
+        'btnLeave
+        '
+        Me.btnLeave.BackColor = System.Drawing.Color.FromArgb(CType(CType(19, Byte), Integer), CType(CType(22, Byte), Integer), CType(CType(41, Byte), Integer))
+        Me.btnLeave.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnLeave.Dock = System.Windows.Forms.DockStyle.Top
+        Me.btnLeave.FlatAppearance.BorderSize = 0
+        Me.btnLeave.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(50, Byte), Integer), CType(CType(80, Byte), Integer))
+        Me.btnLeave.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(25, Byte), Integer), CType(CType(32, Byte), Integer), CType(CType(55, Byte), Integer))
+        Me.btnLeave.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnLeave.Font = New System.Drawing.Font("Microsoft YaHei UI", 9.5!)
+        Me.btnLeave.ForeColor = System.Drawing.Color.FromArgb(CType(CType(123, Byte), Integer), CType(CType(139, Byte), Integer), CType(CType(178, Byte), Integer))
+        Me.btnLeave.Location = New System.Drawing.Point(0, 400)
+        Me.btnLeave.Name = "btnLeave"
+        Me.btnLeave.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
+        Me.btnLeave.Size = New System.Drawing.Size(200, 42)
+        Me.btnLeave.TabIndex = 16
+        Me.btnLeave.Tag = "Nghỉ phép"
+        Me.btnLeave.Text = "  Nghỉ phép"
+        Me.btnLeave.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.tipNav.SetToolTip(Me.btnLeave, "Nghỉ phép")
+        Me.btnLeave.UseVisualStyleBackColor = False
+        '
+        'btnLeaveCategory
+        '
+        Me.btnLeaveCategory.BackColor = System.Drawing.Color.FromArgb(CType(CType(19, Byte), Integer), CType(CType(22, Byte), Integer), CType(CType(41, Byte), Integer))
+        Me.btnLeaveCategory.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnLeaveCategory.Dock = System.Windows.Forms.DockStyle.Top
+        Me.btnLeaveCategory.FlatAppearance.BorderSize = 0
+        Me.btnLeaveCategory.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(50, Byte), Integer), CType(CType(80, Byte), Integer))
+        Me.btnLeaveCategory.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(25, Byte), Integer), CType(CType(32, Byte), Integer), CType(CType(55, Byte), Integer))
+        Me.btnLeaveCategory.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnLeaveCategory.Font = New System.Drawing.Font("Microsoft YaHei UI", 9.5!)
+        Me.btnLeaveCategory.ForeColor = System.Drawing.Color.FromArgb(CType(CType(123, Byte), Integer), CType(CType(139, Byte), Integer), CType(CType(178, Byte), Integer))
+        Me.btnLeaveCategory.Location = New System.Drawing.Point(0, 442)
+        Me.btnLeaveCategory.Name = "btnLeaveCategory"
+        Me.btnLeaveCategory.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
+        Me.btnLeaveCategory.Size = New System.Drawing.Size(200, 42)
+        Me.btnLeaveCategory.TabIndex = 17
+        Me.btnLeaveCategory.Tag = "Loại nghỉ"
+        Me.btnLeaveCategory.Text = "  Loại nghỉ"
+        Me.btnLeaveCategory.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.tipNav.SetToolTip(Me.btnLeaveCategory, "Loại nghỉ")
+        Me.btnLeaveCategory.UseVisualStyleBackColor = False
+        '
+        'btnHoliday
+        '
+        Me.btnHoliday.BackColor = System.Drawing.Color.FromArgb(CType(CType(19, Byte), Integer), CType(CType(22, Byte), Integer), CType(CType(41, Byte), Integer))
+        Me.btnHoliday.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnHoliday.Dock = System.Windows.Forms.DockStyle.Top
+        Me.btnHoliday.FlatAppearance.BorderSize = 0
+        Me.btnHoliday.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(50, Byte), Integer), CType(CType(80, Byte), Integer))
+        Me.btnHoliday.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(25, Byte), Integer), CType(CType(32, Byte), Integer), CType(CType(55, Byte), Integer))
+        Me.btnHoliday.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnHoliday.Font = New System.Drawing.Font("Microsoft YaHei UI", 9.5!)
+        Me.btnHoliday.ForeColor = System.Drawing.Color.FromArgb(CType(CType(123, Byte), Integer), CType(CType(139, Byte), Integer), CType(CType(178, Byte), Integer))
+        Me.btnHoliday.Location = New System.Drawing.Point(0, 484)
+        Me.btnHoliday.Name = "btnHoliday"
+        Me.btnHoliday.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
+        Me.btnHoliday.Size = New System.Drawing.Size(200, 42)
+        Me.btnHoliday.TabIndex = 18
+        Me.btnHoliday.Tag = "Ngày lễ"
+        Me.btnHoliday.Text = "  Ngày lễ"
+        Me.btnHoliday.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.tipNav.SetToolTip(Me.btnHoliday, "Ngày lễ")
+        Me.btnHoliday.UseVisualStyleBackColor = False
+        '
+        'btnAssignment
+        '
+        Me.btnAssignment.BackColor = System.Drawing.Color.FromArgb(CType(CType(19, Byte), Integer), CType(CType(22, Byte), Integer), CType(CType(41, Byte), Integer))
+        Me.btnAssignment.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnAssignment.Dock = System.Windows.Forms.DockStyle.Top
+        Me.btnAssignment.FlatAppearance.BorderSize = 0
+        Me.btnAssignment.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(50, Byte), Integer), CType(CType(80, Byte), Integer))
+        Me.btnAssignment.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(25, Byte), Integer), CType(CType(32, Byte), Integer), CType(CType(55, Byte), Integer))
+        Me.btnAssignment.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnAssignment.Font = New System.Drawing.Font("Microsoft YaHei UI", 9.5!)
+        Me.btnAssignment.ForeColor = System.Drawing.Color.FromArgb(CType(CType(123, Byte), Integer), CType(CType(139, Byte), Integer), CType(CType(178, Byte), Integer))
+        Me.btnAssignment.Location = New System.Drawing.Point(0, 568)
+        Me.btnAssignment.Name = "btnAssignment"
+        Me.btnAssignment.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
+        Me.btnAssignment.Size = New System.Drawing.Size(200, 42)
+        Me.btnAssignment.TabIndex = 19
+        Me.btnAssignment.Tag = "Phân công"
+        Me.btnAssignment.Text = "  Phân công"
+        Me.btnAssignment.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.tipNav.SetToolTip(Me.btnAssignment, "Phân công")
+        Me.btnAssignment.UseVisualStyleBackColor = False
+        '
+        'btnPolicy
+        '
+        Me.btnPolicy.BackColor = System.Drawing.Color.FromArgb(CType(CType(19, Byte), Integer), CType(CType(22, Byte), Integer), CType(CType(41, Byte), Integer))
+        Me.btnPolicy.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnPolicy.Dock = System.Windows.Forms.DockStyle.Top
+        Me.btnPolicy.FlatAppearance.BorderSize = 0
+        Me.btnPolicy.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(50, Byte), Integer), CType(CType(80, Byte), Integer))
+        Me.btnPolicy.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(25, Byte), Integer), CType(CType(32, Byte), Integer), CType(CType(55, Byte), Integer))
+        Me.btnPolicy.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnPolicy.Font = New System.Drawing.Font("Microsoft YaHei UI", 9.5!)
+        Me.btnPolicy.ForeColor = System.Drawing.Color.FromArgb(CType(CType(123, Byte), Integer), CType(CType(139, Byte), Integer), CType(CType(178, Byte), Integer))
+        Me.btnPolicy.Location = New System.Drawing.Point(0, 758)
+        Me.btnPolicy.Name = "btnPolicy"
+        Me.btnPolicy.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
+        Me.btnPolicy.Size = New System.Drawing.Size(200, 42)
+        Me.btnPolicy.TabIndex = 20
+        Me.btnPolicy.Tag = "Chính sách"
+        Me.btnPolicy.Text = "  Chính sách"
+        Me.btnPolicy.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.tipNav.SetToolTip(Me.btnPolicy, "Chính sách")
+        Me.btnPolicy.UseVisualStyleBackColor = False
+        '
         'pnlSidebar
         '
         Me.pnlSidebar.BackColor = System.Drawing.Color.FromArgb(CType(CType(19, Byte), Integer), CType(CType(22, Byte), Integer), CType(CType(41, Byte), Integer))
@@ -284,14 +491,23 @@ Partial Class formMainV2
         'pnlSbNav
         '
         Me.pnlSbNav.BackColor = System.Drawing.Color.Transparent
-        Me.pnlSbNav.Controls.Add(Me.btnPayPeriod)
         Me.pnlSbNav.Controls.Add(Me.btnSettings)
         Me.pnlSbNav.Controls.Add(Me.btnReport)
-        Me.pnlSbNav.Controls.Add(Me.btnProject)
-        Me.pnlSbNav.Controls.Add(Me.lblSec2)
+        Me.pnlSbNav.Controls.Add(Me.btnPolicy)
+        Me.pnlSbNav.Controls.Add(Me.btnPayPeriod)
         Me.pnlSbNav.Controls.Add(Me.btnPayroll)
+        Me.pnlSbNav.Controls.Add(Me.lblSec2)
+        Me.pnlSbNav.Controls.Add(Me.btnAssignment)
+        Me.pnlSbNav.Controls.Add(Me.btnProject)
+        Me.pnlSbNav.Controls.Add(Me.btnHoliday)
+        Me.pnlSbNav.Controls.Add(Me.btnLeaveCategory)
+        Me.pnlSbNav.Controls.Add(Me.btnLeave)
         Me.pnlSbNav.Controls.Add(Me.btnAttend)
+        Me.pnlSbNav.Controls.Add(Me.btnSalaryMult)
+        Me.pnlSbNav.Controls.Add(Me.btnLevel)
+        Me.pnlSbNav.Controls.Add(Me.btnJob)
         Me.pnlSbNav.Controls.Add(Me.btnDepartment)
+        Me.pnlSbNav.Controls.Add(Me.btnPosition)
         Me.pnlSbNav.Controls.Add(Me.btnContract)
         Me.pnlSbNav.Controls.Add(Me.btnEmployee)
         Me.pnlSbNav.Controls.Add(Me.btnDash)
@@ -497,7 +713,7 @@ Partial Class formMainV2
         Me.btnDepartment.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnDepartment.Font = New System.Drawing.Font("Microsoft YaHei UI", 9.5!)
         Me.btnDepartment.ForeColor = System.Drawing.Color.FromArgb(CType(CType(123, Byte), Integer), CType(CType(139, Byte), Integer), CType(CType(178, Byte), Integer))
-        Me.btnDepartment.Location = New System.Drawing.Point(0, 148)
+        Me.btnDepartment.Location = New System.Drawing.Point(0, 190)
         Me.btnDepartment.Name = "btnDepartment"
         Me.btnDepartment.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
         Me.btnDepartment.Size = New System.Drawing.Size(200, 42)
@@ -579,4 +795,13 @@ Partial Class formMainV2
     Friend WithEvents picAvatar As PictureBox
     Friend WithEvents btnContract As Button
     Friend WithEvents btnDepartment As Button
+    Friend WithEvents btnPosition As Button
+    Friend WithEvents btnJob As Button
+    Friend WithEvents btnLevel As Button
+    Friend WithEvents btnSalaryMult As Button
+    Friend WithEvents btnLeave As Button
+    Friend WithEvents btnLeaveCategory As Button
+    Friend WithEvents btnHoliday As Button
+    Friend WithEvents btnAssignment As Button
+    Friend WithEvents btnPolicy As Button
 End Class

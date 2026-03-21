@@ -96,8 +96,9 @@ Public Class formMainV2
     ''' <summary>Đặt nút nav active, đổi màu, cập nhật tiêu đề trang.</summary>
     Private Sub SetActiveNav(btn As Button, pageTitle As String)
         ' Reset tất cả nút
-        Dim allBtns = {btnDash, btnEmployee, btnContract, btnAttend, btnPayroll,
-                       btnProject, btnReport, btnSettings, btnPayPeriod}
+        Dim allBtns = {btnDash, btnEmployee, btnContract, btnPosition, btnDepartment, btnJob, btnLevel, btnSalaryMult,
+                       btnAttend, btnLeave, btnLeaveCategory, btnHoliday, btnProject, btnAssignment,
+                       btnPayroll, btnPayPeriod, btnPolicy, btnReport, btnSettings}
         For Each b In allBtns
             b.BackColor = Color.FromArgb(19, 22, 41)
             b.ForeColor = Color.FromArgb(123, 139, 178)
@@ -118,46 +119,79 @@ Public Class formMainV2
 
     Private Sub btnEmployee_Click(sender As Object, e As EventArgs) Handles btnEmployee.Click
         SetActiveNav(btnEmployee, "Nhân viên")
-        NavigateTo(New formEmployee())   '← thêm khi có form
-        'ShowPlaceholder("Nhân viên")
+        NavigateTo(New formEmployee())   
     End Sub
     Private Sub btnDepartment_Click(sender As Object, e As EventArgs) Handles btnDepartment.Click
         SetActiveNav(btnDepartment, "Phòng ban")
         NavigateTo(New formDepartment())
     End Sub
+    Private Sub btnJob_Click(sender As Object, e As EventArgs) Handles btnJob.Click
+        SetActiveNav(btnJob, "Chức danh")
+        NavigateTo(New formJob())
+    End Sub
+    Private Sub btnLevel_Click(sender As Object, e As EventArgs) Handles btnLevel.Click
+        SetActiveNav(btnLevel, "Cấp bậc")
+        NavigateTo(New formLevel())
+    End Sub
+    Private Sub btnSalaryMult_Click(sender As Object, e As EventArgs) Handles btnSalaryMult.Click
+        SetActiveNav(btnSalaryMult, "Hệ số lương")
+        NavigateTo(New formSalaryMult())
+    End Sub
     Private Sub btnContract_Click(sender As Object, e As EventArgs) Handles btnContract.Click
         SetActiveNav(btnContract, "Hợp đồng")
         NavigateTo(New formContract())
     End Sub
+    Private Sub btnPosition_Click(sender As Object, e As EventArgs) Handles btnPosition.Click
+        SetActiveNav(btnPosition, "Vị trí")
+        NavigateTo(New formPosition())
+    End Sub
     Private Sub btnAttend_Click(sender As Object, e As EventArgs) Handles btnAttend.Click
         SetActiveNav(btnAttend, "Chấm công")
-        ShowPlaceholder("Chấm công")
+        NavigateTo(New formAttendance())
+    End Sub
+    Private Sub btnLeave_Click(sender As Object, e As EventArgs) Handles btnLeave.Click
+        SetActiveNav(btnLeave, "Nghỉ phép")
+        NavigateTo(New formLeave())
+    End Sub
+    Private Sub btnLeaveCategory_Click(sender As Object, e As EventArgs) Handles btnLeaveCategory.Click
+        SetActiveNav(btnLeaveCategory, "Loại nghỉ")
+        NavigateTo(New formLeaveCategory())
+    End Sub
+    Private Sub btnHoliday_Click(sender As Object, e As EventArgs) Handles btnHoliday.Click
+        SetActiveNav(btnHoliday, "Ngày lễ")
+        NavigateTo(New formHoliday())
     End Sub
 
     Private Sub btnPayroll_Click(sender As Object, e As EventArgs) Handles btnPayroll.Click
         SetActiveNav(btnPayroll, "Lương thưởng")
-        NavigateTo(New formPayroll())   '← thêm khi có form 
+        NavigateTo(New formPayroll())   
     End Sub
 
     Private Sub btnPayPeriod_Click(sender As Object, e As EventArgs) Handles btnPayPeriod.Click
         SetActiveNav(btnPayPeriod, "Kỳ lương")
         NavigateTo(New formPayPeriod())
     End Sub
-
     Private Sub btnProject_Click(sender As Object, e As EventArgs) Handles btnProject.Click
-        SetActiveNav(btnProject, "Chính sách")
+        SetActiveNav(btnProject, "Dự án")
+        NavigateTo(New formProject())
+    End Sub
+    Private Sub btnAssignment_Click(sender As Object, e As EventArgs) Handles btnAssignment.Click
+        SetActiveNav(btnAssignment, "Phân công")
+        NavigateTo(New formAssignment())
+    End Sub
+    Private Sub btnPolicy_Click(sender As Object, e As EventArgs) Handles btnPolicy.Click
+        SetActiveNav(btnPolicy, "Chính sách")
         NavigateTo(New formPolicy())
-        'ShowPlaceholder("Chính sách")
     End Sub
 
     Private Sub btnReport_Click(sender As Object, e As EventArgs) Handles btnReport.Click
         SetActiveNav(btnReport, "Báo cáo")
-        ShowPlaceholder("Báo cáo")
+        NavigateTo(New formReport())
     End Sub
 
     Private Sub btnSettings_Click(sender As Object, e As EventArgs) Handles btnSettings.Click
         SetActiveNav(btnSettings, "Cài đặt")
-        Dim frm As New frmSystem()
+        Dim frm As New formSystem()
         NavigateTo(frm)
     End Sub
 
@@ -222,12 +256,13 @@ Public Class formMainV2
             lblSbUser.Visible = True
             lblSbRole.Visible = True
 
-            For Each btn In {btnDash, btnEmployee, btnAttend, btnPayroll,
-                              btnProject, btnReport, btnSettings}
-                btnDepartment.Text = CStr(btnDepartment.Tag)
-                btnDepartment.TextAlign = ContentAlignment.MiddleLeft
-                btnDepartment.Padding = New Padding(10, 0, 0, 0)
-                btnDepartment.Size = New Size(200, 42)
+            For Each btn In {btnDash, btnEmployee, btnContract, btnPosition, btnDepartment, btnJob, btnLevel, btnSalaryMult,
+                              btnAttend, btnLeave, btnLeaveCategory, btnHoliday, btnProject, btnAssignment,
+                              btnPayroll, btnPayPeriod, btnPolicy, btnReport, btnSettings}
+                btn.Text = CStr(btn.Tag).Trim()
+                btn.TextAlign = ContentAlignment.MiddleLeft
+                btn.Padding = New Padding(10, 0, 0, 0)
+                btn.Size = New Size(200, 42)
             Next
         Else
             ' Collapsed: chỉ hiện icon chữ viết tắt, căn giữa
@@ -240,9 +275,12 @@ Public Class formMainV2
             lblSbUser.Visible = False
             lblSbRole.Visible = False
 
-            Dim icons() As String = {"DB", "NV", "PL", "CC", "LT", "TD", "BC", "CD"}
-            Dim btns = {btnDash, btnEmployee, btnAttend, btnPayroll,
-                        btnProject, btnReport, btnSettings}
+            Dim icons() As String = {"DB", "NV", "HD", "VT", "PB", "CD", "CB", "HS",
+                                     "CC", "NP", "LN", "NL", "DA", "PC",
+                                     "LT", "KL", "CS", "BC", "CD"}
+            Dim btns = {btnDash, btnEmployee, btnContract, btnPosition, btnDepartment, btnJob, btnLevel, btnSalaryMult,
+                        btnAttend, btnLeave, btnLeaveCategory, btnHoliday, btnProject, btnAssignment,
+                        btnPayroll, btnPayPeriod, btnPolicy, btnReport, btnSettings}
             For i = 0 To btns.Length - 1
                 btns(i).Text = icons(i)
                 btns(i).TextAlign = ContentAlignment.MiddleCenter
