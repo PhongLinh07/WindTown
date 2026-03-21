@@ -87,6 +87,7 @@ status INT DEFAULT 1
 
 CREATE TABLE salary_mult (
 id INT IDENTITY(1,1) PRIMARY KEY,
+code NVARCHAR(255) UNIQUE NOT NULL,
 job_id INT,
 level_id INT,
 mult DECIMAL(10, 2) NOT NULL,
@@ -350,29 +351,29 @@ INSERT INTO level (code, name, rank, note, status) VALUES
 -- Dữ liệu mẫu cho bảng salary_mult (Bảng trung gian định nghĩa Hệ số và Lương cơ bản)
 -- Cấu trúc JSON trong datas: {"mult": hệ_số, "base": lương_cơ_bản_triệu_vnđ}
 
-INSERT INTO salary_mult (job_id, level_id, mult, note, status) VALUES
-(1, 5, 5.0, N'CEO Level', 1),
-(2, 5, 4.5, N'CTO Level', 1),
-(3, 5, 4.2, N'CD Level', 1),
-(4, 2, 1.5, N'Junior GD', 1),
-(4, 3, 2.2, N'Middle GD', 1),
-(4, 4, 3.0, N'Senior GD', 1),
-(5, 2, 1.4, N'Junior Artist', 1),
-(5, 3, 2.1, N'Middle Artist', 1),
-(5, 4, 3.2, N'Senior/Lead Artist', 1),
-(6, 2, 1.8, N'Junior Developer', 1),
-(6, 3, 2.5, N'Middle Developer', 1),
-(6, 4, 4.0, N'Senior/Lead Developer', 1),
-(7, 1, 1.1, N'Intern Tester', 1),
-(7, 2, 1.4, N'Junior Tester', 1),
-(8, 2, 1.5, N'Junior Marketing', 1),
-(8, 3, 2.0, N'Middle Marketing', 1),
-(9, 2, 1.3, N'Junior Community', 1),
-(9, 3, 1.9, N'Middle Community', 1),
-(10, 2, 1.4, N'Junior HR', 1),
-(10, 3, 2.0, N'Middle HR', 1),
-(11, 2, 1.5, N'Junior Finance', 1),
-(11, 3, 2.2, N'Middle Finance', 1);
+INSERT INTO salary_mult (code, job_id, level_id, mult, note, status) VALUES
+(N'MULT001', 1, 5, 5.0, N'CEO Level', 1),
+(N'MULT002', 2, 5, 4.5, N'CTO Level', 1),
+(N'MULT003', 3, 5, 4.2, N'CD Level', 1),
+(N'MULT004', 4, 2, 1.5, N'Junior GD', 1),
+(N'MULT005', 4, 3, 2.2, N'Middle GD', 1),
+(N'MULT006', 4, 4, 3.0, N'Senior GD', 1),
+(N'MULT007', 5, 2, 1.4, N'Junior Artist', 1),
+(N'MULT008', 5, 3, 2.1, N'Middle Artist', 1),
+(N'MULT009', 5, 4, 3.2, N'Senior/Lead Artist', 1),
+(N'MULT010', 6, 2, 1.8, N'Junior Developer', 1),
+(N'MULT011', 6, 3, 2.5, N'Middle Developer', 1),
+(N'MULT012', 6, 4, 4.0, N'Senior/Lead Developer', 1),
+(N'MULT013', 7, 1, 1.1, N'Intern Tester', 1),
+(N'MULT014', 7, 2, 1.4, N'Junior Tester', 1),
+(N'MULT015', 8, 2, 1.5, N'Junior Marketing', 1),
+(N'MULT016', 8, 3, 2.0, N'Middle Marketing', 1),
+(N'MULT017', 9, 2, 1.3, N'Junior Community', 1),
+(N'MULT018', 9, 3, 1.9, N'Middle Community', 1),
+(N'MULT019', 10, 2, 1.4, N'Junior HR', 1),
+(N'MULT020', 10, 3, 2.0, N'Middle HR', 1),
+(N'MULT021', 11, 2, 1.5, N'Junior Finance', 1),
+(N'MULT022', 11, 3, 2.2, N'Middle Finance', 1);
 
 
 -- Chèn dữ liệu cho Employee

@@ -46,7 +46,7 @@ Public Class Job
     <NotMapped> <DisplayName("Phòng ban")> <Display(Order:=3)>
     Public ReadOnly Property Department_UI As String
         Get
-            Return If(Department?.name, "---")
+            Return If(Department?.department_UI, "---")
         End Get
     End Property
 

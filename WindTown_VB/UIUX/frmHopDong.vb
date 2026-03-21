@@ -249,7 +249,7 @@ Public Class frmHopDong
             Dim toDate = dtpkDenNgay.Value.Date
             query = query.Where(Function(x)
                                     Dim startDate = x.start_date
-                                    Dim endDate = If(x.end_date, DateTime.MaxValue)
+                                    Dim endDate = x.end_date
                                     Return startDate.Date >= fromDate AndAlso endDate.Date <= toDate
                                 End Function)
         End If
@@ -266,8 +266,8 @@ Public Class frmHopDong
                 hd.code,
                 hd.employee_UI,
                 hd.start_date,
-                If(hd.end_date, DateTime.MinValue).ToString("dd/MM/yyyy"),
-                If(hd.base_salary, 0D).ToString("N0"),
+                hd.end_date.ToString("dd/MM/yyyy"),
+                hd.base_salary.ToString("N0"),
                 hd.status_UI,
                 hd.note
             )
@@ -437,7 +437,7 @@ Public Class frmHopDong
                 If chkSalary.Checked Then data.base_salary = numSalary.Value
                 If chkNote.Checked Then data.note = txtNote.Text.Trim()
 
-                If data.end_date.HasValue AndAlso data.start_date.Date > data.end_date.Value.Date Then
+                If data.start_date.Date > data.end_date.Date Then
                     MessageBox.Show($"Hợp đồng {data.code}: ngày bắt đầu lớn hơn ngày kết thúc.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning)
                     Return
                 End If
@@ -484,11 +484,11 @@ Public Class frmHopDong
 
             Dim lblEnd As New Label() With {.Text = "Ngày kết thúc", .Location = New Point(20, 140), .AutoSize = True}
             Dim dtEnd As New DateTimePicker() With {.Location = New Point(180, 138), .Width = 240}
-            dtEnd.Value = If(data.end_date, DateTime.Now)
+            dtEnd.Value = data.end_date
 
             Dim lblSalary As New Label() With {.Text = "Lương cơ bản", .Location = New Point(20, 180), .AutoSize = True}
             Dim numSalary As New NumericUpDown() With {.Location = New Point(180, 178), .Width = 240, .Maximum = Decimal.MaxValue, .DecimalPlaces = 0}
-            numSalary.Value = If(data.base_salary, 0D)
+            numSalary.Value = data.base_salary
 
             Dim lblStatus As New Label() With {.Text = "Trạng thái", .Location = New Point(20, 220), .AutoSize = True}
             Dim cboStatus As New ComboBox() With {.Location = New Point(180, 218), .Width = 240, .DropDownStyle = ComboBoxStyle.DropDownList}
@@ -552,8 +552,8 @@ Public Class frmHopDong
                 hd.code,
                 hd.employee_UI,
                 hd.start_date.ToString(UiDinhDang.DinhDangNgayMacDinh),
-                If(hd.end_date, DateTime.MinValue).ToString(UiDinhDang.DinhDangNgayMacDinh),
-                If(hd.base_salary, 0D).ToString("N0"),
+                hd.end_date.ToString(UiDinhDang.DinhDangNgayMacDinh),
+                hd.base_salary.ToString("N0"),
                 hd.status_UI,
                 hd.note
             )

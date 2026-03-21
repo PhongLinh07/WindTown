@@ -34,7 +34,7 @@ Public Class Employee
     Public Property cccd As String
 
     <DisplayName("Ngày sinh")> <DisplayFormat(DataFormatString:="{0:dd-MM-yyyy}")> <Display(Order:=4)>
-    Public Property birth_date As DateTime?
+    Public Property birth_date As DateTime
 
     <DisplayName("Địa chỉ")> <Display(Order:=5)>
     Public Property address As String

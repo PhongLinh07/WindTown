@@ -34,6 +34,12 @@ Public Class Department
 #End Region
 
 #Region "Field Display"
+    <NotMapped> <Browsable(False)>
+    Public ReadOnly Property department_UI As String
+        Get
+            Return $"{Me.name}-{Me.code}"
+        End Get
+    End Property
     <NotMapped> <DisplayName("Tổng công việc")> <Display(Order:=3)>
     Public ReadOnly Property job_UI As Integer
         Get

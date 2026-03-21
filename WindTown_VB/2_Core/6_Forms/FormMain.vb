@@ -226,12 +226,8 @@ Partial Public Class FormMain
         OpenMultTabMode(Of Payroll_List_UC)(tabControl_A)
     End Sub
 
-    Private Sub DfToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DfToolStripMenuItem.Click
+    Private Sub DfToolStripMenuItem_Click(sender As Object, e As EventArgs)
         OpenMultTabMode(Of Pay_Item_List_UC)(tabControl_A)
-    End Sub
-
-    Private Sub menu_salary_mult_Click(sender As Object, e As EventArgs) Handles menu_salary_mult.Click
-        OpenMultTabMode(Of Salary_Mult_List_UC)(tabControl_A)
     End Sub
 
     Private Sub menu_policy_Click(sender As Object, e As EventArgs) Handles menu_policy.Click

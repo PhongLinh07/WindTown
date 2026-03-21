@@ -39,7 +39,7 @@ Public Class Employee_CRUD_Frm
         ui_status.SelectedValue = _data.status
         ui_gender.SelectedValue = _data.gender
 
-        ui_birth_date.Value = If(_data.birth_date, DateTime.Now)
+        ui_birth_date.Value = _data.birth_date
 
         ui_address.Text = _data.address
         ui_email.Text = _data.email
@@ -54,13 +54,18 @@ Public Class Employee_CRUD_Frm
     Protected Overrides Function SyncUIToData() As Boolean
 
         If String.IsNullOrWhiteSpace(ui_code.Text) Then
-            MessageBox.Show("Code cannot be empty")
+            MessageBox.Show("Mã nhân viên không hợp lệ!")
             ui_code.Focus()
             Return False
         End If
 
+        If AppServices.Instance.EmployeeSV.IsCodeDuplicate(ui_code.Text.Trim(), If(isCreate, 0, _data.id)) Then
+            MessageBox.Show("Mã nhân viên này đã tồn tại.")
+            Return False
+        End If
+
         If String.IsNullOrWhiteSpace(ui_name.Text) Then
-            MessageBox.Show("Name cannot be empty")
+            MessageBox.Show("Tên nhân viên không hợp lệ!")
             ui_name.Focus()
             Return False
         End If
@@ -68,7 +73,7 @@ Public Class Employee_CRUD_Frm
         ' Optional: Validate email format đơn giản
         If Not String.IsNullOrWhiteSpace(ui_email.Text) AndAlso
            Not ui_email.Text.Contains("@") Then
-            MessageBox.Show("Invalid email format")
+            MessageBox.Show("Email này không hợp lệ")
             ui_email.Focus()
             Return False
         End If
@@ -77,22 +82,15 @@ Public Class Employee_CRUD_Frm
         _data.code = ui_code.Text.Trim()
         _data.name = ui_name.Text.Trim()
         _data.note = ui_note.Text
-
         _data.address = ui_address.Text.Trim()
         _data.email = ui_email.Text.Trim()
         _data.cccd = ui_cccd.Text.Trim()
         _data.phone = ui_phone.Text.Trim()
         _data.bank = ui_bank.Text.Trim()
-
         _data.birth_date = ui_birth_date.Value
+        _data.status = CInt(ui_status.SelectedValue)
+        _data.gender = CInt(ui_gender.SelectedValue)
 
-        If ui_status.SelectedValue IsNot Nothing Then
-            _data.status = CInt(ui_status.SelectedValue)
-        End If
-
-        If ui_gender.SelectedValue IsNot Nothing Then
-            _data.gender = CInt(ui_gender.SelectedValue)
-        End If
 
         Return True
     End Function
@@ -112,7 +110,6 @@ Public Class Employee_CRUD_Frm
                 ui_cccd.TextChanged,
                 ui_phone.TextChanged,
                 ui_bank.TextChanged
-
         tool_save.Enabled = True
     End Sub
 

@@ -180,7 +180,7 @@ Public Class formEmployee
 
         txtCode.Text = emp.code
         txtFName.Text = emp.name
-        If emp.birth_date.HasValue Then dtpBirth.Value = emp.birth_date.Value
+        dtpBirth.Value = emp.birth_date
         cboGender.SelectedIndex = emp.gender
         txtCccd.Text = emp.cccd
         txtAddress.Text = emp.address
@@ -238,7 +238,7 @@ Public Class formEmployee
             .ForeColor = If(active, Color.FromArgb(76, 175, 80), Color.FromArgb(123, 139, 178)),
             .Location = New Point(card.Width - 140, 14)
         }
-        Dim endStr = If(c.end_date.HasValue, c.end_date.Value.ToString("dd/MM/yyyy"), "Không thời hạn")
+        Dim endStr = c.end_date.ToString("dd/MM/yyyy")
         Dim lblDates = New Label() With {
             .Text = $"{c.start_date:dd/MM/yyyy}  →  {endStr}",
             .AutoSize = True,

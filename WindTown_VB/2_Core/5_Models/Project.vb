@@ -10,7 +10,7 @@ Public Class Project
         code = $"PROJ{GenerateRandomNumbers.Generate()}"
         name = ""
         start_date = DateTime.Now
-        end_date = DateTime.Now
+        end_date = start_date.AddYears(3)
         note = ""
         status = 0
     End Sub
@@ -26,7 +26,7 @@ Public Class Project
     Public Property start_date As DateTime
 
     <DisplayName("Ngày kết thúc dự kiến")> <DisplayFormat(DataFormatString:="{0:dd-MM-yyyy}")> <Display(Order:=4)>
-    Public Property end_date As DateTime?
+    Public Property end_date As DateTime
 
     <Browsable(False)>
     Public Property status As Integer

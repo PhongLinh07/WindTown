@@ -2,8 +2,6 @@ Public Class Attendance_CRUD_Frm
     Inherits BaseACRUDForm
     Protected _data As Attendance
 
-
-
     Private _employees As List(Of Employee)
 
     Public Sub New(data As Attendance, Optional isCreate As Boolean = False)
@@ -37,7 +35,7 @@ Public Class Attendance_CRUD_Frm
         Dim response = AppServices.Instance.EmployeeSV.GetList()
         _employees = If(response.IsSuccess, response.Data, New List(Of Employee))
 
-        ui_employee.DataSource = _employees.Select(Function(x) New With {.Display = $"{x.code} - {x.name}", .Value = x.id}).ToList()
+        ui_employee.DataSource = _employees.Select(Function(x) New With {.Display = x.employee_UI, .Value = x}).ToList()
 
         ui_employee.DisplayMember = "Display"
         ui_employee.ValueMember = "Value"
@@ -46,79 +44,74 @@ Public Class Attendance_CRUD_Frm
     Protected Overrides Sub BindDataToUI()
 
         If isCreate Then
+            ui_employee.DropDownStyle = ComboBoxStyle.DropDownList
             ui_employee.SelectedIndex = -1
+            ui_employee.Enabled = True
         Else
-            ui_employee.Text = _data.Employee_UI
+            ui_employee.DropDownStyle = ComboBoxStyle.DropDown
+            ui_employee.Text = _data.employee_UI
             ui_employee.Enabled = False
         End If
 
         ui_code.Text = _data.code
-
         ui_of_date.Value = _data.of_date
-
-        ui_office_hours.Text = _data.office_hours
-
-        ui_overtime_hours.Text = _data.overtime_hours
-        ui_late_hours.Text = _data.late_hours
-        ui_early_hours.Text = _data.early_hours
-
-
+        ui_office_hours.Value = _data.office_hours
+        ui_overtime_hours.Value = _data.overtime_hours
+        ui_late_hours.Value = _data.late_hours
+        ui_early_hours.Value = _data.early_hours
         ui_shift.SelectedValue = _data.shift
-
         ui_note.Text = _data.note
         ui_status.SelectedValue = _data.status
-
     End Sub
 
     Protected Overrides Function SyncUIToData() As Boolean
 
-        If isCreate Then
-            Dim selectedId = If(ui_employee.SelectedValue, 0)
-            Dim employee = _employees.FirstOrDefault(Function(x) x.id = Convert.ToInt32(selectedId))
-            If employee Is Nothing Then
-                MessageBox.Show("Invalid employee selected")
-                ui_employee.Focus()
-                Return False
-            End If
-            _data.Employee = employee
-        End If
-
         If String.IsNullOrWhiteSpace(ui_code.Text) Then
-            MessageBox.Show("User cannot be empty")
+            MessageBox.Show("Mã chấm công không hợp lệ!")
             ui_code.Focus()
             Return False
         End If
 
+        If AppServices.Instance.AttendanceSV.IsCodeDuplicate(ui_code.Text.Trim(), If(isCreate, 0, _data.id)) Then
+            MessageBox.Show("Mã chấm công này đã tồn tại.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Return False
+        End If
 
-        If Not Decimal.TryParse(ui_office_hours.Text, _data.office_hours) Then
-            MessageBox.Show("Office Hours must be a valid number")
+        If isCreate Then
+            If ui_employee.SelectedValue Is Nothing Then
+                MessageBox.Show("Nhân viên không hợp lệ")
+                ui_employee.Focus()
+                Return False
+            End If
+            _data.employee_id = CType(ui_employee.SelectedValue, Employee).id
+        End If
+
+
+        If Not Decimal.TryParse(ui_office_hours.Value, _data.office_hours) Then
+            MessageBox.Show("Tổng giờ hành chính không hợp lệ!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error)
             ui_office_hours.Focus()
             Return False
         End If
-        If Not Decimal.TryParse(ui_overtime_hours.Text, _data.overtime_hours) Then
-            MessageBox.Show("Overtime Hours must be a valid number")
+        If Not Decimal.TryParse(ui_overtime_hours.Value, _data.overtime_hours) Then
+            MessageBox.Show("Tổng giờ tăng ca không hợp lệ!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error)
             ui_overtime_hours.Focus()
             Return False
         End If
-        If Not Decimal.TryParse(ui_late_hours.Text, _data.late_hours) Then
-            MessageBox.Show("Late Hours must be a valid number")
+        If Not Decimal.TryParse(ui_late_hours.Value, _data.late_hours) Then
+            MessageBox.Show("Tổng giờ đến muộn không hợp lệ!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error)
             ui_late_hours.Focus()
             Return False
         End If
-        If Not Decimal.TryParse(ui_early_hours.Text, _data.early_hours) Then
-            MessageBox.Show("Early Hours must be a valid number")
+        If Not Decimal.TryParse(ui_early_hours.Value, _data.early_hours) Then
+            MessageBox.Show("Tổng giờ về sớm không hợp lệ!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error)
             ui_early_hours.Focus()
             Return False
         End If
 
 
         _data.code = ui_code.Text.Trim()
-
         _data.of_date = ui_of_date.Value
         _data.status = CInt(ui_shift.SelectedValue)
-
-        _data.note = ui_note.Text
-        _data.status = CInt(ui_status.SelectedValue)
 
         Return True
 
@@ -126,10 +119,10 @@ Public Class Attendance_CRUD_Frm
 
     Protected Overrides Sub DataChanged() Handles ui_employee.SelectedIndexChanged,
                                         ui_code.TextChanged,
-                                        ui_office_hours.TextChanged,
-                                        ui_overtime_hours.TextChanged,
-                                        ui_late_hours.TextChanged,
-                                        ui_early_hours.TextChanged,
+                                        ui_office_hours.ValueChanged,
+                                        ui_overtime_hours.ValueChanged,
+                                        ui_late_hours.ValueChanged,
+                                        ui_early_hours.ValueChanged,
                                         ui_shift.SelectedIndexChanged,
                                         ui_note.TextChanged,
                                         ui_status.SelectedIndexChanged

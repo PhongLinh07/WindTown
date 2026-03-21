@@ -8,6 +8,7 @@ Public Class Attendance
 
     Public Sub New()
         code = $"ATTD{GenerateRandomNumbers.Generate()}"
+        employee_id = -1
         of_date = DateTime.Now
         office_hours = 0
         overtime_hours = 0
