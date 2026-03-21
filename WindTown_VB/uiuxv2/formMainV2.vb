@@ -2,9 +2,9 @@
 Imports System.Drawing.Text
 
 ' ============================================================
-'  dfrmMain.vb — Shell chính: điều hướng + sidebar animation
+'  formMainV2.vb — Shell chính: điều hướng + sidebar animation
 ' ============================================================
-Public Class DfrmMain
+Public Class formMainV2
 
     ' ── Sidebar animation state ───────────────────────────────
     Private Const SB_EXPANDED As Integer = 200
@@ -36,7 +36,7 @@ Public Class DfrmMain
     ' ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     '  FORM LOAD
     ' ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-    Private Sub dfrmMain_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Private Sub formMainV2_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ' Cập nhật thông tin người dùng từ session
         lblSbUser.Text = modSession.DisplayName
         lblSbRole.Text = If(modSession.CurrentRole = 1, "Quản trị viên", "Nhân viên")
@@ -50,7 +50,7 @@ Public Class DfrmMain
 
         ' Điều hướng mặc định → Dashboard
         SetActiveNav(btnDash, "Dashboard")
-        NavigateTo(New DfrmDashBoard())
+        NavigateTo(New formDashBoardV2())
 
         ' Responsive: cập nhật vị trí pnlTopRight khi resize
         AddHandler Me.Resize, Sub(s, ev) RepositionTopRight()
@@ -113,7 +113,7 @@ Public Class DfrmMain
     ' ── Nav Button Clicks ─────────────────────────────────────
     Private Sub btnDash_Click(sender As Object, e As EventArgs) Handles btnDash.Click
         SetActiveNav(btnDash, "Dashboard")
-        NavigateTo(New DfrmDashBoard())
+        NavigateTo(New formDashBoardV2())
     End Sub
 
     Private Sub btnEmployee_Click(sender As Object, e As EventArgs) Handles btnEmployee.Click
@@ -121,7 +121,10 @@ Public Class DfrmMain
         NavigateTo(New formEmployee())   '← thêm khi có form
         'ShowPlaceholder("Nhân viên")
     End Sub
-
+    Private Sub btnDepartment_Click(sender As Object, e As EventArgs) Handles btnDepartment.Click
+        SetActiveNav(btnDepartment, "Phòng ban")
+        NavigateTo(New formDepartment())
+    End Sub
     Private Sub btnContract_Click(sender As Object, e As EventArgs) Handles btnContract.Click
         SetActiveNav(btnContract, "Hợp đồng")
         NavigateTo(New formContract())
@@ -221,10 +224,10 @@ Public Class DfrmMain
 
             For Each btn In {btnDash, btnEmployee, btnAttend, btnPayroll,
                               btnProject, btnReport, btnSettings}
-                btn.Text = CStr(btn.Tag)
-                btn.TextAlign = ContentAlignment.MiddleLeft
-                btn.Padding = New Padding(10, 0, 0, 0)
-                btn.Size = New Size(200, 42)
+                btnDepartment.Text = CStr(btnDepartment.Tag)
+                btnDepartment.TextAlign = ContentAlignment.MiddleLeft
+                btnDepartment.Padding = New Padding(10, 0, 0, 0)
+                btnDepartment.Size = New Size(200, 42)
             Next
         Else
             ' Collapsed: chỉ hiện icon chữ viết tắt, căn giữa
@@ -252,7 +255,7 @@ Public Class DfrmMain
     ' ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     '  FORM CLOSING
     ' ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-    Private Sub dfrmMain_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
+    Private Sub formMainV2_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
         Dim result = MessageBox.Show("Bạn có muốn thoát khỏi ứng dụng?",
                                      "Xác nhận thoát",
                                      MessageBoxButtons.YesNo,

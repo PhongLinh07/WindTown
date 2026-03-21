@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-Partial Class DfrmMain
+Partial Class formMainV2
     Inherits System.Windows.Forms.Form
 
     <System.Diagnostics.DebuggerNonUserCode()>
@@ -28,6 +28,7 @@ Partial Class DfrmMain
         Me.btnReport = New System.Windows.Forms.Button()
         Me.btnSettings = New System.Windows.Forms.Button()
         Me.btnPayPeriod = New System.Windows.Forms.Button()
+        Me.btnContract = New System.Windows.Forms.Button()
         Me.pnlSidebar = New System.Windows.Forms.Panel()
         Me.pnlSbNav = New System.Windows.Forms.Panel()
         Me.lblSec2 = New System.Windows.Forms.Label()
@@ -43,11 +44,11 @@ Partial Class DfrmMain
         Me.pnlContent = New System.Windows.Forms.Panel()
         Me.pnlTopbar = New System.Windows.Forms.Panel()
         Me.pnlTopRight = New System.Windows.Forms.Panel()
-        Me.picAvatar = New System.Windows.Forms.PictureBox()
         Me.lblPageDate = New System.Windows.Forms.Label()
         Me.lblPageTitle = New System.Windows.Forms.Label()
         Me.lblTopAvatar = New System.Windows.Forms.Label()
-        Me.btnContract = New System.Windows.Forms.Button()
+        Me.btnDepartment = New System.Windows.Forms.Button()
+        Me.picAvatar = New System.Windows.Forms.PictureBox()
         Me.pnlSidebar.SuspendLayout()
         Me.pnlSbNav.SuspendLayout()
         Me.pnlSbFooter.SuspendLayout()
@@ -125,7 +126,7 @@ Partial Class DfrmMain
         Me.btnAttend.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnAttend.Font = New System.Drawing.Font("Microsoft YaHei UI", 9.5!)
         Me.btnAttend.ForeColor = System.Drawing.Color.FromArgb(CType(CType(123, Byte), Integer), CType(CType(139, Byte), Integer), CType(CType(178, Byte), Integer))
-        Me.btnAttend.Location = New System.Drawing.Point(0, 148)
+        Me.btnAttend.Location = New System.Drawing.Point(0, 190)
         Me.btnAttend.Name = "btnAttend"
         Me.btnAttend.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
         Me.btnAttend.Size = New System.Drawing.Size(200, 42)
@@ -147,7 +148,7 @@ Partial Class DfrmMain
         Me.btnPayroll.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnPayroll.Font = New System.Drawing.Font("Microsoft YaHei UI", 9.5!)
         Me.btnPayroll.ForeColor = System.Drawing.Color.FromArgb(CType(CType(123, Byte), Integer), CType(CType(139, Byte), Integer), CType(CType(178, Byte), Integer))
-        Me.btnPayroll.Location = New System.Drawing.Point(0, 190)
+        Me.btnPayroll.Location = New System.Drawing.Point(0, 232)
         Me.btnPayroll.Name = "btnPayroll"
         Me.btnPayroll.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
         Me.btnPayroll.Size = New System.Drawing.Size(200, 42)
@@ -169,7 +170,7 @@ Partial Class DfrmMain
         Me.btnProject.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnProject.Font = New System.Drawing.Font("Microsoft YaHei UI", 9.5!)
         Me.btnProject.ForeColor = System.Drawing.Color.FromArgb(CType(CType(123, Byte), Integer), CType(CType(139, Byte), Integer), CType(CType(178, Byte), Integer))
-        Me.btnProject.Location = New System.Drawing.Point(0, 254)
+        Me.btnProject.Location = New System.Drawing.Point(0, 296)
         Me.btnProject.Name = "btnProject"
         Me.btnProject.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
         Me.btnProject.Size = New System.Drawing.Size(200, 42)
@@ -191,7 +192,7 @@ Partial Class DfrmMain
         Me.btnReport.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnReport.Font = New System.Drawing.Font("Microsoft YaHei UI", 9.5!)
         Me.btnReport.ForeColor = System.Drawing.Color.FromArgb(CType(CType(123, Byte), Integer), CType(CType(139, Byte), Integer), CType(CType(178, Byte), Integer))
-        Me.btnReport.Location = New System.Drawing.Point(0, 296)
+        Me.btnReport.Location = New System.Drawing.Point(0, 338)
         Me.btnReport.Name = "btnReport"
         Me.btnReport.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
         Me.btnReport.Size = New System.Drawing.Size(200, 42)
@@ -213,7 +214,7 @@ Partial Class DfrmMain
         Me.btnSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnSettings.Font = New System.Drawing.Font("Microsoft YaHei UI", 9.5!)
         Me.btnSettings.ForeColor = System.Drawing.Color.FromArgb(CType(CType(123, Byte), Integer), CType(CType(139, Byte), Integer), CType(CType(178, Byte), Integer))
-        Me.btnSettings.Location = New System.Drawing.Point(0, 338)
+        Me.btnSettings.Location = New System.Drawing.Point(0, 380)
         Me.btnSettings.Name = "btnSettings"
         Me.btnSettings.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
         Me.btnSettings.Size = New System.Drawing.Size(200, 42)
@@ -235,7 +236,7 @@ Partial Class DfrmMain
         Me.btnPayPeriod.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnPayPeriod.Font = New System.Drawing.Font("Microsoft YaHei UI", 9.5!)
         Me.btnPayPeriod.ForeColor = System.Drawing.Color.FromArgb(CType(CType(123, Byte), Integer), CType(CType(139, Byte), Integer), CType(CType(178, Byte), Integer))
-        Me.btnPayPeriod.Location = New System.Drawing.Point(0, 380)
+        Me.btnPayPeriod.Location = New System.Drawing.Point(0, 422)
         Me.btnPayPeriod.Name = "btnPayPeriod"
         Me.btnPayPeriod.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
         Me.btnPayPeriod.Size = New System.Drawing.Size(200, 42)
@@ -245,6 +246,28 @@ Partial Class DfrmMain
         Me.btnPayPeriod.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.tipNav.SetToolTip(Me.btnPayPeriod, "Kỳ lương")
         Me.btnPayPeriod.UseVisualStyleBackColor = False
+        '
+        'btnContract
+        '
+        Me.btnContract.BackColor = System.Drawing.Color.FromArgb(CType(CType(19, Byte), Integer), CType(CType(22, Byte), Integer), CType(CType(41, Byte), Integer))
+        Me.btnContract.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnContract.Dock = System.Windows.Forms.DockStyle.Top
+        Me.btnContract.FlatAppearance.BorderSize = 0
+        Me.btnContract.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(50, Byte), Integer), CType(CType(80, Byte), Integer))
+        Me.btnContract.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(25, Byte), Integer), CType(CType(32, Byte), Integer), CType(CType(55, Byte), Integer))
+        Me.btnContract.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnContract.Font = New System.Drawing.Font("Microsoft YaHei UI", 9.5!)
+        Me.btnContract.ForeColor = System.Drawing.Color.FromArgb(CType(CType(123, Byte), Integer), CType(CType(139, Byte), Integer), CType(CType(178, Byte), Integer))
+        Me.btnContract.Location = New System.Drawing.Point(0, 106)
+        Me.btnContract.Name = "btnContract"
+        Me.btnContract.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
+        Me.btnContract.Size = New System.Drawing.Size(200, 42)
+        Me.btnContract.TabIndex = 10
+        Me.btnContract.Tag = "Hợp đồng"
+        Me.btnContract.Text = "  Hợp đồng"
+        Me.btnContract.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.tipNav.SetToolTip(Me.btnContract, "Hợp đồng")
+        Me.btnContract.UseVisualStyleBackColor = False
         '
         'pnlSidebar
         '
@@ -268,6 +291,7 @@ Partial Class DfrmMain
         Me.pnlSbNav.Controls.Add(Me.lblSec2)
         Me.pnlSbNav.Controls.Add(Me.btnPayroll)
         Me.pnlSbNav.Controls.Add(Me.btnAttend)
+        Me.pnlSbNav.Controls.Add(Me.btnDepartment)
         Me.pnlSbNav.Controls.Add(Me.btnContract)
         Me.pnlSbNav.Controls.Add(Me.btnEmployee)
         Me.pnlSbNav.Controls.Add(Me.btnDash)
@@ -284,7 +308,7 @@ Partial Class DfrmMain
         Me.lblSec2.Dock = System.Windows.Forms.DockStyle.Top
         Me.lblSec2.Font = New System.Drawing.Font("Microsoft YaHei UI", 7.5!, System.Drawing.FontStyle.Bold)
         Me.lblSec2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(90, Byte), Integer))
-        Me.lblSec2.Location = New System.Drawing.Point(0, 232)
+        Me.lblSec2.Location = New System.Drawing.Point(0, 274)
         Me.lblSec2.Name = "lblSec2"
         Me.lblSec2.Padding = New System.Windows.Forms.Padding(14, 0, 0, 0)
         Me.lblSec2.Size = New System.Drawing.Size(200, 22)
@@ -428,17 +452,6 @@ Partial Class DfrmMain
         Me.pnlTopRight.Size = New System.Drawing.Size(40, 40)
         Me.pnlTopRight.TabIndex = 0
         '
-        'picAvatar
-        '
-        Me.picAvatar.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.picAvatar.Image = Global.WindTown_VB.My.Resources.Resources.AvatarUser
-        Me.picAvatar.Location = New System.Drawing.Point(0, 0)
-        Me.picAvatar.Name = "picAvatar"
-        Me.picAvatar.Size = New System.Drawing.Size(40, 40)
-        Me.picAvatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
-        Me.picAvatar.TabIndex = 0
-        Me.picAvatar.TabStop = False
-        '
         'lblPageDate
         '
         Me.lblPageDate.AutoSize = True
@@ -473,29 +486,40 @@ Partial Class DfrmMain
         Me.lblTopAvatar.Text = "AD"
         Me.lblTopAvatar.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
-        'btnContract
+        'btnDepartment
         '
-        Me.btnContract.BackColor = System.Drawing.Color.FromArgb(CType(CType(19, Byte), Integer), CType(CType(22, Byte), Integer), CType(CType(41, Byte), Integer))
-        Me.btnContract.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btnContract.Dock = System.Windows.Forms.DockStyle.Top
-        Me.btnContract.FlatAppearance.BorderSize = 0
-        Me.btnContract.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(50, Byte), Integer), CType(CType(80, Byte), Integer))
-        Me.btnContract.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(25, Byte), Integer), CType(CType(32, Byte), Integer), CType(CType(55, Byte), Integer))
-        Me.btnContract.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnContract.Font = New System.Drawing.Font("Microsoft YaHei UI", 9.5!)
-        Me.btnContract.ForeColor = System.Drawing.Color.FromArgb(CType(CType(123, Byte), Integer), CType(CType(139, Byte), Integer), CType(CType(178, Byte), Integer))
-        Me.btnContract.Location = New System.Drawing.Point(0, 106)
-        Me.btnContract.Name = "btnContract"
-        Me.btnContract.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
-        Me.btnContract.Size = New System.Drawing.Size(200, 42)
-        Me.btnContract.TabIndex = 10
-        Me.btnContract.Tag = "Hợp đồng"
-        Me.btnContract.Text = "  Hợp đồng"
-        Me.btnContract.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.tipNav.SetToolTip(Me.btnContract, "Hợp đồng")
-        Me.btnContract.UseVisualStyleBackColor = False
+        Me.btnDepartment.BackColor = System.Drawing.Color.FromArgb(CType(CType(19, Byte), Integer), CType(CType(22, Byte), Integer), CType(CType(41, Byte), Integer))
+        Me.btnDepartment.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnDepartment.Dock = System.Windows.Forms.DockStyle.Top
+        Me.btnDepartment.FlatAppearance.BorderSize = 0
+        Me.btnDepartment.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(50, Byte), Integer), CType(CType(80, Byte), Integer))
+        Me.btnDepartment.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(25, Byte), Integer), CType(CType(32, Byte), Integer), CType(CType(55, Byte), Integer))
+        Me.btnDepartment.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnDepartment.Font = New System.Drawing.Font("Microsoft YaHei UI", 9.5!)
+        Me.btnDepartment.ForeColor = System.Drawing.Color.FromArgb(CType(CType(123, Byte), Integer), CType(CType(139, Byte), Integer), CType(CType(178, Byte), Integer))
+        Me.btnDepartment.Location = New System.Drawing.Point(0, 148)
+        Me.btnDepartment.Name = "btnDepartment"
+        Me.btnDepartment.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
+        Me.btnDepartment.Size = New System.Drawing.Size(200, 42)
+        Me.btnDepartment.TabIndex = 11
+        Me.btnDepartment.Tag = "Phòng ban"
+        Me.btnDepartment.Text = "  Phòng ban"
+        Me.btnDepartment.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.tipNav.SetToolTip(Me.btnDepartment, "Phòng ban")
+        Me.btnDepartment.UseVisualStyleBackColor = False
         '
-        'DfrmMain
+        'picAvatar
+        '
+        Me.picAvatar.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.picAvatar.Image = Global.WindTown_VB.My.Resources.Resources.AvatarUser
+        Me.picAvatar.Location = New System.Drawing.Point(0, 0)
+        Me.picAvatar.Name = "picAvatar"
+        Me.picAvatar.Size = New System.Drawing.Size(40, 40)
+        Me.picAvatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.picAvatar.TabIndex = 0
+        Me.picAvatar.TabStop = False
+        '
+        'formMainV2
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -505,7 +529,7 @@ Partial Class DfrmMain
         Me.Controls.Add(Me.pnlSidebar)
         Me.Font = New System.Drawing.Font("Microsoft YaHei UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.MinimumSize = New System.Drawing.Size(900, 600)
-        Me.Name = "DfrmMain"
+        Me.Name = "formMainV2"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Wind Town — HRM"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
@@ -554,4 +578,5 @@ Partial Class DfrmMain
     Friend WithEvents btnPayPeriod As Button
     Friend WithEvents picAvatar As PictureBox
     Friend WithEvents btnContract As Button
+    Friend WithEvents btnDepartment As Button
 End Class

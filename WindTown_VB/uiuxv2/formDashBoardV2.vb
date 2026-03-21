@@ -3,11 +3,11 @@ Imports System.Drawing.Drawing2D
 Imports System.Drawing.Text
 
 ' ============================================================
-'  DfrmDashBoard.vb — Dashboard HRM · MOCK DATA
+'  formDashBoard.vb — Dashboard HRM · MOCK DATA
 '  Khi cần DB thật: thay các Sub LoadMock* bằng nội dung
-'  trong file DfrmDashBoard.vb.db_backup (giữ lại bên dưới)
+'  trong file formDashBoard.vb.db_backup (giữ lại bên dưới)
 ' ============================================================
-Public Class DfrmDashBoard
+Public Class formDashBoardV2
 
     ' ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     '  DATA FIELDS

@@ -1,0 +1,30 @@
+Các form chưa hoàn thành 11:
+- formAssignment.
+- formAttendance.
+- formHoliday.
+- formJob.
+- formLeave.
+- formPosition.
+- formLevel.
+- formLeaveCategory.
+- formProject.
+- formSalaryMult.
+
+
+Các form đã hoàn thành 8:
+- fromMainV2.
+- formDashboardV2.
+- formContract.
+- formDepartment.
+- formEmployee.
+- formPayPeriod.
+- formPayroll.
+- formPolicy.
+- formSystem.
+
+
+
+
+
+
+

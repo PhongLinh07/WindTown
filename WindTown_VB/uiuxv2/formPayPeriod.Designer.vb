@@ -194,7 +194,7 @@ Partial Class formPayPeriod
         lblSec3Title.ForeColor = Color.FromArgb(CByte(61), CByte(74), CByte(114))
         lblSec3Title.Location = New Point(16, 12)
         lblSec3Title.Name = "lblSec3Title"
-        lblSec3Title.Size = New Size(56, 16)
+        lblSec3Title.Size = New Size(73, 19)
         lblSec3Title.TabIndex = 8
         lblSec3Title.Text = "GHI CHÚ"
         ' 
@@ -225,7 +225,7 @@ Partial Class formPayPeriod
         tlpSec2.Controls.Add(txtFStdHours, 0, 3)
         tlpSec2.Controls.Add(lblFStdHoursHint, 1, 3)
         tlpSec2.Dock = DockStyle.Top
-        tlpSec2.Location = New Point(16, 28)
+        tlpSec2.Location = New Point(16, 31)
         tlpSec2.Name = "tlpSec2"
         tlpSec2.RowCount = 4
         tlpSec2.RowStyles.Add(New RowStyle(SizeType.Absolute, 22F))
@@ -242,7 +242,7 @@ Partial Class formPayPeriod
         lblFStart.ForeColor = Color.FromArgb(CByte(123), CByte(139), CByte(178))
         lblFStart.Location = New Point(3, 0)
         lblFStart.Name = "lblFStart"
-        lblFStart.Size = New Size(107, 17)
+        lblFStart.Size = New Size(127, 19)
         lblFStart.TabIndex = 0
         lblFStart.Text = "Ngày bắt đầu  *"
         ' 
@@ -259,7 +259,7 @@ Partial Class formPayPeriod
         dtpStart.Location = New Point(0, 22)
         dtpStart.Margin = New Padding(0, 0, 8, 4)
         dtpStart.Name = "dtpStart"
-        dtpStart.Size = New Size(247, 24)
+        dtpStart.Size = New Size(247, 28)
         dtpStart.TabIndex = 4
         ' 
         ' lblFEnd
@@ -270,7 +270,7 @@ Partial Class formPayPeriod
         lblFEnd.Location = New Point(263, 0)
         lblFEnd.Margin = New Padding(8, 0, 0, 0)
         lblFEnd.Name = "lblFEnd"
-        lblFEnd.Size = New Size(109, 17)
+        lblFEnd.Size = New Size(131, 19)
         lblFEnd.TabIndex = 5
         lblFEnd.Text = "Ngày kết thúc  *"
         ' 
@@ -287,7 +287,7 @@ Partial Class formPayPeriod
         dtpEnd.Location = New Point(263, 22)
         dtpEnd.Margin = New Padding(8, 0, 0, 4)
         dtpEnd.Name = "dtpEnd"
-        dtpEnd.Size = New Size(247, 24)
+        dtpEnd.Size = New Size(247, 28)
         dtpEnd.TabIndex = 5
         ' 
         ' lblFStdHours
@@ -298,7 +298,7 @@ Partial Class formPayPeriod
         lblFStdHours.ForeColor = Color.FromArgb(CByte(123), CByte(139), CByte(178))
         lblFStdHours.Location = New Point(3, 64)
         lblFStdHours.Name = "lblFStdHours"
-        lblFStdHours.Size = New Size(231, 17)
+        lblFStdHours.Size = New Size(278, 19)
         lblFStdHours.TabIndex = 6
         lblFStdHours.Text = "Giờ làm chuẩn trong kỳ  (std_hours)"
         ' 
@@ -312,7 +312,7 @@ Partial Class formPayPeriod
         txtFStdHours.Location = New Point(0, 86)
         txtFStdHours.Margin = New Padding(0, 0, 8, 4)
         txtFStdHours.Name = "txtFStdHours"
-        txtFStdHours.Size = New Size(247, 24)
+        txtFStdHours.Size = New Size(247, 28)
         txtFStdHours.TabIndex = 6
         txtFStdHours.Text = "176"
         ' 
@@ -324,7 +324,7 @@ Partial Class formPayPeriod
         lblFStdHoursHint.Location = New Point(263, 98)
         lblFStdHoursHint.Margin = New Padding(8, 12, 0, 0)
         lblFStdHoursHint.Name = "lblFStdHoursHint"
-        lblFStdHoursHint.Size = New Size(210, 17)
+        lblFStdHoursHint.Size = New Size(231, 40)
         lblFStdHoursHint.TabIndex = 7
         lblFStdHoursHint.Text = "Thường = số ngày làm việc × 8 giờ"
         ' 
@@ -336,7 +336,7 @@ Partial Class formPayPeriod
         lblSec2Title.ForeColor = Color.FromArgb(CByte(61), CByte(74), CByte(114))
         lblSec2Title.Location = New Point(16, 12)
         lblSec2Title.Name = "lblSec2Title"
-        lblSec2Title.Size = New Size(142, 16)
+        lblSec2Title.Size = New Size(184, 19)
         lblSec2Title.TabIndex = 1
         lblSec2Title.Text = "THỜI GIAN & GIỜ CHUẨN"
         ' 
@@ -385,7 +385,7 @@ Partial Class formPayPeriod
         lblFCode.ForeColor = Color.FromArgb(CByte(123), CByte(139), CByte(178))
         lblFCode.Location = New Point(3, 0)
         lblFCode.Name = "lblFCode"
-        lblFCode.Size = New Size(99, 17)
+        lblFCode.Size = New Size(117, 19)
         lblFCode.TabIndex = 0
         lblFCode.Text = "Mã kỳ lương  *"
         ' 
@@ -399,7 +399,7 @@ Partial Class formPayPeriod
         txtFCode.Location = New Point(0, 22)
         txtFCode.Margin = New Padding(0, 0, 8, 4)
         txtFCode.Name = "txtFCode"
-        txtFCode.Size = New Size(247, 23)
+        txtFCode.Size = New Size(247, 26)
         txtFCode.TabIndex = 0
         ' 
         ' lblFName
@@ -410,7 +410,7 @@ Partial Class formPayPeriod
         lblFName.Location = New Point(263, 0)
         lblFName.Margin = New Padding(8, 0, 0, 0)
         lblFName.Name = "lblFName"
-        lblFName.Size = New Size(103, 17)
+        lblFName.Size = New Size(121, 19)
         lblFName.TabIndex = 1
         lblFName.Text = "Tên kỳ lương  *"
         ' 
@@ -424,7 +424,7 @@ Partial Class formPayPeriod
         txtFName.Location = New Point(263, 22)
         txtFName.Margin = New Padding(8, 0, 0, 4)
         txtFName.Name = "txtFName"
-        txtFName.Size = New Size(247, 24)
+        txtFName.Size = New Size(247, 28)
         txtFName.TabIndex = 1
         ' 
         ' lblFMonth
@@ -434,7 +434,7 @@ Partial Class formPayPeriod
         lblFMonth.ForeColor = Color.FromArgb(CByte(123), CByte(139), CByte(178))
         lblFMonth.Location = New Point(3, 64)
         lblFMonth.Name = "lblFMonth"
-        lblFMonth.Size = New Size(116, 17)
+        lblFMonth.Size = New Size(138, 19)
         lblFMonth.TabIndex = 2
         lblFMonth.Text = "Tháng tính lương"
         ' 
@@ -451,7 +451,7 @@ Partial Class formPayPeriod
         dtpMonth.Location = New Point(0, 86)
         dtpMonth.Margin = New Padding(0, 0, 8, 4)
         dtpMonth.Name = "dtpMonth"
-        dtpMonth.Size = New Size(247, 24)
+        dtpMonth.Size = New Size(247, 28)
         dtpMonth.TabIndex = 2
         ' 
         ' lblFStatus
@@ -462,7 +462,7 @@ Partial Class formPayPeriod
         lblFStatus.Location = New Point(263, 64)
         lblFStatus.Margin = New Padding(8, 0, 0, 0)
         lblFStatus.Name = "lblFStatus"
-        lblFStatus.Size = New Size(73, 17)
+        lblFStatus.Size = New Size(86, 19)
         lblFStatus.TabIndex = 3
         lblFStatus.Text = "Trạng thái"
         ' 
@@ -478,7 +478,7 @@ Partial Class formPayPeriod
         cboFStatus.Location = New Point(263, 90)
         cboFStatus.Margin = New Padding(8, 4, 0, 4)
         cboFStatus.Name = "cboFStatus"
-        cboFStatus.Size = New Size(247, 27)
+        cboFStatus.Size = New Size(247, 29)
         cboFStatus.TabIndex = 3
         ' 
         ' lblSec1Title
@@ -488,7 +488,7 @@ Partial Class formPayPeriod
         lblSec1Title.ForeColor = Color.FromArgb(CByte(61), CByte(74), CByte(114))
         lblSec1Title.Location = New Point(16, 12)
         lblSec1Title.Name = "lblSec1Title"
-        lblSec1Title.Size = New Size(136, 16)
+        lblSec1Title.Size = New Size(175, 19)
         lblSec1Title.TabIndex = 1
         lblSec1Title.Text = "THÔNG TIN KỲ LƯƠNG"
         ' 
@@ -617,7 +617,7 @@ Partial Class formPayPeriod
         lblKpi3Val.ForeColor = Color.FromArgb(CByte(76), CByte(175), CByte(80))
         lblKpi3Val.Location = New Point(10, 24)
         lblKpi3Val.Name = "lblKpi3Val"
-        lblKpi3Val.Size = New Size(34, 27)
+        lblKpi3Val.Size = New Size(42, 33)
         lblKpi3Val.TabIndex = 0
         lblKpi3Val.Text = "—"
         ' 
@@ -628,7 +628,7 @@ Partial Class formPayPeriod
         lblKpi3Title.ForeColor = Color.FromArgb(CByte(123), CByte(139), CByte(178))
         lblKpi3Title.Location = New Point(12, 6)
         lblKpi3Title.Name = "lblKpi3Title"
-        lblKpi3Title.Size = New Size(102, 16)
+        lblKpi3Title.Size = New Size(133, 19)
         lblKpi3Title.TabIndex = 1
         lblKpi3Title.Text = "THỜI HẠN CÒN LẠI"
         ' 
@@ -650,7 +650,7 @@ Partial Class formPayPeriod
         lblKpi2Val.ForeColor = Color.FromArgb(CByte(74), CByte(158), CByte(255))
         lblKpi2Val.Location = New Point(10, 24)
         lblKpi2Val.Name = "lblKpi2Val"
-        lblKpi2Val.Size = New Size(34, 27)
+        lblKpi2Val.Size = New Size(42, 33)
         lblKpi2Val.TabIndex = 0
         lblKpi2Val.Text = "—"
         ' 
@@ -661,7 +661,7 @@ Partial Class formPayPeriod
         lblKpi2Title.ForeColor = Color.FromArgb(CByte(123), CByte(139), CByte(178))
         lblKpi2Title.Location = New Point(12, 6)
         lblKpi2Title.Name = "lblKpi2Title"
-        lblKpi2Title.Size = New Size(65, 16)
+        lblKpi2Title.Size = New Size(86, 19)
         lblKpi2Title.TabIndex = 1
         lblKpi2Title.Text = "GIỜ CHUẨN"
         ' 
@@ -683,7 +683,7 @@ Partial Class formPayPeriod
         lblKpi1Val.ForeColor = Color.FromArgb(CByte(232), CByte(236), CByte(240))
         lblKpi1Val.Location = New Point(10, 24)
         lblKpi1Val.Name = "lblKpi1Val"
-        lblKpi1Val.Size = New Size(34, 27)
+        lblKpi1Val.Size = New Size(42, 33)
         lblKpi1Val.TabIndex = 0
         lblKpi1Val.Text = "—"
         ' 
@@ -694,7 +694,7 @@ Partial Class formPayPeriod
         lblKpi1Title.ForeColor = Color.FromArgb(CByte(123), CByte(139), CByte(178))
         lblKpi1Title.Location = New Point(12, 6)
         lblKpi1Title.Name = "lblKpi1Title"
-        lblKpi1Title.Size = New Size(104, 16)
+        lblKpi1Title.Size = New Size(137, 19)
         lblKpi1Title.TabIndex = 1
         lblKpi1Title.Text = "SỐ NGÀY LÀM VIỆC"
         ' 
@@ -720,7 +720,7 @@ Partial Class formPayPeriod
         lblRightSub.ForeColor = Color.FromArgb(CByte(123), CByte(139), CByte(178))
         lblRightSub.Location = New Point(78, 44)
         lblRightSub.Name = "lblRightSub"
-        lblRightSub.Size = New Size(145, 17)
+        lblRightSub.Size = New Size(179, 20)
         lblRightSub.TabIndex = 2
         lblRightSub.Text = "Điền thông tin bên dưới"
         ' 
@@ -731,7 +731,7 @@ Partial Class formPayPeriod
         lblRightTitle.ForeColor = Color.FromArgb(CByte(232), CByte(236), CByte(240))
         lblRightTitle.Location = New Point(76, 14)
         lblRightTitle.Name = "lblRightTitle"
-        lblRightTitle.Size = New Size(179, 26)
+        lblRightTitle.Size = New Size(224, 31)
         lblRightTitle.TabIndex = 3
         lblRightTitle.Text = "Tạo kỳ lương mới"
         ' 
@@ -901,7 +901,7 @@ Partial Class formPayPeriod
         lblRowInfo.ForeColor = Color.FromArgb(CByte(123), CByte(139), CByte(178))
         lblRowInfo.Location = New Point(14, 9)
         lblRowInfo.Name = "lblRowInfo"
-        lblRowInfo.Size = New Size(68, 17)
+        lblRowInfo.Size = New Size(82, 20)
         lblRowInfo.TabIndex = 0
         lblRowInfo.Text = "0 kỳ lương"
         ' 
@@ -944,7 +944,7 @@ Partial Class formPayPeriod
         cboStatusFilter.Items.AddRange(New Object() {"Tất cả trạng thái", "Nháp", "Đang xử lý", "Đã chốt"})
         cboStatusFilter.Location = New Point(262, 11)
         cboStatusFilter.Name = "cboStatusFilter"
-        cboStatusFilter.Size = New Size(160, 24)
+        cboStatusFilter.Size = New Size(160, 28)
         cboStatusFilter.TabIndex = 1
         ' 
         ' txtSearch
@@ -955,12 +955,12 @@ Partial Class formPayPeriod
         txtSearch.ForeColor = Color.FromArgb(CByte(232), CByte(236), CByte(240))
         txtSearch.Location = New Point(12, 11)
         txtSearch.Name = "txtSearch"
-        txtSearch.Size = New Size(240, 24)
+        txtSearch.Size = New Size(240, 28)
         txtSearch.TabIndex = 0
         ' 
         ' formPayPeriod
         ' 
-        AutoScaleDimensions = New SizeF(7F, 17F)
+        AutoScaleDimensions = New SizeF(9F, 20F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.FromArgb(CByte(26), CByte(29), CByte(46))
         ClientSize = New Size(1135, 798)
