@@ -125,6 +125,7 @@ Public Class formEmployee
         Dim clr = _avatarColors(empId Mod _avatarColors.Length)
         Dim initials = modDB.SafeStr(e.Value)
         Dim g = e.Graphics
+        g.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit
         g.SmoothingMode = SmoothingMode.AntiAlias
         Dim sz = 34
         Dim x = e.CellBounds.X + (e.CellBounds.Width - sz) \ 2
@@ -132,7 +133,7 @@ Public Class formEmployee
         Using br = New SolidBrush(clr)
             g.FillEllipse(br, x, y, sz, sz)
         End Using
-        Using f = New Font("Microsoft YaHei UI", 9.5!, FontStyle.Bold)
+        Using f = New Font("Microsoft YaHei UI", 10!, FontStyle.Bold)
             Using br = New SolidBrush(Color.White)
                 Dim s = g.MeasureString(initials, f)
                 g.DrawString(initials, f, br,

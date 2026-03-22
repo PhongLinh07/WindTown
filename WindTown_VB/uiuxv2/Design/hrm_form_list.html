@@ -6,7 +6,7 @@
 .mod-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
 .mod-title{font-size:13px;font-weight:500;color:var(--color-text-primary)}
 .mod-count{font-size:11px;color:var(--color-text-secondary);background:var(--color-background-secondary);padding:2px 8px;border-radius:10px}
-.mod-db{font-size:10.5px;color:var(--color-text-tertiary);margin-left:auto}
+.mod-db{font-size:10.5px;color:var(--color-text-tertiary);margin-right:auto}
 .form-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px}
 .form-card{border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);padding:10px 12px;cursor:pointer;transition:border-color .15s,background .15s}
 .form-card:hover{border-color:var(--color-border-secondary);background:var(--color-background-secondary)}
@@ -32,9 +32,9 @@
 
 <div class="wrap">
 <div class="summary">
-  <div class="sum-item"><div class="sum-num">19</div><div class="sum-label">Tổng số form</div></div>
-  <div class="sum-item"><div class="sum-num" style="color:#4CAF50">13</div><div class="sum-label">Đã hoàn thành</div></div>
-  <div class="sum-item"><div class="sum-num" style="color:#4A9EFF">6</div><div class="sum-label">Còn lại</div></div>
+  <div class="sum-item"><div class="sum-num">20</div><div class="sum-label">Tổng số form</div></div>
+  <div class="sum-item"><div class="sum-num" style="color:#4CAF50">19</div><div class="sum-label">Đã hoàn thành</div></div>
+  <div class="sum-item"><div class="sum-num" style="color:#4A9EFF">1</div><div class="sum-label">Còn lại</div></div>
   <div class="sum-item"><div class="sum-num">6</div><div class="sum-label">Module</div></div>
 </div>
 
@@ -180,43 +180,48 @@
     <div class="mod-db">attendance · leave · leave_cat · project · assignment · holiday</div>
   </div>
   <div class="form-grid">
-    <div class="form-card" onclick="sendPrompt('Thiết kế formAttendance chi tiết hơn')">
+    <div class="form-card done" onclick="sendPrompt('Thiết kế formAttendance chi tiết hơn')">
       <div class="fc-name">formAttendance</div>
       <div class="fc-table">attendance · employee</div>
       <div class="fc-desc">Chấm công theo ngày, lọc theo tháng / phòng ban</div>
       <div class="fc-badges">
+        <span class="badge badge-done">Xong</span>
         <span class="badge badge-layout">Full layout</span>
       </div>
     </div>
-    <div class="form-card" onclick="sendPrompt('Thiết kế formLeave chi tiết hơn')">
+    <div class="form-card done" onclick="sendPrompt('Thiết kế formLeave chi tiết hơn')">
       <div class="fc-name">formLeave</div>
       <div class="fc-table">leave · leave_cat · employee</div>
       <div class="fc-desc">Tạo đơn nghỉ, duyệt, theo dõi trạng thái</div>
       <div class="fc-badges">
+        <span class="badge badge-done">Xong</span>
         <span class="badge badge-tab">Tab layout</span>
       </div>
     </div>
-    <div class="form-card" onclick="sendPrompt('Thiết kế formLeaveCategory chi tiết hơn')">
+    <div class="form-card done" onclick="sendPrompt('Thiết kế formLeaveCategory chi tiết hơn')">
       <div class="fc-name">formLeaveCategory</div>
       <div class="fc-table">leave_cat</div>
       <div class="fc-desc">Loại nghỉ: phép năm, thai sản, không lương...</div>
       <div class="fc-badges">
+        <span class="badge badge-done">Xong</span>
         <span class="badge badge-layout">Full layout</span>
       </div>
     </div>
-    <div class="form-card" onclick="sendPrompt('Thiết kế formHoliday chi tiết hơn')">
+    <div class="form-card done" onclick="sendPrompt('Thiết kế formHoliday chi tiết hơn')">
       <div class="fc-name">formHoliday</div>
       <div class="fc-table">holiday</div>
       <div class="fc-desc">Ngày nghỉ lễ + hệ số nhân lương ngày lễ</div>
       <div class="fc-badges">
+        <span class="badge badge-done">Xong</span>
         <span class="badge badge-layout">Full layout</span>
       </div>
     </div>
-    <div class="form-card" onclick="sendPrompt('Thiết kế formProject chi tiết hơn')">
+    <div class="form-card done" onclick="sendPrompt('Thiết kế formProject chi tiết hơn')">
       <div class="fc-name">formProject</div>
       <div class="fc-table">project · assignment · position</div>
       <div class="fc-desc">Quản lý dự án + phân công nhân sự vào dự án</div>
       <div class="fc-badges">
+        <span class="badge badge-done">Xong</span>
         <span class="badge badge-tab">Tab layout</span>
       </div>
     </div>

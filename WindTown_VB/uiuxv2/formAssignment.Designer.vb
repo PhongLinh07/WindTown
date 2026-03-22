@@ -330,7 +330,7 @@ Partial Class formAssignment
         ' lblSubTitle
         ' 
         lblSubTitle.AutoSize = True
-        lblSubTitle.Font = New Font("Microsoft YaHei UI", 8.5F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        lblSubTitle.Font = New Font("Microsoft YaHei UI", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         lblSubTitle.ForeColor = Color.FromArgb(CByte(139), CByte(154), CByte(181))
         lblSubTitle.Location = New Point(18, 32)
         lblSubTitle.Name = "lblSubTitle"

@@ -212,21 +212,21 @@ Public Class formDashBoardV2
         End Using
 
         ' Label (uppercase, muted)
-        Using f = New Font("Microsoft YaHei UI", 8.5!, FontStyle.Bold)
+        Using f = New Font("Microsoft YaHei UI", 9!, FontStyle.Bold)
             Using br = New SolidBrush(clrSub)
                 g.DrawString(label, f, br, 14, 12)
             End Using
         End Using
 
         ' Value (large)
-        Using f = New Font("Microsoft YaHei UI", 20.0!, FontStyle.Regular)
+        Using f = New Font("Microsoft YaHei UI", 16.0!, FontStyle.Regular)
             Using br = New SolidBrush(clrTitle)
                 g.DrawString(value, f, br, 12, 34)
             End Using
         End Using
 
         ' Sub text
-        Using f = New Font("Microsoft YaHei UI", 8.5!)
+        Using f = New Font("Microsoft YaHei UI", 9!)
             Using br = New SolidBrush(clrSub)
                 g.DrawString(subText, f, br, 14, bounds.Height - 46)
             End Using
@@ -235,7 +235,7 @@ Public Class formDashBoardV2
         ' Delta badge
         Dim deltaColor = If(deltaPositive, clrDeltaUp, clrDeltaDn)
         Dim deltaBg = If(deltaPositive, clrDeltaBgUp, clrDeltaBgDn)
-        Using fDelta = New Font("Microsoft YaHei UI", 8.0!)
+        Using fDelta = New Font("Microsoft YaHei UI", 9!)
             Dim sz = g.MeasureString(delta, fDelta)
             Dim badgeRect = New RectangleF(12, bounds.Height - 30, sz.Width + 16, 18)
             Using br = New SolidBrush(deltaBg)
@@ -275,8 +275,8 @@ Public Class formDashBoardV2
         Dim clrLate = Color.FromArgb(245, 158, 11)
 
         ' Title
-        Using f1 = New Font("Microsoft YaHei UI", 10.5!, FontStyle.Bold)
-            Using f2 = New Font("Microsoft YaHei UI", 8.5!)
+        Using f1 = New Font("Microsoft YaHei UI", 11!, FontStyle.Bold)
+            Using f2 = New Font("Microsoft YaHei UI", 9!)
                 Using brT = New SolidBrush(clrTitle)
                     Using brS = New SolidBrush(clrSub)
                         g.DrawString("Xu hướng chấm công", f1, brT, 14, 12)
@@ -287,7 +287,7 @@ Public Class formDashBoardV2
         End Using
 
         ' Legend (top-right)
-        Using fL = New Font("Microsoft YaHei UI", 8.0!)
+        Using fL = New Font("Microsoft YaHei UI", 9!)
             Using brS = New SolidBrush(clrSub)
                 Using brP = New SolidBrush(clrPresent)
                     Using brL = New SolidBrush(clrLate)
@@ -316,7 +316,7 @@ Public Class formDashBoardV2
 
         ' Horizontal grid lines
         Using penGrid = New Pen(clrGrid, 0.5!)
-            Using fTick = New Font("Microsoft YaHei UI", 7.0!)
+            Using fTick = New Font("Microsoft YaHei UI", 9!)
                 Using brS = New SolidBrush(clrSub)
                     Dim i As Integer
                     For i = 0 To 4
@@ -375,7 +375,7 @@ Public Class formDashBoardV2
         End Using
 
         ' X axis labels
-        Using fLbl = New Font("Microsoft YaHei UI", 7.5!)
+        Using fLbl = New Font("Microsoft YaHei UI", 9!)
             Using brS = New SolidBrush(clrSub)
                 Dim m As Integer
                 For m = 0 To n - 1
@@ -410,8 +410,8 @@ Public Class formDashBoardV2
         }
 
         ' Title
-        Using f1 = New Font("Microsoft YaHei UI", 10.5!, FontStyle.Bold)
-            Using f2 = New Font("Microsoft YaHei UI", 8.5!)
+        Using f1 = New Font("Microsoft YaHei UI", 11!, FontStyle.Bold)
+            Using f2 = New Font("Microsoft YaHei UI", 9!)
                 Using brT = New SolidBrush(clrTitle)
                     Using brS = New SolidBrush(clrSub)
                         g.DrawString("Nhân viên / Phòng ban", f1, brT, 14, 12)
@@ -448,8 +448,8 @@ Public Class formDashBoardV2
         Dim totalW = n * (barW + 8) - 8
         Dim startX = chartLeft + (chartW - totalW) \ 2
 
-        Using fVal = New Font("Microsoft YaHei UI", 7.5!)
-            Using fLbl = New Font("Microsoft YaHei UI", 7.5!)
+        Using fVal = New Font("Microsoft YaHei UI", 9!)
+            Using fLbl = New Font("Microsoft YaHei UI", 9!)
                 Using brTitle = New SolidBrush(clrTitle)
                     Using brSub = New SolidBrush(clrSub)
                         Dim i As Integer
@@ -506,8 +506,8 @@ Public Class formDashBoardV2
         Dim clrBg = Color.FromArgb(30, 34, 53)
 
         ' Title
-        Using f1 = New Font("Microsoft YaHei UI", 10.5!, FontStyle.Bold)
-            Using f2 = New Font("Microsoft YaHei UI", 8.5!)
+        Using f1 = New Font("Microsoft YaHei UI", 11!, FontStyle.Bold)
+            Using f2 = New Font("Microsoft YaHei UI", 9!)
                 Using brT = New SolidBrush(clrTitle)
                     Using brS = New SolidBrush(clrSub)
                         g.DrawString("Phân bổ hợp đồng", f1, brT, 14, 12)
@@ -549,7 +549,7 @@ Public Class formDashBoardV2
 
         ' Center text
         Using fC = New Font("Microsoft YaHei UI", 14.0!, FontStyle.Bold)
-            Using fCS = New Font("Microsoft YaHei UI", 8.0!)
+            Using fCS = New Font("Microsoft YaHei UI", 9!)
                 Using brT = New SolidBrush(clrTitle)
                     Using brS = New SolidBrush(clrSub)
                         Dim totalStr = total.ToString()
@@ -567,7 +567,7 @@ Public Class formDashBoardV2
 
         ' Legend below
         Dim legendY = donutY + size2 + 12
-        Using fL = New Font("Microsoft YaHei UI", 8.5!)
+        Using fL = New Font("Microsoft YaHei UI", 9!)
             Using brS = New SolidBrush(clrSub)
                 Using brT = New SolidBrush(clrTitle)
                     Dim j As Integer
@@ -599,7 +599,7 @@ Public Class formDashBoardV2
     '  UTILITIES
     ' ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     Private Sub DrawNoData(g As Graphics, w As Integer, h As Integer, msg As String)
-        Using f = New Font("Microsoft YaHei UI", 9.5!)
+        Using f = New Font("Microsoft YaHei UI", 10!)
             Using br = New SolidBrush(Color.FromArgb(45, 55, 85))
                 Dim sz = g.MeasureString(msg, f)
                 g.DrawString(msg, f, br,

@@ -213,7 +213,7 @@ Partial Class formSalaryMult
         ' lblFCode
         ' 
         lblFCode.AutoSize = True
-        lblFCode.Font = New Font("Microsoft YaHei UI", 8.5F, FontStyle.Bold)
+        lblFCode.Font = New Font("Microsoft YaHei UI", 9F, FontStyle.Bold)
         lblFCode.ForeColor = Color.FromArgb(CByte(123), CByte(139), CByte(178))
         lblFCode.Location = New Point(3, 0)
         lblFCode.Name = "lblFCode"
@@ -237,7 +237,7 @@ Partial Class formSalaryMult
         ' lblFStatus
         ' 
         lblFStatus.AutoSize = True
-        lblFStatus.Font = New Font("Microsoft YaHei UI", 8.5F, FontStyle.Bold)
+        lblFStatus.Font = New Font("Microsoft YaHei UI", 9F, FontStyle.Bold)
         lblFStatus.ForeColor = Color.FromArgb(CByte(123), CByte(139), CByte(178))
         lblFStatus.Location = New Point(146, 0)
         lblFStatus.Margin = New Padding(8, 0, 0, 0)
@@ -252,19 +252,19 @@ Partial Class formSalaryMult
         cboFStatus.Dock = DockStyle.Fill
         cboFStatus.DropDownStyle = ComboBoxStyle.DropDownList
         cboFStatus.FlatStyle = FlatStyle.Flat
-        cboFStatus.Font = New Font("Microsoft YaHei UI", 9.5F)
+        cboFStatus.Font = New Font("Microsoft YaHei UI", 10F)
         cboFStatus.ForeColor = Color.FromArgb(CByte(232), CByte(236), CByte(240))
         cboFStatus.Items.AddRange(New Object() {"● Đang dùng", "○ Ngừng dùng"})
         cboFStatus.Location = New Point(146, 22)
         cboFStatus.Margin = New Padding(8, 0, 0, 4)
         cboFStatus.Name = "cboFStatus"
-        cboFStatus.Size = New Size(130, 29)
+        cboFStatus.Size = New Size(130, 31)
         cboFStatus.TabIndex = 1
         ' 
         ' lblFJob
         ' 
         lblFJob.AutoSize = True
-        lblFJob.Font = New Font("Microsoft YaHei UI", 8.5F, FontStyle.Bold)
+        lblFJob.Font = New Font("Microsoft YaHei UI", 9F, FontStyle.Bold)
         lblFJob.ForeColor = Color.FromArgb(CByte(123), CByte(139), CByte(178))
         lblFJob.Location = New Point(3, 62)
         lblFJob.Name = "lblFJob"
@@ -278,18 +278,18 @@ Partial Class formSalaryMult
         cboFJob.Dock = DockStyle.Fill
         cboFJob.DropDownStyle = ComboBoxStyle.DropDownList
         cboFJob.FlatStyle = FlatStyle.Flat
-        cboFJob.Font = New Font("Microsoft YaHei UI", 9.5F)
+        cboFJob.Font = New Font("Microsoft YaHei UI", 10F)
         cboFJob.ForeColor = Color.FromArgb(CByte(232), CByte(236), CByte(240))
         cboFJob.Location = New Point(0, 84)
         cboFJob.Margin = New Padding(0, 0, 8, 4)
         cboFJob.Name = "cboFJob"
-        cboFJob.Size = New Size(130, 29)
+        cboFJob.Size = New Size(130, 31)
         cboFJob.TabIndex = 2
         ' 
         ' lblFLevel
         ' 
         lblFLevel.AutoSize = True
-        lblFLevel.Font = New Font("Microsoft YaHei UI", 8.5F, FontStyle.Bold)
+        lblFLevel.Font = New Font("Microsoft YaHei UI", 9F, FontStyle.Bold)
         lblFLevel.ForeColor = Color.FromArgb(CByte(123), CByte(139), CByte(178))
         lblFLevel.Location = New Point(146, 62)
         lblFLevel.Margin = New Padding(8, 0, 0, 0)
@@ -304,19 +304,19 @@ Partial Class formSalaryMult
         cboFLevel.Dock = DockStyle.Fill
         cboFLevel.DropDownStyle = ComboBoxStyle.DropDownList
         cboFLevel.FlatStyle = FlatStyle.Flat
-        cboFLevel.Font = New Font("Microsoft YaHei UI", 9.5F)
+        cboFLevel.Font = New Font("Microsoft YaHei UI", 10F)
         cboFLevel.ForeColor = Color.FromArgb(CByte(232), CByte(236), CByte(240))
         cboFLevel.Location = New Point(146, 84)
         cboFLevel.Margin = New Padding(8, 0, 0, 4)
         cboFLevel.Name = "cboFLevel"
-        cboFLevel.Size = New Size(130, 29)
+        cboFLevel.Size = New Size(130, 31)
         cboFLevel.TabIndex = 3
         ' 
         ' lblFMult
         ' 
         lblFMult.AutoSize = True
         tlp.SetColumnSpan(lblFMult, 2)
-        lblFMult.Font = New Font("Microsoft YaHei UI", 8.5F, FontStyle.Bold)
+        lblFMult.Font = New Font("Microsoft YaHei UI", 9F, FontStyle.Bold)
         lblFMult.ForeColor = Color.FromArgb(CByte(123), CByte(139), CByte(178))
         lblFMult.Location = New Point(3, 124)
         lblFMult.Name = "lblFMult"
@@ -353,7 +353,7 @@ Partial Class formSalaryMult
         ' lblMultPreview
         ' 
         lblMultPreview.AutoSize = True
-        lblMultPreview.Font = New Font("Microsoft YaHei UI", 8.5F, FontStyle.Bold)
+        lblMultPreview.Font = New Font("Microsoft YaHei UI", 9F, FontStyle.Bold)
         lblMultPreview.ForeColor = Color.FromArgb(CByte(123), CByte(139), CByte(178))
         lblMultPreview.Location = New Point(0, 44)
         lblMultPreview.Name = "lblMultPreview"
@@ -364,11 +364,11 @@ Partial Class formSalaryMult
         ' lblMultHint
         ' 
         lblMultHint.AutoSize = True
-        lblMultHint.Font = New Font("Microsoft YaHei UI", 8F)
+        lblMultHint.Font = New Font("Microsoft YaHei UI", 9F)
         lblMultHint.ForeColor = Color.FromArgb(CByte(61), CByte(74), CByte(114))
         lblMultHint.Location = New Point(130, 8)
         lblMultHint.Name = "lblMultHint"
-        lblMultHint.Size = New Size(292, 20)
+        lblMultHint.Size = New Size(314, 20)
         lblMultHint.TabIndex = 2
         lblMultHint.Text = "Ví dụ: 1.0 = lương CB · 1.5 = lương CB × 1.5"
         ' 
@@ -388,7 +388,7 @@ Partial Class formSalaryMult
         ' 
         lblFNote.AutoSize = True
         tlp.SetColumnSpan(lblFNote, 2)
-        lblFNote.Font = New Font("Microsoft YaHei UI", 8.5F, FontStyle.Bold)
+        lblFNote.Font = New Font("Microsoft YaHei UI", 9F, FontStyle.Bold)
         lblFNote.ForeColor = Color.FromArgb(CByte(123), CByte(139), CByte(178))
         lblFNote.Location = New Point(3, 226)
         lblFNote.Name = "lblFNote"
@@ -402,7 +402,7 @@ Partial Class formSalaryMult
         txtFNote.BorderStyle = BorderStyle.FixedSingle
         tlp.SetColumnSpan(txtFNote, 2)
         txtFNote.Dock = DockStyle.Fill
-        txtFNote.Font = New Font("Microsoft YaHei UI", 9.5F)
+        txtFNote.Font = New Font("Microsoft YaHei UI", 10F)
         txtFNote.ForeColor = Color.FromArgb(CByte(232), CByte(236), CByte(240))
         txtFNote.Location = New Point(3, 251)
         txtFNote.Multiline = True
@@ -414,11 +414,11 @@ Partial Class formSalaryMult
         ' lblSec1
         ' 
         lblSec1.AutoSize = True
-        lblSec1.Font = New Font("Microsoft YaHei UI", 8F, FontStyle.Bold)
+        lblSec1.Font = New Font("Microsoft YaHei UI", 9F, FontStyle.Bold)
         lblSec1.ForeColor = Color.FromArgb(CByte(61), CByte(74), CByte(114))
         lblSec1.Location = New Point(16, 12)
         lblSec1.Name = "lblSec1"
-        lblSec1.Size = New Size(202, 19)
+        lblSec1.Size = New Size(211, 19)
         lblSec1.TabIndex = 1
         lblSec1.Text = "THÔNG TIN HỆ SỐ LƯƠNG"
         ' 
@@ -442,7 +442,7 @@ Partial Class formSalaryMult
         btnSave.FlatAppearance.BorderSize = 0
         btnSave.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(58), CByte(138), CByte(224))
         btnSave.FlatStyle = FlatStyle.Flat
-        btnSave.Font = New Font("Microsoft YaHei UI", 9.5F, FontStyle.Bold)
+        btnSave.Font = New Font("Microsoft YaHei UI", 10F, FontStyle.Bold)
         btnSave.ForeColor = Color.White
         btnSave.Location = New Point(960, 10)
         btnSave.Name = "btnSave"
@@ -499,7 +499,7 @@ Partial Class formSalaryMult
         ' lblHdrSub
         ' 
         lblHdrSub.AutoSize = True
-        lblHdrSub.Font = New Font("Microsoft YaHei UI", 8.5F)
+        lblHdrSub.Font = New Font("Microsoft YaHei UI", 9F)
         lblHdrSub.ForeColor = Color.FromArgb(CByte(123), CByte(139), CByte(178))
         lblHdrSub.Location = New Point(20, 38)
         lblHdrSub.Name = "lblHdrSub"
@@ -554,7 +554,7 @@ Partial Class formSalaryMult
         dgvDetail.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
         DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle2.BackColor = Color.FromArgb(CByte(21), CByte(24), CByte(36))
-        DataGridViewCellStyle2.Font = New Font("Microsoft YaHei UI", 8.5F, FontStyle.Bold)
+        DataGridViewCellStyle2.Font = New Font("Microsoft YaHei UI", 9F, FontStyle.Bold)
         DataGridViewCellStyle2.ForeColor = Color.FromArgb(CByte(74), CByte(158), CByte(255))
         DataGridViewCellStyle2.Padding = New Padding(6, 0, 0, 0)
         DataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(CByte(21), CByte(24), CByte(36))
@@ -567,7 +567,7 @@ Partial Class formSalaryMult
         dgvDetail.Cursor = Cursors.Hand
         DataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle7.BackColor = Color.FromArgb(CByte(26), CByte(29), CByte(46))
-        DataGridViewCellStyle7.Font = New Font("Microsoft YaHei UI", 9.5F)
+        DataGridViewCellStyle7.Font = New Font("Microsoft YaHei UI", 10F)
         DataGridViewCellStyle7.ForeColor = Color.FromArgb(CByte(232), CByte(236), CByte(240))
         DataGridViewCellStyle7.Padding = New Padding(6, 0, 0, 0)
         DataGridViewCellStyle7.SelectionBackColor = Color.FromArgb(CByte(30), CByte(74), CByte(158), CByte(255))
@@ -590,7 +590,7 @@ Partial Class formSalaryMult
         ' 
         ' colCode
         ' 
-        DataGridViewCellStyle3.Font = New Font("Courier New", 8.5F, FontStyle.Bold)
+        DataGridViewCellStyle3.Font = New Font("Courier New", 9F, FontStyle.Bold)
         DataGridViewCellStyle3.ForeColor = Color.FromArgb(CByte(245), CByte(158), CByte(11))
         colCode.DefaultCellStyle = DataGridViewCellStyle3
         colCode.HeaderText = "MÃ"
@@ -620,7 +620,7 @@ Partial Class formSalaryMult
         ' colMult
         ' 
         DataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle5.Font = New Font("Microsoft YaHei UI", 10.5F, FontStyle.Bold)
+        DataGridViewCellStyle5.Font = New Font("Microsoft YaHei UI", 11F, FontStyle.Bold)
         DataGridViewCellStyle5.ForeColor = Color.FromArgb(CByte(76), CByte(175), CByte(80))
         colMult.DefaultCellStyle = DataGridViewCellStyle5
         colMult.HeaderText = "HỆ SỐ"
@@ -652,7 +652,7 @@ Partial Class formSalaryMult
         ' lblRowInfo
         ' 
         lblRowInfo.AutoSize = True
-        lblRowInfo.Font = New Font("Microsoft YaHei UI", 8.5F)
+        lblRowInfo.Font = New Font("Microsoft YaHei UI", 9F)
         lblRowInfo.ForeColor = Color.FromArgb(CByte(123), CByte(139), CByte(178))
         lblRowInfo.Location = New Point(14, 9)
         lblRowInfo.Name = "lblRowInfo"
@@ -687,7 +687,7 @@ Partial Class formSalaryMult
         dgvMatrix.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single
         DataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleCenter
         DataGridViewCellStyle9.BackColor = Color.FromArgb(CByte(21), CByte(24), CByte(36))
-        DataGridViewCellStyle9.Font = New Font("Microsoft YaHei UI", 8.5F, FontStyle.Bold)
+        DataGridViewCellStyle9.Font = New Font("Microsoft YaHei UI", 9F, FontStyle.Bold)
         DataGridViewCellStyle9.ForeColor = Color.FromArgb(CByte(245), CByte(158), CByte(11))
         DataGridViewCellStyle9.SelectionBackColor = Color.FromArgb(CByte(21), CByte(24), CByte(36))
         DataGridViewCellStyle9.SelectionForeColor = Color.FromArgb(CByte(245), CByte(158), CByte(11))
@@ -699,7 +699,7 @@ Partial Class formSalaryMult
         dgvMatrix.Cursor = Cursors.Hand
         DataGridViewCellStyle11.Alignment = DataGridViewContentAlignment.MiddleCenter
         DataGridViewCellStyle11.BackColor = Color.FromArgb(CByte(26), CByte(29), CByte(46))
-        DataGridViewCellStyle11.Font = New Font("Microsoft YaHei UI", 9.5F)
+        DataGridViewCellStyle11.Font = New Font("Microsoft YaHei UI", 10F)
         DataGridViewCellStyle11.ForeColor = Color.FromArgb(CByte(232), CByte(236), CByte(240))
         DataGridViewCellStyle11.SelectionBackColor = Color.FromArgb(CByte(40), CByte(74), CByte(158), CByte(255))
         DataGridViewCellStyle11.SelectionForeColor = Color.FromArgb(CByte(232), CByte(236), CByte(240))
@@ -752,12 +752,12 @@ Partial Class formSalaryMult
         lblLegend2.Anchor = AnchorStyles.Top Or AnchorStyles.Right
         lblLegend2.AutoSize = True
         lblLegend2.BackColor = Color.FromArgb(CByte(15), CByte(123), CByte(139), CByte(178))
-        lblLegend2.Font = New Font("Microsoft YaHei UI", 8F)
+        lblLegend2.Font = New Font("Microsoft YaHei UI", 9F)
         lblLegend2.ForeColor = Color.FromArgb(CByte(123), CByte(139), CByte(178))
         lblLegend2.Location = New Point(1712, 14)
         lblLegend2.Name = "lblLegend2"
         lblLegend2.Padding = New Padding(6, 2, 6, 2)
-        lblLegend2.Size = New Size(132, 24)
+        lblLegend2.Size = New Size(137, 24)
         lblLegend2.TabIndex = 0
         lblLegend2.Text = "□  Chưa thiết lập"
         ' 
@@ -766,19 +766,19 @@ Partial Class formSalaryMult
         lblLegend1.Anchor = AnchorStyles.Top Or AnchorStyles.Right
         lblLegend1.AutoSize = True
         lblLegend1.BackColor = Color.FromArgb(CByte(20), CByte(76), CByte(175), CByte(80))
-        lblLegend1.Font = New Font("Microsoft YaHei UI", 8F)
+        lblLegend1.Font = New Font("Microsoft YaHei UI", 9F)
         lblLegend1.ForeColor = Color.FromArgb(CByte(76), CByte(175), CByte(80))
         lblLegend1.Location = New Point(1582, 14)
         lblLegend1.Name = "lblLegend1"
         lblLegend1.Padding = New Padding(6, 2, 6, 2)
-        lblLegend1.Size = New Size(115, 24)
+        lblLegend1.Size = New Size(120, 24)
         lblLegend1.TabIndex = 1
         lblLegend1.Text = "■  Đã có hệ số"
         ' 
         ' lblMatrixSub
         ' 
         lblMatrixSub.AutoSize = True
-        lblMatrixSub.Font = New Font("Microsoft YaHei UI", 8.5F)
+        lblMatrixSub.Font = New Font("Microsoft YaHei UI", 9F)
         lblMatrixSub.ForeColor = Color.FromArgb(CByte(123), CByte(139), CByte(178))
         lblMatrixSub.Location = New Point(18, 36)
         lblMatrixSub.Name = "lblMatrixSub"
@@ -824,7 +824,7 @@ Partial Class formSalaryMult
         btnTab2.FlatAppearance.BorderSize = 0
         btnTab2.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(28), CByte(32), CByte(52))
         btnTab2.FlatStyle = FlatStyle.Flat
-        btnTab2.Font = New Font("Microsoft YaHei UI", 9.5F)
+        btnTab2.Font = New Font("Microsoft YaHei UI", 10F)
         btnTab2.ForeColor = Color.FromArgb(CByte(123), CByte(139), CByte(178))
         btnTab2.Location = New Point(180, 0)
         btnTab2.Name = "btnTab2"
@@ -840,7 +840,7 @@ Partial Class formSalaryMult
         btnTab1.FlatAppearance.BorderSize = 0
         btnTab1.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(28), CByte(32), CByte(52))
         btnTab1.FlatStyle = FlatStyle.Flat
-        btnTab1.Font = New Font("Microsoft YaHei UI", 9.5F)
+        btnTab1.Font = New Font("Microsoft YaHei UI", 10F)
         btnTab1.ForeColor = Color.FromArgb(CByte(74), CByte(158), CByte(255))
         btnTab1.Location = New Point(0, 0)
         btnTab1.Name = "btnTab1"
@@ -869,7 +869,7 @@ Partial Class formSalaryMult
         btnAdd.FlatAppearance.BorderSize = 0
         btnAdd.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(58), CByte(138), CByte(224))
         btnAdd.FlatStyle = FlatStyle.Flat
-        btnAdd.Font = New Font("Microsoft YaHei UI", 9.5F, FontStyle.Bold)
+        btnAdd.Font = New Font("Microsoft YaHei UI", 10F, FontStyle.Bold)
         btnAdd.ForeColor = Color.White
         btnAdd.Location = New Point(1812, 11)
         btnAdd.Name = "btnAdd"
@@ -886,7 +886,7 @@ Partial Class formSalaryMult
         btnExport.FlatAppearance.BorderColor = Color.FromArgb(CByte(42), CByte(48), CByte(80))
         btnExport.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(48), CByte(55), CByte(85))
         btnExport.FlatStyle = FlatStyle.Flat
-        btnExport.Font = New Font("Microsoft YaHei UI", 8.5F)
+        btnExport.Font = New Font("Microsoft YaHei UI", 9F)
         btnExport.ForeColor = Color.FromArgb(CByte(123), CByte(139), CByte(178))
         btnExport.Location = New Point(1692, 11)
         btnExport.Name = "btnExport"
@@ -900,7 +900,7 @@ Partial Class formSalaryMult
         cboDeptFilter.BackColor = Color.FromArgb(CByte(38), CByte(43), CByte(66))
         cboDeptFilter.DropDownStyle = ComboBoxStyle.DropDownList
         cboDeptFilter.FlatStyle = FlatStyle.Flat
-        cboDeptFilter.Font = New Font("Microsoft YaHei UI", 8.5F)
+        cboDeptFilter.Font = New Font("Microsoft YaHei UI", 9F)
         cboDeptFilter.ForeColor = Color.FromArgb(CByte(232), CByte(236), CByte(240))
         cboDeptFilter.Items.AddRange(New Object() {"Tất cả phòng ban", "Kỹ thuật", "Kế toán", "Nhân sự", "Marketing", "Kinh doanh", "Vận hành"})
         cboDeptFilter.Location = New Point(12, 11)

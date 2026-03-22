@@ -264,7 +264,7 @@ Partial Class formPayroll
         ' 
         lblSlipNetVal.Anchor = AnchorStyles.Top Or AnchorStyles.Right
         lblSlipNetVal.AutoSize = True
-        lblSlipNetVal.Font = New Font("Microsoft YaHei UI", 20F, FontStyle.Bold)
+        lblSlipNetVal.Font = New Font("Microsoft YaHei UI", 16F, FontStyle.Bold)
         lblSlipNetVal.ForeColor = Color.FromArgb(CByte(74), CByte(158), CByte(255))
         lblSlipNetVal.Location = New Point(338, 10)
         lblSlipNetVal.Name = "lblSlipNetVal"
@@ -333,7 +333,7 @@ Partial Class formPayroll
         ' lblSlipDeductTitle
         ' 
         lblSlipDeductTitle.AutoSize = True
-        lblSlipDeductTitle.Font = New Font("Microsoft YaHei UI", 8.5F, FontStyle.Bold)
+        lblSlipDeductTitle.Font = New Font("Microsoft YaHei UI", 9F, FontStyle.Bold)
         lblSlipDeductTitle.ForeColor = Color.FromArgb(CByte(61), CByte(74), CByte(114))
         lblSlipDeductTitle.Location = New Point(18, 12)
         lblSlipDeductTitle.Name = "lblSlipDeductTitle"
@@ -380,7 +380,7 @@ Partial Class formPayroll
         ' lblSlipIncomeTitle
         ' 
         lblSlipIncomeTitle.AutoSize = True
-        lblSlipIncomeTitle.Font = New Font("Microsoft YaHei UI", 8.5F, FontStyle.Bold)
+        lblSlipIncomeTitle.Font = New Font("Microsoft YaHei UI", 9F, FontStyle.Bold)
         lblSlipIncomeTitle.ForeColor = Color.FromArgb(CByte(61), CByte(74), CByte(114))
         lblSlipIncomeTitle.Location = New Point(18, 12)
         lblSlipIncomeTitle.Name = "lblSlipIncomeTitle"
@@ -407,7 +407,7 @@ Partial Class formPayroll
         ' 
         lblSlipPeriodDates.Anchor = AnchorStyles.Top Or AnchorStyles.Right
         lblSlipPeriodDates.AutoSize = True
-        lblSlipPeriodDates.Font = New Font("Microsoft YaHei UI", 8.5F)
+        lblSlipPeriodDates.Font = New Font("Microsoft YaHei UI", 9F)
         lblSlipPeriodDates.ForeColor = Color.FromArgb(CByte(123), CByte(139), CByte(178))
         lblSlipPeriodDates.Location = New Point(288, 44)
         lblSlipPeriodDates.Name = "lblSlipPeriodDates"
@@ -476,7 +476,7 @@ Partial Class formPayroll
         btnExportOne.FlatAppearance.BorderSize = 0
         btnExportOne.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(58), CByte(138), CByte(224))
         btnExportOne.FlatStyle = FlatStyle.Flat
-        btnExportOne.Font = New Font("Microsoft YaHei UI", 9.5F, FontStyle.Bold)
+        btnExportOne.Font = New Font("Microsoft YaHei UI", 10F, FontStyle.Bold)
         btnExportOne.ForeColor = Color.White
         btnExportOne.Location = New Point(904, 10)
         btnExportOne.Name = "btnExportOne"
@@ -529,7 +529,7 @@ Partial Class formPayroll
         ' lblSlipListTitle
         ' 
         lblSlipListTitle.Dock = DockStyle.Top
-        lblSlipListTitle.Font = New Font("Microsoft YaHei UI", 8F, FontStyle.Bold)
+        lblSlipListTitle.Font = New Font("Microsoft YaHei UI", 9F, FontStyle.Bold)
         lblSlipListTitle.ForeColor = Color.FromArgb(CByte(61), CByte(74), CByte(114))
         lblSlipListTitle.Location = New Point(0, 0)
         lblSlipListTitle.Name = "lblSlipListTitle"
@@ -567,7 +567,7 @@ Partial Class formPayroll
         dgvPayroll.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
         DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle2.BackColor = Color.FromArgb(CByte(21), CByte(24), CByte(36))
-        DataGridViewCellStyle2.Font = New Font("Microsoft YaHei UI", 8.5F, FontStyle.Bold)
+        DataGridViewCellStyle2.Font = New Font("Microsoft YaHei UI", 9F, FontStyle.Bold)
         DataGridViewCellStyle2.ForeColor = Color.FromArgb(CByte(74), CByte(158), CByte(255))
         DataGridViewCellStyle2.Padding = New Padding(6, 0, 0, 0)
         DataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(CByte(21), CByte(24), CByte(36))
@@ -580,7 +580,7 @@ Partial Class formPayroll
         dgvPayroll.Cursor = Cursors.Hand
         DataGridViewCellStyle10.Alignment = DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle10.BackColor = Color.FromArgb(CByte(26), CByte(29), CByte(46))
-        DataGridViewCellStyle10.Font = New Font("Microsoft YaHei UI", 9.5F)
+        DataGridViewCellStyle10.Font = New Font("Microsoft YaHei UI", 10F)
         DataGridViewCellStyle10.ForeColor = Color.FromArgb(CByte(232), CByte(236), CByte(240))
         DataGridViewCellStyle10.Padding = New Padding(6, 0, 0, 0)
         DataGridViewCellStyle10.SelectionBackColor = Color.FromArgb(CByte(30), CByte(74), CByte(158), CByte(255))
@@ -729,7 +729,7 @@ Partial Class formPayroll
         btnPayNext.Cursor = Cursors.Hand
         btnPayNext.FlatAppearance.BorderColor = Color.FromArgb(CByte(42), CByte(48), CByte(80))
         btnPayNext.FlatStyle = FlatStyle.Flat
-        btnPayNext.Font = New Font("Microsoft YaHei UI", 8.5F)
+        btnPayNext.Font = New Font("Microsoft YaHei UI", 9F)
         btnPayNext.ForeColor = Color.FromArgb(CByte(123), CByte(139), CByte(178))
         btnPayNext.Location = New Point(102, 0)
         btnPayNext.Name = "btnPayNext"
@@ -744,7 +744,7 @@ Partial Class formPayroll
         btnPayPage2.Cursor = Cursors.Hand
         btnPayPage2.FlatAppearance.BorderColor = Color.FromArgb(CByte(42), CByte(48), CByte(80))
         btnPayPage2.FlatStyle = FlatStyle.Flat
-        btnPayPage2.Font = New Font("Microsoft YaHei UI", 8.5F)
+        btnPayPage2.Font = New Font("Microsoft YaHei UI", 9F)
         btnPayPage2.ForeColor = Color.FromArgb(CByte(123), CByte(139), CByte(178))
         btnPayPage2.Location = New Point(68, 0)
         btnPayPage2.Name = "btnPayPage2"
@@ -759,7 +759,7 @@ Partial Class formPayroll
         btnPayPage1.Cursor = Cursors.Hand
         btnPayPage1.FlatAppearance.BorderSize = 0
         btnPayPage1.FlatStyle = FlatStyle.Flat
-        btnPayPage1.Font = New Font("Microsoft YaHei UI", 8.5F)
+        btnPayPage1.Font = New Font("Microsoft YaHei UI", 9F)
         btnPayPage1.ForeColor = Color.White
         btnPayPage1.Location = New Point(34, 0)
         btnPayPage1.Name = "btnPayPage1"
@@ -774,7 +774,7 @@ Partial Class formPayroll
         btnPayPrev.Cursor = Cursors.Hand
         btnPayPrev.FlatAppearance.BorderColor = Color.FromArgb(CByte(42), CByte(48), CByte(80))
         btnPayPrev.FlatStyle = FlatStyle.Flat
-        btnPayPrev.Font = New Font("Microsoft YaHei UI", 8.5F)
+        btnPayPrev.Font = New Font("Microsoft YaHei UI", 9F)
         btnPayPrev.ForeColor = Color.FromArgb(CByte(123), CByte(139), CByte(178))
         btnPayPrev.Location = New Point(0, 0)
         btnPayPrev.Name = "btnPayPrev"
@@ -786,7 +786,7 @@ Partial Class formPayroll
         ' lblPayInfo
         ' 
         lblPayInfo.AutoSize = True
-        lblPayInfo.Font = New Font("Microsoft YaHei UI", 8.5F)
+        lblPayInfo.Font = New Font("Microsoft YaHei UI", 9F)
         lblPayInfo.ForeColor = Color.FromArgb(CByte(123), CByte(139), CByte(178))
         lblPayInfo.Location = New Point(16, 14)
         lblPayInfo.Name = "lblPayInfo"
@@ -822,7 +822,7 @@ Partial Class formPayroll
         ' 
         lblChipNet.AutoSize = True
         lblChipNet.BackColor = Color.FromArgb(CByte(38), CByte(43), CByte(66))
-        lblChipNet.Font = New Font("Microsoft YaHei UI", 8.5F)
+        lblChipNet.Font = New Font("Microsoft YaHei UI", 9F)
         lblChipNet.ForeColor = Color.FromArgb(CByte(123), CByte(139), CByte(178))
         lblChipNet.Location = New Point(340, 8)
         lblChipNet.Name = "lblChipNet"
@@ -835,7 +835,7 @@ Partial Class formPayroll
         ' 
         lblChipDeduct.AutoSize = True
         lblChipDeduct.BackColor = Color.FromArgb(CByte(38), CByte(43), CByte(66))
-        lblChipDeduct.Font = New Font("Microsoft YaHei UI", 8.5F)
+        lblChipDeduct.Font = New Font("Microsoft YaHei UI", 9F)
         lblChipDeduct.ForeColor = Color.FromArgb(CByte(123), CByte(139), CByte(178))
         lblChipDeduct.Location = New Point(170, 8)
         lblChipDeduct.Name = "lblChipDeduct"
@@ -848,7 +848,7 @@ Partial Class formPayroll
         ' 
         lblChipIncome.AutoSize = True
         lblChipIncome.BackColor = Color.FromArgb(CByte(38), CByte(43), CByte(66))
-        lblChipIncome.Font = New Font("Microsoft YaHei UI", 8.5F)
+        lblChipIncome.Font = New Font("Microsoft YaHei UI", 9F)
         lblChipIncome.ForeColor = Color.FromArgb(CByte(123), CByte(139), CByte(178))
         lblChipIncome.Location = New Point(0, 8)
         lblChipIncome.Name = "lblChipIncome"
@@ -861,7 +861,7 @@ Partial Class formPayroll
         ' 
         lblPayPeriodBadge.AutoSize = True
         lblPayPeriodBadge.BackColor = Color.FromArgb(CByte(15), CByte(74), CByte(158), CByte(255))
-        lblPayPeriodBadge.Font = New Font("Microsoft YaHei UI", 9.5F, FontStyle.Bold)
+        lblPayPeriodBadge.Font = New Font("Microsoft YaHei UI", 10F, FontStyle.Bold)
         lblPayPeriodBadge.ForeColor = Color.FromArgb(CByte(74), CByte(158), CByte(255))
         lblPayPeriodBadge.Location = New Point(14, 11)
         lblPayPeriodBadge.Name = "lblPayPeriodBadge"
@@ -944,7 +944,7 @@ Partial Class formPayroll
         ' lblPCode
         ' 
         lblPCode.AutoSize = True
-        lblPCode.Font = New Font("Microsoft YaHei UI", 8.5F, FontStyle.Bold)
+        lblPCode.Font = New Font("Microsoft YaHei UI", 9F, FontStyle.Bold)
         lblPCode.ForeColor = Color.FromArgb(CByte(123), CByte(139), CByte(178))
         lblPCode.Location = New Point(3, 0)
         lblPCode.Name = "lblPCode"
@@ -957,7 +957,7 @@ Partial Class formPayroll
         txtPCode.BackColor = Color.FromArgb(CByte(38), CByte(43), CByte(66))
         txtPCode.BorderStyle = BorderStyle.FixedSingle
         txtPCode.Dock = DockStyle.Fill
-        txtPCode.Font = New Font("Courier New", 9.5F)
+        txtPCode.Font = New Font("Courier New", 10F)
         txtPCode.ForeColor = Color.FromArgb(CByte(74), CByte(158), CByte(255))
         txtPCode.Location = New Point(0, 22)
         txtPCode.Margin = New Padding(0, 0, 8, 4)
@@ -968,7 +968,7 @@ Partial Class formPayroll
         ' lblPName
         ' 
         lblPName.AutoSize = True
-        lblPName.Font = New Font("Microsoft YaHei UI", 8.5F, FontStyle.Bold)
+        lblPName.Font = New Font("Microsoft YaHei UI", 9F, FontStyle.Bold)
         lblPName.ForeColor = Color.FromArgb(CByte(123), CByte(139), CByte(178))
         lblPName.Location = New Point(8, 0)
         lblPName.Margin = New Padding(8, 0, 0, 0)
@@ -982,7 +982,7 @@ Partial Class formPayroll
         txtPName.BackColor = Color.FromArgb(CByte(38), CByte(43), CByte(66))
         txtPName.BorderStyle = BorderStyle.FixedSingle
         txtPName.Dock = DockStyle.Fill
-        txtPName.Font = New Font("Microsoft YaHei UI", 9.5F)
+        txtPName.Font = New Font("Microsoft YaHei UI", 10F)
         txtPName.ForeColor = Color.FromArgb(CByte(232), CByte(236), CByte(240))
         txtPName.Location = New Point(8, 22)
         txtPName.Margin = New Padding(8, 0, 0, 4)
@@ -993,7 +993,7 @@ Partial Class formPayroll
         ' lblPStart
         ' 
         lblPStart.AutoSize = True
-        lblPStart.Font = New Font("Microsoft YaHei UI", 8.5F, FontStyle.Bold)
+        lblPStart.Font = New Font("Microsoft YaHei UI", 9F, FontStyle.Bold)
         lblPStart.ForeColor = Color.FromArgb(CByte(123), CByte(139), CByte(178))
         lblPStart.Location = New Point(3, 64)
         lblPStart.Name = "lblPStart"
@@ -1005,7 +1005,7 @@ Partial Class formPayroll
         ' 
         dtpStart.CustomFormat = "dd/MM/yyyy"
         dtpStart.Dock = DockStyle.Fill
-        dtpStart.Font = New Font("Microsoft YaHei UI", 9.5F)
+        dtpStart.Font = New Font("Microsoft YaHei UI", 10F)
         dtpStart.Format = DateTimePickerFormat.Custom
         dtpStart.Location = New Point(0, 86)
         dtpStart.Margin = New Padding(0, 0, 8, 4)
@@ -1016,7 +1016,7 @@ Partial Class formPayroll
         ' lblPEnd
         ' 
         lblPEnd.AutoSize = True
-        lblPEnd.Font = New Font("Microsoft YaHei UI", 8.5F, FontStyle.Bold)
+        lblPEnd.Font = New Font("Microsoft YaHei UI", 9F, FontStyle.Bold)
         lblPEnd.ForeColor = Color.FromArgb(CByte(123), CByte(139), CByte(178))
         lblPEnd.Location = New Point(8, 64)
         lblPEnd.Margin = New Padding(8, 0, 0, 0)
@@ -1029,7 +1029,7 @@ Partial Class formPayroll
         ' 
         dtpEnd.CustomFormat = "dd/MM/yyyy"
         dtpEnd.Dock = DockStyle.Fill
-        dtpEnd.Font = New Font("Microsoft YaHei UI", 9.5F)
+        dtpEnd.Font = New Font("Microsoft YaHei UI", 10F)
         dtpEnd.Format = DateTimePickerFormat.Custom
         dtpEnd.Location = New Point(8, 86)
         dtpEnd.Margin = New Padding(8, 0, 0, 4)
@@ -1040,7 +1040,7 @@ Partial Class formPayroll
         ' lblPMonth
         ' 
         lblPMonth.AutoSize = True
-        lblPMonth.Font = New Font("Microsoft YaHei UI", 8.5F, FontStyle.Bold)
+        lblPMonth.Font = New Font("Microsoft YaHei UI", 9F, FontStyle.Bold)
         lblPMonth.ForeColor = Color.FromArgb(CByte(123), CByte(139), CByte(178))
         lblPMonth.Location = New Point(3, 128)
         lblPMonth.Name = "lblPMonth"
@@ -1052,7 +1052,7 @@ Partial Class formPayroll
         ' 
         dtpMonth.CustomFormat = "MM/yyyy"
         dtpMonth.Dock = DockStyle.Fill
-        dtpMonth.Font = New Font("Microsoft YaHei UI", 9.5F)
+        dtpMonth.Font = New Font("Microsoft YaHei UI", 10F)
         dtpMonth.Format = DateTimePickerFormat.Custom
         dtpMonth.Location = New Point(0, 150)
         dtpMonth.Margin = New Padding(0, 0, 8, 4)
@@ -1063,7 +1063,7 @@ Partial Class formPayroll
         ' lblPStdHours
         ' 
         lblPStdHours.AutoSize = True
-        lblPStdHours.Font = New Font("Microsoft YaHei UI", 8.5F, FontStyle.Bold)
+        lblPStdHours.Font = New Font("Microsoft YaHei UI", 9F, FontStyle.Bold)
         lblPStdHours.ForeColor = Color.FromArgb(CByte(123), CByte(139), CByte(178))
         lblPStdHours.Location = New Point(8, 128)
         lblPStdHours.Margin = New Padding(8, 0, 0, 0)
@@ -1077,7 +1077,7 @@ Partial Class formPayroll
         txtStdHours.BackColor = Color.FromArgb(CByte(38), CByte(43), CByte(66))
         txtStdHours.BorderStyle = BorderStyle.FixedSingle
         txtStdHours.Dock = DockStyle.Fill
-        txtStdHours.Font = New Font("Microsoft YaHei UI", 9.5F)
+        txtStdHours.Font = New Font("Microsoft YaHei UI", 10F)
         txtStdHours.ForeColor = Color.FromArgb(CByte(232), CByte(236), CByte(240))
         txtStdHours.Location = New Point(8, 150)
         txtStdHours.Margin = New Padding(8, 0, 0, 4)
@@ -1090,7 +1090,7 @@ Partial Class formPayroll
         ' 
         lblPNote.AutoSize = True
         tlpPeriodForm.SetColumnSpan(lblPNote, 2)
-        lblPNote.Font = New Font("Microsoft YaHei UI", 8.5F, FontStyle.Bold)
+        lblPNote.Font = New Font("Microsoft YaHei UI", 9F, FontStyle.Bold)
         lblPNote.ForeColor = Color.FromArgb(CByte(123), CByte(139), CByte(178))
         lblPNote.Location = New Point(3, 192)
         lblPNote.Name = "lblPNote"
@@ -1104,7 +1104,7 @@ Partial Class formPayroll
         txtPNote.BorderStyle = BorderStyle.FixedSingle
         tlpPeriodForm.SetColumnSpan(txtPNote, 2)
         txtPNote.Dock = DockStyle.Fill
-        txtPNote.Font = New Font("Microsoft YaHei UI", 9.5F)
+        txtPNote.Font = New Font("Microsoft YaHei UI", 10F)
         txtPNote.ForeColor = Color.FromArgb(CByte(232), CByte(236), CByte(240))
         txtPNote.Location = New Point(0, 214)
         txtPNote.Margin = New Padding(0, 0, 0, 4)
@@ -1132,7 +1132,7 @@ Partial Class formPayroll
         btnSavePeriod.FlatAppearance.BorderSize = 0
         btnSavePeriod.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(58), CByte(138), CByte(224))
         btnSavePeriod.FlatStyle = FlatStyle.Flat
-        btnSavePeriod.Font = New Font("Microsoft YaHei UI", 9.5F, FontStyle.Bold)
+        btnSavePeriod.Font = New Font("Microsoft YaHei UI", 10F, FontStyle.Bold)
         btnSavePeriod.ForeColor = Color.White
         btnSavePeriod.Location = New Point(718, 10)
         btnSavePeriod.Name = "btnSavePeriod"
@@ -1224,7 +1224,7 @@ Partial Class formPayroll
         ' lblKpi4Title
         ' 
         lblKpi4Title.AutoSize = True
-        lblKpi4Title.Font = New Font("Microsoft YaHei UI", 8F)
+        lblKpi4Title.Font = New Font("Microsoft YaHei UI", 9F)
         lblKpi4Title.ForeColor = Color.FromArgb(CByte(123), CByte(139), CByte(178))
         lblKpi4Title.Location = New Point(12, 8)
         lblKpi4Title.Name = "lblKpi4Title"
@@ -1257,7 +1257,7 @@ Partial Class formPayroll
         ' lblKpi3Title
         ' 
         lblKpi3Title.AutoSize = True
-        lblKpi3Title.Font = New Font("Microsoft YaHei UI", 8F)
+        lblKpi3Title.Font = New Font("Microsoft YaHei UI", 9F)
         lblKpi3Title.ForeColor = Color.FromArgb(CByte(123), CByte(139), CByte(178))
         lblKpi3Title.Location = New Point(12, 8)
         lblKpi3Title.Name = "lblKpi3Title"
@@ -1290,7 +1290,7 @@ Partial Class formPayroll
         ' lblKpi2Title
         ' 
         lblKpi2Title.AutoSize = True
-        lblKpi2Title.Font = New Font("Microsoft YaHei UI", 8F)
+        lblKpi2Title.Font = New Font("Microsoft YaHei UI", 9F)
         lblKpi2Title.ForeColor = Color.FromArgb(CByte(123), CByte(139), CByte(178))
         lblKpi2Title.Location = New Point(12, 8)
         lblKpi2Title.Name = "lblKpi2Title"
@@ -1323,7 +1323,7 @@ Partial Class formPayroll
         ' lblKpi1Title
         ' 
         lblKpi1Title.AutoSize = True
-        lblKpi1Title.Font = New Font("Microsoft YaHei UI", 8F)
+        lblKpi1Title.Font = New Font("Microsoft YaHei UI", 9F)
         lblKpi1Title.ForeColor = Color.FromArgb(CByte(123), CByte(139), CByte(178))
         lblKpi1Title.Location = New Point(12, 8)
         lblKpi1Title.Name = "lblKpi1Title"
@@ -1347,7 +1347,7 @@ Partial Class formPayroll
         ' 
         lblPeriodBadge.AutoSize = True
         lblPeriodBadge.BackColor = Color.FromArgb(CByte(20), CByte(76), CByte(175), CByte(80))
-        lblPeriodBadge.Font = New Font("Microsoft YaHei UI", 8.5F)
+        lblPeriodBadge.Font = New Font("Microsoft YaHei UI", 9F)
         lblPeriodBadge.ForeColor = Color.FromArgb(CByte(76), CByte(175), CByte(80))
         lblPeriodBadge.Location = New Point(2, 54)
         lblPeriodBadge.Name = "lblPeriodBadge"
@@ -1422,7 +1422,7 @@ Partial Class formPayroll
         btnAddPeriod.FlatAppearance.BorderSize = 0
         btnAddPeriod.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(58), CByte(138), CByte(224))
         btnAddPeriod.FlatStyle = FlatStyle.Flat
-        btnAddPeriod.Font = New Font("Microsoft YaHei UI", 9.5F, FontStyle.Bold)
+        btnAddPeriod.Font = New Font("Microsoft YaHei UI", 10F, FontStyle.Bold)
         btnAddPeriod.ForeColor = Color.White
         btnAddPeriod.Location = New Point(10, 10)
         btnAddPeriod.Name = "btnAddPeriod"
@@ -1434,7 +1434,7 @@ Partial Class formPayroll
         ' lblPeriodListTitle
         ' 
         lblPeriodListTitle.Dock = DockStyle.Top
-        lblPeriodListTitle.Font = New Font("Microsoft YaHei UI", 8F, FontStyle.Bold)
+        lblPeriodListTitle.Font = New Font("Microsoft YaHei UI", 9F, FontStyle.Bold)
         lblPeriodListTitle.ForeColor = Color.FromArgb(CByte(61), CByte(74), CByte(114))
         lblPeriodListTitle.Location = New Point(0, 0)
         lblPeriodListTitle.Name = "lblPeriodListTitle"
@@ -1471,7 +1471,7 @@ Partial Class formPayroll
         btnTab3.FlatAppearance.BorderSize = 0
         btnTab3.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(28), CByte(32), CByte(52))
         btnTab3.FlatStyle = FlatStyle.Flat
-        btnTab3.Font = New Font("Microsoft YaHei UI", 9.5F)
+        btnTab3.Font = New Font("Microsoft YaHei UI", 10F)
         btnTab3.ForeColor = Color.FromArgb(CByte(123), CByte(139), CByte(178))
         btnTab3.Location = New Point(320, 0)
         btnTab3.Name = "btnTab3"
@@ -1487,7 +1487,7 @@ Partial Class formPayroll
         btnTab2.FlatAppearance.BorderSize = 0
         btnTab2.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(28), CByte(32), CByte(52))
         btnTab2.FlatStyle = FlatStyle.Flat
-        btnTab2.Font = New Font("Microsoft YaHei UI", 9.5F)
+        btnTab2.Font = New Font("Microsoft YaHei UI", 10F)
         btnTab2.ForeColor = Color.FromArgb(CByte(74), CByte(158), CByte(255))
         btnTab2.Location = New Point(160, 0)
         btnTab2.Name = "btnTab2"
@@ -1503,7 +1503,7 @@ Partial Class formPayroll
         btnTab1.FlatAppearance.BorderSize = 0
         btnTab1.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(28), CByte(32), CByte(52))
         btnTab1.FlatStyle = FlatStyle.Flat
-        btnTab1.Font = New Font("Microsoft YaHei UI", 9.5F)
+        btnTab1.Font = New Font("Microsoft YaHei UI", 10F)
         btnTab1.ForeColor = Color.FromArgb(CByte(123), CByte(139), CByte(178))
         btnTab1.Location = New Point(0, 0)
         btnTab1.Name = "btnTab1"
@@ -1536,7 +1536,7 @@ Partial Class formPayroll
         btnCalcPayroll.FlatAppearance.BorderSize = 0
         btnCalcPayroll.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(58), CByte(138), CByte(224))
         btnCalcPayroll.FlatStyle = FlatStyle.Flat
-        btnCalcPayroll.Font = New Font("Microsoft YaHei UI", 9.5F, FontStyle.Bold)
+        btnCalcPayroll.Font = New Font("Microsoft YaHei UI", 10F, FontStyle.Bold)
         btnCalcPayroll.ForeColor = Color.White
         btnCalcPayroll.Location = New Point(1234, 11)
         btnCalcPayroll.Name = "btnCalcPayroll"
@@ -1553,7 +1553,7 @@ Partial Class formPayroll
         btnManagePeriod.FlatAppearance.BorderColor = Color.FromArgb(CByte(80), CByte(245), CByte(158), CByte(11))
         btnManagePeriod.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(50), CByte(245), CByte(158), CByte(11))
         btnManagePeriod.FlatStyle = FlatStyle.Flat
-        btnManagePeriod.Font = New Font("Microsoft YaHei UI", 8.5F)
+        btnManagePeriod.Font = New Font("Microsoft YaHei UI", 9F)
         btnManagePeriod.ForeColor = Color.FromArgb(CByte(245), CByte(158), CByte(11))
         btnManagePeriod.Location = New Point(1084, 11)
         btnManagePeriod.Name = "btnManagePeriod"
@@ -1570,7 +1570,7 @@ Partial Class formPayroll
         btnPrintSlip.FlatAppearance.BorderColor = Color.FromArgb(CByte(42), CByte(48), CByte(80))
         btnPrintSlip.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(48), CByte(55), CByte(85))
         btnPrintSlip.FlatStyle = FlatStyle.Flat
-        btnPrintSlip.Font = New Font("Microsoft YaHei UI", 8.5F)
+        btnPrintSlip.Font = New Font("Microsoft YaHei UI", 9F)
         btnPrintSlip.ForeColor = Color.FromArgb(CByte(123), CByte(139), CByte(178))
         btnPrintSlip.Location = New Point(974, 11)
         btnPrintSlip.Name = "btnPrintSlip"
@@ -1587,7 +1587,7 @@ Partial Class formPayroll
         btnExportExcel.FlatAppearance.BorderColor = Color.FromArgb(CByte(42), CByte(48), CByte(80))
         btnExportExcel.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(48), CByte(55), CByte(85))
         btnExportExcel.FlatStyle = FlatStyle.Flat
-        btnExportExcel.Font = New Font("Microsoft YaHei UI", 8.5F)
+        btnExportExcel.Font = New Font("Microsoft YaHei UI", 9F)
         btnExportExcel.ForeColor = Color.FromArgb(CByte(123), CByte(139), CByte(178))
         btnExportExcel.Location = New Point(854, 11)
         btnExportExcel.Name = "btnExportExcel"
@@ -1601,7 +1601,7 @@ Partial Class formPayroll
         cboDept.BackColor = Color.FromArgb(CByte(38), CByte(43), CByte(66))
         cboDept.DropDownStyle = ComboBoxStyle.DropDownList
         cboDept.FlatStyle = FlatStyle.Flat
-        cboDept.Font = New Font("Microsoft YaHei UI", 8.5F)
+        cboDept.Font = New Font("Microsoft YaHei UI", 9F)
         cboDept.ForeColor = Color.FromArgb(CByte(232), CByte(236), CByte(240))
         cboDept.Items.AddRange(New Object() {"Tất cả phòng ban", "Kỹ thuật", "Kế toán", "Nhân sự", "Marketing", "Kinh doanh", "Vận hành"})
         cboDept.Location = New Point(442, 11)
@@ -1613,7 +1613,7 @@ Partial Class formPayroll
         ' 
         txtSearch.BackColor = Color.FromArgb(CByte(38), CByte(43), CByte(66))
         txtSearch.BorderStyle = BorderStyle.FixedSingle
-        txtSearch.Font = New Font("Microsoft YaHei UI", 9.5F)
+        txtSearch.Font = New Font("Microsoft YaHei UI", 10F)
         txtSearch.ForeColor = Color.FromArgb(CByte(232), CByte(236), CByte(240))
         txtSearch.Location = New Point(232, 11)
         txtSearch.Name = "txtSearch"

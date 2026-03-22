@@ -314,7 +314,7 @@ Partial Class formDashBoardV2
         ' 
         pnlTableSub.AutoSize = True
         pnlTableSub.Dock = DockStyle.Top
-        pnlTableSub.Font = New Font("Microsoft YaHei UI", 8.5F)
+        pnlTableSub.Font = New Font("Microsoft YaHei UI", 9F)
         pnlTableSub.ForeColor = Color.FromArgb(CByte(123), CByte(139), CByte(178))
         pnlTableSub.Location = New Point(14, 37)
         pnlTableSub.Name = "pnlTableSub"
@@ -326,7 +326,7 @@ Partial Class formDashBoardV2
         ' 
         lblTableTitle.AutoSize = True
         lblTableTitle.Dock = DockStyle.Top
-        lblTableTitle.Font = New Font("Microsoft YaHei UI", 10.5F, FontStyle.Bold)
+        lblTableTitle.Font = New Font("Microsoft YaHei UI", 11F, FontStyle.Bold)
         lblTableTitle.ForeColor = Color.FromArgb(CByte(232), CByte(236), CByte(240))
         lblTableTitle.Location = New Point(14, 12)
         lblTableTitle.Name = "lblTableTitle"

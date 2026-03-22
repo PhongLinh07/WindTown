@@ -254,7 +254,7 @@ Partial Class formPolicy
         dgvPreview.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
         DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle2.BackColor = Color.FromArgb(CByte(21), CByte(24), CByte(36))
-        DataGridViewCellStyle2.Font = New Font("Microsoft YaHei UI", 8.5F, FontStyle.Bold)
+        DataGridViewCellStyle2.Font = New Font("Microsoft YaHei UI", 9F, FontStyle.Bold)
         DataGridViewCellStyle2.ForeColor = Color.FromArgb(CByte(74), CByte(158), CByte(255))
         DataGridViewCellStyle2.Padding = New Padding(6, 0, 0, 0)
         DataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(CByte(21), CByte(24), CByte(36))
@@ -266,7 +266,7 @@ Partial Class formPolicy
         dgvPreview.Columns.AddRange(New DataGridViewColumn() {colPrevName, colPrevCat, colPrevEmp, colPrevTotal, colPrevMin, colPrevMax, colPrevStat})
         DataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle7.BackColor = Color.FromArgb(CByte(30), CByte(34), CByte(53))
-        DataGridViewCellStyle7.Font = New Font("Microsoft YaHei UI", 9.5F)
+        DataGridViewCellStyle7.Font = New Font("Microsoft YaHei UI", 10F)
         DataGridViewCellStyle7.ForeColor = Color.FromArgb(CByte(232), CByte(236), CByte(240))
         DataGridViewCellStyle7.Padding = New Padding(6, 0, 0, 0)
         DataGridViewCellStyle7.SelectionBackColor = Color.FromArgb(CByte(30), CByte(74), CByte(158), CByte(255))
@@ -371,7 +371,7 @@ Partial Class formPolicy
         btnExportPreview.Cursor = Cursors.Hand
         btnExportPreview.FlatAppearance.BorderColor = Color.FromArgb(CByte(42), CByte(48), CByte(80))
         btnExportPreview.FlatStyle = FlatStyle.Flat
-        btnExportPreview.Font = New Font("Microsoft YaHei UI", 8.5F)
+        btnExportPreview.Font = New Font("Microsoft YaHei UI", 9F)
         btnExportPreview.ForeColor = Color.FromArgb(CByte(123), CByte(139), CByte(178))
         btnExportPreview.Location = New Point(1695, 8)
         btnExportPreview.Name = "btnExportPreview"
@@ -420,7 +420,7 @@ Partial Class formPolicy
         ' lblSum5Val
         ' 
         lblSum5Val.AutoSize = True
-        lblSum5Val.Font = New Font("Microsoft YaHei UI", 18F, FontStyle.Bold)
+        lblSum5Val.Font = New Font("Microsoft YaHei UI", 16F, FontStyle.Bold)
         lblSum5Val.ForeColor = Color.FromArgb(CByte(245), CByte(158), CByte(11))
         lblSum5Val.Location = New Point(12, 32)
         lblSum5Val.Name = "lblSum5Val"
@@ -431,7 +431,7 @@ Partial Class formPolicy
         ' lblSum5Title
         ' 
         lblSum5Title.AutoSize = True
-        lblSum5Title.Font = New Font("Microsoft YaHei UI", 8F)
+        lblSum5Title.Font = New Font("Microsoft YaHei UI", 9F)
         lblSum5Title.ForeColor = Color.FromArgb(CByte(123), CByte(139), CByte(178))
         lblSum5Title.Location = New Point(14, 10)
         lblSum5Title.Name = "lblSum5Title"
@@ -453,7 +453,7 @@ Partial Class formPolicy
         ' lblSum4Val
         ' 
         lblSum4Val.AutoSize = True
-        lblSum4Val.Font = New Font("Microsoft YaHei UI", 18F, FontStyle.Bold)
+        lblSum4Val.Font = New Font("Microsoft YaHei UI", 16F, FontStyle.Bold)
         lblSum4Val.ForeColor = Color.FromArgb(CByte(240), CByte(128), CByte(128))
         lblSum4Val.Location = New Point(12, 32)
         lblSum4Val.Name = "lblSum4Val"
@@ -464,7 +464,7 @@ Partial Class formPolicy
         ' lblSum4Title
         ' 
         lblSum4Title.AutoSize = True
-        lblSum4Title.Font = New Font("Microsoft YaHei UI", 8F)
+        lblSum4Title.Font = New Font("Microsoft YaHei UI", 9F)
         lblSum4Title.ForeColor = Color.FromArgb(CByte(123), CByte(139), CByte(178))
         lblSum4Title.Location = New Point(14, 10)
         lblSum4Title.Name = "lblSum4Title"
@@ -486,7 +486,7 @@ Partial Class formPolicy
         ' lblSum3Val
         ' 
         lblSum3Val.AutoSize = True
-        lblSum3Val.Font = New Font("Microsoft YaHei UI", 18F, FontStyle.Bold)
+        lblSum3Val.Font = New Font("Microsoft YaHei UI", 16F, FontStyle.Bold)
         lblSum3Val.ForeColor = Color.FromArgb(CByte(74), CByte(158), CByte(255))
         lblSum3Val.Location = New Point(12, 32)
         lblSum3Val.Name = "lblSum3Val"
@@ -497,7 +497,7 @@ Partial Class formPolicy
         ' lblSum3Title
         ' 
         lblSum3Title.AutoSize = True
-        lblSum3Title.Font = New Font("Microsoft YaHei UI", 8F)
+        lblSum3Title.Font = New Font("Microsoft YaHei UI", 9F)
         lblSum3Title.ForeColor = Color.FromArgb(CByte(123), CByte(139), CByte(178))
         lblSum3Title.Location = New Point(14, 10)
         lblSum3Title.Name = "lblSum3Title"
@@ -519,7 +519,7 @@ Partial Class formPolicy
         ' lblSum2Val
         ' 
         lblSum2Val.AutoSize = True
-        lblSum2Val.Font = New Font("Microsoft YaHei UI", 18F, FontStyle.Bold)
+        lblSum2Val.Font = New Font("Microsoft YaHei UI", 16F, FontStyle.Bold)
         lblSum2Val.ForeColor = Color.FromArgb(CByte(232), CByte(236), CByte(240))
         lblSum2Val.Location = New Point(12, 32)
         lblSum2Val.Name = "lblSum2Val"
@@ -530,7 +530,7 @@ Partial Class formPolicy
         ' lblSum2Title
         ' 
         lblSum2Title.AutoSize = True
-        lblSum2Title.Font = New Font("Microsoft YaHei UI", 8F)
+        lblSum2Title.Font = New Font("Microsoft YaHei UI", 9F)
         lblSum2Title.ForeColor = Color.FromArgb(CByte(123), CByte(139), CByte(178))
         lblSum2Title.Location = New Point(14, 10)
         lblSum2Title.Name = "lblSum2Title"
@@ -552,7 +552,7 @@ Partial Class formPolicy
         ' lblSum1Val
         ' 
         lblSum1Val.AutoSize = True
-        lblSum1Val.Font = New Font("Microsoft YaHei UI", 18F, FontStyle.Bold)
+        lblSum1Val.Font = New Font("Microsoft YaHei UI", 16F, FontStyle.Bold)
         lblSum1Val.ForeColor = Color.FromArgb(CByte(232), CByte(236), CByte(240))
         lblSum1Val.Location = New Point(12, 32)
         lblSum1Val.Name = "lblSum1Val"
@@ -563,7 +563,7 @@ Partial Class formPolicy
         ' lblSum1Title
         ' 
         lblSum1Title.AutoSize = True
-        lblSum1Title.Font = New Font("Microsoft YaHei UI", 8F)
+        lblSum1Title.Font = New Font("Microsoft YaHei UI", 9F)
         lblSum1Title.ForeColor = Color.FromArgb(CByte(123), CByte(139), CByte(178))
         lblSum1Title.Location = New Point(14, 10)
         lblSum1Title.Name = "lblSum1Title"
@@ -595,7 +595,7 @@ Partial Class formPolicy
         btnRunPreview.FlatAppearance.BorderSize = 0
         btnRunPreview.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(58), CByte(138), CByte(224))
         btnRunPreview.FlatStyle = FlatStyle.Flat
-        btnRunPreview.Font = New Font("Microsoft YaHei UI", 9.5F, FontStyle.Bold)
+        btnRunPreview.Font = New Font("Microsoft YaHei UI", 10F, FontStyle.Bold)
         btnRunPreview.ForeColor = Color.White
         btnRunPreview.Location = New Point(1715, 10)
         btnRunPreview.Name = "btnRunPreview"
@@ -608,7 +608,7 @@ Partial Class formPolicy
         ' 
         lblRunTime.Anchor = AnchorStyles.Top Or AnchorStyles.Right
         lblRunTime.AutoSize = True
-        lblRunTime.Font = New Font("Microsoft YaHei UI", 8.5F)
+        lblRunTime.Font = New Font("Microsoft YaHei UI", 9F)
         lblRunTime.ForeColor = Color.FromArgb(CByte(61), CByte(74), CByte(114))
         lblRunTime.Location = New Point(1555, 16)
         lblRunTime.Name = "lblRunTime"
@@ -621,7 +621,7 @@ Partial Class formPolicy
         cboPrevDept.BackColor = Color.FromArgb(CByte(38), CByte(43), CByte(66))
         cboPrevDept.DropDownStyle = ComboBoxStyle.DropDownList
         cboPrevDept.FlatStyle = FlatStyle.Flat
-        cboPrevDept.Font = New Font("Microsoft YaHei UI", 8.5F)
+        cboPrevDept.Font = New Font("Microsoft YaHei UI", 9F)
         cboPrevDept.ForeColor = Color.FromArgb(CByte(232), CByte(236), CByte(240))
         cboPrevDept.Items.AddRange(New Object() {"Tất cả nhân viên", "Kỹ thuật", "Kế toán", "Nhân sự", "Marketing", "Kinh doanh", "Vận hành"})
         cboPrevDept.Location = New Point(382, 11)
@@ -634,7 +634,7 @@ Partial Class formPolicy
         cboPeriod.BackColor = Color.FromArgb(CByte(38), CByte(43), CByte(66))
         cboPeriod.DropDownStyle = ComboBoxStyle.DropDownList
         cboPeriod.FlatStyle = FlatStyle.Flat
-        cboPeriod.Font = New Font("Microsoft YaHei UI", 8.5F)
+        cboPeriod.Font = New Font("Microsoft YaHei UI", 9F)
         cboPeriod.ForeColor = Color.FromArgb(CByte(232), CByte(236), CByte(240))
         cboPeriod.Items.AddRange(New Object() {"Tháng 3/2026 (hiện tại)", "Tháng 2/2026", "Tháng 1/2026"})
         cboPeriod.Location = New Point(180, 11)
@@ -720,7 +720,7 @@ Partial Class formPolicy
         ' lblFormulaPreview
         ' 
         lblFormulaPreview.Dock = DockStyle.Fill
-        lblFormulaPreview.Font = New Font("Microsoft YaHei UI", 9.5F)
+        lblFormulaPreview.Font = New Font("Microsoft YaHei UI", 10F)
         lblFormulaPreview.ForeColor = Color.FromArgb(CByte(197), CByte(213), CByte(240))
         lblFormulaPreview.Location = New Point(12, 10)
         lblFormulaPreview.Name = "lblFormulaPreview"
@@ -731,7 +731,7 @@ Partial Class formPolicy
         ' lblFormulaPreviewTitle
         ' 
         lblFormulaPreviewTitle.AutoSize = True
-        lblFormulaPreviewTitle.Font = New Font("Microsoft YaHei UI", 8.5F, FontStyle.Bold)
+        lblFormulaPreviewTitle.Font = New Font("Microsoft YaHei UI", 9F, FontStyle.Bold)
         lblFormulaPreviewTitle.ForeColor = Color.FromArgb(CByte(123), CByte(139), CByte(178))
         lblFormulaPreviewTitle.Location = New Point(16, 408)
         lblFormulaPreviewTitle.Name = "lblFormulaPreviewTitle"
@@ -744,7 +744,7 @@ Partial Class formPolicy
         txtFormula.Anchor = AnchorStyles.Top Or AnchorStyles.Left Or AnchorStyles.Right
         txtFormula.BackColor = Color.FromArgb(CByte(38), CByte(43), CByte(66))
         txtFormula.BorderStyle = BorderStyle.FixedSingle
-        txtFormula.Font = New Font("Courier New", 9.5F)
+        txtFormula.Font = New Font("Courier New", 10F)
         txtFormula.ForeColor = Color.FromArgb(CByte(232), CByte(236), CByte(240))
         txtFormula.Location = New Point(16, 288)
         txtFormula.Name = "txtFormula"
@@ -756,7 +756,7 @@ Partial Class formPolicy
         ' lblFormulaTitle
         ' 
         lblFormulaTitle.AutoSize = True
-        lblFormulaTitle.Font = New Font("Microsoft YaHei UI", 8.5F, FontStyle.Bold)
+        lblFormulaTitle.Font = New Font("Microsoft YaHei UI", 9F, FontStyle.Bold)
         lblFormulaTitle.ForeColor = Color.FromArgb(CByte(123), CByte(139), CByte(178))
         lblFormulaTitle.Location = New Point(16, 268)
         lblFormulaTitle.Name = "lblFormulaTitle"
@@ -767,7 +767,7 @@ Partial Class formPolicy
         ' lblSecRuleTitle
         ' 
         lblSecRuleTitle.AutoSize = True
-        lblSecRuleTitle.Font = New Font("Microsoft YaHei UI", 8F, FontStyle.Bold)
+        lblSecRuleTitle.Font = New Font("Microsoft YaHei UI", 9F, FontStyle.Bold)
         lblSecRuleTitle.ForeColor = Color.FromArgb(CByte(61), CByte(74), CByte(114))
         lblSecRuleTitle.Location = New Point(16, 12)
         lblSecRuleTitle.Name = "lblSecRuleTitle"
@@ -807,7 +807,7 @@ Partial Class formPolicy
         ' lblGenTitle
         ' 
         lblGenTitle.AutoSize = True
-        lblGenTitle.Font = New Font("Microsoft YaHei UI", 8.5F, FontStyle.Bold)
+        lblGenTitle.Font = New Font("Microsoft YaHei UI", 9F, FontStyle.Bold)
         lblGenTitle.ForeColor = Color.FromArgb(CByte(123), CByte(139), CByte(178))
         lblGenTitle.Location = New Point(16, 226)
         lblGenTitle.Name = "lblGenTitle"
@@ -827,7 +827,7 @@ Partial Class formPolicy
         ' lblAggTitle
         ' 
         lblAggTitle.AutoSize = True
-        lblAggTitle.Font = New Font("Microsoft YaHei UI", 8.5F, FontStyle.Bold)
+        lblAggTitle.Font = New Font("Microsoft YaHei UI", 9F, FontStyle.Bold)
         lblAggTitle.ForeColor = Color.FromArgb(CByte(123), CByte(139), CByte(178))
         lblAggTitle.Location = New Point(16, 162)
         lblAggTitle.Name = "lblAggTitle"
@@ -847,7 +847,7 @@ Partial Class formPolicy
         ' lblSrcTitle
         ' 
         lblSrcTitle.AutoSize = True
-        lblSrcTitle.Font = New Font("Microsoft YaHei UI", 8.5F, FontStyle.Bold)
+        lblSrcTitle.Font = New Font("Microsoft YaHei UI", 9F, FontStyle.Bold)
         lblSrcTitle.ForeColor = Color.FromArgb(CByte(123), CByte(139), CByte(178))
         lblSrcTitle.Location = New Point(16, 98)
         lblSrcTitle.Name = "lblSrcTitle"
@@ -867,7 +867,7 @@ Partial Class formPolicy
         ' lblCatTitle
         ' 
         lblCatTitle.AutoSize = True
-        lblCatTitle.Font = New Font("Microsoft YaHei UI", 8.5F, FontStyle.Bold)
+        lblCatTitle.Font = New Font("Microsoft YaHei UI", 9F, FontStyle.Bold)
         lblCatTitle.ForeColor = Color.FromArgb(CByte(123), CByte(139), CByte(178))
         lblCatTitle.Location = New Point(16, 34)
         lblCatTitle.Name = "lblCatTitle"
@@ -878,7 +878,7 @@ Partial Class formPolicy
         ' lblSecEngineTitle
         ' 
         lblSecEngineTitle.AutoSize = True
-        lblSecEngineTitle.Font = New Font("Microsoft YaHei UI", 8F, FontStyle.Bold)
+        lblSecEngineTitle.Font = New Font("Microsoft YaHei UI", 9F, FontStyle.Bold)
         lblSecEngineTitle.ForeColor = Color.FromArgb(CByte(61), CByte(74), CByte(114))
         lblSecEngineTitle.Location = New Point(16, 12)
         lblSecEngineTitle.Name = "lblSecEngineTitle"
@@ -931,7 +931,7 @@ Partial Class formPolicy
         ' lblCode
         ' 
         lblCode.AutoSize = True
-        lblCode.Font = New Font("Microsoft YaHei UI", 8.5F, FontStyle.Bold)
+        lblCode.Font = New Font("Microsoft YaHei UI", 9F, FontStyle.Bold)
         lblCode.ForeColor = Color.FromArgb(CByte(123), CByte(139), CByte(178))
         lblCode.Location = New Point(3, 0)
         lblCode.Name = "lblCode"
@@ -955,7 +955,7 @@ Partial Class formPolicy
         ' lblFName
         ' 
         lblFName.AutoSize = True
-        lblFName.Font = New Font("Microsoft YaHei UI", 8.5F, FontStyle.Bold)
+        lblFName.Font = New Font("Microsoft YaHei UI", 9F, FontStyle.Bold)
         lblFName.ForeColor = Color.FromArgb(CByte(123), CByte(139), CByte(178))
         lblFName.Location = New Point(262, 0)
         lblFName.Margin = New Padding(8, 0, 0, 0)
@@ -969,7 +969,7 @@ Partial Class formPolicy
         txtFName.BackColor = Color.FromArgb(CByte(38), CByte(43), CByte(66))
         txtFName.BorderStyle = BorderStyle.FixedSingle
         txtFName.Dock = DockStyle.Fill
-        txtFName.Font = New Font("Microsoft YaHei UI", 9.5F)
+        txtFName.Font = New Font("Microsoft YaHei UI", 10F)
         txtFName.ForeColor = Color.FromArgb(CByte(232), CByte(236), CByte(240))
         txtFName.Location = New Point(262, 22)
         txtFName.Margin = New Padding(8, 0, 0, 4)
@@ -980,7 +980,7 @@ Partial Class formPolicy
         ' lblPriority
         ' 
         lblPriority.AutoSize = True
-        lblPriority.Font = New Font("Microsoft YaHei UI", 8.5F, FontStyle.Bold)
+        lblPriority.Font = New Font("Microsoft YaHei UI", 9F, FontStyle.Bold)
         lblPriority.ForeColor = Color.FromArgb(CByte(123), CByte(139), CByte(178))
         lblPriority.Location = New Point(3, 62)
         lblPriority.Name = "lblPriority"
@@ -1005,7 +1005,7 @@ Partial Class formPolicy
         ' lblPriHint
         ' 
         lblPriHint.AutoSize = True
-        lblPriHint.Font = New Font("Microsoft YaHei UI", 8F)
+        lblPriHint.Font = New Font("Microsoft YaHei UI", 9F)
         lblPriHint.ForeColor = Color.FromArgb(CByte(61), CByte(74), CByte(114))
         lblPriHint.Location = New Point(104, 10)
         lblPriHint.Name = "lblPriHint"
@@ -1059,7 +1059,7 @@ Partial Class formPolicy
         ' lblFStatus
         ' 
         lblFStatus.AutoSize = True
-        lblFStatus.Font = New Font("Microsoft YaHei UI", 8.5F, FontStyle.Bold)
+        lblFStatus.Font = New Font("Microsoft YaHei UI", 9F, FontStyle.Bold)
         lblFStatus.ForeColor = Color.FromArgb(CByte(123), CByte(139), CByte(178))
         lblFStatus.Location = New Point(262, 62)
         lblFStatus.Margin = New Padding(8, 0, 0, 0)
@@ -1074,7 +1074,7 @@ Partial Class formPolicy
         cboFStatus.Dock = DockStyle.Fill
         cboFStatus.DropDownStyle = ComboBoxStyle.DropDownList
         cboFStatus.FlatStyle = FlatStyle.Flat
-        cboFStatus.Font = New Font("Microsoft YaHei UI", 9.5F)
+        cboFStatus.Font = New Font("Microsoft YaHei UI", 10F)
         cboFStatus.ForeColor = Color.FromArgb(CByte(232), CByte(236), CByte(240))
         cboFStatus.Items.AddRange(New Object() {"● Kích hoạt", "○ Tắt"})
         cboFStatus.Location = New Point(262, 88)
@@ -1087,7 +1087,7 @@ Partial Class formPolicy
         ' 
         lblFNote.AutoSize = True
         tlpBasic.SetColumnSpan(lblFNote, 2)
-        lblFNote.Font = New Font("Microsoft YaHei UI", 8.5F, FontStyle.Bold)
+        lblFNote.Font = New Font("Microsoft YaHei UI", 9F, FontStyle.Bold)
         lblFNote.ForeColor = Color.FromArgb(CByte(123), CByte(139), CByte(178))
         lblFNote.Location = New Point(3, 126)
         lblFNote.Name = "lblFNote"
@@ -1101,7 +1101,7 @@ Partial Class formPolicy
         txtFNote.BorderStyle = BorderStyle.FixedSingle
         tlpBasic.SetColumnSpan(txtFNote, 2)
         txtFNote.Dock = DockStyle.Fill
-        txtFNote.Font = New Font("Microsoft YaHei UI", 9.5F)
+        txtFNote.Font = New Font("Microsoft YaHei UI", 10F)
         txtFNote.ForeColor = Color.FromArgb(CByte(232), CByte(236), CByte(240))
         txtFNote.Location = New Point(0, 148)
         txtFNote.Margin = New Padding(0)
@@ -1112,7 +1112,7 @@ Partial Class formPolicy
         ' lblSecBasicTitle
         ' 
         lblSecBasicTitle.AutoSize = True
-        lblSecBasicTitle.Font = New Font("Microsoft YaHei UI", 8F, FontStyle.Bold)
+        lblSecBasicTitle.Font = New Font("Microsoft YaHei UI", 9F, FontStyle.Bold)
         lblSecBasicTitle.ForeColor = Color.FromArgb(CByte(61), CByte(74), CByte(114))
         lblSecBasicTitle.Location = New Point(16, 12)
         lblSecBasicTitle.Name = "lblSecBasicTitle"
@@ -1141,7 +1141,7 @@ Partial Class formPolicy
         btnSavePolicy.FlatAppearance.BorderSize = 0
         btnSavePolicy.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(58), CByte(138), CByte(224))
         btnSavePolicy.FlatStyle = FlatStyle.Flat
-        btnSavePolicy.Font = New Font("Microsoft YaHei UI", 9.5F, FontStyle.Bold)
+        btnSavePolicy.Font = New Font("Microsoft YaHei UI", 10F, FontStyle.Bold)
         btnSavePolicy.ForeColor = Color.White
         btnSavePolicy.Location = New Point(1417, 10)
         btnSavePolicy.Name = "btnSavePolicy"
@@ -1291,7 +1291,7 @@ Partial Class formPolicy
         dgvPolicy.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
         DataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle9.BackColor = Color.FromArgb(CByte(21), CByte(24), CByte(36))
-        DataGridViewCellStyle9.Font = New Font("Microsoft YaHei UI", 8.5F, FontStyle.Bold)
+        DataGridViewCellStyle9.Font = New Font("Microsoft YaHei UI", 9F, FontStyle.Bold)
         DataGridViewCellStyle9.ForeColor = Color.FromArgb(CByte(74), CByte(158), CByte(255))
         DataGridViewCellStyle9.Padding = New Padding(6, 0, 0, 0)
         DataGridViewCellStyle9.SelectionBackColor = Color.FromArgb(CByte(21), CByte(24), CByte(36))
@@ -1304,7 +1304,7 @@ Partial Class formPolicy
         dgvPolicy.Cursor = Cursors.Hand
         DataGridViewCellStyle16.Alignment = DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle16.BackColor = Color.FromArgb(CByte(26), CByte(29), CByte(46))
-        DataGridViewCellStyle16.Font = New Font("Microsoft YaHei UI", 9.5F)
+        DataGridViewCellStyle16.Font = New Font("Microsoft YaHei UI", 10F)
         DataGridViewCellStyle16.ForeColor = Color.FromArgb(CByte(232), CByte(236), CByte(240))
         DataGridViewCellStyle16.Padding = New Padding(6, 0, 0, 0)
         DataGridViewCellStyle16.SelectionBackColor = Color.FromArgb(CByte(30), CByte(74), CByte(158), CByte(255))
@@ -1447,7 +1447,7 @@ Partial Class formPolicy
         btnPageNext.Cursor = Cursors.Hand
         btnPageNext.FlatAppearance.BorderColor = Color.FromArgb(CByte(42), CByte(48), CByte(80))
         btnPageNext.FlatStyle = FlatStyle.Flat
-        btnPageNext.Font = New Font("Microsoft YaHei UI", 8.5F)
+        btnPageNext.Font = New Font("Microsoft YaHei UI", 9F)
         btnPageNext.ForeColor = Color.FromArgb(CByte(123), CByte(139), CByte(178))
         btnPageNext.Location = New Point(102, 0)
         btnPageNext.Name = "btnPageNext"
@@ -1462,7 +1462,7 @@ Partial Class formPolicy
         btnPage2.Cursor = Cursors.Hand
         btnPage2.FlatAppearance.BorderColor = Color.FromArgb(CByte(42), CByte(48), CByte(80))
         btnPage2.FlatStyle = FlatStyle.Flat
-        btnPage2.Font = New Font("Microsoft YaHei UI", 8.5F)
+        btnPage2.Font = New Font("Microsoft YaHei UI", 9F)
         btnPage2.ForeColor = Color.FromArgb(CByte(123), CByte(139), CByte(178))
         btnPage2.Location = New Point(68, 0)
         btnPage2.Name = "btnPage2"
@@ -1477,7 +1477,7 @@ Partial Class formPolicy
         btnPage1.Cursor = Cursors.Hand
         btnPage1.FlatAppearance.BorderSize = 0
         btnPage1.FlatStyle = FlatStyle.Flat
-        btnPage1.Font = New Font("Microsoft YaHei UI", 8.5F)
+        btnPage1.Font = New Font("Microsoft YaHei UI", 9F)
         btnPage1.ForeColor = Color.White
         btnPage1.Location = New Point(34, 0)
         btnPage1.Name = "btnPage1"
@@ -1492,7 +1492,7 @@ Partial Class formPolicy
         btnPagePrev.Cursor = Cursors.Hand
         btnPagePrev.FlatAppearance.BorderColor = Color.FromArgb(CByte(42), CByte(48), CByte(80))
         btnPagePrev.FlatStyle = FlatStyle.Flat
-        btnPagePrev.Font = New Font("Microsoft YaHei UI", 8.5F)
+        btnPagePrev.Font = New Font("Microsoft YaHei UI", 9F)
         btnPagePrev.ForeColor = Color.FromArgb(CByte(123), CByte(139), CByte(178))
         btnPagePrev.Location = New Point(0, 0)
         btnPagePrev.Name = "btnPagePrev"
@@ -1504,7 +1504,7 @@ Partial Class formPolicy
         ' lblRowInfo
         ' 
         lblRowInfo.AutoSize = True
-        lblRowInfo.Font = New Font("Microsoft YaHei UI", 8.5F)
+        lblRowInfo.Font = New Font("Microsoft YaHei UI", 9F)
         lblRowInfo.ForeColor = Color.FromArgb(CByte(123), CByte(139), CByte(178))
         lblRowInfo.Location = New Point(16, 14)
         lblRowInfo.Name = "lblRowInfo"
@@ -1540,7 +1540,7 @@ Partial Class formPolicy
         btnTab3.FlatAppearance.BorderSize = 0
         btnTab3.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(28), CByte(32), CByte(52))
         btnTab3.FlatStyle = FlatStyle.Flat
-        btnTab3.Font = New Font("Microsoft YaHei UI", 9.5F)
+        btnTab3.Font = New Font("Microsoft YaHei UI", 10F)
         btnTab3.ForeColor = Color.FromArgb(CByte(123), CByte(139), CByte(178))
         btnTab3.Location = New Point(340, 0)
         btnTab3.Name = "btnTab3"
@@ -1556,7 +1556,7 @@ Partial Class formPolicy
         btnTab2.FlatAppearance.BorderSize = 0
         btnTab2.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(28), CByte(32), CByte(52))
         btnTab2.FlatStyle = FlatStyle.Flat
-        btnTab2.Font = New Font("Microsoft YaHei UI", 9.5F)
+        btnTab2.Font = New Font("Microsoft YaHei UI", 10F)
         btnTab2.ForeColor = Color.FromArgb(CByte(123), CByte(139), CByte(178))
         btnTab2.Location = New Point(160, 0)
         btnTab2.Name = "btnTab2"
@@ -1572,7 +1572,7 @@ Partial Class formPolicy
         btnTab1.FlatAppearance.BorderSize = 0
         btnTab1.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(28), CByte(32), CByte(52))
         btnTab1.FlatStyle = FlatStyle.Flat
-        btnTab1.Font = New Font("Microsoft YaHei UI", 9.5F)
+        btnTab1.Font = New Font("Microsoft YaHei UI", 10F)
         btnTab1.ForeColor = Color.FromArgb(CByte(74), CByte(158), CByte(255))
         btnTab1.Location = New Point(0, 0)
         btnTab1.Name = "btnTab1"
@@ -1603,7 +1603,7 @@ Partial Class formPolicy
         btnAddPolicy.FlatAppearance.BorderSize = 0
         btnAddPolicy.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(58), CByte(138), CByte(224))
         btnAddPolicy.FlatStyle = FlatStyle.Flat
-        btnAddPolicy.Font = New Font("Microsoft YaHei UI", 9.5F, FontStyle.Bold)
+        btnAddPolicy.Font = New Font("Microsoft YaHei UI", 10F, FontStyle.Bold)
         btnAddPolicy.ForeColor = Color.White
         btnAddPolicy.Location = New Point(1715, 11)
         btnAddPolicy.Name = "btnAddPolicy"
@@ -1634,7 +1634,7 @@ Partial Class formPolicy
         cboStatusFilter.BackColor = Color.FromArgb(CByte(38), CByte(43), CByte(66))
         cboStatusFilter.DropDownStyle = ComboBoxStyle.DropDownList
         cboStatusFilter.FlatStyle = FlatStyle.Flat
-        cboStatusFilter.Font = New Font("Microsoft YaHei UI", 8.5F)
+        cboStatusFilter.Font = New Font("Microsoft YaHei UI", 9F)
         cboStatusFilter.ForeColor = Color.FromArgb(CByte(232), CByte(236), CByte(240))
         cboStatusFilter.Items.AddRange(New Object() {"Tất cả trạng thái", "Kích hoạt", "Tắt"})
         cboStatusFilter.Location = New Point(426, 11)
@@ -1647,7 +1647,7 @@ Partial Class formPolicy
         cboCat.BackColor = Color.FromArgb(CByte(38), CByte(43), CByte(66))
         cboCat.DropDownStyle = ComboBoxStyle.DropDownList
         cboCat.FlatStyle = FlatStyle.Flat
-        cboCat.Font = New Font("Microsoft YaHei UI", 8.5F)
+        cboCat.Font = New Font("Microsoft YaHei UI", 9F)
         cboCat.ForeColor = Color.FromArgb(CByte(232), CByte(236), CByte(240))
         cboCat.Items.AddRange(New Object() {"Tất cả phân loại", "Thu nhập", "Khấu trừ", "Thưởng", "Phụ cấp"})
         cboCat.Location = New Point(262, 11)
@@ -1659,7 +1659,7 @@ Partial Class formPolicy
         ' 
         txtSearch.BackColor = Color.FromArgb(CByte(38), CByte(43), CByte(66))
         txtSearch.BorderStyle = BorderStyle.FixedSingle
-        txtSearch.Font = New Font("Microsoft YaHei UI", 9.5F)
+        txtSearch.Font = New Font("Microsoft YaHei UI", 10F)
         txtSearch.ForeColor = Color.FromArgb(CByte(232), CByte(236), CByte(240))
         txtSearch.Location = New Point(12, 11)
         txtSearch.Name = "txtSearch"
@@ -1674,7 +1674,7 @@ Partial Class formPolicy
         btnAddCond.FlatAppearance.BorderSize = 0
         btnAddCond.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(20), CByte(74), CByte(158), CByte(255))
         btnAddCond.FlatStyle = FlatStyle.Flat
-        btnAddCond.Font = New Font("Microsoft YaHei UI", 8.5F)
+        btnAddCond.Font = New Font("Microsoft YaHei UI", 9F)
         btnAddCond.ForeColor = Color.FromArgb(CByte(74), CByte(158), CByte(255))
         btnAddCond.Location = New Point(0, 188)
         btnAddCond.Name = "btnAddCond"
@@ -1713,7 +1713,7 @@ Partial Class formPolicy
         cboCondMode.BackColor = Color.FromArgb(CByte(38), CByte(43), CByte(66))
         cboCondMode.DropDownStyle = ComboBoxStyle.DropDownList
         cboCondMode.FlatStyle = FlatStyle.Flat
-        cboCondMode.Font = New Font("Microsoft YaHei UI", 8.5F)
+        cboCondMode.Font = New Font("Microsoft YaHei UI", 9F)
         cboCondMode.ForeColor = Color.FromArgb(CByte(123), CByte(139), CByte(178))
         cboCondMode.Items.AddRange(New Object() {"AND — tất cả đúng", "OR — bất kỳ đúng"})
         cboCondMode.Location = New Point(1240, 6)
@@ -1724,7 +1724,7 @@ Partial Class formPolicy
         ' lblCondHeaderTitle
         ' 
         lblCondHeaderTitle.AutoSize = True
-        lblCondHeaderTitle.Font = New Font("Microsoft YaHei UI", 8.5F, FontStyle.Bold)
+        lblCondHeaderTitle.Font = New Font("Microsoft YaHei UI", 9F, FontStyle.Bold)
         lblCondHeaderTitle.ForeColor = Color.FromArgb(CByte(74), CByte(158), CByte(255))
         lblCondHeaderTitle.Location = New Point(12, 10)
         lblCondHeaderTitle.Name = "lblCondHeaderTitle"

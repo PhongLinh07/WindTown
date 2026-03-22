@@ -307,6 +307,7 @@ Public Class formContract
         If emp.Id = 0 Then Return
 
         Dim g = e.Graphics
+        g.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit
         g.SmoothingMode = SmoothingMode.AntiAlias
 
         Dim sz = 34

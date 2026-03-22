@@ -20,12 +20,13 @@ Public Class formMainV2
     Private Sub lblTopAvatar_Paint(sender As Object, e As PaintEventArgs) Handles lblTopAvatar.Paint
         Dim lbl = CType(sender, Label)
         Dim g = e.Graphics
+        g.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit
         g.SmoothingMode = Drawing2D.SmoothingMode.AntiAlias
         Using br = New SolidBrush(Color.FromArgb(59, 125, 216))
             g.FillEllipse(br, 0, 0, lbl.Width - 1, lbl.Height - 1)
         End Using
         Using br = New SolidBrush(Color.White)
-            Using f = New Font("Microsoft YaHei UI", 9.5, FontStyle.Bold)
+            Using f = New Font("Microsoft YaHei UI", 10, FontStyle.Bold)
                 Dim sz = g.MeasureString(lbl.Text, f)
                 g.DrawString(lbl.Text, f, br, (lbl.Width - sz.Width) / 2, (lbl.Height - sz.Height) / 2)
             End Using

@@ -316,7 +316,7 @@ Public Class formPayroll
             ' Code label
             Dim lblCode As New Label()
             lblCode.AutoSize = True
-            lblCode.Font = New Font("Courier New", 9.5!, FontStyle.Bold)
+            lblCode.Font = New Font("Courier New", 10!, FontStyle.Bold)
             lblCode.ForeColor = Color.FromArgb(232, 236, 240)
             lblCode.Location = New Point(12, 10)
             lblCode.Text = p.Code
@@ -326,7 +326,7 @@ Public Class formPayroll
             lblBadge.AutoSize = True
             lblBadge.BackColor = Color.FromArgb(If(p.Status = 1, 20, 15),
                                                 GetPeriodStatusColor(p.Status))
-            lblBadge.Font = New Font("Microsoft YaHei UI", 8.0!)
+            lblBadge.Font = New Font("Microsoft YaHei UI", 9!)
             lblBadge.ForeColor = GetPeriodStatusColor(p.Status)
             lblBadge.Anchor = CType(AnchorStyles.Top Or AnchorStyles.Right, AnchorStyles)
             lblBadge.Location = New Point(card.Width - 90, 8)
@@ -344,7 +344,7 @@ Public Class formPayroll
             ' Dates
             Dim lblDates As New Label()
             lblDates.AutoSize = True
-            lblDates.Font = New Font("Microsoft YaHei UI", 8.0!)
+            lblDates.Font = New Font("Microsoft YaHei UI", 9!)
             lblDates.ForeColor = Color.FromArgb(61, 74, 114)
             lblDates.Location = New Point(12, 54)
             lblDates.Text = p.StartDate.ToString("dd/MM") & " → " &
@@ -532,6 +532,7 @@ Public Class formPayroll
         If pr.Id = 0 Then Return
 
         Dim g = e.Graphics
+        g.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit
         g.SmoothingMode = Drawing2D.SmoothingMode.AntiAlias
 
         Dim sz = 34
@@ -541,7 +542,7 @@ Public Class formPayroll
         Using br = New SolidBrush(pr.AvatarColor)
             g.FillEllipse(br, ax, ay, sz, sz)
         End Using
-        Using f = New Font("Microsoft YaHei UI", 9.5!, FontStyle.Bold)
+        Using f = New Font("Microsoft YaHei UI", 10!, FontStyle.Bold)
             Using br = New SolidBrush(Color.White)
                 Dim ini = GetInitials(pr.EmpName)
                 Dim s = g.MeasureString(ini, f)
@@ -549,7 +550,7 @@ Public Class formPayroll
             End Using : End Using
 
         ' Draw employee name to the right of avatar
-        Using f = New Font("Microsoft YaHei UI", 9.5!, FontStyle.Bold)
+        Using f = New Font("Microsoft YaHei UI", 10!, FontStyle.Bold)
             Using br = New SolidBrush(Color.FromArgb(232, 236, 240))
                 g.DrawString(pr.EmpName, f, CType(br, Brush), CSng(ax + sz + 8), CSng(e.CellBounds.Y + (e.CellBounds.Height - f.Height) / 2))
             End Using : End Using
@@ -627,7 +628,7 @@ Public Class formPayroll
                                          Using br = New SolidBrush(p.AvatarColor)
                                              g.FillEllipse(br, 0, 0, 31, 31)
                                          End Using
-                                         Using f = New Font("Microsoft YaHei UI", 8.5!, FontStyle.Bold)
+                                         Using f = New Font("Microsoft YaHei UI", 9!, FontStyle.Bold)
                                              Using br = New SolidBrush(Color.White)
                                                  Dim ini = GetInitials(p.EmpName)
                                                  Dim sz = g.MeasureString(ini, f)
@@ -646,7 +647,7 @@ Public Class formPayroll
             ' Net value
             Dim lblNet As New Label()
             lblNet.AutoSize = True
-            lblNet.Font = New Font("Microsoft YaHei UI", 8.5!, FontStyle.Bold)
+            lblNet.Font = New Font("Microsoft YaHei UI", 9!, FontStyle.Bold)
             lblNet.ForeColor = Color.FromArgb(74, 158, 255)
             lblNet.Anchor = CType(AnchorStyles.Top Or AnchorStyles.Right, AnchorStyles)
             lblNet.Location = New Point(item.Width - 80, 6)
@@ -655,7 +656,7 @@ Public Class formPayroll
             ' Dept
             Dim lblDept As New Label()
             lblDept.AutoSize = True
-            lblDept.Font = New Font("Microsoft YaHei UI", 8.0!)
+            lblDept.Font = New Font("Microsoft YaHei UI", 9!)
             lblDept.ForeColor = Color.FromArgb(123, 139, 178)
             lblDept.Location = New Point(48, 26)
             lblDept.Text = p.Dept
@@ -764,21 +765,21 @@ Public Class formPayroll
 
         Dim lblName As New Label()
         lblName.AutoSize = True
-        lblName.Font = New Font("Microsoft YaHei UI", 9.5!)
+        lblName.Font = New Font("Microsoft YaHei UI", 10!)
         lblName.ForeColor = Color.FromArgb(197, 213, 240)
         lblName.Location = New Point(18, 8)
         lblName.Text = item.Name
 
         Dim lblCode As New Label()
         lblCode.AutoSize = True
-        lblCode.Font = New Font("Courier New", 8.0!)
+        lblCode.Font = New Font("Courier New", 9!)
         lblCode.ForeColor = Color.FromArgb(61, 74, 114)
         lblCode.Location = New Point(18, 26)
         lblCode.Text = item.Code
 
         Dim lblVal As New Label()
         lblVal.AutoSize = True
-        lblVal.Font = New Font("Microsoft YaHei UI", 10.5!, FontStyle.Bold)
+        lblVal.Font = New Font("Microsoft YaHei UI", 11!, FontStyle.Bold)
         lblVal.ForeColor = If(item.Value >= 0,
                               Color.FromArgb(76, 175, 80),
                               Color.FromArgb(240, 128, 128))

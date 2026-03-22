@@ -1,0 +1,237 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8"/>
+<title>Preview — formProject</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#0F1120;display:flex;justify-content:center;align-items:flex-start;padding:24px;min-height:100vh;font-family:'Segoe UI','Microsoft YaHei UI',sans-serif}
+:root{
+  --bg:#1A1D2E;--card:#1E2235;--dark:#151824;--input:#262B42;
+  --fg:#E8ECF0;--fg2:#7B8BB2;--fg3:#3D4A6A;
+  --accent:#4A9EFF;--border:rgba(255,255,255,0.07);
+  --success:#4CAF50;--warn:#F59E0B;--danger:#E05555;
+}
+.wrap{background:var(--bg);border-radius:14px;overflow:hidden;border:1px solid var(--border);width:100%;max-width:1280px;min-height:700px;display:flex;flex-direction:column}
+.header{background:var(--dark);padding:12px 16px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:12px}
+.header h1{color:var(--fg);font-size:16px;font-weight:600}
+.badge{background:rgba(74,158,255,.12);color:var(--accent);border:1px solid rgba(74,158,255,.35);padding:2px 8px;border-radius:999px;font-size:11px}
+.toolbar{background:var(--dark);padding:10px 16px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px}
+.search-wrap{display:flex;align-items:center;gap:8px;background:var(--input);border:1px solid var(--border);border-radius:8px;padding:0 12px;height:34px;flex:1;max-width:320px}
+.search-wrap input{background:transparent;border:none;outline:none;color:var(--fg);font-size:12.5px;width:100%}
+.search-wrap input::placeholder{color:var(--fg2)}
+.select{background:var(--input);border:1px solid var(--border);border-radius:8px;height:34px;color:var(--fg);font-size:12px;padding:0 10px;min-width:140px}
+.btn-pri{background:var(--accent);color:#fff;border:none;border-radius:8px;padding:0 16px;height:34px;font-size:12.5px;cursor:pointer;display:flex;align-items:center;gap:6px;box-shadow:0 0 0 2px rgba(74,158,255,.18)}
+.btn-sub{background:transparent;color:var(--fg);border:1px solid var(--border);border-radius:8px;padding:0 14px;height:34px;font-size:12.5px;cursor:pointer}
+.tabs{display:flex;gap:8px;background:var(--card);padding:8px 16px;border-bottom:1px solid var(--border)}
+.tab{padding:8px 14px;border-radius:8px;color:var(--fg2);font-size:12px;cursor:pointer;border:1px solid transparent}
+.tab.active{color:var(--fg);background:var(--dark);border-color:var(--border)}
+.content{flex:1;display:flex;gap:16px;padding:16px}
+.panel{background:var(--card);border:1px solid var(--border);border-radius:12px;display:flex;flex-direction:column;min-height:520px}
+.list-panel{flex:1.1;min-width:520px}
+.detail-panel{flex:1;min-width:420px}
+.panel-header{padding:12px 14px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;color:var(--fg);font-size:13px}
+.tbl-wrap{flex:1;overflow:auto}
+.tbl{width:100%;border-collapse:collapse;font-size:12.5px}
+.tbl thead tr{position:sticky;top:0}
+.tbl th{background:var(--dark);color:var(--accent);font-weight:500;text-align:left;padding:10px 12px;border-bottom:1px solid var(--border);font-size:11px;text-transform:uppercase;letter-spacing:.5px;white-space:nowrap}
+.tbl td{color:var(--fg);padding:10px 12px;border-bottom:1px solid rgba(255,255,255,.04)}
+.tbl tr:hover td{background:rgba(74,158,255,.04);cursor:pointer}
+.status{padding:2px 8px;border-radius:999px;font-size:11px;border:1px solid transparent}
+.status.active{background:rgba(76,175,80,.12);color:var(--success);border-color:rgba(76,175,80,.35)}
+.status.pause{background:rgba(245,158,11,.12);color:var(--warn);border-color:rgba(245,158,11,.35)}
+.form{padding:14px;display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.field{display:flex;flex-direction:column;gap:6px}
+.field label{color:var(--fg2);font-size:11px;letter-spacing:.3px;text-transform:uppercase}
+.req{color:var(--danger);margin-left:4px}
+.input{background:var(--input);border:1px solid var(--border);border-radius:8px;height:34px;color:var(--fg);font-size:12.5px;padding:0 10px;outline:none}
+.input:focus{border-color:var(--accent)}
+.input.invalid{border-color:var(--danger);box-shadow:0 0 0 2px rgba(224,85,85,.15)}
+.helper{font-size:11px;color:var(--fg3)}
+.section{grid-column:1/-1;border-top:1px solid var(--border);padding-top:10px;margin-top:4px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{padding:4px 8px;border-radius:999px;background:rgba(74,158,255,.12);color:var(--accent);font-size:11px;border:1px solid rgba(74,158,255,.25)}
+.footer{padding:10px 14px;border-top:1px solid var(--border);display:flex;justify-content:flex-end;gap:10px}
+.empty{padding:40px;text-align:center;color:var(--fg3)}
+.hide{display:none}
+@media (max-width:1024px){
+  .content{flex-direction:column}
+  .list-panel,.detail-panel{min-width:unset}
+  .form{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="header">
+    <h1>Form Project</h1>
+    <span class="badge">Tab Layout</span>
+  </div>
+
+  <div class="toolbar">
+    <div class="search-wrap">
+      <input id="searchInput" placeholder="Tìm dự án..." oninput="filterTable(this.value)"/>
+    </div>
+    <select class="select" id="filterStatus" onchange="filterTable(document.getElementById('searchInput').value)">
+      <option value="">Tất cả trạng thái</option>
+      <option value="active">Đang chạy</option>
+      <option value="pause">Tạm dừng</option>
+    </select>
+    <div style="flex:1"></div>
+    <button class="btn-pri" onclick="startCreate()">Tạo mới</button>
+  </div>
+
+  <div class="tabs">
+    <div class="tab active" data-tab="list" onclick="switchTab('list')">Danh sách</div>
+    <div class="tab" data-tab="detail" onclick="switchTab('detail')">Chi tiết</div>
+  </div>
+
+  <div class="content">
+    <div class="panel list-panel" id="panelList">
+      <div class="panel-header">
+        <span>Danh sách dự án</span>
+        <span class="helper" id="rowInfo">Hiển thị 0 mục</span>
+      </div>
+      <div class="tbl-wrap">
+        <table class="tbl">
+          <thead><tr>
+            <th style="width:70px">Mã</th>
+            <th>Tên dự án</th>
+            <th>Quản lý</th>
+            <th>Trạng thái</th>
+          </tr></thead>
+          <tbody id="tbody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="panel detail-panel" id="panelDetail">
+      <div class="panel-header">
+        <span>Chi tiết dự án</span>
+        <button class="btn-sub" onclick="resetForm()">Làm mới</button>
+      </div>
+      <div class="form">
+        <div class="field">
+          <label>Mã dự án<span class="req">*</span></label>
+          <input class="input" data-required="1" id="fldCode" placeholder="VD: PRJ-2026-01"/>
+        </div>
+        <div class="field">
+          <label>Tên dự án<span class="req">*</span></label>
+          <input class="input" data-required="1" id="fldName" placeholder="Tên dự án"/>
+        </div>
+        <div class="field">
+          <label>Khách hàng</label>
+          <input class="input" id="fldClient" placeholder="Tên khách hàng"/>
+        </div>
+        <div class="field">
+          <label>Trạng thái<span class="req">*</span></label>
+          <select class="input" data-required="1" id="fldStatus">
+            <option value="">Chọn trạng thái</option>
+            <option value="active">Đang chạy</option>
+            <option value="pause">Tạm dừng</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Ngày bắt đầu<span class="req">*</span></label>
+          <input class="input" data-required="1" id="fldStart" type="date"/>
+        </div>
+        <div class="field">
+          <label>Ngày kết thúc<span class="req">*</span></label>
+          <input class="input" data-required="1" id="fldEnd" type="date"/>
+        </div>
+        <div class="field">
+          <label>Quản lý dự án<span class="req">*</span></label>
+          <select class="input" data-required="1" id="fldManager">
+            <option value="">Chọn quản lý</option>
+            <option value="an">Nguyễn Văn An</option>
+            <option value="binh">Trần Thị Binh</option>
+            <option value="dung">Phạm Thị Dung</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Ngân sách</label>
+          <input class="input" id="fldBudget" placeholder="VD: 500,000,000"/>
+        </div>
+
+        <div class="section">
+          <label style="display:block;margin-bottom:8px;color:var(--fg2);font-size:11px;text-transform:uppercase;letter-spacing:.3px">Nhân sự tham gia</label>
+          <div class="chips">
+            <span class="chip">Dev</span>
+            <span class="chip">QA</span>
+            <span class="chip">PM</span>
+            <span class="chip">BA</span>
+          </div>
+        </div>
+      </div>
+      <div class="footer">
+        <button class="btn-sub" onclick="switchTab('list')">Hủy</button>
+        <button class="btn-pri" onclick="saveForm()">Lưu dự án</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const DATA=[
+  {code:'PRJ-001',name:'CRM Upgrade',manager:'Nguyễn Văn An',status:'active'},
+  {code:'PRJ-002',name:'Website HRM',manager:'Trần Thị Binh',status:'pause'},
+  {code:'PRJ-003',name:'Mobile Payroll',manager:'Phạm Thị Dung',status:'active'},
+];
+let filtered=[...DATA];
+
+function render(data){
+  const tb=document.getElementById('tbody');
+  if(!data.length){tb.innerHTML='<tr><td colspan="4" class="empty">Không có dữ liệu</td></tr>';document.getElementById('rowInfo').textContent='Hiển thị 0 mục';return}
+  tb.innerHTML=data.map(i=>`<tr onclick="openDetail('${i.code}')"><td>${i.code}</td><td>${i.name}</td><td>${i.manager}</td><td><span class="status ${i.status}">${i.status==='active'?'Đang chạy':'Tạm dừng'}</span></td></tr>`).join('');
+  document.getElementById('rowInfo').textContent=`Hiển thị ${data.length} mục`;
+}
+
+function filterTable(q){
+  const status=document.getElementById('filterStatus').value;
+  filtered=DATA.filter(i=>{
+    const matchQ=!q||i.name.toLowerCase().includes(q.toLowerCase())||i.code.toLowerCase().includes(q.toLowerCase());
+    const matchS=!status||i.status===status;
+    return matchQ && matchS;
+  });
+  render(filtered);
+}
+
+function switchTab(tab){
+  document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('active',t.dataset.tab===tab));
+  document.getElementById('panelList').classList.toggle('hide',tab!=='list');
+  document.getElementById('panelDetail').classList.toggle('hide',tab!=='detail');
+}
+
+function startCreate(){
+  resetForm();
+  switchTab('detail');
+}
+
+function openDetail(code){
+  const item=DATA.find(i=>i.code===code);
+  if(!item) return;
+  document.getElementById('fldCode').value=item.code;
+  document.getElementById('fldName').value=item.name;
+  document.getElementById('fldStatus').value=item.status;
+  document.getElementById('fldManager').value=item.manager.includes('An')?'an':item.manager.includes('Binh')?'binh':'dung';
+  switchTab('detail');
+}
+
+function resetForm(){
+  document.querySelectorAll('.input').forEach(i=>{i.value='';i.classList.remove('invalid')});
+}
+
+function saveForm(){
+  let valid=true;
+  document.querySelectorAll('[data-required="1"]').forEach(i=>{
+    if(!i.value){i.classList.add('invalid');valid=false}else{i.classList.remove('invalid')}
+  });
+  if(!valid){alert('Vui lòng nhập đủ trường bắt buộc');return}
+  alert('Lưu dự án (mock)');
+}
+
+render(DATA);
+switchTab('list');
+</script>
+</body>
+</html>

@@ -1,4 +1,5 @@
 ﻿Imports Microsoft.VisualBasic.ApplicationServices
+Imports System.Drawing
 
 Namespace My
     ' The following events are available for MyApplication:
@@ -24,6 +25,9 @@ Namespace My
     ' End Sub
 
     Partial Friend Class MyApplication
-
+        Private Sub MyApplication_ApplyApplicationDefaults(sender As Object, e As ApplyApplicationDefaultsEventArgs) Handles Me.ApplyApplicationDefaults
+            e.Font = New Font("Microsoft YaHei UI", 9.0F, FontStyle.Regular)
+            e.HighDpiMode = HighDpiMode.PerMonitorV2
+        End Sub
     End Class
 End Namespace

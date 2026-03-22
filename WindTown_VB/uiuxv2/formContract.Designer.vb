@@ -186,7 +186,7 @@ Partial Class formContract
         txtFNote.Anchor = AnchorStyles.Top Or AnchorStyles.Left Or AnchorStyles.Right
         txtFNote.BackColor = Color.FromArgb(CByte(38), CByte(43), CByte(66))
         txtFNote.BorderStyle = BorderStyle.FixedSingle
-        txtFNote.Font = New Font("Microsoft YaHei UI", 9.5F)
+        txtFNote.Font = New Font("Microsoft YaHei UI", 10F)
         txtFNote.ForeColor = Color.FromArgb(CByte(232), CByte(236), CByte(240))
         txtFNote.Location = New Point(16, 34)
         txtFNote.Multiline = True
@@ -198,7 +198,7 @@ Partial Class formContract
         ' lblSec4Title
         ' 
         lblSec4Title.AutoSize = True
-        lblSec4Title.Font = New Font("Microsoft YaHei UI", 8F, FontStyle.Bold)
+        lblSec4Title.Font = New Font("Microsoft YaHei UI", 9F, FontStyle.Bold)
         lblSec4Title.ForeColor = Color.FromArgb(CByte(61), CByte(74), CByte(114))
         lblSec4Title.Location = New Point(16, 12)
         lblSec4Title.Name = "lblSec4Title"
@@ -244,7 +244,7 @@ Partial Class formContract
         ' 
         lblFBaseSalary.AutoSize = True
         tlpSec3.SetColumnSpan(lblFBaseSalary, 2)
-        lblFBaseSalary.Font = New Font("Microsoft YaHei UI", 8.5F, FontStyle.Bold)
+        lblFBaseSalary.Font = New Font("Microsoft YaHei UI", 9F, FontStyle.Bold)
         lblFBaseSalary.ForeColor = Color.FromArgb(CByte(123), CByte(139), CByte(178))
         lblFBaseSalary.Location = New Point(3, 0)
         lblFBaseSalary.Name = "lblFBaseSalary"
@@ -257,7 +257,7 @@ Partial Class formContract
         txtFBaseSalary.BackColor = Color.FromArgb(CByte(38), CByte(43), CByte(66))
         txtFBaseSalary.BorderStyle = BorderStyle.FixedSingle
         txtFBaseSalary.Dock = DockStyle.Fill
-        txtFBaseSalary.Font = New Font("Microsoft YaHei UI", 9.5F)
+        txtFBaseSalary.Font = New Font("Microsoft YaHei UI", 10F)
         txtFBaseSalary.ForeColor = Color.FromArgb(CByte(232), CByte(236), CByte(240))
         txtFBaseSalary.Location = New Point(0, 22)
         txtFBaseSalary.Margin = New Padding(0, 0, 8, 4)
@@ -269,7 +269,7 @@ Partial Class formContract
         ' lblFBaseSalaryHint
         ' 
         lblFBaseSalaryHint.AutoSize = True
-        lblFBaseSalaryHint.Font = New Font("Microsoft YaHei UI", 8F)
+        lblFBaseSalaryHint.Font = New Font("Microsoft YaHei UI", 9F)
         lblFBaseSalaryHint.ForeColor = Color.FromArgb(CByte(61), CByte(74), CByte(114))
         lblFBaseSalaryHint.Location = New Point(136, 36)
         lblFBaseSalaryHint.Margin = New Padding(8, 14, 0, 0)
@@ -281,7 +281,7 @@ Partial Class formContract
         ' lblFSalaryPreview
         ' 
         lblFSalaryPreview.AutoSize = True
-        lblFSalaryPreview.Font = New Font("Microsoft YaHei UI", 8.5F, FontStyle.Bold)
+        lblFSalaryPreview.Font = New Font("Microsoft YaHei UI", 9F, FontStyle.Bold)
         lblFSalaryPreview.ForeColor = Color.FromArgb(CByte(123), CByte(139), CByte(178))
         lblFSalaryPreview.Location = New Point(0, 72)
         lblFSalaryPreview.Margin = New Padding(0, 8, 0, 0)
@@ -305,7 +305,7 @@ Partial Class formContract
         ' lblSec3Title
         ' 
         lblSec3Title.AutoSize = True
-        lblSec3Title.Font = New Font("Microsoft YaHei UI", 8F, FontStyle.Bold)
+        lblSec3Title.Font = New Font("Microsoft YaHei UI", 9F, FontStyle.Bold)
         lblSec3Title.ForeColor = Color.FromArgb(CByte(61), CByte(74), CByte(114))
         lblSec3Title.Location = New Point(16, 12)
         lblSec3Title.Name = "lblSec3Title"
@@ -351,7 +351,7 @@ Partial Class formContract
         ' lblFStart
         ' 
         lblFStart.AutoSize = True
-        lblFStart.Font = New Font("Microsoft YaHei UI", 8.5F, FontStyle.Bold)
+        lblFStart.Font = New Font("Microsoft YaHei UI", 9F, FontStyle.Bold)
         lblFStart.ForeColor = Color.FromArgb(CByte(123), CByte(139), CByte(178))
         lblFStart.Location = New Point(3, 0)
         lblFStart.Name = "lblFStart"
@@ -367,7 +367,7 @@ Partial Class formContract
         dtpStart.CalendarTitleForeColor = Color.FromArgb(CByte(74), CByte(158), CByte(255))
         dtpStart.CustomFormat = "dd/MM/yyyy"
         dtpStart.Dock = DockStyle.Fill
-        dtpStart.Font = New Font("Microsoft YaHei UI", 9.5F)
+        dtpStart.Font = New Font("Microsoft YaHei UI", 10F)
         dtpStart.Format = DateTimePickerFormat.Custom
         dtpStart.Location = New Point(0, 22)
         dtpStart.Margin = New Padding(0, 0, 8, 4)
@@ -378,7 +378,7 @@ Partial Class formContract
         ' lblFEnd
         ' 
         lblFEnd.AutoSize = True
-        lblFEnd.Font = New Font("Microsoft YaHei UI", 8.5F, FontStyle.Bold)
+        lblFEnd.Font = New Font("Microsoft YaHei UI", 9F, FontStyle.Bold)
         lblFEnd.ForeColor = Color.FromArgb(CByte(123), CByte(139), CByte(178))
         lblFEnd.Location = New Point(136, 0)
         lblFEnd.Margin = New Padding(8, 0, 0, 0)
@@ -402,7 +402,7 @@ Partial Class formContract
         ' chkNoEndDate
         ' 
         chkNoEndDate.AutoSize = True
-        chkNoEndDate.Font = New Font("Microsoft YaHei UI", 8.5F)
+        chkNoEndDate.Font = New Font("Microsoft YaHei UI", 9F)
         chkNoEndDate.ForeColor = Color.FromArgb(CByte(123), CByte(139), CByte(178))
         chkNoEndDate.Location = New Point(186, 5)
         chkNoEndDate.Name = "chkNoEndDate"
@@ -418,7 +418,7 @@ Partial Class formContract
         dtpEnd.CalendarTitleBackColor = Color.FromArgb(CByte(21), CByte(24), CByte(36))
         dtpEnd.CalendarTitleForeColor = Color.FromArgb(CByte(74), CByte(158), CByte(255))
         dtpEnd.CustomFormat = "dd/MM/yyyy"
-        dtpEnd.Font = New Font("Microsoft YaHei UI", 9.5F)
+        dtpEnd.Font = New Font("Microsoft YaHei UI", 10F)
         dtpEnd.Format = DateTimePickerFormat.Custom
         dtpEnd.Location = New Point(0, 0)
         dtpEnd.Name = "dtpEnd"
@@ -428,7 +428,7 @@ Partial Class formContract
         ' lblFDuration
         ' 
         lblFDuration.AutoSize = True
-        lblFDuration.Font = New Font("Microsoft YaHei UI", 8.5F, FontStyle.Bold)
+        lblFDuration.Font = New Font("Microsoft YaHei UI", 9F, FontStyle.Bold)
         lblFDuration.ForeColor = Color.FromArgb(CByte(123), CByte(139), CByte(178))
         lblFDuration.Location = New Point(3, 64)
         lblFDuration.Name = "lblFDuration"
@@ -439,7 +439,7 @@ Partial Class formContract
         ' lblDurationVal
         ' 
         lblDurationVal.AutoSize = True
-        lblDurationVal.Font = New Font("Microsoft YaHei UI", 9.5F, FontStyle.Bold)
+        lblDurationVal.Font = New Font("Microsoft YaHei UI", 10F, FontStyle.Bold)
         lblDurationVal.ForeColor = Color.FromArgb(CByte(74), CByte(158), CByte(255))
         lblDurationVal.Location = New Point(136, 72)
         lblDurationVal.Margin = New Padding(8, 8, 0, 0)
@@ -451,7 +451,7 @@ Partial Class formContract
         ' lblSec2Title
         ' 
         lblSec2Title.AutoSize = True
-        lblSec2Title.Font = New Font("Microsoft YaHei UI", 8F, FontStyle.Bold)
+        lblSec2Title.Font = New Font("Microsoft YaHei UI", 9F, FontStyle.Bold)
         lblSec2Title.ForeColor = Color.FromArgb(CByte(61), CByte(74), CByte(114))
         lblSec2Title.Location = New Point(16, 12)
         lblSec2Title.Name = "lblSec2Title"
@@ -498,7 +498,7 @@ Partial Class formContract
         ' lblFCode
         ' 
         lblFCode.AutoSize = True
-        lblFCode.Font = New Font("Microsoft YaHei UI", 8.5F, FontStyle.Bold)
+        lblFCode.Font = New Font("Microsoft YaHei UI", 9F, FontStyle.Bold)
         lblFCode.ForeColor = Color.FromArgb(CByte(123), CByte(139), CByte(178))
         lblFCode.Location = New Point(3, 0)
         lblFCode.Name = "lblFCode"
@@ -522,7 +522,7 @@ Partial Class formContract
         ' lblFStatus
         ' 
         lblFStatus.AutoSize = True
-        lblFStatus.Font = New Font("Microsoft YaHei UI", 8.5F, FontStyle.Bold)
+        lblFStatus.Font = New Font("Microsoft YaHei UI", 9F, FontStyle.Bold)
         lblFStatus.ForeColor = Color.FromArgb(CByte(123), CByte(139), CByte(178))
         lblFStatus.Location = New Point(136, 0)
         lblFStatus.Margin = New Padding(8, 0, 0, 0)
@@ -537,7 +537,7 @@ Partial Class formContract
         cboFStatus.Dock = DockStyle.Fill
         cboFStatus.DropDownStyle = ComboBoxStyle.DropDownList
         cboFStatus.FlatStyle = FlatStyle.Flat
-        cboFStatus.Font = New Font("Microsoft YaHei UI", 9.5F)
+        cboFStatus.Font = New Font("Microsoft YaHei UI", 10F)
         cboFStatus.ForeColor = Color.FromArgb(CByte(232), CByte(236), CByte(240))
         cboFStatus.Items.AddRange(New Object() {"● Đang hiệu lực", "⚠ Sắp hết hạn", "○ Đã hết hạn", "✕ Đã hủy"})
         cboFStatus.Location = New Point(136, 22)
@@ -550,7 +550,7 @@ Partial Class formContract
         ' 
         lblFEmp.AutoSize = True
         tlpSec1.SetColumnSpan(lblFEmp, 2)
-        lblFEmp.Font = New Font("Microsoft YaHei UI", 8.5F, FontStyle.Bold)
+        lblFEmp.Font = New Font("Microsoft YaHei UI", 9F, FontStyle.Bold)
         lblFEmp.ForeColor = Color.FromArgb(CByte(123), CByte(139), CByte(178))
         lblFEmp.Location = New Point(3, 64)
         lblFEmp.Name = "lblFEmp"
@@ -565,7 +565,7 @@ Partial Class formContract
         cboFEmp.Dock = DockStyle.Fill
         cboFEmp.DropDownStyle = ComboBoxStyle.DropDownList
         cboFEmp.FlatStyle = FlatStyle.Flat
-        cboFEmp.Font = New Font("Microsoft YaHei UI", 9.5F)
+        cboFEmp.Font = New Font("Microsoft YaHei UI", 10F)
         cboFEmp.ForeColor = Color.FromArgb(CByte(232), CByte(236), CByte(240))
         cboFEmp.Location = New Point(0, 86)
         cboFEmp.Margin = New Padding(0, 0, 0, 4)
@@ -576,7 +576,7 @@ Partial Class formContract
         ' lblSec1Title
         ' 
         lblSec1Title.AutoSize = True
-        lblSec1Title.Font = New Font("Microsoft YaHei UI", 8F, FontStyle.Bold)
+        lblSec1Title.Font = New Font("Microsoft YaHei UI", 9F, FontStyle.Bold)
         lblSec1Title.ForeColor = Color.FromArgb(CByte(61), CByte(74), CByte(114))
         lblSec1Title.Location = New Point(16, 12)
         lblSec1Title.Name = "lblSec1Title"
@@ -604,7 +604,7 @@ Partial Class formContract
         btnSave.FlatAppearance.BorderSize = 0
         btnSave.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(58), CByte(138), CByte(224))
         btnSave.FlatStyle = FlatStyle.Flat
-        btnSave.Font = New Font("Microsoft YaHei UI", 9.5F, FontStyle.Bold)
+        btnSave.Font = New Font("Microsoft YaHei UI", 10F, FontStyle.Bold)
         btnSave.ForeColor = Color.White
         btnSave.Location = New Point(820, 10)
         btnSave.Name = "btnSave"
@@ -676,7 +676,7 @@ Partial Class formContract
         ' 
         lblBadgeDaysLeft.Anchor = AnchorStyles.Top Or AnchorStyles.Right
         lblBadgeDaysLeft.AutoSize = True
-        lblBadgeDaysLeft.Font = New Font("Microsoft YaHei UI", 8F)
+        lblBadgeDaysLeft.Font = New Font("Microsoft YaHei UI", 9F)
         lblBadgeDaysLeft.ForeColor = Color.FromArgb(CByte(123), CByte(139), CByte(178))
         lblBadgeDaysLeft.Location = New Point(0, 30)
         lblBadgeDaysLeft.Name = "lblBadgeDaysLeft"
@@ -700,7 +700,7 @@ Partial Class formContract
         ' lblEmpDept
         ' 
         lblEmpDept.AutoSize = True
-        lblEmpDept.Font = New Font("Microsoft YaHei UI", 8.5F)
+        lblEmpDept.Font = New Font("Microsoft YaHei UI", 9F)
         lblEmpDept.ForeColor = Color.FromArgb(CByte(123), CByte(139), CByte(178))
         lblEmpDept.Location = New Point(88, 62)
         lblEmpDept.Name = "lblEmpDept"
@@ -711,7 +711,7 @@ Partial Class formContract
         ' lblEmpMeta
         ' 
         lblEmpMeta.AutoSize = True
-        lblEmpMeta.Font = New Font("Courier New", 8.5F)
+        lblEmpMeta.Font = New Font("Courier New", 9F)
         lblEmpMeta.ForeColor = Color.FromArgb(CByte(74), CByte(158), CByte(255))
         lblEmpMeta.Location = New Point(88, 44)
         lblEmpMeta.Name = "lblEmpMeta"
@@ -774,7 +774,7 @@ Partial Class formContract
         dgvContract.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
         DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle2.BackColor = Color.FromArgb(CByte(21), CByte(24), CByte(36))
-        DataGridViewCellStyle2.Font = New Font("Microsoft YaHei UI", 8.5F, FontStyle.Bold)
+        DataGridViewCellStyle2.Font = New Font("Microsoft YaHei UI", 9F, FontStyle.Bold)
         DataGridViewCellStyle2.ForeColor = Color.FromArgb(CByte(74), CByte(158), CByte(255))
         DataGridViewCellStyle2.Padding = New Padding(4, 0, 0, 0)
         DataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(CByte(21), CByte(24), CByte(36))
@@ -787,7 +787,7 @@ Partial Class formContract
         dgvContract.Cursor = Cursors.Hand
         DataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle9.BackColor = Color.FromArgb(CByte(26), CByte(29), CByte(46))
-        DataGridViewCellStyle9.Font = New Font("Microsoft YaHei UI", 9.5F)
+        DataGridViewCellStyle9.Font = New Font("Microsoft YaHei UI", 10F)
         DataGridViewCellStyle9.ForeColor = Color.FromArgb(CByte(232), CByte(236), CByte(240))
         DataGridViewCellStyle9.Padding = New Padding(4, 0, 0, 0)
         DataGridViewCellStyle9.SelectionBackColor = Color.FromArgb(CByte(30), CByte(74), CByte(158), CByte(255))
@@ -827,7 +827,7 @@ Partial Class formContract
         ' 
         ' colCode
         ' 
-        DataGridViewCellStyle3.Font = New Font("Courier New", 8.5F, FontStyle.Bold)
+        DataGridViewCellStyle3.Font = New Font("Courier New", 9F, FontStyle.Bold)
         DataGridViewCellStyle3.ForeColor = Color.FromArgb(CByte(74), CByte(158), CByte(255))
         colCode.DefaultCellStyle = DataGridViewCellStyle3
         colCode.HeaderText = "MÃ HĐ"
@@ -917,7 +917,7 @@ Partial Class formContract
         btnPageNext.Cursor = Cursors.Hand
         btnPageNext.FlatAppearance.BorderColor = Color.FromArgb(CByte(42), CByte(48), CByte(80))
         btnPageNext.FlatStyle = FlatStyle.Flat
-        btnPageNext.Font = New Font("Microsoft YaHei UI", 8.5F)
+        btnPageNext.Font = New Font("Microsoft YaHei UI", 9F)
         btnPageNext.ForeColor = Color.FromArgb(CByte(123), CByte(139), CByte(178))
         btnPageNext.Location = New Point(102, 0)
         btnPageNext.Name = "btnPageNext"
@@ -932,7 +932,7 @@ Partial Class formContract
         btnPage2.Cursor = Cursors.Hand
         btnPage2.FlatAppearance.BorderColor = Color.FromArgb(CByte(42), CByte(48), CByte(80))
         btnPage2.FlatStyle = FlatStyle.Flat
-        btnPage2.Font = New Font("Microsoft YaHei UI", 8.5F)
+        btnPage2.Font = New Font("Microsoft YaHei UI", 9F)
         btnPage2.ForeColor = Color.FromArgb(CByte(123), CByte(139), CByte(178))
         btnPage2.Location = New Point(68, 0)
         btnPage2.Name = "btnPage2"
@@ -947,7 +947,7 @@ Partial Class formContract
         btnPage1.Cursor = Cursors.Hand
         btnPage1.FlatAppearance.BorderSize = 0
         btnPage1.FlatStyle = FlatStyle.Flat
-        btnPage1.Font = New Font("Microsoft YaHei UI", 8.5F)
+        btnPage1.Font = New Font("Microsoft YaHei UI", 9F)
         btnPage1.ForeColor = Color.White
         btnPage1.Location = New Point(34, 0)
         btnPage1.Name = "btnPage1"
@@ -962,7 +962,7 @@ Partial Class formContract
         btnPagePrev.Cursor = Cursors.Hand
         btnPagePrev.FlatAppearance.BorderColor = Color.FromArgb(CByte(42), CByte(48), CByte(80))
         btnPagePrev.FlatStyle = FlatStyle.Flat
-        btnPagePrev.Font = New Font("Microsoft YaHei UI", 8.5F)
+        btnPagePrev.Font = New Font("Microsoft YaHei UI", 9F)
         btnPagePrev.ForeColor = Color.FromArgb(CByte(123), CByte(139), CByte(178))
         btnPagePrev.Location = New Point(0, 0)
         btnPagePrev.Name = "btnPagePrev"
@@ -974,7 +974,7 @@ Partial Class formContract
         ' lblRowInfo
         ' 
         lblRowInfo.AutoSize = True
-        lblRowInfo.Font = New Font("Microsoft YaHei UI", 8.5F)
+        lblRowInfo.Font = New Font("Microsoft YaHei UI", 9F)
         lblRowInfo.ForeColor = Color.FromArgb(CByte(123), CByte(139), CByte(178))
         lblRowInfo.Location = New Point(14, 12)
         lblRowInfo.Name = "lblRowInfo"
@@ -1003,7 +1003,7 @@ Partial Class formContract
         btnAdd.FlatAppearance.BorderSize = 0
         btnAdd.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(58), CByte(138), CByte(224))
         btnAdd.FlatStyle = FlatStyle.Flat
-        btnAdd.Font = New Font("Microsoft YaHei UI", 9.5F, FontStyle.Bold)
+        btnAdd.Font = New Font("Microsoft YaHei UI", 10F, FontStyle.Bold)
         btnAdd.ForeColor = Color.White
         btnAdd.Location = New Point(1862, 11)
         btnAdd.Name = "btnAdd"
@@ -1017,7 +1017,7 @@ Partial Class formContract
         cboStatusFilter.BackColor = Color.FromArgb(CByte(38), CByte(43), CByte(66))
         cboStatusFilter.DropDownStyle = ComboBoxStyle.DropDownList
         cboStatusFilter.FlatStyle = FlatStyle.Flat
-        cboStatusFilter.Font = New Font("Microsoft YaHei UI", 8.5F)
+        cboStatusFilter.Font = New Font("Microsoft YaHei UI", 9F)
         cboStatusFilter.ForeColor = Color.FromArgb(CByte(232), CByte(236), CByte(240))
         cboStatusFilter.Items.AddRange(New Object() {"Tất cả trạng thái", "Đang hiệu lực", "Hết hạn trong 30 ngày", "Đã hết hạn", "Đã hủy"})
         cboStatusFilter.Location = New Point(422, 11)
@@ -1030,7 +1030,7 @@ Partial Class formContract
         cboDept.BackColor = Color.FromArgb(CByte(38), CByte(43), CByte(66))
         cboDept.DropDownStyle = ComboBoxStyle.DropDownList
         cboDept.FlatStyle = FlatStyle.Flat
-        cboDept.Font = New Font("Microsoft YaHei UI", 8.5F)
+        cboDept.Font = New Font("Microsoft YaHei UI", 9F)
         cboDept.ForeColor = Color.FromArgb(CByte(232), CByte(236), CByte(240))
         cboDept.Items.AddRange(New Object() {"Tất cả phòng ban", "Kỹ thuật", "Kế toán", "Nhân sự", "Marketing", "Kinh doanh", "Vận hành"})
         cboDept.Location = New Point(252, 11)
@@ -1042,7 +1042,7 @@ Partial Class formContract
         ' 
         txtSearch.BackColor = Color.FromArgb(CByte(38), CByte(43), CByte(66))
         txtSearch.BorderStyle = BorderStyle.FixedSingle
-        txtSearch.Font = New Font("Microsoft YaHei UI", 9.5F)
+        txtSearch.Font = New Font("Microsoft YaHei UI", 10F)
         txtSearch.ForeColor = Color.FromArgb(CByte(232), CByte(236), CByte(240))
         txtSearch.Location = New Point(12, 11)
         txtSearch.Name = "txtSearch"

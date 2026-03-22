@@ -196,7 +196,7 @@ Public Class formSalaryMult
             col.Width = 110
             col.ReadOnly = True
             col.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
-            col.DefaultCellStyle.Font = New Font("Microsoft YaHei UI", 10.5!, FontStyle.Bold)
+            col.DefaultCellStyle.Font = New Font("Microsoft YaHei UI", 11!, FontStyle.Bold)
             dgvMatrix.Columns.Add(col)
         Next
     End Sub
@@ -249,6 +249,7 @@ Public Class formSalaryMult
         e.PaintBackground(e.ClipBounds, True)
 
         Dim g = e.Graphics
+        g.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit
         g.SmoothingMode = SmoothingMode.AntiAlias
 
         Dim multVal As Decimal = 0

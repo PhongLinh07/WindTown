@@ -301,7 +301,7 @@ Public Class formPolicy
             Dim idx = i  ' closure capture
             Dim btn As New Button()
             btn.Text = labels(i)
-            btn.Font = New System.Drawing.Font("Microsoft YaHei UI", 8.5!)
+            btn.Font = New System.Drawing.Font("Microsoft YaHei UI", 9!)
             btn.Size = New System.Drawing.Size(
                 System.Windows.Forms.TextRenderer.MeasureText(labels(i), btn.Font).Width + 24, 30)
             btn.Location = New System.Drawing.Point(xPos, 0)
@@ -387,7 +387,7 @@ Public Class formPolicy
         cboField.ForeColor = System.Drawing.Color.FromArgb(232, 236, 240)
         cboField.FlatStyle = FlatStyle.Flat
         cboField.DropDownStyle = ComboBoxStyle.DropDown
-        cboField.Font = New System.Drawing.Font("Courier New", 8.5!)
+        cboField.Font = New System.Drawing.Font("Courier New", 9!)
         cboField.Items.AddRange(New Object() {
             "contract.status", "contract.end_date",
             "employee.status",
@@ -578,7 +578,7 @@ Public Class formPolicy
             ' Policy name label
             Dim lblName As New Label()
             lblName.AutoSize = True
-            lblName.Font = New System.Drawing.Font("Microsoft YaHei UI", 9.5!, System.Drawing.FontStyle.Bold)
+            lblName.Font = New System.Drawing.Font("Microsoft YaHei UI", 10!, System.Drawing.FontStyle.Bold)
             lblName.ForeColor = System.Drawing.Color.FromArgb(232, 236, 240)
             lblName.Location = New Point(14, 8)
             lblName.Text = p.Name
