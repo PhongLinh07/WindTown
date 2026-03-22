@@ -51,37 +51,49 @@ Public Class Pay_Period_CRUD_Frm
 
     Protected Overrides Function SyncUIToData() As Boolean
 
+        Try
 
-        If String.IsNullOrWhiteSpace(ui_code.Text) Then
-            MessageBox.Show("Mã kỳ lương không hợp lệ")
-            ui_code.Focus()
-            Return False
-        End If
+            If String.IsNullOrWhiteSpace(ui_code.Text) Then
+                MessageBox.Show("Mã kỳ lương không hợp lệ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                ui_code.Focus()
+                Return False
+            End If
 
-        If String.IsNullOrWhiteSpace(ui_name.Text) Then
-            MessageBox.Show("Tiêu đề kỳ lương không hợp lệ")
-            ui_name.Focus()
-            Return False
-        End If
+            If AppServices.Instance.Pay_PeriodSV.IsCodeDuplicate(ui_code.Text.Trim(), If(isCreate, 0, _data.id)) Then
+                MessageBox.Show("Mã kỳ lương đã tồn tại.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Return False
+            End If
+            If String.IsNullOrWhiteSpace(ui_name.Text) Then
+                MessageBox.Show("Tiêu đề kỳ lương không hợp lệ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                ui_name.Focus()
+                Return False
+            End If
 
-        _data.code = ui_code.Text.Trim()
-        _data.name = ui_name.Text.Trim()
+            _data.code = ui_code.Text.Trim()
+            _data.name = ui_name.Text.Trim()
+            _data.month = ui_month.Value
+            _data.start_date = ui_start_date.Value
+            _data.end_date = ui_end_date.Value
 
-        _data.month = ui_month.Value
-
-        _data.start_date = ui_start_date.Value
-        _data.end_date = ui_end_date.Value
-
-        If Not Decimal.TryParse(ui_std_hours.Text, _data.std_hours) Then
-            _data.std_hours = 0
-        End If
+            If Not Decimal.TryParse(ui_std_hours.Text, _data.std_hours) Then
+                _data.std_hours = 0
+            End If
 
 
-        _data.note = ui_note.Text
-        _data.status = CInt(ui_status.SelectedValue)
+            _data.note = ui_note.Text
+            _data.status = CInt(ui_status.SelectedValue)
 
-        Return True
+            ' 3. Logic kiểm tra ngày tháng
+            If _data.start_date > _data.end_date Then
+                MessageBox.Show("Ngày bắt đầu không thể lớn hơn ngày kết thúc!", "Lỗi dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Return False
+            End If
 
+            Return True
+        Catch ex As Exception
+            MessageBox.Show($"Lỗi đồng bộ dữ liệu: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        Return False
+        End Try
     End Function
 
     Protected Overrides Sub DataChanged() Handles ui_code.TextChanged,

@@ -80,12 +80,12 @@ Public Class Pay_Item_CRUD_Frm
                 Return False
             End If
 
-            If Not Decimal.TryParse(ui_value.Text, _data.value) Then
-                MessageBox.Show("Giá trị Item không hợp lệ")
-                ui_value.Focus()
-                Return False
+            'If Not Decimal.TryParse(UnitSuffix.ParseNumber(ui_value.Text), _data.value) Then
+            '    MessageBox.Show("Giá trị Item không hợp lệ")
+            '    ui_value.Focus()
+            '    Return False
 
-            End If
+            'End If
             ' 2. Gán dữ liệu từ UI vào Model (_data)
             _data.code = ui_code.Text.Trim().ToUpper()
             _data.name = ui_name.Text.Trim()
@@ -110,23 +110,23 @@ Public Class Pay_Item_CRUD_Frm
     ' Detect Change
     ' =============================
     Protected Overrides Sub DataChanged() _
-        Handles ui_code.TextChanged,
-                ui_value.TextChanged,
-                ui_priority.ValueChanged,
-                ui_category.SelectedValueChanged,
-                ui_unit.SelectedIndexChanged,
-                ui_source.SelectedValueChanged,
-                ui_note.TextChanged,
-                ui_status.SelectedIndexChanged
+        Handles ui_code.TextChanged, ui_name.TextChanged, ui_priority.ValueChanged, ui_category.SelectedValueChanged, ui_unit.SelectedIndexChanged, ui_source.SelectedValueChanged, ui_note.TextChanged, ui_status.SelectedIndexChanged, ui_value.TextChanged
 
         tool_save.Enabled = True
     End Sub
 
-    Private Sub SnapValue(sender As Object, e As EventArgs) Handles ui_value.TextChanged
+    Private _isFormatting As Boolean = False
+
+    Private Sub SnapValue(sender As Object, e As EventArgs) Handles ui_value.LostFocus
+        If _isFormatting Then Return
         If ui_unit.SelectedValue Is Nothing Then Return
-        If Not String.IsNullOrWhiteSpace(ui_value.Text) Then Return
-        If Not Decimal.TryParse(ui_value.Text, _data.value) Then Return
-        ui_value.Text = UnitSuffix.FomatNumber(_data.value, CInt(ui_unit.SelectedValue))
+
+        Dim raw = UnitSuffix.ParseNumber(ui_value.Text)
+        _data.value = raw
+
+        _isFormatting = True
+        ui_value.Text = UnitSuffix.FomatNumber(raw, CInt(ui_unit.SelectedValue))
+        _isFormatting = False
     End Sub
 
 

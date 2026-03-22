@@ -1,3 +1,4 @@
+Imports System.Globalization
 Imports System.Text.RegularExpressions
 Public NotInheritable Class Display_Field
     Public Enum Status
@@ -247,7 +248,33 @@ Public NotInheritable Class UnitSuffix
         End Select
 
     End Function
+    Public Shared Function ParseNumber(formatted As String) As Decimal
+        If String.IsNullOrWhiteSpace(formatted) Then Return 0
 
+        ' Xóa hết ký tự không phải số, dấu chấm, dấu phẩy, dấu trừ
+        Dim cleaned = Regex.Replace(formatted, "[^0-9.,-]", "").Trim()
+
+        ' Xử lý định dạng VN: 1.000.000 → 1000000
+        ' Nếu có dấu phẩy là thập phân → chuẩn hóa
+        If cleaned.Contains(",") Then
+            ' VD: 1.500.000,50 → bỏ dấu . → 1500000,50 → đổi , thành .
+            cleaned = cleaned.Replace(".", "").Replace(",", ".")
+        Else
+            ' VD: 1.500.000 → bỏ dấu . ngàn
+            ' Nhưng 1.5 là số thập phân → giữ nguyên
+            Dim dotCount = cleaned.Count(Function(c) c = "."c)
+            If dotCount > 1 Then
+                cleaned = cleaned.Replace(".", "")
+            End If
+        End If
+
+        Dim result As Decimal
+        If Decimal.TryParse(cleaned, NumberStyles.Any,
+                        CultureInfo.InvariantCulture, result) Then
+            Return result
+        End If
+        Return 0
+    End Function
 End Class
 
 

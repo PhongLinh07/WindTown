@@ -515,7 +515,7 @@ Public Class AppServices
                     Return ServiceResponse(Of Object).Fail($"Lỗi lấy thành phần: {response.Message}")
                 End If
 
-                Dim items = CType(response.Data, IEnumerable(Of Pay_Item)).ToList()
+                Dim items = CType(response.Data, IEnumerable(Of Pay_Item)).ToList().Where(Function(x) x.unit = CInt(UnitSuffix.ID.VND)).Select(Function(x) x).ToList()
 
                 Dim GetOrCreate = Function(sysId As System_Parameter.ID) As Pay_Item
                                       Dim param = System_Parameter.GetParameter(sysId)
@@ -528,6 +528,8 @@ Public Class AppServices
                                           pItemSV.Insert(item)
                                           items.Add(item)
                                           Logger.Instance.Logging($"Tạo Pay_Item hệ thống: {param.code}", Logger.Warning)
+                                      Else
+                                          item.value = 0
                                       End If
                                       Return item
                                   End Function
@@ -662,7 +664,7 @@ Public Class AppServices
                 If payrollList.Count = 0 Then Return ServiceResponse(Of Object).Success("")
 
                 For Each Payroll In payrollList
-                    Logger.Instance.Logging($"Đang tính: {Payroll.Position.Contract.employee_id}", Logger.Information)
+                    Logger.Instance.Logging($"Đang tính: {Payroll.Position.employee_UI}", Logger.Information)
                     Dim maps = SeedSystemVars(Payroll, Payroll.Pay_Period)
 
                     For Each p In policies

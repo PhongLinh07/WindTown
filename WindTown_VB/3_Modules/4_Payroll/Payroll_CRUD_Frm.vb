@@ -89,6 +89,7 @@ Public Class Payroll_CRUD_Frm
             ui_contract.Text = _data.Position?.contract_UI
             ui_contract.Enabled = False
 
+            ui_employee.DropDownStyle = ComboBoxStyle.DropDown
             ui_employee.Text = _data.Position?.employee_UI
             ui_employee.Enabled = False
 
@@ -98,6 +99,7 @@ Public Class Payroll_CRUD_Frm
             ui_level.Text = _data.Position?.level_UI
             ui_level.Enabled = False
 
+            ui_pay_period.DropDownStyle = ComboBoxStyle.DropDown
             ui_pay_period.Text = _data.pay_period_UI
             ui_pay_period.Enabled = False
 
@@ -119,11 +121,14 @@ Public Class Payroll_CRUD_Frm
         Try
             ' 1. Validation cơ bản
             If String.IsNullOrWhiteSpace(ui_code.Text) Then
-                MessageBox.Show("Mã bản lương không hợp lệ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                MessageBox.Show("Mã bảng lương không hợp lệ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning)
                 ui_code.Focus()
                 Return False
             End If
-
+            If AppServices.Instance.PayrollSV.IsCodeDuplicate(ui_code.Text.Trim(), If(isCreate, 0, _data.id)) Then
+                MessageBox.Show("Mã bảng lương đã tồn tại.")
+                Return False
+            End If
             ' Nếu là tạo mới, kiểm tra các ComboBox bắt buộc
             If isCreate Then
                 If ui_pay_period.SelectedValue Is Nothing OrElse ui_employee.SelectedValue Is Nothing Then
@@ -132,16 +137,13 @@ Public Class Payroll_CRUD_Frm
                 End If
 
                 ' Gán các ID quan trọng khi tạo mới
-                _data.Pay_Period = ui_pay_period.SelectedValue
-                _data.Position = ui_employee.SelectedValue
+                _data.period_id = CType(ui_pay_period.SelectedValue, Pay_Period).id
+                _data.position_id = CType(ui_employee.SelectedValue, Position).id
             End If
 
             ' 2. Gán dữ liệu từ UI vào Model (_data)
             _data.code = ui_code.Text.Trim()
-
-            _data.note = If(String.IsNullOrWhiteSpace(ui_note.Text.Trim()),
-            $"{_data.Pay_Period?.name} + {_data.Position?.employee_UI}",
-            ui_note.Text.Trim())
+            _data.note = ui_note.Text.Trim()
             _data.status = CInt(ui_status.SelectedValue)
 
             Return True

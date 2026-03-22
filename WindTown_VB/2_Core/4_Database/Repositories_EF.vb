@@ -172,11 +172,10 @@ Public Class AttendanceRepository
     End Function
 
     Public Function GetByPeriod(period As Pay_Period) As List(Of Attendance)
-        Dim f = SqlFilter(Of Attendance).Default() _
-            .Add(Function(a) a.status <> -1) _
-            .Add(Function(a) a.of_date >= period.start_date.Date) _
-            .Add(Function(a) a.of_date <= period.end_date.Date)
-        Return Search(f)
+        Return BuildQuery(_ctx) _
+            .Where(Function(a) a.status <> -1) _
+            .Where(Function(a) a.of_date >= period.start_date.Date) _
+            .Where(Function(a) a.of_date <= period.end_date.Date).ToList()
     End Function
 End Class
 
@@ -210,8 +209,7 @@ End Class
 
 #End Region
 
-#Region "Module Tai chinh"
-
+#Region "Module Tài chinh"
 Public Class PayPeriodRepository
     Inherits GenericRepository(Of Pay_Period)
     Sub New(ctx As AppDbContext)
@@ -241,10 +239,9 @@ Public Class PayrollRepository
     End Function
 
     Public Function GetByPeriod(period As Pay_Period) As List(Of Payroll)
-        Dim f = SqlFilter(Of Payroll).Default() _
-            .Add(Function(p) p.status <> -1) _
-            .Add(Function(p) p.period_id = period.id)
-        Return Search(f)
+        Return BuildQuery(_ctx) _
+            .Where(Function(p) p.status <> -1) _
+            .Where(Function(p) p.period_id = period.id).ToList()
     End Function
 End Class
 
@@ -258,10 +255,9 @@ Public Class PayItemRepository
     End Function
 
     Public Function GetByPayroll(payroll As Payroll) As List(Of Pay_Item)
-        Dim f = SqlFilter(Of Pay_Item).Default() _
-            .Add(Function(pi) pi.status <> -1) _
-            .Add(Function(pi) pi.payroll_id = payroll.id)
-        Return Search(f)
+        Return BuildQuery(_ctx) _
+            .Where(Function(pi) pi.status <> -1) _
+            .Where(Function(pi) pi.payroll_id = payroll.id).ToList()
     End Function
 End Class
 
@@ -286,10 +282,9 @@ Public Class AccountRepository
     End Function
 
     Public Function GetByUsername(data As Account) As Account
-        Dim f = SqlFilter(Of Account).Default() _
-            .Add(Function(a) a.status <> -1) _
-            .Add(Function(a) a.user = data.user)
-        Return Search(f).FirstOrDefault()
+        Return BuildQuery(_ctx) _
+            .Where(Function(a) a.status <> -1) _
+            .Where(Function(a) a.user = data.user)
     End Function
 End Class
 
