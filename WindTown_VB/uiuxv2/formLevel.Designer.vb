@@ -1,4 +1,4 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
 Partial Class formLevel
     Inherits System.Windows.Forms.Form
 
@@ -319,7 +319,7 @@ Partial Class formLevel
         cboFStatus.FlatStyle = FlatStyle.Flat
         cboFStatus.Font = New Font("Microsoft YaHei UI", 10F)
         cboFStatus.ForeColor = Color.FromArgb(CByte(232), CByte(236), CByte(240))
-        cboFStatus.Items.AddRange(New Object() {"● Đang hoạt động", "○ Ngừng hoạt động"})
+        cboFStatus.Items.AddRange(New Object() {"Đang hoạt động", "Ngừng hoạt động"})
         cboFStatus.Location = New Point(126, 88)
         cboFStatus.Margin = New Padding(8, 4, 0, 4)
         cboFStatus.Name = "cboFStatus"
@@ -390,7 +390,7 @@ Partial Class formLevel
         btnSave.Name = "btnSave"
         btnSave.Size = New Size(140, 32)
         btnSave.TabIndex = 2
-        btnSave.Text = "✓  Lưu cấp bậc"
+        btnSave.Text = "Lưu cấp bậc"
         btnSave.UseVisualStyleBackColor = False
         ' 
         ' btnClear
@@ -451,7 +451,7 @@ Partial Class formLevel
         lblHdrBadge.Padding = New Padding(6, 2, 6, 2)
         lblHdrBadge.Size = New Size(152, 24)
         lblHdrBadge.TabIndex = 0
-        lblHdrBadge.Text = "● Đang hoạt động"
+        lblHdrBadge.Text = "Đang hoạt động"
         ' 
         ' lblHdrSub
         ' 

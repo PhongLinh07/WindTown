@@ -34,7 +34,7 @@ Public Class formPayPeriod
     Private Sub formPayPeriod_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         DoubleBuffered = True
 
-        UiTextBoxHints.SetCueBanner(txtSearch, "🔍  Tìm mã hoặc tên kỳ lương...")
+        UiTextBoxHints.SetCueBanner(txtSearch, "Tìm mã hoặc tên kỳ lương...")
         UiTextBoxHints.SetCueBanner(txtFCode, "PP2026-04")
         UiTextBoxHints.SetCueBanner(txtFName, "Lương tháng 4/2026")
         UiTextBoxHints.SetCueBanner(txtFNote, "Ghi chú kỳ lương...")
@@ -150,9 +150,9 @@ Public Class formPayPeriod
 
     Private Function GetStatusText(status As Integer) As String
         Select Case status
-            Case 0 : Return "○ Nháp"
-            Case 1 : Return "● Đang xử lý"
-            Case 2 : Return "✓ Đã chốt"
+            Case 0 : Return "Nháp"
+            Case 1 : Return "Đang xử lý"
+            Case 2 : Return "Đã chốt"
             Case Else : Return "?"
         End Select
     End Function
@@ -404,7 +404,7 @@ Public Class formPayPeriod
 
         lblRightTitle.Text = "Tạo kỳ lương mới"
         lblRightSub.Text = "Điền thông tin bên dưới"
-        lblRightBadge.Text = "○ Nháp"
+        lblRightBadge.Text = "Nháp"
         lblRightBadge.ForeColor = Color.FromArgb(123, 139, 178)
         lblRightBadge.BackColor = Color.FromArgb(20, 123, 139, 178)
 

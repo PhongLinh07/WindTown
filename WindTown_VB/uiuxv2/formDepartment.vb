@@ -20,7 +20,7 @@ Public Class formDepartment
 
     Private Sub formDepartment_Load(s As Object, e As EventArgs) Handles MyBase.Load
         DoubleBuffered = True
-        UiTextBoxHints.SetCueBanner(txtSearch, "🔍  Tìm mã hoặc tên phòng ban...")
+        UiTextBoxHints.SetCueBanner(txtSearch, "Tìm mã hoặc tên phòng ban...")
         UiTextBoxHints.SetCueBanner(txtFCode, "DEPT01")
         UiTextBoxHints.SetCueBanner(txtFName, "Kỹ thuật")
         UiTextBoxHints.SetCueBanner(txtFNote, "Ghi chú...")
@@ -56,7 +56,7 @@ Public Class formDepartment
         dgv.Rows.Clear()
         For Each r In data
             Dim jc = JobCount(r)
-            dgv.Rows.Add(r.code, r.name, jc, If(r.status = 1, "● Hoạt động", "○ Ngừng"))
+            dgv.Rows.Add(r.code, r.name, jc, If(r.status = 1, "Hoạt động", "Ngừng"))
             Dim row = dgv.Rows(dgv.Rows.Count - 1)
             row.Tag = r.id
             row.Cells("colStatus").Style.ForeColor = If(r.status = 1,
@@ -78,7 +78,7 @@ Public Class formDepartment
         If r Is Nothing Then Return
         lblHdrTitle.Text = r.name
         lblHdrSub.Text = r.code & "  ·  " & JobCount(r).ToString() & " chức danh"
-        lblHdrBadge.Text = If(r.status = 1, "● Đang hoạt động", "○ Ngừng hoạt động")
+        lblHdrBadge.Text = If(r.status = 1, "Đang hoạt động", "Ngừng hoạt động")
         lblHdrBadge.ForeColor = If(r.status = 1, Color.FromArgb(76, 175, 80), Color.FromArgb(123, 139, 178))
         lblHdrBadge.BackColor = If(r.status = 1, Color.FromArgb(20, 76, 175, 80), Color.FromArgb(20, 123, 139, 178))
         txtFCode.Text = r.code
@@ -196,7 +196,7 @@ Public Class formDepartment
 
     Private Sub cboFStatus_SelectedIndexChanged(s As Object, e As EventArgs) Handles cboFStatus.SelectedIndexChanged
         Dim active = (cboFStatus.SelectedIndex = 0)
-        lblHdrBadge.Text = If(active, "● Đang hoạt động", "○ Ngừng hoạt động")
+        lblHdrBadge.Text = If(active, "Đang hoạt động", "Ngừng hoạt động")
         lblHdrBadge.ForeColor = If(active, Color.FromArgb(76, 175, 80), Color.FromArgb(123, 139, 178))
         lblHdrBadge.BackColor = If(active, Color.FromArgb(20, 76, 175, 80), Color.FromArgb(20, 123, 139, 178))
     End Sub
@@ -209,7 +209,7 @@ Public Class formDepartment
         cboFStatus.SelectedIndex = 0
         lblHdrTitle.Text = "Thêm phòng ban mới"
         lblHdrSub.Text = "Điền thông tin bên dưới"
-        lblHdrBadge.Text = "● Đang hoạt động"
+        lblHdrBadge.Text = "Đang hoạt động"
         lblHdrBadge.ForeColor = Color.FromArgb(76, 175, 80)
         lblHdrBadge.BackColor = Color.FromArgb(20, 76, 175, 80)
         btnDelete.Enabled = False

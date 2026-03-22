@@ -261,7 +261,7 @@ Partial Class formJob
         cboFStatus.FlatStyle = FlatStyle.Flat
         cboFStatus.Font = New Font("Microsoft YaHei UI", 10F)
         cboFStatus.ForeColor = Color.FromArgb(CByte(232), CByte(236), CByte(240))
-        cboFStatus.Items.AddRange(New Object() {"● Đang hoạt động", "○ Ngừng hoạt động"})
+        cboFStatus.Items.AddRange(New Object() {"Đang hoạt động", "Ngừng hoạt động"})
         cboFStatus.Location = New Point(111, 84)
         cboFStatus.Margin = New Padding(8, 0, 0, 4)
         cboFStatus.Name = "cboFStatus"
@@ -332,7 +332,7 @@ Partial Class formJob
         btnSave.Name = "btnSave"
         btnSave.Size = New Size(150, 32)
         btnSave.TabIndex = 2
-        btnSave.Text = "✓  Lưu chức danh"
+        btnSave.Text = "Lưu chức danh"
         btnSave.UseVisualStyleBackColor = False
         ' 
         ' btnClear
@@ -393,7 +393,7 @@ Partial Class formJob
         lblHdrBadge.Padding = New Padding(6, 2, 6, 2)
         lblHdrBadge.Size = New Size(152, 24)
         lblHdrBadge.TabIndex = 0
-        lblHdrBadge.Text = "● Đang hoạt động"
+        lblHdrBadge.Text = "Đang hoạt động"
         ' 
         ' lblHdrSub
         ' 

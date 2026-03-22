@@ -31,3 +31,7 @@ Cập nhật theo `degsignUI.json`.
 ## Ghi chú
 - Status chuẩn: `done` hoặc `pending`.
 - Khi cập nhật: chỉnh `degsignUI.json` trước, sau đó đồng bộ file này.
+
+## Kỹ thuật (đồng bộ code, không đổi trạng thái form)
+- **R-1:** `formPayroll` tách `Partial` (`formPayroll.Data`, `.Tabs`, `.Period`, `.Grid`, `.Slip`, `.Toolbar`); `formPolicy` tách `Partial` (`.Data`, `.Tabs`, `.EnumAndFormula`, `.Render`, `.Events`, `.Actions`).
+- **RP / PDF:** `formReport` — xuất PDF qua máy in hệ thống *Microsoft Print to PDF* (`ReportPdfExport.vb`), cần Windows có máy in này.

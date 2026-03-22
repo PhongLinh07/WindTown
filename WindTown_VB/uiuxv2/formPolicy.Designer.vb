@@ -1,4 +1,4 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
+<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class formPolicy
     Inherits System.Windows.Forms.Form
 
@@ -1076,7 +1076,7 @@ Partial Class formPolicy
         cboFStatus.FlatStyle = FlatStyle.Flat
         cboFStatus.Font = New Font("Microsoft YaHei UI", 10F)
         cboFStatus.ForeColor = Color.FromArgb(CByte(232), CByte(236), CByte(240))
-        cboFStatus.Items.AddRange(New Object() {"● Kích hoạt", "○ Tắt"})
+        cboFStatus.Items.AddRange(New Object() {"Kích hoạt", "Tắt"})
         cboFStatus.Location = New Point(262, 88)
         cboFStatus.Margin = New Padding(8, 4, 0, 4)
         cboFStatus.Name = "cboFStatus"
@@ -1147,7 +1147,7 @@ Partial Class formPolicy
         btnSavePolicy.Name = "btnSavePolicy"
         btnSavePolicy.Size = New Size(140, 32)
         btnSavePolicy.TabIndex = 3
-        btnSavePolicy.Text = "✓  Lưu chính sách"
+        btnSavePolicy.Text = "Lưu chính sách"
         btnSavePolicy.UseVisualStyleBackColor = False
         ' 
         ' btnClearPolicy

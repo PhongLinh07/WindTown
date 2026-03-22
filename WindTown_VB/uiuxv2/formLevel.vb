@@ -30,7 +30,7 @@ Public Class formLevel
 
     Private Sub formLevel_Load(s As Object, e As EventArgs) Handles MyBase.Load
         DoubleBuffered = True
-        UiTextBoxHints.SetCueBanner(txtSearch, "🔍  Tìm mã hoặc tên cấp bậc...")
+        UiTextBoxHints.SetCueBanner(txtSearch, "Tìm mã hoặc tên cấp bậc...")
         UiTextBoxHints.SetCueBanner(txtFCode, "LV01")
         UiTextBoxHints.SetCueBanner(txtFName, "Nhân viên")
         UiTextBoxHints.SetCueBanner(txtFNote, "Ghi chú...")
@@ -68,7 +68,7 @@ Public Class formLevel
         For Each r In sorted
             Dim smc = SalaryMultCount(r.id)
             dgv.Rows.Add(r.rank, r.code, r.name, smc,
-                         If(r.status = 1, "● Hoạt động", "○ Ngừng"))
+                         If(r.status = 1, "Hoạt động", "Ngừng"))
             Dim row = dgv.Rows(dgv.Rows.Count - 1)
             row.Tag = r.id
             row.Cells("colStatus").Style.ForeColor = If(r.status = 1,
@@ -90,7 +90,7 @@ Public Class formLevel
         If r Is Nothing Then Return
         lblHdrTitle.Text = r.name
         lblHdrSub.Text = r.code & "  ·  Rank " & r.rank.ToString() & "  ·  " & SalaryMultCount(r.id).ToString() & " hệ số"
-        lblHdrBadge.Text = If(r.status = 1, "● Đang hoạt động", "○ Ngừng hoạt động")
+        lblHdrBadge.Text = If(r.status = 1, "Đang hoạt động", "Ngừng hoạt động")
         lblHdrBadge.ForeColor = If(r.status = 1, Color.FromArgb(76, 175, 80), Color.FromArgb(123, 139, 178))
         lblHdrBadge.BackColor = If(r.status = 1, Color.FromArgb(20, 76, 175, 80), Color.FromArgb(20, 123, 139, 178))
         txtFCode.Text = r.code
@@ -232,7 +232,7 @@ Public Class formLevel
         lblRankNum.Text = _rank.ToString()
         lblHdrTitle.Text = "Thêm cấp bậc mới"
         lblHdrSub.Text = "Điền thông tin bên dưới"
-        lblHdrBadge.Text = "● Đang hoạt động"
+        lblHdrBadge.Text = "Đang hoạt động"
         lblHdrBadge.ForeColor = Color.FromArgb(76, 175, 80)
         lblHdrBadge.BackColor = Color.FromArgb(20, 76, 175, 80)
         btnDelete.Enabled = False

@@ -49,7 +49,7 @@ Public Class formAttendance
     Private Sub formAttendance_Load(s As Object, e As EventArgs) Handles MyBase.Load
         DoubleBuffered = True
 
-        UiTextBoxHints.SetCueBanner(txtSearch, "🔍  Tìm theo mã / tên nhân viên...")
+        UiTextBoxHints.SetCueBanner(txtSearch, "Tìm theo mã / tên nhân viên...")
         UiTextBoxHints.SetCueBanner(txtFCheckIn, "08:00")
         UiTextBoxHints.SetCueBanner(txtFCheckOut, "17:30")
         UiTextBoxHints.SetCueBanner(txtFHours, "8.0")
@@ -177,7 +177,7 @@ Public Class formAttendance
 
         lblHdrTitle.Text = r.EmpName
         lblHdrSub.Text = r.EmpCode & "  ·  " & r.DeptName
-        lblHdrBadge.Text = "● " & r.Status
+        lblHdrBadge.Text = r.Status
         Select Case r.Status
             Case "Đủ công"
                 lblHdrBadge.ForeColor = Color.FromArgb(76, 175, 80)
@@ -299,7 +299,7 @@ Public Class formAttendance
         txtFNote.Clear()
         lblHdrTitle.Text = "Tạo chấm công mới"
         lblHdrSub.Text = "Điền thông tin bên dưới"
-        lblHdrBadge.Text = "● Đủ công"
+        lblHdrBadge.Text = "Đủ công"
         lblHdrBadge.ForeColor = Color.FromArgb(76, 175, 80)
         lblHdrBadge.BackColor = Color.FromArgb(20, 76, 175, 80)
         btnDelete.Enabled = False

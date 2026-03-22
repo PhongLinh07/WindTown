@@ -1,4 +1,4 @@
-﻿Imports System.Drawing
+Imports System.Drawing
 
 Public Class formHoliday
     Private Class HolidayItem
@@ -171,7 +171,7 @@ Public Class formHoliday
             Return
         End If
 
-        MessageBox.Show("✓ Đã lưu (mock)", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        MessageBox.Show("Đã lưu (mock)", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information)
     End Sub
 
     Private Sub btnClear_Click(sender As Object, e As EventArgs) Handles btnClear.Click

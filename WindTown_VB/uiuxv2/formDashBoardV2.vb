@@ -1,11 +1,10 @@
 Imports System.Drawing
 Imports System.Drawing.Drawing2D
 Imports System.Drawing.Text
+Imports System.Linq
 
 ' ============================================================
-'  formDashBoard.vb — Dashboard HRM · MOCK DATA
-'  Khi cần DB thật: thay các Sub LoadMock* bằng nội dung
-'  trong file formDashBoard.vb.db_backup (giữ lại bên dưới)
+'  formDashBoardV2 — Dashboard HRM (DashboardService + fallback mock)
 ' ============================================================
 Public Class formDashBoardV2
 
@@ -39,6 +38,8 @@ Public Class formDashBoardV2
         Color.FromArgb(123, 97, 255)
     }
 
+    Private _kpiPayrollSub As String = "Từ dữ liệu lương tháng"
+
     ' ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     '  FORM LOAD & REFRESH
     ' ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -53,11 +54,13 @@ Public Class formDashBoardV2
 
     ''' <summary>Tải toàn bộ dữ liệu rồi repaint charts.</summary>
     Private Sub LoadData()
-        LoadKPI()
-        LoadDeptChart()
-        LoadAttendanceChart()
-        LoadContractDonut()
-        LoadLateTable()
+        If Not TryLoadFromDatabase() Then
+            LoadKPI()
+            LoadDeptChart()
+            LoadAttendanceChart()
+            LoadContractDonut()
+            LoadLateTable()
+        End If
 
         pnlK1.Invalidate()
         pnlK2.Invalidate()
@@ -67,8 +70,150 @@ Public Class formDashBoardV2
         pnlChartDonut.Invalidate()
     End Sub
 
+    Private Function TryLoadFromDatabase() As Boolean
+        Try
+            Dim svc As New DashboardService()
+            Dim sum = svc.BuildSummary(DateTime.Today)
+            Dim boLoc As New BaoCaoBoLoc With {.Thang = DateTime.Now.Month, .Nam = DateTime.Now.Year, .PhongBanId = 0}
+            Dim tongHop = svc.TaiBaoCaoTongHop(boLoc)
+
+            _totalEmp = sum.TotalEmployees
+            _activeEmp = sum.ActiveEmployees
+            _presentToday = Math.Max(0, sum.ActiveEmployees - sum.MissingCheckInTodayCount)
+            _lateToday = DemSoNhanVienDiTreHomNay()
+            _absentToday = sum.MissingCheckInTodayCount
+            _payrollTotal = tongHop.TongChiPhiLuong
+            _kpiPayrollSub = "Tháng " & DateTime.Now.Month.ToString() & "/" & DateTime.Now.Year.ToString() & " · tổng hợp Pay_Item"
+
+            LoadDeptChartFromBaoCao(tongHop.NhanSuTheoPhongBan)
+            LoadAttendanceChartFromDb()
+            LoadContractDonutFromDb()
+            LoadLateTableFromSummary(sum)
+
+            Return _totalEmp > 0 OrElse _presentToday > 0 OrElse tongHop.NhanSuTheoPhongBan.Count > 0
+        Catch
+            Return False
+        End Try
+    End Function
+
+    Private Function DemSoNhanVienDiTreHomNay() As Integer
+        Dim r = AppServices.Instance.AttendanceSV.GetList()
+        If Not r.IsSuccess OrElse r.Data Is Nothing Then Return 0
+        Dim today = DateTime.Today.Date
+        Return CType(r.Data, List(Of Attendance)).
+            Where(Function(a) a.status <> -1 AndAlso a.of_date.Date = today AndAlso a.late_hours > 0D).
+            Select(Function(a) a.employee_id).
+            Distinct().
+            Count()
+    End Function
+
+    Private Sub LoadDeptChartFromBaoCao(items As List(Of BaoCaoDuLieuBieuDo))
+        If items Is Nothing OrElse items.Count = 0 Then
+            LoadDeptChart()
+            Return
+        End If
+        _deptNames = items.Select(Function(x) If(x.Nhan, "?")).ToArray()
+        _deptCounts = items.Select(Function(x) CInt(Math.Min(Integer.MaxValue, Math.Max(0, x.GiaTri)))).ToArray()
+    End Sub
+
+    Private Sub LoadAttendanceChartFromDb()
+        Dim r = AppServices.Instance.AttendanceSV.GetList()
+        Dim culture = New System.Globalization.CultureInfo("vi-VN")
+        Dim today = DateTime.Today
+        _attendLabels = Enumerable.Range(0, 7).
+            Select(Function(i) today.AddDays(-6 + i).ToString("dd/MM", culture)).
+            ToArray()
+
+        If Not r.IsSuccess OrElse r.Data Is Nothing Then
+            LoadAttendanceChart()
+            Return
+        End If
+
+        Dim all = CType(r.Data, List(Of Attendance)).Where(Function(a) a.status <> -1).ToList()
+        _attendPresent = New Integer(6) {}
+        _attendLate = New Integer(6) {}
+        Dim idx As Integer
+        For idx = 0 To 6
+            Dim d = today.AddDays(-6 + idx).Date
+            _attendPresent(idx) = all.
+                Where(Function(a) a.of_date.Date = d AndAlso a.office_hours > 0D).
+                Select(Function(a) a.employee_id).
+                Distinct().
+                Count()
+            _attendLate(idx) = all.
+                Where(Function(a) a.of_date.Date = d AndAlso a.late_hours > 0D).
+                Select(Function(a) a.employee_id).
+                Distinct().
+                Count()
+        Next
+    End Sub
+
+    Private Sub LoadContractDonutFromDb()
+        Dim rc = AppServices.Instance.ContractSV.GetList()
+        Dim re = AppServices.Instance.EmployeeSV.GetList()
+        If Not rc.IsSuccess OrElse rc.Data Is Nothing OrElse Not re.IsSuccess OrElse re.Data Is Nothing Then
+            LoadContractDonut()
+            Return
+        End If
+
+        Dim contracts = CType(rc.Data, List(Of Contract)).Where(Function(c) c.status <> -1).ToList()
+        Dim act = Display_Field.Status.Active
+        Dim employees = CType(re.Data, List(Of Employee)).Where(Function(x) x.status = CInt(act)).ToList()
+        Dim today = DateTime.Today.Date
+        Dim deadline = today.AddDays(30)
+
+        Dim co As Integer = 0
+        Dim ex As Integer = 0
+        Dim none As Integer = 0
+
+        For Each emp In employees
+            Dim list = contracts.Where(Function(c) c.employee_id = emp.id AndAlso
+                c.start_date.Date <= today AndAlso
+                (Not c.end_date.HasValue OrElse c.end_date.Value.Date >= today)).ToList()
+            If list.Count = 0 Then
+                none += 1
+                Continue For
+            End If
+            Dim best = list.OrderByDescending(Function(c) c.start_date).First()
+            If best.end_date.HasValue AndAlso best.end_date.Value.Date >= today AndAlso best.end_date.Value.Date <= deadline Then
+                ex += 1
+            Else
+                co += 1
+            End If
+        Next
+
+        _donutCounts(0) = co
+        _donutCounts(1) = ex
+        _donutCounts(2) = none
+    End Sub
+
+    Private Sub LoadLateTableFromSummary(sum As DashboardSummaryDto)
+        dgvLate.Rows.Clear()
+        If sum.TopLateInWeek Is Nothing OrElse sum.TopLateInWeek.Count = 0 Then
+            LoadLateTable()
+            Return
+        End If
+
+        Dim no As Integer = 1
+        For Each it In sum.TopLateInWeek
+            dgvLate.Rows.Add(
+                no.ToString(),
+                it.EmployeeName,
+                "—",
+                "—",
+                it.MetricValue.ToString("0.#") & "h",
+                "Trong 7 ngày")
+            no += 1
+        Next
+
+        Dim row As DataGridViewRow
+        For Each row In dgvLate.Rows
+            row.Cells("colStatus").Style.ForeColor = Color.FromArgb(245, 158, 11)
+        Next
+    End Sub
+
     ' ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-    '  MOCK DATA — thay bằng DB queries khi sẵn sàng
+    '  MOCK DATA — fallback khi DB trống hoặc lỗi
     ' ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
     Private Sub LoadKPI()
@@ -113,14 +258,14 @@ Public Class formDashBoardV2
         dgvLate.Rows.Clear()
 
         Dim mockData(,) As Object = {
-            {"1", "Nguyễn Văn An", "Kỹ thuật", 9, "3.5h", "⚠ Cảnh cáo"},
-            {"2", "Trần Thị Bình", "Kế toán", 7, "2.8h", "⚠ Cảnh cáo"},
-            {"3", "Lê Văn Cường", "Nhân sự", 6, "2.1h", "• Nhắc nhở"},
-            {"4", "Phạm Thị Dung", "Marketing", 5, "1.9h", "• Nhắc nhở"},
-            {"5", "Hoàng Văn Em", "Kinh doanh", 4, "1.5h", "• Nhắc nhở"},
-            {"6", "Vũ Thị Phương", "Kỹ thuật", 3, "1.1h", "✓ Bình thường"},
-            {"7", "Đặng Văn Giang", "Vận hành", 2, "0.8h", "✓ Bình thường"},
-            {"8", "Bùi Thị Hoa", "Kỹ thuật", 1, "0.5h", "✓ Bình thường"}
+            {"1", "Nguyễn Văn An", "Kỹ thuật", 9, "3.5h", "[!] Cảnh cáo"},
+            {"2", "Trần Thị Bình", "Kế toán", 7, "2.8h", "[!] Cảnh cáo"},
+            {"3", "Lê Văn Cường", "Nhân sự", 6, "2.1h", "(*) Nhắc nhở"},
+            {"4", "Phạm Thị Dung", "Marketing", 5, "1.9h", "(*) Nhắc nhở"},
+            {"5", "Hoàng Văn Em", "Kinh doanh", 4, "1.5h", "(*) Nhắc nhở"},
+            {"6", "Vũ Thị Phương", "Kỹ thuật", 3, "1.1h", "[OK] Bình thường"},
+            {"7", "Đặng Văn Giang", "Vận hành", 2, "0.8h", "[OK] Bình thường"},
+            {"8", "Bùi Thị Hoa", "Kỹ thuật", 1, "0.5h", "[OK] Bình thường"}
         }
 
         Dim i As Integer
@@ -179,8 +324,8 @@ Public Class formDashBoardV2
         DrawKpiCard(e.Graphics, pnlK3.ClientRectangle,
                     "CHI PHÍ LƯƠNG THÁNG",
                     FormatVND(_payrollTotal),
-                    "Tháng " & DateTime.Now.Month & "/" & DateTime.Now.Year,
-                    "Từ pay_period hiện tại",
+                    _kpiPayrollSub,
+                    "Theo Pay_Item / kỳ lương",
                     True,
                     Color.FromArgb(76, 175, 80),
                     0.67)

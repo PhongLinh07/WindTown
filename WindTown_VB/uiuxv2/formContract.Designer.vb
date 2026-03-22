@@ -1,4 +1,4 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
+<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class formContract
     Inherits System.Windows.Forms.Form
 
@@ -202,7 +202,7 @@ Partial Class formContract
         lblSec4Title.ForeColor = Color.FromArgb(CByte(61), CByte(74), CByte(114))
         lblSec4Title.Location = New Point(16, 12)
         lblSec4Title.Name = "lblSec4Title"
-        lblSec4Title.Size = New Size(73, 19)
+        lblSec4Title.Size = New Size(75, 19)
         lblSec4Title.TabIndex = 8
         lblSec4Title.Text = "GHI CHÚ"
         ' 
@@ -262,7 +262,7 @@ Partial Class formContract
         txtFBaseSalary.Location = New Point(0, 22)
         txtFBaseSalary.Margin = New Padding(0, 0, 8, 4)
         txtFBaseSalary.Name = "txtFBaseSalary"
-        txtFBaseSalary.Size = New Size(120, 28)
+        txtFBaseSalary.Size = New Size(120, 29)
         txtFBaseSalary.TabIndex = 6
         txtFBaseSalary.Text = "0"
         ' 
@@ -274,7 +274,7 @@ Partial Class formContract
         lblFBaseSalaryHint.Location = New Point(136, 36)
         lblFBaseSalaryHint.Margin = New Padding(8, 14, 0, 0)
         lblFBaseSalaryHint.Name = "lblFBaseSalaryHint"
-        lblFBaseSalaryHint.Size = New Size(111, 28)
+        lblFBaseSalaryHint.Size = New Size(118, 28)
         lblFBaseSalaryHint.TabIndex = 7
         lblFBaseSalaryHint.Text = "Nhập số nguyên, đơn vị VNĐ"
         ' 
@@ -309,7 +309,7 @@ Partial Class formContract
         lblSec3Title.ForeColor = Color.FromArgb(CByte(61), CByte(74), CByte(114))
         lblSec3Title.Location = New Point(16, 12)
         lblSec3Title.Name = "lblSec3Title"
-        lblSec3Title.Size = New Size(124, 19)
+        lblSec3Title.Size = New Size(130, 19)
         lblSec3Title.TabIndex = 1
         lblSec3Title.Text = "LƯƠNG CƠ BẢN"
         ' 
@@ -372,7 +372,7 @@ Partial Class formContract
         dtpStart.Location = New Point(0, 22)
         dtpStart.Margin = New Padding(0, 0, 8, 4)
         dtpStart.Name = "dtpStart"
-        dtpStart.Size = New Size(120, 28)
+        dtpStart.Size = New Size(120, 29)
         dtpStart.TabIndex = 3
         ' 
         ' lblFEnd
@@ -422,7 +422,7 @@ Partial Class formContract
         dtpEnd.Format = DateTimePickerFormat.Custom
         dtpEnd.Location = New Point(0, 0)
         dtpEnd.Name = "dtpEnd"
-        dtpEnd.Size = New Size(180, 28)
+        dtpEnd.Size = New Size(180, 29)
         dtpEnd.TabIndex = 4
         ' 
         ' lblFDuration
@@ -444,7 +444,7 @@ Partial Class formContract
         lblDurationVal.Location = New Point(136, 72)
         lblDurationVal.Margin = New Padding(8, 8, 0, 0)
         lblDurationVal.Name = "lblDurationVal"
-        lblDurationVal.Size = New Size(27, 22)
+        lblDurationVal.Size = New Size(28, 24)
         lblDurationVal.TabIndex = 7
         lblDurationVal.Text = "—"
         ' 
@@ -455,7 +455,7 @@ Partial Class formContract
         lblSec2Title.ForeColor = Color.FromArgb(CByte(61), CByte(74), CByte(114))
         lblSec2Title.Location = New Point(16, 12)
         lblSec2Title.Name = "lblSec2Title"
-        lblSec2Title.Size = New Size(172, 19)
+        lblSec2Title.Size = New Size(179, 19)
         lblSec2Title.TabIndex = 1
         lblSec2Title.Text = "THỜI HẠN HỢP ĐỒNG"
         ' 
@@ -539,11 +539,11 @@ Partial Class formContract
         cboFStatus.FlatStyle = FlatStyle.Flat
         cboFStatus.Font = New Font("Microsoft YaHei UI", 10F)
         cboFStatus.ForeColor = Color.FromArgb(CByte(232), CByte(236), CByte(240))
-        cboFStatus.Items.AddRange(New Object() {"● Đang hiệu lực", "⚠ Sắp hết hạn", "○ Đã hết hạn", "✕ Đã hủy"})
+        cboFStatus.Items.AddRange(New Object() {"Đang hiệu lực", "Sắp hết hạn", "Đã hết hạn", "Đã hủy"})
         cboFStatus.Location = New Point(136, 22)
         cboFStatus.Margin = New Padding(8, 0, 0, 4)
         cboFStatus.Name = "cboFStatus"
-        cboFStatus.Size = New Size(120, 29)
+        cboFStatus.Size = New Size(120, 31)
         cboFStatus.TabIndex = 1
         ' 
         ' lblFEmp
@@ -570,7 +570,7 @@ Partial Class formContract
         cboFEmp.Location = New Point(0, 86)
         cboFEmp.Margin = New Padding(0, 0, 0, 4)
         cboFEmp.Name = "cboFEmp"
-        cboFEmp.Size = New Size(256, 29)
+        cboFEmp.Size = New Size(256, 31)
         cboFEmp.TabIndex = 2
         ' 
         ' lblSec1Title
@@ -580,7 +580,7 @@ Partial Class formContract
         lblSec1Title.ForeColor = Color.FromArgb(CByte(61), CByte(74), CByte(114))
         lblSec1Title.Location = New Point(16, 12)
         lblSec1Title.Name = "lblSec1Title"
-        lblSec1Title.Size = New Size(181, 19)
+        lblSec1Title.Size = New Size(189, 19)
         lblSec1Title.TabIndex = 1
         lblSec1Title.Text = "THÔNG TIN HỢP ĐỒNG"
         ' 
@@ -610,7 +610,7 @@ Partial Class formContract
         btnSave.Name = "btnSave"
         btnSave.Size = New Size(150, 32)
         btnSave.TabIndex = 2
-        btnSave.Text = "✓  Lưu hợp đồng"
+        btnSave.Text = "Lưu hợp đồng"
         btnSave.UseVisualStyleBackColor = False
         ' 
         ' btnClear
@@ -695,7 +695,7 @@ Partial Class formContract
         lblBadgeStatus.Padding = New Padding(8, 3, 8, 3)
         lblBadgeStatus.Size = New Size(67, 25)
         lblBadgeStatus.TabIndex = 1
-        lblBadgeStatus.Text = "○ Mới"
+        lblBadgeStatus.Text = "Mới"
         ' 
         ' lblEmpDept
         ' 
@@ -1046,7 +1046,7 @@ Partial Class formContract
         txtSearch.ForeColor = Color.FromArgb(CByte(232), CByte(236), CByte(240))
         txtSearch.Location = New Point(12, 11)
         txtSearch.Name = "txtSearch"
-        txtSearch.Size = New Size(230, 28)
+        txtSearch.Size = New Size(230, 29)
         txtSearch.TabIndex = 0
         ' 
         ' formContract

@@ -43,6 +43,27 @@ Public NotInheritable Class DatabaseBootstrapService
 
             Dim lastError As String = String.Empty
 
+            Dim userConn = ConnectionSettingsStore.TryLoadConnectionString()
+            If Not String.IsNullOrWhiteSpace(userConn) Then
+                Try
+                    If IsSchemaInitialized(userConn) Then
+                        DatabaseConfig.Database.SetConnectionString(userConn)
+                        EnsureDefaultAdminCredentials(userConn)
+                        _lastResult = New DatabaseBootstrapResult With {
+                            .IsSuccess = True,
+                            .WasCreated = False,
+                            .Message = "Ket noi theo cau hinh da luu (formSystem).",
+                            .SelectedDataSource = "(user)",
+                            .ConnectionString = userConn
+                        }
+                        _initialized = True
+                        Return _lastResult
+                    End If
+                Catch ex As Exception
+                    AppendLog($"[{DateTime.Now:yyyy-MM-dd HH:mm:ss}] User connection FAIL - {ex.Message}")
+                End Try
+            End If
+
             For Each dataSource In CandidateDataSources
                 Dim masterConnStr = BuildConnectionString(dataSource, "master")
                 Try

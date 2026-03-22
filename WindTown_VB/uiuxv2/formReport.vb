@@ -1,5 +1,7 @@
 Imports System.Drawing
+Imports System.IO
 Imports System.Linq
+Imports System.Text
 
 Public Class formReport
 
@@ -28,12 +30,16 @@ Public Class formReport
 
     Private _currentKind As ReportKind = ReportKind.None
 
+    Private _btnExportCsv As Button
+
     Private ReadOnly _inputBack As Color = Color.FromArgb(38, 43, 66)
     Private ReadOnly _invalidBack As Color = Color.FromArgb(70, 224, 85, 85)
 
     Private Sub formReport_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        lblPage.Visible = False
         InitFilters()
         InitTooltips()
+        InitExportCsvButton()
         ApplyColumnLayout(ReportKind.Attendance)
         cboReportType.SelectedIndex = 1
         LoadReportFromDatabase()
@@ -62,7 +68,14 @@ Public Class formReport
         cboDeptFilter.SelectedIndex = 0
 
         cboExportScope.Items.Clear()
-        cboExportScope.Items.AddRange(New Object() {"Xuất từ report", "formAttendance", "formLeave", "formPayroll", "formProject", "formAssignment"})
+        cboExportScope.Items.AddRange(New Object() {
+            "Báo cáo hiện tại (màn hình này)",
+            "Phạm vi: Chấm công",
+            "Phạm vi: Nghỉ phép",
+            "Phạm vi: Bảng lương",
+            "Phạm vi: Dự án",
+            "Phạm vi: Phân công"
+        })
         cboExportScope.SelectedIndex = 0
 
         dtpFrom.Value = Date.Today.AddDays(-7)
@@ -73,8 +86,31 @@ Public Class formReport
         toolTip1.SetToolTip(cboReportType, "Bắt buộc")
         toolTip1.SetToolTip(dtpFrom, "Bắt buộc")
         toolTip1.SetToolTip(dtpTo, "Bắt buộc")
-        toolTip1.SetToolTip(cboExportScope, "Chọn phạm vi xuất")
+        toolTip1.SetToolTip(cboExportScope, "Chọn phạm vi xuất (ghi vào tên file / tiêu đề xuất)")
         toolTip1.SetToolTip(cboDeptFilter, "Lọc theo phòng ban (cột Phòng ban)")
+    End Sub
+
+    Private Sub InitExportCsvButton()
+        _btnExportCsv = New Button() With {
+            .Name = "btnExportCsv",
+            .Text = "Xuất CSV",
+            .Size = New Size(86, 30),
+            .Anchor = btnExportExcel.Anchor,
+            .Cursor = Cursors.Hand,
+            .FlatStyle = FlatStyle.Flat,
+            .Font = btnExportExcel.Font,
+            .ForeColor = btnExportExcel.ForeColor,
+            .BackColor = btnExportExcel.BackColor,
+            .UseVisualStyleBackColor = False,
+            .TabIndex = 7
+        }
+        _btnExportCsv.FlatAppearance.BorderColor = btnExportExcel.FlatAppearance.BorderColor
+        _btnExportCsv.FlatAppearance.MouseOverBackColor = btnExportExcel.FlatAppearance.MouseOverBackColor
+        _btnExportCsv.Left = btnExportExcel.Left - _btnExportCsv.Width - 10
+        _btnExportCsv.Top = btnExportExcel.Top
+        pnlToolbar.Controls.Add(_btnExportCsv)
+        AddHandler _btnExportCsv.Click, Sub(s, ev) ExportReport("CSV")
+        toolTip1.SetToolTip(_btnExportCsv, "Xuất lưới hiện tại ra CSV UTF-8 (dấu ;)")
     End Sub
 
     Private Function MapComboToKind(idx As Integer) As ReportKind
@@ -273,12 +309,14 @@ Public Class formReport
         For Each item In data
             dgvReport.Rows.Add(item.Code, item.Name, item.Dept, item.Score, item.Status)
         Next
-        lblRowInfo.Text = $"Hiển thị {data.Count} / {_allRows.Count} mục"
+        lblRowInfo.Text = $"Hiển thị {data.Count} / {_allRows.Count} mục · Phân trang: tắt"
     End Sub
 
     Private Sub RenderChart()
         flpChart.Controls.Clear()
         Dim chartHeight As Integer = 160
+        Dim maxV = If(_chartValues.Count > 0, _chartValues.Max(), 1)
+        maxV = Math.Max(maxV, 1)
         For i As Integer = 0 To _chartValues.Count - 1
             Dim value = _chartValues(i)
             Dim labelText = If(i < _chartLabels.Count, _chartLabels(i), $"T{i + 1}")
@@ -289,9 +327,12 @@ Public Class formReport
             item.Margin = New Padding(6, 0, 6, 0)
             item.BackColor = Color.Transparent
 
+            Dim barH = CInt(Math.Round(chartHeight * (value / CDbl(maxV))))
+            barH = Math.Min(chartHeight, Math.Max(8, barH))
+
             Dim bar As New Panel()
             bar.Width = 36
-            bar.Height = Math.Min(chartHeight, Math.Max(24, value * 2))
+            bar.Height = barH
             bar.BackColor = Color.FromArgb(40, 74, 158, 255)
             bar.BorderStyle = BorderStyle.FixedSingle
             bar.Left = 5
@@ -407,9 +448,96 @@ Public Class formReport
     End Sub
 
     Private Sub ExportReport(format As String)
-        Dim scope = If(cboExportScope.SelectedItem Is Nothing, "report", cboExportScope.SelectedItem.ToString())
-        MessageBox.Show($"Xuất {format} - {scope} (mock).", "Xuất báo cáo", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        Dim suffix = ExportScopeSuffix()
+        Select Case format
+            Case "Excel"
+                If dgvReport.Rows.Count = 0 Then
+                    MessageBox.Show("Không có dữ liệu trên lưới để xuất.", "Xuất báo cáo", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    Return
+                End If
+                BaoCaoXuat.XuatTuDataGridView(dgvReport, "WindTown_report_" & suffix)
+            Case "CSV"
+                ExportCurrentGridToCsv(suffix)
+            Case "PDF"
+                ExportCurrentGridToPdf(suffix)
+            Case Else
+                MessageBox.Show("Định dạng không hỗ trợ.", "Xuất báo cáo", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+        End Select
     End Sub
+
+    Private Function ExportScopeSuffix() As String
+        Dim idx = cboExportScope.SelectedIndex
+        Select Case idx
+            Case 1 : Return "cham_cong"
+            Case 2 : Return "nghi_phep"
+            Case 3 : Return "bang_luong"
+            Case 4 : Return "du_an"
+            Case 5 : Return "phan_cong"
+            Case Else : Return "man_hinh"
+        End Select
+    End Function
+
+    Private Sub ExportCurrentGridToPdf(scopeSuffix As String)
+        If dgvReport.Rows.Count = 0 Then
+            MessageBox.Show("Không có dữ liệu trên lưới để xuất.", "Xuất PDF", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Return
+        End If
+        Using dlg As New SaveFileDialog()
+            dlg.Title = "Lưu PDF"
+            dlg.Filter = "PDF (*.pdf)|*.pdf"
+            dlg.FileName = "WindTown_report_" & scopeSuffix & "_" & Date.Now.ToString("yyyyMMdd_HHmm")
+            dlg.DefaultExt = "pdf"
+            dlg.AddExtension = True
+            If dlg.ShowDialog(Me) <> DialogResult.OK Then Return
+            Dim t = "WindTown — " & If(cboReportType.SelectedItem Is Nothing, "Báo cáo", cboReportType.SelectedItem.ToString())
+            ReportPdfExport.ExportDataGridViewToPdf(dgvReport, dlg.FileName, t, Me)
+        End Using
+    End Sub
+
+    Private Sub ExportCurrentGridToCsv(scopeSuffix As String)
+        If dgvReport.Rows.Count = 0 Then
+            MessageBox.Show("Không có dữ liệu trên lưới để xuất.", "Xuất CSV", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Return
+        End If
+        Using dlg As New SaveFileDialog()
+            dlg.Title = "Lưu CSV"
+            dlg.Filter = "CSV UTF-8 (*.csv)|*.csv"
+            dlg.FileName = "WindTown_report_" & scopeSuffix & "_" & Date.Now.ToString("yyyyMMdd_HHmm")
+            dlg.DefaultExt = "csv"
+            dlg.AddExtension = True
+            If dlg.ShowDialog(Me) <> DialogResult.OK Then Return
+
+            Dim sep = ";"c
+            Using sw As New StreamWriter(dlg.FileName, False, New UTF8Encoding(True))
+                Dim headers = dgvReport.Columns.Cast(Of DataGridViewColumn)().
+                    Where(Function(c) c.Visible).
+                    Select(Function(c) CsvEscape(c.HeaderText, sep)).
+                    ToList()
+                sw.WriteLine(String.Join(sep, headers))
+
+                For Each row As DataGridViewRow In dgvReport.Rows
+                    If row.IsNewRow Then Continue For
+                    Dim cells = dgvReport.Columns.Cast(Of DataGridViewColumn)().
+                        Where(Function(c) c.Visible).
+                        Select(Function(c) CsvEscape(If(row.Cells(c.Index).Value, String.Empty).ToString(), sep)).
+                        ToList()
+                    sw.WriteLine(String.Join(sep, cells))
+                Next
+            End Using
+
+            MessageBox.Show("Đã lưu: " & dlg.FileName, "Xuất CSV", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        End Using
+    End Sub
+
+    Private Shared Function CsvEscape(value As String, sep As Char) As String
+        If value Is Nothing Then value = String.Empty
+        Dim needQuote = value.IndexOfAny(New Char() {sep, """"c, ControlChars.Cr, ControlChars.Lf, ControlChars.Tab}) >= 0
+        value = value.Replace("""", """""")
+        If needQuote Then
+            Return """" & value & """"
+        End If
+        Return value
+    End Function
 
     Private Function ValidateRequired() As Boolean
         ResetValidation()

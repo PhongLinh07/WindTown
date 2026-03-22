@@ -306,7 +306,7 @@ Partial Class formEmployee
         txtEmail.Location = New Point(0, 22)
         txtEmail.Margin = New Padding(0, 0, 8, 4)
         txtEmail.Name = "txtEmail"
-        txtEmail.Size = New Size(520, 28)
+        txtEmail.Size = New Size(520, 29)
         txtEmail.TabIndex = 1
         ' 
         ' lblPhone
@@ -331,7 +331,7 @@ Partial Class formEmployee
         txtPhone.Location = New Point(536, 22)
         txtPhone.Margin = New Padding(8, 0, 0, 4)
         txtPhone.Name = "txtPhone"
-        txtPhone.Size = New Size(521, 28)
+        txtPhone.Size = New Size(521, 29)
         txtPhone.TabIndex = 3
         ' 
         ' lblBank
@@ -357,7 +357,7 @@ Partial Class formEmployee
         txtBank.Location = New Point(0, 86)
         txtBank.Margin = New Padding(0, 0, 0, 4)
         txtBank.Name = "txtBank"
-        txtBank.Size = New Size(1057, 28)
+        txtBank.Size = New Size(1057, 29)
         txtBank.TabIndex = 5
         ' 
         ' lblSec2
@@ -429,7 +429,7 @@ Partial Class formEmployee
         txtCode.Location = New Point(0, 22)
         txtCode.Margin = New Padding(0, 0, 8, 4)
         txtCode.Name = "txtCode"
-        txtCode.Size = New Size(520, 28)
+        txtCode.Size = New Size(520, 29)
         txtCode.TabIndex = 1
         ' 
         ' lblFName
@@ -454,7 +454,7 @@ Partial Class formEmployee
         txtFName.Location = New Point(536, 22)
         txtFName.Margin = New Padding(8, 0, 0, 4)
         txtFName.Name = "txtFName"
-        txtFName.Size = New Size(521, 28)
+        txtFName.Size = New Size(521, 29)
         txtFName.TabIndex = 3
         ' 
         ' lblGender
@@ -480,7 +480,7 @@ Partial Class formEmployee
         cboGender.Location = New Point(0, 86)
         cboGender.Margin = New Padding(0, 0, 8, 4)
         cboGender.Name = "cboGender"
-        cboGender.Size = New Size(520, 29)
+        cboGender.Size = New Size(520, 31)
         cboGender.TabIndex = 5
         ' 
         ' lblBirth
@@ -508,7 +508,7 @@ Partial Class formEmployee
         dtpBirth.Location = New Point(536, 86)
         dtpBirth.Margin = New Padding(8, 0, 0, 4)
         dtpBirth.Name = "dtpBirth"
-        dtpBirth.Size = New Size(521, 28)
+        dtpBirth.Size = New Size(521, 29)
         dtpBirth.TabIndex = 7
         ' 
         ' lblCccd
@@ -532,7 +532,7 @@ Partial Class formEmployee
         txtCccd.Location = New Point(0, 150)
         txtCccd.Margin = New Padding(0, 0, 8, 4)
         txtCccd.Name = "txtCccd"
-        txtCccd.Size = New Size(520, 28)
+        txtCccd.Size = New Size(520, 29)
         txtCccd.TabIndex = 9
         ' 
         ' lblFStatus
@@ -559,7 +559,7 @@ Partial Class formEmployee
         cboFStatus.Location = New Point(536, 150)
         cboFStatus.Margin = New Padding(8, 0, 0, 4)
         cboFStatus.Name = "cboFStatus"
-        cboFStatus.Size = New Size(521, 29)
+        cboFStatus.Size = New Size(521, 31)
         cboFStatus.TabIndex = 11
         ' 
         ' lblAddress
@@ -585,7 +585,7 @@ Partial Class formEmployee
         txtAddress.Location = New Point(0, 214)
         txtAddress.Margin = New Padding(0, 0, 0, 4)
         txtAddress.Name = "txtAddress"
-        txtAddress.Size = New Size(1057, 28)
+        txtAddress.Size = New Size(1057, 29)
         txtAddress.TabIndex = 13
         ' 
         ' lblSec1
@@ -625,7 +625,7 @@ Partial Class formEmployee
         lblDetailStatus.Padding = New Padding(6, 2, 6, 2)
         lblDetailStatus.Size = New Size(135, 24)
         lblDetailStatus.TabIndex = 0
-        lblDetailStatus.Text = "● Đang làm việc"
+        lblDetailStatus.Text = "Đang làm việc"
         ' 
         ' lblDetailCode
         ' 
@@ -683,7 +683,7 @@ Partial Class formEmployee
         btnSave.Name = "btnSave"
         btnSave.Size = New Size(130, 32)
         btnSave.TabIndex = 2
-        btnSave.Text = "✓  Lưu thông tin"
+        btnSave.Text = "Lưu thông tin"
         btnSave.UseVisualStyleBackColor = False
         ' 
         ' btnClear
@@ -1132,7 +1132,7 @@ Partial Class formEmployee
         txtSearch.ForeColor = Color.FromArgb(CByte(232), CByte(236), CByte(240))
         txtSearch.Location = New Point(12, 11)
         txtSearch.Name = "txtSearch"
-        txtSearch.Size = New Size(260, 28)
+        txtSearch.Size = New Size(260, 29)
         txtSearch.TabIndex = 0
         ' 
         ' formEmployee

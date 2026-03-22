@@ -349,7 +349,7 @@ Public Class formSalaryMult
         For Each r In data
             dgvDetail.Rows.Add(r.Code, r.JobName, r.LevelName,
                                r.Mult.ToString("0.0#"),
-                               If(r.Status = 1, "● Đang dùng", "○ Ngừng"))
+                               If(r.Status = 1, "Đang dùng", "Ngừng"))
             Dim row = dgvDetail.Rows(dgvDetail.Rows.Count - 1)
             row.Tag = r.Id
             row.Cells("colStatus").Style.ForeColor = If(r.Status = 1,

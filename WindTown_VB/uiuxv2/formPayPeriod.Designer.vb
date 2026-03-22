@@ -474,7 +474,7 @@ Partial Class formPayPeriod
         cboFStatus.FlatStyle = FlatStyle.Flat
         cboFStatus.Font = New Font("Microsoft YaHei UI", 10F)
         cboFStatus.ForeColor = Color.FromArgb(CByte(232), CByte(236), CByte(240))
-        cboFStatus.Items.AddRange(New Object() {"○ Nháp", "● Đang xử lý", "✓ Đã chốt"})
+        cboFStatus.Items.AddRange(New Object() {"Nháp", "Đang xử lý", "Đã chốt"})
         cboFStatus.Location = New Point(263, 90)
         cboFStatus.Margin = New Padding(8, 4, 0, 4)
         cboFStatus.Name = "cboFStatus"
@@ -519,7 +519,7 @@ Partial Class formPayPeriod
         btnSave.Name = "btnSave"
         btnSave.Size = New Size(160, 32)
         btnSave.TabIndex = 3
-        btnSave.Text = "✓  Lưu kỳ lương"
+        btnSave.Text = "Lưu kỳ lương"
         btnSave.UseVisualStyleBackColor = False
         ' 
         ' btnClear
@@ -711,7 +711,7 @@ Partial Class formPayPeriod
         lblRightBadge.Padding = New Padding(6, 2, 6, 2)
         lblRightBadge.Size = New Size(73, 24)
         lblRightBadge.TabIndex = 1
-        lblRightBadge.Text = "○ Nháp"
+        lblRightBadge.Text = "Nháp"
         ' 
         ' lblRightSub
         ' 

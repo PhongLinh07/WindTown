@@ -39,7 +39,7 @@ Public Class formJob
 
     Private Sub formJob_Load(s As Object, e As EventArgs) Handles MyBase.Load
         DoubleBuffered = True
-        UiTextBoxHints.SetCueBanner(txtSearch, "🔍  Tìm mã hoặc tên chức danh...")
+        UiTextBoxHints.SetCueBanner(txtSearch, "Tìm mã hoặc tên chức danh...")
         UiTextBoxHints.SetCueBanner(txtFCode, "JOB01")
         UiTextBoxHints.SetCueBanner(txtFName, "Lập trình viên")
         UiTextBoxHints.SetCueBanner(txtFNote, "Ghi chú...")
@@ -100,7 +100,7 @@ Public Class formJob
             Dim dn = DeptName(r)
             Dim smc = SalaryMultCount(r.id)
             dgv.Rows.Add(r.code, r.name, dn, smc,
-                         If(r.status = 1, "● Hoạt động", "○ Ngừng"))
+                         If(r.status = 1, "Hoạt động", "Ngừng"))
             Dim row = dgv.Rows(dgv.Rows.Count - 1)
             row.Tag = r.id
             row.Cells("colStatus").Style.ForeColor = If(r.status = 1,
@@ -123,7 +123,7 @@ Public Class formJob
         If r Is Nothing Then Return
         lblHdrTitle.Text = r.name
         lblHdrSub.Text = r.code & "  ·  " & DeptName(r) & "  ·  " & SalaryMultCount(r.id).ToString() & " hệ số"
-        lblHdrBadge.Text = If(r.status = 1, "● Đang hoạt động", "○ Ngừng hoạt động")
+        lblHdrBadge.Text = If(r.status = 1, "Đang hoạt động", "Ngừng hoạt động")
         lblHdrBadge.ForeColor = If(r.status = 1, Color.FromArgb(76, 175, 80), Color.FromArgb(123, 139, 178))
         lblHdrBadge.BackColor = If(r.status = 1, Color.FromArgb(20, 76, 175, 80), Color.FromArgb(20, 123, 139, 178))
         txtFCode.Text = r.code
@@ -272,7 +272,7 @@ Public Class formJob
         cboFStatus.SelectedIndex = 0
         lblHdrTitle.Text = "Thêm chức danh mới"
         lblHdrSub.Text = "Điền thông tin bên dưới"
-        lblHdrBadge.Text = "● Đang hoạt động"
+        lblHdrBadge.Text = "Đang hoạt động"
         lblHdrBadge.ForeColor = Color.FromArgb(76, 175, 80)
         lblHdrBadge.BackColor = Color.FromArgb(20, 76, 175, 80)
         btnDelete.Enabled = False

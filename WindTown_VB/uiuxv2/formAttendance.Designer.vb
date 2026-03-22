@@ -1,4 +1,4 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
 Partial Class formAttendance
     Inherits System.Windows.Forms.Form
 
@@ -499,7 +499,7 @@ Partial Class formAttendance
         btnSave.Name = "btnSave"
         btnSave.Size = New Size(150, 32)
         btnSave.TabIndex = 2
-        btnSave.Text = "✓  Lưu chấm công"
+        btnSave.Text = "Lưu chấm công"
         btnSave.UseVisualStyleBackColor = False
         ' 
         ' btnClear
@@ -560,7 +560,7 @@ Partial Class formAttendance
         lblHdrBadge.Padding = New Padding(6, 2, 6, 2)
         lblHdrBadge.Size = New Size(95, 24)
         lblHdrBadge.TabIndex = 0
-        lblHdrBadge.Text = "● Đủ công"
+        lblHdrBadge.Text = "Đủ công"
         ' 
         ' lblHdrSub
         ' 

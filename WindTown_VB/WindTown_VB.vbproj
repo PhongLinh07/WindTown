@@ -24,6 +24,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
+    <!-- C-1 (đóng): WinForms.DataVisualization chỉ còn dùng tại UIUX/frmBaoCaoTongHop.vb. uiuxv2 vẽ biểu đồ bằng GDI+; không gỡ gói trước khi thay thế hoặc gỡ màn báo cáo cũ. -->
     <PackageReference Include="WinForms.DataVisualization" Version="1.10.0" />
   </ItemGroup>
 

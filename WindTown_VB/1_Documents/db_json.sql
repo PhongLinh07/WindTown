@@ -2364,7 +2364,7 @@ INSERT INTO leave_cat (code, name, benefit, note, status) VALUES
 -- =========================================================
 
 INSERT INTO account (employee_id, [user], [password], role, status) VALUES
-(1, N'EMP001', N'PW_EMP001', 1, 0),
+(1, N'admin', N'123', 1, 0),
 (2, N'EMP002', N'PW_EMP002', 1, 0),
 (3, N'EMP003', N'PW_EMP003', 1, 0),
 (4, N'EMP004', N'PW_EMP004', 2, 0),

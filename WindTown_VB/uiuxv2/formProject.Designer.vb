@@ -1,4 +1,4 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
 Partial Class formProject
     Inherits System.Windows.Forms.Form
 
@@ -724,7 +724,7 @@ Partial Class formProject
         lblHdrBadge.Padding = New Padding(6, 2, 6, 2)
         lblHdrBadge.Size = New Size(95, 24)
         lblHdrBadge.TabIndex = 2
-        lblHdrBadge.Text = "● Pending"
+        lblHdrBadge.Text = "Pending"
         ' 
         ' lblHdrSub
         ' 

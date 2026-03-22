@@ -33,7 +33,7 @@ Public Class formPosition
     Private Sub formPosition_Load(s As Object, e As EventArgs) Handles MyBase.Load
         DoubleBuffered = True
 
-        UiTextBoxHints.SetCueBanner(txtSearch, "🔍  Tìm mã hoặc mô tả vị trí...")
+        UiTextBoxHints.SetCueBanner(txtSearch, "Tìm mã hoặc mô tả vị trí...")
         UiTextBoxHints.SetCueBanner(txtFCode, "Mã vị trí (code)")
         UiTextBoxHints.SetCueBanner(txtFName, "Hiển thị: công việc / trình độ")
         UiTextBoxHints.SetCueBanner(txtFNote, "Ghi chú...")
@@ -153,7 +153,7 @@ Public Class formPosition
         dgv.Rows.Clear()
         For Each r In data
             dgv.Rows.Add(r.Code, r.Name, r.DeptName, GetContractLine(r.ContractId),
-                         If(r.Status = 1, "● Đang dùng", "○ Tạm dừng"))
+                         If(r.Status = 1, "Đang dùng", "Tạm dừng"))
             Dim row = dgv.Rows(dgv.Rows.Count - 1)
             row.Tag = r.Id
             row.Cells("colStatus").Style.ForeColor = If(r.Status = 1,
@@ -193,7 +193,7 @@ Public Class formPosition
 
         lblHdrTitle.Text = r.Name
         lblHdrSub.Text = r.Code & "  ·  " & r.DeptName
-        lblHdrBadge.Text = If(r.Status = 1, "● Đang dùng", "○ Tạm dừng")
+        lblHdrBadge.Text = If(r.Status = 1, "Đang dùng", "Tạm dừng")
         lblHdrBadge.ForeColor = If(r.Status = 1, Color.FromArgb(76, 175, 80), Color.FromArgb(123, 139, 178))
         lblHdrBadge.BackColor = If(r.Status = 1, Color.FromArgb(20, 76, 175, 80), Color.FromArgb(20, 123, 139, 178))
 
@@ -393,7 +393,7 @@ Public Class formPosition
         dtpEffective.Value = Date.Today
         lblHdrTitle.Text = "Thêm vị trí mới"
         lblHdrSub.Text = "Điền thông tin bên dưới"
-        lblHdrBadge.Text = "● Đang dùng"
+        lblHdrBadge.Text = "Đang dùng"
         lblHdrBadge.ForeColor = Color.FromArgb(76, 175, 80)
         lblHdrBadge.BackColor = Color.FromArgb(20, 76, 175, 80)
         btnDelete.Enabled = False

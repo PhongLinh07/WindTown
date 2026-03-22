@@ -17,7 +17,7 @@ Public Class formEmployee
     '  LOAD
     ' ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     Private Sub formEmployee_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        UiTextBoxHints.SetCueBanner(txtSearch, "🔍  Tìm kiếm nhân viên...")
+        UiTextBoxHints.SetCueBanner(txtSearch, "Tìm kiếm nhân viên...")
         DoubleBuffered = True
         AddHandler pnlAvatarCircle.Paint, AddressOf AvatarCircle_Paint
         AddHandler pnlDetailFooter.Resize, AddressOf RepositionFooterBtns
@@ -86,10 +86,10 @@ Public Class formEmployee
         dgvEmployee.Rows.Clear()
         For Each emp In _filtered
             Dim initials = GetInitials(emp.name)
-            Dim statusStr = If(emp.status = 1, "● Làm việc", "○ Nghỉ")
+            Dim statusStr = If(emp.status = 1, "Làm việc", "Nghỉ")
             dgvEmployee.Rows.Add(False, initials, emp.name, emp.code,
                                  emp.gender_UI, "", "", emp.email, emp.phone,
-                                 "", statusStr, "✎  Sửa")
+                                 "", statusStr, "Sửa")
             Dim row = dgvEmployee.Rows(dgvEmployee.Rows.Count - 1)
             row.Tag = emp.id
             row.Cells("colStatusDgv").Style.ForeColor =
@@ -155,11 +155,11 @@ Public Class formEmployee
         lblDetailCode.Text = emp.code
 
         If emp.status = 1 Then
-            lblDetailStatus.Text = "● Đang làm việc"
+            lblDetailStatus.Text = "Đang làm việc"
             lblDetailStatus.ForeColor = Color.FromArgb(76, 175, 80)
             lblDetailStatus.BackColor = Color.FromArgb(20, 76, 175, 80)
         Else
-            lblDetailStatus.Text = "○ Nghỉ việc"
+            lblDetailStatus.Text = "Nghỉ việc"
             lblDetailStatus.ForeColor = Color.FromArgb(123, 139, 178)
             lblDetailStatus.BackColor = Color.FromArgb(20, 123, 139, 178)
         End If
@@ -219,7 +219,7 @@ Public Class formEmployee
         }
         Dim active = (c.status = 1)
         Dim lblStatus = New Label() With {
-            .Text = If(active, "● Hiện hành", "○ Hết hạn"),
+            .Text = If(active, "Hiện hành", "Hết hạn"),
             .AutoSize = True,
             .ForeColor = If(active, Color.FromArgb(76, 175, 80), Color.FromArgb(123, 139, 178)),
             .Location = New Point(card.Width - 140, 14)

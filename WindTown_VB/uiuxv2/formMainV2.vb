@@ -1,5 +1,6 @@
-﻿Imports System.Drawing
+Imports System.Drawing
 Imports System.Drawing.Text
+Imports System.Linq
 
 ' ============================================================
 '  formMainV2.vb — Shell chính: điều hướng + sidebar animation
@@ -60,23 +61,27 @@ Public Class formMainV2
 
     Private Sub CapNhatThongTinNguoiDung()
         Dim taiKhoan = NguoiDungHienTaiService.TaiKhoanDangNhap
-        Dim tenHienThi = If(taiKhoan?.Employee?.name, modSession.DisplayName)
-        If String.IsNullOrWhiteSpace(tenHienThi) Then
-            tenHienThi = If(taiKhoan?.user, modSession.CurrentUser)
-        End If
-        If String.IsNullOrWhiteSpace(tenHienThi) Then
-            tenHienThi = "Admin"
-        End If
-
-        Dim vaiTro = If(If(taiKhoan?.role, modSession.CurrentRole) = Account.ROLE_ADM,
-                        "Quản trị viên",
-                        "Nhân viên")
-
+        Dim tenHienThi = ResolveDisplayName(taiKhoan)
         lblSbUser.Text = tenHienThi
-        lblSbRole.Text = vaiTro
+        lblSbRole.Text = ResolveRoleLabel(taiKhoan)
         _avatarText = TaoAvatarText(tenHienThi)
         lblTopAvatar.Invalidate()
     End Sub
+
+    Private Shared Function ResolveDisplayName(acc As Account) As String
+        If acc IsNot Nothing AndAlso acc.Employee IsNot Nothing AndAlso Not String.IsNullOrWhiteSpace(acc.Employee.name) Then
+            Return acc.Employee.name.Trim()
+        End If
+        If Not String.IsNullOrWhiteSpace(modSession.DisplayName) Then Return modSession.DisplayName.Trim()
+        If acc IsNot Nothing AndAlso Not String.IsNullOrWhiteSpace(acc.user) Then Return acc.user.Trim()
+        If Not String.IsNullOrWhiteSpace(modSession.CurrentUser) Then Return modSession.CurrentUser.Trim()
+        Return "Admin"
+    End Function
+
+    Private Shared Function ResolveRoleLabel(acc As Account) As String
+        Dim r = If(acc IsNot Nothing, acc.role, modSession.CurrentRole)
+        Return If(r = Account.ROLE_ADM, "Quản trị viên", "Nhân viên")
+    End Function
 
     Private Function TaoAvatarText(displayName As String) As String
         If String.IsNullOrWhiteSpace(displayName) Then Return "AD"

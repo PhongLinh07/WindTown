@@ -42,7 +42,7 @@ Public Class formContract
     Private Sub formContract_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         DoubleBuffered = True
 
-        UiTextBoxHints.SetCueBanner(txtSearch, "🔍  Tìm mã HĐ hoặc tên nhân viên...")
+        UiTextBoxHints.SetCueBanner(txtSearch, "Tìm mã HĐ hoặc tên nhân viên...")
         UiTextBoxHints.SetCueBanner(txtFCode, "CTR2026-001")
         UiTextBoxHints.SetCueBanner(txtFNote, "Ghi chú hợp đồng...")
 
@@ -183,10 +183,10 @@ Public Class formContract
 
     Private Function GetStatusText(status As Integer) As String
         Select Case status
-            Case 0 : Return "● Đang hiệu lực"
-            Case 1 : Return "⚠ Sắp hết hạn"
-            Case 2 : Return "○ Đã hết hạn"
-            Case 3 : Return "✕ Đã hủy"
+            Case 0 : Return "Đang hiệu lực"
+            Case 1 : Return "Sắp hết hạn"
+            Case 2 : Return "Đã hết hạn"
+            Case 3 : Return "Đã hủy"
             Case Else : Return "?"
         End Select
     End Function
@@ -532,7 +532,7 @@ Public Class formContract
             Return
         End If
         If dtpEnd.Value <= dtpStart.Value Then
-            lblDurationVal.Text = "⚠ Ngày không hợp lệ"
+            lblDurationVal.Text = "Ngày không hợp lệ"
             lblDurationVal.ForeColor = Color.FromArgb(245, 158, 11)
             Return
         End If
@@ -617,7 +617,7 @@ Public Class formContract
         lblEmpName.Text = "Chọn nhân viên"
         lblEmpMeta.Text = "—"
         lblEmpDept.Text = "—"
-        lblBadgeStatus.Text = "● Đang hiệu lực"
+        lblBadgeStatus.Text = "Đang hiệu lực"
         lblBadgeStatus.ForeColor = Color.FromArgb(76, 175, 80)
         lblBadgeStatus.BackColor = Color.FromArgb(20, 76, 175, 80)
         lblBadgeDaysLeft.Text = ""

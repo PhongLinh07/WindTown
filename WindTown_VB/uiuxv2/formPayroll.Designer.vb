@@ -1354,7 +1354,7 @@ Partial Class formPayroll
         lblPeriodBadge.Padding = New Padding(6, 2, 6, 2)
         lblPeriodBadge.Size = New Size(109, 24)
         lblPeriodBadge.TabIndex = 0
-        lblPeriodBadge.Text = "● Đang xử lý"
+        lblPeriodBadge.Text = "Đang xử lý"
         ' 
         ' lblPeriodSub
         ' 
@@ -1559,7 +1559,7 @@ Partial Class formPayroll
         btnManagePeriod.Name = "btnManagePeriod"
         btnManagePeriod.Size = New Size(140, 30)
         btnManagePeriod.TabIndex = 5
-        btnManagePeriod.Text = "⚙  Quản lý kỳ lương"
+        btnManagePeriod.Text = "Quản lý kỳ lương"
         btnManagePeriod.UseVisualStyleBackColor = False
         ' 
         ' btnPrintSlip
