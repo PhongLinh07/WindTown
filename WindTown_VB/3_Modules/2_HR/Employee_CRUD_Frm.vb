@@ -54,18 +54,18 @@ Public Class Employee_CRUD_Frm
     Protected Overrides Function SyncUIToData() As Boolean
 
         If String.IsNullOrWhiteSpace(ui_code.Text) Then
-            MessageBox.Show("Mã nhân viên không hợp lệ!")
+            MessageBox.Show("Mã nhân viên không hợp lệ!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             ui_code.Focus()
             Return False
         End If
 
         If AppServices.Instance.EmployeeSV.IsCodeDuplicate(ui_code.Text.Trim(), If(isCreate, 0, _data.id)) Then
-            MessageBox.Show("Mã nhân viên này đã tồn tại.")
+            MessageBox.Show("Mã nhân viên này đã tồn tại.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             Return False
         End If
 
         If String.IsNullOrWhiteSpace(ui_name.Text) Then
-            MessageBox.Show("Tên nhân viên không hợp lệ!")
+            MessageBox.Show("Tên nhân viên không hợp lệ!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             ui_name.Focus()
             Return False
         End If
@@ -73,7 +73,7 @@ Public Class Employee_CRUD_Frm
         ' Optional: Validate email format đơn giản
         If Not String.IsNullOrWhiteSpace(ui_email.Text) AndAlso
            Not ui_email.Text.Contains("@") Then
-            MessageBox.Show("Email này không hợp lệ")
+            MessageBox.Show("Email này không hợp lệ", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             ui_email.Focus()
             Return False
         End If

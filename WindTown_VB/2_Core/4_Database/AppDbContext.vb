@@ -141,6 +141,7 @@ Public Class AppDbContext
             .HasOne(Function(l) l.Approved) _
             .WithMany() _
             .HasForeignKey(Function(l) l.approved_id) _
+            .IsRequired(False) _ ' Xác định đây là mối quan hệ không bắt buộc '
             .OnDelete(DeleteBehavior.Restrict)
 
         ' Leave -> Leave_Cat

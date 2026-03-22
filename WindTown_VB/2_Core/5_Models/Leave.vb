@@ -8,6 +8,9 @@ Public Class Leave ' Leave: bị trùng tên với keyword của VB "Control.Lea
 
     Public Sub New()
         code = $"LEAVE{GenerateRandomNumbers.Generate()}"
+        employee_id = -1
+        approved_id = -1
+        leave_cat_id = -1
         start_date = DateTime.Now
         total_days = 0
         reason = ""
@@ -24,7 +27,7 @@ Public Class Leave ' Leave: bị trùng tên với keyword của VB "Control.Lea
     Public Property Employee As Employee
 
     <Browsable(False)>
-    Public Property approved_id As Integer
+    Public Property approved_id As Integer?
 
     <Browsable(False)>
     Public Property Approved As Employee

@@ -37,7 +37,7 @@ Public Class Department
     <NotMapped> <Browsable(False)>
     Public ReadOnly Property department_UI As String
         Get
-            Return $"{Me.name}-{Me.code}"
+            Return $"{Me.name} ({Me.code})"
         End Get
     End Property
     <NotMapped> <DisplayName("Tổng công việc")> <Display(Order:=3)>

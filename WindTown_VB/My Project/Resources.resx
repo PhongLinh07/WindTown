@@ -121,8 +121,8 @@
   <data name="FTC1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\2_Core\Assets\FTC.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="payroll-check" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\2_Core\Assets\payroll-check.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="government" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\2_Core\Assets\government.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="delete" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\2_Core\Assets\delete.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -154,8 +154,8 @@
   <data name="book-user" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\2_Core\Assets\book-user.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="calendar-clock" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\2_Core\Assets\calendar-clock.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="user1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\user.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="sign-out-alt" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\2_Core\Assets\sign-out-alt.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -180,6 +180,9 @@
   </data>
   <data name="rules-alt" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\2_Core\Assets\rules-alt.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="payroll-check" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\2_Core\Assets\payroll-check.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="replace" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\2_Core\Assets\replace.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -208,11 +211,11 @@
   <data name="home" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\2_Core\Assets\home.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="AvatarUser" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\2_Core\Assets\avatarUser.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Avatar" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\2_Core\Assets\Avatar.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="word" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\2_Core\Assets\word.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="ranking" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\2_Core\Assets\ranking.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -235,8 +238,8 @@
   <data name="Background_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\2_Core\Assets\Background_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="government" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\2_Core\Assets\government.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="backgroudFTC" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\2_Core\Assets\backgroudFTC.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Holidays" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\2_Core\Assets\Holidays.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -289,8 +292,8 @@
   <data name="hidden_32px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\2_Core\Assets\hidden_32px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="backgroudFTC" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\2_Core\Assets\backgroudFTC.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="word" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\2_Core\Assets\word.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="compose" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\2_Core\Assets\compose.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -313,10 +316,10 @@
   <data name="search" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\2_Core\Assets\search.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="AvatarUser" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\2_Core\Assets\avatarUser.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="calendar-clock" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\2_Core\Assets\calendar-clock.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="user1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\user.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="leave2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\leave2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

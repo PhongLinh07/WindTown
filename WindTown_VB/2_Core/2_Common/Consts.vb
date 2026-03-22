@@ -1,58 +1,4 @@
 Imports System.Text.RegularExpressions
-
-'Public Enum DataIntent
-'    GetList        ' Lấy danh sách tất cả bản ghi chưa bị xóa | status != -1
-'    GetById        ' Lấy 1 bản ghi
-'    Insert         ' Thêm mới
-'    Update         ' Cập nhật
-'    'SoftDelete     ' Xóa tạm
-'    SoftDeleteMany ' Xóa tạm nhiều bản ghi
-
-'#Region "'Employee Custom Intent"
-'    GetEmployeesWithoutContract ' Những nhân viên đang ko có hợp đồng nào Active
-'    GetEmployeesWithoutAccount  ' Những nhân viên đang ko có tài khoản nào Active
-'    GetContractsWithoutPosition  ' Những Hợp đồng Active đang ko có vị trí nào Active 
-'#End Region
-
-'#Region "'Position Custom Intent"
-'    GetProjectsIsActive ' Những dự án đang trong tiến trình hoạt động | status != (-1.delete, 0.jected,3.complete )
-'    GetPositionsWithoutAssignment ' Những Position đang ko có Phân công nào Active
-'#End Region
-
-'#Region "'Account Custom Intent"
-'    Login
-'    GetAccountByUsername 'lấy thông tin tài khoản bằng user
-'#End Region
-
-'#Region "'Pay_Item Custom Intent"
-'    GetPayItemByPayroll 'lấy các khoản tiền theo payroll
-'#End Region
-
-'#Region "'Pay_Period Custom Intent"
-'    StandardHoursCalculator 'Tính số giờ hành chính của chu kỳ
-'#End Region
-'#Region "'Payroll Custom Intent"
-'    Init_Payrolls 'Khởi tạo các bảng lương theo hợp đòng đang hoạt động
-'    GetPayrollByPeriod ' Lấy bảng lưuong theo chu kỳ
-'    Aggregation_Data_One_Payroll ' Tổng hợp dữ liệu cho 1 bảng lương
-'    Aggregation_Data_One_Period ' Tổng hượp dữ liệu cho 1 kỳ lương (nhiều bảng lương)
-'    Cal_Net_Salary_One_Payroll ' Tính lương cho 1 bảng lương theo kỳ lương
-'    Cal_Net_Salary_One_Period ' Tính lương cho 1 chu kỳ lương (nhiều bảng lương)
-
-'#End Region
-
-'#Region "'Salary_Mult Custom Intent"
-'    GetSalaryMultItemByJob 'lấy dải hệ số theo công việc
-'#End Region
-
-'#Region "'Attendance Custom Intent"
-'    GetAttendanceByPeriod 'lấy chấm công theo chu kỳ
-'#End Region
-
-
-'End Enum
-
-
 Public NotInheritable Class Display_Field
     Public Enum Status
         Active = 1
@@ -102,6 +48,8 @@ Public NotInheritable Class System_Parameter
             {ID.SYS_DEDUCTION, New BaseParameter With {.code = "SYS_DEDUCTION", .name = "Tổng khấu trừ", .resource = "attendance", .category = CInt(Category_PayItem.ID.DEDUCTION), .unit = CInt(UnitSuffix.ID.VND), .priority = 90, .note = ""}},
             {ID.SYS_NET_SALARY, New BaseParameter With {.code = "SYS_NET_SALARY", .name = "Thực lĩnh", .resource = "attendance", .category = CInt(Category_PayItem.ID.INCOME), .unit = CInt(UnitSuffix.ID.VND), .priority = 100, .note = ""}}
         }
+
+    Public Shared Dict_UI As Dictionary(Of String, String) = Dict.ToDictionary(Function(kv) kv.Value.code, Function(kv) $"{kv.Value.name} ({kv.Value.code})")
 
     Public Shared Function GetParameter(id As ID) As BaseParameter
         If Dict.ContainsKey(id) Then
@@ -271,9 +219,9 @@ Public NotInheritable Class UnitSuffix
 
     Public Shared ReadOnly Dict As New Dictionary(Of ID, String) From {
         {ID.NONE, ""},
-        {ID.VND, " ₫"},
-        {ID.HOUR, " h"},
-        {ID.DAY, " ngày"},
+        {ID.VND, "₫"},
+        {ID.HOUR, "h"},
+        {ID.DAY, "ngày"},
         {ID.TIMES, "x"},
         {ID.PERCENT, "%"}
     }

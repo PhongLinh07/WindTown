@@ -198,7 +198,7 @@ status INT DEFAULT 1
 CREATE TABLE leave (
 id INT IDENTITY(1,1) PRIMARY KEY,
 employee_id INT,
-approved_id INT,
+approved_id INT NULL,
 leave_cat_id INT,
 code NVARCHAR(255) UNIQUE NOT NULL,
 start_date DATE,
@@ -301,7 +301,7 @@ ALTER TABLE assignment ADD CONSTRAINT FK_assignment_position FOREIGN KEY (positi
 ALTER TABLE assignment ADD CONSTRAINT FK_assignment_project FOREIGN KEY (project_id) REFERENCES project(id);
 ALTER TABLE attendance ADD CONSTRAINT FK_attendance_employee FOREIGN KEY (employee_id) REFERENCES employee(id);
 ALTER TABLE leave ADD CONSTRAINT FK_leave_employee FOREIGN KEY (employee_id) REFERENCES employee(id);
-ALTER TABLE leave ADD CONSTRAINT FK_leave_approved FOREIGN KEY (approved_id) REFERENCES employee(id);
+ALTER TABLE leave ADD CONSTRAINT FK_leave_approved FOREIGN KEY (approved_id) REFERENCES employee(id) ON DELETE SET NULL;
 ALTER TABLE leave ADD CONSTRAINT FK_leave_leave_cat FOREIGN KEY (leave_cat_id) REFERENCES leave_cat(id);
 
 -- Module: Tài chính

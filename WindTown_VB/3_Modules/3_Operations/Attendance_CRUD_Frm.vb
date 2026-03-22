@@ -111,21 +111,23 @@ Public Class Attendance_CRUD_Frm
 
         _data.code = ui_code.Text.Trim()
         _data.of_date = ui_of_date.Value
-        _data.status = CInt(ui_shift.SelectedValue)
+        _data.note = ui_note.Text.Trim()
+        _data.shift = CInt(ui_shift.SelectedValue)
+        _data.status = CInt(ui_status.SelectedValue)
 
         Return True
 
     End Function
 
-    Protected Overrides Sub DataChanged() Handles ui_employee.SelectedIndexChanged,
-                                        ui_code.TextChanged,
-                                        ui_office_hours.ValueChanged,
-                                        ui_overtime_hours.ValueChanged,
-                                        ui_late_hours.ValueChanged,
-                                        ui_early_hours.ValueChanged,
-                                        ui_shift.SelectedIndexChanged,
-                                        ui_note.TextChanged,
-                                        ui_status.SelectedIndexChanged
+    Protected Overrides Sub DataChanged() Handles ui_code.TextChanged,
+            ui_employee.SelectedValueChanged,
+            ui_of_date.ValueChanged,
+            ui_office_hours.ValueChanged,
+            ui_overtime_hours.ValueChanged,
+            ui_early_hours.ValueChanged,
+            ui_note.TextChanged,
+            ui_shift.SelectedValueChanged,
+            ui_status.SelectedValueChanged
 
         tool_save.Enabled = True
 

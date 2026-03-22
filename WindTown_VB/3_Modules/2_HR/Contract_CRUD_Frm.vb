@@ -65,25 +65,25 @@ Public Class Contract_CRUD_Frm
 
 
         If String.IsNullOrWhiteSpace(ui_code.Text) Then
-            MessageBox.Show("Mã hợp đồng không hợp lệ!")
+            MessageBox.Show("Mã hợp đồng không hợp lệ!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             ui_code.Focus()
             Return False
         End If
 
         If AppServices.Instance.ContractSV.IsCodeDuplicate(ui_code.Text.Trim(), If(isCreate, 0, _data.id)) Then
-            MessageBox.Show("Mã hợp đồng đã tồn tại.")
+            MessageBox.Show("Mã hợp đồng đã tồn tại.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             Return False
         End If
 
         If Not Decimal.TryParse(ui_base_salary.Value, _data.base_salary) Then
-            MessageBox.Show("Lương cơ bản không hợp lệ!")
+            MessageBox.Show("Lương cơ bản không hợp lệ!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             ui_base_salary.Focus()
             Return False
         End If
 
         If isCreate Then
             If ui_employee.SelectedValue Is Nothing Then
-                MessageBox.Show("Thông tin nhân viên không hợp lệ!")
+                MessageBox.Show("Thông tin nhân viên không hợp lệ!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning)
                 ui_employee.Focus()
                 Return False
             End If

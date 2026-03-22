@@ -115,11 +115,12 @@ Public Class PositionRepository
     End Function
 
     Public Function GetWithoutAssignment() As List(Of Position)
-        Return BaseQuery() _
-            .Where(Function(p) p.status <> -1) _
-            .Where(Function(p) Not _ctx.Assignments.Any(
-                Function(a) a.position_id = p.id AndAlso a.status = 1)) _
-            .ToList()
+        Return BuildQuery(_ctx) _
+        .Where(Function(p) p.status <> -1) _
+        .Where(Function(p) Not _ctx.Assignments.Any(
+            Function(a) a.position_id = p.id AndAlso a.status = 1)) _
+        .ToList()
+
     End Function
 End Class
 

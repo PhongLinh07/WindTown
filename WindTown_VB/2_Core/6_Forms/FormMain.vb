@@ -9,6 +9,8 @@ Partial Public Class FormMain
         ResetTabControl(tabControl_A)
         ResetTabControl(tabControl_B)
         UpdateLayout()
+
+        Dim serviceWakup = AppServices.Instance
     End Sub
 
 #Region "Helper Methods"

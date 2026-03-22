@@ -22,323 +22,528 @@ Partial Class Policy_CRUD_Frm
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.ui_status = New System.Windows.Forms.ComboBox()
-        Me.ui_note = New System.Windows.Forms.RichTextBox()
-        Me.Label4 = New System.Windows.Forms.Label()
-        Me.ui_category = New System.Windows.Forms.ComboBox()
-        Me.Label5 = New System.Windows.Forms.Label()
-        Me.Label8 = New System.Windows.Forms.Label()
-        Me.ui_name = New System.Windows.Forms.TextBox()
-        Me.ui_priority = New System.Windows.Forms.NumericUpDown()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.Label6 = New System.Windows.Forms.Label()
-        Me.ui_rule = New System.Windows.Forms.TextBox()
-        Me.Label7 = New System.Windows.Forms.Label()
-        Me.ui_aggregate = New System.Windows.Forms.ComboBox()
-        Me.Label9 = New System.Windows.Forms.Label()
-        Me.ui_gen_item = New System.Windows.Forms.ComboBox()
-        Me.Label10 = New System.Windows.Forms.Label()
-        Me.ui_data_source = New System.Windows.Forms.TextBox()
-        Me.ui_unit = New System.Windows.Forms.ComboBox()
-        Me.Label11 = New System.Windows.Forms.Label()
-        Me.ui_code = New System.Windows.Forms.TextBox()
-        CType(Me.ui_priority, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.SuspendLayout()
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Label1.Location = New System.Drawing.Point(59, 73)
-        Me.Label1.Margin = New System.Windows.Forms.Padding(0)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(125, 19)
-        Me.Label1.TabIndex = 1
-        Me.Label1.Text = "Mã chính sách:"
-        '
-        'Label3
-        '
-        Me.Label3.AutoSize = True
-        Me.Label3.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Label3.Location = New System.Drawing.Point(807, 73)
-        Me.Label3.Margin = New System.Windows.Forms.Padding(0)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(85, 19)
-        Me.Label3.TabIndex = 5
-        Me.Label3.Text = "Trạng thái"
-        '
-        'ui_status
-        '
-        Me.ui_status.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ui_status.FormattingEnabled = True
-        Me.ui_status.Items.AddRange(New Object() {"ACTIVE", "INACTIVE"})
-        Me.ui_status.Location = New System.Drawing.Point(811, 93)
-        Me.ui_status.Name = "ui_status"
-        Me.ui_status.Size = New System.Drawing.Size(318, 28)
-        Me.ui_status.TabIndex = 6
-        '
-        'ui_note
-        '
-        Me.ui_note.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ui_note.Location = New System.Drawing.Point(811, 175)
-        Me.ui_note.Name = "ui_note"
-        Me.ui_note.Size = New System.Drawing.Size(311, 199)
-        Me.ui_note.TabIndex = 7
-        Me.ui_note.Text = ""
-        '
-        'Label4
-        '
-        Me.Label4.AutoSize = True
-        Me.Label4.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Label4.Location = New System.Drawing.Point(807, 152)
-        Me.Label4.Margin = New System.Windows.Forms.Padding(0)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(74, 19)
-        Me.Label4.TabIndex = 8
-        Me.Label4.Text = "Ghi chú:"
-        '
-        'ui_category
-        '
-        Me.ui_category.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ui_category.FormattingEnabled = True
-        Me.ui_category.Items.AddRange(New Object() {"ACTIVE", "INACTIVE"})
-        Me.ui_category.Location = New System.Drawing.Point(63, 346)
-        Me.ui_category.Name = "ui_category"
-        Me.ui_category.Size = New System.Drawing.Size(304, 28)
-        Me.ui_category.TabIndex = 11
-        '
-        'Label5
-        '
-        Me.Label5.AutoSize = True
-        Me.Label5.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Label5.Location = New System.Drawing.Point(62, 324)
-        Me.Label5.Margin = New System.Windows.Forms.Padding(0)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(93, 19)
-        Me.Label5.TabIndex = 10
-        Me.Label5.Text = "Danh mục:"
-        '
-        'Label8
-        '
-        Me.Label8.AutoSize = True
-        Me.Label8.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label8.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Label8.Location = New System.Drawing.Point(59, 152)
-        Me.Label8.Margin = New System.Windows.Forms.Padding(0)
-        Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(132, 19)
-        Me.Label8.TabIndex = 17
-        Me.Label8.Text = "Tên chính sách:"
-        '
-        'ui_name
-        '
-        Me.ui_name.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ui_name.Location = New System.Drawing.Point(63, 175)
-        Me.ui_name.Name = "ui_name"
-        Me.ui_name.Size = New System.Drawing.Size(304, 26)
-        Me.ui_name.TabIndex = 16
-        '
-        'ui_priority
-        '
-        Me.ui_priority.Font = New System.Drawing.Font("Arial Narrow", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ui_priority.Location = New System.Drawing.Point(63, 257)
-        Me.ui_priority.Maximum = New Decimal(New Integer() {999, 0, 0, 0})
-        Me.ui_priority.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
-        Me.ui_priority.Name = "ui_priority"
-        Me.ui_priority.Size = New System.Drawing.Size(304, 26)
-        Me.ui_priority.TabIndex = 67
-        Me.ui_priority.Value = New Decimal(New Integer() {1, 0, 0, 0})
-        '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Label2.Location = New System.Drawing.Point(60, 234)
-        Me.Label2.Margin = New System.Windows.Forms.Padding(0)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(95, 19)
-        Me.Label2.TabIndex = 66
-        Me.Label2.Text = "Độ ưu tiên:"
-        '
-        'Label6
-        '
-        Me.Label6.AutoSize = True
-        Me.Label6.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Label6.Location = New System.Drawing.Point(59, 421)
-        Me.Label6.Margin = New System.Windows.Forms.Padding(0)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(73, 19)
-        Me.Label6.TabIndex = 69
-        Me.Label6.Text = "Quy tắc:"
-        '
-        'ui_rule
-        '
-        Me.ui_rule.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ui_rule.Location = New System.Drawing.Point(63, 444)
-        Me.ui_rule.Name = "ui_rule"
-        Me.ui_rule.Size = New System.Drawing.Size(1055, 26)
-        Me.ui_rule.TabIndex = 68
-        '
-        'Label7
-        '
-        Me.Label7.AutoSize = True
-        Me.Label7.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Label7.Location = New System.Drawing.Point(427, 73)
-        Me.Label7.Margin = New System.Windows.Forms.Padding(0)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(124, 19)
-        Me.Label7.TabIndex = 70
-        Me.Label7.Text = "Nguồn dữ liệu:"
-        '
-        'ui_aggregate
-        '
-        Me.ui_aggregate.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ui_aggregate.FormattingEnabled = True
-        Me.ui_aggregate.Items.AddRange(New Object() {"ACTIVE", "INACTIVE"})
-        Me.ui_aggregate.Location = New System.Drawing.Point(428, 175)
-        Me.ui_aggregate.Name = "ui_aggregate"
-        Me.ui_aggregate.Size = New System.Drawing.Size(310, 28)
-        Me.ui_aggregate.TabIndex = 73
-        '
-        'Label9
-        '
-        Me.Label9.AutoSize = True
-        Me.Label9.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label9.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Label9.Location = New System.Drawing.Point(427, 153)
-        Me.Label9.Margin = New System.Windows.Forms.Padding(0)
-        Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(124, 19)
-        Me.Label9.TabIndex = 72
-        Me.Label9.Text = "Hàm tổng hợp:"
-        '
-        'ui_gen_item
-        '
-        Me.ui_gen_item.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ui_gen_item.FormattingEnabled = True
-        Me.ui_gen_item.Items.AddRange(New Object() {"ACTIVE", "INACTIVE"})
-        Me.ui_gen_item.Location = New System.Drawing.Point(431, 257)
-        Me.ui_gen_item.Name = "ui_gen_item"
-        Me.ui_gen_item.Size = New System.Drawing.Size(310, 28)
-        Me.ui_gen_item.TabIndex = 75
-        '
-        'Label10
-        '
-        Me.Label10.AutoSize = True
-        Me.Label10.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label10.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Label10.Location = New System.Drawing.Point(430, 235)
-        Me.Label10.Margin = New System.Windows.Forms.Padding(0)
-        Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(167, 19)
-        Me.Label10.TabIndex = 74
-        Me.Label10.Text = "Ghi vào bảng lương:"
-        '
-        'ui_data_source
-        '
-        Me.ui_data_source.Enabled = False
-        Me.ui_data_source.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ui_data_source.Location = New System.Drawing.Point(428, 95)
-        Me.ui_data_source.Name = "ui_data_source"
-        Me.ui_data_source.Size = New System.Drawing.Size(310, 26)
-        Me.ui_data_source.TabIndex = 76
-        '
-        'ui_unit
-        '
-        Me.ui_unit.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ui_unit.FormattingEnabled = True
-        Me.ui_unit.Items.AddRange(New Object() {"ACTIVE", "INACTIVE"})
-        Me.ui_unit.Location = New System.Drawing.Point(431, 346)
-        Me.ui_unit.Name = "ui_unit"
-        Me.ui_unit.Size = New System.Drawing.Size(307, 28)
-        Me.ui_unit.TabIndex = 78
-        '
-        'Label11
-        '
-        Me.Label11.AutoSize = True
-        Me.Label11.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label11.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Label11.Location = New System.Drawing.Point(430, 324)
-        Me.Label11.Margin = New System.Windows.Forms.Padding(0)
-        Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(115, 19)
-        Me.Label11.TabIndex = 77
-        Me.Label11.Text = "Đơn vị  giá trị:"
-        '
-        'ui_code
-        '
-        Me.ui_code.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ui_code.Location = New System.Drawing.Point(63, 93)
-        Me.ui_code.Name = "ui_code"
-        Me.ui_code.Size = New System.Drawing.Size(304, 26)
-        Me.ui_code.TabIndex = 79
-        '
-        'Policy_CRUD_Frm
-        '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
-        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.ClientSize = New System.Drawing.Size(1185, 537)
-        Me.Controls.Add(Me.ui_code)
-        Me.Controls.Add(Me.ui_unit)
-        Me.Controls.Add(Me.Label11)
-        Me.Controls.Add(Me.ui_data_source)
-        Me.Controls.Add(Me.ui_gen_item)
-        Me.Controls.Add(Me.Label10)
-        Me.Controls.Add(Me.ui_aggregate)
-        Me.Controls.Add(Me.Label9)
-        Me.Controls.Add(Me.Label7)
-        Me.Controls.Add(Me.Label6)
-        Me.Controls.Add(Me.ui_rule)
-        Me.Controls.Add(Me.ui_priority)
-        Me.Controls.Add(Me.Label2)
-        Me.Controls.Add(Me.Label8)
-        Me.Controls.Add(Me.ui_name)
-        Me.Controls.Add(Me.ui_category)
-        Me.Controls.Add(Me.Label5)
-        Me.Controls.Add(Me.Label4)
-        Me.Controls.Add(Me.ui_note)
-        Me.Controls.Add(Me.ui_status)
-        Me.Controls.Add(Me.Label3)
-        Me.Controls.Add(Me.Label1)
-        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D
-        Me.Name = "Policy_CRUD_Frm"
-        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
-        Me.Text = "Account_CRUD"
-        Me.Controls.SetChildIndex(Me.Label1, 0)
-        Me.Controls.SetChildIndex(Me.Label3, 0)
-        Me.Controls.SetChildIndex(Me.ui_status, 0)
-        Me.Controls.SetChildIndex(Me.ui_note, 0)
-        Me.Controls.SetChildIndex(Me.Label4, 0)
-        Me.Controls.SetChildIndex(Me.Label5, 0)
-        Me.Controls.SetChildIndex(Me.ui_category, 0)
-        Me.Controls.SetChildIndex(Me.ui_name, 0)
-        Me.Controls.SetChildIndex(Me.Label8, 0)
-        Me.Controls.SetChildIndex(Me.Label2, 0)
-        Me.Controls.SetChildIndex(Me.ui_priority, 0)
-        Me.Controls.SetChildIndex(Me.ui_rule, 0)
-        Me.Controls.SetChildIndex(Me.Label6, 0)
-        Me.Controls.SetChildIndex(Me.Label7, 0)
-        Me.Controls.SetChildIndex(Me.Label9, 0)
-        Me.Controls.SetChildIndex(Me.ui_aggregate, 0)
-        Me.Controls.SetChildIndex(Me.Label10, 0)
-        Me.Controls.SetChildIndex(Me.ui_gen_item, 0)
-        Me.Controls.SetChildIndex(Me.ui_data_source, 0)
-        Me.Controls.SetChildIndex(Me.Label11, 0)
-        Me.Controls.SetChildIndex(Me.ui_unit, 0)
-        Me.Controls.SetChildIndex(Me.ui_code, 0)
-        CType(Me.ui_priority, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.ResumeLayout(False)
-        Me.PerformLayout()
+        Label1 = New Label()
+        Label3 = New Label()
+        ui_status = New ComboBox()
+        ui_note = New RichTextBox()
+        Label4 = New Label()
+        Label8 = New Label()
+        ui_name = New TextBox()
+        ui_priority = New NumericUpDown()
+        Label2 = New Label()
+        Label6 = New Label()
+        ui_rule = New TextBox()
+        ui_aggregate = New ComboBox()
+        Label9 = New Label()
+        ui_gen_item = New ComboBox()
+        Label10 = New Label()
+        ui_unit = New ComboBox()
+        Label11 = New Label()
+        ui_code = New TextBox()
+        GroupBox1 = New GroupBox()
+        ui_num = New NumericUpDown()
+        btn_add_num = New Button()
+        Label14 = New Label()
+        btn_add_sym = New Button()
+        btn_add_var_cust = New Button()
+        btn_add_var_sys = New Button()
+        ui_var_cust = New ComboBox()
+        Label13 = New Label()
+        ui_sym = New ComboBox()
+        Label12 = New Label()
+        ui_var_sys = New ComboBox()
+        Label7 = New Label()
+        Label5 = New Label()
+        ui_category = New ComboBox()
+        ui_data_source = New TextBox()
+        Label15 = New Label()
+        CType(ui_priority, ComponentModel.ISupportInitialize).BeginInit()
+        GroupBox1.SuspendLayout()
+        CType(ui_num, ComponentModel.ISupportInitialize).BeginInit()
+        SuspendLayout()
+        ' 
+        ' Label1
+        ' 
+        Label1.AutoSize = True
+        Label1.Font = New Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Label1.ImageAlign = ContentAlignment.MiddleLeft
+        Label1.Location = New Point(65, 85)
+        Label1.Margin = New Padding(0)
+        Label1.Name = "Label1"
+        Label1.Size = New Size(125, 19)
+        Label1.TabIndex = 1
+        Label1.Text = "Mã chính sách:"
+        Label1.TextAlign = ContentAlignment.MiddleLeft
+        ' 
+        ' Label3
+        ' 
+        Label3.AutoSize = True
+        Label3.Font = New Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Label3.ImageAlign = ContentAlignment.MiddleLeft
+        Label3.Location = New Point(890, 85)
+        Label3.Margin = New Padding(0)
+        Label3.Name = "Label3"
+        Label3.Size = New Size(85, 19)
+        Label3.TabIndex = 5
+        Label3.Text = "Trạng thái"
+        Label3.TextAlign = ContentAlignment.MiddleLeft
+        ' 
+        ' ui_status
+        ' 
+        ui_status.DropDownStyle = ComboBoxStyle.DropDownList
+        ui_status.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        ui_status.FormattingEnabled = True
+        ui_status.Items.AddRange(New Object() {"ACTIVE", "INACTIVE"})
+        ui_status.Location = New Point(895, 107)
+        ui_status.Margin = New Padding(4, 3, 4, 3)
+        ui_status.Name = "ui_status"
+        ui_status.Size = New Size(375, 28)
+        ui_status.TabIndex = 6
+        ' 
+        ' ui_note
+        ' 
+        ui_note.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        ui_note.Location = New Point(895, 202)
+        ui_note.Margin = New Padding(4, 3, 4, 3)
+        ui_note.Name = "ui_note"
+        ui_note.Size = New Size(367, 213)
+        ui_note.TabIndex = 7
+        ui_note.Text = ""
+        ' 
+        ' Label4
+        ' 
+        Label4.AutoSize = True
+        Label4.Font = New Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Label4.ImageAlign = ContentAlignment.MiddleLeft
+        Label4.Location = New Point(890, 180)
+        Label4.Margin = New Padding(0)
+        Label4.Name = "Label4"
+        Label4.Size = New Size(74, 19)
+        Label4.TabIndex = 8
+        Label4.Text = "Ghi chú:"
+        Label4.TextAlign = ContentAlignment.MiddleLeft
+        ' 
+        ' Label8
+        ' 
+        Label8.AutoSize = True
+        Label8.Font = New Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Label8.ImageAlign = ContentAlignment.MiddleLeft
+        Label8.Location = New Point(64, 180)
+        Label8.Margin = New Padding(0)
+        Label8.Name = "Label8"
+        Label8.Size = New Size(132, 19)
+        Label8.TabIndex = 17
+        Label8.Text = "Tên chính sách:"
+        Label8.TextAlign = ContentAlignment.MiddleLeft
+        ' 
+        ' ui_name
+        ' 
+        ui_name.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        ui_name.Location = New Point(69, 202)
+        ui_name.Margin = New Padding(4, 3, 4, 3)
+        ui_name.Name = "ui_name"
+        ui_name.Size = New Size(348, 26)
+        ui_name.TabIndex = 16
+        ' 
+        ' ui_priority
+        ' 
+        ui_priority.Font = New Font("Arial Narrow", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        ui_priority.Location = New Point(67, 296)
+        ui_priority.Margin = New Padding(4, 3, 4, 3)
+        ui_priority.Maximum = New Decimal(New Integer() {999, 0, 0, 0})
+        ui_priority.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
+        ui_priority.Name = "ui_priority"
+        ui_priority.Size = New Size(349, 26)
+        ui_priority.TabIndex = 67
+        ui_priority.Value = New Decimal(New Integer() {1, 0, 0, 0})
+        ' 
+        ' Label2
+        ' 
+        Label2.AutoSize = True
+        Label2.Font = New Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Label2.ImageAlign = ContentAlignment.MiddleLeft
+        Label2.Location = New Point(65, 274)
+        Label2.Margin = New Padding(0)
+        Label2.Name = "Label2"
+        Label2.Size = New Size(95, 19)
+        Label2.TabIndex = 66
+        Label2.Text = "Độ ưu tiên:"
+        Label2.TextAlign = ContentAlignment.MiddleLeft
+        ' 
+        ' Label6
+        ' 
+        Label6.AutoSize = True
+        Label6.Font = New Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Label6.ImageAlign = ContentAlignment.MiddleLeft
+        Label6.Location = New Point(26, 45)
+        Label6.Margin = New Padding(0)
+        Label6.Name = "Label6"
+        Label6.Size = New Size(73, 19)
+        Label6.TabIndex = 69
+        Label6.Text = "Quy tắc:"
+        Label6.TextAlign = ContentAlignment.MiddleLeft
+        ' 
+        ' ui_rule
+        ' 
+        ui_rule.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        ui_rule.Location = New Point(31, 71)
+        ui_rule.Margin = New Padding(4, 3, 4, 3)
+        ui_rule.Name = "ui_rule"
+        ui_rule.Size = New Size(1139, 26)
+        ui_rule.TabIndex = 68
+        ' 
+        ' ui_aggregate
+        ' 
+        ui_aggregate.DropDownStyle = ComboBoxStyle.DropDownList
+        ui_aggregate.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        ui_aggregate.FormattingEnabled = True
+        ui_aggregate.Items.AddRange(New Object() {"ACTIVE", "INACTIVE"})
+        ui_aggregate.Location = New Point(485, 199)
+        ui_aggregate.Margin = New Padding(4, 3, 4, 3)
+        ui_aggregate.Name = "ui_aggregate"
+        ui_aggregate.Size = New Size(355, 28)
+        ui_aggregate.TabIndex = 73
+        ' 
+        ' Label9
+        ' 
+        Label9.AutoSize = True
+        Label9.Font = New Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Label9.ImageAlign = ContentAlignment.MiddleLeft
+        Label9.Location = New Point(484, 177)
+        Label9.Margin = New Padding(0)
+        Label9.Name = "Label9"
+        Label9.Size = New Size(124, 19)
+        Label9.TabIndex = 72
+        Label9.Text = "Hàm tổng hợp:"
+        Label9.TextAlign = ContentAlignment.MiddleLeft
+        ' 
+        ' ui_gen_item
+        ' 
+        ui_gen_item.DropDownStyle = ComboBoxStyle.DropDownList
+        ui_gen_item.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        ui_gen_item.FormattingEnabled = True
+        ui_gen_item.Items.AddRange(New Object() {"ACTIVE", "INACTIVE"})
+        ui_gen_item.Location = New Point(484, 294)
+        ui_gen_item.Margin = New Padding(4, 3, 4, 3)
+        ui_gen_item.Name = "ui_gen_item"
+        ui_gen_item.Size = New Size(355, 28)
+        ui_gen_item.TabIndex = 75
+        ' 
+        ' Label10
+        ' 
+        Label10.AutoSize = True
+        Label10.Font = New Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Label10.ImageAlign = ContentAlignment.MiddleLeft
+        Label10.Location = New Point(483, 272)
+        Label10.Margin = New Padding(0)
+        Label10.Name = "Label10"
+        Label10.Size = New Size(167, 19)
+        Label10.TabIndex = 74
+        Label10.Text = "Ghi vào bảng lương:"
+        Label10.TextAlign = ContentAlignment.MiddleLeft
+        ' 
+        ' ui_unit
+        ' 
+        ui_unit.DropDownStyle = ComboBoxStyle.DropDownList
+        ui_unit.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        ui_unit.FormattingEnabled = True
+        ui_unit.Items.AddRange(New Object() {"ACTIVE", "INACTIVE"})
+        ui_unit.Location = New Point(484, 388)
+        ui_unit.Margin = New Padding(4, 3, 4, 3)
+        ui_unit.Name = "ui_unit"
+        ui_unit.Size = New Size(352, 28)
+        ui_unit.TabIndex = 78
+        ' 
+        ' Label11
+        ' 
+        Label11.AutoSize = True
+        Label11.Font = New Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Label11.ImageAlign = ContentAlignment.MiddleLeft
+        Label11.Location = New Point(483, 366)
+        Label11.Margin = New Padding(0)
+        Label11.Name = "Label11"
+        Label11.Size = New Size(115, 19)
+        Label11.TabIndex = 77
+        Label11.Text = "Đơn vị  giá trị:"
+        Label11.TextAlign = ContentAlignment.MiddleLeft
+        ' 
+        ' ui_code
+        ' 
+        ui_code.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        ui_code.Location = New Point(69, 107)
+        ui_code.Margin = New Padding(4, 3, 4, 3)
+        ui_code.Name = "ui_code"
+        ui_code.Size = New Size(349, 26)
+        ui_code.TabIndex = 79
+        ' 
+        ' GroupBox1
+        ' 
+        GroupBox1.Controls.Add(ui_num)
+        GroupBox1.Controls.Add(btn_add_num)
+        GroupBox1.Controls.Add(Label14)
+        GroupBox1.Controls.Add(btn_add_sym)
+        GroupBox1.Controls.Add(btn_add_var_cust)
+        GroupBox1.Controls.Add(btn_add_var_sys)
+        GroupBox1.Controls.Add(ui_var_cust)
+        GroupBox1.Controls.Add(Label13)
+        GroupBox1.Controls.Add(ui_sym)
+        GroupBox1.Controls.Add(Label12)
+        GroupBox1.Controls.Add(ui_var_sys)
+        GroupBox1.Controls.Add(Label7)
+        GroupBox1.Controls.Add(ui_rule)
+        GroupBox1.Controls.Add(Label6)
+        GroupBox1.Font = New Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        GroupBox1.Location = New Point(66, 460)
+        GroupBox1.Name = "GroupBox1"
+        GroupBox1.Size = New Size(1203, 301)
+        GroupBox1.TabIndex = 80
+        GroupBox1.TabStop = False
+        GroupBox1.Text = "Xây dựng công thức:"
+        ' 
+        ' ui_num
+        ' 
+        ui_num.DecimalPlaces = 2
+        ui_num.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        ui_num.Location = New Point(917, 126)
+        ui_num.Maximum = New Decimal(New Integer() {-1304428545, 434162106, 542, 0})
+        ui_num.Minimum = New Decimal(New Integer() {-1304428545, 434162106, 542, Integer.MinValue})
+        ui_num.Name = "ui_num"
+        ui_num.Size = New Size(174, 26)
+        ui_num.TabIndex = 82
+        ' 
+        ' btn_add_num
+        ' 
+        btn_add_num.AutoSize = True
+        btn_add_num.Location = New Point(1097, 123)
+        btn_add_num.Name = "btn_add_num"
+        btn_add_num.Size = New Size(73, 29)
+        btn_add_num.TabIndex = 81
+        btn_add_num.Text = "Thêm"
+        btn_add_num.UseVisualStyleBackColor = True
+        ' 
+        ' Label14
+        ' 
+        Label14.AutoSize = True
+        Label14.Font = New Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Label14.ImageAlign = ContentAlignment.MiddleLeft
+        Label14.Location = New Point(803, 133)
+        Label14.Margin = New Padding(0)
+        Label14.Name = "Label14"
+        Label14.Size = New Size(111, 19)
+        Label14.TabIndex = 79
+        Label14.Text = "Số tùy chỉnh:"
+        Label14.TextAlign = ContentAlignment.MiddleLeft
+        ' 
+        ' btn_add_sym
+        ' 
+        btn_add_sym.AutoSize = True
+        btn_add_sym.Location = New Point(702, 183)
+        btn_add_sym.Name = "btn_add_sym"
+        btn_add_sym.Size = New Size(73, 29)
+        btn_add_sym.TabIndex = 78
+        btn_add_sym.Text = "Thêm"
+        btn_add_sym.UseVisualStyleBackColor = True
+        ' 
+        ' btn_add_var_cust
+        ' 
+        btn_add_var_cust.AutoSize = True
+        btn_add_var_cust.Location = New Point(702, 233)
+        btn_add_var_cust.Name = "btn_add_var_cust"
+        btn_add_var_cust.Size = New Size(73, 29)
+        btn_add_var_cust.TabIndex = 77
+        btn_add_var_cust.Text = "Thêm"
+        btn_add_var_cust.UseVisualStyleBackColor = True
+        ' 
+        ' btn_add_var_sys
+        ' 
+        btn_add_var_sys.AutoSize = True
+        btn_add_var_sys.Location = New Point(702, 132)
+        btn_add_var_sys.Name = "btn_add_var_sys"
+        btn_add_var_sys.Size = New Size(71, 29)
+        btn_add_var_sys.TabIndex = 76
+        btn_add_var_sys.Text = "Thêm"
+        btn_add_var_sys.UseVisualStyleBackColor = True
+        ' 
+        ' ui_var_cust
+        ' 
+        ui_var_cust.DropDownStyle = ComboBoxStyle.DropDownList
+        ui_var_cust.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        ui_var_cust.FormattingEnabled = True
+        ui_var_cust.Items.AddRange(New Object() {"ACTIVE", "INACTIVE"})
+        ui_var_cust.Location = New Point(160, 233)
+        ui_var_cust.Margin = New Padding(4, 3, 4, 3)
+        ui_var_cust.Name = "ui_var_cust"
+        ui_var_cust.Size = New Size(535, 28)
+        ui_var_cust.TabIndex = 75
+        ' 
+        ' Label13
+        ' 
+        Label13.AutoSize = True
+        Label13.Font = New Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Label13.ImageAlign = ContentAlignment.MiddleLeft
+        Label13.Location = New Point(25, 243)
+        Label13.Margin = New Padding(0)
+        Label13.Name = "Label13"
+        Label13.Size = New Size(125, 19)
+        Label13.TabIndex = 74
+        Label13.Text = "Biến tùy chỉnh:"
+        Label13.TextAlign = ContentAlignment.MiddleLeft
+        ' 
+        ' ui_sym
+        ' 
+        ui_sym.DropDownStyle = ComboBoxStyle.DropDownList
+        ui_sym.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        ui_sym.FormattingEnabled = True
+        ui_sym.Items.AddRange(New Object() {"IF", "ABS", "MIN", "MAX", "POW", "ROUND", "FLOOR", "CEIL", "CEILING", "+", "-", "*", "/", "%", ">", ">=", "<=", "=", "!=", "(", ")", ","})
+        ui_sym.Location = New Point(158, 184)
+        ui_sym.Margin = New Padding(4, 3, 4, 3)
+        ui_sym.Name = "ui_sym"
+        ui_sym.Size = New Size(537, 28)
+        ui_sym.TabIndex = 73
+        ' 
+        ' Label12
+        ' 
+        Label12.AutoSize = True
+        Label12.Font = New Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Label12.ImageAlign = ContentAlignment.MiddleLeft
+        Label12.Location = New Point(25, 194)
+        Label12.Margin = New Padding(0)
+        Label12.Name = "Label12"
+        Label12.Size = New Size(107, 19)
+        Label12.TabIndex = 72
+        Label12.Text = "Dấu và Hàm:"
+        Label12.TextAlign = ContentAlignment.MiddleLeft
+        ' 
+        ' ui_var_sys
+        ' 
+        ui_var_sys.DropDownStyle = ComboBoxStyle.DropDownList
+        ui_var_sys.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        ui_var_sys.FormattingEnabled = True
+        ui_var_sys.Items.AddRange(New Object() {"ACTIVE", "INACTIVE"})
+        ui_var_sys.Location = New Point(158, 133)
+        ui_var_sys.Margin = New Padding(4, 3, 4, 3)
+        ui_var_sys.Name = "ui_var_sys"
+        ui_var_sys.Size = New Size(537, 28)
+        ui_var_sys.TabIndex = 71
+        ' 
+        ' Label7
+        ' 
+        Label7.AutoSize = True
+        Label7.Font = New Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Label7.ImageAlign = ContentAlignment.MiddleLeft
+        Label7.Location = New Point(25, 143)
+        Label7.Margin = New Padding(0)
+        Label7.Name = "Label7"
+        Label7.Size = New Size(122, 19)
+        Label7.TabIndex = 70
+        Label7.Text = "Biến hệ thống:"
+        Label7.TextAlign = ContentAlignment.MiddleLeft
+        ' 
+        ' Label5
+        ' 
+        Label5.AutoSize = True
+        Label5.Font = New Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Label5.ImageAlign = ContentAlignment.MiddleLeft
+        Label5.Location = New Point(66, 365)
+        Label5.Margin = New Padding(0)
+        Label5.Name = "Label5"
+        Label5.Size = New Size(93, 19)
+        Label5.TabIndex = 10
+        Label5.Text = "Danh mục:"
+        Label5.TextAlign = ContentAlignment.MiddleLeft
+        ' 
+        ' ui_category
+        ' 
+        ui_category.DropDownStyle = ComboBoxStyle.DropDownList
+        ui_category.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        ui_category.FormattingEnabled = True
+        ui_category.Items.AddRange(New Object() {"ACTIVE", "INACTIVE"})
+        ui_category.Location = New Point(68, 387)
+        ui_category.Margin = New Padding(4, 3, 4, 3)
+        ui_category.Name = "ui_category"
+        ui_category.Size = New Size(348, 28)
+        ui_category.TabIndex = 11
+        ' 
+        ' ui_data_source
+        ' 
+        ui_data_source.Enabled = False
+        ui_data_source.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        ui_data_source.Location = New Point(485, 107)
+        ui_data_source.Margin = New Padding(4, 3, 4, 3)
+        ui_data_source.Name = "ui_data_source"
+        ui_data_source.Size = New Size(351, 26)
+        ui_data_source.TabIndex = 82
+        ' 
+        ' Label15
+        ' 
+        Label15.AutoSize = True
+        Label15.Font = New Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Label15.ImageAlign = ContentAlignment.MiddleLeft
+        Label15.Location = New Point(484, 85)
+        Label15.Margin = New Padding(0)
+        Label15.Name = "Label15"
+        Label15.Size = New Size(124, 19)
+        Label15.TabIndex = 81
+        Label15.Text = "Nguồn dữ liệu:"
+        ' 
+        ' Policy_CRUD_Frm
+        ' 
+        AutoScaleDimensions = New SizeF(7F, 15F)
+        AutoScaleMode = AutoScaleMode.Font
+        BackColor = SystemColors.ActiveCaption
+        ClientSize = New Size(1348, 790)
+        Controls.Add(ui_data_source)
+        Controls.Add(GroupBox1)
+        Controls.Add(Label15)
+        Controls.Add(ui_code)
+        Controls.Add(ui_unit)
+        Controls.Add(Label11)
+        Controls.Add(ui_gen_item)
+        Controls.Add(Label10)
+        Controls.Add(ui_aggregate)
+        Controls.Add(Label9)
+        Controls.Add(ui_priority)
+        Controls.Add(Label2)
+        Controls.Add(Label8)
+        Controls.Add(ui_name)
+        Controls.Add(ui_category)
+        Controls.Add(Label5)
+        Controls.Add(Label4)
+        Controls.Add(ui_note)
+        Controls.Add(ui_status)
+        Controls.Add(Label3)
+        Controls.Add(Label1)
+        FormBorderStyle = FormBorderStyle.Fixed3D
+        Name = "Policy_CRUD_Frm"
+        StartPosition = FormStartPosition.CenterParent
+        Text = "Account_CRUD"
+        Controls.SetChildIndex(Label1, 0)
+        Controls.SetChildIndex(Label3, 0)
+        Controls.SetChildIndex(ui_status, 0)
+        Controls.SetChildIndex(ui_note, 0)
+        Controls.SetChildIndex(Label4, 0)
+        Controls.SetChildIndex(Label5, 0)
+        Controls.SetChildIndex(ui_category, 0)
+        Controls.SetChildIndex(ui_name, 0)
+        Controls.SetChildIndex(Label8, 0)
+        Controls.SetChildIndex(Label2, 0)
+        Controls.SetChildIndex(ui_priority, 0)
+        Controls.SetChildIndex(Label9, 0)
+        Controls.SetChildIndex(ui_aggregate, 0)
+        Controls.SetChildIndex(Label10, 0)
+        Controls.SetChildIndex(ui_gen_item, 0)
+        Controls.SetChildIndex(Label11, 0)
+        Controls.SetChildIndex(ui_unit, 0)
+        Controls.SetChildIndex(ui_code, 0)
+        Controls.SetChildIndex(Label15, 0)
+        Controls.SetChildIndex(GroupBox1, 0)
+        Controls.SetChildIndex(ui_data_source, 0)
+        CType(ui_priority, ComponentModel.ISupportInitialize).EndInit()
+        GroupBox1.ResumeLayout(False)
+        GroupBox1.PerformLayout()
+        CType(ui_num, ComponentModel.ISupportInitialize).EndInit()
+        ResumeLayout(False)
+        PerformLayout()
 
     End Sub
     Friend WithEvents Label1 As Label
@@ -346,21 +551,34 @@ Partial Class Policy_CRUD_Frm
     Friend WithEvents ui_status As ComboBox
     Friend WithEvents ui_note As RichTextBox
     Friend WithEvents Label4 As Label
-    Friend WithEvents ui_category As ComboBox
-    Friend WithEvents Label5 As Label
     Friend WithEvents Label8 As Label
     Friend WithEvents ui_name As TextBox
     Friend WithEvents ui_priority As NumericUpDown
     Friend WithEvents Label2 As Label
     Friend WithEvents Label6 As Label
     Friend WithEvents ui_rule As TextBox
-    Friend WithEvents Label7 As Label
     Friend WithEvents ui_aggregate As ComboBox
     Friend WithEvents Label9 As Label
     Friend WithEvents ui_gen_item As ComboBox
     Friend WithEvents Label10 As Label
-    Friend WithEvents ui_data_source As TextBox
     Friend WithEvents ui_unit As ComboBox
     Friend WithEvents Label11 As Label
     Friend WithEvents ui_code As TextBox
+    Friend WithEvents GroupBox1 As GroupBox
+    Friend WithEvents Label5 As Label
+    Friend WithEvents ui_category As ComboBox
+    Friend WithEvents ui_var_cust As ComboBox
+    Friend WithEvents Label13 As Label
+    Friend WithEvents ui_sym As ComboBox
+    Friend WithEvents Label12 As Label
+    Friend WithEvents ui_var_sys As ComboBox
+    Friend WithEvents Label7 As Label
+    Friend WithEvents btn_add_sym As Button
+    Friend WithEvents btn_add_var_cust As Button
+    Friend WithEvents btn_add_var_sys As Button
+    Friend WithEvents btn_add_num As Button
+    Friend WithEvents Label14 As Label
+    Friend WithEvents ui_num As NumericUpDown
+    Friend WithEvents ui_data_source As TextBox
+    Friend WithEvents Label15 As Label
 End Class

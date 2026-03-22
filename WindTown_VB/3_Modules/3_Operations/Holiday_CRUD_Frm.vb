@@ -2,7 +2,6 @@ Public Class Holiday_CRUD_Frm
     Inherits BaseACRUDForm
     Protected _data As Holiday
 
-
     Public Sub New(data As Holiday, Optional isCreate As Boolean = False)
 
         InitializeComponent()
@@ -47,19 +46,21 @@ Public Class Holiday_CRUD_Frm
             ui_code.Focus()
             Return False
         End If
-
+        If AppServices.Instance.HolidaySV.IsCodeDuplicate(ui_code.Text.Trim(), If(isCreate, 0, _data.id)) Then
+            MessageBox.Show("Mã ngày lễ đã tồn tại.")
+            Return False
+        End If
         If String.IsNullOrWhiteSpace(ui_name.Text) Then
             MessageBox.Show("Tên ngày lễ không hợp lệ")
             ui_code.Focus()
             Return False
         End If
 
-        If Not Decimal.TryParse(ui_mult.Text, _data.mult) Then
+        If Not Decimal.TryParse(ui_mult.Value, _data.mult) Then
             MessageBox.Show("Hệ số ngày lễ không hợp lệ!")
             ui_mult.Focus()
             Return False
         End If
-
 
 
         _data.code = ui_code.Text.Trim()
@@ -74,7 +75,8 @@ Public Class Holiday_CRUD_Frm
     End Function
 
     Protected Overrides Sub DataChanged() Handles ui_code.TextChanged,
-                                        ui_code.TextChanged,
+                                        ui_name.TextChanged,
+                                        ui_of_date.ValueChanged,
                                         ui_mult.ValueChanged,
                                         ui_note.TextChanged,
                                         ui_status.SelectedIndexChanged

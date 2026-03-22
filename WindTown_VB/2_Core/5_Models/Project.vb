@@ -36,6 +36,12 @@ Public Class Project
 #End Region
 
 #Region "Field Display"
+    <NotMapped> <Browsable(False)>
+    Public ReadOnly Property project_UI As String
+        Get
+            Return $"{Me.name} ({Me.code})"
+        End Get
+    End Property
     <NotMapped> <DisplayName("Trạng thái")> <Display(Order:=4)>
     Public ReadOnly Property status_UI As String
         Get

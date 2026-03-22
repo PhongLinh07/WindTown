@@ -38,8 +38,8 @@ Partial Class FormMain
         ToolStripSeparator1 = New ToolStripSeparator()
         SdvsdToolStripMenuItem = New ToolStripMenuItem()
         menu_department = New ToolStripMenuItem()
-        menu_job = New ToolStripMenuItem()
         menu_level = New ToolStripMenuItem()
+        menu_job = New ToolStripMenuItem()
         DvsdvToolStripMenuItem = New ToolStripMenuItem()
         menu_empolyee = New ToolStripMenuItem()
         menu_contract = New ToolStripMenuItem()
@@ -242,19 +242,19 @@ Partial Class FormMain
         menu_department.Size = New Size(161, 38)
         menu_department.Text = "Phòng ban"
         ' 
-        ' menu_job
-        ' 
-        menu_job.Image = My.Resources.Resources._case
-        menu_job.Name = "menu_job"
-        menu_job.Size = New Size(161, 38)
-        menu_job.Text = "Công việc"
-        ' 
         ' menu_level
         ' 
         menu_level.Image = My.Resources.Resources.market
         menu_level.Name = "menu_level"
         menu_level.Size = New Size(161, 38)
         menu_level.Text = "Trình độ"
+        ' 
+        ' menu_job
+        ' 
+        menu_job.Image = My.Resources.Resources._case
+        menu_job.Name = "menu_job"
+        menu_job.Size = New Size(161, 38)
+        menu_job.Text = "Công việc"
         ' 
         ' DvsdvToolStripMenuItem
         ' 
@@ -297,42 +297,43 @@ Partial Class FormMain
         ' 
         menu_project.Image = My.Resources.Resources.project1
         menu_project.Name = "menu_project"
-        menu_project.Size = New Size(223, 38)
+        menu_project.Size = New Size(216, 38)
         menu_project.Text = "Dự án"
         ' 
         ' menu_assignment
         ' 
         menu_assignment.Image = My.Resources.Resources.delegation
         menu_assignment.Name = "menu_assignment"
-        menu_assignment.Size = New Size(223, 38)
+        menu_assignment.Size = New Size(216, 38)
         menu_assignment.Text = "Phân công dự án"
         ' 
         ' menu_attendance
         ' 
         menu_attendance.Image = My.Resources.Resources.calendar_clock
         menu_attendance.Name = "menu_attendance"
-        menu_attendance.Size = New Size(223, 38)
+        menu_attendance.Size = New Size(216, 38)
         menu_attendance.Text = "Chấm công"
         ' 
         ' menu_holiday
         ' 
         menu_holiday.Image = My.Resources.Resources.Holidays
         menu_holiday.Name = "menu_holiday"
-        menu_holiday.Size = New Size(223, 38)
+        menu_holiday.Size = New Size(216, 38)
         menu_holiday.Text = "Hệ số lương ngày lễ"
         ' 
         ' menu_leave_cat
         ' 
-        menu_leave_cat.Image = My.Resources.Resources.leave
+        menu_leave_cat.Image = My.Resources.Resources.leave2
         menu_leave_cat.Name = "menu_leave_cat"
-        menu_leave_cat.Size = New Size(223, 38)
-        menu_leave_cat.Text = "Danh mục nghỉ phép"
+        menu_leave_cat.Size = New Size(216, 38)
+        menu_leave_cat.Text = "Các loại nghỉ phép"
+        menu_leave_cat.ToolTipText = "Các loại nghỉ phép"
         ' 
         ' menu_leave
         ' 
         menu_leave.Image = My.Resources.Resources.leave
         menu_leave.Name = "menu_leave"
-        menu_leave.Size = New Size(223, 38)
+        menu_leave.Size = New Size(216, 38)
         menu_leave.Text = "Nghỉ phép"
         ' 
         ' menu_policy

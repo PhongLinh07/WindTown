@@ -10,7 +10,7 @@ Public Class Account
         user = $"ACC{GenerateRandomNumbers.Generate()}"
         password = "123456"
         role = 1
-        last_active = DateTime.Now
+        last_active = Nothing
         note = ""
         status = 0
     End Sub

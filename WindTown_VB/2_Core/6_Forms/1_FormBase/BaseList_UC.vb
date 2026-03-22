@@ -14,7 +14,7 @@ Public Class BaseList_UC
         InitializeComponent()
 
         Me.Tag = tag
-        Me.Text = "Danh mục " & title
+        Me.Text = title
         _service = service
 
     End Sub

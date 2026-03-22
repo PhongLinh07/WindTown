@@ -249,8 +249,8 @@ Public Class AppServices
         Public Overrides Function IsCodeDuplicate(code As String, excludeId As Integer) As Boolean
             Return _ctx.Positions.Any(Function(x) x.code = code AndAlso x.status <> -1 AndAlso x.id <> excludeId)
         End Function
-        Public Function IsConflictStatusActive(contraciID As Integer, excludeId As Integer) As Boolean
-            Return _ctx.Positions.Any(Function(x) x.contract_id = contraciID AndAlso x.status = 1 AndAlso x.id <> excludeId)
+        Public Function IsConflictStatusActive(contractID As Integer, excludeId As Integer) As Boolean
+            Return _ctx.Positions.Any(Function(x) x.contract_id = contractID AndAlso x.status = 1 AndAlso x.id <> excludeId)
         End Function
         Public Function GetWithoutAssignment() As ServiceResponse(Of Object)
             Try
@@ -276,6 +276,7 @@ Public Class AppServices
         Public Overrides Function IsCodeDuplicate(code As String, excludeId As Integer) As Boolean
             Return _ctx.Projects.Any(Function(x) x.code = code AndAlso x.status <> -1 AndAlso x.id <> excludeId)
         End Function
+
         Public Function GetActive() As ServiceResponse(Of Object)
             Try
                 Return ServiceResponse(Of Object).Success(_repoProj.GetActive())
@@ -294,6 +295,9 @@ Public Class AppServices
         End Sub
         Public Overrides Function IsCodeDuplicate(code As String, excludeId As Integer) As Boolean
             Return _ctx.Assignments.Any(Function(x) x.code = code AndAlso x.status <> -1 AndAlso x.id <> excludeId)
+        End Function
+        Public Function IsConflictStatusActive(positionID As Integer, excludeId As Integer) As Boolean
+            Return _ctx.Assignments.Any(Function(x) x.position_id = positionID AndAlso x.status = 1 AndAlso x.id <> excludeId)
         End Function
     End Class
 
@@ -887,7 +891,7 @@ Public Class AppServices
             _repoAcc = New AccountRepository(_ctx)
         End Sub
         Public Overrides Function IsCodeDuplicate(code As String, excludeId As Integer) As Boolean
-            Return False
+            Return _ctx.Accounts.Any(Function(x) x.user = code AndAlso x.status <> -1 AndAlso x.id <> excludeId)
         End Function
         Public Function Login(input As Account) As ServiceResponse(Of Object)
             Try

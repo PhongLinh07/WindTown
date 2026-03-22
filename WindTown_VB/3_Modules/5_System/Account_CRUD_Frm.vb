@@ -1,3 +1,5 @@
+Imports System.Text
+
 Public Class Account_CRUD_Frm
     Inherits BaseACRUDForm
     Protected _data As Account
@@ -35,10 +37,7 @@ Public Class Account_CRUD_Frm
         Dim response = AppServices.Instance.EmployeeSV.GetWithoutAccount()
         _employeesWithoutAccount = If(response.IsSuccess, response.Data, New List(Of Employee))
 
-        ui_employee.DataSource =
-            _employeesWithoutAccount.
-            Select(Function(x) New With {.Display = $"{x.code} - {x.name}", .Value = x.id}).ToList()
-
+        ui_employee.DataSource = _employeesWithoutAccount.Select(Function(x) New With {.Display = x.employee_UI, .Value = x}).ToList()
         ui_employee.DisplayMember = "Display"
         ui_employee.ValueMember = "Value"
     End Sub
@@ -46,8 +45,10 @@ Public Class Account_CRUD_Frm
     Protected Overrides Sub BindDataToUI()
 
         If isCreate Then
+            ui_employee.DropDownStyle = ComboBoxStyle.DropDownList
             ui_employee.SelectedIndex = -1
         Else
+            ui_employee.DropDownStyle = ComboBoxStyle.DropDown
             ui_employee.Text = _data.employee_UI
             ui_employee.Enabled = False
         End If
@@ -56,8 +57,7 @@ Public Class Account_CRUD_Frm
         ui_password.Text = _data.password
         ui_role.SelectedValue = _data.role
 
-
-        ui_last_active.Value = If(_data.last_active, DateTime.Now)
+        ui_last_active.Text = If(_data.last_active, "")
 
         ui_note.Text = _data.note
         ui_status.SelectedValue = _data.status
@@ -66,55 +66,45 @@ Public Class Account_CRUD_Frm
 
     Protected Overrides Function SyncUIToData() As Boolean
 
-        If isCreate AndAlso ui_employee.SelectedValue Is Nothing Then
-            MessageBox.Show("Please select employee")
-            Return False
+        If isCreate Then
+            If ui_employee.SelectedValue Is Nothing Then
+                MessageBox.Show("Nhân viên không hợp lệ!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                ui_employee.Focus()
+                Return False
+            End If
+            _data.employee_id = CType(ui_employee.SelectedValue, Employee).id
         End If
 
         If String.IsNullOrWhiteSpace(ui_user.Text) Then
-            MessageBox.Show("User cannot be empty")
+            MessageBox.Show("Tên người dùng không hợp lệ!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             ui_user.Focus()
             Return False
         End If
-
+        If AppServices.Instance.AccountSV.IsCodeDuplicate(ui_user.Text.Trim(), If(isCreate, 0, _data.id)) Then
+            MessageBox.Show("Tên người dùng được sử dụng!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Return False
+        End If
         If String.IsNullOrWhiteSpace(ui_password.Text) Then
-            MessageBox.Show("Password cannot be empty")
+            MessageBox.Show("Mật khẩu không hợp lệ!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             ui_password.Focus()
             Return False
         End If
 
-        If isCreate Then
-            Dim selectedId = If(ui_employee.SelectedValue, 0)
-            Dim employee = _employeesWithoutAccount.FirstOrDefault(Function(x) x.id = Convert.ToInt32(selectedId))
-            If employee Is Nothing Then
-                MessageBox.Show("Invalid employee selected")
-                ui_employee.Focus()
-                Return False
-            End If
-            _data.Employee = employee
-        End If
 
 
         _data.user = ui_user.Text.Trim()
         _data.password = ui_password.Text.Trim()
         _data.role = CInt(ui_role.SelectedValue)
         _data.note = ui_note.Text
-
         _data.status = CInt(ui_status.SelectedValue)
 
         Return True
 
     End Function
 
-    Protected Overrides Sub DataChanged() Handles ui_employee.SelectedIndexChanged,
-                                        ui_user.TextChanged,
-                                        ui_password.TextChanged,
-                                        ui_role.SelectedIndexChanged,
-                                        ui_note.TextChanged,
-                                        ui_status.SelectedIndexChanged
+    Protected Overrides Sub DataChanged() Handles ui_employee.SelectedIndexChanged, ui_user.TextChanged, ui_password.TextChanged, ui_role.SelectedIndexChanged, ui_note.TextChanged, ui_status.SelectedIndexChanged
 
         tool_save.Enabled = True
 
     End Sub
-
 End Class

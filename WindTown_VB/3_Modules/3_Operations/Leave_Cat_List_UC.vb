@@ -2,7 +2,7 @@ Public Class Leave_Cat_List_UC
     Inherits BaseList_UC
 
     Public Sub New()
-        MyBase.New(AppServices.Instance.Leave_CatSV, "Leave_Cat_List_UC", "Danh mục nghỉ phép")
+        MyBase.New(AppServices.Instance.Leave_CatSV, "Leave_Cat_List_UC", "Các loại nghỉ phép")
         InitializeComponent()
         Init(GetType(Leave_Cat))
     End Sub

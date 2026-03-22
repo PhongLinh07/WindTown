@@ -63,7 +63,7 @@ Public Class Position
     <NotMapped> <DisplayName("Nhân viên")> <Display(Order:=2)>
     Public ReadOnly Property employee_UI As String
         Get
-            Return Contract?.employee_UI
+            Return If(Contract?.employee_UI, "---")
         End Get
     End Property
 

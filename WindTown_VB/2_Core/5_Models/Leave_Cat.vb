@@ -32,6 +32,12 @@ Public Class Leave_Cat
 #End Region
 
 #Region "Field Display"
+    <NotMapped> <Browsable(False)>
+    Public ReadOnly Property leave_cat_UI As String
+        Get
+            Return $"{Me.name} ({Me.code})"
+        End Get
+    End Property
     <NotMapped> <DisplayName("Quyền lợi")> <Display(Order:=3)>
     Public ReadOnly Property benefit_UI As String
         Get
@@ -50,8 +56,8 @@ Public Class Leave_Cat
 #Region "Dictionary Display"
     <NotMapped>
     Public Shared ReadOnly status_Dict As New Dictionary(Of Integer, String) From {
-        {0, "Đã bị từ chối"},
-        {1, "Đã được phê duyệt"}
+        {0, "Ngừng áp dụng"},
+        {1, "Đang áp dụng"}
     }
 
     <NotMapped>
