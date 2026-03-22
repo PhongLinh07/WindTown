@@ -2,9 +2,6 @@ Public Class Project_CRUD_Frm
     Inherits BaseACRUDForm
     Protected _data As Project
 
-
-
-
     Public Sub New(data As Project, Optional isCreate As Boolean = False)
 
         InitializeComponent()
@@ -29,12 +26,11 @@ Public Class Project_CRUD_Frm
 
     Protected Overrides Sub BindDataToUI()
 
-
         ui_code.Text = _data.code
         ui_name.Text = _data.name
 
         ui_start_date.Value = _data.start_date
-        ui_end_date.Value = If(_data.end_date, DateTime.Now)
+        ui_end_date.Value = _data.end_date
 
         ui_note.Text = _data.note
         ui_status.SelectedValue = _data.status
@@ -45,13 +41,16 @@ Public Class Project_CRUD_Frm
 
 
         If String.IsNullOrWhiteSpace(ui_code.Text) Then
-            MessageBox.Show("Mã dự án không hợp lệ")
+            MessageBox.Show("Mã dự án không hợp lệ", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error)
             ui_code.Focus()
             Return False
         End If
-
+        If AppServices.Instance.ProjectSV.IsCodeDuplicate(ui_code.Text.Trim(), If(isCreate, 0, _data.id)) Then
+            MessageBox.Show("Mã dự án này đã tồn tại.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Return False
+        End If
         If String.IsNullOrWhiteSpace(ui_name.Text) Then
-            MessageBox.Show("Tên dự án không hợp lệ")
+            MessageBox.Show("Tên dự án không hợp lệ", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error)
             ui_code.Focus()
             Return False
         End If
@@ -65,6 +64,11 @@ Public Class Project_CRUD_Frm
 
         _data.note = ui_note.Text
         _data.status = CInt(ui_status.SelectedValue)
+
+        If _data.start_date > _data.end_date Then
+            MessageBox.Show("Ngày bắt đầu không thể lớn hơn ngày kết thúc!", "Lỗi dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Return False
+        End If
 
         Return True
 

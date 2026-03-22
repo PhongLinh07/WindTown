@@ -31,7 +31,6 @@ Public Class Leave_Cat_CRUD_Frm
 
     Protected Overrides Sub BindDataToUI()
 
-
         ui_code.Text = _data.code
         ui_name.Text = _data.name
 
@@ -49,7 +48,10 @@ Public Class Leave_Cat_CRUD_Frm
             ui_code.Focus()
             Return False
         End If
-
+        If AppServices.Instance.Leave_CatSV.IsCodeDuplicate(ui_code.Text.Trim(), If(isCreate, 0, _data.id)) Then
+            MessageBox.Show("Mã loại này đã tồn tại.")
+            Return False
+        End If
         If String.IsNullOrWhiteSpace(ui_name.Text) Then
             MessageBox.Show("Tên loại không hợp lệ")
             ui_name.Focus()

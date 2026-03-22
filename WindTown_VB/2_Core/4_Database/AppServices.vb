@@ -109,6 +109,8 @@ Public Class AppServices
                 Return ServiceResponse(Of Object).Fail("Không thể xóa: " & ex.Message, ex)
             End Try
         End Function
+
+        Public MustOverride Function IsCodeDuplicate(code As String, excludeId As Integer) As Boolean
     End Class
 #End Region
 
@@ -121,10 +123,8 @@ Public Class AppServices
             _repo = New DepartmentRepository(_ctx)
         End Sub
 
-        Public Function IsCodeDuplicate(code As String, excludeId As Integer) As Boolean
-            Return _ctx.Departments.Any(Function(d) d.code = code AndAlso
-                                                     d.status <> -1 AndAlso
-                                                     d.id <> excludeId)
+        Public Overrides Function IsCodeDuplicate(code As String, excludeId As Integer) As Boolean
+            Return _ctx.Departments.Any(Function(d) d.code = code AndAlso d.status <> -1 AndAlso d.id <> excludeId)
         End Function
     End Class
 
@@ -136,10 +136,8 @@ Public Class AppServices
             _repo = New JobRepository(_ctx)
         End Sub
 
-        Public Function IsCodeDuplicate(code As String, excludeId As Integer) As Boolean
-            Return _ctx.Jobs.Any(Function(j) j.code = code AndAlso
-                                              j.status <> -1 AndAlso
-                                              j.id <> excludeId)
+        Public Overrides Function IsCodeDuplicate(code As String, excludeId As Integer) As Boolean
+            Return _ctx.Jobs.Any(Function(x) x.code = code AndAlso x.status <> -1 AndAlso x.id <> excludeId)
         End Function
     End Class
 
@@ -150,6 +148,10 @@ Public Class AppServices
             _ctx = New AppDbContext()
             _repo = New LevelRepository(_ctx)
         End Sub
+
+        Public Overrides Function IsCodeDuplicate(code As String, excludeId As Integer) As Boolean
+            Return _ctx.Levels.Any(Function(x) x.code = code AndAlso x.status <> -1 AndAlso x.id <> excludeId)
+        End Function
     End Class
 
     Public Class Salary_MultService
@@ -170,6 +172,10 @@ Public Class AppServices
                 Return ServiceResponse(Of Object).Fail("GetByJob thất bại " & ex.Message)
             End Try
         End Function
+
+        Public Overrides Function IsCodeDuplicate(code As String, excludeId As Integer) As Boolean
+            Return _ctx.Salary_Mults.Any(Function(x) x.code = code AndAlso x.status <> -1 AndAlso x.id <> excludeId)
+        End Function
     End Class
 #End Region
 
@@ -184,6 +190,9 @@ Public Class AppServices
             _repo = New EmployeeRepository(_ctx)
             _repoEmp = New EmployeeRepository(_ctx)
         End Sub
+        Public Overrides Function IsCodeDuplicate(code As String, excludeId As Integer) As Boolean
+            Return _ctx.Employees.Any(Function(x) x.code = code AndAlso x.status <> -1 AndAlso x.id <> excludeId)
+        End Function
 
         Public Function GetWithoutAccount() As ServiceResponse(Of Object)
             Try
@@ -212,7 +221,12 @@ Public Class AppServices
             _repo = New ContractRepository(_ctx)
             _repoCustom = New ContractRepository(_ctx)
         End Sub
-
+        Public Overrides Function IsCodeDuplicate(code As String, excludeId As Integer) As Boolean
+            Return _ctx.Contracts.Any(Function(x) x.code = code AndAlso x.status <> -1 AndAlso x.id <> excludeId)
+        End Function
+        Public Function IsConflictStatusActive(contraciID As Integer, excludeId As Integer) As Boolean
+            Return _ctx.Contracts.Any(Function(x) x.employee_id = contraciID AndAlso x.status = 1 AndAlso x.id <> excludeId)
+        End Function
         Public Function GetWithoutPosition() As ServiceResponse(Of Object)
             Try
                 Return ServiceResponse(Of Object).Success(_repoCustom.GetWithoutPosition())
@@ -232,7 +246,12 @@ Public Class AppServices
             _repo = New PositionRepository(_ctx)
             _repoPos = New PositionRepository(_ctx)
         End Sub
-
+        Public Overrides Function IsCodeDuplicate(code As String, excludeId As Integer) As Boolean
+            Return _ctx.Positions.Any(Function(x) x.code = code AndAlso x.status <> -1 AndAlso x.id <> excludeId)
+        End Function
+        Public Function IsConflictStatusActive(contractID As Integer, excludeId As Integer) As Boolean
+            Return _ctx.Positions.Any(Function(x) x.contract_id = contractID AndAlso x.status = 1 AndAlso x.id <> excludeId)
+        End Function
         Public Function GetWithoutAssignment() As ServiceResponse(Of Object)
             Try
                 Return ServiceResponse(Of Object).Success(_repoPos.GetWithoutAssignment())
@@ -254,6 +273,9 @@ Public Class AppServices
             _repo = New ProjectRepository(_ctx)
             _repoProj = New ProjectRepository(_ctx)
         End Sub
+        Public Overrides Function IsCodeDuplicate(code As String, excludeId As Integer) As Boolean
+            Return _ctx.Projects.Any(Function(x) x.code = code AndAlso x.status <> -1 AndAlso x.id <> excludeId)
+        End Function
 
         Public Function GetActive() As ServiceResponse(Of Object)
             Try
@@ -271,6 +293,12 @@ Public Class AppServices
             _ctx = New AppDbContext()
             _repo = New AssignmentRepository(_ctx)
         End Sub
+        Public Overrides Function IsCodeDuplicate(code As String, excludeId As Integer) As Boolean
+            Return _ctx.Assignments.Any(Function(x) x.code = code AndAlso x.status <> -1 AndAlso x.id <> excludeId)
+        End Function
+        Public Function IsConflictStatusActive(positionID As Integer, excludeId As Integer) As Boolean
+            Return _ctx.Assignments.Any(Function(x) x.position_id = positionID AndAlso x.status = 1 AndAlso x.id <> excludeId)
+        End Function
     End Class
 
     Public Class AttendanceService
@@ -283,7 +311,9 @@ Public Class AppServices
             _repo = New AttendanceRepository(_ctx)
             _repoAtt = New AttendanceRepository(_ctx)
         End Sub
-
+        Public Overrides Function IsCodeDuplicate(code As String, excludeId As Integer) As Boolean
+            Return _ctx.Attendances.Any(Function(x) x.code = code AndAlso x.status <> -1 AndAlso x.id <> excludeId)
+        End Function
         Public Function GetByPeriod(period As Pay_Period) As ServiceResponse(Of Object)
             Try
                 If period.start_date > period.end_date Then
@@ -303,6 +333,9 @@ Public Class AppServices
             _ctx = New AppDbContext()
             _repo = New HolidayRepository(_ctx)
         End Sub
+        Public Overrides Function IsCodeDuplicate(code As String, excludeId As Integer) As Boolean
+            Return _ctx.Holidays.Any(Function(x) x.code = code AndAlso x.status <> -1 AndAlso x.id <> excludeId)
+        End Function
     End Class
 
     Public Class LeaveCatService
@@ -312,6 +345,9 @@ Public Class AppServices
             _ctx = New AppDbContext()
             _repo = New LeaveCatRepository(_ctx)
         End Sub
+        Public Overrides Function IsCodeDuplicate(code As String, excludeId As Integer) As Boolean
+            Return _ctx.Leave_Cats.Any(Function(x) x.code = code AndAlso x.status <> -1 AndAlso x.id <> excludeId)
+        End Function
     End Class
 
     Public Class LeaveService
@@ -321,6 +357,9 @@ Public Class AppServices
             _ctx = New AppDbContext()
             _repo = New LeaveRepository(_ctx)
         End Sub
+        Public Overrides Function IsCodeDuplicate(code As String, excludeId As Integer) As Boolean
+            Return _ctx.Leaves.Any(Function(x) x.code = code AndAlso x.status <> -1 AndAlso x.id <> excludeId)
+        End Function
     End Class
 #End Region
 
@@ -332,6 +371,9 @@ Public Class AppServices
             _ctx = New AppDbContext()
             _repo = New PolicyRepository(_ctx)
         End Sub
+        Public Overrides Function IsCodeDuplicate(code As String, excludeId As Integer) As Boolean
+            Return _ctx.Policies.Any(Function(x) x.code = code AndAlso x.status <> -1 AndAlso x.id <> excludeId)
+        End Function
     End Class
 #End Region
 
@@ -343,7 +385,9 @@ Public Class AppServices
             _ctx = New AppDbContext()
             _repo = New PayPeriodRepository(_ctx)
         End Sub
-
+        Public Overrides Function IsCodeDuplicate(code As String, excludeId As Integer) As Boolean
+            Return _ctx.Pay_Periods.Any(Function(x) x.code = code AndAlso x.status <> -1 AndAlso x.id <> excludeId)
+        End Function
         Public Function CalcStdHours(period As Pay_Period) As ServiceResponse(Of Decimal)
             Try
                 Dim holidayDates = AppServices.Instance.HolidaySV.GetList()
@@ -369,7 +413,9 @@ Public Class AppServices
             _repo = New PayItemRepository(_ctx)
             _repoPayItem = New PayItemRepository(_ctx)
         End Sub
-
+        Public Overrides Function IsCodeDuplicate(code As String, excludeId As Integer) As Boolean
+            Return _ctx.Pay_Items.Any(Function(x) x.code = code AndAlso x.status <> -1 AndAlso x.id <> excludeId)
+        End Function
         Public Function GetByPayroll(payroll As Payroll) As ServiceResponse(Of Object)
             Try
                 Return ServiceResponse(Of Object).Success(_repoPayItem.GetByPayroll(payroll))
@@ -389,6 +435,10 @@ Public Class AppServices
             _repo = New PayrollRepository(_ctx)
             _repoPayroll = New PayrollRepository(_ctx)
         End Sub
+
+        Public Overrides Function IsCodeDuplicate(code As String, excludeId As Integer) As Boolean
+            Return _ctx.Payrolls.Any(Function(x) x.code = code AndAlso x.status <> -1 AndAlso x.id <> excludeId)
+        End Function
 
         ' ✅ Override Insert — tạo pay_item mặc định sau khi insert
         Public Overrides Function Insert(data As Object) As ServiceResponse(Of Object)
@@ -421,16 +471,14 @@ Public Class AppServices
                 If Not resContract.IsSuccess Then Return ServiceResponse(Of Object).Fail($"Lỗi lấy hợp đồng: {resContract.Message}")
 
                 Dim contractList = CType(resContract.Data, IEnumerable(Of Contract)) _
-                    .Where(Function(x) x.start_date.Date <= period.end_date.Date AndAlso
-                               (x.end_date Is Nothing OrElse x.end_date.Value.Date >= period.start_date.Date)) _
+                    .Where(Function(x) x.start_date.Date <= period.end_date.Date AndAlso x.end_date.Date >= period.start_date.Date) _
                     .ToList()
 
                 Dim resPos = AppServices.Instance.PositionSV.GetList()
                 If Not resPos.IsSuccess Then Return ServiceResponse(Of Object).Fail($"Lỗi lấy chức vụ: {resPos.Message}")
 
                 Dim positionLookup = CType(resPos.Data, IEnumerable(Of Position)) _
-                    .Where(Function(x) x.start_date.Date <= period.end_date.Date AndAlso
-                               (x.end_date Is Nothing OrElse x.end_date.Value.Date >= period.start_date.Date)) _
+                    .Where(Function(x) x.start_date.Date <= period.end_date.Date AndAlso x.end_date.Date >= period.start_date.Date) _
                     .ToLookup(Function(x) x.contract_id)
 
                 Dim countSucc As Integer = 0
@@ -467,7 +515,7 @@ Public Class AppServices
                     Return ServiceResponse(Of Object).Fail($"Lỗi lấy thành phần: {response.Message}")
                 End If
 
-                Dim items = CType(response.Data, IEnumerable(Of Pay_Item)).ToList()
+                Dim items = CType(response.Data, IEnumerable(Of Pay_Item)).ToList().Where(Function(x) x.unit = CInt(UnitSuffix.ID.VND)).Select(Function(x) x).ToList()
 
                 Dim GetOrCreate = Function(sysId As System_Parameter.ID) As Pay_Item
                                       Dim param = System_Parameter.GetParameter(sysId)
@@ -480,6 +528,8 @@ Public Class AppServices
                                           pItemSV.Insert(item)
                                           items.Add(item)
                                           Logger.Instance.Logging($"Tạo Pay_Item hệ thống: {param.code}", Logger.Warning)
+                                      Else
+                                          item.value = 0
                                       End If
                                       Return item
                                   End Function
@@ -614,7 +664,7 @@ Public Class AppServices
                 If payrollList.Count = 0 Then Return ServiceResponse(Of Object).Success("")
 
                 For Each Payroll In payrollList
-                    Logger.Instance.Logging($"Đang tính: {Payroll.Position.Contract.employee_id}", Logger.Information)
+                    Logger.Instance.Logging($"Đang tính: {Payroll.Position.employee_UI}", Logger.Information)
                     Dim maps = SeedSystemVars(Payroll, Payroll.Pay_Period)
 
                     For Each p In policies
@@ -842,7 +892,9 @@ Public Class AppServices
             _repo = New AccountRepository(_ctx)
             _repoAcc = New AccountRepository(_ctx)
         End Sub
-
+        Public Overrides Function IsCodeDuplicate(code As String, excludeId As Integer) As Boolean
+            Return _ctx.Accounts.Any(Function(x) x.user = code AndAlso x.status <> -1 AndAlso x.id <> excludeId)
+        End Function
         Public Function Login(input As Account) As ServiceResponse(Of Object)
             Try
                 If input Is Nothing Then Return ServiceResponse(Of Object).Fail("Đăng nhập thất bại: Thiếu thông tin đăng nhập")

@@ -22,421 +22,443 @@ Partial Class FormMain
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container()
-        Me.pnl_main = New System.Windows.Forms.Panel()
-        Me.split_main = New System.Windows.Forms.SplitContainer()
-        Me.tabControl_A = New System.Windows.Forms.TabControl()
-        Me.TabPage1 = New System.Windows.Forms.TabPage()
-        Me.TabPage2 = New System.Windows.Forms.TabPage()
-        Me.TabPage3 = New System.Windows.Forms.TabPage()
-        Me.tabControl_B = New System.Windows.Forms.TabControl()
-        Me.TabPage4 = New System.Windows.Forms.TabPage()
-        Me.TabPage5 = New System.Windows.Forms.TabPage()
-        Me.TabPage6 = New System.Windows.Forms.TabPage()
-        Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
-        Me.tool_user_profile = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
-        Me.SdvsdToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.menu_department = New System.Windows.Forms.ToolStripMenuItem()
-        Me.menu_job = New System.Windows.Forms.ToolStripMenuItem()
-        Me.menu_level = New System.Windows.Forms.ToolStripMenuItem()
-        Me.menu_salary_mult = New System.Windows.Forms.ToolStripMenuItem()
-        Me.DvsdvToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.menu_empolyee = New System.Windows.Forms.ToolStripMenuItem()
-        Me.menu_contract = New System.Windows.Forms.ToolStripMenuItem()
-        Me.menu_position = New System.Windows.Forms.ToolStripMenuItem()
-        Me.SdvfToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.menu_project = New System.Windows.Forms.ToolStripMenuItem()
-        Me.menu_assignment = New System.Windows.Forms.ToolStripMenuItem()
-        Me.menu_attendance = New System.Windows.Forms.ToolStripMenuItem()
-        Me.menu_holiday = New System.Windows.Forms.ToolStripMenuItem()
-        Me.menu_leave_cat = New System.Windows.Forms.ToolStripMenuItem()
-        Me.menu_leave = New System.Windows.Forms.ToolStripMenuItem()
-        Me.menu_policy = New System.Windows.Forms.ToolStripMenuItem()
-        Me.TàiChínhToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.menu_pay_period = New System.Windows.Forms.ToolStripMenuItem()
-        Me.menu_payroll = New System.Windows.Forms.ToolStripMenuItem()
-        Me.DfToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.HệThốngToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.menu_account = New System.Windows.Forms.ToolStripMenuItem()
-        Me.tool_logger = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
-        Me.ColorDialog1 = New System.Windows.Forms.ColorDialog()
-        Me.contextMenu_tab = New System.Windows.Forms.ContextMenuStrip(Me.components)
-        Me.menu_close = New System.Windows.Forms.ToolStripMenuItem()
-        Me.menu_close_all_tab = New System.Windows.Forms.ToolStripMenuItem()
-        Me.menu_move_to_splitA = New System.Windows.Forms.ToolStripMenuItem()
-        Me.menu_move_all_to_splitA = New System.Windows.Forms.ToolStripMenuItem()
-        Me.menu_move_to_splitB = New System.Windows.Forms.ToolStripMenuItem()
-        Me.menu_move_all_to_splitB = New System.Windows.Forms.ToolStripMenuItem()
-        Me.pnl_main.SuspendLayout()
-        CType(Me.split_main, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.split_main.Panel1.SuspendLayout()
-        Me.split_main.Panel2.SuspendLayout()
-        Me.split_main.SuspendLayout()
-        Me.tabControl_A.SuspendLayout()
-        Me.tabControl_B.SuspendLayout()
-        Me.ToolStrip1.SuspendLayout()
-        Me.contextMenu_tab.SuspendLayout()
-        Me.SuspendLayout()
-        '
-        'pnl_main
-        '
-        Me.pnl_main.Controls.Add(Me.split_main)
-        Me.pnl_main.Controls.Add(Me.ToolStrip1)
-        Me.pnl_main.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.pnl_main.Location = New System.Drawing.Point(0, 0)
-        Me.pnl_main.Name = "pnl_main"
-        Me.pnl_main.Size = New System.Drawing.Size(1264, 649)
-        Me.pnl_main.TabIndex = 3
-        '
-        'split_main
-        '
-        Me.split_main.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.split_main.Location = New System.Drawing.Point(0, 29)
-        Me.split_main.Name = "split_main"
-        '
-        'split_main.Panel1
-        '
-        Me.split_main.Panel1.Controls.Add(Me.tabControl_A)
-        '
-        'split_main.Panel2
-        '
-        Me.split_main.Panel2.Controls.Add(Me.tabControl_B)
-        Me.split_main.Size = New System.Drawing.Size(1264, 620)
-        Me.split_main.SplitterDistance = 605
-        Me.split_main.TabIndex = 4
-        '
-        'tabControl_A
-        '
-        Me.tabControl_A.Controls.Add(Me.TabPage1)
-        Me.tabControl_A.Controls.Add(Me.TabPage2)
-        Me.tabControl_A.Controls.Add(Me.TabPage3)
-        Me.tabControl_A.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.tabControl_A.Font = New System.Drawing.Font("Arial", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tabControl_A.Location = New System.Drawing.Point(0, 0)
-        Me.tabControl_A.Name = "tabControl_A"
-        Me.tabControl_A.SelectedIndex = 0
-        Me.tabControl_A.Size = New System.Drawing.Size(605, 620)
-        Me.tabControl_A.TabIndex = 2
-        '
-        'TabPage1
-        '
-        Me.TabPage1.Location = New System.Drawing.Point(4, 25)
-        Me.TabPage1.Name = "TabPage1"
-        Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage1.Size = New System.Drawing.Size(597, 591)
-        Me.TabPage1.TabIndex = 0
-        Me.TabPage1.Text = "TabPage1"
-        Me.TabPage1.UseVisualStyleBackColor = True
-        '
-        'TabPage2
-        '
-        Me.TabPage2.Location = New System.Drawing.Point(4, 25)
-        Me.TabPage2.Name = "TabPage2"
-        Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage2.Size = New System.Drawing.Size(752, 723)
-        Me.TabPage2.TabIndex = 1
-        Me.TabPage2.Text = "TabPage2"
-        Me.TabPage2.UseVisualStyleBackColor = True
-        '
-        'TabPage3
-        '
-        Me.TabPage3.Location = New System.Drawing.Point(4, 25)
-        Me.TabPage3.Name = "TabPage3"
-        Me.TabPage3.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage3.Size = New System.Drawing.Size(752, 723)
-        Me.TabPage3.TabIndex = 2
-        Me.TabPage3.Text = "TabPage3"
-        Me.TabPage3.UseVisualStyleBackColor = True
-        '
-        'tabControl_B
-        '
-        Me.tabControl_B.Controls.Add(Me.TabPage4)
-        Me.tabControl_B.Controls.Add(Me.TabPage5)
-        Me.tabControl_B.Controls.Add(Me.TabPage6)
-        Me.tabControl_B.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.tabControl_B.Font = New System.Drawing.Font("Arial", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tabControl_B.Location = New System.Drawing.Point(0, 0)
-        Me.tabControl_B.Name = "tabControl_B"
-        Me.tabControl_B.SelectedIndex = 0
-        Me.tabControl_B.Size = New System.Drawing.Size(655, 620)
-        Me.tabControl_B.TabIndex = 3
-        '
-        'TabPage4
-        '
-        Me.TabPage4.Location = New System.Drawing.Point(4, 25)
-        Me.TabPage4.Name = "TabPage4"
-        Me.TabPage4.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage4.Size = New System.Drawing.Size(647, 591)
-        Me.TabPage4.TabIndex = 0
-        Me.TabPage4.Text = "TabPage4"
-        Me.TabPage4.UseVisualStyleBackColor = True
-        '
-        'TabPage5
-        '
-        Me.TabPage5.Location = New System.Drawing.Point(4, 25)
-        Me.TabPage5.Name = "TabPage5"
-        Me.TabPage5.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage5.Size = New System.Drawing.Size(507, 723)
-        Me.TabPage5.TabIndex = 1
-        Me.TabPage5.Text = "TabPage5"
-        Me.TabPage5.UseVisualStyleBackColor = True
-        '
-        'TabPage6
-        '
-        Me.TabPage6.Location = New System.Drawing.Point(4, 25)
-        Me.TabPage6.Name = "TabPage6"
-        Me.TabPage6.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage6.Size = New System.Drawing.Size(507, 723)
-        Me.TabPage6.TabIndex = 2
-        Me.TabPage6.Text = "TabPage6"
-        Me.TabPage6.UseVisualStyleBackColor = True
-        '
-        'ToolStrip1
-        '
-        Me.ToolStrip1.Font = New System.Drawing.Font("Segoe UI", 10.0!)
-        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tool_user_profile, Me.ToolStripSeparator1, Me.SdvsdToolStripMenuItem, Me.DvsdvToolStripMenuItem, Me.SdvfToolStripMenuItem, Me.menu_policy, Me.TàiChínhToolStripMenuItem, Me.HệThốngToolStripMenuItem, Me.tool_logger, Me.ToolStripSeparator2})
-        Me.ToolStrip1.Location = New System.Drawing.Point(0, 0)
-        Me.ToolStrip1.Name = "ToolStrip1"
-        Me.ToolStrip1.Size = New System.Drawing.Size(1264, 29)
-        Me.ToolStrip1.TabIndex = 1
-        Me.ToolStrip1.Text = "ToolStrip1"
-        '
-        'tool_user_profile
-        '
-        Me.tool_user_profile.Font = New System.Drawing.Font("Segoe UI", 14.0!, System.Drawing.FontStyle.Bold)
-        Me.tool_user_profile.Image = Global.WindTown_VB.My.Resources.Resources.gear
-        Me.tool_user_profile.Name = "tool_user_profile"
-        Me.tool_user_profile.Size = New System.Drawing.Size(141, 29)
-        Me.tool_user_profile.Text = "Wind Town"
-        '
-        'ToolStripSeparator1
-        '
-        Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(6, 29)
-        '
-        'SdvsdToolStripMenuItem
-        '
-        Me.SdvsdToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.menu_department, Me.menu_job, Me.menu_level, Me.menu_salary_mult})
-        Me.SdvsdToolStripMenuItem.Name = "SdvsdToolStripMenuItem"
-        Me.SdvsdToolStripMenuItem.Size = New System.Drawing.Size(68, 29)
-        Me.SdvsdToolStripMenuItem.Text = "Tổ chức"
-        '
-        'menu_department
-        '
-        Me.menu_department.Image = Global.WindTown_VB.My.Resources.Resources.home
-        Me.menu_department.Name = "menu_department"
-        Me.menu_department.Size = New System.Drawing.Size(192, 24)
-        Me.menu_department.Text = "Phòng ban"
-        '
-        'menu_job
-        '
-        Me.menu_job.Name = "menu_job"
-        Me.menu_job.Size = New System.Drawing.Size(192, 24)
-        Me.menu_job.Text = "Công việc"
-        '
-        'menu_level
-        '
-        Me.menu_level.Name = "menu_level"
-        Me.menu_level.Size = New System.Drawing.Size(192, 24)
-        Me.menu_level.Text = "Trình độ"
-        '
-        'menu_salary_mult
-        '
-        Me.menu_salary_mult.Name = "menu_salary_mult"
-        Me.menu_salary_mult.Size = New System.Drawing.Size(192, 24)
-        Me.menu_salary_mult.Text = "Hệ số lương (TEST)"
-        '
-        'DvsdvToolStripMenuItem
-        '
-        Me.DvsdvToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.menu_empolyee, Me.menu_contract, Me.menu_position})
-        Me.DvsdvToolStripMenuItem.Name = "DvsdvToolStripMenuItem"
-        Me.DvsdvToolStripMenuItem.Size = New System.Drawing.Size(72, 29)
-        Me.DvsdvToolStripMenuItem.Text = "Nhân sự"
-        '
-        'menu_empolyee
-        '
-        Me.menu_empolyee.Name = "menu_empolyee"
-        Me.menu_empolyee.Size = New System.Drawing.Size(140, 24)
-        Me.menu_empolyee.Text = "Nhân viên"
-        '
-        'menu_contract
-        '
-        Me.menu_contract.Name = "menu_contract"
-        Me.menu_contract.Size = New System.Drawing.Size(140, 24)
-        Me.menu_contract.Text = "Hợp đồng"
-        '
-        'menu_position
-        '
-        Me.menu_position.Name = "menu_position"
-        Me.menu_position.Size = New System.Drawing.Size(140, 24)
-        Me.menu_position.Text = "Chức vụ"
-        '
-        'SdvfToolStripMenuItem
-        '
-        Me.SdvfToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.menu_project, Me.menu_assignment, Me.menu_attendance, Me.menu_holiday, Me.menu_leave_cat, Me.menu_leave})
-        Me.SdvfToolStripMenuItem.Name = "SdvfToolStripMenuItem"
-        Me.SdvfToolStripMenuItem.Size = New System.Drawing.Size(80, 29)
-        Me.SdvfToolStripMenuItem.Text = "Vận hành"
-        '
-        'menu_project
-        '
-        Me.menu_project.Name = "menu_project"
-        Me.menu_project.Size = New System.Drawing.Size(207, 24)
-        Me.menu_project.Text = "Dự án"
-        '
-        'menu_assignment
-        '
-        Me.menu_assignment.Name = "menu_assignment"
-        Me.menu_assignment.Size = New System.Drawing.Size(207, 24)
-        Me.menu_assignment.Text = "Phân công dự án"
-        '
-        'menu_attendance
-        '
-        Me.menu_attendance.Name = "menu_attendance"
-        Me.menu_attendance.Size = New System.Drawing.Size(207, 24)
-        Me.menu_attendance.Text = "Chấm công"
-        '
-        'menu_holiday
-        '
-        Me.menu_holiday.Name = "menu_holiday"
-        Me.menu_holiday.Size = New System.Drawing.Size(207, 24)
-        Me.menu_holiday.Text = "Hệ số lương ngày lễ"
-        '
-        'menu_leave_cat
-        '
-        Me.menu_leave_cat.Name = "menu_leave_cat"
-        Me.menu_leave_cat.Size = New System.Drawing.Size(207, 24)
-        Me.menu_leave_cat.Text = "Danh mục nghỉ phép"
-        '
-        'menu_leave
-        '
-        Me.menu_leave.Name = "menu_leave"
-        Me.menu_leave.Size = New System.Drawing.Size(207, 24)
-        Me.menu_leave.Text = "Nghỉ phép"
-        '
-        'menu_policy
-        '
-        Me.menu_policy.Name = "menu_policy"
-        Me.menu_policy.Size = New System.Drawing.Size(88, 29)
-        Me.menu_policy.Text = "Chính sách"
-        '
-        'TàiChínhToolStripMenuItem
-        '
-        Me.TàiChínhToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.menu_pay_period, Me.menu_payroll, Me.DfToolStripMenuItem})
-        Me.TàiChínhToolStripMenuItem.Name = "TàiChínhToolStripMenuItem"
-        Me.TàiChínhToolStripMenuItem.Size = New System.Drawing.Size(73, 29)
-        Me.TàiChínhToolStripMenuItem.Text = "Tài chính"
-        '
-        'menu_pay_period
-        '
-        Me.menu_pay_period.Name = "menu_pay_period"
-        Me.menu_pay_period.Size = New System.Drawing.Size(174, 24)
-        Me.menu_pay_period.Text = "Chu kỳ lương"
-        '
-        'menu_payroll
-        '
-        Me.menu_payroll.Name = "menu_payroll"
-        Me.menu_payroll.Size = New System.Drawing.Size(174, 24)
-        Me.menu_payroll.Text = "Bảng lương"
-        '
-        'DfToolStripMenuItem
-        '
-        Me.DfToolStripMenuItem.Name = "DfToolStripMenuItem"
-        Me.DfToolStripMenuItem.Size = New System.Drawing.Size(174, 24)
-        Me.DfToolStripMenuItem.Text = "Pay_Item (TEST)"
-        '
-        'HệThốngToolStripMenuItem
-        '
-        Me.HệThốngToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.menu_account})
-        Me.HệThốngToolStripMenuItem.Name = "HệThốngToolStripMenuItem"
-        Me.HệThốngToolStripMenuItem.Size = New System.Drawing.Size(79, 29)
-        Me.HệThốngToolStripMenuItem.Text = "Hệ thống"
-        '
-        'menu_account
-        '
-        Me.menu_account.Name = "menu_account"
-        Me.menu_account.Size = New System.Drawing.Size(135, 24)
-        Me.menu_account.Text = "Tài khoản"
-        '
-        'tool_logger
-        '
-        Me.tool_logger.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tool_logger.Name = "tool_logger"
-        Me.tool_logger.Size = New System.Drawing.Size(51, 29)
-        Me.tool_logger.Text = "Log"
-        '
-        'ToolStripSeparator2
-        '
-        Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
-        Me.ToolStripSeparator2.Size = New System.Drawing.Size(6, 29)
-        '
-        'contextMenu_tab
-        '
-        Me.contextMenu_tab.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.menu_close, Me.menu_close_all_tab, Me.menu_move_to_splitA, Me.menu_move_all_to_splitA, Me.menu_move_to_splitB, Me.menu_move_all_to_splitB})
-        Me.contextMenu_tab.Name = "contextMenu_tab"
-        Me.contextMenu_tab.Size = New System.Drawing.Size(187, 136)
-        '
-        'menu_close
-        '
-        Me.menu_close.Name = "menu_close"
-        Me.menu_close.Size = New System.Drawing.Size(186, 22)
-        Me.menu_close.Text = "Đóng"
-        '
-        'menu_close_all_tab
-        '
-        Me.menu_close_all_tab.Name = "menu_close_all_tab"
-        Me.menu_close_all_tab.Size = New System.Drawing.Size(186, 22)
-        Me.menu_close_all_tab.Text = "Đóng tất cả các tab"
-        '
-        'menu_move_to_splitA
-        '
-        Me.menu_move_to_splitA.Name = "menu_move_to_splitA"
-        Me.menu_move_to_splitA.Size = New System.Drawing.Size(186, 22)
-        Me.menu_move_to_splitA.Text = "Chuyển sang A"
-        '
-        'menu_move_all_to_splitA
-        '
-        Me.menu_move_all_to_splitA.Name = "menu_move_all_to_splitA"
-        Me.menu_move_all_to_splitA.Size = New System.Drawing.Size(186, 22)
-        Me.menu_move_all_to_splitA.Text = "Chuyển tất cả sang A"
-        '
-        'menu_move_to_splitB
-        '
-        Me.menu_move_to_splitB.Name = "menu_move_to_splitB"
-        Me.menu_move_to_splitB.Size = New System.Drawing.Size(186, 22)
-        Me.menu_move_to_splitB.Text = "Chuyển sang B"
-        '
-        'menu_move_all_to_splitB
-        '
-        Me.menu_move_all_to_splitB.Name = "menu_move_all_to_splitB"
-        Me.menu_move_all_to_splitB.Size = New System.Drawing.Size(186, 22)
-        Me.menu_move_all_to_splitB.Text = "Chuyển tất cả sang B"
-        '
-        'FormMain
-        '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
-        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.ClientSize = New System.Drawing.Size(1264, 649)
-        Me.Controls.Add(Me.pnl_main)
-        Me.ImeMode = System.Windows.Forms.ImeMode.[On]
-        Me.Name = "FormMain"
-        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "FormMain"
-        Me.pnl_main.ResumeLayout(False)
-        Me.pnl_main.PerformLayout()
-        Me.split_main.Panel1.ResumeLayout(False)
-        Me.split_main.Panel2.ResumeLayout(False)
-        CType(Me.split_main, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.split_main.ResumeLayout(False)
-        Me.tabControl_A.ResumeLayout(False)
-        Me.tabControl_B.ResumeLayout(False)
-        Me.ToolStrip1.ResumeLayout(False)
-        Me.ToolStrip1.PerformLayout()
-        Me.contextMenu_tab.ResumeLayout(False)
-        Me.ResumeLayout(False)
+        components = New ComponentModel.Container()
+        pnl_main = New Panel()
+        split_main = New SplitContainer()
+        tabControl_A = New TabControl()
+        TabPage1 = New TabPage()
+        TabPage2 = New TabPage()
+        TabPage3 = New TabPage()
+        tabControl_B = New TabControl()
+        TabPage4 = New TabPage()
+        TabPage5 = New TabPage()
+        TabPage6 = New TabPage()
+        ToolStrip1 = New ToolStrip()
+        tool_user_profile = New ToolStripMenuItem()
+        ToolStripSeparator1 = New ToolStripSeparator()
+        SdvsdToolStripMenuItem = New ToolStripMenuItem()
+        menu_department = New ToolStripMenuItem()
+        menu_level = New ToolStripMenuItem()
+        menu_job = New ToolStripMenuItem()
+        DvsdvToolStripMenuItem = New ToolStripMenuItem()
+        menu_empolyee = New ToolStripMenuItem()
+        menu_contract = New ToolStripMenuItem()
+        menu_position = New ToolStripMenuItem()
+        SdvfToolStripMenuItem = New ToolStripMenuItem()
+        menu_project = New ToolStripMenuItem()
+        menu_assignment = New ToolStripMenuItem()
+        menu_attendance = New ToolStripMenuItem()
+        menu_holiday = New ToolStripMenuItem()
+        menu_leave_cat = New ToolStripMenuItem()
+        menu_leave = New ToolStripMenuItem()
+        menu_policy = New ToolStripMenuItem()
+        TàiChínhToolStripMenuItem = New ToolStripMenuItem()
+        menu_pay_period = New ToolStripMenuItem()
+        menu_payroll = New ToolStripMenuItem()
+        HệThốngToolStripMenuItem = New ToolStripMenuItem()
+        menu_account = New ToolStripMenuItem()
+        tool_logger = New ToolStripMenuItem()
+        ToolStripSeparator2 = New ToolStripSeparator()
+        ColorDialog1 = New ColorDialog()
+        contextMenu_tab = New ContextMenuStrip(components)
+        menu_close = New ToolStripMenuItem()
+        menu_close_all_tab = New ToolStripMenuItem()
+        menu_move_to_splitA = New ToolStripMenuItem()
+        menu_move_all_to_splitA = New ToolStripMenuItem()
+        menu_move_to_splitB = New ToolStripMenuItem()
+        menu_move_all_to_splitB = New ToolStripMenuItem()
+        pnl_main.SuspendLayout()
+        CType(split_main, ComponentModel.ISupportInitialize).BeginInit()
+        split_main.Panel1.SuspendLayout()
+        split_main.Panel2.SuspendLayout()
+        split_main.SuspendLayout()
+        tabControl_A.SuspendLayout()
+        tabControl_B.SuspendLayout()
+        ToolStrip1.SuspendLayout()
+        contextMenu_tab.SuspendLayout()
+        SuspendLayout()
+        ' 
+        ' pnl_main
+        ' 
+        pnl_main.Controls.Add(split_main)
+        pnl_main.Controls.Add(ToolStrip1)
+        pnl_main.Dock = DockStyle.Fill
+        pnl_main.Location = New Point(0, 0)
+        pnl_main.Margin = New Padding(4, 3, 4, 3)
+        pnl_main.Name = "pnl_main"
+        pnl_main.Size = New Size(1475, 749)
+        pnl_main.TabIndex = 3
+        ' 
+        ' split_main
+        ' 
+        split_main.Dock = DockStyle.Fill
+        split_main.Location = New Point(0, 36)
+        split_main.Margin = New Padding(4, 3, 4, 3)
+        split_main.Name = "split_main"
+        ' 
+        ' split_main.Panel1
+        ' 
+        split_main.Panel1.Controls.Add(tabControl_A)
+        ' 
+        ' split_main.Panel2
+        ' 
+        split_main.Panel2.Controls.Add(tabControl_B)
+        split_main.Size = New Size(1475, 713)
+        split_main.SplitterDistance = 705
+        split_main.SplitterWidth = 5
+        split_main.TabIndex = 4
+        ' 
+        ' tabControl_A
+        ' 
+        tabControl_A.Controls.Add(TabPage1)
+        tabControl_A.Controls.Add(TabPage2)
+        tabControl_A.Controls.Add(TabPage3)
+        tabControl_A.Dock = DockStyle.Fill
+        tabControl_A.Font = New Font("Arial", 10F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        tabControl_A.Location = New Point(0, 0)
+        tabControl_A.Margin = New Padding(4, 3, 4, 3)
+        tabControl_A.Name = "tabControl_A"
+        tabControl_A.SelectedIndex = 0
+        tabControl_A.Size = New Size(705, 713)
+        tabControl_A.TabIndex = 2
+        ' 
+        ' TabPage1
+        ' 
+        TabPage1.Location = New Point(4, 25)
+        TabPage1.Margin = New Padding(4, 3, 4, 3)
+        TabPage1.Name = "TabPage1"
+        TabPage1.Padding = New Padding(4, 3, 4, 3)
+        TabPage1.Size = New Size(697, 684)
+        TabPage1.TabIndex = 0
+        TabPage1.Text = "TabPage1"
+        TabPage1.UseVisualStyleBackColor = True
+        ' 
+        ' TabPage2
+        ' 
+        TabPage2.Location = New Point(4, 25)
+        TabPage2.Margin = New Padding(4, 3, 4, 3)
+        TabPage2.Name = "TabPage2"
+        TabPage2.Padding = New Padding(4, 3, 4, 3)
+        TabPage2.Size = New Size(697, 684)
+        TabPage2.TabIndex = 1
+        TabPage2.Text = "TabPage2"
+        TabPage2.UseVisualStyleBackColor = True
+        ' 
+        ' TabPage3
+        ' 
+        TabPage3.Location = New Point(4, 25)
+        TabPage3.Margin = New Padding(4, 3, 4, 3)
+        TabPage3.Name = "TabPage3"
+        TabPage3.Padding = New Padding(4, 3, 4, 3)
+        TabPage3.Size = New Size(697, 684)
+        TabPage3.TabIndex = 2
+        TabPage3.Text = "TabPage3"
+        TabPage3.UseVisualStyleBackColor = True
+        ' 
+        ' tabControl_B
+        ' 
+        tabControl_B.Controls.Add(TabPage4)
+        tabControl_B.Controls.Add(TabPage5)
+        tabControl_B.Controls.Add(TabPage6)
+        tabControl_B.Dock = DockStyle.Fill
+        tabControl_B.Font = New Font("Arial", 10F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        tabControl_B.Location = New Point(0, 0)
+        tabControl_B.Margin = New Padding(4, 3, 4, 3)
+        tabControl_B.Name = "tabControl_B"
+        tabControl_B.SelectedIndex = 0
+        tabControl_B.Size = New Size(765, 713)
+        tabControl_B.TabIndex = 3
+        ' 
+        ' TabPage4
+        ' 
+        TabPage4.Location = New Point(4, 25)
+        TabPage4.Margin = New Padding(4, 3, 4, 3)
+        TabPage4.Name = "TabPage4"
+        TabPage4.Padding = New Padding(4, 3, 4, 3)
+        TabPage4.Size = New Size(757, 684)
+        TabPage4.TabIndex = 0
+        TabPage4.Text = "TabPage4"
+        TabPage4.UseVisualStyleBackColor = True
+        ' 
+        ' TabPage5
+        ' 
+        TabPage5.Location = New Point(4, 25)
+        TabPage5.Margin = New Padding(4, 3, 4, 3)
+        TabPage5.Name = "TabPage5"
+        TabPage5.Padding = New Padding(4, 3, 4, 3)
+        TabPage5.Size = New Size(757, 684)
+        TabPage5.TabIndex = 1
+        TabPage5.Text = "TabPage5"
+        TabPage5.UseVisualStyleBackColor = True
+        ' 
+        ' TabPage6
+        ' 
+        TabPage6.Location = New Point(4, 25)
+        TabPage6.Margin = New Padding(4, 3, 4, 3)
+        TabPage6.Name = "TabPage6"
+        TabPage6.Padding = New Padding(4, 3, 4, 3)
+        TabPage6.Size = New Size(757, 684)
+        TabPage6.TabIndex = 2
+        TabPage6.Text = "TabPage6"
+        TabPage6.UseVisualStyleBackColor = True
+        ' 
+        ' ToolStrip1
+        ' 
+        ToolStrip1.Font = New Font("Segoe UI", 10F)
+        ToolStrip1.ImageScalingSize = New Size(32, 32)
+        ToolStrip1.Items.AddRange(New ToolStripItem() {tool_user_profile, ToolStripSeparator1, SdvsdToolStripMenuItem, DvsdvToolStripMenuItem, SdvfToolStripMenuItem, menu_policy, TàiChínhToolStripMenuItem, HệThốngToolStripMenuItem, tool_logger, ToolStripSeparator2})
+        ToolStrip1.Location = New Point(0, 0)
+        ToolStrip1.Name = "ToolStrip1"
+        ToolStrip1.RenderMode = ToolStripRenderMode.System
+        ToolStrip1.Size = New Size(1475, 36)
+        ToolStrip1.TabIndex = 1
+        ToolStrip1.Text = "ToolStrip1"
+        ' 
+        ' tool_user_profile
+        ' 
+        tool_user_profile.Font = New Font("Segoe UI", 14F, FontStyle.Bold)
+        tool_user_profile.Image = My.Resources.Resources.LogoHR
+        tool_user_profile.Name = "tool_user_profile"
+        tool_user_profile.Size = New Size(157, 36)
+        tool_user_profile.Text = "Wind Town"
+        ' 
+        ' ToolStripSeparator1
+        ' 
+        ToolStripSeparator1.Name = "ToolStripSeparator1"
+        ToolStripSeparator1.Size = New Size(6, 36)
+        ' 
+        ' SdvsdToolStripMenuItem
+        ' 
+        SdvsdToolStripMenuItem.DropDownItems.AddRange(New ToolStripItem() {menu_department, menu_level, menu_job})
+        SdvsdToolStripMenuItem.Image = My.Resources.Resources.enterprise
+        SdvsdToolStripMenuItem.Name = "SdvsdToolStripMenuItem"
+        SdvsdToolStripMenuItem.Size = New Size(100, 36)
+        SdvsdToolStripMenuItem.Text = "Tổ chức"
+        ' 
+        ' menu_department
+        ' 
+        menu_department.Image = My.Resources.Resources.phongban
+        menu_department.Name = "menu_department"
+        menu_department.Size = New Size(161, 38)
+        menu_department.Text = "Phòng ban"
+        ' 
+        ' menu_level
+        ' 
+        menu_level.Image = My.Resources.Resources.market
+        menu_level.Name = "menu_level"
+        menu_level.Size = New Size(161, 38)
+        menu_level.Text = "Trình độ"
+        ' 
+        ' menu_job
+        ' 
+        menu_job.Image = My.Resources.Resources._case
+        menu_job.Name = "menu_job"
+        menu_job.Size = New Size(161, 38)
+        menu_job.Text = "Công việc"
+        ' 
+        ' DvsdvToolStripMenuItem
+        ' 
+        DvsdvToolStripMenuItem.DropDownItems.AddRange(New ToolStripItem() {menu_empolyee, menu_contract, menu_position})
+        DvsdvToolStripMenuItem.Image = My.Resources.Resources.book_user
+        DvsdvToolStripMenuItem.Name = "DvsdvToolStripMenuItem"
+        DvsdvToolStripMenuItem.Size = New Size(104, 36)
+        DvsdvToolStripMenuItem.Text = "Nhân sự"
+        ' 
+        ' menu_empolyee
+        ' 
+        menu_empolyee.Image = My.Resources.Resources.employee
+        menu_empolyee.Name = "menu_empolyee"
+        menu_empolyee.Size = New Size(156, 38)
+        menu_empolyee.Text = "Nhân viên"
+        ' 
+        ' menu_contract
+        ' 
+        menu_contract.Image = My.Resources.Resources.diploma
+        menu_contract.Name = "menu_contract"
+        menu_contract.Size = New Size(156, 38)
+        menu_contract.Text = "Hợp đồng"
+        ' 
+        ' menu_position
+        ' 
+        menu_position.Image = My.Resources.Resources.verified
+        menu_position.Name = "menu_position"
+        menu_position.Size = New Size(156, 38)
+        menu_position.Text = "Chức vụ"
+        ' 
+        ' SdvfToolStripMenuItem
+        ' 
+        SdvfToolStripMenuItem.DropDownItems.AddRange(New ToolStripItem() {menu_project, menu_assignment, menu_attendance, menu_holiday, menu_leave_cat, menu_leave})
+        SdvfToolStripMenuItem.Image = My.Resources.Resources.projectManage
+        SdvfToolStripMenuItem.Name = "SdvfToolStripMenuItem"
+        SdvfToolStripMenuItem.Size = New Size(112, 36)
+        SdvfToolStripMenuItem.Text = "Vận hành"
+        ' 
+        ' menu_project
+        ' 
+        menu_project.Image = My.Resources.Resources.project1
+        menu_project.Name = "menu_project"
+        menu_project.Size = New Size(216, 38)
+        menu_project.Text = "Dự án"
+        ' 
+        ' menu_assignment
+        ' 
+        menu_assignment.Image = My.Resources.Resources.delegation
+        menu_assignment.Name = "menu_assignment"
+        menu_assignment.Size = New Size(216, 38)
+        menu_assignment.Text = "Phân công dự án"
+        ' 
+        ' menu_attendance
+        ' 
+        menu_attendance.Image = My.Resources.Resources.calendar_clock
+        menu_attendance.Name = "menu_attendance"
+        menu_attendance.Size = New Size(216, 38)
+        menu_attendance.Text = "Chấm công"
+        ' 
+        ' menu_holiday
+        ' 
+        menu_holiday.Image = My.Resources.Resources.Holidays
+        menu_holiday.Name = "menu_holiday"
+        menu_holiday.Size = New Size(216, 38)
+        menu_holiday.Text = "Hệ số lương ngày lễ"
+        ' 
+        ' menu_leave_cat
+        ' 
+        menu_leave_cat.Image = My.Resources.Resources.leave2
+        menu_leave_cat.Name = "menu_leave_cat"
+        menu_leave_cat.Size = New Size(216, 38)
+        menu_leave_cat.Text = "Các loại nghỉ phép"
+        menu_leave_cat.ToolTipText = "Các loại nghỉ phép"
+        ' 
+        ' menu_leave
+        ' 
+        menu_leave.Image = My.Resources.Resources.leave
+        menu_leave.Name = "menu_leave"
+        menu_leave.Size = New Size(216, 38)
+        menu_leave.Text = "Nghỉ phép"
+        ' 
+        ' menu_policy
+        ' 
+        menu_policy.Image = My.Resources.Resources.rules_alt
+        menu_policy.Name = "menu_policy"
+        menu_policy.Size = New Size(120, 36)
+        menu_policy.Text = "Chính sách"
+        ' 
+        ' TàiChínhToolStripMenuItem
+        ' 
+        TàiChínhToolStripMenuItem.DropDownItems.AddRange(New ToolStripItem() {menu_pay_period, menu_payroll})
+        TàiChínhToolStripMenuItem.Image = My.Resources.Resources.money
+        TàiChínhToolStripMenuItem.Name = "TàiChínhToolStripMenuItem"
+        TàiChínhToolStripMenuItem.Size = New Size(105, 36)
+        TàiChínhToolStripMenuItem.Text = "Tài chính"
+        ' 
+        ' menu_pay_period
+        ' 
+        menu_pay_period.Image = My.Resources.Resources.wages1
+        menu_pay_period.Name = "menu_pay_period"
+        menu_pay_period.Size = New Size(176, 38)
+        menu_pay_period.Text = "Chu kỳ lương"
+        ' 
+        ' menu_payroll
+        ' 
+        menu_payroll.Image = My.Resources.Resources.financial_reporting
+        menu_payroll.Name = "menu_payroll"
+        menu_payroll.Size = New Size(176, 38)
+        menu_payroll.Text = "Bảng lương"
+        ' 
+        ' HệThốngToolStripMenuItem
+        ' 
+        HệThốngToolStripMenuItem.DropDownItems.AddRange(New ToolStripItem() {menu_account})
+        HệThốngToolStripMenuItem.Image = My.Resources.Resources.gear
+        HệThốngToolStripMenuItem.Name = "HệThốngToolStripMenuItem"
+        HệThốngToolStripMenuItem.Size = New Size(111, 36)
+        HệThốngToolStripMenuItem.Text = "Hệ thống"
+        ' 
+        ' menu_account
+        ' 
+        menu_account.Image = My.Resources.Resources.user1
+        menu_account.Name = "menu_account"
+        menu_account.Size = New Size(151, 38)
+        menu_account.Text = "Tài khoản"
+        ' 
+        ' tool_logger
+        ' 
+        tool_logger.Font = New Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        tool_logger.Image = My.Resources.Resources.log
+        tool_logger.Name = "tool_logger"
+        tool_logger.Size = New Size(83, 36)
+        tool_logger.Text = "Log"
+        ' 
+        ' ToolStripSeparator2
+        ' 
+        ToolStripSeparator2.Name = "ToolStripSeparator2"
+        ToolStripSeparator2.Size = New Size(6, 36)
+        ' 
+        ' contextMenu_tab
+        ' 
+        contextMenu_tab.Items.AddRange(New ToolStripItem() {menu_close, menu_close_all_tab, menu_move_to_splitA, menu_move_all_to_splitA, menu_move_to_splitB, menu_move_all_to_splitB})
+        contextMenu_tab.Name = "contextMenu_tab"
+        contextMenu_tab.Size = New Size(187, 136)
+        ' 
+        ' menu_close
+        ' 
+        menu_close.Name = "menu_close"
+        menu_close.Size = New Size(186, 22)
+        menu_close.Text = "Đóng"
+        ' 
+        ' menu_close_all_tab
+        ' 
+        menu_close_all_tab.Name = "menu_close_all_tab"
+        menu_close_all_tab.Size = New Size(186, 22)
+        menu_close_all_tab.Text = "Đóng tất cả các tab"
+        ' 
+        ' menu_move_to_splitA
+        ' 
+        menu_move_to_splitA.Name = "menu_move_to_splitA"
+        menu_move_to_splitA.Size = New Size(186, 22)
+        menu_move_to_splitA.Text = "Chuyển sang A"
+        ' 
+        ' menu_move_all_to_splitA
+        ' 
+        menu_move_all_to_splitA.Name = "menu_move_all_to_splitA"
+        menu_move_all_to_splitA.Size = New Size(186, 22)
+        menu_move_all_to_splitA.Text = "Chuyển tất cả sang A"
+        ' 
+        ' menu_move_to_splitB
+        ' 
+        menu_move_to_splitB.Name = "menu_move_to_splitB"
+        menu_move_to_splitB.Size = New Size(186, 22)
+        menu_move_to_splitB.Text = "Chuyển sang B"
+        ' 
+        ' menu_move_all_to_splitB
+        ' 
+        menu_move_all_to_splitB.Name = "menu_move_all_to_splitB"
+        menu_move_all_to_splitB.Size = New Size(186, 22)
+        menu_move_all_to_splitB.Text = "Chuyển tất cả sang B"
+        ' 
+        ' FormMain
+        ' 
+        AutoScaleDimensions = New SizeF(7F, 15F)
+        AutoScaleMode = AutoScaleMode.Font
+        BackColor = SystemColors.ActiveCaption
+        ClientSize = New Size(1475, 749)
+        Controls.Add(pnl_main)
+        ImeMode = ImeMode.On
+        Margin = New Padding(4, 3, 4, 3)
+        Name = "FormMain"
+        StartPosition = FormStartPosition.CenterScreen
+        Text = "FormMain"
+        pnl_main.ResumeLayout(False)
+        pnl_main.PerformLayout()
+        split_main.Panel1.ResumeLayout(False)
+        split_main.Panel2.ResumeLayout(False)
+        CType(split_main, ComponentModel.ISupportInitialize).EndInit()
+        split_main.ResumeLayout(False)
+        tabControl_A.ResumeLayout(False)
+        tabControl_B.ResumeLayout(False)
+        ToolStrip1.ResumeLayout(False)
+        ToolStrip1.PerformLayout()
+        contextMenu_tab.ResumeLayout(False)
+        ResumeLayout(False)
 
     End Sub
     Friend WithEvents pnl_main As Panel
@@ -481,8 +503,6 @@ Partial Class FormMain
     Friend WithEvents menu_assignment As ToolStripMenuItem
     Friend WithEvents menu_pay_period As ToolStripMenuItem
     Friend WithEvents menu_payroll As ToolStripMenuItem
-    Friend WithEvents DfToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents menu_salary_mult As ToolStripMenuItem
     Friend WithEvents tool_logger As ToolStripMenuItem
     Public WithEvents tool_user_profile As ToolStripMenuItem
 End Class

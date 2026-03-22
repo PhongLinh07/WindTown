@@ -37,6 +37,20 @@ Public Class Policy_CRUD_Frm
         ui_unit.DataSource = New BindingSource(UnitSuffix.Dict_UI, Nothing)
         ui_unit.DisplayMember = "Value"
         ui_unit.ValueMember = "Key"
+
+#Region "Buiding rule"
+        ui_var_sys.DataSource = New BindingSource(System_Parameter.Dict_UI, Nothing)
+        ui_var_sys.DisplayMember = "Value"
+        ui_var_sys.ValueMember = "Key"
+
+        Dim response = AppServices.Instance.PolicySV.GetList()
+        Dim pols As List(Of Policy) = If(response.IsSuccess, response.Data, New List(Of Policy))
+        ui_var_cust.DataSource = pols.Select(Function(x) New With {.Display = $"{x.name} ({x.code})", .Value = x.code}).ToList()
+        ui_var_cust.DisplayMember = "Display"
+        ui_var_cust.ValueMember = "Value"
+
+        ui_sym.SelectedIndex = 1
+#End Region
     End Sub
 
     Protected Overrides Sub BindDataToUI()
@@ -59,20 +73,30 @@ Public Class Policy_CRUD_Frm
 
         If isCreate Then
             If System_Parameter.IsSystemParameter(ui_code.Text.Trim().ToUpper()) Then
-                MessageBox.Show("Mã không thể trùng với mã hệ thống và không bắt đầu bằng 'SYS_'")
+                MessageBox.Show("Mã không thể trùng với mã hệ thống và không bắt đầu bằng 'SYS_'", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End If
         End If
         If String.IsNullOrWhiteSpace(ui_code.Text) Then
-            MessageBox.Show("Mã chính sách không hợp lệ")
+            MessageBox.Show("Mã chính sách không hợp lệ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error)
             ui_code.Focus()
             Return False
         End If
-
+        If AppServices.Instance.PolicySV.IsCodeDuplicate(ui_code.Text.Trim(), If(isCreate, 0, _data.id)) Then
+            MessageBox.Show("Mã chính sách này đã tồn tại.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Return False
+        End If
         If String.IsNullOrWhiteSpace(ui_name.Text) Then
-            MessageBox.Show("Tên chính sách không hợp lệ")
+            MessageBox.Show("Tên chính sách không hợp lệ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error)
             ui_name.Focus()
             Return False
         End If
+
+        If ui_unit.SelectedValue Is Nothing Then
+            MessageBox.Show("Đơn vị giá trị không hợp lệ!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Return False
+        End If
+
+
 
         If String.IsNullOrWhiteSpace(ui_rule.Text) Then
             MessageBox.Show("Quy tắc/Công thức không hợp lệ")
@@ -101,30 +125,41 @@ Public Class Policy_CRUD_Frm
 
     End Function
 
-    Protected Overrides Sub DataChanged() Handles ui_code.TextChanged,
-                                        ui_name.TextChanged,
-                                        ui_aggregate.SelectedValueChanged,
-                                        ui_gen_item.SelectedValueChanged,
-                                        ui_category.SelectedValueChanged,
-                                        ui_unit.SelectedIndexChanged,
-                                        ui_rule.TextChanged,
-                                        ui_priority.ValueChanged,
-                                        ui_note.TextChanged,
-                                        ui_status.SelectedIndexChanged
-
+    Protected Overrides Sub DataChanged() Handles ui_code.TextChanged, ui_name.TextChanged, ui_aggregate.SelectedValueChanged, ui_gen_item.SelectedValueChanged, ui_category.SelectedValueChanged, ui_unit.SelectedIndexChanged, ui_rule.TextChanged, ui_priority.ValueChanged, ui_note.TextChanged, ui_status.SelectedIndexChanged
         tool_save.Enabled = True
-
     End Sub
 
-    Private Sub ui_data_source_TextChanged(sender As Object, e As EventArgs) Handles ui_rule.TextChanged
+    Private Sub ui_rule_TextChanged(sender As Object, e As EventArgs) Handles ui_rule.TextChanged
 
         _data.source = Data_Source.GetDataSourceByRule(ui_rule.Text)
         ui_data_source.Text = Data_Source.GetParameter(_data.source).name
     End Sub
-
     Private Sub ui_code_TextChanged(sender As Object, e As EventArgs) Handles ui_code.TextChanged
         If System_Parameter.IsSystemParameter(ui_code.Text.Trim().ToUpper()) Then
-            MessageBox.Show("Mã không thể trùng với mã hệ thống và không bắt đầu bằng 'SYS_'")
+            MessageBox.Show("Mã không thể trùng với mã hệ thống và không bắt đầu bằng 'SYS_'", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End If
+    End Sub
+
+    Private Sub btn_add_var_sys_Click(sender As Object, e As EventArgs) Handles btn_add_var_sys.Click
+        InsertAtCursor(ui_var_sys.SelectedValue.ToString())
+    End Sub
+
+    Private Sub btn_add_sym_Click(sender As Object, e As EventArgs) Handles btn_add_sym.Click
+        InsertAtCursor(ui_sym.Text)
+    End Sub
+
+    Private Sub btn_add_var_cust_Click(sender As Object, e As EventArgs) Handles btn_add_var_cust.Click
+        InsertAtCursor(ui_var_cust.SelectedValue.ToString())
+    End Sub
+
+    Private Sub btn_add_num_Click(sender As Object, e As EventArgs) Handles btn_add_num.Click
+        InsertAtCursor(ui_num.Value.ToString())
+    End Sub
+
+    Private Sub InsertAtCursor(text As String)
+        Dim pos = ui_rule.SelectionStart
+        ui_rule.Text = ui_rule.Text.Insert(pos, text & " ")
+        ui_rule.SelectionStart = pos + text.Length + 1
+        ui_rule.Focus()
     End Sub
 End Class

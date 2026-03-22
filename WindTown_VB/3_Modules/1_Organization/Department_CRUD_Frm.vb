@@ -34,9 +34,12 @@ Public Class Department_CRUD_Frm
             ui_code.Focus()
             Return False
         End If
-
+        If AppServices.Instance.DepartmentSV.IsCodeDuplicate(ui_code.Text.Trim(), If(isCreate, 0, _data.id)) Then
+            MessageBox.Show("Mã phòng ban đã tồn tại.")
+            Return False
+        End If
         If String.IsNullOrWhiteSpace(ui_name.Text) Then
-            MessageBox.Show("Name cannot be empty")
+            MessageBox.Show("Tên phòng ban không hợp lệ!")
             ui_name.Focus()
             Return False
         End If

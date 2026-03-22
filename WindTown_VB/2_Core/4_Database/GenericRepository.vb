@@ -12,21 +12,30 @@ Public Class GenericRepository(Of T As Class)
         Return _ctx.Set(Of T)().AsNoTracking()
     End Function
 
+    ' Repository con override hàm này để khai báo Include
+    Protected Overridable Function BuildQuery(ctx As AppDbContext) As IQueryable(Of T)
+        Return ctx.Set(Of T)().AsNoTracking()
+    End Function
+
     Private Function Execute(filter As SqlFilter(Of T)) As IQueryable(Of T)
         Return filter.Apply(BaseQuery())
     End Function
 
     Public Overridable Function GetList() As List(Of T)
-        Dim f = SqlFilter(Of T).Default() _
-            .Add(Function(x) EF.Property(Of Integer)(x, "status") <> -1)
-        Return Execute(f).ToList()
+        Using ctx As New AppDbContext()
+            Return BuildQuery(ctx) _
+                .Where(Function(x) EF.Property(Of Integer)(x, "status") <> -1) _
+                .ToList()
+        End Using
     End Function
 
     Public Overridable Function GetById(id As Integer) As T
-        Dim f = SqlFilter(Of T).Default() _
-            .Add(Function(x) EF.Property(Of Integer)(x, "status") <> -1) _
-            .Add(Function(x) EF.Property(Of Integer)(x, "id") = id)
-        Return Execute(f).FirstOrDefault()
+        Using ctx As New AppDbContext()
+            Return BuildQuery(ctx) _
+                .Where(Function(x) EF.Property(Of Integer)(x, "status") <> -1) _
+                .Where(Function(x) EF.Property(Of Integer)(x, "id") = id) _
+                .FirstOrDefault()
+        End Using
     End Function
 
     Public Function Search(filter As SqlFilter(Of T)) As List(Of T)
@@ -41,14 +50,12 @@ Public Class GenericRepository(Of T As Class)
                 Next
                 ctx.Set(Of T)().Add(entity)
                 ctx.SaveChanges()
-
-                ' ✅ Copy id mới về entity gốc
                 Dim newId = ctx.Entry(entity).Property("id").CurrentValue
                 entity.GetType().GetProperty("id")?.SetValue(entity, newId)
             End Using
             Return True
         Catch ex As Exception
-            MessageBox.Show($"Lỗi Insert: {ex.Message}{vbCrLf}{ex.InnerException?.Message}")
+            MessageBox.Show($"Loi Insert: {ex.Message}{vbCrLf}{ex.InnerException?.Message}")
             Return False
         End Try
     End Function
@@ -65,7 +72,7 @@ Public Class GenericRepository(Of T As Class)
             End Using
             Return True
         Catch ex As Exception
-            MessageBox.Show($"Lỗi Update: {ex.Message}{vbCrLf}{ex.InnerException?.Message}")
+            MessageBox.Show($"Loi Update: {ex.Message}{vbCrLf}{ex.InnerException?.Message}")
             Return False
         End Try
     End Function

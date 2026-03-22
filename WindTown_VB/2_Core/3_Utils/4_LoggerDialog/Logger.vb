@@ -41,6 +41,7 @@ Public Class Logger
 
         If Not _form.Visible Then
             _form.Show()
+            _form.TopLevel = True
         End If
 
 

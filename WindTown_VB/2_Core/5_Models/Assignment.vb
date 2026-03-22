@@ -9,7 +9,7 @@ Public Class Assignment
     Public Sub New()
         code = $"ASSM{GenerateRandomNumbers.Generate}"
         start_date = DateTime.Now
-        end_date = DateTime.Now
+        end_date = start_date.AddYears(3)
         note = ""
         status = 0
     End Sub

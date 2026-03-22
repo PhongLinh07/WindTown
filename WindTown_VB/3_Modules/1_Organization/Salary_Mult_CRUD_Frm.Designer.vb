@@ -22,158 +22,193 @@ Partial Class Salary_Mult_CRUD_Frm
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Me.Label4 = New System.Windows.Forms.Label()
-        Me.ui_note = New System.Windows.Forms.RichTextBox()
-        Me.ui_status = New System.Windows.Forms.ComboBox()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.ui_level = New System.Windows.Forms.ComboBox()
-        Me.sf = New System.Windows.Forms.Label()
-        Me.ui_job = New System.Windows.Forms.ComboBox()
-        Me.ui_mult = New System.Windows.Forms.NumericUpDown()
-        Me.Label2 = New System.Windows.Forms.Label()
-        CType(Me.ui_mult, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.SuspendLayout()
-        '
-        'Label4
-        '
-        Me.Label4.AutoSize = True
-        Me.Label4.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Label4.Location = New System.Drawing.Point(392, 165)
-        Me.Label4.Margin = New System.Windows.Forms.Padding(0)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(74, 19)
-        Me.Label4.TabIndex = 16
-        Me.Label4.Text = "Ghi chú:"
-        '
-        'ui_note
-        '
-        Me.ui_note.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ui_note.Location = New System.Drawing.Point(396, 188)
-        Me.ui_note.Name = "ui_note"
-        Me.ui_note.Size = New System.Drawing.Size(313, 117)
-        Me.ui_note.TabIndex = 15
-        Me.ui_note.Text = ""
-        '
-        'ui_status
-        '
-        Me.ui_status.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ui_status.FormattingEnabled = True
-        Me.ui_status.Items.AddRange(New Object() {"ACTIVE", "INACTIVE"})
-        Me.ui_status.Location = New System.Drawing.Point(396, 100)
-        Me.ui_status.Name = "ui_status"
-        Me.ui_status.Size = New System.Drawing.Size(313, 28)
-        Me.ui_status.TabIndex = 14
-        '
-        'Label3
-        '
-        Me.Label3.AutoSize = True
-        Me.Label3.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Label3.Location = New System.Drawing.Point(392, 77)
-        Me.Label3.Margin = New System.Windows.Forms.Padding(0)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(91, 19)
-        Me.Label3.TabIndex = 13
-        Me.Label3.Text = "Trạng thái:"
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Label1.Location = New System.Drawing.Point(42, 79)
-        Me.Label1.Margin = New System.Windows.Forms.Padding(0)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(179, 19)
-        Me.Label1.TabIndex = 10
-        Me.Label1.Text = "Chức danh công việc:"
-        '
-        'ui_level
-        '
-        Me.ui_level.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ui_level.FormattingEnabled = True
-        Me.ui_level.Items.AddRange(New Object() {"ACTIVE", "INACTIVE"})
-        Me.ui_level.Location = New System.Drawing.Point(46, 188)
-        Me.ui_level.Name = "ui_level"
-        Me.ui_level.Size = New System.Drawing.Size(288, 28)
-        Me.ui_level.TabIndex = 18
-        '
-        'sf
-        '
-        Me.sf.AutoSize = True
-        Me.sf.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.sf.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.sf.Location = New System.Drawing.Point(42, 165)
-        Me.sf.Margin = New System.Windows.Forms.Padding(0)
-        Me.sf.Name = "sf"
-        Me.sf.Size = New System.Drawing.Size(143, 19)
-        Me.sf.TabIndex = 17
-        Me.sf.Text = "Cấp bậc kỹ năng:"
-        '
-        'ui_job
-        '
-        Me.ui_job.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ui_job.FormattingEnabled = True
-        Me.ui_job.Items.AddRange(New Object() {"ACTIVE", "INACTIVE"})
-        Me.ui_job.Location = New System.Drawing.Point(46, 100)
-        Me.ui_job.Name = "ui_job"
-        Me.ui_job.Size = New System.Drawing.Size(288, 28)
-        Me.ui_job.TabIndex = 19
-        '
-        'ui_mult
-        '
-        Me.ui_mult.DecimalPlaces = 2
-        Me.ui_mult.Font = New System.Drawing.Font("Arial Narrow", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ui_mult.Increment = New Decimal(New Integer() {1, 0, 0, 65536})
-        Me.ui_mult.Location = New System.Drawing.Point(46, 279)
-        Me.ui_mult.Name = "ui_mult"
-        Me.ui_mult.Size = New System.Drawing.Size(291, 26)
-        Me.ui_mult.TabIndex = 67
-        '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Label2.Location = New System.Drawing.Point(43, 256)
-        Me.Label2.Margin = New System.Windows.Forms.Padding(0)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(59, 19)
-        Me.Label2.TabIndex = 66
-        Me.Label2.Text = "Hệ số:"
-        '
-        'Salary_Mult_CRUD_Frm
-        '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
-        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(759, 414)
-        Me.Controls.Add(Me.ui_mult)
-        Me.Controls.Add(Me.Label2)
-        Me.Controls.Add(Me.ui_job)
-        Me.Controls.Add(Me.ui_level)
-        Me.Controls.Add(Me.sf)
-        Me.Controls.Add(Me.Label4)
-        Me.Controls.Add(Me.ui_note)
-        Me.Controls.Add(Me.ui_status)
-        Me.Controls.Add(Me.Label3)
-        Me.Controls.Add(Me.Label1)
-        Me.Name = "Salary_Mult_CRUD_Frm"
-        Me.Text = "Job_CRUD_Frm"
-        Me.Controls.SetChildIndex(Me.Label1, 0)
-        Me.Controls.SetChildIndex(Me.Label3, 0)
-        Me.Controls.SetChildIndex(Me.ui_status, 0)
-        Me.Controls.SetChildIndex(Me.ui_note, 0)
-        Me.Controls.SetChildIndex(Me.Label4, 0)
-        Me.Controls.SetChildIndex(Me.sf, 0)
-        Me.Controls.SetChildIndex(Me.ui_level, 0)
-        Me.Controls.SetChildIndex(Me.ui_job, 0)
-        Me.Controls.SetChildIndex(Me.Label2, 0)
-        Me.Controls.SetChildIndex(Me.ui_mult, 0)
-        CType(Me.ui_mult, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.ResumeLayout(False)
-        Me.PerformLayout()
+        Label4 = New Label()
+        ui_note = New RichTextBox()
+        ui_status = New ComboBox()
+        Label3 = New Label()
+        Label1 = New Label()
+        ui_level = New ComboBox()
+        sf = New Label()
+        ui_job = New ComboBox()
+        ui_mult = New NumericUpDown()
+        Label2 = New Label()
+        Label5 = New Label()
+        ui_code = New TextBox()
+        CType(ui_mult, ComponentModel.ISupportInitialize).BeginInit()
+        SuspendLayout()
+        ' 
+        ' Label4
+        ' 
+        Label4.AutoSize = True
+        Label4.Font = New Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Label4.ImageAlign = ContentAlignment.MiddleLeft
+        Label4.Location = New Point(457, 190)
+        Label4.Margin = New Padding(0)
+        Label4.Name = "Label4"
+        Label4.Size = New Size(74, 19)
+        Label4.TabIndex = 16
+        Label4.Text = "Ghi chú:"
+        ' 
+        ' ui_note
+        ' 
+        ui_note.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        ui_note.Location = New Point(462, 217)
+        ui_note.Margin = New Padding(4, 3, 4, 3)
+        ui_note.Name = "ui_note"
+        ui_note.Size = New Size(364, 233)
+        ui_note.TabIndex = 15
+        ui_note.Text = ""
+        ' 
+        ' ui_status
+        ' 
+        ui_status.DropDownStyle = ComboBoxStyle.DropDownList
+        ui_status.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        ui_status.FormattingEnabled = True
+        ui_status.Items.AddRange(New Object() {"ACTIVE", "INACTIVE"})
+        ui_status.Location = New Point(462, 115)
+        ui_status.Margin = New Padding(4, 3, 4, 3)
+        ui_status.Name = "ui_status"
+        ui_status.Size = New Size(364, 28)
+        ui_status.TabIndex = 14
+        ' 
+        ' Label3
+        ' 
+        Label3.AutoSize = True
+        Label3.Font = New Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Label3.ImageAlign = ContentAlignment.MiddleLeft
+        Label3.Location = New Point(457, 89)
+        Label3.Margin = New Padding(0)
+        Label3.Name = "Label3"
+        Label3.Size = New Size(91, 19)
+        Label3.TabIndex = 13
+        Label3.Text = "Trạng thái:"
+        ' 
+        ' Label1
+        ' 
+        Label1.AutoSize = True
+        Label1.Font = New Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Label1.ImageAlign = ContentAlignment.MiddleLeft
+        Label1.Location = New Point(45, 193)
+        Label1.Margin = New Padding(0)
+        Label1.Name = "Label1"
+        Label1.Size = New Size(179, 19)
+        Label1.TabIndex = 10
+        Label1.Text = "Chức danh công việc:"
+        ' 
+        ' ui_level
+        ' 
+        ui_level.DropDownStyle = ComboBoxStyle.DropDownList
+        ui_level.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        ui_level.FormattingEnabled = True
+        ui_level.Items.AddRange(New Object() {"ACTIVE", "INACTIVE"})
+        ui_level.Location = New Point(50, 319)
+        ui_level.Margin = New Padding(4, 3, 4, 3)
+        ui_level.Name = "ui_level"
+        ui_level.Size = New Size(335, 28)
+        ui_level.TabIndex = 18
+        ' 
+        ' sf
+        ' 
+        sf.AutoSize = True
+        sf.Font = New Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        sf.ImageAlign = ContentAlignment.MiddleLeft
+        sf.Location = New Point(45, 292)
+        sf.Margin = New Padding(0)
+        sf.Name = "sf"
+        sf.Size = New Size(143, 19)
+        sf.TabIndex = 17
+        sf.Text = "Cấp bậc kỹ năng:"
+        ' 
+        ' ui_job
+        ' 
+        ui_job.DropDownStyle = ComboBoxStyle.DropDownList
+        ui_job.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        ui_job.FormattingEnabled = True
+        ui_job.Items.AddRange(New Object() {"ACTIVE", "INACTIVE"})
+        ui_job.Location = New Point(50, 217)
+        ui_job.Margin = New Padding(4, 3, 4, 3)
+        ui_job.Name = "ui_job"
+        ui_job.Size = New Size(335, 28)
+        ui_job.TabIndex = 19
+        ' 
+        ' ui_mult
+        ' 
+        ui_mult.DecimalPlaces = 2
+        ui_mult.Font = New Font("Arial Narrow", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        ui_mult.Increment = New Decimal(New Integer() {1, 0, 0, 65536})
+        ui_mult.Location = New Point(50, 424)
+        ui_mult.Margin = New Padding(4, 3, 4, 3)
+        ui_mult.Name = "ui_mult"
+        ui_mult.Size = New Size(340, 26)
+        ui_mult.TabIndex = 67
+        ' 
+        ' Label2
+        ' 
+        Label2.AutoSize = True
+        Label2.Font = New Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Label2.ImageAlign = ContentAlignment.MiddleLeft
+        Label2.Location = New Point(46, 397)
+        Label2.Margin = New Padding(0)
+        Label2.Name = "Label2"
+        Label2.Size = New Size(59, 19)
+        Label2.TabIndex = 66
+        Label2.Text = "Hệ số:"
+        ' 
+        ' Label5
+        ' 
+        Label5.AutoSize = True
+        Label5.Font = New Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Label5.ImageAlign = ContentAlignment.MiddleLeft
+        Label5.Location = New Point(45, 88)
+        Label5.Margin = New Padding(0)
+        Label5.Name = "Label5"
+        Label5.Size = New Size(83, 19)
+        Label5.TabIndex = 69
+        Label5.Text = "Mã hệ số:"
+        ' 
+        ' ui_code
+        ' 
+        ui_code.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        ui_code.Location = New Point(50, 115)
+        ui_code.Margin = New Padding(4, 3, 4, 3)
+        ui_code.Name = "ui_code"
+        ui_code.Size = New Size(335, 26)
+        ui_code.TabIndex = 68
+        ' 
+        ' Salary_Mult_CRUD_Frm
+        ' 
+        AutoScaleDimensions = New SizeF(7F, 15F)
+        AutoScaleMode = AutoScaleMode.Font
+        ClientSize = New Size(881, 502)
+        Controls.Add(Label5)
+        Controls.Add(ui_code)
+        Controls.Add(ui_mult)
+        Controls.Add(Label2)
+        Controls.Add(ui_job)
+        Controls.Add(ui_level)
+        Controls.Add(sf)
+        Controls.Add(Label4)
+        Controls.Add(ui_note)
+        Controls.Add(ui_status)
+        Controls.Add(Label3)
+        Controls.Add(Label1)
+        Name = "Salary_Mult_CRUD_Frm"
+        Text = "Job_CRUD_Frm"
+        Controls.SetChildIndex(Label1, 0)
+        Controls.SetChildIndex(Label3, 0)
+        Controls.SetChildIndex(ui_status, 0)
+        Controls.SetChildIndex(ui_note, 0)
+        Controls.SetChildIndex(Label4, 0)
+        Controls.SetChildIndex(sf, 0)
+        Controls.SetChildIndex(ui_level, 0)
+        Controls.SetChildIndex(ui_job, 0)
+        Controls.SetChildIndex(Label2, 0)
+        Controls.SetChildIndex(ui_mult, 0)
+        Controls.SetChildIndex(ui_code, 0)
+        Controls.SetChildIndex(Label5, 0)
+        CType(ui_mult, ComponentModel.ISupportInitialize).EndInit()
+        ResumeLayout(False)
+        PerformLayout()
 
     End Sub
 
@@ -187,4 +222,6 @@ Partial Class Salary_Mult_CRUD_Frm
     Friend WithEvents ui_job As ComboBox
     Friend WithEvents ui_mult As NumericUpDown
     Friend WithEvents Label2 As Label
+    Friend WithEvents Label5 As Label
+    Friend WithEvents ui_code As TextBox
 End Class

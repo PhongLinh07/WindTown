@@ -168,14 +168,13 @@ Public Class formDashBoardV2
 
         For Each emp In employees
             Dim list = contracts.Where(Function(c) c.employee_id = emp.id AndAlso
-                c.start_date.Date <= today AndAlso
-                (Not c.end_date.HasValue OrElse c.end_date.Value.Date >= today)).ToList()
+                c.start_date.Date <= today AndAlso c.end_date.Date >= today).ToList()
             If list.Count = 0 Then
                 none += 1
                 Continue For
             End If
             Dim best = list.OrderByDescending(Function(c) c.start_date).First()
-            If best.end_date.HasValue AndAlso best.end_date.Value.Date >= today AndAlso best.end_date.Value.Date <= deadline Then
+            If best.end_date.Date >= today AndAlso best.end_date.Date <= deadline Then
                 ex += 1
             Else
                 co += 1
@@ -226,7 +225,10 @@ Public Class formDashBoardV2
     End Sub
 
     Private Sub LoadDeptChart()
-        _deptNames = New String() {"Kỹ thuật", "Kinh doanh", "Vận hành", "Kế toán", "Marketing", "Nhân sự"}
+        Dim dept = AppServices.Instance.DepartmentSV.GetList()
+        Dim deptList = If(dept.IsSuccess, dept.Data, New List(Of Department))
+        deptList.S
+        _deptNames = New String() {"Kỹ thuật", "Phòng nhân sự", "Phòng điều hành", "Phòng phát triển", "Phòng A", "Phòng B"}
         _deptCounts = New Integer() {54, 45, 50, 38, 32, 28}
     End Sub
 

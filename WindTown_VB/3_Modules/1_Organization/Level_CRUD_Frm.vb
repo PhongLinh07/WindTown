@@ -32,13 +32,16 @@ Public Class Level_CRUD_Frm
     Protected Overrides Function SyncUIToData() As Boolean
 
         If String.IsNullOrWhiteSpace(ui_code.Text) Then
-            MessageBox.Show("Code cannot be empty")
+            MessageBox.Show("Mã cấp bậc không hợp lệ")
             ui_code.Focus()
             Return False
         End If
-
+        If AppServices.Instance.LevelSV.IsCodeDuplicate(ui_code.Text.Trim(), If(isCreate, 0, _data.id)) Then
+            MessageBox.Show("Mã cấp bậc đã tồn tại.")
+            Return False
+        End If
         If String.IsNullOrWhiteSpace(ui_name.Text) Then
-            MessageBox.Show("Name cannot be empty")
+            MessageBox.Show("Tên cấp bậc không hợp lệ!")
             ui_name.Focus()
             Return False
         End If
@@ -48,9 +51,7 @@ Public Class Level_CRUD_Frm
         _data.rank = Convert.ToInt32(ui_rank.Value)
         _data.note = ui_note.Text
 
-        If ui_status.SelectedValue IsNot Nothing Then
-            _data.status = ui_status.SelectedValue.ToString()
-        End If
+        _data.status = CInt(ui_status.SelectedValue.ToString())
 
         Return True
     End Function

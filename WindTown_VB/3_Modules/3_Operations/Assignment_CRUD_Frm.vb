@@ -35,40 +35,31 @@ Public Class Assignment_CRUD_Frm
             Return
         End If
 
-        ' Lấy tất cả Position chưa có Assignment nào (có thể đang có Assignment nhưng không có Active)
-
         Dim response = AppServices.Instance.PositionSV.GetWithoutAssignment()
-
-        _positionsWithoutAssignment = If(response.IsSuccess, response.Data, New List(Of Position))
-
-        If (_positionsWithoutAssignment.Count = 0) Then
-            MessageBox.Show("Không có nhân viên nào rảnh", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+        If Not response.IsSuccess Then
+            MessageBox.Show(response.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error)
             tool_save.Enabled = False
             Return
         End If
+        _positionsWithoutAssignment = If(response.IsSuccess, response.Data, New List(Of Position))
 
-        ui_employee.DataSource = _positionsWithoutAssignment.Select(Function(x) New With {.Display = $"{x.employee_UI}", .Value = x}).ToList()
+        ui_employee.DataSource = _positionsWithoutAssignment.Select(Function(x) New With {.Display = x.employee_UI, .Value = x}).ToList()
         ui_employee.DisplayMember = "Display"
         ui_employee.ValueMember = "Value"
 
         response = AppServices.Instance.ProjectSV.GetActive()
-
-        _projectsIsActive = If(response.IsSuccess, response.Data, New List(Of Project))
-        If (_projectsIsActive.Count = 0) Then
-            MessageBox.Show("Không có dự án nào đang được triển khai", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+        If Not response.IsSuccess Then
+            MessageBox.Show(response.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error)
             tool_save.Enabled = False
             Return
         End If
-        ui_project.DataSource = _projectsIsActive.Select(Function(x) New With {.Display = $"{x.name} ({x.code})", .Value = x}).ToList()
+        _projectsIsActive = If(response.IsSuccess, response.Data, New List(Of Project))
+        ui_project.DataSource = _projectsIsActive.Select(Function(x) New With {.Display = x.project_UI, .Value = x}).ToList()
         ui_project.DisplayMember = "Display"
         ui_project.ValueMember = "Value"
     End Sub
 
-    ' =============================
-    ' Bind Data → UI
-    ' =============================
     Protected Overrides Sub BindDataToUI()
-
 
         If isCreate Then
             ui_project.SelectedIndex = -1
@@ -80,6 +71,7 @@ Public Class Assignment_CRUD_Frm
             ui_contract.Text = _data.Position?.contract_UI
             ui_contract.Enabled = False
 
+            ui_employee.DropDownStyle = ComboBoxStyle.DropDown
             ui_employee.Text = _data.Position?.employee_UI
             ui_employee.Enabled = False
 
@@ -89,6 +81,7 @@ Public Class Assignment_CRUD_Frm
             ui_level.Text = _data.Position?.level_UI
             ui_level.Enabled = False
 
+            ui_project.DropDownStyle = ComboBoxStyle.DropDown
             ui_project.Text = _data.project_UI
             ui_project.Enabled = False
 
@@ -106,32 +99,35 @@ Public Class Assignment_CRUD_Frm
 
     End Sub
 
-
-    ' =============================
-    ' Sync UI → Data
-    ' =============================
     Protected Overrides Function SyncUIToData() As Boolean
         Try
-            ' 1. Validation cơ bản
             If String.IsNullOrWhiteSpace(ui_code.Text) Then
-                MessageBox.Show("Max phân công không hợp lệ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                MessageBox.Show("Mã phân công không hợp lệ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 ui_code.Focus()
                 Return False
             End If
+            If AppServices.Instance.AssigmentSV.IsCodeDuplicate(ui_code.Text.Trim(), If(isCreate, 0, _data.id)) Then
+                MessageBox.Show("Mã phân công này đã tồn tại.")
+                Return False
+            End If
 
-            ' Nếu là tạo mới, kiểm tra các ComboBox bắt buộc
             If isCreate Then
                 If ui_project.SelectedValue Is Nothing OrElse ui_role.SelectedValue Is Nothing OrElse ui_employee.SelectedValue Is Nothing Then
                     MessageBox.Show("Vui lòng chọn đầy Dự án, quyền, nhân viên!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning)
                     Return False
                 End If
 
-                ' Gán các ID quan trọng khi tạo mới
-                _data.Project = ui_project.SelectedValue
-                _data.Position = ui_employee.SelectedValue
+                _data.project_id = CType(ui_project.SelectedValue, Project).id
+                _data.Project = CType(ui_project.SelectedValue, Project)
+                _data.position_id = CType(ui_employee.SelectedValue, Position).id
+                _data.Position = CType(ui_employee.SelectedValue, Position)
             End If
 
-            ' 2. Gán dữ liệu từ UI vào Model (_data)
+            If AppServices.Instance.AssigmentSV.IsConflictStatusActive(_data.position_id, If(isCreate, 0, _data.id)) Then
+                MessageBox.Show("Nhân viên/Chức vụ này hiện đang tham gia một dự án khác!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                Return False
+            End If
+
             _data.code = ui_code.Text.Trim()
             _data.start_date = ui_start_date.Value
             _data.end_date = ui_end_date.Value
@@ -156,11 +152,6 @@ Public Class Assignment_CRUD_Frm
         End Try
     End Function
 
-
-
-    ' =============================
-    ' Detect Change
-    ' =============================
     Protected Overrides Sub DataChanged() _
         Handles ui_code.TextChanged,
                 ui_project.SelectedValueChanged,
@@ -191,7 +182,7 @@ Public Class Assignment_CRUD_Frm
         Dim pos As Position = item.Value
 
         If pos Is Nothing Then
-            MessageBox.Show("Nhân viên này ko hợp lệ!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            MessageBox.Show("Nhân viên này ko hợp lệ!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Return
         End If
 

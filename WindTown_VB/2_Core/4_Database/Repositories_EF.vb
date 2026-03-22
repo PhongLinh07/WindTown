@@ -8,11 +8,8 @@ Public Class DepartmentRepository
     Sub New(ctx As AppDbContext)
         MyBase.New(ctx)
     End Sub
-    ' ✅ Override BaseQuery — load kèm Jobs
-    Protected Overrides Function BaseQuery() As IQueryable(Of Department)
-        Return _ctx.Departments _
-                   .Include(Function(d) d.Jobs) _
-                   .AsNoTracking()
+    Protected Overrides Function BuildQuery(ctx As AppDbContext) As IQueryable(Of Department)
+        Return ctx.Departments.Include(Function(d) d.Jobs).AsNoTracking()
     End Function
 End Class
 
@@ -21,8 +18,8 @@ Public Class JobRepository
     Sub New(ctx As AppDbContext)
         MyBase.New(ctx)
     End Sub
-    Protected Overrides Function BaseQuery() As IQueryable(Of Job)
-        Return _ctx.Jobs.Include(Function(j) j.Department)
+    Protected Overrides Function BuildQuery(ctx As AppDbContext) As IQueryable(Of Job)
+        Return ctx.Jobs.Include(Function(j) j.Department).AsNoTracking()
     End Function
 End Class
 
@@ -38,25 +35,29 @@ Public Class SalaryMultRepository
     Sub New(ctx As AppDbContext)
         MyBase.New(ctx)
     End Sub
-    Protected Overrides Function BaseQuery() As IQueryable(Of Salary_Mult)
-        Return _ctx.Salary_Mults _
+    Protected Overrides Function BuildQuery(ctx As AppDbContext) As IQueryable(Of Salary_Mult)
+        Return ctx.Salary_Mults _
             .Include(Function(sm) sm.Job) _
-                .ThenInclude(Function(j) j.Department) _
-            .Include(Function(sm) sm.Level)
+            .Include(Function(sm) sm.Level) _
+            .AsNoTracking()
     End Function
 
-    ' ✅ Giữ lại — lọc theo Job cụ thể
+    ' dùng _ctx vì Search dùng BaseQuery/_ctx
     Public Function GetByJob(job As Job) As List(Of Salary_Mult)
-        Dim f = SqlFilter(Of Salary_Mult).Default() _
-            .Add(Function(sm) sm.status <> -1) _
-            .Add(Function(sm) sm.job_id = job.id)
-        Return Search(f)
+        Using ctx As New AppDbContext()
+            Return ctx.Salary_Mults _
+            .Include(Function(sm) sm.Job) _
+            .Include(Function(sm) sm.Level) _
+            .Where(Function(sm) sm.status <> -1 AndAlso sm.job_id = job.id) _
+            .AsNoTracking() _
+            .ToList()
+        End Using
     End Function
 End Class
 
 #End Region
 
-#Region "Module Nhân sự"
+#Region "Module Nhan su"
 
 Public Class EmployeeRepository
     Inherits GenericRepository(Of Employee)
@@ -64,7 +65,6 @@ Public Class EmployeeRepository
         MyBase.New(ctx)
     End Sub
 
-    ' ✅ Giữ lại — NOT EXISTS: nhân viên chưa có tài khoản
     Public Function GetWithoutAccount() As List(Of Employee)
         Return _ctx.Employees _
             .Where(Function(e) e.status <> -1 AndAlso e.status <> 0) _
@@ -73,13 +73,10 @@ Public Class EmployeeRepository
             .ToList()
     End Function
 
-    ' ✅ Giữ lại — NOT EXISTS: nhân viên chưa có hợp đồng active
     Public Function GetWithoutContract() As List(Of Employee)
         Return _ctx.Employees _
             .Where(Function(e) e.status <> -1) _
-            .Where(Function(e) Not _ctx.Contracts.Any(
-                Function(c) c.employee_id = e.id AndAlso c.status = 1)) _
-            .ToList()
+            .Where(Function(e) Not _ctx.Contracts.Any(Function(c) c.employee_id = e.id AndAlso c.status = 1)).ToList()
     End Function
 End Class
 
@@ -88,18 +85,15 @@ Public Class ContractRepository
     Sub New(ctx As AppDbContext)
         MyBase.New(ctx)
     End Sub
-    Protected Overrides Function BaseQuery() As IQueryable(Of Contract)
-        Return _ctx.Contracts.Include(Function(c) c.Employee)
+    Protected Overrides Function BuildQuery(ctx As AppDbContext) As IQueryable(Of Contract)
+        Return ctx.Contracts.Include(Function(c) c.Employee).AsNoTracking()
     End Function
 
-    ' ✅ Giữ lại — NOT EXISTS: hợp đồng chưa có position active
     Public Function GetWithoutPosition() As List(Of Contract)
         Return _ctx.Contracts _
             .Include(Function(c) c.Employee) _
             .Where(Function(c) c.status <> -1 AndAlso c.status <> 0) _
-            .Where(Function(c) Not _ctx.Positions.Any(
-                Function(p) p.contract_id = c.id AndAlso p.status <> -1)) _
-            .ToList()
+            .Where(Function(c) Not _ctx.Positions.Any(Function(p) p.contract_id = c.id AndAlso p.status <> -1 AndAlso p.status = 1)).ToList()
     End Function
 End Class
 
@@ -108,30 +102,31 @@ Public Class PositionRepository
     Sub New(ctx As AppDbContext)
         MyBase.New(ctx)
     End Sub
-    Protected Overrides Function BaseQuery() As IQueryable(Of Position)
-        Return _ctx.Positions _
+    Protected Overrides Function BuildQuery(ctx As AppDbContext) As IQueryable(Of Position)
+        Return ctx.Positions _
             .Include(Function(p) p.Contract) _
                 .ThenInclude(Function(c) c.Employee) _
             .Include(Function(p) p.Salary_Mult) _
                 .ThenInclude(Function(sm) sm.Job) _
                     .ThenInclude(Function(j) j.Department) _
             .Include(Function(p) p.Salary_Mult) _
-                .ThenInclude(Function(sm) sm.Level)
+                .ThenInclude(Function(sm) sm.Level) _
+            .AsNoTracking()
     End Function
 
-    ' ✅ Giữ lại — NOT EXISTS: position chưa được phân công
     Public Function GetWithoutAssignment() As List(Of Position)
-        Return BaseQuery() _
-            .Where(Function(p) p.status <> -1) _
-            .Where(Function(p) Not _ctx.Assignments.Any(
-                Function(a) a.position_id = p.id AndAlso a.status = 1)) _
-            .ToList()
+        Return BuildQuery(_ctx) _
+        .Where(Function(p) p.status <> -1) _
+        .Where(Function(p) Not _ctx.Assignments.Any(
+            Function(a) a.position_id = p.id AndAlso a.status = 1)) _
+        .ToList()
+
     End Function
 End Class
 
 #End Region
 
-#Region "Module Vận hành"
+#Region "Module Van hanh"
 
 Public Class ProjectRepository
     Inherits GenericRepository(Of Project)
@@ -139,7 +134,6 @@ Public Class ProjectRepository
         MyBase.New(ctx)
     End Sub
 
-    ' ✅ Giữ lại — lọc status IN (1, 2): đang lập kế hoạch hoặc đang thực hiện
     Public Function GetActive() As List(Of Project)
         Dim f = SqlFilter(Of Project).Default() _
             .Add(Function(p) p.status = 1 OrElse p.status = 2)
@@ -152,8 +146,8 @@ Public Class AssignmentRepository
     Sub New(ctx As AppDbContext)
         MyBase.New(ctx)
     End Sub
-    Protected Overrides Function BaseQuery() As IQueryable(Of Assignment)
-        Return _ctx.Assignments _
+    Protected Overrides Function BuildQuery(ctx As AppDbContext) As IQueryable(Of Assignment)
+        Return ctx.Assignments _
             .Include(Function(a) a.Project) _
             .Include(Function(a) a.Position) _
                 .ThenInclude(Function(p) p.Contract) _
@@ -163,7 +157,8 @@ Public Class AssignmentRepository
                     .ThenInclude(Function(sm) sm.Job) _
             .Include(Function(a) a.Position) _
                 .ThenInclude(Function(p) p.Salary_Mult) _
-                    .ThenInclude(Function(sm) sm.Level)
+                    .ThenInclude(Function(sm) sm.Level) _
+            .AsNoTracking()
     End Function
 End Class
 
@@ -172,17 +167,15 @@ Public Class AttendanceRepository
     Sub New(ctx As AppDbContext)
         MyBase.New(ctx)
     End Sub
-    Protected Overrides Function BaseQuery() As IQueryable(Of Attendance)
-        Return _ctx.Attendances.Include(Function(a) a.Employee)
+    Protected Overrides Function BuildQuery(ctx As AppDbContext) As IQueryable(Of Attendance)
+        Return ctx.Attendances.Include(Function(a) a.Employee).AsNoTracking()
     End Function
 
-    ' ✅ Giữ lại — lọc chấm công theo kỳ lương
     Public Function GetByPeriod(period As Pay_Period) As List(Of Attendance)
-        Dim f = SqlFilter(Of Attendance).Default() _
-            .Add(Function(a) a.status <> -1) _
-            .Add(Function(a) a.of_date >= period.start_date.Date) _
-            .Add(Function(a) a.of_date <= period.end_date.Date)
-        Return Search(f)
+        Return BuildQuery(_ctx) _
+            .Where(Function(a) a.status <> -1) _
+            .Where(Function(a) a.of_date >= period.start_date.Date) _
+            .Where(Function(a) a.of_date <= period.end_date.Date).ToList()
     End Function
 End Class
 
@@ -205,18 +198,18 @@ Public Class LeaveRepository
     Sub New(ctx As AppDbContext)
         MyBase.New(ctx)
     End Sub
-    Protected Overrides Function BaseQuery() As IQueryable(Of Leave)
-        Return _ctx.Leaves _
+    Protected Overrides Function BuildQuery(ctx As AppDbContext) As IQueryable(Of Leave)
+        Return ctx.Leaves _
             .Include(Function(l) l.Employee) _
             .Include(Function(l) l.Approved) _
-            .Include(Function(l) l.Leave_Cat)
+            .Include(Function(l) l.Leave_Cat) _
+            .AsNoTracking()
     End Function
 End Class
 
 #End Region
 
-#Region "Module Tài chính"
-
+#Region "Module Tài chinh"
 Public Class PayPeriodRepository
     Inherits GenericRepository(Of Pay_Period)
     Sub New(ctx As AppDbContext)
@@ -229,8 +222,8 @@ Public Class PayrollRepository
     Sub New(ctx As AppDbContext)
         MyBase.New(ctx)
     End Sub
-    Protected Overrides Function BaseQuery() As IQueryable(Of Payroll)
-        Return _ctx.Payrolls _
+    Protected Overrides Function BuildQuery(ctx As AppDbContext) As IQueryable(Of Payroll)
+        Return ctx.Payrolls _
             .Include(Function(p) p.Pay_Period) _
             .Include(Function(p) p.Pay_Items) _
             .Include(Function(p) p.Position) _
@@ -241,15 +234,14 @@ Public Class PayrollRepository
                     .ThenInclude(Function(sm) sm.Job) _
             .Include(Function(p) p.Position) _
                 .ThenInclude(Function(pos) pos.Salary_Mult) _
-                    .ThenInclude(Function(sm) sm.Level)
+                    .ThenInclude(Function(sm) sm.Level) _
+            .AsNoTracking()
     End Function
 
-    ' ✅ Giữ lại — lọc bảng lương theo kỳ
     Public Function GetByPeriod(period As Pay_Period) As List(Of Payroll)
-        Dim f = SqlFilter(Of Payroll).Default() _
-            .Add(Function(p) p.status <> -1) _
-            .Add(Function(p) p.period_id = period.id)
-        Return Search(f)
+        Return BuildQuery(_ctx) _
+            .Where(Function(p) p.status <> -1) _
+            .Where(Function(p) p.period_id = period.id).ToList()
     End Function
 End Class
 
@@ -258,22 +250,20 @@ Public Class PayItemRepository
     Sub New(ctx As AppDbContext)
         MyBase.New(ctx)
     End Sub
-    Protected Overrides Function BaseQuery() As IQueryable(Of Pay_Item)
-        Return _ctx.Pay_Items.Include(Function(pi) pi.Payroll)
+    Protected Overrides Function BuildQuery(ctx As AppDbContext) As IQueryable(Of Pay_Item)
+        Return ctx.Pay_Items.Include(Function(pi) pi.Payroll).AsNoTracking()
     End Function
 
-    ' ✅ Giữ lại — lọc pay item theo payroll cụ thể
     Public Function GetByPayroll(payroll As Payroll) As List(Of Pay_Item)
-        Dim f = SqlFilter(Of Pay_Item).Default() _
-            .Add(Function(pi) pi.status <> -1) _
-            .Add(Function(pi) pi.payroll_id = payroll.id)
-        Return Search(f)
+        Return BuildQuery(_ctx) _
+            .Where(Function(pi) pi.status <> -1) _
+            .Where(Function(pi) pi.payroll_id = payroll.id).ToList()
     End Function
 End Class
 
 #End Region
 
-#Region "Module Quy tắc & Hệ thống"
+#Region "Module Quy tac & He thong"
 
 Public Class PolicyRepository
     Inherits GenericRepository(Of Policy)
@@ -287,16 +277,14 @@ Public Class AccountRepository
     Sub New(ctx As AppDbContext)
         MyBase.New(ctx)
     End Sub
-    Protected Overrides Function BaseQuery() As IQueryable(Of Account)
-        Return _ctx.Accounts.Include(Function(a) a.Employee)
+    Protected Overrides Function BuildQuery(ctx As AppDbContext) As IQueryable(Of Account)
+        Return ctx.Accounts.Include(Function(a) a.Employee).AsNoTracking()
     End Function
 
-    ' ✅ Giữ lại — login: tìm theo username
     Public Function GetByUsername(data As Account) As Account
-        Dim f = SqlFilter(Of Account).Default() _
-            .Add(Function(a) a.status <> -1) _
-            .Add(Function(a) a.user = data.user)
-        Return Search(f).FirstOrDefault()
+        Return BuildQuery(_ctx) _
+            .Where(Function(a) a.status <> -1) _
+            .Where(Function(a) a.user = data.user)
     End Function
 End Class
 

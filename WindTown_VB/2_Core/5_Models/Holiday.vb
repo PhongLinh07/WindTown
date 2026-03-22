@@ -12,7 +12,7 @@ Public Class Holiday
         of_date = DateTime.Now
         mult = 3.0
         note = ""
-        status = 3
+        status = 0
     End Sub
 
 #Region "Field"

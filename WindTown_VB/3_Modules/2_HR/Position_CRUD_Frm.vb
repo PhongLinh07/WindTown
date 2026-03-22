@@ -22,48 +22,45 @@ Public Class Position_CRUD_Frm
     End Sub
 
     Private Sub InitComboBox()
-        ' 1. Trạng thái (Status)
         ui_status.DataSource = New BindingSource(Position.status_Dict, Nothing)
         ui_status.DisplayMember = "Value"
         ui_status.ValueMember = "Key"
 
-        ' Nếu là chế độ xem/sửa, không cần nạp lại danh sách Hợp đồng trống và Job
-        ' vì các trường này thường bị khóa (Disabled) để đảm bảo toàn vẹn dữ liệu
         If isCreate = False Then Return
 
-        ' 2. Load Hợp đồng chưa có vị trí
         Dim response = AppServices.Instance.ContractSV.GetWithoutPosition()
-        _contracsWithoutPosition = If(response.IsSuccess, response.Data, New List(Of Contract))
 
-        If (_contracsWithoutPosition.Count = 0) Then
-            MessageBox.Show("Không có hợp đồng nào đang hoạt động mà chưa được gán vị trí.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+        If Not response.IsSuccess Then
+            MessageBox.Show($"Lỗi lấy hợp đồng {response.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             ' Không đóng form ngay để user có thể xem, nhưng khóa nút Save
             Return
         End If
-
+        _contracsWithoutPosition = If(response.IsSuccess, response.Data, New List(Of Contract))
         ' Nạp Contract & Employee
         ui_contract.DataSource = _contracsWithoutPosition.Select(Function(x) New With {.Display = x.code, .Value = x}).ToList()
         ui_contract.DisplayMember = "Display"
         ui_contract.ValueMember = "Value"
 
-        ui_employee.DataSource = _contracsWithoutPosition.Select(Function(x) New With {.Display = $"{x.Employee?.code} - {x.Employee?.name}", .Value = x}).ToList()
+        ui_employee.DataSource = _contracsWithoutPosition.Select(Function(x) New With {.Display = $"{x.employee_UI}", .Value = x}).ToList()
         ui_employee.DisplayMember = "Display"
         ui_employee.ValueMember = "Value"
 
-        ' 3. Load Job (Công việc)
         Dim jobResponse = AppServices.Instance.JobSV.GetList()
+        If Not jobResponse.IsSuccess Then
+            MessageBox.Show($"Lỗi lấy công việc {jobResponse.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Return
+        End If
         _jobs = If(jobResponse.IsSuccess, jobResponse.Data, New List(Of Job))
-
-        ' SỬA LỖI: ValueMember không được để trống
         ui_job.DataSource = _jobs.Select(Function(x) New With {.Display = x.job_UI, .Value = x}).ToList()
         ui_job.DisplayMember = "Display"
         ui_job.ValueMember = "Value"
 
-        ' 4. Load toàn bộ Salary Multiplier (Bảng ma trận Job/Level)
         Dim smResponse = AppServices.Instance.Salary_MultSV.GetList()
+        If Not smResponse.IsSuccess Then
+            MessageBox.Show($"Lỗi lấy hệ số lương {smResponse.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Return
+        End If
         _salary_mult_list = If(smResponse.IsSuccess, smResponse.Data, New List(Of Salary_Mult))
-
-        ' Level sẽ được nạp động dựa vào Job qua sự kiện SelectedIndexChanged
         ui_level.DataSource = Nothing
     End Sub
 
@@ -75,27 +72,16 @@ Public Class Position_CRUD_Frm
             ui_level.SelectedIndex = -1
             ui_mult.Value = 1
         Else
-            ' Chế độ xem/sửa: Hiển thị text từ data đã có
             ui_contract.Text = _data.Contract?.code : ui_contract.Enabled = False
-            ui_employee.Text = $"{_data.Contract?.Employee?.code} - {_data.Contract?.Employee?.name}" : ui_employee.Enabled = False
-
-            ' Hiển thị Job/Level từ Salary_Mult hiện tại
-            ui_job.Text = _data.Salary_Mult?.Job?.name : ui_job.Enabled = False
-            ui_level.Text = _data.Salary_Mult?.Level?.name : ui_level.Enabled = False
-
-            ui_mult.Value = CDec(If(_data.Salary_Mult?.mult, 1.0))
-            ui_mult.Enabled = False
+            ui_employee.Text = $"{_data.Contract?.employee_UI}" : ui_employee.Enabled = False
+            ui_job.Text = _data.Salary_Mult?.job_UI : ui_job.Enabled = False
+            ui_level.Text = _data.Salary_Mult?.level_UI : ui_level.Enabled = False
+            ui_mult.Value = CDec(If(_data.Salary_Mult?.mult, 1.0)) : ui_mult.Enabled = False
         End If
 
         ui_code.Text = _data.code
-        ui_start_date.Value = If(_data.start_date <= DateTime.MinValue, DateTime.Now, _data.start_date)
-
-        ' Xử lý ngày kết thúc (nullable)
-        If _data.end_date.HasValue Then
-            ui_end_date.Value = _data.end_date.Value
-        Else
-            ui_end_date.Value = DateTime.Now.AddYears(1)
-        End If
+        ui_start_date.Value = _data.start_date
+        ui_end_date.Value = _data.end_date
 
         ui_note.Text = _data.note
         ui_status.SelectedValue = _data.status
@@ -107,20 +93,21 @@ Public Class Position_CRUD_Frm
         Dim selectedObj = ui_job.SelectedValue
         If selectedObj Is Nothing OrElse Not (TypeOf selectedObj Is Job) Then
             ui_level.DataSource = Nothing
+            ui_level.Enabled = False
             Return
         End If
-
         Dim job As Job = DirectCast(selectedObj, Job)
 
         ' Lọc danh sách Salary_Mult dựa trên JobID
         Dim levelsForJob = _salary_mult_list.Where(Function(x) x.job_id = job.id).
-                           Select(Function(x) New With {.Display = x.Level?.name, .Value = x}).ToList()
+                           Select(Function(x) New With {.Display = x.Level?.level_UI, .Value = x}).ToList()
 
         ui_level.DataSource = levelsForJob
         ui_level.DisplayMember = "Display"
         ui_level.ValueMember = "Value"
         ui_level.SelectedIndex = -1
         ui_mult.Value = 0
+        ui_level.Enabled = True
     End Sub
 
     ' Sự kiện: Khi chọn Cấp độ -> Hiển thị hệ số tương ứng
@@ -151,31 +138,35 @@ Public Class Position_CRUD_Frm
         Try
             ' 1. Validation
             If String.IsNullOrWhiteSpace(ui_code.Text) Then
-                MessageBox.Show("Vui lòng nhập mã vị trí (Code)!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                MessageBox.Show("Mã chức vụ không hợp lệ!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning)
                 ui_code.Focus()
                 Return False
             End If
 
+            If AppServices.Instance.PositionSV.IsCodeDuplicate(ui_code.Text.Trim(), If(isCreate, 0, _data.id)) Then
+                MessageBox.Show("Mã chức vụ này đã tồn tại.")
+                Return False
+            End If
+
             If isCreate Then
-                If ui_contract.SelectedValue Is Nothing Then
+                If ui_contract.SelectedValue Is Nothing OrElse ui_employee.SelectedValue Is Nothing Then
                     MessageBox.Show("Vui lòng chọn Hợp đồng/Nhân viên!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning)
                     Return False
                 End If
 
-                If ui_level.SelectedValue Is Nothing Then
+                If ui_job.SelectedValue Is Nothing OrElse ui_level.SelectedValue Is Nothing Then
                     MessageBox.Show("Vui lòng chọn Công việc và Cấp độ!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning)
                     Return False
                 End If
 
-                ' Gán đối tượng đã chọn vào Model
-                Dim selectedContract As Contract = DirectCast(ui_contract.SelectedValue, Contract)
-                Dim selectedSM As Salary_Mult = DirectCast(ui_level.SelectedValue, Salary_Mult)
-
-                _data.Contract = selectedContract
-
-                _data.Salary_Mult = selectedSM
+                _data.contract_id = CType(ui_contract.SelectedValue, Contract).id
+                _data.salary_mult_id = CType(ui_level.SelectedValue, Salary_Mult).id
             End If
 
+            If AppServices.Instance.PositionSV.IsConflictStatusActive(_data.contract_id, If(isCreate, 0, _data.id)) Then
+                MessageBox.Show("Nhân viên/Hợp đồng này hiện đang có chức vụ khác hoạt động", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                Return False
+            End If
             ' 2. Gán các trường thông tin chung
             _data.code = ui_code.Text.Trim()
             _data.start_date = ui_start_date.Value
@@ -184,7 +175,7 @@ Public Class Position_CRUD_Frm
             _data.status = CInt(ui_status.SelectedValue)
 
             ' 3. Logic kiểm tra ngày tháng
-            If _data.end_date.HasValue AndAlso _data.start_date > _data.end_date.Value Then
+            If _data.start_date > _data.end_date Then
                 MessageBox.Show("Ngày bắt đầu không thể lớn hơn ngày kết thúc!", "Lỗi dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 Return False
             End If

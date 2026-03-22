@@ -45,19 +45,11 @@ Public Class Salary_Mult_CRUD_Frm
     End Sub
 
     Protected Overrides Sub BindDataToUI()
-
-        If isCreate Then
-            ui_level.SelectedIndex = -1
-
-        Else
-            ui_level.Text = _data.level_UI
-
-        End If
-        ui_job.Text = _data.Job?.job_UI
-
-
+        ui_code.Text = _data.code
+        ui_level.SelectedValue = If(_lvls.FirstOrDefault(Function(x) x.id = _data.level_id), DBNull.Value)
+        ui_job.Enabled = False
+        ui_job.SelectedValue = If(_jobs.FirstOrDefault(Function(x) x.id = _data.job_id), DBNull.Value)
         ui_mult.Value = _data.mult
-
         ui_note.Text = _data.note
         ui_status.SelectedValue = _data.status
     End Sub
@@ -65,22 +57,27 @@ Public Class Salary_Mult_CRUD_Frm
     Protected Overrides Function SyncUIToData() As Boolean
 
         Try
-
-            ' Nếu là tạo mới, kiểm tra các ComboBox bắt buộc
-            If isCreate Then
-                If ui_job.SelectedValue Is Nothing OrElse ui_level.SelectedValue Is Nothing Then
-                    MessageBox.Show("Vui lòng chọn đầy đủ Công việc và Cấp độ!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-                    Return False
-                End If
-
-                ' Gán các ID quan trọng khi tạo mới
-
-                _data.Job = ui_job.SelectedValue
-                _data.Level = ui_level.SelectedValue
+            If String.IsNullOrWhiteSpace(ui_code.Text) Then
+                MessageBox.Show("Mã hệ số không hợp lệ!")
+                ui_code.Focus()
+                Return False
+            End If
+            If AppServices.Instance.Salary_MultSV.IsCodeDuplicate(ui_code.Text.Trim(), If(isCreate, 0, _data.id)) Then
+                MessageBox.Show("Mã hệ số đã tồn tại.")
+                Return False
             End If
 
-            ' 2. Gán dữ liệu từ UI vào Model (_data)
+            If ui_job.SelectedValue Is Nothing OrElse ui_level.SelectedValue Is Nothing Then
+                MessageBox.Show("Vui lòng chọn đầy đủ Công việc và Cấp độ!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                Return False
+            End If
 
+
+            _data.code = ui_code.Text.Trim()
+            _data.job_id = CType(ui_job.SelectedValue, Job).id
+            _data.level_id = CType(ui_level.SelectedValue, Level).id
+
+            _data.mult = ui_mult.Value
             _data.note = ui_note.Text.Trim()
             _data.status = CInt(ui_status.SelectedValue)
 
@@ -92,11 +89,11 @@ Public Class Salary_Mult_CRUD_Frm
 
     End Function
 
-    Protected Overrides Sub DataChanged() Handles ui_job.SelectedIndexChanged,
-                                 ui_level.SelectedIndexChanged,
-                                 ui_status.SelectedIndexChanged,
-                                 ui_note.TextChanged,
-                                 ui_status.SelectedIndexChanged
+    Protected Overrides Sub DataChanged() Handles ui_code.TextChanged,
+                                            ui_job.SelectedIndexChanged,
+                                            ui_level.SelectedIndexChanged,
+                                            ui_status.SelectedIndexChanged,
+                                            ui_note.TextChanged
         tool_save.Enabled = True
     End Sub
 

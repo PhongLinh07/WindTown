@@ -2,30 +2,18 @@ Public Class Salary_Mult_List_UC
     Inherits BaseList_UC
 
     Private _job As Job
-    Private _lockTarget = False
 
-    Public Sub New()
-        MyBase.New(AppServices.Instance.Salary_MultSV, "Salary_Mult_List_UC", "Hệ số lương")
-        InitializeComponent()
-        Init(GetType(Salary_Mult))
 
-    End Sub
     Public Sub New(job As Job)
         MyBase.New(AppServices.Instance.Salary_MultSV, "Salary_Mult_List_UC", "Hệ số lương")
         InitializeComponent()
         _job = job
-        _lockTarget = True
 
         Init(GetType(Salary_Mult))
     End Sub
 
 
     Protected Overrides Sub LoadData()
-
-        If Not _lockTarget Then
-            MyBase.LoadData() ' Test
-            Return
-        End If
 
         Dim response = AppServices.Instance.Salary_MultSV.GetByJob(_job)
         If response.IsSuccess Then
@@ -67,7 +55,7 @@ Public Class Salary_Mult_List_UC
 
     Protected Overrides Sub tool_new_Click(sender As Object, e As EventArgs)
         ' Tạo bản sao của đối tượng để tránh sửa trực tiếp trên DataGridView
-        Dim data As Salary_Mult = New Salary_Mult With {.Job = _job} ' tạo mới đối tượng với giá trị mặc định
+        Dim data As Salary_Mult = New Salary_Mult With {.Job = _job, .job_id = _job.id} ' tạo mới đối tượng với giá trị mặc định
 
         Dim crud As New Salary_Mult_CRUD_Frm(data, True)
         If crud.ShowDialog() = DialogResult.OK Then

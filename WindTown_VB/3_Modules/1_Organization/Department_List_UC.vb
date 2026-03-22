@@ -39,7 +39,7 @@ Public Class Department_List_UC
             Dim result = _service.Insert(data)
 
             If result.IsSuccess Then
-                MessageBox.Show("Insert succeeded", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                MessageBox.Show("Thêm thành công", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information)
                 LoadData()
             Else
                 MessageBox.Show(result.Message, "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information)
@@ -66,7 +66,7 @@ Public Class Department_List_UC
         Dim result = _service.Delete(items)
 
         If result.IsSuccess Then
-            MessageBox.Show("Delete succeeded", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            MessageBox.Show("Xóa thành công", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information)
             LoadData()
         Else
             MessageBox.Show(result.Message, "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information)

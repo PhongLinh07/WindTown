@@ -7,6 +7,9 @@ Public Class Salary_Mult
     Inherits BaseEntity
 
     Public Sub New()
+        job_id = -1
+        level_id = -1
+        code = $"MULT{GenerateRandomNumbers.Generate()}"
         mult = 1
         note = ""
         status = 0
@@ -27,6 +30,9 @@ Public Class Salary_Mult
 #End Region
 
 #Region "Field"
+    <DisplayName("Mã hệ số")> <Display(Order:=1)>
+    Public Property code As String
+
     <DisplayName("Hệ số")> <Display(Order:=2)>
     Public Property mult As Decimal
 
@@ -38,10 +44,16 @@ Public Class Salary_Mult
 #End Region
 
 #Region "Field Display"
+    <NotMapped> <Browsable(False)>
+    Public ReadOnly Property job_UI As String
+        Get
+            Return If(Job?.job_UI, "---")
+        End Get
+    End Property
     <NotMapped> <DisplayName("Cấp bậc")> <Display(Order:=1)>
     Public ReadOnly Property level_UI As String
         Get
-            Return If(Level?.name, "---")
+            Return If(Level?.level_UI, "---")
         End Get
     End Property
 

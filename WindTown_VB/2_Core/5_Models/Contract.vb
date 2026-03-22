@@ -9,7 +9,7 @@ Public Class Contract
     Public Sub New()
         code = "CTR" + GenerateRandomNumbers.Generate()
         start_date = DateTime.Now
-        end_date = DateTime.Now
+        end_date = start_date.AddYears(3)
         base_salary = 0.0
         note = ""
         status = 0
@@ -31,10 +31,10 @@ Public Class Contract
     Public Property start_date As DateTime
 
     <DisplayName("Ngày kết thúc")> <DisplayFormat(DataFormatString:="{0:dd-MM-yyyy}")> <Display(Order:=4)>
-    Public Property end_date As DateTime?
+    Public Property end_date As DateTime
 
     <DisplayName("Lương cơ bản")> <DisplayFormat(DataFormatString:="{0:N0}")> <Display(Order:=5)>
-    Public Property base_salary As Decimal?
+    Public Property base_salary As Decimal
 
     <Browsable(False)>
     Public Property status As Integer

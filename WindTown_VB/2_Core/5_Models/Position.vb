@@ -9,7 +9,7 @@ Public Class Position
     Public Sub New()
         code = $"POS{GenerateRandomNumbers.Generate()}"
         start_date = DateTime.Now
-        end_date = DateTime.Now
+        end_date = start_date.AddYears(3)
         note = ""
         status = 0
     End Sub
@@ -36,7 +36,7 @@ Public Class Position
     Public Property start_date As DateTime
 
     <DisplayName("Ngày kết thúc")> <DisplayFormat(DataFormatString:="{0:dd-MM-yyyy}")> <Display(Order:=6)>
-    Public Property end_date As DateTime?
+    Public Property end_date As DateTime
 
     <Browsable(False)>
     Public Property status As Integer
@@ -63,7 +63,7 @@ Public Class Position
     <NotMapped> <DisplayName("Nhân viên")> <Display(Order:=2)>
     Public ReadOnly Property employee_UI As String
         Get
-            Return Contract?.employee_UI
+            Return If(Contract?.employee_UI, "---")
         End Get
     End Property
 

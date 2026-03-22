@@ -233,7 +233,7 @@ Public Class formReport
                 If res.IsSuccess AndAlso res.Data IsNot Nothing Then
                     For Each pr In CType(res.Data, List(Of Project))
                         Dim ps = pr.start_date.Date
-                        Dim pe = If(pr.end_date, pr.start_date).Date
+                        Dim pe = pr.end_date.Date
                         If pe < d0 OrElse ps > d1 Then Continue For
                         _allRows.Add(New ReportRow With {
                             .Code = If(pr.code, ""),
