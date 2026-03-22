@@ -225,7 +225,10 @@ Public Class formDashBoardV2
     End Sub
 
     Private Sub LoadDeptChart()
-        _deptNames = New String() {"Kỹ thuật", "Kinh doanh", "Vận hành", "Kế toán", "Marketing", "Nhân sự"}
+        Dim dept = AppServices.Instance.DepartmentSV.GetList()
+        Dim deptList = If(dept.IsSuccess, dept.Data, New List(Of Department))
+        deptList.S
+        _deptNames = New String() {"Kỹ thuật", "Phòng nhân sự", "Phòng điều hành", "Phòng phát triển", "Phòng A", "Phòng B"}
         _deptCounts = New Integer() {54, 45, 50, 38, 32, 28}
     End Sub
 

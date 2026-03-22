@@ -241,7 +241,7 @@ Partial Class formDashBoardV2
         dgvLate.Dock = DockStyle.Top
         dgvLate.EnableHeadersVisualStyles = False
         dgvLate.GridColor = Color.FromArgb(CByte(42), CByte(48), CByte(80))
-        dgvLate.Location = New Point(14, 48)
+        dgvLate.Location = New Point(14, 58)
         dgvLate.MultiSelect = False
         dgvLate.Name = "dgvLate"
         dgvLate.ReadOnly = True
@@ -316,9 +316,9 @@ Partial Class formDashBoardV2
         pnlTableSub.Dock = DockStyle.Top
         pnlTableSub.Font = New Font("Microsoft YaHei UI", 9F)
         pnlTableSub.ForeColor = Color.FromArgb(CByte(123), CByte(139), CByte(178))
-        pnlTableSub.Location = New Point(14, 31)
+        pnlTableSub.Location = New Point(14, 38)
         pnlTableSub.Name = "pnlTableSub"
-        pnlTableSub.Size = New Size(90, 17)
+        pnlTableSub.Size = New Size(110, 20)
         pnlTableSub.TabIndex = 1
         pnlTableSub.Text = "Tháng hiện tại"
         ' 
@@ -330,13 +330,13 @@ Partial Class formDashBoardV2
         lblTableTitle.ForeColor = Color.FromArgb(CByte(232), CByte(236), CByte(240))
         lblTableTitle.Location = New Point(14, 12)
         lblTableTitle.Name = "lblTableTitle"
-        lblTableTitle.Size = New Size(168, 19)
+        lblTableTitle.Size = New Size(220, 26)
         lblTableTitle.TabIndex = 2
         lblTableTitle.Text = "Top đi trễ / vắng mặt"
         ' 
         ' formDashBoardV2
         ' 
-        AutoScaleDimensions = New SizeF(7F, 17F)
+        AutoScaleDimensions = New SizeF(9F, 20F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.FromArgb(CByte(26), CByte(29), CByte(46))
         ClientSize = New Size(1199, 622)
