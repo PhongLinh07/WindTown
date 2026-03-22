@@ -1,6 +1,17 @@
 Imports System.Drawing
+Imports System.Linq
 
 Public Class formReport
+
+    Private Enum ReportKind
+        None = 0
+        Attendance = 1
+        Leave = 2
+        Payroll = 3
+        Project = 4
+        Assignment = 5
+    End Enum
+
     Private Class ReportRow
         Public Property Code As String
         Public Property Name As String
@@ -10,34 +21,28 @@ Public Class formReport
         Public Property Note As String
     End Class
 
-    Private _rows As List(Of ReportRow)
-    Private _chartValues As List(Of Integer)
-    Private _chartLabels As List(Of String)
+    Private _allRows As New List(Of ReportRow)()
+    Private _displayRows As New List(Of ReportRow)()
+    Private _chartValues As New List(Of Integer)()
+    Private _chartLabels As New List(Of String)()
+
+    Private _currentKind As ReportKind = ReportKind.None
 
     Private ReadOnly _inputBack As Color = Color.FromArgb(38, 43, 66)
     Private ReadOnly _invalidBack As Color = Color.FromArgb(70, 224, 85, 85)
 
     Private Sub formReport_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        InitMockData()
         InitFilters()
         InitTooltips()
-        BindKpis()
-        BindTable(_rows)
+        ApplyColumnLayout(ReportKind.Attendance)
+        cboReportType.SelectedIndex = 1
+        LoadReportFromDatabase()
+        RefreshDepartmentFilter()
+        BindKpisFromDisplay()
         RenderChart()
-        If _rows.Count > 0 Then
+        If _displayRows.Count > 0 Then
             SelectRow(0)
         End If
-    End Sub
-
-    Private Sub InitMockData()
-        _rows = New List(Of ReportRow) From {
-            New ReportRow With {.Code = "ATD-0001", .Name = "Nguyễn Văn An", .Dept = "Kỹ thuật", .Score = "98%", .Status = "Tốt", .Note = "Không có"},
-            New ReportRow With {.Code = "ATD-0002", .Name = "Trần Thị Bình", .Dept = "Kế toán", .Score = "95%", .Status = "Tốt", .Note = "Không có"},
-            New ReportRow With {.Code = "ATD-0003", .Name = "Phạm Thị Dung", .Dept = "Marketing", .Score = "93%", .Status = "Ổn", .Note = "Cần theo dõi"},
-            New ReportRow With {.Code = "ATD-0004", .Name = "Hoàng Văn Em", .Dept = "Kỹ thuật", .Score = "92%", .Status = "Ổn", .Note = "Không có"}
-        }
-        _chartValues = New List(Of Integer) From {60, 72, 68, 80, 74, 88, 83}
-        _chartLabels = New List(Of String) From {"T1", "T2", "T3", "T4", "T5", "T6", "T7"}
     End Sub
 
     Private Sub InitFilters()
@@ -47,7 +52,13 @@ Public Class formReport
         cboReportType.SelectedIndex = 0
 
         cboDeptFilter.Items.Clear()
-        cboDeptFilter.Items.AddRange(New Object() {"Tất cả phòng ban", "Kỹ thuật", "Kế toán", "Marketing", "Nhân sự"})
+        cboDeptFilter.Items.Add("Tất cả phòng ban")
+        Dim rd = AppServices.Instance.DepartmentSV.GetList()
+        If rd.IsSuccess AndAlso rd.Data IsNot Nothing Then
+            For Each d In CType(rd.Data, List(Of Department)).OrderBy(Function(x) x.name)
+                cboDeptFilter.Items.Add(d.name)
+            Next
+        End If
         cboDeptFilter.SelectedIndex = 0
 
         cboExportScope.Items.Clear()
@@ -63,13 +74,198 @@ Public Class formReport
         toolTip1.SetToolTip(dtpFrom, "Bắt buộc")
         toolTip1.SetToolTip(dtpTo, "Bắt buộc")
         toolTip1.SetToolTip(cboExportScope, "Chọn phạm vi xuất")
+        toolTip1.SetToolTip(cboDeptFilter, "Lọc theo phòng ban (cột Phòng ban)")
     End Sub
 
-    Private Sub BindKpis()
-        lblKpi1Value.Text = "230"
-        lblKpi2Value.Text = "92%"
-        lblKpi3Value.Text = "18"
-        lblKpi4Value.Text = "4.2 tỷ"
+    Private Function MapComboToKind(idx As Integer) As ReportKind
+        Select Case idx
+            Case 1 : Return ReportKind.Attendance
+            Case 2 : Return ReportKind.Leave
+            Case 3 : Return ReportKind.Payroll
+            Case 4 : Return ReportKind.Project
+            Case 5 : Return ReportKind.Assignment
+            Case Else : Return ReportKind.None
+        End Select
+    End Function
+
+    Private Sub ApplyColumnLayout(kind As ReportKind)
+        Select Case kind
+            Case ReportKind.Attendance
+                colCode.HeaderText = "Mã"
+                colName.HeaderText = "Nhân viên"
+                colDept.HeaderText = "Phòng ban"
+                colScore.HeaderText = "Ngày"
+                colStatus.HeaderText = "Trạng thái"
+            Case ReportKind.Leave
+                colCode.HeaderText = "Mã"
+                colName.HeaderText = "Nhân viên"
+                colDept.HeaderText = "Loại nghỉ"
+                colScore.HeaderText = "Từ — Đến"
+                colStatus.HeaderText = "Trạng thái"
+            Case ReportKind.Payroll
+                colCode.HeaderText = "Mã bảng lương"
+                colName.HeaderText = "Nhân viên"
+                colDept.HeaderText = "Phòng ban"
+                colScore.HeaderText = "Kỳ lương"
+                colStatus.HeaderText = "Trạng thái"
+            Case ReportKind.Project
+                colCode.HeaderText = "Mã dự án"
+                colName.HeaderText = "Tên dự án"
+                colDept.HeaderText = "Thời gian"
+                colScore.HeaderText = "Bắt đầu"
+                colStatus.HeaderText = "Kết thúc"
+            Case ReportKind.Assignment
+                colCode.HeaderText = "Mã PC"
+                colName.HeaderText = "Dự án"
+                colDept.HeaderText = "Vị trí"
+                colScore.HeaderText = "Nhân sự"
+                colStatus.HeaderText = "Trạng thái"
+            Case Else
+                colCode.HeaderText = "Mã"
+                colName.HeaderText = "Tên"
+                colDept.HeaderText = "Phòng ban"
+                colScore.HeaderText = "Giá trị"
+                colStatus.HeaderText = "Trạng thái"
+        End Select
+    End Sub
+
+    Private Sub LoadReportFromDatabase()
+        _allRows.Clear()
+        _currentKind = MapComboToKind(cboReportType.SelectedIndex)
+        ApplyColumnLayout(_currentKind)
+
+        Dim d0 = dtpFrom.Value.Date
+        Dim d1 = dtpTo.Value.Date
+
+        Select Case _currentKind
+            Case ReportKind.Attendance
+                Dim res = AppServices.Instance.AttendanceSV.GetList()
+                If res.IsSuccess AndAlso res.Data IsNot Nothing Then
+                    For Each a In CType(res.Data, List(Of Attendance))
+                        Dim od = a.of_date.Date
+                        If od < d0 OrElse od > d1 Then Continue For
+                        _allRows.Add(New ReportRow With {
+                            .Code = If(a.code, ""),
+                            .Name = If(a.Employee?.name, "---"),
+                            .Dept = "---",
+                            .Score = od.ToString("dd/MM/yyyy"),
+                            .Status = If(a.status_UI, ""),
+                            .Note = If(a.note, "")
+                        })
+                    Next
+                End If
+
+            Case ReportKind.Leave
+                Dim res = AppServices.Instance.LeaveSV.GetList()
+                If res.IsSuccess AndAlso res.Data IsNot Nothing Then
+                    For Each lv In CType(res.Data, List(Of Leave))
+                        Dim s = lv.start_date.Date
+                        Dim span = Math.Max(0, CInt(Math.Ceiling(CDbl(lv.total_days)))) - 1
+                        Dim en = s.AddDays(span)
+                        If en < d0 OrElse s > d1 Then Continue For
+                        _allRows.Add(New ReportRow With {
+                            .Code = If(lv.code, ""),
+                            .Name = If(lv.Employee?.name, "---"),
+                            .Dept = If(lv.Leave_Cat?.name, "---"),
+                            .Score = s.ToString("dd/MM") & " — " & en.ToString("dd/MM/yyyy"),
+                            .Status = If(lv.status_UI, ""),
+                            .Note = If(lv.note, "")
+                        })
+                    Next
+                End If
+
+            Case ReportKind.Payroll
+                Dim res = AppServices.Instance.PayrollSV.GetList()
+                If res.IsSuccess AndAlso res.Data IsNot Nothing Then
+                    For Each p In CType(res.Data, List(Of Payroll))
+                        Dim pdStart = If(p.Pay_Period?.start_date, Date.MinValue).Date
+                        Dim pdEnd = If(p.Pay_Period?.end_date, Date.MaxValue).Date
+                        If pdEnd < d0 OrElse pdStart > d1 Then Continue For
+                        _allRows.Add(New ReportRow With {
+                            .Code = If(p.code, ""),
+                            .Name = If(p.employee_UI, "---"),
+                            .Dept = If(p.Position?.Salary_Mult?.Job?.Department?.name, "---"),
+                            .Score = If(p.pay_period_UI, "---"),
+                            .Status = If(p.status_UI, ""),
+                            .Note = If(p.note, "")
+                        })
+                    Next
+                End If
+
+            Case ReportKind.Project
+                Dim res = AppServices.Instance.ProjectSV.GetList()
+                If res.IsSuccess AndAlso res.Data IsNot Nothing Then
+                    For Each pr In CType(res.Data, List(Of Project))
+                        Dim ps = pr.start_date.Date
+                        Dim pe = If(pr.end_date, pr.start_date).Date
+                        If pe < d0 OrElse ps > d1 Then Continue For
+                        _allRows.Add(New ReportRow With {
+                            .Code = If(pr.code, ""),
+                            .Name = If(pr.name, ""),
+                            .Dept = ps.ToString("dd/MM/yyyy") & " — " & pe.ToString("dd/MM/yyyy"),
+                            .Score = ps.ToString("dd/MM/yyyy"),
+                            .Status = pe.ToString("dd/MM/yyyy"),
+                            .Note = If(pr.note, "")
+                        })
+                    Next
+                End If
+
+            Case ReportKind.Assignment
+                Dim res = AppServices.Instance.AssigmentSV.GetList()
+                If res.IsSuccess AndAlso res.Data IsNot Nothing Then
+                    For Each asn In CType(res.Data, List(Of Assignment))
+                        _allRows.Add(New ReportRow With {
+                            .Code = If(asn.code, ""),
+                            .Name = If(asn.Project?.name, "---"),
+                            .Dept = If(asn.Position?.code, "---"),
+                            .Score = If(asn.Position?.employee_UI, "---"),
+                            .Status = If(asn.status_UI, ""),
+                            .Note = If(asn.note, "")
+                        })
+                    Next
+                End If
+        End Select
+
+        BuildChartFromRows()
+        RefreshDepartmentFilter()
+        BindKpisFromDisplay()
+        RenderChart()
+        If _displayRows.Count > 0 Then
+            SelectRow(0)
+        Else
+            ClearDetail()
+        End If
+    End Sub
+
+    Private Sub BuildChartFromRows()
+        _chartValues.Clear()
+        _chartLabels.Clear()
+        If _currentKind = ReportKind.Attendance AndAlso _allRows.Count > 0 Then
+            Dim groups = _allRows.GroupBy(Function(r) r.Score).OrderBy(Function(g) g.Key).Take(12).ToList()
+            For Each g In groups
+                _chartLabels.Add(g.Key)
+                _chartValues.Add(Math.Min(100, g.Count() * 8 + 20))
+            Next
+        End If
+        If _chartValues.Count = 0 Then
+            _chartLabels = New List(Of String) From {"1", "2", "3", "4", "5", "6", "7"}
+            _chartValues = New List(Of Integer) From {10, 20, 15, 25, 18, 30, 22}
+        End If
+    End Sub
+
+    Private Sub RefreshDepartmentFilter()
+        Dim dept = If(cboDeptFilter.SelectedIndex <= 0, Nothing, cboDeptFilter.SelectedItem.ToString())
+        _displayRows = _allRows.Where(Function(r) dept Is Nothing OrElse r.Dept = dept).ToList()
+        BindTable(_displayRows)
+    End Sub
+
+    Private Sub BindKpisFromDisplay()
+        lblKpi1Value.Text = _displayRows.Count.ToString()
+        lblKpi2Value.Text = If(_allRows.Count > 0, Math.Min(100, CInt(100 * _displayRows.Count / Math.Max(1, _allRows.Count))).ToString() & "%", "—")
+        lblKpi3Value.Text = _allRows.Select(Function(r) r.Dept).Distinct().Count().ToString()
+        lblKpi4Value.Text = If(_currentKind = ReportKind.Payroll,
+                              _displayRows.Count.ToString() & " bản ghi",
+                              "—")
     End Sub
 
     Private Sub BindTable(data As List(Of ReportRow))
@@ -77,7 +273,7 @@ Public Class formReport
         For Each item In data
             dgvReport.Rows.Add(item.Code, item.Name, item.Dept, item.Score, item.Status)
         Next
-        lblRowInfo.Text = $"Hiển thị {data.Count} mục"
+        lblRowInfo.Text = $"Hiển thị {data.Count} / {_allRows.Count} mục"
     End Sub
 
     Private Sub RenderChart()
@@ -95,14 +291,14 @@ Public Class formReport
 
             Dim bar As New Panel()
             bar.Width = 36
-            bar.Height = Math.Min(chartHeight, value + 40)
+            bar.Height = Math.Min(chartHeight, Math.Max(24, value * 2))
             bar.BackColor = Color.FromArgb(40, 74, 158, 255)
             bar.BorderStyle = BorderStyle.FixedSingle
             bar.Left = 5
             bar.Top = item.Height - 18 - bar.Height
 
             Dim lblValue As New Label()
-            lblValue.Text = $"{value}%"
+            lblValue.Text = value.ToString()
             lblValue.AutoSize = True
             lblValue.ForeColor = Color.FromArgb(232, 236, 240)
             lblValue.Font = New Font("Microsoft YaHei UI", 7.5F, FontStyle.Regular)
@@ -127,12 +323,12 @@ Public Class formReport
     End Sub
 
     Private Sub SelectRow(index As Integer)
-        If index < 0 OrElse index >= _rows.Count Then
+        If index < 0 OrElse index >= _displayRows.Count Then
             ClearDetail()
             Return
         End If
 
-        Dim item = _rows(index)
+        Dim item = _displayRows(index)
         txtDetailCode.Text = item.Code
         txtDetailName.Text = item.Name
         txtDetailDept.Text = item.Dept
@@ -159,6 +355,16 @@ Public Class formReport
         ResetValidation()
     End Sub
 
+    Private Sub cboDeptFilter_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboDeptFilter.SelectedIndexChanged
+        RefreshDepartmentFilter()
+        BindKpisFromDisplay()
+        If _displayRows.Count > 0 Then
+            SelectRow(0)
+        Else
+            ClearDetail()
+        End If
+    End Sub
+
     Private Sub dtpFrom_ValueChanged(sender As Object, e As EventArgs) Handles dtpFrom.ValueChanged
         ResetValidation()
     End Sub
@@ -175,6 +381,12 @@ Public Class formReport
         dtpTo.Value = Date.Today
         lblError.Visible = False
         ResetValidation()
+        _allRows.Clear()
+        _displayRows.Clear()
+        BindTable(_displayRows)
+        ClearDetail()
+        BindKpisFromDisplay()
+        RenderChart()
     End Sub
 
     Private Sub btnView_Click(sender As Object, e As EventArgs) Handles btnView.Click
@@ -183,7 +395,7 @@ Public Class formReport
             Return
         End If
         lblError.Visible = False
-        MessageBox.Show("Đã áp dụng báo cáo (mock).", "Báo cáo", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        LoadReportFromDatabase()
     End Sub
 
     Private Sub btnExportExcel_Click(sender As Object, e As EventArgs) Handles btnExportExcel.Click

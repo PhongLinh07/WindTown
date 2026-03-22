@@ -1,22 +1,10 @@
-Imports System.Runtime.InteropServices
+Imports System.Linq
 
 ' ============================================================
 '  formPolicy.vb — Chính sách lương (Rule Engine)
-'  .NET Framework 4.8 — Mock data
-'  Không dùng PlaceholderText → Win32 EM_SETCUEBANNER
+'  .NET 8 — Mock hoặc PolicySV
 ' ============================================================
 Public Class formPolicy
-
-    ' ── Win32: hint text cho TextBox (.NET 4.8 không có PlaceholderText) ──
-    <DllImport("user32.dll", CharSet:=CharSet.Unicode)>
-    Private Shared Function SendMessage(hWnd As IntPtr, msg As Integer,
-                                        wParam As IntPtr, lParam As String) As IntPtr
-    End Function
-    Private Const EM_SETCUEBANNER As Integer = &H1501
-
-    Private Sub SetPlaceholder(tb As TextBox, hint As String)
-        SendMessage(tb.Handle, EM_SETCUEBANNER, New IntPtr(1), hint)
-    End Sub
 
     ' ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     '  ENUM LABELS
@@ -66,18 +54,20 @@ Public Class formPolicy
     Private _filtered As New List(Of PolicyRow)()
     Private _selectedId As Integer = -1
 
+    Private _usePolicyDb As Boolean
+    Private ReadOnly _policyEntityById As New Dictionary(Of Integer, Policy)()
+
     ' ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     '  FORM LOAD
     ' ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     Private Sub formPolicy_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         DoubleBuffered = True
 
-        ' Placeholder text (Win32, .NET 4.8 compatible)
-        SetPlaceholder(txtSearch, "🔍  Tìm kiếm chính sách...")
-        SetPlaceholder(txtEditorSearch, "Tìm trong danh sách...")
-        SetPlaceholder(txtCode, "POL001")
-        SetPlaceholder(txtFName, "Lương cơ bản")
-        SetPlaceholder(txtFNote, "Mô tả chính sách...")
+        UiTextBoxHints.SetCueBanner(txtSearch, "🔍  Tìm kiếm chính sách...")
+        UiTextBoxHints.SetCueBanner(txtEditorSearch, "Tìm trong danh sách...")
+        UiTextBoxHints.SetCueBanner(txtCode, "POL001")
+        UiTextBoxHints.SetCueBanner(txtFName, "Lương cơ bản")
+        UiTextBoxHints.SetCueBanner(txtFNote, "Mô tả chính sách...")
 
         ' Build dynamic enum button groups
         BuildEnumGroup(pnlCatGroup, CAT_LABELS, 0,
@@ -90,7 +80,9 @@ Public Class formPolicy
                        Sub(v) SetGen(v))
 
         ' Load data
-        LoadMockPolicies()
+        If Not TryLoadPoliciesFromDatabase() Then
+            LoadMockPolicies()
+        End If
         LoadMockPreview()
         _filtered = New List(Of PolicyRow)(_allPolicies)
 
@@ -130,6 +122,77 @@ Public Class formPolicy
     ' ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     '  MOCK DATA
     ' ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    Private Function TryLoadPoliciesFromDatabase() As Boolean
+        Dim res = AppServices.Instance.PolicySV.GetList()
+        If Not res.IsSuccess OrElse res.Data Is Nothing Then Return False
+
+        Dim lst = CType(res.Data, List(Of Policy))
+        If lst.Count = 0 Then Return False
+
+        _allPolicies.Clear()
+        _policyEntityById.Clear()
+        For Each pol In lst.OrderBy(Function(x) x.priority)
+            _policyEntityById(pol.id) = pol
+            Dim r As New PolicyRow()
+            r.Id = pol.id
+            r.Code = If(pol.code, "")
+            r.Name = If(pol.name, "")
+            r.Category = DbCategoryToUi(pol.category)
+            r.DataSource = DbSourceToUi(pol.source)
+            r.Aggregate = ClampAggIndex(pol.aggregate - 1)
+            r.GenItem = ClampGenIndex(pol.gen_item - 1)
+            r.Priority = pol.priority
+            r.Status = pol.status
+            r.Note = If(pol.note, "")
+            r.Rule = If(pol.rule, "")
+            _allPolicies.Add(r)
+        Next
+        _usePolicyDb = True
+        Return True
+    End Function
+
+    Private Function ClampAggIndex(idx As Integer) As Integer
+        Return Math.Max(0, Math.Min(idx, AGG_LABELS.Length - 1))
+    End Function
+
+    Private Function ClampGenIndex(idx As Integer) As Integer
+        Return Math.Max(0, Math.Min(idx, GEN_LABELS.Length - 1))
+    End Function
+
+    Private Function DbCategoryToUi(cat As Integer) As Integer
+        Select Case cat
+            Case CInt(Category_PayItem.ID.INCOME), CInt(Category_PayItem.ID.ALLOWANCE),
+                 CInt(Category_PayItem.ID.ATTENDANCE), CInt(Category_PayItem.ID.INFORMATION)
+                Return 0
+            Case CInt(Category_PayItem.ID.DEDUCTION), CInt(Category_PayItem.ID.TAX),
+                 CInt(Category_PayItem.ID.INSURANCE)
+                Return 1
+            Case CInt(Category_PayItem.ID.BONUS)
+                Return 2
+            Case Else
+                Return 3
+        End Select
+    End Function
+
+    Private Function DbSourceToUi(src As Integer) As Integer
+        If src = CInt(Data_Source.ID.ATTENDANCE) Then Return 1
+        Return 4
+    End Function
+
+    Private Function UiCategoryToDb(ui As Integer) As Integer
+        Select Case ui
+            Case 0 : Return CInt(Category_PayItem.ID.INCOME)
+            Case 1 : Return CInt(Category_PayItem.ID.DEDUCTION)
+            Case 2 : Return CInt(Category_PayItem.ID.BONUS)
+            Case Else : Return CInt(Category_PayItem.ID.ALLOWANCE)
+        End Select
+    End Function
+
+    Private Function UiSourceToDb(ui As Integer) As Integer
+        If ui = 1 Then Return CInt(Data_Source.ID.ATTENDANCE)
+        Return CInt(Data_Source.ID.NONE)
+    End Function
+
     Private Sub LoadMockPolicies()
         _allPolicies.Clear()
 
@@ -832,9 +895,61 @@ Public Class formPolicy
             Return
         End If
 
-        MessageBox.Show(String.Format("Đã lưu chính sách: {0} — {1}", txtCode.Text, txtFName.Text),
+        If _usePolicyDb Then
+            If SavePolicyToDatabase() Then
+                MessageBox.Show(String.Format("Đã lưu chính sách: {0} — {1}", txtCode.Text, txtFName.Text),
+                                "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            End If
+            Return
+        End If
+
+        MessageBox.Show(String.Format("Đã lưu chính sách (mock): {0} — {1}", txtCode.Text, txtFName.Text),
                         "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information)
     End Sub
+
+    Private Function SavePolicyToDatabase() As Boolean
+        Dim pol As Policy
+        If _selectedId > 0 AndAlso _policyEntityById.ContainsKey(_selectedId) Then
+            pol = _policyEntityById(_selectedId)
+        Else
+            pol = New Policy()
+        End If
+
+        pol.code = txtCode.Text.Trim()
+        pol.name = txtFName.Text.Trim()
+        pol.note = txtFNote.Text.Trim()
+        pol.rule = txtFormula.Text.Trim()
+        pol.priority = _priority
+        pol.status = If(cboFStatus.SelectedIndex = 0, 1, 0)
+        pol.category = UiCategoryToDb(_selCat)
+        pol.source = UiSourceToDb(_selSrc)
+        pol.aggregate = _selAgg + 1
+        If _selectedId <= 0 Then
+            pol.gen_item = 1
+        End If
+
+        pol.unit = CInt(UnitSuffix.ID.NONE)
+
+        Dim result As ServiceResponse(Of Object)
+        If _selectedId > 0 Then
+            result = AppServices.Instance.PolicySV.Update(pol)
+        Else
+            result = AppServices.Instance.PolicySV.Insert(pol)
+        End If
+
+        If Not result.IsSuccess Then
+            MessageBox.Show(result.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Return False
+        End If
+
+        If Not TryLoadPoliciesFromDatabase() Then
+            LoadMockPolicies()
+        End If
+        _filtered = New List(Of PolicyRow)(_allPolicies)
+        ApplyFilter()
+        RenderPolicyList(_allPolicies)
+        Return True
+    End Function
 
     Private Sub btnClearPolicy_Click(sender As Object, e As EventArgs) Handles btnClearPolicy.Click
         NewPolicy()
@@ -853,8 +968,22 @@ Public Class formPolicy
             MessageBoxButtons.YesNo,
             MessageBoxIcon.Warning)
         If result = DialogResult.Yes Then
-            MessageBox.Show("Đã xóa (mock data).", "Thành công",
-                            MessageBoxButtons.OK, MessageBoxIcon.Information)
+            If _usePolicyDb AndAlso _selectedId > 0 Then
+                Dim toDel As New Policy With {.id = _selectedId}
+                Dim dr = AppServices.Instance.PolicySV.Delete(New List(Of Policy) From {toDel})
+                If Not dr.IsSuccess Then
+                    MessageBox.Show(dr.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    Return
+                End If
+                If Not TryLoadPoliciesFromDatabase() Then
+                    LoadMockPolicies()
+                End If
+                _filtered = New List(Of PolicyRow)(_allPolicies)
+                ApplyFilter()
+            Else
+                MessageBox.Show("Đã xóa (mock data).", "Thành công",
+                                MessageBoxButtons.OK, MessageBoxIcon.Information)
+            End If
             _selectedId = -1
             NewPolicy()
             ShowTab(1)

@@ -1,21 +1,11 @@
 Imports System.Drawing
 Imports System.Drawing.Drawing2D
-Imports System.Runtime.InteropServices
 
 ' ============================================================
-'  formAttendance.vb — Chấm công  (.NET 4.8 · Mock data)
+'  formAttendance.vb — Chấm công  (.NET 8 · Mock data)
 '  tables: attendance, employee
 ' ============================================================
 Public Class formAttendance
-
-    <DllImport("user32.dll", CharSet:=CharSet.Unicode)>
-    Private Shared Function SendMessage(hWnd As IntPtr, msg As Integer,
-                                        wParam As IntPtr, lParam As String) As IntPtr
-    End Function
-    Private Const EM_SETCUEBANNER As Integer = &H1501
-    Private Sub SetPH(tb As TextBox, h As String)
-        SendMessage(tb.Handle, EM_SETCUEBANNER, New IntPtr(1), h)
-    End Sub
 
     Private Structure AttendanceRow
         Dim Id As Integer
@@ -59,11 +49,11 @@ Public Class formAttendance
     Private Sub formAttendance_Load(s As Object, e As EventArgs) Handles MyBase.Load
         DoubleBuffered = True
 
-        SetPH(txtSearch, "🔍  Tìm theo mã / tên nhân viên...")
-        SetPH(txtFCheckIn, "08:00")
-        SetPH(txtFCheckOut, "17:30")
-        SetPH(txtFHours, "8.0")
-        SetPH(txtFNote, "Ghi chú...")
+        UiTextBoxHints.SetCueBanner(txtSearch, "🔍  Tìm theo mã / tên nhân viên...")
+        UiTextBoxHints.SetCueBanner(txtFCheckIn, "08:00")
+        UiTextBoxHints.SetCueBanner(txtFCheckOut, "17:30")
+        UiTextBoxHints.SetCueBanner(txtFHours, "8.0")
+        UiTextBoxHints.SetCueBanner(txtFNote, "Ghi chú...")
 
         toolTip1.SetToolTip(cboFEmp, "Chọn nhân viên chấm công")
         toolTip1.SetToolTip(cboFDept, "Phòng ban liên quan")

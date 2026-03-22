@@ -1,4 +1,3 @@
-Imports System.Data.SqlClient
 Imports System.IO
 Imports System.Text
 Imports System.Text.RegularExpressions
@@ -37,7 +36,7 @@ Public NotInheritable Class DatabaseBootstrapService
             If String.IsNullOrWhiteSpace(scriptPath) OrElse Not File.Exists(scriptPath) Then
                 _lastResult = New DatabaseBootstrapResult With {
                     .IsSuccess = False,
-                    .Message = "Khong tim thay file khoi tao DB: 1_Documents/create_db.sql"
+                    .Message = "Khong tim thay file khoi tao DB: 1_Documents/db_json.sql hoac create_db.sql"
                 }
                 Return _lastResult
             End If
@@ -72,6 +71,7 @@ Public NotInheritable Class DatabaseBootstrapService
                         End If
 
                         DatabaseConfig.Database.SetConnectionString(targetConnStr)
+                        EnsureDefaultAdminCredentials(targetConnStr)
 
                         _lastResult = New DatabaseBootstrapResult With {
                             .IsSuccess = True,
@@ -227,6 +227,10 @@ Public NotInheritable Class DatabaseBootstrapService
         Dim baseDir = AppDomain.CurrentDomain.BaseDirectory
 
         Dim candidates As String() = {
+            Path.Combine(baseDir, "1_Documents", "db_json.sql"),
+            Path.GetFullPath(Path.Combine(baseDir, "..", "..", "1_Documents", "db_json.sql")),
+            Path.GetFullPath(Path.Combine(baseDir, "..", "..", "..", "1_Documents", "db_json.sql")),
+            Path.GetFullPath(Path.Combine(baseDir, "..", "..", "..", "..", "1_Documents", "db_json.sql")),
             Path.Combine(baseDir, "1_Documents", "create_db.sql"),
             Path.GetFullPath(Path.Combine(baseDir, "..", "..", "1_Documents", "create_db.sql")),
             Path.GetFullPath(Path.Combine(baseDir, "..", "..", "..", "1_Documents", "create_db.sql")),
@@ -235,6 +239,50 @@ Public NotInheritable Class DatabaseBootstrapService
 
         Return candidates.FirstOrDefault(Function(path) File.Exists(path))
     End Function
+
+    Private Shared Function ColumnExists(conn As SqlConnection, tableName As String, columnName As String) As Boolean
+        Using cmd = conn.CreateCommand()
+            cmd.CommandText = "SELECT COUNT(*) FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA = N'dbo' AND TABLE_NAME = @t AND COLUMN_NAME = @c"
+            cmd.Parameters.AddWithValue("@t", tableName)
+            cmd.Parameters.AddWithValue("@c", columnName)
+            Return Convert.ToInt32(cmd.ExecuteScalar()) > 0
+        End Using
+    End Function
+
+    ''' <summary>Đảm bảo có thể đăng nhập admin / 123456 (schema quan hệ hoặc JSON legacy).</summary>
+    Private Shared Sub EnsureDefaultAdminCredentials(targetConnStr As String)
+        Try
+            Using conn As New SqlConnection(targetConnStr)
+                conn.Open()
+                Dim hasUser = ColumnExists(conn, "account", "user")
+                Dim hasDatas = ColumnExists(conn, "account", "datas")
+
+                If hasUser Then
+                    Using cmd = conn.CreateCommand()
+                        cmd.CommandTimeout = 30
+                        cmd.CommandText =
+                            "IF EXISTS (SELECT 1 FROM dbo.account WHERE [user] = N'admin') " &
+                            "UPDATE dbo.account SET [password] = N'123456', role = 1, status = 1 WHERE [user] = N'admin'; " &
+                            "ELSE IF EXISTS (SELECT 1 FROM dbo.account WHERE employee_id = 1) " &
+                            "UPDATE dbo.account SET [user] = N'admin', [password] = N'123456', role = 1, status = 1 WHERE id = (SELECT TOP 1 id FROM dbo.account WHERE employee_id = 1 ORDER BY id); " &
+                            "ELSE IF EXISTS (SELECT 1 FROM dbo.employee WHERE id = 1) " &
+                            "INSERT INTO dbo.account (employee_id, [user], [password], role, last_active, note, status) " &
+                            "VALUES (1, N'admin', N'123456', 1, SYSUTCDATETIME(), N'', 1);"
+                        cmd.ExecuteNonQuery()
+                    End Using
+                ElseIf hasDatas Then
+                    Using cmd = conn.CreateCommand()
+                        cmd.CommandTimeout = 30
+                        cmd.CommandText =
+                            "UPDATE dbo.account SET datas = JSON_MODIFY(datas, '$.password', '123456') " &
+                            "WHERE JSON_VALUE(datas, '$.user') = N'admin';"
+                        cmd.ExecuteNonQuery()
+                    End Using
+                End If
+            End Using
+        Catch
+        End Try
+    End Sub
 
     Private Shared Sub AppendLog(message As String)
         Try

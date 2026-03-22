@@ -1,4 +1,4 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
+<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class formDepartment
     Inherits System.Windows.Forms.Form
 
@@ -488,7 +488,7 @@ Partial Class formDepartment
         DataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter
         DataGridViewCellStyle4.ForeColor = Color.FromArgb(CByte(123), CByte(139), CByte(178))
         colEmpCount.DefaultCellStyle = DataGridViewCellStyle4
-        colEmpCount.HeaderText = "NHÂN VIÊN"
+        colEmpCount.HeaderText = "CÔNG VIỆC"
         colEmpCount.MinimumWidth = 6
         colEmpCount.Name = "colEmpCount"
         colEmpCount.ReadOnly = True

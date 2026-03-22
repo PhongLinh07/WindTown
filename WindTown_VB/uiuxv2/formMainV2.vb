@@ -15,6 +15,7 @@ Public Class formMainV2
 
     ' ── Active nav button ─────────────────────────────────────
     Private _activeBtn As Button = Nothing
+    Private _avatarText As String = "AD"
 
     ' ── Avatar rounded corner (round lblTopAvatar) ────────────
     Private Sub lblTopAvatar_Paint(sender As Object, e As PaintEventArgs) Handles lblTopAvatar.Paint
@@ -27,8 +28,8 @@ Public Class formMainV2
         End Using
         Using br = New SolidBrush(Color.White)
             Using f = New Font("Microsoft YaHei UI", 10, FontStyle.Bold)
-                Dim sz = g.MeasureString(lbl.Text, f)
-                g.DrawString(lbl.Text, f, br, (lbl.Width - sz.Width) / 2, (lbl.Height - sz.Height) / 2)
+                Dim sz = g.MeasureString(_avatarText, f)
+                g.DrawString(_avatarText, f, br, (lbl.Width - sz.Width) / 2, (lbl.Height - sz.Height) / 2)
             End Using
         End Using
         'e.Handled = True
@@ -38,13 +39,7 @@ Public Class formMainV2
     '  FORM LOAD
     ' ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     Private Sub formMainV2_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        ' Cập nhật thông tin người dùng từ session
-        lblSbUser.Text = modSession.DisplayName
-        lblSbRole.Text = If(modSession.CurrentRole = 1, "Quản trị viên", "Nhân viên")
-        lblTopAvatar.Text = If(modSession.DisplayName.Length >= 2,
-                               modSession.DisplayName.Substring(0, 2).ToUpper(),
-                               "AD")
-        lblTopAvatar.Text = "" ' paint event handles it
+        CapNhatThongTinNguoiDung()
 
         ' Ngày hiện tại
         UpdateDateLabel()
@@ -62,6 +57,39 @@ Public Class formMainV2
         Dim culture = New System.Globalization.CultureInfo("vi-VN")
         lblPageDate.Text = DateTime.Now.ToString("dddd, dd MMMM yyyy", culture)
     End Sub
+
+    Private Sub CapNhatThongTinNguoiDung()
+        Dim taiKhoan = NguoiDungHienTaiService.TaiKhoanDangNhap
+        Dim tenHienThi = If(taiKhoan?.Employee?.name, modSession.DisplayName)
+        If String.IsNullOrWhiteSpace(tenHienThi) Then
+            tenHienThi = If(taiKhoan?.user, modSession.CurrentUser)
+        End If
+        If String.IsNullOrWhiteSpace(tenHienThi) Then
+            tenHienThi = "Admin"
+        End If
+
+        Dim vaiTro = If(If(taiKhoan?.role, modSession.CurrentRole) = Account.ROLE_ADM,
+                        "Quản trị viên",
+                        "Nhân viên")
+
+        lblSbUser.Text = tenHienThi
+        lblSbRole.Text = vaiTro
+        _avatarText = TaoAvatarText(tenHienThi)
+        lblTopAvatar.Invalidate()
+    End Sub
+
+    Private Function TaoAvatarText(displayName As String) As String
+        If String.IsNullOrWhiteSpace(displayName) Then Return "AD"
+
+        Dim parts = displayName.Trim().
+            Split({" "c}, StringSplitOptions.RemoveEmptyEntries).
+            Take(2).
+            Select(Function(part) part.Substring(0, 1).ToUpperInvariant()).
+            ToArray()
+
+        If parts.Length = 0 Then Return "AD"
+        Return String.Concat(parts)
+    End Function
 
     Private Sub RepositionTopRight()
         pnlTopRight.Location = New Point(pnlTopbar.Width - pnlTopRight.Width - 16,

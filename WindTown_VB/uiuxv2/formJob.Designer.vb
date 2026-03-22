@@ -1,4 +1,4 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
 Partial Class formJob
     Inherits System.Windows.Forms.Form
 
@@ -529,7 +529,7 @@ Partial Class formJob
         DataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleCenter
         DataGridViewCellStyle5.ForeColor = Color.FromArgb(CByte(123), CByte(139), CByte(178))
         colEmpCount.DefaultCellStyle = DataGridViewCellStyle5
-        colEmpCount.HeaderText = "NHÂN VIÊN"
+        colEmpCount.HeaderText = "HỆ SỐ SM"
         colEmpCount.MinimumWidth = 6
         colEmpCount.Name = "colEmpCount"
         colEmpCount.ReadOnly = True

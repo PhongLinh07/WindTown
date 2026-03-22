@@ -1,22 +1,10 @@
 Imports System.Drawing
-Imports System.Runtime.InteropServices
+Imports System.Linq
 
 ' ============================================================
-'  formPayroll.vb — Bảng lương  (.NET 4.8 · Mock data)
-'  pay_period → payroll → pay_item
+'  formPayroll.vb — Bảng lương (.NET 8) — mock hoặc pay_period / payroll / pay_item từ DB
 ' ============================================================
 Public Class formPayroll
-
-    ' ── Win32 placeholder text (.NET 4.8) ────────────────────
-    <DllImport("user32.dll", CharSet:=CharSet.Unicode)>
-    Private Shared Function SendMessage(hWnd As IntPtr, msg As Integer,
-                                        wParam As IntPtr, lParam As String) As IntPtr
-    End Function
-    Private Const EM_SETCUEBANNER As Integer = &H1501
-
-    Private Sub SetPlaceholder(tb As TextBox, hint As String)
-        SendMessage(tb.Handle, EM_SETCUEBANNER, New IntPtr(1), hint)
-    End Sub
 
     ' ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     '  MOCK DATA STRUCTURES
@@ -54,18 +42,6 @@ Public Class formPayroll
         Dim Category As Integer  ' 0=lương 1=khấu trừ 2=thưởng 3=phụ cấp 4=BHXH
     End Structure
 
-    ' ── Avatar colors ─────────────────────────────────────────
-    Private ReadOnly _avatarColors() As Color = {
-        Color.FromArgb(74, 158, 255),
-        Color.FromArgb(123, 97, 255),
-        Color.FromArgb(76, 175, 80),
-        Color.FromArgb(245, 158, 11),
-        Color.FromArgb(224, 85, 85),
-        Color.FromArgb(38, 198, 218),
-        Color.FromArgb(236, 72, 153),
-        Color.FromArgb(249, 115, 22)
-    }
-
     Private _allPeriods As New List(Of PeriodRow)()
     Private _allPayrolls As New List(Of PayrollRow)()
     Private _payItems As New Dictionary(Of Integer, List(Of PayItemRow))()
@@ -74,6 +50,9 @@ Public Class formPayroll
     Private _selPeriodId As Integer = 1
     Private _selEmpId As Integer = 1
 
+    Private _useDatabase As Boolean
+    Private ReadOnly _periodById As New Dictionary(Of Integer, Pay_Period)()
+
     ' ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     '  FORM LOAD
     ' ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -81,19 +60,25 @@ Public Class formPayroll
         DoubleBuffered = True
 
         ' Placeholders
-        SetPlaceholder(txtSearch, "🔍  Tìm nhân viên...")
-        SetPlaceholder(txtPCode, "PP2026-03")
-        SetPlaceholder(txtPName, "Lương tháng 3/2026")
-        SetPlaceholder(txtStdHours, "176")
-        SetPlaceholder(txtPNote, "Ghi chú kỳ lương...")
+        UiTextBoxHints.SetCueBanner(txtSearch, "🔍  Tìm nhân viên...")
+        UiTextBoxHints.SetCueBanner(txtPCode, "PP2026-03")
+        UiTextBoxHints.SetCueBanner(txtPName, "Lương tháng 3/2026")
+        UiTextBoxHints.SetCueBanner(txtStdHours, "176")
+        UiTextBoxHints.SetCueBanner(txtPNote, "Ghi chú kỳ lương...")
 
         ' Avatar circle paint
         AddHandler pnlSlipAvatar.Paint, AddressOf SlipAvatar_Paint
 
-        ' Load mock data
-        LoadMockPeriods()
-        LoadMockPayrolls()
-        LoadMockPayItems()
+        _periodById.Clear()
+        If TryLoadPeriodsFromDatabase() Then
+            _useDatabase = True
+            LoadPayrollsForCurrentPeriodFromDatabase()
+        Else
+            _useDatabase = False
+            LoadMockPeriods()
+            LoadMockPayrolls()
+            LoadMockPayItems()
+        End If
 
         _filteredPayrolls = New List(Of PayrollRow)(_allPayrolls)
 
@@ -174,7 +159,8 @@ Public Class formPayroll
             r.TotalDeduct = CDec(rows(i, 7))
             r.NetSalary = r.TotalIncome - r.TotalDeduct
             r.IsDone = CBool(rows(i, 8))
-            r.AvatarColor = _avatarColors(r.Id Mod _avatarColors.Length)
+            Dim pal = ThemeColors.AvatarPalette
+            r.AvatarColor = pal(r.Id Mod pal.Length)
             _allPayrolls.Add(r)
         Next
     End Sub
@@ -208,6 +194,108 @@ Public Class formPayroll
         items2.Add(New PayItemRow() With {.Code = "PI009", .Name = "Thuế TNCN tạm tính", .Value = -360000D, .Category = 1})
         _payItems(2) = items2
     End Sub
+
+    Private Function TryLoadPeriodsFromDatabase() As Boolean
+        Dim res = AppServices.Instance.Pay_PeriodSV.GetList()
+        If Not res.IsSuccess OrElse res.Data Is Nothing Then Return False
+
+        Dim lst = CType(res.Data, List(Of Pay_Period))
+        If lst.Count = 0 Then Return False
+
+        _allPeriods.Clear()
+        _periodById.Clear()
+        For Each pp In lst.OrderByDescending(Function(x) x.start_date)
+            Dim row As New PeriodRow()
+            row.Id = pp.id
+            row.Code = If(pp.code, "")
+            row.Name = If(pp.name, row.Code)
+            row.StartDate = pp.start_date.Date
+            row.EndDate = pp.end_date.Date
+            row.Month = If(pp.month.HasValue, pp.month.Value, pp.start_date)
+            row.StdHours = pp.std_hours
+            row.Note = If(pp.note, "")
+            row.Status = If(pp.status = Pay_Period.status_closed, 2, 1)
+            _allPeriods.Add(row)
+            _periodById(pp.id) = pp
+        Next
+
+        _selPeriodId = _allPeriods(0).Id
+        Return True
+    End Function
+
+    Private Sub LoadPayrollsForCurrentPeriodFromDatabase()
+        _allPayrolls.Clear()
+        _payItems.Clear()
+
+        Dim period As Pay_Period = Nothing
+        If Not _periodById.TryGetValue(_selPeriodId, period) Then Return
+
+        Dim res = AppServices.Instance.PayrollSV.GetByPeriod(period)
+        If Not res.IsSuccess OrElse res.Data Is Nothing Then Return
+
+        Dim pal = ThemeColors.AvatarPalette
+        Dim idx As Integer = 0
+        For Each pr In CType(res.Data, List(Of Payroll))
+            Dim row As New PayrollRow()
+            row.Id = pr.id
+            row.EmpName = If(pr.employee_UI, "---")
+            Dim emp = pr.Position?.Contract?.Employee
+            row.EmpCode = If(emp?.code, "")
+            row.Dept = If(pr.Position?.Salary_Mult?.Job?.Department?.name, "---")
+            row.Job = If(pr.job_UI, "---")
+            row.BaseSalary = If(pr.Position?.Contract?.base_salary, 0D)
+
+            Dim items As List(Of Pay_Item) = If(pr.Pay_Items, New List(Of Pay_Item)()).Where(Function(x) x.status <> -1).ToList()
+            Dim posSum As Decimal = 0
+            Dim negSum As Decimal = 0
+            For Each pi In items
+                Dim s = Category_PayItem.GetSign(pi.category)
+                If s > 0 Then posSum += pi.value
+                If s < 0 Then negSum += pi.value
+            Next
+            row.TotalIncome = posSum
+            row.TotalDeduct = negSum
+            row.NetSalary = posSum - negSum
+            row.IsDone = (pr.status = Payroll.status_closed)
+            row.AvatarColor = pal(idx Mod pal.Length)
+            idx += 1
+            _allPayrolls.Add(row)
+
+            Dim slip As New List(Of PayItemRow)()
+            For Each pi In items
+                Dim signed = CDec(Category_PayItem.GetSign(pi.category)) * pi.value
+                slip.Add(New PayItemRow With {
+                    .Code = If(pi.code, ""),
+                    .Name = If(pi.name, ""),
+                    .Value = signed,
+                    .Category = MapPayItemCategory(pi.category)
+                })
+            Next
+            _payItems(pr.id) = slip
+        Next
+
+        _filteredPayrolls = New List(Of PayrollRow)(_allPayrolls)
+        ApplyFilter()
+        RenderSlipEmpList()
+        If _allPayrolls.Count > 0 Then
+            SelectEmployee(_allPayrolls(0).Id)
+        End If
+    End Sub
+
+    Private Shared Function MapPayItemCategory(cat As Integer) As Integer
+        Select Case cat
+            Case CInt(Category_PayItem.ID.DEDUCTION), CInt(Category_PayItem.ID.TAX), CInt(Category_PayItem.ID.INSURANCE)
+                Return 1
+            Case CInt(Category_PayItem.ID.BONUS)
+                Return 2
+            Case CInt(Category_PayItem.ID.ALLOWANCE)
+                Return 3
+            Case CInt(Category_PayItem.ID.INCOME)
+                Return 0
+            Case Else
+                Return 0
+        End Select
+    End Function
 
     ' ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     '  FORMAT HELPERS
@@ -426,6 +514,10 @@ Public Class formPayroll
 
         ' Update badge on Tab2
         lblPayPeriodBadge.Text = p.Code & "  —  " & p.Name
+
+        If _useDatabase Then
+            LoadPayrollsForCurrentPeriodFromDatabase()
+        End If
     End Sub
 
     Private Sub btnAddPeriod_Click(sender As Object, e As EventArgs) Handles btnAddPeriod.Click
@@ -695,8 +787,8 @@ Public Class formPayroll
         lblSlipEmpName.Text = pr.EmpName
         lblSlipEmpSub.Text = pr.Dept & "  ·  " & pr.Job
 
-        ' Anchor period labels
-        Dim per = If(_allPeriods.Count > 0, _allPeriods(0), Nothing)
+        Dim per = _allPeriods.FirstOrDefault(Function(x) x.Id = _selPeriodId)
+        If per.Id = 0 AndAlso _allPeriods.Count > 0 Then per = _allPeriods(0)
         If per.Id <> 0 Then
             lblSlipPeriodInfo.Text = per.Code & "  —  " & per.Name
             lblSlipPeriodDates.Text = per.StartDate.ToString("dd/MM/yyyy") & " → " &

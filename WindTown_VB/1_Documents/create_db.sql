@@ -230,6 +230,6 @@ INSERT INTO employee (datas) VALUES
 GO
 
 INSERT INTO account (employee_id ,datas) VALUES 
-(1,  N'{"user": "admin", "password": "123", "role": 1, "status": 0}'),
+(1,  N'{"user": "admin", "password": "123456", "role": 1, "status": 0}'),
 (2,  N'{"user": "nvbt", "password": "123", "role": 2, "status": 0}')
 GO

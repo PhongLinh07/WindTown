@@ -200,7 +200,7 @@
                 ],
                 "description": "Gắn nhân viên vào dự án và gán vai trò",
                 "layout": "popup",
-                "status": "pending"
+                "status": "done"
             }
         ]
     },
@@ -255,7 +255,7 @@
         ]
     },
     {
-        "module": "B?o c?o",
+        "module": "Báo cáo",
         "color": "#3B82F6",
         "tables": [
             "report"
@@ -266,7 +266,7 @@
                 "tables": [
                     "report"
                 ],
-                "description": "B?o c?o t?ng h?p theo th?i gian/ph?ng ban",
+                "description": "Báo cáo tổng hợp theo thời gian/phòng ban",
                 "layout": "full_layout",
                 "status": "done"
             }

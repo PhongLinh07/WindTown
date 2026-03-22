@@ -1,27 +1,24 @@
-﻿Imports System.Drawing
+Imports System.Drawing
 Imports System.Drawing.Drawing2D
-Imports System.Runtime.InteropServices
+Imports System.Linq
 
 ' ============================================================
-'  formSalaryMult.vb — Hệ số lương  (.NET 4.8 · Mock data)
-'  table: salary_mult
-'  datas: code, value (mult), note, status
-'  FK: job_id, level_id
-'  Tab 1 = Ma trận job × level (GDI+ CellPainting)
-'  Tab 2 = Master-Detail chi tiết
+'  formSalaryMult.vb — Hệ số lương  (.NET 8 · DB qua Salary_MultSV)
 ' ============================================================
 Public Class formSalaryMult
 
-    <DllImport("user32.dll", CharSet:=CharSet.Unicode)>
-    Private Shared Function SendMessage(hWnd As IntPtr, msg As Integer,
-                                        wParam As IntPtr, lParam As String) As IntPtr
-    End Function
-    Private Const EM_SETCUEBANNER As Integer = &H1501
-    Private Sub SetPH(tb As TextBox, h As String)
-        SendMessage(tb.Handle, EM_SETCUEBANNER, New IntPtr(1), h)
-    End Sub
+    Private Class IdNameItem
+        Public Id As Integer
+        Public Caption As String
+        Public Sub New(id As Integer, caption As String)
+            Me.Id = id
+            Me.Caption = caption
+        End Sub
+        Public Overrides Function ToString() As String
+            Return Caption
+        End Function
+    End Class
 
-    ' ── Data structures ───────────────────────────────────────
     Private Structure MultRow
         Dim Id As Integer
         Dim Code As String
@@ -35,47 +32,26 @@ Public Class formSalaryMult
         Dim Status As Integer
     End Structure
 
-    ' Master data — jobs và levels (từ formJob/formLevel)
-    Private ReadOnly _jobs() As String = {
-        "Lập trình viên", "Senior Developer", "QA Engineer",
-        "DevOps Engineer", "Frontend Developer",
-        "Kế toán trưởng", "Kế toán viên",
-        "Chuyên viên NS", "Sales Executive", "Ops Manager"
-    }
-    Private ReadOnly _levels() As String = {
-        "Thực tập sinh", "Nhân viên", "Nhân viên CK",
-        "Senior", "Lead", "Manager"
-    }
-    Private ReadOnly _levelRanks() As Integer = {1, 2, 3, 4, 5, 6}
+    Private ReadOnly _salaryMultSv = AppServices.Instance.Salary_MultSV
+    Private ReadOnly _jobSv = AppServices.Instance.JobSV
+    Private ReadOnly _levelSv = AppServices.Instance.LevelSV
+    Private ReadOnly _deptSv = AppServices.Instance.DepartmentSV
+
+    Private _jobsList As New List(Of Job)()
+    Private _levelsOrdered As New List(Of Level)()
+    Private _levels() As String = {}
+    Private _levelRanks() As Integer = {}
 
     Private _all As New List(Of MultRow)()
     Private _filtered As New List(Of MultRow)()
     Private _selId As Integer = -1
     Private _sampleBase As Decimal = 15000000D
 
-    ' ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-    '  FORM LOAD
-    ' ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     Private Sub formSalaryMult_Load(s As Object, e As EventArgs) Handles MyBase.Load
         DoubleBuffered = True
 
-        SetPH(txtFCode, "SM-JOB01-LV02")
-        SetPH(txtFNote, "Ghi chú hệ số...")
-
-        ' Populate combos
-        cboFJob.Items.Clear()
-        cboFJob.Items.Add("— Chọn chức danh —")
-        For Each j In _jobs
-            cboFJob.Items.Add(j)
-        Next
-        cboFJob.SelectedIndex = 0
-
-        cboFLevel.Items.Clear()
-        cboFLevel.Items.Add("— Chọn cấp bậc —")
-        For Each l In _levels
-            cboFLevel.Items.Add(l)
-        Next
-        cboFLevel.SelectedIndex = 0
+        UiTextBoxHints.SetCueBanner(txtFCode, "SM-JOB01-LV02")
+        UiTextBoxHints.SetCueBanner(txtFNote, "Ghi chú hệ số...")
 
         AddHandler pnlToolbar.Resize, AddressOf OnToolbarResize
         AddHandler pnlFoot.Resize, AddressOf OnFootResize
@@ -85,7 +61,8 @@ Public Class formSalaryMult
         AddHandler txtFMult.TextChanged, AddressOf OnMultChanged
         AddHandler dgvMatrix.CellClick, AddressOf Matrix_CellClick
 
-        LoadMock()
+        RefreshMasterData()
+        LoadFromDb()
         _filtered = New List(Of MultRow)(_all)
 
         BuildMatrixColumns()
@@ -97,54 +74,100 @@ Public Class formSalaryMult
         ShowTab(1)
     End Sub
 
-    ' ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-    '  MOCK DATA
-    ' ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-    Private Sub LoadMock()
+    Private Sub RefreshMasterData()
+        Dim jr = _jobSv.GetList()
+        _jobsList = If(jr.IsSuccess,
+                       CType(jr.Data, IEnumerable(Of Job)).ToList(),
+                       New List(Of Job)())
+
+        Dim lr = _levelSv.GetList()
+        If lr.IsSuccess Then
+            _levelsOrdered = CType(lr.Data, IEnumerable(Of Level)).OrderBy(Function(x) x.rank).ToList()
+        Else
+            _levelsOrdered = New List(Of Level)()
+        End If
+        _levels = _levelsOrdered.Select(Function(x) x.name).ToArray()
+        _levelRanks = _levelsOrdered.Select(Function(x) x.rank).ToArray()
+
+        cboFJob.Items.Clear()
+        cboFJob.Items.Add(New IdNameItem(0, "— Chọn chức danh —"))
+        For Each j In _jobsList.OrderBy(Function(x) x.name)
+            cboFJob.Items.Add(New IdNameItem(j.id, j.name))
+        Next
+        cboFJob.SelectedIndex = 0
+
+        cboFLevel.Items.Clear()
+        cboFLevel.Items.Add(New IdNameItem(0, "— Chọn cấp bậc —"))
+        For Each lv In _levelsOrdered
+            cboFLevel.Items.Add(New IdNameItem(lv.id, lv.name))
+        Next
+        cboFLevel.SelectedIndex = 0
+
+        cboDeptFilter.Items.Clear()
+        cboDeptFilter.Items.Add("Tất cả phòng ban")
+        Dim dr = _deptSv.GetList()
+        If dr.IsSuccess Then
+            For Each d In CType(dr.Data, IEnumerable(Of Department)).OrderBy(Function(x) x.name)
+                cboDeptFilter.Items.Add(d.name)
+            Next
+        End If
+        cboDeptFilter.SelectedIndex = 0
+    End Sub
+
+    Private Function MapToMultRow(sm As Salary_Mult) As MultRow
+        Dim r As New MultRow()
+        r.Id = sm.id
+        r.JobId = sm.job_id
+        r.LevelId = sm.level_id
+        r.JobName = If(sm.Job IsNot Nothing, sm.Job.name, "?")
+        r.LevelName = If(sm.Level IsNot Nothing, sm.Level.name, "?")
+        r.LevelRank = If(sm.Level IsNot Nothing, sm.Level.rank, 0)
+        r.Mult = sm.mult
+        r.Code = "SM-" & sm.job_id.ToString("00") & "-L" & sm.level_id.ToString("00")
+        r.Note = sm.note
+        r.Status = sm.status
+        Return r
+    End Function
+
+    Private Sub LoadFromDb()
         _all.Clear()
-        Dim id As Integer = 0
+        Dim res = _salaryMultSv.GetList()
+        If Not res.IsSuccess Then
+            MessageBox.Show(res.Message, "Lỗi tải hệ số lương", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Return
+        End If
+        For Each sm In CType(res.Data, IEnumerable(Of Salary_Mult))
+            _all.Add(MapToMultRow(sm))
+        Next
+    End Sub
 
-        ' Job 1: Lập trình viên — levels 1-5
-        Dim multMap(,) As Object = {
-            {1, "Lập trình viên",   1, "Thực tập sinh", 1, 0.6D},
-            {2, "Lập trình viên",   2, "Nhân viên",     2, 1.0D},
-            {3, "Lập trình viên",   3, "Nhân viên CK",  3, 1.3D},
-            {4, "Lập trình viên",   4, "Senior",        4, 1.8D},
-            {5, "Lập trình viên",   5, "Lead",          5, 2.4D},
-            {6, "Senior Developer", 2, "Nhân viên",     2, 1.4D},
-            {7, "Senior Developer", 3, "Nhân viên CK",  3, 1.8D},
-            {8, "Senior Developer", 4, "Senior",        4, 2.2D},
-            {9, "Senior Developer", 5, "Lead",          5, 2.8D},
-            {10,"QA Engineer",      2, "Nhân viên",     2, 1.0D},
-            {11,"QA Engineer",      3, "Nhân viên CK",  3, 1.3D},
-            {12,"QA Engineer",      4, "Senior",        4, 1.7D},
-            {13,"Kế toán trưởng",   4, "Senior",        4, 2.0D},
-            {14,"Kế toán trưởng",   5, "Lead",          5, 2.5D},
-            {15,"Kế toán trưởng",   6, "Manager",       6, 3.0D},
-            {16,"Kế toán viên",     2, "Nhân viên",     2, 1.0D},
-            {17,"Kế toán viên",     3, "Nhân viên CK",  3, 1.3D},
-            {18,"Chuyên viên NS",   2, "Nhân viên",     2, 1.0D},
-            {19,"Chuyên viên NS",   3, "Nhân viên CK",  3, 1.2D},
-            {20,"Sales Executive",  2, "Nhân viên",     2, 1.0D},
-            {21,"Sales Executive",  3, "Nhân viên CK",  3, 1.4D},
-            {22,"Sales Executive",  4, "Senior",        4, 1.8D},
-            {23,"Ops Manager",      5, "Lead",          5, 2.2D},
-            {24,"Ops Manager",      6, "Manager",       6, 2.8D}
-        }
+    Private Sub ReloadAfterSave()
+        RefreshMasterData()
+        LoadFromDb()
+        _filtered = New List(Of MultRow)(_all)
+        BuildMatrixColumns()
+        RenderMatrix()
+        RenderDetail(_filtered)
+        If _selId > 0 AndAlso _all.Any(Function(x) x.Id = _selId) Then
+            SelectItem(_selId)
+        ElseIf _all.Count > 0 Then
+            SelectItem(_all(0).Id)
+        Else
+            NewItem()
+        End If
+    End Sub
 
-        Dim i As Integer
-        For i = 0 To multMap.GetUpperBound(0)
-            Dim r As New MultRow()
-            r.Id = CInt(multMap(i, 0))
-            r.JobName = CStr(multMap(i, 1))
-            r.JobId = Array.IndexOf(_jobs, r.JobName) + 1
-            r.LevelRank = CInt(multMap(i, 2))
-            r.LevelName = CStr(multMap(i, 3))
-            r.LevelId = Array.IndexOf(_levels, r.LevelName) + 1
-            r.Mult = CDec(multMap(i, 5))
-            r.Code = "SM-" & r.JobId.ToString("00") & "-LV" & r.LevelRank.ToString("00")
-            r.Note = "" : r.Status = 1
-            _all.Add(r)
+    Private Function ExistsPair(jobId As Integer, levelId As Integer, excludeMultId As Integer) As Boolean
+        Return _all.Any(Function(x) x.JobId = jobId AndAlso x.LevelId = levelId AndAlso x.Id <> excludeMultId)
+    End Function
+
+    Private Sub SetComboById(cbo As ComboBox, entityId As Integer)
+        For i = 0 To cbo.Items.Count - 1
+            Dim it = TryCast(cbo.Items(i), IdNameItem)
+            If it IsNot Nothing AndAlso it.Id = entityId Then
+                cbo.SelectedIndex = i
+                Return
+            End If
         Next
     End Sub
 
@@ -187,6 +210,8 @@ Public Class formSalaryMult
             dgvMatrix.Columns.RemoveAt(dgvMatrix.Columns.Count - 1)
         Loop
 
+        If _levels Is Nothing OrElse _levels.Length = 0 Then Return
+
         ' Add one column per level (ordered by rank)
         Dim lvIdx As Integer
         For lvIdx = 0 To _levels.Length - 1
@@ -203,6 +228,7 @@ Public Class formSalaryMult
 
     Private Sub RenderMatrix()
         dgvMatrix.Rows.Clear()
+        If _levels Is Nothing OrElse _levels.Length = 0 Then Return
 
         ' Get unique jobs preserving order
         Dim jobsSeen As New List(Of String)()
@@ -291,6 +317,7 @@ Public Class formSalaryMult
         If row.Tag Is Nothing Then Return
 
         Dim jobName = row.Tag.ToString()
+        If e.ColumnIndex - 1 < 0 OrElse e.ColumnIndex - 1 >= _levels.Length Then Return
         Dim levelName = _levels(e.ColumnIndex - 1)
 
         ' Find matching record
@@ -305,11 +332,13 @@ Public Class formSalaryMult
         ' No record → pre-fill new form
         ShowTab(2)
         NewItem()
-        Dim jIdx = Array.IndexOf(_jobs, jobName)
-        Dim lIdx = Array.IndexOf(_levels, levelName)
-        If jIdx >= 0 Then cboFJob.SelectedIndex = jIdx + 1
-        If lIdx >= 0 Then cboFLevel.SelectedIndex = lIdx + 1
-        txtFCode.Text = "SM-" & (jIdx + 1).ToString("00") & "-LV" & (lIdx + 1).ToString("00")
+        Dim jOb = _jobsList.FirstOrDefault(Function(j) j.name = jobName)
+        Dim lOb = _levelsOrdered.FirstOrDefault(Function(l) l.name = levelName)
+        If jOb IsNot Nothing Then SetComboById(cboFJob, jOb.id)
+        If lOb IsNot Nothing Then SetComboById(cboFLevel, lOb.id)
+        If jOb IsNot Nothing AndAlso lOb IsNot Nothing Then
+            txtFCode.Text = "SM-" & jOb.id.ToString("00") & "-L" & lOb.id.ToString("00")
+        End If
     End Sub
 
     ' ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -360,11 +389,11 @@ Public Class formSalaryMult
         RenderDetail(_filtered)
 
         Dim r As MultRow = Nothing
+        Dim found As Boolean = False
         For Each x In _all
-            If x.Id = id Then : r = x : Exit For
-            End If
+            If x.Id = id Then r = x : found = True : Exit For
         Next
-        If r.Id = 0 Then Return
+        If Not found Then Return
 
         lblHdrTitle.Text = r.JobName & "  ×  " & r.LevelName
         lblHdrSub.Text = r.Code & "  ·  Hệ số: " & r.Mult.ToString("0.0#")
@@ -372,10 +401,8 @@ Public Class formSalaryMult
         txtFCode.Text = r.Code
         cboFStatus.SelectedIndex = If(r.Status = 1, 0, 1)
 
-        Dim jIdx = Array.IndexOf(_jobs, r.JobName)
-        Dim lIdx = Array.IndexOf(_levels, r.LevelName)
-        cboFJob.SelectedIndex = If(jIdx >= 0, jIdx + 1, 0)
-        cboFLevel.SelectedIndex = If(lIdx >= 0, lIdx + 1, 0)
+        SetComboById(cboFJob, r.JobId)
+        SetComboById(cboFLevel, r.LevelId)
 
         txtFMult.Text = r.Mult.ToString("0.0#")
         txtFNote.Text = r.Note
@@ -390,28 +417,14 @@ Public Class formSalaryMult
     End Sub
 
     Private Sub cboDeptFilter_SelectedIndexChanged(s As Object, e As EventArgs) Handles cboDeptFilter.SelectedIndexChanged
-        ' Filter by dept — simplified: match job names containing dept keywords
         Dim dept = If(cboDeptFilter.SelectedIndex <= 0, "", cboDeptFilter.SelectedItem.ToString())
         _filtered = New List(Of MultRow)()
         For Each r In _all
             Dim match = dept = ""
             If Not match Then
-                Select Case dept
-                    Case "Kỹ thuật"
-                        match = r.JobName.Contains("trình viên") OrElse r.JobName.Contains("Developer") OrElse
-                                r.JobName.Contains("QA") OrElse r.JobName.Contains("DevOps") OrElse
-                                r.JobName.Contains("Frontend")
-                    Case "Kế toán"
-                        match = r.JobName.Contains("Kế toán")
-                    Case "Nhân sự"
-                        match = r.JobName.Contains("NS")
-                    Case "Kinh doanh"
-                        match = r.JobName.Contains("Sales")
-                    Case "Vận hành"
-                        match = r.JobName.Contains("Ops")
-                    Case Else
-                        match = True
-                End Select
+                Dim j = _jobsList.FirstOrDefault(Function(x) x.id = r.JobId)
+                Dim dn = If(j IsNot Nothing AndAlso j.Department IsNot Nothing, j.Department.name, "")
+                match = (dn = dept)
             End If
             If match Then _filtered.Add(r)
         Next
@@ -444,14 +457,14 @@ Public Class formSalaryMult
     End Sub
 
     Private Sub btnExport_Click(s As Object, e As EventArgs) Handles btnExport.Click
-        MessageBox.Show("Tính năng xuất Excel sẽ được tích hợp khi kết nối DB.",
+        MessageBox.Show("Tính năng xuất Excel (dự kiến).",
                         "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information)
     End Sub
 
     ' ── Footer buttons ────────────────────────────────────────
     Private Sub btnSave_Click(s As Object, e As EventArgs) Handles btnSave.Click
         If String.IsNullOrWhiteSpace(txtFCode.Text) Then
-            MessageBox.Show("Vui lòng nhập mã hệ số.", "Thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            MessageBox.Show("Vui lòng nhập mã hiển thị (hoặc chọn job + level để tự sinh).", "Thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             txtFCode.Focus() : Return
         End If
         If cboFJob.SelectedIndex <= 0 Then
@@ -462,15 +475,56 @@ Public Class formSalaryMult
             MessageBox.Show("Vui lòng chọn cấp bậc.", "Thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             cboFLevel.Focus() : Return
         End If
+        Dim ji = TryCast(cboFJob.SelectedItem, IdNameItem)
+        Dim li = TryCast(cboFLevel.SelectedItem, IdNameItem)
+        If ji Is Nothing OrElse li Is Nothing OrElse ji.Id <= 0 OrElse li.Id <= 0 Then Return
+
         Dim mult As Decimal = 0
         If Not Decimal.TryParse(txtFMult.Text.Trim(), mult) OrElse mult <= 0 Then
             MessageBox.Show("Hệ số phải là số thực dương. Ví dụ: 1.5",
                             "Lỗi dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             txtFMult.Focus() : Return
         End If
-        MessageBox.Show(String.Format("Đã lưu: {0}  ×  {1}  =  {2:0.0#}",
-                                       cboFJob.SelectedItem, cboFLevel.SelectedItem, mult),
-                        "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
+        If _selId <= 0 Then
+            If ExistsPair(ji.Id, li.Id, 0) Then
+                MessageBox.Show("Đã tồn tại hệ số cho cặp chức danh + cấp bậc này.", "Trùng", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                Return
+            End If
+            Dim sm As New Salary_Mult()
+            sm.job_id = ji.Id
+            sm.level_id = li.Id
+            sm.mult = mult
+            sm.note = txtFNote.Text.Trim()
+            sm.status = If(cboFStatus.SelectedIndex = 0, 1, 0)
+            Dim res = _salaryMultSv.Insert(sm)
+            If res.IsSuccess Then
+                MessageBox.Show(If(String.IsNullOrEmpty(res.Message), "Đã thêm hệ số.", res.Message), "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                _selId = sm.id
+                ReloadAfterSave()
+            Else
+                MessageBox.Show(res.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End If
+        Else
+            If ExistsPair(ji.Id, li.Id, _selId) Then
+                MessageBox.Show("Đã tồn tại hệ số cho cặp chức danh + cấp bậc này.", "Trùng", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                Return
+            End If
+            Dim existing As New Salary_Mult()
+            existing.id = _selId
+            existing.job_id = ji.Id
+            existing.level_id = li.Id
+            existing.mult = mult
+            existing.note = txtFNote.Text.Trim()
+            existing.status = If(cboFStatus.SelectedIndex = 0, 1, 0)
+            Dim res = _salaryMultSv.Update(existing)
+            If res.IsSuccess Then
+                MessageBox.Show(If(String.IsNullOrEmpty(res.Message), "Đã cập nhật hệ số.", res.Message), "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                ReloadAfterSave()
+            Else
+                MessageBox.Show(res.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End If
+        End If
     End Sub
 
     Private Sub btnClear_Click(s As Object, e As EventArgs) Handles btnClear.Click
@@ -479,10 +533,18 @@ Public Class formSalaryMult
 
     Private Sub btnDelete_Click(s As Object, e As EventArgs) Handles btnDelete.Click
         If _selId < 0 Then Return
-        Dim res = MessageBox.Show("Xóa hệ số lương này?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
-        If res = DialogResult.Yes Then
-            MessageBox.Show("Đã xóa (mock).", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information)
-            _selId = -1 : NewItem()
+        If Not _all.Any(Function(x) x.Id = _selId) Then Return
+        Dim ask = MessageBox.Show("Ngừng sử dụng hệ số lương này?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
+        If ask <> DialogResult.Yes Then Return
+        Dim sm As New Salary_Mult()
+        sm.id = _selId
+        Dim res = _salaryMultSv.Delete(New List(Of Salary_Mult) From {sm})
+        If res.IsSuccess Then
+            MessageBox.Show(If(String.IsNullOrEmpty(res.Message), "Đã xóa.", res.Message), "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            _selId = -1
+            ReloadAfterSave()
+        Else
+            MessageBox.Show(res.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End If
     End Sub
 
@@ -511,11 +573,11 @@ Public Class formSalaryMult
     End Sub
 
     Private Sub AutoGenCode()
-        If cboFJob.SelectedIndex > 0 AndAlso cboFLevel.SelectedIndex > 0 Then
-            txtFCode.Text = "SM-" & cboFJob.SelectedIndex.ToString("00") &
-                            "-LV" & cboFLevel.SelectedIndex.ToString("00")
-            lblHdrTitle.Text = cboFJob.SelectedItem.ToString() &
-                               "  ×  " & cboFLevel.SelectedItem.ToString()
+        Dim ji = TryCast(cboFJob.SelectedItem, IdNameItem)
+        Dim li = TryCast(cboFLevel.SelectedItem, IdNameItem)
+        If ji IsNot Nothing AndAlso li IsNot Nothing AndAlso ji.Id > 0 AndAlso li.Id > 0 Then
+            txtFCode.Text = "SM-" & ji.Id.ToString("00") & "-L" & li.Id.ToString("00")
+            lblHdrTitle.Text = ji.Caption & "  ×  " & li.Caption
             lblHdrSub.Text = txtFCode.Text
         End If
     End Sub

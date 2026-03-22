@@ -1,11 +1,11 @@
-﻿# Forms Status
+# Forms Status
 
 Cập nhật theo `degsignUI.json`.
 
 ## Tổng quan
-- Tổng số form: 19
-- Đã hoàn thành: 19
-- Chưa hoàn thành: 1
+- Tổng số form: 20
+- Đã hoàn thành: 20
+- Chưa hoàn thành: 0
 
 ## Theo module
 ### Hệ thống (3)
@@ -18,8 +18,7 @@ Cập nhật theo `degsignUI.json`.
 - done: formEmployee, formContract, formPosition
 
 ### Vận hành (6)
-- done: formAttendance, formLeave, formLeaveCategory, formHoliday, formProject
-- pending: formAssignment
+- done: formAttendance, formLeave, formLeaveCategory, formHoliday, formProject, formAssignment
 
 ### Tài chính (2)
 - done: formPayroll, formPayPeriod

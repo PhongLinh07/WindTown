@@ -1,17 +1,7 @@
 Imports System.Drawing
 Imports System.Drawing.Drawing2D
-Imports System.Runtime.InteropServices
 
 Public Class formEmployee
-
-    <DllImport("user32.dll", CharSet:=CharSet.Unicode)>
-    Private Shared Function SendMessage(hWnd As IntPtr, msg As Integer, wParam As IntPtr, lParam As String) As IntPtr
-    End Function
-    Private Const EM_SETCUEBANNER As Integer = &H1501
-
-    Private Sub SetPlaceholder(tb As TextBox, hint As String)
-        SendMessage(tb.Handle, EM_SETCUEBANNER, New IntPtr(1), hint)
-    End Sub
 
     ' ── Services ─────────────────────────────────────────────
     Private ReadOnly _empSv = AppServices.Instance.EmployeeSV
@@ -23,18 +13,11 @@ Public Class formEmployee
     Private _filtered As New List(Of Employee)()
     Private _selectedId As Integer = -1
 
-    Private ReadOnly _avatarColors() As Color = {
-        Color.FromArgb(74, 158, 255), Color.FromArgb(123, 97, 255),
-        Color.FromArgb(76, 175, 80), Color.FromArgb(245, 158, 11),
-        Color.FromArgb(224, 85, 85), Color.FromArgb(38, 198, 218),
-        Color.FromArgb(236, 72, 153), Color.FromArgb(249, 115, 22)
-    }
-
     ' ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     '  LOAD
     ' ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     Private Sub formEmployee_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        SetPlaceholder(txtSearch, "🔍  Tìm kiếm nhân viên...")
+        UiTextBoxHints.SetCueBanner(txtSearch, "🔍  Tìm kiếm nhân viên...")
         DoubleBuffered = True
         AddHandler pnlAvatarCircle.Paint, AddressOf AvatarCircle_Paint
         AddHandler pnlDetailFooter.Resize, AddressOf RepositionFooterBtns
@@ -122,7 +105,8 @@ Public Class formEmployee
         e.PaintBackground(e.ClipBounds, True)
         Dim empId = If(dgvEmployee.Rows(e.RowIndex).Tag IsNot Nothing,
                        CInt(dgvEmployee.Rows(e.RowIndex).Tag), 0)
-        Dim clr = _avatarColors(empId Mod _avatarColors.Length)
+        Dim pal = ThemeColors.AvatarPalette
+        Dim clr = pal(empId Mod pal.Length)
         Dim initials = modDB.SafeStr(e.Value)
         Dim g = e.Graphics
         g.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit
@@ -161,7 +145,8 @@ Public Class formEmployee
         Dim emp = _allEmps.FirstOrDefault(Function(x) x.id = id)
         If emp Is Nothing Then Return
 
-        Dim clr = _avatarColors(emp.id Mod _avatarColors.Length)
+        Dim pal = ThemeColors.AvatarPalette
+        Dim clr = pal(emp.id Mod pal.Length)
         pnlAvatarCircle.Tag = GetInitials(emp.name)
         pnlAvatarCircle.BackColor = clr
         pnlAvatarCircle.Invalidate()
