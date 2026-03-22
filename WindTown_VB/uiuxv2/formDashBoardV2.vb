@@ -168,14 +168,13 @@ Public Class formDashBoardV2
 
         For Each emp In employees
             Dim list = contracts.Where(Function(c) c.employee_id = emp.id AndAlso
-                c.start_date.Date <= today AndAlso
-                (Not c.end_date.HasValue OrElse c.end_date.Value.Date >= today)).ToList()
+                c.start_date.Date <= today AndAlso c.end_date.Date >= today).ToList()
             If list.Count = 0 Then
                 none += 1
                 Continue For
             End If
             Dim best = list.OrderByDescending(Function(c) c.start_date).First()
-            If best.end_date.HasValue AndAlso best.end_date.Value.Date >= today AndAlso best.end_date.Value.Date <= deadline Then
+            If best.end_date.Date >= today AndAlso best.end_date.Date <= deadline Then
                 ex += 1
             Else
                 co += 1

@@ -1,5 +1,6 @@
 Imports Microsoft.EntityFrameworkCore
 
+' sử dụng file này  để tạo database nếu ko tìm được "
 Public Class AppDbContext
     Inherits DbContext
 
