@@ -1,24 +1,12 @@
 Imports System.Drawing
-Imports System.Runtime.InteropServices
 
 ' ============================================================
-'  formPayPeriod.vb — Kỳ tính lương  (.NET 4.8 · Mock data)
+'  formPayPeriod.vb — Kỳ tính lương  (.NET 8 · Mock data)
 '  Bảng: pay_period
 '  fields: id, code, name, month, start_date, end_date,
 '          std_hours, note, status
 ' ============================================================
 Public Class formPayPeriod
-
-    ' ── Win32 placeholder ────────────────────────────────────
-    <DllImport("user32.dll", CharSet:=CharSet.Unicode)>
-    Private Shared Function SendMessage(hWnd As IntPtr, msg As Integer,
-                                        wParam As IntPtr, lParam As String) As IntPtr
-    End Function
-    Private Const EM_SETCUEBANNER As Integer = &H1501
-
-    Private Sub SetPlaceholder(tb As TextBox, hint As String)
-        SendMessage(tb.Handle, EM_SETCUEBANNER, New IntPtr(1), hint)
-    End Sub
 
     ' ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     '  DATA STRUCTURE
@@ -46,10 +34,10 @@ Public Class formPayPeriod
     Private Sub formPayPeriod_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         DoubleBuffered = True
 
-        SetPlaceholder(txtSearch, "🔍  Tìm mã hoặc tên kỳ lương...")
-        SetPlaceholder(txtFCode, "PP2026-04")
-        SetPlaceholder(txtFName, "Lương tháng 4/2026")
-        SetPlaceholder(txtFNote, "Ghi chú kỳ lương...")
+        UiTextBoxHints.SetCueBanner(txtSearch, "Tìm mã hoặc tên kỳ lương...")
+        UiTextBoxHints.SetCueBanner(txtFCode, "PP2026-04")
+        UiTextBoxHints.SetCueBanner(txtFName, "Lương tháng 4/2026")
+        UiTextBoxHints.SetCueBanner(txtFNote, "Ghi chú kỳ lương...")
 
         AddHandler pnlRightHdrIcon.Paint, AddressOf HdrIcon_Paint
         AddHandler pnlToolbar.Resize, AddressOf OnToolbarResize
@@ -162,9 +150,9 @@ Public Class formPayPeriod
 
     Private Function GetStatusText(status As Integer) As String
         Select Case status
-            Case 0 : Return "○ Nháp"
-            Case 1 : Return "● Đang xử lý"
-            Case 2 : Return "✓ Đã chốt"
+            Case 0 : Return "Nháp"
+            Case 1 : Return "Đang xử lý"
+            Case 2 : Return "Đã chốt"
             Case Else : Return "?"
         End Select
     End Function
@@ -416,7 +404,7 @@ Public Class formPayPeriod
 
         lblRightTitle.Text = "Tạo kỳ lương mới"
         lblRightSub.Text = "Điền thông tin bên dưới"
-        lblRightBadge.Text = "○ Nháp"
+        lblRightBadge.Text = "Nháp"
         lblRightBadge.ForeColor = Color.FromArgb(123, 139, 178)
         lblRightBadge.BackColor = Color.FromArgb(20, 123, 139, 178)
 

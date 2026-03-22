@@ -1,24 +1,12 @@
 Imports System.Drawing
 Imports System.Drawing.Drawing2D
-Imports System.Runtime.InteropServices
 
 ' ============================================================
-'  formContract.vb — Quản lý hợp đồng  (.NET 4.8 · Mock data)
+'  formContract.vb — Quản lý hợp đồng  (.NET 8 · Mock data)
 '  contract: code, start_date, end_date, base_salary,
 '            note, status  — FK: employee_id
 ' ============================================================
 Public Class formContract
-
-    ' ── Win32 placeholder ────────────────────────────────────
-    <DllImport("user32.dll", CharSet:=CharSet.Unicode)>
-    Private Shared Function SendMessage(hWnd As IntPtr, msg As Integer,
-                                        wParam As IntPtr, lParam As String) As IntPtr
-    End Function
-    Private Const EM_SETCUEBANNER As Integer = &H1501
-
-    Private Sub SetPlaceholder(tb As TextBox, hint As String)
-        SendMessage(tb.Handle, EM_SETCUEBANNER, New IntPtr(1), hint)
-    End Sub
 
     ' ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     '  STRUCTURES
@@ -43,18 +31,6 @@ Public Class formContract
         Dim Status As Integer        ' 0=active 1=expiring 2=expired 3=cancelled
     End Structure
 
-    ' Avatar palette
-    Private ReadOnly _avatarColors() As Color = {
-        Color.FromArgb(74, 158, 255),
-        Color.FromArgb(123, 97, 255),
-        Color.FromArgb(76, 175, 80),
-        Color.FromArgb(245, 158, 11),
-        Color.FromArgb(224, 85, 85),
-        Color.FromArgb(38, 198, 218),
-        Color.FromArgb(236, 72, 153),
-        Color.FromArgb(249, 115, 22)
-    }
-
     Private _employees As New List(Of EmpRef)()
     Private _allContracts As New List(Of ContractRow)()
     Private _filtered As New List(Of ContractRow)()
@@ -66,9 +42,9 @@ Public Class formContract
     Private Sub formContract_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         DoubleBuffered = True
 
-        SetPlaceholder(txtSearch, "🔍  Tìm mã HĐ hoặc tên nhân viên...")
-        SetPlaceholder(txtFCode, "CTR2026-001")
-        SetPlaceholder(txtFNote, "Ghi chú hợp đồng...")
+        UiTextBoxHints.SetCueBanner(txtSearch, "Tìm mã HĐ hoặc tên nhân viên...")
+        UiTextBoxHints.SetCueBanner(txtFCode, "CTR2026-001")
+        UiTextBoxHints.SetCueBanner(txtFNote, "Ghi chú hợp đồng...")
 
         AddHandler pnlEmpAvatar.Paint, AddressOf EmpAvatar_Paint
         AddHandler pnlToolbar.Resize, AddressOf OnToolbarResize
@@ -117,7 +93,8 @@ Public Class formContract
             e.Name = CStr(rows(i, 2))
             e.Dept = CStr(rows(i, 3))
             e.Job = CStr(rows(i, 4))
-            e.AvatarColor = _avatarColors(e.Id Mod _avatarColors.Length)
+            Dim pal = ThemeColors.AvatarPalette
+            e.AvatarColor = pal(e.Id Mod pal.Length)
             _employees.Add(e)
         Next
     End Sub
@@ -206,10 +183,10 @@ Public Class formContract
 
     Private Function GetStatusText(status As Integer) As String
         Select Case status
-            Case 0 : Return "● Đang hiệu lực"
-            Case 1 : Return "⚠ Sắp hết hạn"
-            Case 2 : Return "○ Đã hết hạn"
-            Case 3 : Return "✕ Đã hủy"
+            Case 0 : Return "Đang hiệu lực"
+            Case 1 : Return "Sắp hết hạn"
+            Case 2 : Return "Đã hết hạn"
+            Case 3 : Return "Đã hủy"
             Case Else : Return "?"
         End Select
     End Function
@@ -307,6 +284,7 @@ Public Class formContract
         If emp.Id = 0 Then Return
 
         Dim g = e.Graphics
+        g.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit
         g.SmoothingMode = SmoothingMode.AntiAlias
 
         Dim sz = 34
@@ -554,7 +532,7 @@ Public Class formContract
             Return
         End If
         If dtpEnd.Value <= dtpStart.Value Then
-            lblDurationVal.Text = "⚠ Ngày không hợp lệ"
+            lblDurationVal.Text = "Ngày không hợp lệ"
             lblDurationVal.ForeColor = Color.FromArgb(245, 158, 11)
             Return
         End If
@@ -639,7 +617,7 @@ Public Class formContract
         lblEmpName.Text = "Chọn nhân viên"
         lblEmpMeta.Text = "—"
         lblEmpDept.Text = "—"
-        lblBadgeStatus.Text = "● Đang hiệu lực"
+        lblBadgeStatus.Text = "Đang hiệu lực"
         lblBadgeStatus.ForeColor = Color.FromArgb(76, 175, 80)
         lblBadgeStatus.BackColor = Color.FromArgb(20, 76, 175, 80)
         lblBadgeDaysLeft.Text = ""

@@ -113,7 +113,7 @@ Module NavigationService
     ' Đang xu?t v? form dang nh?p, d?ng th?i dóng form chính n?u dang ? trong dó
     Public Sub LogoutToLogin(currentForm As Form)
         _isSwitchingFromMain = True
-        NavigationService.SwitchTopLevel(Of frmLogin)(_mainHostForm)
+        NavigationService.SwitchTopLevel(Of formLoginV2)(_mainHostForm)
     End Sub
 
     ' Khi form chính b? dóng, n?u dang chuy?n t? form chính sang form khác th́ không thoát ?ng d?ng

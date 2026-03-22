@@ -84,7 +84,7 @@ Public Class frmRegister
 
             If result.IsSuccess Then
                 MessageBox.Show("Đăng ký thành công!")
-                NavigationService.SwitchTopLevel(Of frmLogin)(Me)
+                NavigationService.SwitchTopLevel(Of formLoginV2)(Me)
             Else
                 MessageBox.Show(result.Message, "Lỗi")
             End If
@@ -102,6 +102,6 @@ Public Class frmRegister
     End Function
 
     Private Sub btnBack_Click(sender As Object, e As EventArgs) Handles btnBack.Click
-        NavigationService.SwitchTopLevel(Of frmLogin)(Me)
+        NavigationService.SwitchTopLevel(Of formLoginV2)(Me)
     End Sub
 End Class

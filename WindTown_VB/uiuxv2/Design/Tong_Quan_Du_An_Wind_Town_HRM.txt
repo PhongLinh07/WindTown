@@ -1,0 +1,29 @@
+Tổng quan dự án Wind Town HRM
+Mục tiêu chung
+Xây dựng hệ thống quản lý nhân sự (HRM) bằng VB.NET WinForms .NET 8.0, giao diện dark theme Devoryn-inspired, kết nối SQL Server với pattern JSON_VALUE(datas, '$.field') — toàn bộ dữ liệu lưu dạng JSON trong cột NVARCHAR(MAX).
+Cách làm — nguyên tắc xuyên suốt
+1. Quy trình thiết kế có kiểm duyệt
+Với form phức tạp (formEmployee, formPolicy, formPayroll), tôi tạo file HTML preview tương tác trước — người dùng duyệt layout rồi mới code VB.NET. Với form đơn giản hơn (formPayPeriod, formContract) thì code thẳng vì layout Master-Detail đã được xác lập rõ.
+2. Tách biệt Designer.vb và code-behind
+Designer.vb chỉ chứa khai báo controls và thuộc tính tĩnh — đúng chuẩn Visual Studio generate. Form.vb chứa toàn bộ logic, mock data, event handlers. Điều này cho phép thay thế mock data bằng DB thật mà không chạm vào Designer.
+3. Không dùng vòng lặp trong Designer.vb
+Mỗi thuộc tính được set riêng lẻ từng dòng. Đây là yêu cầu cứng từ đầu dự án — Visual Studio không generate loop trong InitializeComponent().
+4. Mock data pattern nhất quán
+Tất cả form dùng Structure thay vì Class cho data row (nhẹ hơn, không cần New), List(Of T) cho collection, và các Sub LoadMock* tách biệt hoàn toàn với phần render — khi chuyển sang DB thật chỉ cần thay nội dung các Sub đó.
+6. GDI+ cho visual nâng cao
+Avatar hình tròn với chữ cái đầu được vẽ trong CellPainting của DataGridView và Paint event của Panel — không dùng PictureBox hay Image file. Dashboard dùng GDI+ vẽ Line chart, Bar chart, Donut chart hoàn toàn thủ công.
+7. Resize-aware layout
+Tất cả form đăng ký AddHandler pnl.Resize để repositioning các anchor-right buttons khi form thay đổi kích thước — thay vì dựa hoàn toàn vào Anchor property vốn không đủ linh hoạt trong WinForms.
+Kiến trúc tổng thể
+formMainV2  ←  shell chứa tất cả
+    │
+    ├── NavigateTo(frm)  ←  nhúng form con vào pnlContent
+    │       TopLevel = False, Dock = Fill
+    │
+    ├── modDB       GetConnection / ExecScalar / ExecTable / helpers
+    ├── modSession  CurrentUser / CurrentRole / DisplayName
+    │
+    └── [form con]  mỗi form tự đủ:
+            LoadMock*()  →  RenderTable() / RenderCards()
+            SelectItem() →  FillForm()
+            btn*_Click() →  Validate() → Save / Delete / Edit.

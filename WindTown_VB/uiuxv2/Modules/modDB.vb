@@ -19,8 +19,14 @@ Module modDB
     End Function
 
     Public Function TestConnection() As Boolean
+        Return TestConnection(Nothing)
+    End Function
+
+    ''' <summary>Kiểm tra kết nối; nếu <paramref name="connectionStringOverride"/> Nothing hoặc rỗng thì dùng chuỗi hiện tại.</summary>
+    Public Function TestConnection(connectionStringOverride As String) As Boolean
+        Dim cs = If(String.IsNullOrWhiteSpace(connectionStringOverride), ConnectionString, connectionStringOverride.Trim())
         Try
-            Using conn = GetConnection()
+            Using conn As New SqlConnection(cs)
                 conn.Open()
                 Return True
             End Using

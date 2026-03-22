@@ -1,0 +1,28 @@
+Các form chưa hoàn thành 11:
+- formAssignment.
+- formAttendance.
+- formHoliday.
+- formLeave.
+- formPosition.
+- formLevel.
+- formLeaveCategory.
+- formProject.
+
+
+
+Các form đã hoàn thành 8:
+- fromMainV2.
+- formDashboardV2.
+- formContract.
+- formDepartment.
+- formEmployee.
+- formPayPeriod.
+- formPayroll.
+- formPolicy.
+
+- formSystem.
+- formSalaryMult.
+- formJob.
+
+
+Get-Content -Path "D:\FTC\Visual_BasicNet\WindTownV2\.codex\skills\openspec-propose\SKILL.md

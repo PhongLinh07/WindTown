@@ -27,7 +27,7 @@ Public Class UserProfileForm
                 Return
             End If
             _parent.Close()
-            NavigationService.SwitchTopLevel(Of frmLogin)(_parent)
+            NavigationService.SwitchTopLevel(Of formLoginV2)(_parent)
             Me.Close()
         End If
 

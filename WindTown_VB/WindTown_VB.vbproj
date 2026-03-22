@@ -1,24 +1,13 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>net8.0-windows</TargetFramework>
-    <StartupObject>Sub Main</StartupObject>
+    <StartupObject>WindTown_VB.My.MyApplication</StartupObject>
     <UseWindowsForms>true</UseWindowsForms>
     <MyType>WindowsForms</MyType>
+    <NoWarn>$(NoWarn);MSB3305</NoWarn>
   </PropertyGroup>
-
-  <ItemGroup>
-    <COMReference Include="Accessibility">
-      <WrapperTool>tlbimp</WrapperTool>
-      <VersionMinor>1</VersionMinor>
-      <VersionMajor>1</VersionMajor>
-      <Guid>1ea4dbf0-3c3b-11cf-810c-00aa00389b71</Guid>
-      <Lcid>0</Lcid>
-      <Isolated>false</Isolated>
-      <EmbedInteropTypes>true</EmbedInteropTypes>
-    </COMReference>
-  </ItemGroup>
 
   <ItemGroup>
     <Import Include="System.Data" />
@@ -35,6 +24,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
+    <!-- C-1 (đóng): WinForms.DataVisualization chỉ còn dùng tại UIUX/frmBaoCaoTongHop.vb. uiuxv2 vẽ biểu đồ bằng GDI+; không gỡ gói trước khi thay thế hoặc gỡ màn báo cáo cũ. -->
     <PackageReference Include="WinForms.DataVisualization" Version="1.10.0" />
   </ItemGroup>
 
@@ -63,6 +53,15 @@
     <None Update="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="1_Documents\db_json.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="1_Documents\create_db.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
 

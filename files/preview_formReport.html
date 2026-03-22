@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8"/>
+<title>Preview ? formReport</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#1A1D2E;--card:#1E2235;--dark:#151824;--input:#262B42;
+  --fg:#E8ECF0;--fg2:#7B8BB2;--fg3:#3D4A6A;
+  --accent:#4A9EFF;--border:rgba(255,255,255,0.07);
+  --success:#4CAF50;--warn:#F59E0B;--danger:#E05555;
+}
+body{background:#0F1120;display:flex;justify-content:center;align-items:flex-start;padding:24px;min-height:100vh;font-family:'Segoe UI','Microsoft YaHei UI',sans-serif;color:var(--fg)}
+.wrap{background:var(--bg);border-radius:14px;overflow:hidden;border:1px solid var(--border);width:100%;max-width:1280px;min-height:720px;display:flex;flex-direction:column}
+.header{background:var(--dark);padding:12px 16px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:12px}
+.header h1{font-size:16px;font-weight:600}
+.header .sub{font-size:12px;color:var(--fg2)}
+.badge{background:rgba(74,158,255,.12);color:var(--accent);border:1px solid rgba(74,158,255,.35);padding:2px 8px;border-radius:999px;font-size:11px}
+
+.toolbar{background:var(--dark);padding:10px 16px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.input{background:var(--input);border:1px solid var(--border);border-radius:8px;height:34px;color:var(--fg);font-size:12.5px;padding:0 10px;outline:none}
+.input::placeholder{color:var(--fg2)}
+.input.invalid{border-color:var(--danger);box-shadow:0 0 0 2px rgba(224,85,85,.15)}
+.select{min-width:160px}
+.btn-pri{background:var(--accent);color:#fff;border:none;border-radius:8px;padding:0 16px;height:34px;font-size:12.5px;cursor:pointer;display:flex;align-items:center;gap:6px}
+.btn-sub{background:transparent;color:var(--fg);border:1px solid var(--border);border-radius:8px;padding:0 12px;height:34px;font-size:12.5px;cursor:pointer}
+
+.content{flex:1;display:flex;gap:16px;padding:16px}
+.left{flex:1.2;display:flex;flex-direction:column;gap:12px}
+.right{flex:.8;display:flex;flex-direction:column;gap:12px}
+
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:12px}
+.card h3{font-size:11px;color:var(--fg2);text-transform:uppercase;letter-spacing:.6px}
+.card .val{font-size:22px;color:var(--fg);margin-top:6px;font-weight:600}
+.card .sub{font-size:11px;color:var(--fg3);margin-top:4px}
+
+.panel{background:var(--card);border:1px solid var(--border);border-radius:12px;display:flex;flex-direction:column}
+.panel-header{padding:12px 14px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;font-size:12.5px;text-transform:uppercase;letter-spacing:.6px;color:var(--fg2)}
+.panel-body{padding:12px 14px}
+
+.tbl-wrap{flex:1;overflow:auto}
+.tbl{width:100%;border-collapse:collapse;font-size:12.5px}
+.tbl thead tr{position:sticky;top:0}
+.tbl th{background:var(--dark);color:var(--accent);font-weight:500;text-align:left;padding:10px 12px;border-bottom:1px solid var(--border);font-size:11px;text-transform:uppercase;letter-spacing:.5px;white-space:nowrap}
+.tbl td{color:var(--fg);padding:10px 12px;border-bottom:1px solid rgba(255,255,255,.04)}
+.tbl tr:hover td{background:rgba(74,158,255,.04);cursor:pointer}
+.tbl tr.active td{background:rgba(74,158,255,.08)}
+
+.footer{background:var(--dark);padding:8px 16px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;font-size:11.5px;color:var(--fg2)}
+.helper{font-size:11px;color:var(--fg3)}
+
+.chart{display:flex;align-items:flex-end;gap:8px;height:180px}
+.bar{flex:1;background:rgba(74,158,255,.2);border:1px solid rgba(74,158,255,.5);border-radius:8px 8px 4px 4px;position:relative}
+.bar span{position:absolute;bottom:6px;left:6px;font-size:10px;color:var(--fg)}
+
+.detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.field label{font-size:11px;color:var(--fg2);text-transform:uppercase;letter-spacing:.6px;display:block;margin-bottom:4px}
+.value{background:var(--input);border:1px solid var(--border);border-radius:8px;padding:8px 10px;font-size:12.5px}
+
+.req{color:var(--danger);margin-left:4px}
+.error{color:var(--danger);font-size:11px;margin-top:6px;display:none}
+.error.show{display:block}
+
+@media (max-width:1024px){
+  .content{flex-direction:column}
+  .kpis{grid-template-columns:repeat(2,1fr)}
+  .detail-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="header">
+    <div>
+      <h1>B?o c?o t?ng h?p</h1>
+      <div class="sub">Theo th?i gian / ph?ng ban</div>
+    </div>
+    <span class="badge">Full layout</span>
+  </div>
+
+  <div class="toolbar">
+    <select class="input select" id="reportType" data-required="1">
+      <option value="">Lo?i b?o c?o</option>
+      <option value="attendance">Ch?m c?ng</option>
+      <option value="leave">Ngh? ph?p</option>
+      <option value="payroll">L??ng</option>
+      <option value="project">D? ?n</option>
+    </select>
+    <input class="input" type="date" id="fromDate" data-required="1" />
+    <input class="input" type="date" id="toDate" data-required="1" />
+    <select class="input select" id="deptFilter">
+      <option value="">T?t c? ph?ng ban</option>
+      <option>K? thu?t</option>
+      <option>K? to?n</option>
+      <option>Marketing</option>
+    </select>
+    <div style="flex:1"></div>
+    <select class="input select" id="exportScope">
+      <option value="report">Xu?t t? report</option>
+      <option value="formAttendance">Xu?t theo formAttendance</option>
+      <option value="formLeave">Xu?t theo formLeave</option>
+      <option value="formPayroll">Xu?t theo formPayroll</option>
+      <option value="formProject">Xu?t theo formProject</option>
+      <option value="formAssignment">Xu?t theo formAssignment</option>
+    </select>
+    <button class="btn-sub" onclick="resetFilters()">L?m m?i</button>
+    <button class="btn-pri" onclick="applyReport()">Xem b?o c?o</button>
+    <button class="btn-sub" onclick="exportReport('excel')">Xu?t Excel</button>
+    <button class="btn-sub" onclick="exportReport('pdf')">Xu?t PDF</button>
+    <div class="error" id="err">Vui l?ng ch?n lo?i b?o c?o v? kho?ng th?i gian.</div>
+  </div>
+
+  <div class="content">
+    <div class="left">
+      <div class="kpis">
+        <div class="card"><h3>T?ng nh?n s?</h3><div class="val" id="kpiEmp">230</div><div class="sub">+5% so v?i th?ng tr??c</div></div>
+        <div class="card"><h3>?i l?m ??ng gi?</h3><div class="val" id="kpiOnTime">92%</div><div class="sub">+2.1% tu?n n?y</div></div>
+        <div class="card"><h3>Ngh? ph?p</h3><div class="val" id="kpiLeave">18</div><div class="sub">??n ngh? trong k?</div></div>
+        <div class="card"><h3>Chi ph? l??ng</h3><div class="val" id="kpiPayroll">4.2 t?</div><div class="sub">Theo k? hi?n t?i</div></div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-header">Danh s?ch chi ti?t</div>
+        <div class="tbl-wrap">
+          <table class="tbl">
+            <thead><tr>
+              <th>M?</th>
+              <th>Nh?n vi?n</th>
+              <th>Ph?ng ban</th>
+              <th>Ch? s?</th>
+              <th>Tr?ng th?i</th>
+            </tr></thead>
+            <tbody id="tbody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="right">
+      <div class="panel">
+        <div class="panel-header">Xu h??ng theo tu?n</div>
+        <div class="panel-body">
+          <div class="chart" id="chart"></div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-header">Chi ti?t d?ng ch?n</div>
+        <div class="panel-body">
+          <div class="detail-grid">
+            <div class="field"><label>M?<span class="req">*</span></label><div class="value" id="dCode">ATD-0001</div></div>
+            <div class="field"><label>Nh?n vi?n</label><div class="value" id="dName">Nguy?n V?n An</div></div>
+            <div class="field"><label>Ph?ng ban</label><div class="value" id="dDept">K? thu?t</div></div>
+            <div class="field"><label>Ch? s?</label><div class="value" id="dScore">98%</div></div>
+            <div class="field"><label>Tr?ng th?i</label><div class="value" id="dStatus">T?t</div></div>
+            <div class="field"><label>Ghi ch?</label><div class="value" id="dNote">Kh?ng c?</div></div>
+          </div>
+          <div class="helper" style="margin-top:8px">* D? li?u mock</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span id="rowInfo">Hi?n th? 0 m?c</span>
+    <span>Page 1</span>
+  </div>
+</div>
+
+<script>
+const DATA=[
+  {code:'ATD-0001',name:'Nguy?n V?n An',dept:'K? thu?t',score:'98%',status:'T?t'},
+  {code:'ATD-0002',name:'Tr?n Th? Binh',dept:'K? to?n',score:'95%',status:'T?t'},
+  {code:'ATD-0003',name:'Ph?m Th? Dung',dept:'Marketing',score:'93%',status:'?n'},
+  {code:'ATD-0004',name:'Ho?ng V?n Em',dept:'K? thu?t',score:'92%',status:'?n'}
+];
+const CHART=[60,72,68,80,74,88,83];
+
+function renderTable(){
+  const tb=document.getElementById('tbody');
+  if(!DATA.length){tb.innerHTML='<tr><td colspan="5" style="text-align:center;padding:40px;color:var(--fg3)">Kh?ng c? d? li?u</td></tr>';return}
+  tb.innerHTML=DATA.map((i,idx)=>`<tr onclick="selectRow(${idx})"><td>${i.code}</td><td>${i.name}</td><td>${i.dept}</td><td>${i.score}</td><td>${i.status}</td></tr>`).join('');
+  document.getElementById('rowInfo').textContent=`Hi?n th? ${DATA.length} m?c`;
+}
+
+function renderChart(){
+  const chart=document.getElementById('chart');
+  chart.innerHTML=CHART.map(v=>`<div class="bar" style="height:${v+40}px"><span>${v}%</span></div>`).join('');
+}
+
+function selectRow(idx){
+  document.querySelectorAll('#tbody tr').forEach((tr,i)=>tr.classList.toggle('active',i===idx));
+  const item=DATA[idx];
+  if(!item) return;
+  document.getElementById('dCode').textContent=item.code;
+  document.getElementById('dName').textContent=item.name;
+  document.getElementById('dDept').textContent=item.dept;
+  document.getElementById('dScore').textContent=item.score;
+  document.getElementById('dStatus').textContent=item.status;
+  document.getElementById('dNote').textContent='Kh?ng c?';
+}
+
+function resetFilters(){
+  document.getElementById('reportType').value='';
+  document.getElementById('fromDate').value='';
+  document.getElementById('toDate').value='';
+  document.getElementById('deptFilter').value='';
+  document.getElementById('err').classList.remove('show');
+  document.querySelectorAll('[data-required="1"]').forEach(i=>i.classList.remove('invalid'));
+}
+
+function applyReport(){
+  let valid=true;
+  document.querySelectorAll('[data-required="1"]').forEach(i=>{
+    if(!i.value){i.classList.add('invalid');valid=false}else{i.classList.remove('invalid')}
+  });
+  document.getElementById('err').classList.toggle('show',!valid);
+  if(!valid) return;
+  alert('?? ?p d?ng b?o c?o (mock)');
+}
+
+function exportReport(type){
+  const scope = document.getElementById('exportScope').value;
+  const label = scope === 'report' ? 'Report hi?n t?i' : scope;
+  alert(`Xu?t ${type.toUpperCase()} ? ${label} (mock)`);
+}
+
+renderTable();
+renderChart();
+selectRow(0);
+</script>
+</body>
+</html>

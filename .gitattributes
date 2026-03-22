@@ -1,0 +1,50 @@
+# =========================
+# Normalize line endings
+# =========================
+* text=auto
+
+# =========================
+# Windows-specific files
+# =========================
+*.sln text eol=crlf
+*.vbproj text eol=crlf
+*.vb text eol=crlf
+*.Designer.vb text eol=crlf
+*.resx text eol=crlf
+
+# PowerShell scripts
+*.ps1 text eol=crlf
+
+# Batch files
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+# =========================
+# Config / JSON / XML
+# =========================
+*.json text eol=lf
+*.xml text eol=lf
+*.config text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+
+# =========================
+# Web files (nếu có)
+# =========================
+*.js text eol=lf
+*.ts text eol=lf
+*.css text eol=lf
+*.scss text eol=lf
+*.html text eol=lf
+
+# =========================
+# Binary files (không convert)
+# =========================
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.zip binary
+*.dll binary
+*.exe binary
