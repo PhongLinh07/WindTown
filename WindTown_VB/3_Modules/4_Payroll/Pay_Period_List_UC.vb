@@ -5,6 +5,7 @@ Public Class Pay_Period_List_UC
         MyBase.New(AppServices.Instance.Pay_PeriodSV, "Pay_Period_List_UC", "Chu kỳ lương")
         InitializeComponent()
         Init(GetType(Pay_Period))
+        EnableFilter(GetType(Pay_Period))   ' ← CHỈ THÊM DÒNG NÀY
 
     End Sub
 

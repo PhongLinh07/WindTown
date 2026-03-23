@@ -167,7 +167,7 @@ Partial Class formDepartment
         lblFCode.ForeColor = Color.FromArgb(CByte(123), CByte(139), CByte(178))
         lblFCode.Location = New Point(3, 0)
         lblFCode.Name = "lblFCode"
-        lblFCode.Size = New Size(135, 19)
+        lblFCode.Size = New Size(112, 17)
         lblFCode.TabIndex = 0
         lblFCode.Text = "Mã phòng ban  *"
         ' 
@@ -181,7 +181,7 @@ Partial Class formDepartment
         txtFCode.Location = New Point(0, 22)
         txtFCode.Margin = New Padding(0, 0, 8, 4)
         txtFCode.Name = "txtFCode"
-        txtFCode.Size = New Size(388, 26)
+        txtFCode.Size = New Size(388, 23)
         txtFCode.TabIndex = 0
         ' 
         ' lblFName
@@ -192,7 +192,7 @@ Partial Class formDepartment
         lblFName.Location = New Point(404, 0)
         lblFName.Margin = New Padding(8, 0, 0, 0)
         lblFName.Name = "lblFName"
-        lblFName.Size = New Size(139, 19)
+        lblFName.Size = New Size(116, 17)
         lblFName.TabIndex = 1
         lblFName.Text = "Tên phòng ban  *"
         ' 
@@ -206,7 +206,7 @@ Partial Class formDepartment
         txtFName.Location = New Point(404, 22)
         txtFName.Margin = New Padding(8, 0, 0, 4)
         txtFName.Name = "txtFName"
-        txtFName.Size = New Size(389, 28)
+        txtFName.Size = New Size(389, 24)
         txtFName.TabIndex = 1
         ' 
         ' lblFStatus
@@ -217,7 +217,7 @@ Partial Class formDepartment
         lblFStatus.ForeColor = Color.FromArgb(CByte(123), CByte(139), CByte(178))
         lblFStatus.Location = New Point(3, 62)
         lblFStatus.Name = "lblFStatus"
-        lblFStatus.Size = New Size(86, 19)
+        lblFStatus.Size = New Size(73, 17)
         lblFStatus.TabIndex = 2
         lblFStatus.Text = "Trạng thái"
         ' 
@@ -234,7 +234,7 @@ Partial Class formDepartment
         cboFStatus.Location = New Point(0, 84)
         cboFStatus.Margin = New Padding(0, 0, 0, 4)
         cboFStatus.Name = "cboFStatus"
-        cboFStatus.Size = New Size(793, 29)
+        cboFStatus.Size = New Size(793, 27)
         cboFStatus.TabIndex = 2
         ' 
         ' lblFNote
@@ -245,7 +245,7 @@ Partial Class formDepartment
         lblFNote.ForeColor = Color.FromArgb(CByte(123), CByte(139), CByte(178))
         lblFNote.Location = New Point(3, 124)
         lblFNote.Name = "lblFNote"
-        lblFNote.Size = New Size(66, 19)
+        lblFNote.Size = New Size(55, 17)
         lblFNote.TabIndex = 3
         lblFNote.Text = "Ghi chú"
         ' 
@@ -271,7 +271,7 @@ Partial Class formDepartment
         lblSec1.ForeColor = Color.FromArgb(CByte(61), CByte(74), CByte(114))
         lblSec1.Location = New Point(16, 12)
         lblSec1.Name = "lblSec1"
-        lblSec1.Size = New Size(190, 19)
+        lblSec1.Size = New Size(163, 17)
         lblSec1.TabIndex = 1
         lblSec1.Text = "THÔNG TIN PHÒNG BAN"
         ' 
@@ -360,7 +360,7 @@ Partial Class formDepartment
         lblHdrBadge.Location = New Point(78, 61)
         lblHdrBadge.Name = "lblHdrBadge"
         lblHdrBadge.Padding = New Padding(6, 2, 6, 2)
-        lblHdrBadge.Size = New Size(152, 24)
+        lblHdrBadge.Size = New Size(115, 21)
         lblHdrBadge.TabIndex = 0
         lblHdrBadge.Text = "Đang hoạt động"
         ' 
@@ -371,7 +371,7 @@ Partial Class formDepartment
         lblHdrSub.ForeColor = Color.FromArgb(CByte(123), CByte(139), CByte(178))
         lblHdrSub.Location = New Point(78, 38)
         lblHdrSub.Name = "lblHdrSub"
-        lblHdrSub.Size = New Size(179, 20)
+        lblHdrSub.Size = New Size(145, 17)
         lblHdrSub.TabIndex = 1
         lblHdrSub.Text = "Điền thông tin bên dưới"
         ' 
@@ -382,7 +382,7 @@ Partial Class formDepartment
         lblHdrTitle.ForeColor = Color.FromArgb(CByte(232), CByte(236), CByte(240))
         lblHdrTitle.Location = New Point(76, 12)
         lblHdrTitle.Name = "lblHdrTitle"
-        lblHdrTitle.Size = New Size(253, 30)
+        lblHdrTitle.Size = New Size(207, 25)
         lblHdrTitle.TabIndex = 2
         lblHdrTitle.Text = "Thêm phòng ban mới"
         ' 
@@ -521,7 +521,7 @@ Partial Class formDepartment
         lblRowInfo.ForeColor = Color.FromArgb(CByte(123), CByte(139), CByte(178))
         lblRowInfo.Location = New Point(14, 9)
         lblRowInfo.Name = "lblRowInfo"
-        lblRowInfo.Size = New Size(101, 20)
+        lblRowInfo.Size = New Size(83, 17)
         lblRowInfo.TabIndex = 0
         lblRowInfo.Text = "0 phòng ban"
         ' 
@@ -564,7 +564,7 @@ Partial Class formDepartment
         cboStatusFilter.Items.AddRange(New Object() {"Tất cả trạng thái", "Đang hoạt động", "Ngừng hoạt động"})
         cboStatusFilter.Location = New Point(252, 11)
         cboStatusFilter.Name = "cboStatusFilter"
-        cboStatusFilter.Size = New Size(180, 28)
+        cboStatusFilter.Size = New Size(180, 25)
         cboStatusFilter.TabIndex = 1
         ' 
         ' txtSearch
@@ -575,12 +575,12 @@ Partial Class formDepartment
         txtSearch.ForeColor = Color.FromArgb(CByte(232), CByte(236), CByte(240))
         txtSearch.Location = New Point(12, 11)
         txtSearch.Name = "txtSearch"
-        txtSearch.Size = New Size(230, 28)
+        txtSearch.Size = New Size(230, 24)
         txtSearch.TabIndex = 0
         ' 
         ' formDepartment
         ' 
-        AutoScaleDimensions = New SizeF(9F, 20F)
+        AutoScaleDimensions = New SizeF(7F, 17F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.FromArgb(CByte(26), CByte(29), CByte(46))
         ClientSize = New Size(1338, 737)

@@ -5,6 +5,8 @@ Public Class Leave_Cat_List_UC
         MyBase.New(AppServices.Instance.Leave_CatSV, "Leave_Cat_List_UC", "Các loại nghỉ phép")
         InitializeComponent()
         Init(GetType(Leave_Cat))
+        EnableFilter(GetType(Leave_Cat))   ' ← CHỈ THÊM DÒNG NÀY
+
     End Sub
 
 

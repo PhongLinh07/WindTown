@@ -5,6 +5,8 @@ Public Class Employee_List_UC
         MyBase.New(AppServices.Instance.EmployeeSV, "Employee_List_UC", "Nhân viên")
         InitializeComponent()
         Init(GetType(Employee))
+        EnableFilter(GetType(Employee))   ' ← CHỈ THÊM DÒNG NÀY
+
     End Sub
 
 

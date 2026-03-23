@@ -5,6 +5,8 @@ Public Class Position_List_UC
         MyBase.New(AppServices.Instance.PositionSV, "Position_List_UC", "Chức vụ")
         InitializeComponent()
         Init(GetType(Position))
+        EnableFilter(GetType(Position))   ' ← CHỈ THÊM DÒNG NÀY
+
     End Sub
 
 

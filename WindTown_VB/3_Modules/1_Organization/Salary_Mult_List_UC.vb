@@ -10,6 +10,8 @@ Public Class Salary_Mult_List_UC
         _job = job
 
         Init(GetType(Salary_Mult))
+        EnableFilter(GetType(Salary_Mult))   ' ← CHỈ THÊM DÒNG NÀY
+
     End Sub
 
 

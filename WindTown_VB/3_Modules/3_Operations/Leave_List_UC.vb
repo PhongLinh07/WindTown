@@ -5,6 +5,8 @@ Public Class Leave_List_UC
         MyBase.New(AppServices.Instance.LeaveSV, "Leave_List_UC", "Nghỉ phép")
         InitializeComponent()
         Init(GetType(Leave))
+        EnableFilter(GetType(Leave))   ' ← CHỈ THÊM DÒNG NÀY
+
     End Sub
 
 

@@ -5,6 +5,8 @@ Public Class Level_List_UC
         MyBase.New(AppServices.Instance.LevelSV, "Level_List_UC", "Trình độ")
         InitializeComponent()
         Init(GetType(Level))
+        EnableFilter(GetType(Level))   ' ← CHỈ THÊM DÒNG NÀY
+
     End Sub
 
 

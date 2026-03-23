@@ -62,7 +62,7 @@ Public Module GridHelper
             col.HeaderText = config.HeaderText
             col.Name = "col_" & config.PropName
             col.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
-
+            col.SortMode = DataGridViewColumnSortMode.Automatic
             ' --- BỔ SUNG: Áp dụng định dạng vào CellStyle ---
             If Not String.IsNullOrEmpty(config.Format) Then
                 col.DefaultCellStyle.Format = config.Format

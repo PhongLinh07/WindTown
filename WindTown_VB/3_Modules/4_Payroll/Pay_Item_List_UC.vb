@@ -8,6 +8,7 @@ Public Class Pay_Item_List_UC
         MyBase.New(AppServices.Instance.Pay_ItemSV, "Pay_Item_List_UC", "Khoản tiền")
         InitializeComponent()
         Init(GetType(Pay_Item))
+        EnableFilter(GetType(Pay_Item))   ' ← CHỈ THÊM DÒNG NÀY
 
     End Sub
     Public Sub New(payroll As Payroll)

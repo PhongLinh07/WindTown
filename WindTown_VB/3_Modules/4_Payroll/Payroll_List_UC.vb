@@ -8,6 +8,8 @@ Public Class Payroll_List_UC
         MyBase.New(AppServices.Instance.PayrollSV, "Payroll_List_UC", "Bảng lương")
         InitializeComponent()
         Init(GetType(Payroll))
+        EnableFilter(GetType(Payroll))   ' ← CHỈ THÊM DÒNG NÀY
+
 
     End Sub
 

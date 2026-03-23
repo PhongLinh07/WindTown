@@ -5,6 +5,8 @@ Public Class Contract_List_UC
         MyBase.New(AppServices.Instance.ContractSV, "Contract_List_UC", "Hợp đồng")
         InitializeComponent()
         Init(GetType(Contract))
+        EnableFilter(GetType(Contract))   ' ← CHỈ THÊM DÒNG NÀY
+
     End Sub
 
 

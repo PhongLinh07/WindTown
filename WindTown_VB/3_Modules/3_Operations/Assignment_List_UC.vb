@@ -5,6 +5,8 @@ Public Class Assignment_List_UC
         MyBase.New(AppServices.Instance.AssigmentSV, "Assignment_List_UC", "Phân công")
         InitializeComponent()
         Init(GetType(Assignment))
+        EnableFilter(GetType(Assignment))   ' ← CHỈ THÊM DÒNG NÀY
+
     End Sub
 
 

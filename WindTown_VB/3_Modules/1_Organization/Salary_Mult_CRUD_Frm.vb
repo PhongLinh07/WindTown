@@ -41,7 +41,6 @@ Public Class Salary_Mult_CRUD_Frm
         ui_level.DisplayMember = "Display"
         ui_level.ValueMember = "Value"
 
-
     End Sub
 
     Protected Overrides Sub BindDataToUI()

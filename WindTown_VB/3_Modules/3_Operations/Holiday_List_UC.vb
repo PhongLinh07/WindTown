@@ -5,6 +5,8 @@ Public Class Holiday_List_UC
         MyBase.New(AppServices.Instance.HolidaySV, "Holiday_List_UC", "Hệ số lương ngày lễ")
         InitializeComponent()
         Init(GetType(Holiday))
+        EnableFilter(GetType(Holiday))   ' ← CHỈ THÊM DÒNG NÀY
+
     End Sub
 
 

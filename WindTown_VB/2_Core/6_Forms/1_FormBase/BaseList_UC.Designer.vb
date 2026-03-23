@@ -26,12 +26,12 @@ Partial Class BaseList_UC
         Dim DataGridViewCellStyle3 As DataGridViewCellStyle = New DataGridViewCellStyle()
         Dim DataGridViewCellStyle4 As DataGridViewCellStyle = New DataGridViewCellStyle()
         tool_refresh = New ToolStripButton()
-        TableLayoutPanel1 = New TableLayoutPanel()
         toolStrip = New ToolStrip()
         tool_new = New ToolStripButton()
+        tool_filter = New ToolStripButton()
         tool_delete = New ToolStripButton()
         tool_hide_column = New ToolStripButton()
-        viewSelected = New Label()
+        Panel1 = New Panel()
         _dgv = New DataGridView()
         Column1 = New DataGridViewTextBoxColumn()
         Column2 = New DataGridViewTextBoxColumn()
@@ -39,9 +39,16 @@ Partial Class BaseList_UC
         Column4 = New DataGridViewTextBoxColumn()
         Column5 = New DataGridViewTextBoxColumn()
         Column6 = New DataGridViewTextBoxColumn()
-        TableLayoutPanel1.SuspendLayout()
+        viewSelected = New Label()
+        pnl_filter = New Panel()
+        SplitContainer1 = New SplitContainer()
         toolStrip.SuspendLayout()
+        Panel1.SuspendLayout()
         CType(_dgv, ComponentModel.ISupportInitialize).BeginInit()
+        CType(SplitContainer1, ComponentModel.ISupportInitialize).BeginInit()
+        SplitContainer1.Panel1.SuspendLayout()
+        SplitContainer1.Panel2.SuspendLayout()
+        SplitContainer1.SuspendLayout()
         SuspendLayout()
         ' 
         ' tool_refresh
@@ -56,35 +63,16 @@ Partial Class BaseList_UC
         tool_refresh.Size = New Size(28, 28)
         tool_refresh.Text = "Tải lại dữ liệu"
         ' 
-        ' TableLayoutPanel1
-        ' 
-        TableLayoutPanel1.BackColor = Color.Transparent
-        TableLayoutPanel1.ColumnCount = 1
-        TableLayoutPanel1.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 100.0F))
-        TableLayoutPanel1.Controls.Add(toolStrip, 0, 0)
-        TableLayoutPanel1.Controls.Add(viewSelected, 0, 1)
-        TableLayoutPanel1.Controls.Add(_dgv, 0, 2)
-        TableLayoutPanel1.Dock = DockStyle.Fill
-        TableLayoutPanel1.Location = New Point(0, 0)
-        TableLayoutPanel1.Margin = New Padding(4, 3, 4, 3)
-        TableLayoutPanel1.Name = "TableLayoutPanel1"
-        TableLayoutPanel1.RowCount = 3
-        TableLayoutPanel1.RowStyles.Add(New RowStyle(SizeType.Percent, 13.03921F))
-        TableLayoutPanel1.RowStyles.Add(New RowStyle(SizeType.Percent, 21.82596F))
-        TableLayoutPanel1.RowStyles.Add(New RowStyle(SizeType.Percent, 65.19258F))
-        TableLayoutPanel1.Size = New Size(1437, 809)
-        TableLayoutPanel1.TabIndex = 1
-        ' 
         ' toolStrip
         ' 
         toolStrip.BackColor = SystemColors.GradientInactiveCaption
         toolStrip.GripStyle = ToolStripGripStyle.Hidden
         toolStrip.ImageScalingSize = New Size(24, 24)
-        toolStrip.Items.AddRange(New ToolStripItem() {tool_new, tool_refresh, tool_delete, tool_hide_column})
+        toolStrip.Items.AddRange(New ToolStripItem() {tool_new, tool_refresh, tool_filter, tool_delete, tool_hide_column})
         toolStrip.Location = New Point(0, 0)
         toolStrip.Name = "toolStrip"
         toolStrip.RenderMode = ToolStripRenderMode.System
-        toolStrip.Size = New Size(1437, 34)
+        toolStrip.Size = New Size(1042, 34)
         toolStrip.TabIndex = 0
         toolStrip.Text = "ToolStrip1"
         ' 
@@ -100,6 +88,18 @@ Partial Class BaseList_UC
         tool_new.Size = New Size(28, 28)
         tool_new.Text = "Thêm mới"
         tool_new.TextAlign = ContentAlignment.MiddleLeft
+        ' 
+        ' tool_filter
+        ' 
+        tool_filter.BackColor = Color.Transparent
+        tool_filter.BackgroundImageLayout = ImageLayout.Stretch
+        tool_filter.DisplayStyle = ToolStripItemDisplayStyle.Image
+        tool_filter.Image = My.Resources.Resources.filter
+        tool_filter.ImageTransparentColor = Color.Magenta
+        tool_filter.Margin = New Padding(3, 3, 20, 3)
+        tool_filter.Name = "tool_filter"
+        tool_filter.Size = New Size(28, 28)
+        tool_filter.Text = "Lọc dữ liệu"
         ' 
         ' tool_delete
         ' 
@@ -122,25 +122,21 @@ Partial Class BaseList_UC
         tool_hide_column.Size = New Size(28, 31)
         tool_hide_column.Text = "Ẩn cột dữ liệu"
         ' 
-        ' viewSelected
+        ' Panel1
         ' 
-        viewSelected.AutoSize = True
-        viewSelected.Dock = DockStyle.Fill
-        viewSelected.Font = New Font("Arial", 12.0F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        viewSelected.ForeColor = SystemColors.ActiveCaptionText
-        viewSelected.Location = New Point(4, 105)
-        viewSelected.Margin = New Padding(4, 0, 4, 0)
-        viewSelected.Name = "viewSelected"
-        viewSelected.Size = New Size(1429, 176)
-        viewSelected.TabIndex = 2
-        viewSelected.Text = "Rows selected:  0"
-        viewSelected.TextAlign = ContentAlignment.BottomRight
+        Panel1.Controls.Add(_dgv)
+        Panel1.Controls.Add(viewSelected)
+        Panel1.Dock = DockStyle.Fill
+        Panel1.Location = New Point(0, 0)
+        Panel1.Name = "Panel1"
+        Panel1.Size = New Size(1042, 403)
+        Panel1.TabIndex = 6
         ' 
         ' _dgv
         ' 
         _dgv.AllowUserToAddRows = False
         _dgv.AllowUserToDeleteRows = False
-        DataGridViewCellStyle1.Font = New Font("Microsoft Sans Serif", 12.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        DataGridViewCellStyle1.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         _dgv.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
         _dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
         _dgv.BackgroundColor = SystemColors.InactiveCaption
@@ -158,7 +154,7 @@ Partial Class BaseList_UC
         _dgv.Columns.AddRange(New DataGridViewColumn() {Column1, Column2, Column3, Column4, Column5, Column6})
         _dgv.Dock = DockStyle.Fill
         _dgv.GridColor = SystemColors.InactiveCaptionText
-        _dgv.Location = New Point(4, 284)
+        _dgv.Location = New Point(0, 19)
         _dgv.Margin = New Padding(4, 3, 4, 3)
         _dgv.Name = "_dgv"
         _dgv.ReadOnly = True
@@ -170,7 +166,7 @@ Partial Class BaseList_UC
         DataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText
         DataGridViewCellStyle3.WrapMode = DataGridViewTriState.True
         _dgv.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
-        DataGridViewCellStyle4.Font = New Font("Microsoft Sans Serif", 12.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        DataGridViewCellStyle4.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         DataGridViewCellStyle4.SelectionBackColor = Color.FromArgb(CByte(192), CByte(255), CByte(255))
         DataGridViewCellStyle4.SelectionForeColor = Color.Black
         _dgv.RowsDefaultCellStyle = DataGridViewCellStyle4
@@ -179,7 +175,7 @@ Partial Class BaseList_UC
         _dgv.RowTemplate.Height = 40
         _dgv.RowTemplate.Resizable = DataGridViewTriState.True
         _dgv.SelectionMode = DataGridViewSelectionMode.FullRowSelect
-        _dgv.Size = New Size(1429, 522)
+        _dgv.Size = New Size(1042, 384)
         _dgv.TabIndex = 5
         ' 
         ' Column1
@@ -218,26 +214,69 @@ Partial Class BaseList_UC
         Column6.Name = "Column6"
         Column6.ReadOnly = True
         ' 
+        ' viewSelected
+        ' 
+        viewSelected.Dock = DockStyle.Top
+        viewSelected.Font = New Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        viewSelected.ForeColor = SystemColors.ActiveCaptionText
+        viewSelected.Location = New Point(0, 0)
+        viewSelected.Margin = New Padding(4, 0, 4, 0)
+        viewSelected.Name = "viewSelected"
+        viewSelected.Size = New Size(1042, 19)
+        viewSelected.TabIndex = 2
+        viewSelected.Text = "Rows selected:  0"
+        viewSelected.TextAlign = ContentAlignment.BottomRight
+        ' 
+        ' pnl_filter
+        ' 
+        pnl_filter.AutoScroll = True
+        pnl_filter.Dock = DockStyle.Fill
+        pnl_filter.Location = New Point(0, 34)
+        pnl_filter.Name = "pnl_filter"
+        pnl_filter.Size = New Size(1042, 176)
+        pnl_filter.TabIndex = 7
+        ' 
+        ' SplitContainer1
+        ' 
+        SplitContainer1.Dock = DockStyle.Fill
+        SplitContainer1.Location = New Point(0, 0)
+        SplitContainer1.Name = "SplitContainer1"
+        SplitContainer1.Orientation = Orientation.Horizontal
+        ' 
+        ' SplitContainer1.Panel1
+        ' 
+        SplitContainer1.Panel1.Controls.Add(pnl_filter)
+        SplitContainer1.Panel1.Controls.Add(toolStrip)
+        ' 
+        ' SplitContainer1.Panel2
+        ' 
+        SplitContainer1.Panel2.Controls.Add(Panel1)
+        SplitContainer1.Size = New Size(1042, 617)
+        SplitContainer1.SplitterDistance = 210
+        SplitContainer1.TabIndex = 0
+        ' 
         ' BaseList_UC
         ' 
-        AutoScaleDimensions = New SizeF(7.0F, 15.0F)
+        AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = SystemColors.GradientInactiveCaption
-        Controls.Add(TableLayoutPanel1)
+        Controls.Add(SplitContainer1)
         DoubleBuffered = True
         Margin = New Padding(4, 3, 4, 3)
         Name = "BaseList_UC"
-        Size = New Size(1437, 809)
-        TableLayoutPanel1.ResumeLayout(False)
-        TableLayoutPanel1.PerformLayout()
+        Size = New Size(1042, 617)
         toolStrip.ResumeLayout(False)
         toolStrip.PerformLayout()
+        Panel1.ResumeLayout(False)
         CType(_dgv, ComponentModel.ISupportInitialize).EndInit()
+        SplitContainer1.Panel1.ResumeLayout(False)
+        SplitContainer1.Panel1.PerformLayout()
+        SplitContainer1.Panel2.ResumeLayout(False)
+        CType(SplitContainer1, ComponentModel.ISupportInitialize).EndInit()
+        SplitContainer1.ResumeLayout(False)
         ResumeLayout(False)
 
     End Sub
-
-    Friend WithEvents TableLayoutPanel1 As TableLayoutPanel
     Friend WithEvents viewSelected As Label
     Friend WithEvents toolStrip As ToolStrip
     Protected WithEvents tool_new As ToolStripButton
@@ -251,4 +290,8 @@ Partial Class BaseList_UC
     Protected WithEvents _dgv As DataGridView
     Friend WithEvents tool_hide_column As ToolStripButton
     Protected WithEvents tool_refresh As ToolStripButton
+    Protected WithEvents tool_filter As ToolStripButton
+    Friend WithEvents Panel1 As Panel
+    Friend WithEvents pnl_filter As Panel
+    Friend WithEvents SplitContainer1 As SplitContainer
 End Class

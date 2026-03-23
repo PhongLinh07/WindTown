@@ -5,6 +5,7 @@ Public Class Attendance_List_UC
         MyBase.New(AppServices.Instance.AttendanceSV, "Attendance_List_UC", "Chấm Công")
         InitializeComponent()
         Init(GetType(Attendance))
+        EnableFilter(GetType(Attendance))   ' ← CHỈ THÊM DÒNG NÀY
     End Sub
 
 

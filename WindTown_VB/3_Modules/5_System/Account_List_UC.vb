@@ -5,6 +5,7 @@ Public Class Account_List_UC
         MyBase.New(AppServices.Instance.AccountSV, "Account_List_UC", "Tài khoản")
         InitializeComponent()
         Init(GetType(Account))
+        EnableFilter(GetType(Account))   ' ← CHỈ THÊM DÒNG NÀY
 
     End Sub
 

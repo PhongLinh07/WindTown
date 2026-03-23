@@ -5,6 +5,8 @@ Public Class Job_List_UC
         MyBase.New(AppServices.Instance.JobSV, "Job_List_UC", "Công Việc")
         InitializeComponent()
         Init(GetType(Job))
+        EnableFilter(GetType(Job))   ' ← CHỈ THÊM DÒNG NÀY
+
     End Sub
 
 

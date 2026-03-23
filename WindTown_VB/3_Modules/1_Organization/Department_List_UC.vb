@@ -5,6 +5,7 @@ Public Class Department_List_UC
         MyBase.New(AppServices.Instance.DepartmentSV, "Department_List_UC", "Phòng ban")
         InitializeComponent()
         Init(GetType(Department))
+        EnableFilter(GetType(Department))   ' ← CHỈ THÊM DÒNG NÀY
     End Sub
 
 

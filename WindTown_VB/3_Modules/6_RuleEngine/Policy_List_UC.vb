@@ -5,7 +5,7 @@ Public Class Policy_List_UC
         MyBase.New(AppServices.Instance.PolicySV, "Policy_List_UC", "Chính sách")
         InitializeComponent()
         Init(GetType(Policy))
-
+        EnableFilter(GetType(Policy))   ' ← CHỈ THÊM DÒNG NÀY
     End Sub
 
 

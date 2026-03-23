@@ -5,6 +5,8 @@ Public Class Project_List_UC
         MyBase.New(AppServices.Instance.ProjectSV, "Project_List_UC", "Dự án")
         InitializeComponent()
         Init(GetType(Project))
+        EnableFilter(GetType(Project))   ' ← CHỈ THÊM DÒNG NÀY
+
     End Sub
 
 
