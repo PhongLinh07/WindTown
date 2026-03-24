@@ -254,6 +254,13 @@ Partial Public Class FormMain
         OpenMultTabMode(Of formDashBoardV2)(tabControl_A)
     End Sub
 
+    Private Sub menu_help_Click(sender As Object, e As EventArgs) Handles menu_help.Click
+        OpenMultTabMode(Of formParameterList)(tabControl_A)
+    End Sub
+
+
+
+
 #End Region
 
 

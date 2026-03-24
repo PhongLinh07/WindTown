@@ -37,17 +37,17 @@ Public NotInheritable Class System_Parameter
             {ID.SYS_STD_HOURS, New BaseParameter With {.code = "SYS_STD_HOURS", .name = "Giờ công chuẩn", .resource = "pay_period", .note = "Tổng số giờ làm việc tiêu chuẩn của tháng"}},
             {ID.SYS_BASE_SALARY, New BaseParameter With {.code = "SYS_BASE_SALARY", .name = "Lương cơ bản", .resource = "contract", .note = "Mức lương chính trong hợp đồng"}},
             {ID.SYS_SALARY_MULT, New BaseParameter With {.code = "SYS_SALARY_MULT", .name = "Hệ số lương", .resource = "position", .note = "Hệ số lương trong chức vụ"}},
-            {ID.SYS_OFFICE_HOURS, New BaseParameter With {.code = "SYS_OFFICE_HOURS", .name = "Giờ hành chính", .resource = "attendance", .note = "Số giờ làm việc trong ca"}},
-            {ID.SYS_OVERTIME_HOURS, New BaseParameter With {.code = "SYS_OVERTIME_HOURS", .name = "Giờ tăng ca", .resource = "attendance", .note = "Số giờ làm thêm"}},
-            {ID.SYS_LATE_HOURS, New BaseParameter With {.code = "SYS_LATE_HOURS", .name = "Giờ đi trễ", .resource = "attendance", .note = "Số giờ đi trễ"}},
-            {ID.SYS_EARLY_LEAVE_HOURS, New BaseParameter With {.code = "SYS_EARLY_LEAVE_HOURS", .name = "Giờ về sớm", .resource = "attendance", .note = "Số giờ về sớm"}},
-            {ID.SYS_SHIFT, New BaseParameter With {.code = "SYS_SHIFT", .name = "Ca làm việc", .resource = "attendance", .note = "1 = ca đêm, 0 = ca ngày"}},
-            {ID.SYS_IS_HOLIDAY, New BaseParameter With {.code = "SYS_IS_HOLIDAY", .name = "Là ngày lễ", .resource = "attendance", .note = "1 = ca đêm, 0 = ca ngày"}},
-            {ID.SYS_MULT_HOLIDAY, New BaseParameter With {.code = "SYS_DAY_MULT_HOLIDAY", .name = "Hệ số ngày lễ", .resource = "attendance", .note = "1 = ca đêm, 0 = ca ngày"}},
-            {ID.SYS_TOTAL_INCOME, New BaseParameter With {.code = "SYS_TOTAL_INCOME", .name = "Tổng thu nhập", .resource = "attendance", .category = CInt(Category_PayItem.ID.INCOME), .unit = CInt(UnitSuffix.ID.VND), .priority = 70, .note = ""}},
-            {ID.SYS_TAX_AMOUNT, New BaseParameter With {.code = "SYS_TAX_AMOUNT", .name = "Tổng thuế", .resource = "attendance", .category = CInt(Category_PayItem.ID.TAX), .unit = CInt(UnitSuffix.ID.VND), .priority = 80, .note = ""}},
-            {ID.SYS_DEDUCTION, New BaseParameter With {.code = "SYS_DEDUCTION", .name = "Tổng khấu trừ", .resource = "attendance", .category = CInt(Category_PayItem.ID.DEDUCTION), .unit = CInt(UnitSuffix.ID.VND), .priority = 90, .note = ""}},
-            {ID.SYS_NET_SALARY, New BaseParameter With {.code = "SYS_NET_SALARY", .name = "Thực lĩnh", .resource = "attendance", .category = CInt(Category_PayItem.ID.INCOME), .unit = CInt(UnitSuffix.ID.VND), .priority = 100, .note = ""}}
+            {ID.SYS_OFFICE_HOURS, New BaseParameter With {.code = "SYS_OFFICE_HOURS", .name = "Giờ hành chính", .resource = "attendance", .note = "Tổng số giờ làm việc trong ca của từng ngày"}},
+            {ID.SYS_OVERTIME_HOURS, New BaseParameter With {.code = "SYS_OVERTIME_HOURS", .name = "Giờ tăng ca", .resource = "attendance", .note = "Tổng số giờ làm thêm của từng ngày"}},
+            {ID.SYS_LATE_HOURS, New BaseParameter With {.code = "SYS_LATE_HOURS", .name = "Giờ đi trễ", .resource = "attendance", .note = "Tổng số giờ đi trễ của từng ngày"}},
+            {ID.SYS_EARLY_LEAVE_HOURS, New BaseParameter With {.code = "SYS_EARLY_LEAVE_HOURS", .name = "Giờ về sớm", .resource = "attendance", .note = "Tổng số giờ về sớm của từng ngày"}},
+            {ID.SYS_SHIFT, New BaseParameter With {.code = "SYS_SHIFT", .name = "Ca làm việc", .resource = "attendance", .note = "0 = ca đêm, 1 = ca ngày, Của từng ngày"}},
+            {ID.SYS_IS_HOLIDAY, New BaseParameter With {.code = "SYS_IS_HOLIDAY", .name = "Là ngày lễ", .resource = "holiday", .note = "1 = ngày lễ, 0 = ngày thường, Kiểm tra theo ngày"}},
+            {ID.SYS_MULT_HOLIDAY, New BaseParameter With {.code = "SYS_DAY_MULT_HOLIDAY", .name = "Hệ số ngày lễ", .resource = "holiday", .note = "Hệ số giờ ngày lễ, kiểm tra từng ngày"}},
+            {ID.SYS_TOTAL_INCOME, New BaseParameter With {.code = "SYS_TOTAL_INCOME", .name = "Tổng thu nhập", .resource = "Payroll", .category = CInt(Category_PayItem.ID.INCOME), .unit = CInt(UnitSuffix.ID.VND), .priority = 70, .note = "Tổng thu nhập cả kỳ"}},
+            {ID.SYS_TAX_AMOUNT, New BaseParameter With {.code = "SYS_TAX_AMOUNT", .name = "Tổng thuế", .resource = "Payroll", .category = CInt(Category_PayItem.ID.TAX), .unit = CInt(UnitSuffix.ID.VND), .priority = 80, .note = "Tổng thuế"}},
+            {ID.SYS_DEDUCTION, New BaseParameter With {.code = "SYS_DEDUCTION", .name = "Tổng khấu trừ", .resource = "Payroll", .category = CInt(Category_PayItem.ID.DEDUCTION), .unit = CInt(UnitSuffix.ID.VND), .priority = 90, .note = "Tổng khấu trừ"}},
+            {ID.SYS_NET_SALARY, New BaseParameter With {.code = "SYS_NET_SALARY", .name = "Thực lĩnh", .resource = "Payroll", .category = CInt(Category_PayItem.ID.INCOME), .unit = CInt(UnitSuffix.ID.VND), .priority = 100, .note = "Tổng thực lĩnh cả kỳ"}}
         }
 
     Public Shared Dict_UI As Dictionary(Of String, String) = Dict.ToDictionary(Function(kv) kv.Value.code, Function(kv) $"{kv.Value.name} ({kv.Value.code})")

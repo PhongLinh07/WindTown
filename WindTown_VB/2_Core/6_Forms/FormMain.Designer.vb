@@ -36,6 +36,7 @@ Partial Class FormMain
         ToolStrip1 = New ToolStrip()
         tool_user_profile = New ToolStripMenuItem()
         ToolStripSeparator1 = New ToolStripSeparator()
+        menu_dashboard = New ToolStripMenuItem()
         grp_Origanization = New ToolStripMenuItem()
         menu_department = New ToolStripMenuItem()
         menu_level = New ToolStripMenuItem()
@@ -51,13 +52,15 @@ Partial Class FormMain
         menu_holiday = New ToolStripMenuItem()
         menu_leave_cat = New ToolStripMenuItem()
         menu_leave = New ToolStripMenuItem()
+        menu_policy = New ToolStripMenuItem()
         grp_Finance = New ToolStripMenuItem()
         menu_pay_period = New ToolStripMenuItem()
         menu_payroll = New ToolStripMenuItem()
-        tool_logger = New ToolStripMenuItem()
         grp_Sys = New ToolStripMenuItem()
         menu_account = New ToolStripMenuItem()
         menu_db_mgr = New ToolStripMenuItem()
+        menu_help = New ToolStripMenuItem()
+        tool_logger = New ToolStripMenuItem()
         ToolStripSeparator2 = New ToolStripSeparator()
         ColorDialog1 = New ColorDialog()
         contextMenu_tab = New ContextMenuStrip(components)
@@ -67,8 +70,6 @@ Partial Class FormMain
         menu_move_all_to_splitA = New ToolStripMenuItem()
         menu_move_to_splitB = New ToolStripMenuItem()
         menu_move_all_to_splitB = New ToolStripMenuItem()
-        menu_policy = New ToolStripMenuItem()
-        menu_dashboard = New ToolStripMenuItem()
         pnl_main.SuspendLayout()
         CType(split_main, ComponentModel.ISupportInitialize).BeginInit()
         split_main.Panel1.SuspendLayout()
@@ -208,7 +209,7 @@ Partial Class FormMain
         ' 
         ToolStrip1.Font = New Font("Segoe UI", 10F)
         ToolStrip1.ImageScalingSize = New Size(32, 32)
-        ToolStrip1.Items.AddRange(New ToolStripItem() {tool_user_profile, ToolStripSeparator1, menu_dashboard, grp_Origanization, grp_HR, grp_Operational, menu_policy, grp_Finance, tool_logger, grp_Sys, ToolStripSeparator2})
+        ToolStrip1.Items.AddRange(New ToolStripItem() {tool_user_profile, ToolStripSeparator1, menu_dashboard, grp_Origanization, grp_HR, grp_Operational, menu_policy, grp_Finance, grp_Sys, menu_help, tool_logger, ToolStripSeparator2})
         ToolStrip1.Location = New Point(0, 0)
         ToolStrip1.Name = "ToolStrip1"
         ToolStrip1.RenderMode = ToolStripRenderMode.System
@@ -228,6 +229,13 @@ Partial Class FormMain
         ' 
         ToolStripSeparator1.Name = "ToolStripSeparator1"
         ToolStripSeparator1.Size = New Size(6, 36)
+        ' 
+        ' menu_dashboard
+        ' 
+        menu_dashboard.Image = My.Resources.Resources.home2
+        menu_dashboard.Name = "menu_dashboard"
+        menu_dashboard.Size = New Size(113, 36)
+        menu_dashboard.Text = "Trang chủ"
         ' 
         ' grp_Origanization
         ' 
@@ -338,6 +346,13 @@ Partial Class FormMain
         menu_leave.Size = New Size(216, 38)
         menu_leave.Text = "Nghỉ phép"
         ' 
+        ' menu_policy
+        ' 
+        menu_policy.Image = My.Resources.Resources.rules_alt
+        menu_policy.Name = "menu_policy"
+        menu_policy.Size = New Size(120, 36)
+        menu_policy.Text = "Chính sách"
+        ' 
         ' grp_Finance
         ' 
         grp_Finance.DropDownItems.AddRange(New ToolStripItem() {menu_pay_period, menu_payroll})
@@ -350,23 +365,15 @@ Partial Class FormMain
         ' 
         menu_pay_period.Image = My.Resources.Resources.wages1
         menu_pay_period.Name = "menu_pay_period"
-        menu_pay_period.Size = New Size(196, 38)
+        menu_pay_period.Size = New Size(176, 38)
         menu_pay_period.Text = "Chu kỳ lương"
         ' 
         ' menu_payroll
         ' 
         menu_payroll.Image = My.Resources.Resources.financial_reporting
         menu_payroll.Name = "menu_payroll"
-        menu_payroll.Size = New Size(196, 38)
+        menu_payroll.Size = New Size(176, 38)
         menu_payroll.Text = "Bảng lương"
-        ' 
-        ' tool_logger
-        ' 
-        tool_logger.Font = New Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        tool_logger.Image = My.Resources.Resources.log
-        tool_logger.Name = "tool_logger"
-        tool_logger.Size = New Size(83, 36)
-        tool_logger.Text = "Log"
         ' 
         ' grp_Sys
         ' 
@@ -380,15 +387,31 @@ Partial Class FormMain
         ' 
         menu_account.Image = My.Resources.Resources.user1
         menu_account.Name = "menu_account"
-        menu_account.Size = New Size(196, 38)
+        menu_account.Size = New Size(174, 38)
         menu_account.Text = "Tài khoản"
         ' 
         ' menu_db_mgr
         ' 
         menu_db_mgr.Image = My.Resources.Resources.sync2
         menu_db_mgr.Name = "menu_db_mgr"
-        menu_db_mgr.Size = New Size(196, 38)
+        menu_db_mgr.Size = New Size(174, 38)
         menu_db_mgr.Text = "Cơ sở dữ liệu"
+        ' 
+        ' menu_help
+        ' 
+        menu_help.Image = My.Resources.Resources.chat
+        menu_help.Name = "menu_help"
+        menu_help.Size = New Size(97, 36)
+        menu_help.Text = "Tra cứu"
+        menu_help.ToolTipText = "Tra cứu"
+        ' 
+        ' tool_logger
+        ' 
+        tool_logger.Font = New Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        tool_logger.Image = My.Resources.Resources.log
+        tool_logger.Name = "tool_logger"
+        tool_logger.Size = New Size(83, 36)
+        tool_logger.Text = "Log"
         ' 
         ' ToolStripSeparator2
         ' 
@@ -436,20 +459,6 @@ Partial Class FormMain
         menu_move_all_to_splitB.Name = "menu_move_all_to_splitB"
         menu_move_all_to_splitB.Size = New Size(186, 22)
         menu_move_all_to_splitB.Text = "Chuyển tất cả sang B"
-        ' 
-        ' menu_policy
-        ' 
-        menu_policy.Image = My.Resources.Resources.rules_alt
-        menu_policy.Name = "menu_policy"
-        menu_policy.Size = New Size(120, 36)
-        menu_policy.Text = "Chính sách"
-        ' 
-        ' menu_dashboard
-        ' 
-        menu_dashboard.Image = My.Resources.Resources.home2
-        menu_dashboard.Name = "menu_dashboard"
-        menu_dashboard.Size = New Size(113, 36)
-        menu_dashboard.Text = "Trang chủ"
         ' 
         ' FormMain
         ' 
@@ -523,4 +532,5 @@ Partial Class FormMain
     Friend WithEvents menu_db_mgr As ToolStripMenuItem
     Friend WithEvents menu_dashboard As ToolStripMenuItem
     Friend WithEvents menu_policy As ToolStripMenuItem
+    Friend WithEvents menu_help As ToolStripMenuItem
 End Class

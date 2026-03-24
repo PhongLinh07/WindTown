@@ -63,7 +63,7 @@ Partial Class formDashBoardV2
         ' 
         tlpRoot.BackColor = Color.FromArgb(CByte(26), CByte(29), CByte(46))
         tlpRoot.ColumnCount = 1
-        tlpRoot.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 100F))
+        tlpRoot.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 100.0F))
         tlpRoot.Controls.Add(tlpKpi, 0, 0)
         tlpRoot.Controls.Add(tlpChartsUp, 0, 1)
         tlpRoot.Controls.Add(tlpChartsDown, 0, 2)
@@ -72,9 +72,9 @@ Partial Class formDashBoardV2
         tlpRoot.Name = "tlpRoot"
         tlpRoot.Padding = New Padding(14, 12, 14, 10)
         tlpRoot.RowCount = 3
-        tlpRoot.RowStyles.Add(New RowStyle(SizeType.Absolute, 118F))
-        tlpRoot.RowStyles.Add(New RowStyle(SizeType.Absolute, 222F))
-        tlpRoot.RowStyles.Add(New RowStyle(SizeType.Percent, 100F))
+        tlpRoot.RowStyles.Add(New RowStyle(SizeType.Absolute, 118.0F))
+        tlpRoot.RowStyles.Add(New RowStyle(SizeType.Absolute, 222.0F))
+        tlpRoot.RowStyles.Add(New RowStyle(SizeType.Percent, 100.0F))
         tlpRoot.Size = New Size(1199, 622)
         tlpRoot.TabIndex = 0
         ' 
@@ -93,7 +93,7 @@ Partial Class formDashBoardV2
         tlpKpi.Margin = New Padding(0, 0, 0, 8)
         tlpKpi.Name = "tlpKpi"
         tlpKpi.RowCount = 1
-        tlpKpi.RowStyles.Add(New RowStyle(SizeType.Percent, 100F))
+        tlpKpi.RowStyles.Add(New RowStyle(SizeType.Percent, 100.0F))
         tlpKpi.Size = New Size(1171, 110)
         tlpKpi.TabIndex = 0
         ' 
@@ -131,8 +131,8 @@ Partial Class formDashBoardV2
         ' 
         tlpChartsUp.BackColor = Color.Transparent
         tlpChartsUp.ColumnCount = 2
-        tlpChartsUp.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 58F))
-        tlpChartsUp.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 42F))
+        tlpChartsUp.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 58.0F))
+        tlpChartsUp.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 42.0F))
         tlpChartsUp.Controls.Add(pnlChartLine, 0, 0)
         tlpChartsUp.Controls.Add(pnlChartBar, 1, 0)
         tlpChartsUp.Dock = DockStyle.Fill
@@ -140,7 +140,7 @@ Partial Class formDashBoardV2
         tlpChartsUp.Margin = New Padding(0, 0, 0, 8)
         tlpChartsUp.Name = "tlpChartsUp"
         tlpChartsUp.RowCount = 1
-        tlpChartsUp.RowStyles.Add(New RowStyle(SizeType.Percent, 100F))
+        tlpChartsUp.RowStyles.Add(New RowStyle(SizeType.Percent, 100.0F))
         tlpChartsUp.Size = New Size(1171, 214)
         tlpChartsUp.TabIndex = 1
         ' 
@@ -168,8 +168,8 @@ Partial Class formDashBoardV2
         ' 
         tlpChartsDown.BackColor = Color.Transparent
         tlpChartsDown.ColumnCount = 2
-        tlpChartsDown.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 34F))
-        tlpChartsDown.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 66F))
+        tlpChartsDown.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 34.0F))
+        tlpChartsDown.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 66.0F))
         tlpChartsDown.Controls.Add(pnlChartDonut, 0, 0)
         tlpChartsDown.Controls.Add(pnlTableCard, 1, 0)
         tlpChartsDown.Dock = DockStyle.Fill
@@ -177,7 +177,7 @@ Partial Class formDashBoardV2
         tlpChartsDown.Margin = New Padding(0)
         tlpChartsDown.Name = "tlpChartsDown"
         tlpChartsDown.RowCount = 1
-        tlpChartsDown.RowStyles.Add(New RowStyle(SizeType.Percent, 100F))
+        tlpChartsDown.RowStyles.Add(New RowStyle(SizeType.Percent, 100.0F))
         tlpChartsDown.Size = New Size(1171, 260)
         tlpChartsDown.TabIndex = 2
         ' 
@@ -220,7 +220,7 @@ Partial Class formDashBoardV2
         dgvLate.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
         DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle2.BackColor = Color.FromArgb(CByte(21), CByte(24), CByte(36))
-        DataGridViewCellStyle2.Font = New Font("Microsoft YaHei UI", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        DataGridViewCellStyle2.Font = New Font("Microsoft YaHei UI", 9.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         DataGridViewCellStyle2.ForeColor = Color.FromArgb(CByte(74), CByte(158), CByte(255))
         DataGridViewCellStyle2.Padding = New Padding(6, 0, 0, 0)
         DataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight
@@ -231,7 +231,7 @@ Partial Class formDashBoardV2
         dgvLate.Columns.AddRange(New DataGridViewColumn() {colNo, colEmpName, colDept, colLateCount, colLateHours, colStatus})
         DataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle7.BackColor = Color.FromArgb(CByte(30), CByte(34), CByte(53))
-        DataGridViewCellStyle7.Font = New Font("Microsoft YaHei UI", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        DataGridViewCellStyle7.Font = New Font("Microsoft YaHei UI", 9.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         DataGridViewCellStyle7.ForeColor = Color.FromArgb(CByte(197), CByte(213), CByte(240))
         DataGridViewCellStyle7.Padding = New Padding(6, 0, 0, 0)
         DataGridViewCellStyle7.SelectionBackColor = Color.FromArgb(CByte(59), CByte(125), CByte(216))
@@ -257,7 +257,7 @@ Partial Class formDashBoardV2
         DataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter
         DataGridViewCellStyle3.ForeColor = Color.FromArgb(CByte(61), CByte(74), CByte(114))
         colNo.DefaultCellStyle = DataGridViewCellStyle3
-        colNo.FillWeight = 6F
+        colNo.FillWeight = 6.0F
         colNo.HeaderText = "#"
         colNo.MinimumWidth = 6
         colNo.Name = "colNo"
@@ -265,7 +265,7 @@ Partial Class formDashBoardV2
         ' 
         ' colEmpName
         ' 
-        colEmpName.FillWeight = 30F
+        colEmpName.FillWeight = 30.0F
         colEmpName.HeaderText = "Nhân viên"
         colEmpName.MinimumWidth = 6
         colEmpName.Name = "colEmpName"
@@ -275,7 +275,7 @@ Partial Class formDashBoardV2
         ' 
         DataGridViewCellStyle4.ForeColor = Color.FromArgb(CByte(123), CByte(139), CByte(178))
         colDept.DefaultCellStyle = DataGridViewCellStyle4
-        colDept.FillWeight = 20F
+        colDept.FillWeight = 20.0F
         colDept.HeaderText = "Phòng ban"
         colDept.MinimumWidth = 6
         colDept.Name = "colDept"
@@ -286,7 +286,7 @@ Partial Class formDashBoardV2
         DataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleCenter
         DataGridViewCellStyle5.ForeColor = Color.FromArgb(CByte(232), CByte(236), CByte(240))
         colLateCount.DefaultCellStyle = DataGridViewCellStyle5
-        colLateCount.FillWeight = 14F
+        colLateCount.FillWeight = 14.0F
         colLateCount.HeaderText = "Số lần trễ"
         colLateCount.MinimumWidth = 6
         colLateCount.Name = "colLateCount"
@@ -296,7 +296,7 @@ Partial Class formDashBoardV2
         ' 
         DataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleCenter
         colLateHours.DefaultCellStyle = DataGridViewCellStyle6
-        colLateHours.FillWeight = 16F
+        colLateHours.FillWeight = 16.0F
         colLateHours.HeaderText = "Tổng giờ trễ"
         colLateHours.MinimumWidth = 6
         colLateHours.Name = "colLateHours"
@@ -304,7 +304,7 @@ Partial Class formDashBoardV2
         ' 
         ' colStatus
         ' 
-        colStatus.FillWeight = 14F
+        colStatus.FillWeight = 14.0F
         colStatus.HeaderText = "Mức độ"
         colStatus.MinimumWidth = 6
         colStatus.Name = "colStatus"
@@ -314,7 +314,7 @@ Partial Class formDashBoardV2
         ' 
         pnlTableSub.AutoSize = True
         pnlTableSub.Dock = DockStyle.Top
-        pnlTableSub.Font = New Font("Microsoft YaHei UI", 9F)
+        pnlTableSub.Font = New Font("Microsoft YaHei UI", 9.0F)
         pnlTableSub.ForeColor = Color.FromArgb(CByte(123), CByte(139), CByte(178))
         pnlTableSub.Location = New Point(14, 31)
         pnlTableSub.Name = "pnlTableSub"
@@ -326,7 +326,7 @@ Partial Class formDashBoardV2
         ' 
         lblTableTitle.AutoSize = True
         lblTableTitle.Dock = DockStyle.Top
-        lblTableTitle.Font = New Font("Microsoft YaHei UI", 11F, FontStyle.Bold)
+        lblTableTitle.Font = New Font("Microsoft YaHei UI", 11.0F, FontStyle.Bold)
         lblTableTitle.ForeColor = Color.FromArgb(CByte(232), CByte(236), CByte(240))
         lblTableTitle.Location = New Point(14, 12)
         lblTableTitle.Name = "lblTableTitle"
@@ -336,7 +336,7 @@ Partial Class formDashBoardV2
         ' 
         ' formDashBoardV2
         ' 
-        AutoScaleDimensions = New SizeF(7F, 17F)
+        AutoScaleDimensions = New SizeF(7.0F, 17.0F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.FromArgb(CByte(26), CByte(29), CByte(46))
         Controls.Add(tlpRoot)
