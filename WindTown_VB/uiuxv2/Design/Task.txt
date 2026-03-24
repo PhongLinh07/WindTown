@@ -1,7 +1,0 @@
-Task:
-[x] 1. Đồng bộ html với json.
-[] 2. Hoàn thiện các form còn thiếu.
-[x] 3. Thêm  button chuyển tab trong formMainV2.
-[] 5. Chỉnh sửa lại tất cả các form.
-
-push lên repo

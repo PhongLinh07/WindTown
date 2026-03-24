@@ -8,6 +8,12 @@ Imports System.Linq
 ' ============================================================
 Public Class formDashBoardV2
 
+    Public Sub New()
+        InitializeComponent()
+
+        Me.Tag = "formDashBoardV2"
+        Me.Text = "Trang chủ"
+    End Sub
     ' ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     '  DATA FIELDS
     ' ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

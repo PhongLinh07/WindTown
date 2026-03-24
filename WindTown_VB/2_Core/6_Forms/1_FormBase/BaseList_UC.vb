@@ -8,11 +8,16 @@ Public Class BaseList_UC
 
     ' ── Filter ───────────────────────────────────────────────
     Private _filterPanel As FilterPanel_UC
+    Private _exportExcel As ExportExcel_UC
     Private _allData As Object   ' giữ reference list gốc
 
 #Region "Setting Form"
     Public Sub New()
         InitializeComponent()
+
+        _exportExcel = New ExportExcel_UC(_dgv)
+        pnl_exportExcel.Controls.Add(_exportExcel)
+        '  tool_export.Visible = True
     End Sub
 
     Public Sub New(service As IBaseService, tag As String, title As String)
@@ -22,6 +27,11 @@ Public Class BaseList_UC
         _service = service
 
         tool_filter.Visible = False
+
+
+        _exportExcel = New ExportExcel_UC(_dgv)
+        pnl_exportExcel.Controls.Add(_exportExcel)
+        tool_export.Visible = True
     End Sub
 
     Protected Sub Init(modelType As Type)
@@ -34,11 +44,10 @@ Public Class BaseList_UC
         Dim response = _service.GetList()
         If response.IsSuccess Then
             ' ✅ Lưu list gốc để filter in-memory
-            Dim lis As List(Of Employee) = If(response.Data, New List(Of Employee))
             _allData = response.Data
 
             _bindingSource.DataSource = Nothing
-            _bindingSource.DataSource = lis
+            _bindingSource.DataSource = response.Data
             _dgv.DataSource = _bindingSource
         Else
             MessageBox.Show(response.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -75,6 +84,9 @@ Public Class BaseList_UC
         _filterPanel?.Toggle()
     End Sub
 
+    Private Sub menu_export_Click(sender As Object, e As EventArgs) Handles tool_export.Click
+        _exportExcel?.Toggle()
+    End Sub
     Private Sub tool_hide_column_Click(sender As Object, e As EventArgs) Handles tool_hide_column.Click
         Dim frm As New DgvDisplay_frm(_dgv)
         frm.ShowDialog()
@@ -192,5 +204,6 @@ Public Class BaseList_UC
         End Try
         Return True
     End Function
+
 #End Region
 End Class

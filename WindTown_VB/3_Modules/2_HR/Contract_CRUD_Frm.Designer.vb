@@ -205,7 +205,7 @@ Partial Class Contract_CRUD_Frm
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = SystemColors.ActiveCaption
-        ClientSize = New Size(875, 588)
+        ClientSize = New Size(891, 598)
         Controls.Add(ui_base_salary)
         Controls.Add(Label8)
         Controls.Add(ui_code)

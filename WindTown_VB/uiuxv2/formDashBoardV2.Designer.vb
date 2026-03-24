@@ -1,6 +1,6 @@
 <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class formDashBoardV2
-    Inherits System.Windows.Forms.Form
+    Inherits System.Windows.Forms.UserControl
 
     <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
@@ -339,11 +339,10 @@ Partial Class formDashBoardV2
         AutoScaleDimensions = New SizeF(7F, 17F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.FromArgb(CByte(26), CByte(29), CByte(46))
-        ClientSize = New Size(1199, 622)
         Controls.Add(tlpRoot)
-        Font = New Font("Microsoft YaHei UI", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Font = New Font("Microsoft YaHei UI", 9.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Name = "formDashBoardV2"
-        Text = "Dashboard"
+        Size = New Size(1199, 622)
         tlpRoot.ResumeLayout(False)
         tlpKpi.ResumeLayout(False)
         tlpChartsUp.ResumeLayout(False)

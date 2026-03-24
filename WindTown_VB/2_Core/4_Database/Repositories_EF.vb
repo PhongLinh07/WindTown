@@ -281,10 +281,10 @@ Public Class AccountRepository
         Return ctx.Accounts.Include(Function(a) a.Employee).AsNoTracking()
     End Function
 
-    Public Function GetByUsername(data As Account) As Account
+    Public Function Login(data As Account) As Account
         Return BuildQuery(_ctx) _
             .Where(Function(a) a.status <> -1) _
-            .Where(Function(a) a.user = data.user)
+            .Where(Function(a) a.user = data.user AndAlso a.password = data.password).FirstOrDefault()
     End Function
 End Class
 

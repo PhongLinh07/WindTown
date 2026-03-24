@@ -174,7 +174,7 @@ Partial Class formHoliday
         lblCode.ForeColor = Color.FromArgb(CByte(123), CByte(139), CByte(178))
         lblCode.Location = New Point(3, 0)
         lblCode.Name = "lblCode"
-        lblCode.Size = New Size(103, 19)
+        lblCode.Size = New Size(87, 17)
         lblCode.TabIndex = 0
         lblCode.Text = "Mã ngày lễ *"
         ' 
@@ -188,7 +188,7 @@ Partial Class formHoliday
         txtCode.Location = New Point(0, 22)
         txtCode.Margin = New Padding(0, 0, 8, 4)
         txtCode.Name = "txtCode"
-        txtCode.Size = New Size(200, 29)
+        txtCode.Size = New Size(200, 24)
         txtCode.TabIndex = 0
         ' 
         ' lblName
@@ -199,7 +199,7 @@ Partial Class formHoliday
         lblName.Location = New Point(216, 0)
         lblName.Margin = New Padding(8, 0, 0, 0)
         lblName.Name = "lblName"
-        lblName.Size = New Size(107, 19)
+        lblName.Size = New Size(91, 17)
         lblName.TabIndex = 1
         lblName.Text = "Tên ngày lễ *"
         ' 
@@ -213,7 +213,7 @@ Partial Class formHoliday
         txtName.Location = New Point(216, 22)
         txtName.Margin = New Padding(8, 0, 0, 4)
         txtName.Name = "txtName"
-        txtName.Size = New Size(200, 29)
+        txtName.Size = New Size(200, 24)
         txtName.TabIndex = 1
         ' 
         ' lblDate
@@ -223,7 +223,7 @@ Partial Class formHoliday
         lblDate.ForeColor = Color.FromArgb(CByte(123), CByte(139), CByte(178))
         lblDate.Location = New Point(3, 62)
         lblDate.Name = "lblDate"
-        lblDate.Size = New Size(61, 19)
+        lblDate.Size = New Size(50, 17)
         lblDate.TabIndex = 2
         lblDate.Text = "Ngày *"
         ' 
@@ -236,7 +236,7 @@ Partial Class formHoliday
         dtpDate.Location = New Point(0, 84)
         dtpDate.Margin = New Padding(0, 0, 8, 4)
         dtpDate.Name = "dtpDate"
-        dtpDate.Size = New Size(200, 29)
+        dtpDate.Size = New Size(200, 24)
         dtpDate.TabIndex = 2
         ' 
         ' lblFactor
@@ -247,7 +247,7 @@ Partial Class formHoliday
         lblFactor.Location = New Point(216, 62)
         lblFactor.Margin = New Padding(8, 0, 0, 0)
         lblFactor.Name = "lblFactor"
-        lblFactor.Size = New Size(109, 19)
+        lblFactor.Size = New Size(94, 17)
         lblFactor.TabIndex = 3
         lblFactor.Text = "Hệ số lương *"
         ' 
@@ -261,7 +261,7 @@ Partial Class formHoliday
         txtFactor.Location = New Point(216, 84)
         txtFactor.Margin = New Padding(8, 0, 0, 4)
         txtFactor.Name = "txtFactor"
-        txtFactor.Size = New Size(200, 29)
+        txtFactor.Size = New Size(200, 24)
         txtFactor.TabIndex = 3
         ' 
         ' lblYear
@@ -271,7 +271,7 @@ Partial Class formHoliday
         lblYear.ForeColor = Color.FromArgb(CByte(123), CByte(139), CByte(178))
         lblYear.Location = New Point(3, 124)
         lblYear.Name = "lblYear"
-        lblYear.Size = New Size(46, 19)
+        lblYear.Size = New Size(37, 17)
         lblYear.TabIndex = 4
         lblYear.Text = "Năm"
         ' 
@@ -285,7 +285,7 @@ Partial Class formHoliday
         txtYear.Location = New Point(0, 146)
         txtYear.Margin = New Padding(0, 0, 8, 4)
         txtYear.Name = "txtYear"
-        txtYear.Size = New Size(200, 29)
+        txtYear.Size = New Size(200, 24)
         txtYear.TabIndex = 4
         ' 
         ' lblNote
@@ -296,7 +296,7 @@ Partial Class formHoliday
         lblNote.ForeColor = Color.FromArgb(CByte(123), CByte(139), CByte(178))
         lblNote.Location = New Point(3, 186)
         lblNote.Name = "lblNote"
-        lblNote.Size = New Size(66, 19)
+        lblNote.Size = New Size(55, 17)
         lblNote.TabIndex = 5
         lblNote.Text = "Ghi chú"
         ' 
@@ -322,7 +322,7 @@ Partial Class formHoliday
         lblSecInfo.ForeColor = Color.FromArgb(CByte(61), CByte(74), CByte(114))
         lblSecInfo.Location = New Point(16, 12)
         lblSecInfo.Name = "lblSecInfo"
-        lblSecInfo.Size = New Size(169, 19)
+        lblSecInfo.Size = New Size(141, 17)
         lblSecInfo.TabIndex = 1
         lblSecInfo.Text = "THÔNG TIN NGÀY LỄ"
         ' 
@@ -488,7 +488,7 @@ Partial Class formHoliday
         lblRowInfo.ForeColor = Color.FromArgb(CByte(123), CByte(139), CByte(178))
         lblRowInfo.Location = New Point(14, 9)
         lblRowInfo.Name = "lblRowInfo"
-        lblRowInfo.Size = New Size(77, 20)
+        lblRowInfo.Size = New Size(63, 17)
         lblRowInfo.TabIndex = 0
         lblRowInfo.Text = "Hiển thị 0"
         ' 
@@ -530,7 +530,7 @@ Partial Class formHoliday
         cboYearFilter.ForeColor = Color.FromArgb(CByte(232), CByte(236), CByte(240))
         cboYearFilter.Location = New Point(264, 11)
         cboYearFilter.Name = "cboYearFilter"
-        cboYearFilter.Size = New Size(140, 28)
+        cboYearFilter.Size = New Size(140, 25)
         cboYearFilter.TabIndex = 1
         ' 
         ' txtSearch
@@ -541,7 +541,7 @@ Partial Class formHoliday
         txtSearch.ForeColor = Color.FromArgb(CByte(232), CByte(236), CByte(240))
         txtSearch.Location = New Point(12, 11)
         txtSearch.Name = "txtSearch"
-        txtSearch.Size = New Size(240, 29)
+        txtSearch.Size = New Size(240, 24)
         txtSearch.TabIndex = 0
         toolTip1.SetToolTip(txtSearch, "Tìm theo mã hoặc tên ngày lễ")
         ' 
@@ -567,7 +567,7 @@ Partial Class formHoliday
         lblHdrBadge.Location = New Point(310, 40)
         lblHdrBadge.Name = "lblHdrBadge"
         lblHdrBadge.Padding = New Padding(6, 2, 6, 2)
-        lblHdrBadge.Size = New Size(95, 24)
+        lblHdrBadge.Size = New Size(67, 21)
         lblHdrBadge.TabIndex = 2
         lblHdrBadge.Text = "Pending"
         ' 
@@ -578,7 +578,7 @@ Partial Class formHoliday
         lblHdrSub.ForeColor = Color.FromArgb(CByte(123), CByte(139), CByte(178))
         lblHdrSub.Location = New Point(18, 42)
         lblHdrSub.Name = "lblHdrSub"
-        lblHdrSub.Size = New Size(313, 20)
+        lblHdrSub.Size = New Size(261, 17)
         lblHdrSub.TabIndex = 1
         lblHdrSub.Text = "Quản lý ngày nghỉ lễ và hệ số lương ngày lễ"
         ' 
@@ -589,13 +589,13 @@ Partial Class formHoliday
         lblHdrTitle.ForeColor = Color.FromArgb(CByte(232), CByte(236), CByte(240))
         lblHdrTitle.Location = New Point(16, 10)
         lblHdrTitle.Name = "lblHdrTitle"
-        lblHdrTitle.Size = New Size(156, 30)
+        lblHdrTitle.Size = New Size(127, 25)
         lblHdrTitle.TabIndex = 0
         lblHdrTitle.Text = "Ngày nghỉ lễ"
         ' 
         ' formHoliday
         ' 
-        AutoScaleDimensions = New SizeF(9F, 20F)
+        AutoScaleDimensions = New SizeF(7F, 17F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.FromArgb(CByte(26), CByte(29), CByte(46))
         ClientSize = New Size(1200, 709)

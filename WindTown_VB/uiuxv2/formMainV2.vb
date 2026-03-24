@@ -47,7 +47,7 @@ Public Class formMainV2
 
         ' Điều hướng mặc định → Dashboard
         SetActiveNav(btnDash, "Dashboard")
-        NavigateTo(New formDashBoardV2())
+        ' NavigateTo(New formDashBoardV2())
 
         ' Responsive: cập nhật vị trí pnlTopRight khi resize
         AddHandler Me.Resize, Sub(s, ev) RepositionTopRight()
@@ -80,7 +80,7 @@ Public Class formMainV2
 
     Private Shared Function ResolveRoleLabel(acc As Account) As String
         Dim r = If(acc IsNot Nothing, acc.role, modSession.CurrentRole)
-        Return If(r = Account.ROLE_ADM, "Quản trị viên", "Nhân viên")
+        Return If(r = Account.Permis.Finance, "Quản trị viên", "Nhân viên")
     End Function
 
     Private Function TaoAvatarText(displayName As String) As String
@@ -148,7 +148,7 @@ Public Class formMainV2
     ' ── Nav Button Clicks ─────────────────────────────────────
     Private Sub btnDash_Click(sender As Object, e As EventArgs) Handles btnDash.Click
         SetActiveNav(btnDash, "Dashboard")
-        NavigateTo(New formDashBoardV2())
+        '  NavigateTo(New formDashBoardV2())
     End Sub
 
     Private Sub btnEmployee_Click(sender As Object, e As EventArgs) Handles btnEmployee.Click

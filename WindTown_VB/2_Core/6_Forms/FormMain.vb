@@ -246,6 +246,47 @@ Partial Public Class FormMain
 
     End Sub
 
+    Private Sub menu_db_mgr_Click(sender As Object, e As EventArgs) Handles menu_db_mgr.Click
+        DatabaseManagerForm.OpenAsDialog(Me)
+    End Sub
+
+    Private Sub menu_dashboard_Click(sender As Object, e As EventArgs) Handles menu_dashboard.Click
+        OpenMultTabMode(Of formDashBoardV2)(tabControl_A)
+    End Sub
+
+#End Region
+
+
+#Region "Phân quyền"
+    Private Sub ApplyPermissions()
+        ' Lấy tài khoản từ NavigationService
+        Dim acc = UserProfile.User
+        If acc Is Nothing Then Return
+        Dim role As Account.Permis = CType(acc.role, Account.Permis)
+        If role = Account.Permis.Admin Then Return
+
+        If role = Account.Permis.HR Then
+            grp_Finance.Visible = False
+
+            menu_policy.Visible = False
+            grp_Sys.Visible = False
+            tool_logger.Visible = False
+        End If
+
+        If role = Account.Permis.Finance Then
+
+            menu_department.Visible = False
+            menu_level.Visible = False
+            menu_empolyee.Visible = False
+            menu_project.Visible = False
+
+            menu_policy.Visible = False
+            grp_Sys.Visible = False
+            tool_logger.Visible = False
+
+        End If
+    End Sub
+
 
 #End Region
 

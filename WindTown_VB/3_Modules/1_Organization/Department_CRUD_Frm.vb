@@ -19,6 +19,7 @@ Public Class Department_CRUD_Frm
         BindDataToUI()
 
         tool_save.Enabled = False
+
     End Sub
     Protected Overrides Sub BindDataToUI()
         ui_code.Text = _data.code

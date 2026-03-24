@@ -28,6 +28,7 @@ Partial Class BaseList_UC
         tool_refresh = New ToolStripButton()
         toolStrip = New ToolStrip()
         tool_new = New ToolStripButton()
+        tool_export = New ToolStripButton()
         tool_filter = New ToolStripButton()
         tool_delete = New ToolStripButton()
         tool_hide_column = New ToolStripButton()
@@ -42,6 +43,8 @@ Partial Class BaseList_UC
         viewSelected = New Label()
         pnl_filter = New Panel()
         SplitContainer1 = New SplitContainer()
+        SplitContainer2 = New SplitContainer()
+        pnl_exportExcel = New Panel()
         toolStrip.SuspendLayout()
         Panel1.SuspendLayout()
         CType(_dgv, ComponentModel.ISupportInitialize).BeginInit()
@@ -49,6 +52,10 @@ Partial Class BaseList_UC
         SplitContainer1.Panel1.SuspendLayout()
         SplitContainer1.Panel2.SuspendLayout()
         SplitContainer1.SuspendLayout()
+        CType(SplitContainer2, ComponentModel.ISupportInitialize).BeginInit()
+        SplitContainer2.Panel1.SuspendLayout()
+        SplitContainer2.Panel2.SuspendLayout()
+        SplitContainer2.SuspendLayout()
         SuspendLayout()
         ' 
         ' tool_refresh
@@ -68,7 +75,7 @@ Partial Class BaseList_UC
         toolStrip.BackColor = SystemColors.GradientInactiveCaption
         toolStrip.GripStyle = ToolStripGripStyle.Hidden
         toolStrip.ImageScalingSize = New Size(24, 24)
-        toolStrip.Items.AddRange(New ToolStripItem() {tool_new, tool_refresh, tool_filter, tool_delete, tool_hide_column})
+        toolStrip.Items.AddRange(New ToolStripItem() {tool_new, tool_refresh, tool_filter, tool_export, tool_delete, tool_hide_column})
         toolStrip.Location = New Point(0, 0)
         toolStrip.Name = "toolStrip"
         toolStrip.RenderMode = ToolStripRenderMode.System
@@ -88,6 +95,18 @@ Partial Class BaseList_UC
         tool_new.Size = New Size(28, 28)
         tool_new.Text = "Thêm mới"
         tool_new.TextAlign = ContentAlignment.MiddleLeft
+        ' 
+        ' tool_export
+        ' 
+        tool_export.BackColor = Color.Transparent
+        tool_export.BackgroundImageLayout = ImageLayout.Stretch
+        tool_export.DisplayStyle = ToolStripItemDisplayStyle.Image
+        tool_export.Image = My.Resources.Resources.excel
+        tool_export.ImageTransparentColor = Color.Magenta
+        tool_export.Margin = New Padding(3, 3, 20, 3)
+        tool_export.Name = "tool_export"
+        tool_export.Size = New Size(28, 28)
+        tool_export.Text = "Xuất excel"
         ' 
         ' tool_filter
         ' 
@@ -129,7 +148,7 @@ Partial Class BaseList_UC
         Panel1.Dock = DockStyle.Fill
         Panel1.Location = New Point(0, 0)
         Panel1.Name = "Panel1"
-        Panel1.Size = New Size(1042, 403)
+        Panel1.Size = New Size(1042, 360)
         Panel1.TabIndex = 6
         ' 
         ' _dgv
@@ -175,7 +194,7 @@ Partial Class BaseList_UC
         _dgv.RowTemplate.Height = 40
         _dgv.RowTemplate.Resizable = DataGridViewTriState.True
         _dgv.SelectionMode = DataGridViewSelectionMode.FullRowSelect
-        _dgv.Size = New Size(1042, 384)
+        _dgv.Size = New Size(1042, 341)
         _dgv.TabIndex = 5
         ' 
         ' Column1
@@ -231,9 +250,9 @@ Partial Class BaseList_UC
         ' 
         pnl_filter.AutoScroll = True
         pnl_filter.Dock = DockStyle.Fill
-        pnl_filter.Location = New Point(0, 34)
+        pnl_filter.Location = New Point(0, 0)
         pnl_filter.Name = "pnl_filter"
-        pnl_filter.Size = New Size(1042, 176)
+        pnl_filter.Size = New Size(533, 219)
         pnl_filter.TabIndex = 7
         ' 
         ' SplitContainer1
@@ -245,15 +264,41 @@ Partial Class BaseList_UC
         ' 
         ' SplitContainer1.Panel1
         ' 
-        SplitContainer1.Panel1.Controls.Add(pnl_filter)
+        SplitContainer1.Panel1.Controls.Add(SplitContainer2)
         SplitContainer1.Panel1.Controls.Add(toolStrip)
         ' 
         ' SplitContainer1.Panel2
         ' 
         SplitContainer1.Panel2.Controls.Add(Panel1)
         SplitContainer1.Size = New Size(1042, 617)
-        SplitContainer1.SplitterDistance = 210
+        SplitContainer1.SplitterDistance = 253
         SplitContainer1.TabIndex = 0
+        ' 
+        ' SplitContainer2
+        ' 
+        SplitContainer2.Dock = DockStyle.Fill
+        SplitContainer2.Location = New Point(0, 34)
+        SplitContainer2.Name = "SplitContainer2"
+        ' 
+        ' SplitContainer2.Panel1
+        ' 
+        SplitContainer2.Panel1.Controls.Add(pnl_filter)
+        ' 
+        ' SplitContainer2.Panel2
+        ' 
+        SplitContainer2.Panel2.Controls.Add(pnl_exportExcel)
+        SplitContainer2.Size = New Size(1042, 219)
+        SplitContainer2.SplitterDistance = 533
+        SplitContainer2.TabIndex = 8
+        ' 
+        ' pnl_exportExcel
+        ' 
+        pnl_exportExcel.AutoScroll = True
+        pnl_exportExcel.Dock = DockStyle.Fill
+        pnl_exportExcel.Location = New Point(0, 0)
+        pnl_exportExcel.Name = "pnl_exportExcel"
+        pnl_exportExcel.Size = New Size(505, 219)
+        pnl_exportExcel.TabIndex = 9
         ' 
         ' BaseList_UC
         ' 
@@ -274,6 +319,10 @@ Partial Class BaseList_UC
         SplitContainer1.Panel2.ResumeLayout(False)
         CType(SplitContainer1, ComponentModel.ISupportInitialize).EndInit()
         SplitContainer1.ResumeLayout(False)
+        SplitContainer2.Panel1.ResumeLayout(False)
+        SplitContainer2.Panel2.ResumeLayout(False)
+        CType(SplitContainer2, ComponentModel.ISupportInitialize).EndInit()
+        SplitContainer2.ResumeLayout(False)
         ResumeLayout(False)
 
     End Sub
@@ -294,4 +343,7 @@ Partial Class BaseList_UC
     Friend WithEvents Panel1 As Panel
     Friend WithEvents pnl_filter As Panel
     Friend WithEvents SplitContainer1 As SplitContainer
+    Protected WithEvents tool_export As ToolStripButton
+    Friend WithEvents SplitContainer2 As SplitContainer
+    Friend WithEvents pnl_exportExcel As Panel
 End Class

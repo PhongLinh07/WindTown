@@ -36,28 +36,28 @@ Partial Class FormMain
         ToolStrip1 = New ToolStrip()
         tool_user_profile = New ToolStripMenuItem()
         ToolStripSeparator1 = New ToolStripSeparator()
-        SdvsdToolStripMenuItem = New ToolStripMenuItem()
+        grp_Origanization = New ToolStripMenuItem()
         menu_department = New ToolStripMenuItem()
         menu_level = New ToolStripMenuItem()
         menu_job = New ToolStripMenuItem()
-        DvsdvToolStripMenuItem = New ToolStripMenuItem()
+        grp_HR = New ToolStripMenuItem()
         menu_empolyee = New ToolStripMenuItem()
         menu_contract = New ToolStripMenuItem()
         menu_position = New ToolStripMenuItem()
-        SdvfToolStripMenuItem = New ToolStripMenuItem()
+        grp_Operational = New ToolStripMenuItem()
         menu_project = New ToolStripMenuItem()
         menu_assignment = New ToolStripMenuItem()
         menu_attendance = New ToolStripMenuItem()
         menu_holiday = New ToolStripMenuItem()
         menu_leave_cat = New ToolStripMenuItem()
         menu_leave = New ToolStripMenuItem()
-        menu_policy = New ToolStripMenuItem()
-        TàiChínhToolStripMenuItem = New ToolStripMenuItem()
+        grp_Finance = New ToolStripMenuItem()
         menu_pay_period = New ToolStripMenuItem()
         menu_payroll = New ToolStripMenuItem()
-        HệThốngToolStripMenuItem = New ToolStripMenuItem()
-        menu_account = New ToolStripMenuItem()
         tool_logger = New ToolStripMenuItem()
+        grp_Sys = New ToolStripMenuItem()
+        menu_account = New ToolStripMenuItem()
+        menu_db_mgr = New ToolStripMenuItem()
         ToolStripSeparator2 = New ToolStripSeparator()
         ColorDialog1 = New ColorDialog()
         contextMenu_tab = New ContextMenuStrip(components)
@@ -67,6 +67,8 @@ Partial Class FormMain
         menu_move_all_to_splitA = New ToolStripMenuItem()
         menu_move_to_splitB = New ToolStripMenuItem()
         menu_move_all_to_splitB = New ToolStripMenuItem()
+        menu_policy = New ToolStripMenuItem()
+        menu_dashboard = New ToolStripMenuItem()
         pnl_main.SuspendLayout()
         CType(split_main, ComponentModel.ISupportInitialize).BeginInit()
         split_main.Panel1.SuspendLayout()
@@ -206,7 +208,7 @@ Partial Class FormMain
         ' 
         ToolStrip1.Font = New Font("Segoe UI", 10F)
         ToolStrip1.ImageScalingSize = New Size(32, 32)
-        ToolStrip1.Items.AddRange(New ToolStripItem() {tool_user_profile, ToolStripSeparator1, SdvsdToolStripMenuItem, DvsdvToolStripMenuItem, SdvfToolStripMenuItem, menu_policy, TàiChínhToolStripMenuItem, HệThốngToolStripMenuItem, tool_logger, ToolStripSeparator2})
+        ToolStrip1.Items.AddRange(New ToolStripItem() {tool_user_profile, ToolStripSeparator1, menu_dashboard, grp_Origanization, grp_HR, grp_Operational, menu_policy, grp_Finance, tool_logger, grp_Sys, ToolStripSeparator2})
         ToolStrip1.Location = New Point(0, 0)
         ToolStrip1.Name = "ToolStrip1"
         ToolStrip1.RenderMode = ToolStripRenderMode.System
@@ -227,13 +229,13 @@ Partial Class FormMain
         ToolStripSeparator1.Name = "ToolStripSeparator1"
         ToolStripSeparator1.Size = New Size(6, 36)
         ' 
-        ' SdvsdToolStripMenuItem
+        ' grp_Origanization
         ' 
-        SdvsdToolStripMenuItem.DropDownItems.AddRange(New ToolStripItem() {menu_department, menu_level, menu_job})
-        SdvsdToolStripMenuItem.Image = My.Resources.Resources.enterprise
-        SdvsdToolStripMenuItem.Name = "SdvsdToolStripMenuItem"
-        SdvsdToolStripMenuItem.Size = New Size(100, 36)
-        SdvsdToolStripMenuItem.Text = "Tổ chức"
+        grp_Origanization.DropDownItems.AddRange(New ToolStripItem() {menu_department, menu_level, menu_job})
+        grp_Origanization.Image = My.Resources.Resources.enterprise
+        grp_Origanization.Name = "grp_Origanization"
+        grp_Origanization.Size = New Size(100, 36)
+        grp_Origanization.Text = "Tổ chức"
         ' 
         ' menu_department
         ' 
@@ -256,13 +258,13 @@ Partial Class FormMain
         menu_job.Size = New Size(161, 38)
         menu_job.Text = "Công việc"
         ' 
-        ' DvsdvToolStripMenuItem
+        ' grp_HR
         ' 
-        DvsdvToolStripMenuItem.DropDownItems.AddRange(New ToolStripItem() {menu_empolyee, menu_contract, menu_position})
-        DvsdvToolStripMenuItem.Image = My.Resources.Resources.book_user
-        DvsdvToolStripMenuItem.Name = "DvsdvToolStripMenuItem"
-        DvsdvToolStripMenuItem.Size = New Size(104, 36)
-        DvsdvToolStripMenuItem.Text = "Nhân sự"
+        grp_HR.DropDownItems.AddRange(New ToolStripItem() {menu_empolyee, menu_contract, menu_position})
+        grp_HR.Image = My.Resources.Resources.book_user
+        grp_HR.Name = "grp_HR"
+        grp_HR.Size = New Size(104, 36)
+        grp_HR.Text = "Nhân sự"
         ' 
         ' menu_empolyee
         ' 
@@ -285,13 +287,13 @@ Partial Class FormMain
         menu_position.Size = New Size(156, 38)
         menu_position.Text = "Chức vụ"
         ' 
-        ' SdvfToolStripMenuItem
+        ' grp_Operational
         ' 
-        SdvfToolStripMenuItem.DropDownItems.AddRange(New ToolStripItem() {menu_project, menu_assignment, menu_attendance, menu_holiday, menu_leave_cat, menu_leave})
-        SdvfToolStripMenuItem.Image = My.Resources.Resources.projectManage
-        SdvfToolStripMenuItem.Name = "SdvfToolStripMenuItem"
-        SdvfToolStripMenuItem.Size = New Size(112, 36)
-        SdvfToolStripMenuItem.Text = "Vận hành"
+        grp_Operational.DropDownItems.AddRange(New ToolStripItem() {menu_project, menu_assignment, menu_attendance, menu_holiday, menu_leave_cat, menu_leave})
+        grp_Operational.Image = My.Resources.Resources.projectManage
+        grp_Operational.Name = "grp_Operational"
+        grp_Operational.Size = New Size(112, 36)
+        grp_Operational.Text = "Vận hành"
         ' 
         ' menu_project
         ' 
@@ -336,49 +338,27 @@ Partial Class FormMain
         menu_leave.Size = New Size(216, 38)
         menu_leave.Text = "Nghỉ phép"
         ' 
-        ' menu_policy
+        ' grp_Finance
         ' 
-        menu_policy.Image = My.Resources.Resources.rules_alt
-        menu_policy.Name = "menu_policy"
-        menu_policy.Size = New Size(120, 36)
-        menu_policy.Text = "Chính sách"
-        ' 
-        ' TàiChínhToolStripMenuItem
-        ' 
-        TàiChínhToolStripMenuItem.DropDownItems.AddRange(New ToolStripItem() {menu_pay_period, menu_payroll})
-        TàiChínhToolStripMenuItem.Image = My.Resources.Resources.money
-        TàiChínhToolStripMenuItem.Name = "TàiChínhToolStripMenuItem"
-        TàiChínhToolStripMenuItem.Size = New Size(105, 36)
-        TàiChínhToolStripMenuItem.Text = "Tài chính"
+        grp_Finance.DropDownItems.AddRange(New ToolStripItem() {menu_pay_period, menu_payroll})
+        grp_Finance.Image = My.Resources.Resources.money
+        grp_Finance.Name = "grp_Finance"
+        grp_Finance.Size = New Size(105, 36)
+        grp_Finance.Text = "Tài chính"
         ' 
         ' menu_pay_period
         ' 
         menu_pay_period.Image = My.Resources.Resources.wages1
         menu_pay_period.Name = "menu_pay_period"
-        menu_pay_period.Size = New Size(176, 38)
+        menu_pay_period.Size = New Size(196, 38)
         menu_pay_period.Text = "Chu kỳ lương"
         ' 
         ' menu_payroll
         ' 
         menu_payroll.Image = My.Resources.Resources.financial_reporting
         menu_payroll.Name = "menu_payroll"
-        menu_payroll.Size = New Size(176, 38)
+        menu_payroll.Size = New Size(196, 38)
         menu_payroll.Text = "Bảng lương"
-        ' 
-        ' HệThốngToolStripMenuItem
-        ' 
-        HệThốngToolStripMenuItem.DropDownItems.AddRange(New ToolStripItem() {menu_account})
-        HệThốngToolStripMenuItem.Image = My.Resources.Resources.gear
-        HệThốngToolStripMenuItem.Name = "HệThốngToolStripMenuItem"
-        HệThốngToolStripMenuItem.Size = New Size(111, 36)
-        HệThốngToolStripMenuItem.Text = "Hệ thống"
-        ' 
-        ' menu_account
-        ' 
-        menu_account.Image = My.Resources.Resources.user1
-        menu_account.Name = "menu_account"
-        menu_account.Size = New Size(151, 38)
-        menu_account.Text = "Tài khoản"
         ' 
         ' tool_logger
         ' 
@@ -387,6 +367,28 @@ Partial Class FormMain
         tool_logger.Name = "tool_logger"
         tool_logger.Size = New Size(83, 36)
         tool_logger.Text = "Log"
+        ' 
+        ' grp_Sys
+        ' 
+        grp_Sys.DropDownItems.AddRange(New ToolStripItem() {menu_account, menu_db_mgr})
+        grp_Sys.Image = My.Resources.Resources.gear
+        grp_Sys.Name = "grp_Sys"
+        grp_Sys.Size = New Size(111, 36)
+        grp_Sys.Text = "Hệ thống"
+        ' 
+        ' menu_account
+        ' 
+        menu_account.Image = My.Resources.Resources.user1
+        menu_account.Name = "menu_account"
+        menu_account.Size = New Size(196, 38)
+        menu_account.Text = "Tài khoản"
+        ' 
+        ' menu_db_mgr
+        ' 
+        menu_db_mgr.Image = My.Resources.Resources.sync2
+        menu_db_mgr.Name = "menu_db_mgr"
+        menu_db_mgr.Size = New Size(196, 38)
+        menu_db_mgr.Text = "Cơ sở dữ liệu"
         ' 
         ' ToolStripSeparator2
         ' 
@@ -435,6 +437,20 @@ Partial Class FormMain
         menu_move_all_to_splitB.Size = New Size(186, 22)
         menu_move_all_to_splitB.Text = "Chuyển tất cả sang B"
         ' 
+        ' menu_policy
+        ' 
+        menu_policy.Image = My.Resources.Resources.rules_alt
+        menu_policy.Name = "menu_policy"
+        menu_policy.Size = New Size(120, 36)
+        menu_policy.Text = "Chính sách"
+        ' 
+        ' menu_dashboard
+        ' 
+        menu_dashboard.Image = My.Resources.Resources.home2
+        menu_dashboard.Name = "menu_dashboard"
+        menu_dashboard.Size = New Size(113, 36)
+        menu_dashboard.Text = "Trang chủ"
+        ' 
         ' FormMain
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
@@ -468,23 +484,22 @@ Partial Class FormMain
     Friend WithEvents TabPage3 As TabPage
     Friend WithEvents ToolStrip1 As ToolStrip
     Friend WithEvents ToolStripSeparator1 As ToolStripSeparator
-    Friend WithEvents SdvsdToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents grp_Origanization As ToolStripMenuItem
     Friend WithEvents menu_department As ToolStripMenuItem
     Friend WithEvents menu_job As ToolStripMenuItem
     Friend WithEvents menu_level As ToolStripMenuItem
-    Friend WithEvents DvsdvToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents grp_HR As ToolStripMenuItem
     Friend WithEvents menu_empolyee As ToolStripMenuItem
     Friend WithEvents menu_contract As ToolStripMenuItem
     Friend WithEvents menu_position As ToolStripMenuItem
-    Friend WithEvents SdvfToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents grp_Operational As ToolStripMenuItem
     Friend WithEvents menu_project As ToolStripMenuItem
     Friend WithEvents menu_attendance As ToolStripMenuItem
     Friend WithEvents menu_holiday As ToolStripMenuItem
     Friend WithEvents menu_leave_cat As ToolStripMenuItem
     Friend WithEvents menu_leave As ToolStripMenuItem
-    Friend WithEvents menu_policy As ToolStripMenuItem
-    Friend WithEvents TàiChínhToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents HệThốngToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents grp_Finance As ToolStripMenuItem
+    Friend WithEvents grp_Sys As ToolStripMenuItem
     Friend WithEvents menu_account As ToolStripMenuItem
     Friend WithEvents ToolStripSeparator2 As ToolStripSeparator
     Friend WithEvents ColorDialog1 As ColorDialog
@@ -505,4 +520,7 @@ Partial Class FormMain
     Friend WithEvents menu_payroll As ToolStripMenuItem
     Friend WithEvents tool_logger As ToolStripMenuItem
     Public WithEvents tool_user_profile As ToolStripMenuItem
+    Friend WithEvents menu_db_mgr As ToolStripMenuItem
+    Friend WithEvents menu_dashboard As ToolStripMenuItem
+    Friend WithEvents menu_policy As ToolStripMenuItem
 End Class

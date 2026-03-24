@@ -899,16 +899,12 @@ Public Class AppServices
             Try
                 If input Is Nothing Then Return ServiceResponse(Of Object).Fail("Đăng nhập thất bại: Thiếu thông tin đăng nhập")
 
-                Dim acc = _repoAcc.GetByUsername(input)
+                Dim acc = _repoAcc.Login(input)
                 If acc Is Nothing Then Return ServiceResponse(Of Object).Fail("Đăng nhập thất bại: Tài khoản không tồn tại")
 
-                If acc.user = input.user AndAlso acc.password = input.password Then
-                    acc.last_active = DateTime.Now
-                    Me.Update(acc)
-                    Return ServiceResponse(Of Object).Success(acc)
-                Else
-                    Return ServiceResponse(Of Object).Fail("Đăng nhập thất bại: Sai mật khẩu")
-                End If
+                acc.last_active = DateTime.Now
+                Return ServiceResponse(Of Object).Success(acc)
+
             Catch ex As Exception
                 Return ServiceResponse(Of Object).Fail("Lỗi hệ thống: " & ex.Message, ex)
             End Try

@@ -300,11 +300,3 @@ ALTER TABLE pay_item ADD CONSTRAINT FK_pay_item_payroll FOREIGN KEY (payroll_id)
 ALTER TABLE account ADD CONSTRAINT FK_account_employee FOREIGN KEY (employee_id) REFERENCES employee(id);
 GO
 -- ======================= Datas
-
-
--- Chèn dữ liệu cho Employee
-INSERT INTO employee (code, name, gender, cccd, birth_date, address, email, phone, bank, note, status) VALUES
-(N'EMP001', N'Nguyễn Văn An', 1, N'047636216680', '2002-03-02', N'Phú Thọ', N'emp001@windtown.com', N'0211532090', N'ACB_0211532090', N'', 1)
-
-INSERT INTO account (employee_id, [user], [password], role, status) VALUES
-(1, N'admin', N'123', 1, 0)

@@ -1,4 +1,4 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
+<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class frmLogin
     Inherits System.Windows.Forms.Form
 
@@ -23,180 +23,219 @@ Partial Class frmLogin
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmLogin))
-        Me.tlpLogin = New System.Windows.Forms.TableLayoutPanel()
-        Me.pnLogin = New System.Windows.Forms.Panel()
-        Me.lbQuenMK = New System.Windows.Forms.Label()
-        Me.btnRegister = New System.Windows.Forms.Button()
-        Me.btnLogin = New System.Windows.Forms.Button()
-        Me.tbxPassword = New System.Windows.Forms.TextBox()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.tbxUsername = New System.Windows.Forms.TextBox()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.pnLogoApp = New System.Windows.Forms.Panel()
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
-        Me.tlpLogin.SuspendLayout()
-        Me.pnLogin.SuspendLayout()
-        Me.pnLogoApp.SuspendLayout()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.SuspendLayout()
-        '
-        'tlpLogin
-        '
-        Me.tlpLogin.BackColor = System.Drawing.Color.Transparent
-        Me.tlpLogin.ColumnCount = 2
-        Me.tlpLogin.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
-        Me.tlpLogin.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
-        Me.tlpLogin.Controls.Add(Me.pnLogin, 1, 0)
-        Me.tlpLogin.Controls.Add(Me.pnLogoApp, 0, 0)
-        Me.tlpLogin.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.tlpLogin.Location = New System.Drawing.Point(0, 0)
-        Me.tlpLogin.Name = "tlpLogin"
-        Me.tlpLogin.RowCount = 1
-        Me.tlpLogin.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.tlpLogin.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 602.0!))
-        Me.tlpLogin.Size = New System.Drawing.Size(887, 602)
-        Me.tlpLogin.TabIndex = 0
-        '
-        'pnLogin
-        '
-        Me.pnLogin.BackColor = System.Drawing.Color.DarkOrange
-        Me.pnLogin.Controls.Add(Me.lbQuenMK)
-        Me.pnLogin.Controls.Add(Me.btnRegister)
-        Me.pnLogin.Controls.Add(Me.btnLogin)
-        Me.pnLogin.Controls.Add(Me.tbxPassword)
-        Me.pnLogin.Controls.Add(Me.Label3)
-        Me.pnLogin.Controls.Add(Me.tbxUsername)
-        Me.pnLogin.Controls.Add(Me.Label2)
-        Me.pnLogin.Controls.Add(Me.Label1)
-        Me.pnLogin.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.pnLogin.Location = New System.Drawing.Point(446, 3)
-        Me.pnLogin.Name = "pnLogin"
-        Me.pnLogin.Size = New System.Drawing.Size(438, 596)
-        Me.pnLogin.TabIndex = 1
-        '
-        'lbQuenMK
-        '
-        Me.lbQuenMK.AutoSize = True
-        Me.lbQuenMK.BackColor = System.Drawing.Color.Transparent
-        Me.lbQuenMK.ForeColor = System.Drawing.Color.White
-        Me.lbQuenMK.Location = New System.Drawing.Point(223, 418)
-        Me.lbQuenMK.Name = "lbQuenMK"
-        Me.lbQuenMK.Size = New System.Drawing.Size(141, 23)
-        Me.lbQuenMK.TabIndex = 5
-        Me.lbQuenMK.Text = "Quên mật khẩu?"
-        '
-        'btnRegister
-        '
-        Me.btnRegister.BackColor = System.Drawing.Color.Green
-        Me.btnRegister.Font = New System.Drawing.Font("Microsoft YaHei UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnRegister.ForeColor = System.Drawing.Color.White
-        Me.btnRegister.Location = New System.Drawing.Point(106, 365)
-        Me.btnRegister.Name = "btnRegister"
-        Me.btnRegister.Size = New System.Drawing.Size(260, 50)
-        Me.btnRegister.TabIndex = 4
-        Me.btnRegister.Text = "Đăng ký"
-        Me.btnRegister.UseVisualStyleBackColor = False
-        '
-        'btnLogin
-        '
-        Me.btnLogin.BackColor = System.Drawing.Color.DodgerBlue
-        Me.btnLogin.Font = New System.Drawing.Font("Microsoft YaHei UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnLogin.ForeColor = System.Drawing.Color.White
-        Me.btnLogin.Location = New System.Drawing.Point(106, 294)
-        Me.btnLogin.Name = "btnLogin"
-        Me.btnLogin.Size = New System.Drawing.Size(260, 50)
-        Me.btnLogin.TabIndex = 3
-        Me.btnLogin.Text = "Đăng nhập"
-        Me.btnLogin.UseVisualStyleBackColor = False
-        '
-        'tbxPassword
-        '
-        Me.tbxPassword.Location = New System.Drawing.Point(106, 245)
-        Me.tbxPassword.Name = "tbxPassword"
-        Me.tbxPassword.Size = New System.Drawing.Size(258, 29)
-        Me.tbxPassword.TabIndex = 2
-        Me.tbxPassword.Text = "123"
-        Me.tbxPassword.UseSystemPasswordChar = True
-        '
-        'Label3
-        '
-        Me.Label3.AutoSize = True
-        Me.Label3.ForeColor = System.Drawing.Color.White
-        Me.Label3.Location = New System.Drawing.Point(102, 218)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(85, 23)
-        Me.Label3.TabIndex = 0
-        Me.Label3.Text = "Mật khẩu"
-        '
-        'tbxUsername
-        '
-        Me.tbxUsername.Location = New System.Drawing.Point(106, 176)
-        Me.tbxUsername.Name = "tbxUsername"
-        Me.tbxUsername.Size = New System.Drawing.Size(258, 29)
-        Me.tbxUsername.TabIndex = 1
-        Me.tbxUsername.Text = "admin"
-        '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.ForeColor = System.Drawing.Color.White
-        Me.Label2.Location = New System.Drawing.Point(102, 149)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(131, 23)
-        Me.Label2.TabIndex = 0
-        Me.Label2.Text = "Tên đăng nhập"
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Microsoft YaHei UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.ForeColor = System.Drawing.Color.White
-        Me.Label1.Location = New System.Drawing.Point(199, 84)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(123, 27)
-        Me.Label1.TabIndex = 0
-        Me.Label1.Text = "Đăng nhập"
-        Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'pnLogoApp
-        '
-        Me.pnLogoApp.BackColor = System.Drawing.Color.Transparent
-        Me.pnLogoApp.Controls.Add(Me.PictureBox1)
-        Me.pnLogoApp.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.pnLogoApp.Location = New System.Drawing.Point(3, 3)
-        Me.pnLogoApp.Name = "pnLogoApp"
-        Me.pnLogoApp.Size = New System.Drawing.Size(437, 596)
-        Me.pnLogoApp.TabIndex = 0
-        '
-        'PictureBox1
-        '
-        Me.PictureBox1.Image = Global.WindTown_VB.My.Resources.Resources.backgroudFTC
-        Me.PictureBox1.Location = New System.Drawing.Point(-3, -3)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(1145, 602)
-        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.PictureBox1.TabIndex = 0
-        Me.PictureBox1.TabStop = False
-        '
-        'frmLogin
-        '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(10.0!, 23.0!)
-        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(887, 602)
-        Me.Controls.Add(Me.tlpLogin)
-        Me.Font = New System.Drawing.Font("Microsoft YaHei UI", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
-        Me.Margin = New System.Windows.Forms.Padding(4)
-        Me.Name = "frmLogin"
-        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "frmLogin"
-        Me.tlpLogin.ResumeLayout(False)
-        Me.pnLogin.ResumeLayout(False)
-        Me.pnLogin.PerformLayout()
-        Me.pnLogoApp.ResumeLayout(False)
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.ResumeLayout(False)
+        tlpLogin = New TableLayoutPanel()
+        pnLogin = New Panel()
+        Label6 = New Label()
+        lbQuenMK = New Label()
+        btnLogin = New Button()
+        tbxPassword = New TextBox()
+        Label3 = New Label()
+        tbxUsername = New TextBox()
+        Label2 = New Label()
+        pnLogoApp = New Panel()
+        PictureBox1 = New PictureBox()
+        Label5 = New Label()
+        Label4 = New Label()
+        Label1 = New Label()
+        tlpLogin.SuspendLayout()
+        pnLogin.SuspendLayout()
+        pnLogoApp.SuspendLayout()
+        CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
+        SuspendLayout()
+        ' 
+        ' tlpLogin
+        ' 
+        tlpLogin.BackColor = Color.Transparent
+        tlpLogin.ColumnCount = 2
+        tlpLogin.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 48.4654732F))
+        tlpLogin.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 51.5345268F))
+        tlpLogin.Controls.Add(pnLogin, 1, 0)
+        tlpLogin.Controls.Add(pnLogoApp, 0, 0)
+        tlpLogin.Dock = DockStyle.Fill
+        tlpLogin.Location = New Point(0, 0)
+        tlpLogin.Margin = New Padding(4, 3, 4, 3)
+        tlpLogin.Name = "tlpLogin"
+        tlpLogin.RowCount = 1
+        tlpLogin.RowStyles.Add(New RowStyle(SizeType.Percent, 100F))
+        tlpLogin.RowStyles.Add(New RowStyle(SizeType.Absolute, 573F))
+        tlpLogin.Size = New Size(823, 573)
+        tlpLogin.TabIndex = 0
+        ' 
+        ' pnLogin
+        ' 
+        pnLogin.BackColor = Color.LightSkyBlue
+        pnLogin.Controls.Add(Label6)
+        pnLogin.Controls.Add(lbQuenMK)
+        pnLogin.Controls.Add(btnLogin)
+        pnLogin.Controls.Add(tbxPassword)
+        pnLogin.Controls.Add(Label3)
+        pnLogin.Controls.Add(tbxUsername)
+        pnLogin.Controls.Add(Label2)
+        pnLogin.Dock = DockStyle.Fill
+        pnLogin.Location = New Point(402, 3)
+        pnLogin.Margin = New Padding(4, 3, 4, 3)
+        pnLogin.Name = "pnLogin"
+        pnLogin.Size = New Size(417, 567)
+        pnLogin.TabIndex = 1
+        ' 
+        ' Label6
+        ' 
+        Label6.AutoSize = True
+        Label6.Font = New Font("Arial", 20F, FontStyle.Bold)
+        Label6.ForeColor = Color.Black
+        Label6.Location = New Point(106, 57)
+        Label6.Margin = New Padding(4, 0, 4, 0)
+        Label6.Name = "Label6"
+        Label6.Size = New Size(179, 32)
+        Label6.TabIndex = 3
+        Label6.Text = "ĐĂNG NHẬP"
+        Label6.TextAlign = ContentAlignment.MiddleCenter
+        ' 
+        ' lbQuenMK
+        ' 
+        lbQuenMK.AutoSize = True
+        lbQuenMK.BackColor = Color.Transparent
+        lbQuenMK.ForeColor = SystemColors.InactiveCaptionText
+        lbQuenMK.Location = New Point(231, 391)
+        lbQuenMK.Margin = New Padding(4, 0, 4, 0)
+        lbQuenMK.Name = "lbQuenMK"
+        lbQuenMK.Size = New Size(134, 19)
+        lbQuenMK.TabIndex = 5
+        lbQuenMK.Text = "Quên mật khẩu?"
+        ' 
+        ' btnLogin
+        ' 
+        btnLogin.BackColor = Color.DodgerBlue
+        btnLogin.Font = New Font("Microsoft YaHei UI", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        btnLogin.ForeColor = Color.White
+        btnLogin.Location = New Point(43, 331)
+        btnLogin.Margin = New Padding(4, 3, 4, 3)
+        btnLogin.Name = "btnLogin"
+        btnLogin.Size = New Size(325, 48)
+        btnLogin.TabIndex = 3
+        btnLogin.Text = "Đăng nhập"
+        btnLogin.UseVisualStyleBackColor = False
+        ' 
+        ' tbxPassword
+        ' 
+        tbxPassword.Location = New Point(46, 268)
+        tbxPassword.Margin = New Padding(4, 3, 4, 3)
+        tbxPassword.Name = "tbxPassword"
+        tbxPassword.Size = New Size(319, 26)
+        tbxPassword.TabIndex = 2
+        tbxPassword.Text = "123456"
+        tbxPassword.UseSystemPasswordChar = True
+        ' 
+        ' Label3
+        ' 
+        Label3.AutoSize = True
+        Label3.ForeColor = Color.Black
+        Label3.Location = New Point(39, 246)
+        Label3.Margin = New Padding(4, 0, 4, 0)
+        Label3.Name = "Label3"
+        Label3.Size = New Size(84, 19)
+        Label3.TabIndex = 0
+        Label3.Text = "Mật khẩu:"
+        ' 
+        ' tbxUsername
+        ' 
+        tbxUsername.Location = New Point(43, 187)
+        tbxUsername.Margin = New Padding(4, 3, 4, 3)
+        tbxUsername.Name = "tbxUsername"
+        tbxUsername.Size = New Size(322, 26)
+        tbxUsername.TabIndex = 1
+        tbxUsername.Text = "admin"
+        ' 
+        ' Label2
+        ' 
+        Label2.AutoSize = True
+        Label2.ForeColor = Color.Black
+        Label2.Location = New Point(43, 165)
+        Label2.Margin = New Padding(4, 0, 4, 0)
+        Label2.Name = "Label2"
+        Label2.Size = New Size(130, 19)
+        Label2.TabIndex = 0
+        Label2.Text = "Tên đăng nhập:"
+        ' 
+        ' pnLogoApp
+        ' 
+        pnLogoApp.BackColor = Color.LightSkyBlue
+        pnLogoApp.Controls.Add(PictureBox1)
+        pnLogoApp.Controls.Add(Label5)
+        pnLogoApp.Controls.Add(Label4)
+        pnLogoApp.Controls.Add(Label1)
+        pnLogoApp.Dock = DockStyle.Fill
+        pnLogoApp.Location = New Point(4, 3)
+        pnLogoApp.Margin = New Padding(4, 3, 4, 3)
+        pnLogoApp.Name = "pnLogoApp"
+        pnLogoApp.Size = New Size(390, 567)
+        pnLogoApp.TabIndex = 0
+        ' 
+        ' PictureBox1
+        ' 
+        PictureBox1.BackgroundImage = My.Resources.Resources.LogoHR1
+        PictureBox1.BackgroundImageLayout = ImageLayout.Stretch
+        PictureBox1.Image = My.Resources.Resources.LogoHR
+        PictureBox1.Location = New Point(64, 134)
+        PictureBox1.Name = "PictureBox1"
+        PictureBox1.Size = New Size(225, 187)
+        PictureBox1.TabIndex = 2
+        PictureBox1.TabStop = False
+        ' 
+        ' Label5
+        ' 
+        Label5.AutoSize = True
+        Label5.Font = New Font("Arial", 16F, FontStyle.Bold)
+        Label5.ForeColor = Color.Black
+        Label5.Location = New Point(70, 384)
+        Label5.Margin = New Padding(4, 0, 4, 0)
+        Label5.Name = "Label5"
+        Label5.Size = New Size(219, 26)
+        Label5.TabIndex = 1
+        Label5.Text = "QUẢN LÝ NHÂN SỰ"
+        Label5.TextAlign = ContentAlignment.MiddleCenter
+        ' 
+        ' Label4
+        ' 
+        Label4.AutoSize = True
+        Label4.Location = New Point(113, 84)
+        Label4.Name = "Label4"
+        Label4.Size = New Size(0, 19)
+        Label4.TabIndex = 0
+        ' 
+        ' Label1
+        ' 
+        Label1.AutoSize = True
+        Label1.Font = New Font("Arial", 16F, FontStyle.Bold)
+        Label1.ForeColor = Color.Black
+        Label1.Location = New Point(113, 341)
+        Label1.Margin = New Padding(4, 0, 4, 0)
+        Label1.Name = "Label1"
+        Label1.Size = New Size(129, 26)
+        Label1.TabIndex = 0
+        Label1.Text = "PHẦN MỀM"
+        Label1.TextAlign = ContentAlignment.MiddleCenter
+        ' 
+        ' frmLogin
+        ' 
+        AutoScaleDimensions = New SizeF(10F, 19F)
+        AutoScaleMode = AutoScaleMode.Font
+        ClientSize = New Size(823, 573)
+        Controls.Add(tlpLogin)
+        Font = New Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        FormBorderStyle = FormBorderStyle.Fixed3D
+        Icon = CType(resources.GetObject("$this.Icon"), Icon)
+        Margin = New Padding(5, 4, 5, 4)
+        Name = "frmLogin"
+        StartPosition = FormStartPosition.CenterScreen
+        Text = "frmLogin"
+        tlpLogin.ResumeLayout(False)
+        pnLogin.ResumeLayout(False)
+        pnLogin.PerformLayout()
+        pnLogoApp.ResumeLayout(False)
+        pnLogoApp.PerformLayout()
+        CType(PictureBox1, ComponentModel.ISupportInitialize).EndInit()
+        ResumeLayout(False)
 
     End Sub
 
@@ -210,6 +249,8 @@ Partial Class frmLogin
     Friend WithEvents Label2 As Label
     Friend WithEvents Label1 As Label
     Friend WithEvents lbQuenMK As Label
-    Friend WithEvents btnRegister As Button
+    Friend WithEvents Label4 As Label
     Friend WithEvents PictureBox1 As PictureBox
+    Friend WithEvents Label5 As Label
+    Friend WithEvents Label6 As Label
 End Class

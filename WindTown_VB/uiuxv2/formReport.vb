@@ -455,7 +455,7 @@ Public Class formReport
                     MessageBox.Show("Không có dữ liệu trên lưới để xuất.", "Xuất báo cáo", MessageBoxButtons.OK, MessageBoxIcon.Information)
                     Return
                 End If
-                BaoCaoXuat.XuatTuDataGridView(dgvReport, "WindTown_report_" & suffix)
+                'BaoCaoXuat.XuatTuDataGridView(dgvReport, "WindTown_report_" & suffix)
             Case "CSV"
                 ExportCurrentGridToCsv(suffix)
             Case "PDF"

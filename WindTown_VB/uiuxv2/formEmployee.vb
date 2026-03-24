@@ -434,4 +434,7 @@ Public Class formEmployee
         dgvEmployee.Size = New Size(pnlTab1.Width, pnlTab1.Height - pnlTableFooter.Height)
     End Sub
 
+    Private Sub lblContractEmp_Click(sender As Object, e As EventArgs) Handles lblContractEmp.Click
+
+    End Sub
 End Class

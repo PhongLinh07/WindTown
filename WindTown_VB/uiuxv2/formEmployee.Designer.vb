@@ -128,7 +128,7 @@ Partial Class formEmployee
         pnlRoot.Dock = DockStyle.Fill
         pnlRoot.Location = New Point(0, 0)
         pnlRoot.Name = "pnlRoot"
-        pnlRoot.Size = New Size(1118, 499)
+        pnlRoot.Size = New Size(1187, 741)
         pnlRoot.TabIndex = 0
         ' 
         ' pnlContent
@@ -140,7 +140,7 @@ Partial Class formEmployee
         pnlContent.Dock = DockStyle.Fill
         pnlContent.Location = New Point(0, 96)
         pnlContent.Name = "pnlContent"
-        pnlContent.Size = New Size(1118, 403)
+        pnlContent.Size = New Size(1187, 645)
         pnlContent.TabIndex = 0
         ' 
         ' pnlTab3
@@ -151,7 +151,7 @@ Partial Class formEmployee
         pnlTab3.Dock = DockStyle.Fill
         pnlTab3.Location = New Point(0, 0)
         pnlTab3.Name = "pnlTab3"
-        pnlTab3.Size = New Size(1118, 403)
+        pnlTab3.Size = New Size(1187, 645)
         pnlTab3.TabIndex = 0
         pnlTab3.Visible = False
         ' 
@@ -163,7 +163,7 @@ Partial Class formEmployee
         pnlContractScroll.Location = New Point(0, 0)
         pnlContractScroll.Name = "pnlContractScroll"
         pnlContractScroll.Padding = New Padding(16, 14, 16, 14)
-        pnlContractScroll.Size = New Size(1118, 351)
+        pnlContractScroll.Size = New Size(1187, 593)
         pnlContractScroll.TabIndex = 0
         ' 
         ' pnlContractFooter
@@ -172,9 +172,9 @@ Partial Class formEmployee
         pnlContractFooter.Controls.Add(btnAddContract)
         pnlContractFooter.Controls.Add(lblContractEmp)
         pnlContractFooter.Dock = DockStyle.Bottom
-        pnlContractFooter.Location = New Point(0, 351)
+        pnlContractFooter.Location = New Point(0, 593)
         pnlContractFooter.Name = "pnlContractFooter"
-        pnlContractFooter.Size = New Size(1118, 52)
+        pnlContractFooter.Size = New Size(1187, 52)
         pnlContractFooter.TabIndex = 1
         ' 
         ' btnAddContract
@@ -187,7 +187,7 @@ Partial Class formEmployee
         btnAddContract.FlatStyle = FlatStyle.Flat
         btnAddContract.Font = New Font("Microsoft YaHei UI", 10F, FontStyle.Bold)
         btnAddContract.ForeColor = Color.White
-        btnAddContract.Location = New Point(903, 10)
+        btnAddContract.Location = New Point(972, 10)
         btnAddContract.Name = "btnAddContract"
         btnAddContract.Size = New Size(160, 32)
         btnAddContract.TabIndex = 0
@@ -201,7 +201,7 @@ Partial Class formEmployee
         lblContractEmp.ForeColor = Color.FromArgb(CByte(123), CByte(139), CByte(178))
         lblContractEmp.Location = New Point(14, 16)
         lblContractEmp.Name = "lblContractEmp"
-        lblContractEmp.Size = New Size(242, 20)
+        lblContractEmp.Size = New Size(198, 17)
         lblContractEmp.TabIndex = 1
         lblContractEmp.Text = "Chọn nhân viên từ tab Danh sách"
         ' 
@@ -213,7 +213,7 @@ Partial Class formEmployee
         pnlTab2.Dock = DockStyle.Fill
         pnlTab2.Location = New Point(0, 0)
         pnlTab2.Name = "pnlTab2"
-        pnlTab2.Size = New Size(1118, 403)
+        pnlTab2.Size = New Size(1187, 645)
         pnlTab2.TabIndex = 1
         pnlTab2.Visible = False
         ' 
@@ -232,7 +232,7 @@ Partial Class formEmployee
         pnlDetailScroll.Location = New Point(0, 0)
         pnlDetailScroll.Name = "pnlDetailScroll"
         pnlDetailScroll.Padding = New Padding(20, 16, 20, 16)
-        pnlDetailScroll.Size = New Size(1118, 351)
+        pnlDetailScroll.Size = New Size(1187, 593)
         pnlDetailScroll.TabIndex = 0
         ' 
         ' txtNote
@@ -246,7 +246,7 @@ Partial Class formEmployee
         txtNote.Multiline = True
         txtNote.Name = "txtNote"
         txtNote.ScrollBars = ScrollBars.Vertical
-        txtNote.Size = New Size(1057, 80)
+        txtNote.Size = New Size(1130, 80)
         txtNote.TabIndex = 0
         ' 
         ' lblSec3
@@ -258,7 +258,7 @@ Partial Class formEmployee
         lblSec3.Location = New Point(20, 564)
         lblSec3.Name = "lblSec3"
         lblSec3.Padding = New Padding(0, 14, 0, 0)
-        lblSec3.Size = New Size(1057, 36)
+        lblSec3.Size = New Size(1130, 36)
         lblSec3.TabIndex = 1
         lblSec3.Text = "GHI CHÚ NỘI BỘ"
         ' 
@@ -282,7 +282,7 @@ Partial Class formEmployee
         tlpContact.RowStyles.Add(New RowStyle(SizeType.Absolute, 42F))
         tlpContact.RowStyles.Add(New RowStyle(SizeType.Absolute, 22F))
         tlpContact.RowStyles.Add(New RowStyle(SizeType.Absolute, 42F))
-        tlpContact.Size = New Size(1057, 132)
+        tlpContact.Size = New Size(1130, 132)
         tlpContact.TabIndex = 2
         ' 
         ' lblEmail
@@ -292,7 +292,7 @@ Partial Class formEmployee
         lblEmail.ForeColor = Color.FromArgb(CByte(123), CByte(139), CByte(178))
         lblEmail.Location = New Point(3, 0)
         lblEmail.Name = "lblEmail"
-        lblEmail.Size = New Size(111, 19)
+        lblEmail.Size = New Size(92, 17)
         lblEmail.TabIndex = 0
         lblEmail.Text = "Email công ty"
         ' 
@@ -306,7 +306,7 @@ Partial Class formEmployee
         txtEmail.Location = New Point(0, 22)
         txtEmail.Margin = New Padding(0, 0, 8, 4)
         txtEmail.Name = "txtEmail"
-        txtEmail.Size = New Size(520, 29)
+        txtEmail.Size = New Size(557, 24)
         txtEmail.TabIndex = 1
         ' 
         ' lblPhone
@@ -314,10 +314,10 @@ Partial Class formEmployee
         lblPhone.AutoSize = True
         lblPhone.Font = New Font("Microsoft YaHei UI", 9F, FontStyle.Bold)
         lblPhone.ForeColor = Color.FromArgb(CByte(123), CByte(139), CByte(178))
-        lblPhone.Location = New Point(536, 0)
+        lblPhone.Location = New Point(573, 0)
         lblPhone.Margin = New Padding(8, 0, 0, 0)
         lblPhone.Name = "lblPhone"
-        lblPhone.Size = New Size(108, 19)
+        lblPhone.Size = New Size(92, 17)
         lblPhone.TabIndex = 2
         lblPhone.Text = "Số điện thoại"
         ' 
@@ -328,10 +328,10 @@ Partial Class formEmployee
         txtPhone.Dock = DockStyle.Fill
         txtPhone.Font = New Font("Microsoft YaHei UI", 10F)
         txtPhone.ForeColor = Color.FromArgb(CByte(232), CByte(236), CByte(240))
-        txtPhone.Location = New Point(536, 22)
+        txtPhone.Location = New Point(573, 22)
         txtPhone.Margin = New Padding(8, 0, 0, 4)
         txtPhone.Name = "txtPhone"
-        txtPhone.Size = New Size(521, 29)
+        txtPhone.Size = New Size(557, 24)
         txtPhone.TabIndex = 3
         ' 
         ' lblBank
@@ -342,7 +342,7 @@ Partial Class formEmployee
         lblBank.ForeColor = Color.FromArgb(CByte(123), CByte(139), CByte(178))
         lblBank.Location = New Point(3, 64)
         lblBank.Name = "lblBank"
-        lblBank.Size = New Size(169, 19)
+        lblBank.Size = New Size(140, 17)
         lblBank.TabIndex = 4
         lblBank.Text = "Tài khoản ngân hàng"
         ' 
@@ -357,7 +357,7 @@ Partial Class formEmployee
         txtBank.Location = New Point(0, 86)
         txtBank.Margin = New Padding(0, 0, 0, 4)
         txtBank.Name = "txtBank"
-        txtBank.Size = New Size(1057, 29)
+        txtBank.Size = New Size(1130, 24)
         txtBank.TabIndex = 5
         ' 
         ' lblSec2
@@ -369,7 +369,7 @@ Partial Class formEmployee
         lblSec2.Location = New Point(20, 396)
         lblSec2.Name = "lblSec2"
         lblSec2.Padding = New Padding(0, 14, 0, 0)
-        lblSec2.Size = New Size(1057, 36)
+        lblSec2.Size = New Size(1130, 36)
         lblSec2.TabIndex = 3
         lblSec2.Text = "LIÊN HỆ & TÀI KHOẢN NGÂN HÀNG"
         ' 
@@ -405,7 +405,7 @@ Partial Class formEmployee
         tlpBasic.RowStyles.Add(New RowStyle(SizeType.Absolute, 42F))
         tlpBasic.RowStyles.Add(New RowStyle(SizeType.Absolute, 22F))
         tlpBasic.RowStyles.Add(New RowStyle(SizeType.Absolute, 42F))
-        tlpBasic.Size = New Size(1057, 260)
+        tlpBasic.Size = New Size(1130, 260)
         tlpBasic.TabIndex = 4
         ' 
         ' lblCode
@@ -415,7 +415,7 @@ Partial Class formEmployee
         lblCode.ForeColor = Color.FromArgb(CByte(123), CByte(139), CByte(178))
         lblCode.Location = New Point(3, 0)
         lblCode.Name = "lblCode"
-        lblCode.Size = New Size(112, 19)
+        lblCode.Size = New Size(92, 17)
         lblCode.TabIndex = 0
         lblCode.Text = "Mã nhân viên"
         ' 
@@ -429,7 +429,7 @@ Partial Class formEmployee
         txtCode.Location = New Point(0, 22)
         txtCode.Margin = New Padding(0, 0, 8, 4)
         txtCode.Name = "txtCode"
-        txtCode.Size = New Size(520, 29)
+        txtCode.Size = New Size(557, 24)
         txtCode.TabIndex = 1
         ' 
         ' lblFName
@@ -437,10 +437,10 @@ Partial Class formEmployee
         lblFName.AutoSize = True
         lblFName.Font = New Font("Microsoft YaHei UI", 9F, FontStyle.Bold)
         lblFName.ForeColor = Color.FromArgb(CByte(123), CByte(139), CByte(178))
-        lblFName.Location = New Point(536, 0)
+        lblFName.Location = New Point(573, 0)
         lblFName.Margin = New Padding(8, 0, 0, 0)
         lblFName.Name = "lblFName"
-        lblFName.Size = New Size(97, 19)
+        lblFName.Size = New Size(82, 17)
         lblFName.TabIndex = 2
         lblFName.Text = "Họ và tên  *"
         ' 
@@ -451,10 +451,10 @@ Partial Class formEmployee
         txtFName.Dock = DockStyle.Fill
         txtFName.Font = New Font("Microsoft YaHei UI", 10F)
         txtFName.ForeColor = Color.FromArgb(CByte(232), CByte(236), CByte(240))
-        txtFName.Location = New Point(536, 22)
+        txtFName.Location = New Point(573, 22)
         txtFName.Margin = New Padding(8, 0, 0, 4)
         txtFName.Name = "txtFName"
-        txtFName.Size = New Size(521, 29)
+        txtFName.Size = New Size(557, 24)
         txtFName.TabIndex = 3
         ' 
         ' lblGender
@@ -464,7 +464,7 @@ Partial Class formEmployee
         lblGender.ForeColor = Color.FromArgb(CByte(123), CByte(139), CByte(178))
         lblGender.Location = New Point(3, 64)
         lblGender.Name = "lblGender"
-        lblGender.Size = New Size(72, 19)
+        lblGender.Size = New Size(62, 17)
         lblGender.TabIndex = 4
         lblGender.Text = "Giới tính"
         ' 
@@ -480,7 +480,7 @@ Partial Class formEmployee
         cboGender.Location = New Point(0, 86)
         cboGender.Margin = New Padding(0, 0, 8, 4)
         cboGender.Name = "cboGender"
-        cboGender.Size = New Size(520, 31)
+        cboGender.Size = New Size(557, 27)
         cboGender.TabIndex = 5
         ' 
         ' lblBirth
@@ -488,10 +488,10 @@ Partial Class formEmployee
         lblBirth.AutoSize = True
         lblBirth.Font = New Font("Microsoft YaHei UI", 9F, FontStyle.Bold)
         lblBirth.ForeColor = Color.FromArgb(CByte(123), CByte(139), CByte(178))
-        lblBirth.Location = New Point(536, 64)
+        lblBirth.Location = New Point(573, 64)
         lblBirth.Margin = New Padding(8, 0, 0, 0)
         lblBirth.Name = "lblBirth"
-        lblBirth.Size = New Size(85, 19)
+        lblBirth.Size = New Size(70, 17)
         lblBirth.TabIndex = 6
         lblBirth.Text = "Ngày sinh"
         ' 
@@ -505,10 +505,10 @@ Partial Class formEmployee
         dtpBirth.Dock = DockStyle.Fill
         dtpBirth.Font = New Font("Microsoft YaHei UI", 10F)
         dtpBirth.Format = DateTimePickerFormat.Custom
-        dtpBirth.Location = New Point(536, 86)
+        dtpBirth.Location = New Point(573, 86)
         dtpBirth.Margin = New Padding(8, 0, 0, 4)
         dtpBirth.Name = "dtpBirth"
-        dtpBirth.Size = New Size(521, 29)
+        dtpBirth.Size = New Size(557, 24)
         dtpBirth.TabIndex = 7
         ' 
         ' lblCccd
@@ -518,7 +518,7 @@ Partial Class formEmployee
         lblCccd.ForeColor = Color.FromArgb(CByte(123), CByte(139), CByte(178))
         lblCccd.Location = New Point(3, 128)
         lblCccd.Name = "lblCccd"
-        lblCccd.Size = New Size(116, 19)
+        lblCccd.Size = New Size(96, 17)
         lblCccd.TabIndex = 8
         lblCccd.Text = "CCCD / CMND"
         ' 
@@ -532,7 +532,7 @@ Partial Class formEmployee
         txtCccd.Location = New Point(0, 150)
         txtCccd.Margin = New Padding(0, 0, 8, 4)
         txtCccd.Name = "txtCccd"
-        txtCccd.Size = New Size(520, 29)
+        txtCccd.Size = New Size(557, 24)
         txtCccd.TabIndex = 9
         ' 
         ' lblFStatus
@@ -540,10 +540,10 @@ Partial Class formEmployee
         lblFStatus.AutoSize = True
         lblFStatus.Font = New Font("Microsoft YaHei UI", 9F, FontStyle.Bold)
         lblFStatus.ForeColor = Color.FromArgb(CByte(123), CByte(139), CByte(178))
-        lblFStatus.Location = New Point(536, 128)
+        lblFStatus.Location = New Point(573, 128)
         lblFStatus.Margin = New Padding(8, 0, 0, 0)
         lblFStatus.Name = "lblFStatus"
-        lblFStatus.Size = New Size(86, 19)
+        lblFStatus.Size = New Size(73, 17)
         lblFStatus.TabIndex = 10
         lblFStatus.Text = "Trạng thái"
         ' 
@@ -556,10 +556,10 @@ Partial Class formEmployee
         cboFStatus.Font = New Font("Microsoft YaHei UI", 10F)
         cboFStatus.ForeColor = Color.FromArgb(CByte(232), CByte(236), CByte(240))
         cboFStatus.Items.AddRange(New Object() {"Đang làm việc", "Nghỉ việc"})
-        cboFStatus.Location = New Point(536, 150)
+        cboFStatus.Location = New Point(573, 150)
         cboFStatus.Margin = New Padding(8, 0, 0, 4)
         cboFStatus.Name = "cboFStatus"
-        cboFStatus.Size = New Size(521, 31)
+        cboFStatus.Size = New Size(557, 27)
         cboFStatus.TabIndex = 11
         ' 
         ' lblAddress
@@ -570,7 +570,7 @@ Partial Class formEmployee
         lblAddress.ForeColor = Color.FromArgb(CByte(123), CByte(139), CByte(178))
         lblAddress.Location = New Point(3, 192)
         lblAddress.Name = "lblAddress"
-        lblAddress.Size = New Size(60, 19)
+        lblAddress.Size = New Size(51, 17)
         lblAddress.TabIndex = 12
         lblAddress.Text = "Địa chỉ"
         ' 
@@ -585,7 +585,7 @@ Partial Class formEmployee
         txtAddress.Location = New Point(0, 214)
         txtAddress.Margin = New Padding(0, 0, 0, 4)
         txtAddress.Name = "txtAddress"
-        txtAddress.Size = New Size(1057, 29)
+        txtAddress.Size = New Size(1130, 24)
         txtAddress.TabIndex = 13
         ' 
         ' lblSec1
@@ -597,7 +597,7 @@ Partial Class formEmployee
         lblSec1.Location = New Point(20, 104)
         lblSec1.Name = "lblSec1"
         lblSec1.Padding = New Padding(0, 10, 0, 0)
-        lblSec1.Size = New Size(1057, 32)
+        lblSec1.Size = New Size(1130, 32)
         lblSec1.TabIndex = 5
         lblSec1.Text = "THÔNG TIN CƠ BẢN"
         ' 
@@ -611,7 +611,7 @@ Partial Class formEmployee
         pnlDetailHeader.Dock = DockStyle.Top
         pnlDetailHeader.Location = New Point(20, 16)
         pnlDetailHeader.Name = "pnlDetailHeader"
-        pnlDetailHeader.Size = New Size(1057, 88)
+        pnlDetailHeader.Size = New Size(1130, 88)
         pnlDetailHeader.TabIndex = 6
         ' 
         ' lblDetailStatus
@@ -623,7 +623,7 @@ Partial Class formEmployee
         lblDetailStatus.Location = New Point(78, 60)
         lblDetailStatus.Name = "lblDetailStatus"
         lblDetailStatus.Padding = New Padding(6, 2, 6, 2)
-        lblDetailStatus.Size = New Size(135, 24)
+        lblDetailStatus.Size = New Size(102, 21)
         lblDetailStatus.TabIndex = 0
         lblDetailStatus.Text = "Đang làm việc"
         ' 
@@ -634,7 +634,7 @@ Partial Class formEmployee
         lblDetailCode.ForeColor = Color.FromArgb(CByte(123), CByte(139), CByte(178))
         lblDetailCode.Location = New Point(80, 40)
         lblDetailCode.Name = "lblDetailCode"
-        lblDetailCode.Size = New Size(179, 20)
+        lblDetailCode.Size = New Size(145, 17)
         lblDetailCode.TabIndex = 1
         lblDetailCode.Text = "Điền thông tin bên dưới"
         ' 
@@ -645,7 +645,7 @@ Partial Class formEmployee
         lblDetailName.ForeColor = Color.FromArgb(CByte(232), CByte(236), CByte(240))
         lblDetailName.Location = New Point(78, 10)
         lblDetailName.Name = "lblDetailName"
-        lblDetailName.Size = New Size(263, 31)
+        lblDetailName.Size = New Size(208, 26)
         lblDetailName.TabIndex = 2
         lblDetailName.Text = "Thêm nhân viên mới"
         ' 
@@ -664,9 +664,9 @@ Partial Class formEmployee
         pnlDetailFooter.Controls.Add(btnClear)
         pnlDetailFooter.Controls.Add(btnDelete)
         pnlDetailFooter.Dock = DockStyle.Bottom
-        pnlDetailFooter.Location = New Point(0, 351)
+        pnlDetailFooter.Location = New Point(0, 593)
         pnlDetailFooter.Name = "pnlDetailFooter"
-        pnlDetailFooter.Size = New Size(1118, 52)
+        pnlDetailFooter.Size = New Size(1187, 52)
         pnlDetailFooter.TabIndex = 1
         ' 
         ' btnSave
@@ -679,7 +679,7 @@ Partial Class formEmployee
         btnSave.FlatStyle = FlatStyle.Flat
         btnSave.Font = New Font("Microsoft YaHei UI", 10F, FontStyle.Bold)
         btnSave.ForeColor = Color.White
-        btnSave.Location = New Point(953, 10)
+        btnSave.Location = New Point(1022, 10)
         btnSave.Name = "btnSave"
         btnSave.Size = New Size(130, 32)
         btnSave.TabIndex = 2
@@ -696,7 +696,7 @@ Partial Class formEmployee
         btnClear.FlatStyle = FlatStyle.Flat
         btnClear.Font = New Font("Microsoft YaHei UI", 9F)
         btnClear.ForeColor = Color.FromArgb(CByte(197), CByte(213), CByte(240))
-        btnClear.Location = New Point(843, 10)
+        btnClear.Location = New Point(912, 10)
         btnClear.Name = "btnClear"
         btnClear.Size = New Size(100, 32)
         btnClear.TabIndex = 1
@@ -727,7 +727,7 @@ Partial Class formEmployee
         pnlTab1.Dock = DockStyle.Fill
         pnlTab1.Location = New Point(0, 0)
         pnlTab1.Name = "pnlTab1"
-        pnlTab1.Size = New Size(1118, 403)
+        pnlTab1.Size = New Size(1187, 645)
         pnlTab1.TabIndex = 2
         ' 
         ' dgvEmployee
@@ -775,7 +775,7 @@ Partial Class formEmployee
         dgvEmployee.RowHeadersWidth = 51
         dgvEmployee.RowTemplate.Height = 52
         dgvEmployee.SelectionMode = DataGridViewSelectionMode.FullRowSelect
-        dgvEmployee.Size = New Size(833, 246)
+        dgvEmployee.Size = New Size(902, 488)
         dgvEmployee.TabIndex = 0
         ' 
         ' colChk
@@ -892,9 +892,9 @@ Partial Class formEmployee
         pnlTableFooter.Controls.Add(pnlPageBtns)
         pnlTableFooter.Controls.Add(lblRowInfo)
         pnlTableFooter.Dock = DockStyle.Bottom
-        pnlTableFooter.Location = New Point(0, 359)
+        pnlTableFooter.Location = New Point(0, 601)
         pnlTableFooter.Name = "pnlTableFooter"
-        pnlTableFooter.Size = New Size(1118, 44)
+        pnlTableFooter.Size = New Size(1187, 44)
         pnlTableFooter.TabIndex = 1
         ' 
         ' pnlPageBtns
@@ -905,7 +905,7 @@ Partial Class formEmployee
         pnlPageBtns.Controls.Add(btnPage2)
         pnlPageBtns.Controls.Add(btnPage1)
         pnlPageBtns.Controls.Add(btnPagePrev)
-        pnlPageBtns.Location = New Point(873, 7)
+        pnlPageBtns.Location = New Point(942, 7)
         pnlPageBtns.Name = "pnlPageBtns"
         pnlPageBtns.Size = New Size(130, 30)
         pnlPageBtns.TabIndex = 0
@@ -977,7 +977,7 @@ Partial Class formEmployee
         lblRowInfo.ForeColor = Color.FromArgb(CByte(123), CByte(139), CByte(178))
         lblRowInfo.Location = New Point(16, 14)
         lblRowInfo.Name = "lblRowInfo"
-        lblRowInfo.Size = New Size(150, 20)
+        lblRowInfo.Size = New Size(122, 17)
         lblRowInfo.TabIndex = 1
         lblRowInfo.Text = "Hiển thị 0 nhân viên"
         ' 
@@ -991,7 +991,7 @@ Partial Class formEmployee
         pnlTabBar.Dock = DockStyle.Top
         pnlTabBar.Location = New Point(0, 52)
         pnlTabBar.Name = "pnlTabBar"
-        pnlTabBar.Size = New Size(1118, 44)
+        pnlTabBar.Size = New Size(1187, 44)
         pnlTabBar.TabIndex = 1
         ' 
         ' pnlTabIndicator
@@ -1027,7 +1027,7 @@ Partial Class formEmployee
         btnTabDetail.FlatStyle = FlatStyle.Flat
         btnTabDetail.Font = New Font("Microsoft YaHei UI", 10F)
         btnTabDetail.ForeColor = Color.FromArgb(CByte(123), CByte(139), CByte(178))
-        btnTabDetail.Location = New Point(160, 0)
+        btnTabDetail.Location = New Point(166, 0)
         btnTabDetail.Name = "btnTabDetail"
         btnTabDetail.Size = New Size(160, 42)
         btnTabDetail.TabIndex = 1
@@ -1061,7 +1061,7 @@ Partial Class formEmployee
         pnlToolbar.Dock = DockStyle.Top
         pnlToolbar.Location = New Point(0, 0)
         pnlToolbar.Name = "pnlToolbar"
-        pnlToolbar.Size = New Size(1118, 52)
+        pnlToolbar.Size = New Size(1187, 52)
         pnlToolbar.TabIndex = 2
         ' 
         ' btnAdd
@@ -1074,7 +1074,7 @@ Partial Class formEmployee
         btnAdd.FlatStyle = FlatStyle.Flat
         btnAdd.Font = New Font("Microsoft YaHei UI", 10F, FontStyle.Bold)
         btnAdd.ForeColor = Color.White
-        btnAdd.Location = New Point(813, 11)
+        btnAdd.Location = New Point(882, 11)
         btnAdd.Name = "btnAdd"
         btnAdd.Size = New Size(154, 30)
         btnAdd.TabIndex = 4
@@ -1091,7 +1091,7 @@ Partial Class formEmployee
         btnExport.FlatStyle = FlatStyle.Flat
         btnExport.Font = New Font("Microsoft YaHei UI", 9F)
         btnExport.ForeColor = Color.FromArgb(CByte(123), CByte(139), CByte(178))
-        btnExport.Location = New Point(703, 11)
+        btnExport.Location = New Point(772, 11)
         btnExport.Name = "btnExport"
         btnExport.Size = New Size(100, 30)
         btnExport.TabIndex = 3
@@ -1108,7 +1108,7 @@ Partial Class formEmployee
         cboStatus.Items.AddRange(New Object() {"Tất cả trạng thái", "Đang làm việc", "Nghỉ việc"})
         cboStatus.Location = New Point(464, 11)
         cboStatus.Name = "cboStatus"
-        cboStatus.Size = New Size(150, 28)
+        cboStatus.Size = New Size(150, 25)
         cboStatus.TabIndex = 2
         ' 
         ' cboDept
@@ -1121,7 +1121,7 @@ Partial Class formEmployee
         cboDept.Items.AddRange(New Object() {"Tất cả phòng ban", "Kỹ thuật", "Kế toán", "Nhân sự", "Marketing", "Kinh doanh", "Vận hành"})
         cboDept.Location = New Point(282, 11)
         cboDept.Name = "cboDept"
-        cboDept.Size = New Size(172, 28)
+        cboDept.Size = New Size(172, 25)
         cboDept.TabIndex = 1
         ' 
         ' txtSearch
@@ -1132,15 +1132,15 @@ Partial Class formEmployee
         txtSearch.ForeColor = Color.FromArgb(CByte(232), CByte(236), CByte(240))
         txtSearch.Location = New Point(12, 11)
         txtSearch.Name = "txtSearch"
-        txtSearch.Size = New Size(260, 29)
+        txtSearch.Size = New Size(260, 24)
         txtSearch.TabIndex = 0
         ' 
         ' formEmployee
         ' 
-        AutoScaleDimensions = New SizeF(9F, 20F)
+        AutoScaleDimensions = New SizeF(7F, 17F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.FromArgb(CByte(26), CByte(29), CByte(46))
-        ClientSize = New Size(1118, 499)
+        ClientSize = New Size(1187, 741)
         Controls.Add(pnlRoot)
         Font = New Font("Microsoft YaHei UI", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Name = "formEmployee"

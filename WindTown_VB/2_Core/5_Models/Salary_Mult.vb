@@ -30,7 +30,7 @@ Public Class Salary_Mult
 #End Region
 
 #Region "Field"
-    <DisplayName("Mã hệ số")> <Display(Order:=1)>
+    <DisplayName("Mã hệ số")> <Display(Order:=1)> <Column("code")>
     Public Property code As String
 
     <DisplayName("Hệ số")> <Display(Order:=2)>

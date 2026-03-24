@@ -9,7 +9,7 @@ Public Class Account
     Public Sub New()
         user = $"ACC{GenerateRandomNumbers.Generate()}"
         password = "123456"
-        role = 1
+        role = CInt(Permis.Admin)
         last_active = Nothing
         note = ""
         status = 0
@@ -74,14 +74,18 @@ Public Class Account
     }
 
     <Browsable(False)>
-    Public Const ROLE_ADM As Integer = 1
-    <Browsable(False)>
-    Public Const ROLE_STAFF As Integer = 2
+    Public Enum Permis
+        Admin = 1
+        HR = 2
+        Finance = 3
+
+    End Enum
 
     <NotMapped>
     Public Shared ReadOnly role_Dict As New Dictionary(Of Integer, String) From {
-        {ROLE_ADM, "Admin"},
-        {ROLE_STAFF, "Staff"}
+        {CInt(Permis.Admin), "Admin"},
+        {CInt(Permis.HR), "HR"},
+        {CInt(Permis.Finance), "Finance"}
     }
 #End Region
 

@@ -32,6 +32,8 @@ Public Class Job_CRUD_Frm
         _salary_mult_list_uc = New Salary_Mult_List_UC(_data)
         grb_salary_mult.Controls.Add(_salary_mult_list_uc)
         _salary_mult_list_uc.Dock = DockStyle.Fill
+
+
     End Sub
 
     Private Sub InitComboBox()

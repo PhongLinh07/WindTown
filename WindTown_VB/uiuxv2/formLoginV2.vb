@@ -82,7 +82,6 @@ Public Class formLoginV2
         CapNhatThongTinPhien(acc)
         NguoiDungHienTaiService.GanTaiKhoanDangNhap(acc)
         UserProfile.User = acc
-        NavigationService.SwitchTopLevel(Of formMainV2)(Me)
     End Sub
 
     Private Sub CapNhatThongTinPhien(acc As Account)
@@ -146,7 +145,7 @@ Public Class formLoginV2
         newAcc.user = username
         newAcc.password = password
         newAcc.employee_id = emp.id
-        newAcc.role = Account.ROLE_STAFF
+        ' newAcc.role = Account.ROLE_STAFF
         newAcc.status = 1
 
         Dim ins = AppServices.Instance.AccountSV.Insert(newAcc)

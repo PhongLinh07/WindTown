@@ -29,7 +29,7 @@ Public Class Position
 #End Region
 
 #Region "Field"
-    <DisplayName("Mã chức vụ")> <Display(Order:=1)>
+    <DisplayName("Mã chức vụ")> <Display(Order:=1)> <Column("code")>
     Public Property code As String
 
     <DisplayName("Ngày bắt đầu")> <DisplayFormat(DataFormatString:="{0:dd-MM-yyyy}")> <Display(Order:=5)>

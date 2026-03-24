@@ -15,9 +15,9 @@ Public NotInheritable Class UserProfile
         End Set
     End Property
 
-    Public Shared ReadOnly Property Is_Dev As Boolean
+    Public Shared ReadOnly Property Is_Admin As Boolean
         Get
-            Return _isDEV
+            Return _user.role = CInt(Account.Permis.Admin)
         End Get
     End Property
 
@@ -29,7 +29,7 @@ Public NotInheritable Class UserProfile
 
     Public Shared ReadOnly Property Is_Staff As Boolean
         Get
-            Return _user.role = Account.ROLE_STAFF
+            Return False
         End Get
     End Property
 
