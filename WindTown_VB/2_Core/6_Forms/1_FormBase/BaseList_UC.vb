@@ -1,5 +1,5 @@
 Imports WindTown_VB.AppServices
-
+Imports System.Linq
 Public Class BaseList_UC
     Inherits UserControl
 
@@ -10,6 +10,10 @@ Public Class BaseList_UC
     Private _filterPanel As FilterPanel_UC
     Private _exportExcel As ExportExcel_UC
     Private _allData As Object   ' giữ reference list gốc
+
+    '-----Sort----------
+    Private _sortAsc As Boolean = True
+    Private _sortCol As String = ""
 
 #Region "Setting Form"
     Public Sub New()
@@ -36,9 +40,51 @@ Public Class BaseList_UC
 
     Protected Sub Init(modelType As Type)
         GridHelper.SetupGrid(_dgv, modelType)
+        AddHandler _dgv.ColumnHeaderMouseClick, AddressOf OnHeaderClick
         LoadData()
     End Sub
+    Private Sub OnHeaderClick(sender As Object, e As DataGridViewCellMouseEventArgs)
+        If _allData Is Nothing Then Return
 
+        Dim propName = _dgv.Columns(e.ColumnIndex).DataPropertyName
+        If String.IsNullOrEmpty(propName) Then Return
+
+        ' Toggle hướng nếu click cùng cột
+        If _sortCol = propName Then
+            _sortAsc = Not _sortAsc
+        Else
+            _sortCol = propName
+            _sortAsc = True
+        End If
+
+        ' Sort trên _allData
+        ' Ép kiểu về IEnumerable để dùng được LINQ
+        Dim enumerableData = TryCast(_allData, IEnumerable)
+        If enumerableData Is Nothing Then Return
+
+        ' Sort dùng LINQ
+        Dim sorted = enumerableData.Cast(Of Object)().OrderBy(
+    Function(x)
+        Try
+            Dim prop = x.GetType().GetProperty(propName)
+            Return If(prop IsNot Nothing, prop.GetValue(x, Nothing), Nothing)
+        Catch
+            Return Nothing
+        End Try
+    End Function).ToList()
+
+        ' Đảo ngược nếu là Sort Descending
+        If Not _sortAsc Then sorted.Reverse()
+
+        _bindingSource.DataSource = sorted
+
+        ' Hiện mũi tên trên header
+        For Each col As DataGridViewColumn In _dgv.Columns
+            col.HeaderCell.SortGlyphDirection = SortOrder.None
+        Next
+        _dgv.Columns(e.ColumnIndex).HeaderCell.SortGlyphDirection =
+        If(_sortAsc, SortOrder.Ascending, SortOrder.Descending)
+    End Sub
     Protected Overridable Sub LoadData()
         _dgv.ClearSelection()
         Dim response = _service.GetList()
